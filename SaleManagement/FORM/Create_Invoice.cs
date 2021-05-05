@@ -14,17 +14,17 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmBill : Form
     {
-        int AMOUNT_ITEMs = 1, ALL_AMOUNT_ITEMs = 0 , ITEMs = 0;
-        string ID_ITEM, ITEM;
-        double PRICE_ITEM = 0, 
-            DISCOUNT_ITEM = 0, 
-            PRICE_ITEMs = 0, 
-            PRICE_BILL = 0, 
-            DISCOUNT_BILL = 0, 
-            SEND_BY_CUSTOMER = 0, 
-            SEND_BY_STAFF = 0, 
-            TOTAL_MONEY = 0;
-        DataTable DATA = BLL_CREATEBILL.Instance.getTblORDER();
+        int products = 1, allProduct = 0 , productQty = 0;
+        string idProduct, nameProduct;
+        double productPrice = 0, 
+            productDiscount = 0, 
+            productsPrice = 0, 
+            invoicePrice = 0, 
+            invoiceDiscount = 0, 
+            sendByCustomer = 0, 
+            sendByStaff = 0, 
+            totalMoney = 0;
+        DataTable DATA = BLL_CREATEINVOICE.Instance.GetTbl_Order();
         public FrmBill()
         {
             InitializeComponent();
@@ -36,20 +36,20 @@ namespace SaleManagement.VIEW
         // Thiết lập dữ liệu cho các textbox
         public void setDATA_FOR_TXT()
         {
-            SEND_BY_CUSTOMER = PRICE_BILL = BLL_CREATEBILL.Instance.getPriceBill(DATA, DISCOUNT_BILL);
-            TOTAL_MONEY = BLL_CREATEBILL.Instance.getTotalMoney(DATA);
-            ALL_AMOUNT_ITEMs = BLL_CREATEBILL.Instance.getAllAmount(DATA);
-            ITEMs = BLL_CREATEBILL.Instance.getAllItems(DATA);
-            txtID_BILL.Text = BLL_CREATEBILL.Instance.getNEWID_BILL();
-            txtDISCOUNT_BILL.Text = String.Format("{0:n0}", DISCOUNT_BILL);
-            txtDISCOUNT_ITEM.Text = DISCOUNT_ITEM.ToString();
-            txtALL_AMOUNT_ITEMs.Text = ALL_AMOUNT_ITEMs.ToString();
-            txtITEMs.Text = ITEMs.ToString();
-            txtAMOUNT_ITEM.Text = AMOUNT_ITEMs.ToString();
-            txtPRICE_BILL.Text = String.Format("{0:n0}", PRICE_BILL); ;
-            txtTOTAL_MONEY.Text = String.Format("{0:n0}", TOTAL_MONEY); ;
-            txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", SEND_BY_CUSTOMER); ;
-            txtSEND_BY_STAFF.Text = String.Format("{0:n0}", SEND_BY_STAFF); ;
+            sendByCustomer = invoicePrice = BLL_CREATEINVOICE.Instance.getPrice_Invoice(DATA, invoiceDiscount);
+            totalMoney = BLL_CREATEINVOICE.Instance.GetTotal_Money(DATA);
+            productQty = BLL_CREATEINVOICE.Instance.getAll_ProQty(DATA);
+            allProduct = BLL_CREATEINVOICE.Instance.getAll_Product(DATA);
+            txtID_INVOICE.Text = BLL_CREATEINVOICE.Instance.GetNewID_Invoice();
+            txtINVOICE_DISCOUNT.Text = String.Format("{0:n0}", invoiceDiscount);
+            txtPRODUCT_DISCOUNT.Text = productDiscount.ToString();
+            txtALL_PRODUCT_QTY.Text = productQty.ToString();
+            txtPRODUCTS_QUANTITY.Text = allProduct.ToString();
+            txtPRODUCT_QUANTITY_SELECY.Text = products.ToString();
+            txtINVOICE_PRICE.Text = String.Format("{0:n0}", invoicePrice); ;
+            txtTOTAL_MONEY.Text = String.Format("{0:n0}", totalMoney); ;
+            txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", sendByCustomer); ;
+            txtSEND_BY_STAFF.Text = String.Format("{0:n0}", sendByStaff); ;
         }
         // Thiết lập dữ liệu cho các CBB
         public void setCBB()
@@ -57,19 +57,19 @@ namespace SaleManagement.VIEW
             cbbTYPE_OF_ITEMS.Items.Add("None");
             cbbSTAFF.Items.Add("None");
             cbbCUSTOMER.Items.Add("None");
-            cbbTYPE_OF_ITEMS.Items.AddRange(BLL_ITEMS.Instance.getCBB_TYPEOFITEMS().ToArray());
-            cbbSTAFF.Items.AddRange(BLL_CREATEBILL.Instance.getCBB_STAFF().ToArray());
-            cbbCUSTOMER.Items.AddRange(BLL_CREATEBILL.Instance.getCBB_CUSTOMER().ToArray());
+            cbbTYPE_OF_ITEMS.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
+            cbbSTAFF.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Staff().ToArray());
+            cbbCUSTOMER.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Customer().ToArray());
             cbbCUSTOMER.SelectedIndex = cbbSTAFF.SelectedIndex = cbbTYPE_OF_ITEMS.SelectedIndex = 0;
         }
         // Load lại dữ liệu trobg Form 
         public void load()
         {
-            DATA = BLL_CREATEBILL.Instance.getTblORDER();
-            TOTAL_MONEY = PRICE_BILL = SEND_BY_CUSTOMER = SEND_BY_STAFF = ALL_AMOUNT_ITEMs = ITEMs = 0;
-            DISCOUNT_BILL = 0;
-            AMOUNT_ITEMs = 1;
-            DISCOUNT_ITEM = 0;
+            DATA = BLL_CREATEINVOICE.Instance.GetTbl_Order();
+            totalMoney = invoicePrice = sendByCustomer = sendByStaff = allProduct = productQty = 0;
+            invoiceDiscount = 0;
+            products = 1;
+            productDiscount = 0;
             setDATA_FOR_TXT();
             btnDELETE.Enabled = true;
             btnADD.Enabled = true;
@@ -79,20 +79,20 @@ namespace SaleManagement.VIEW
         // Thiết lập giá trị cho txt Giảm giá và Tổng thanh toán sau khi giảm theo % 
         public void setDiscountPercent(string PERCENT)
         {
-            SEND_BY_CUSTOMER = PRICE_BILL = BLL_CREATEBILL.Instance.getPriceBill(DATA, (BLL_CREATEBILL.Instance.getTotalMoney(DATA) * Convert.ToDouble(PERCENT) / 100));
-            DISCOUNT_BILL = BLL_CREATEBILL.Instance.getTotalMoney(DATA) * Convert.ToDouble(PERCENT) / 100;
-            txtPRICE_BILL.Text = String.Format("{0:n0}", PRICE_BILL);
-            txtDISCOUNT_BILL.Text = String.Format("{0:n0}", DISCOUNT_BILL);
-            txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", SEND_BY_CUSTOMER);
+            sendByCustomer = invoicePrice = BLL_CREATEINVOICE.Instance.getPrice_Invoice(DATA, (BLL_CREATEINVOICE.Instance.GetTotal_Money(DATA) * Convert.ToDouble(PERCENT) / 100));
+            invoiceDiscount = BLL_CREATEINVOICE.Instance.GetTotal_Money(DATA) * Convert.ToDouble(PERCENT) / 100;
+            txtINVOICE_PRICE.Text = String.Format("{0:n0}", invoicePrice);
+            txtINVOICE_DISCOUNT.Text = String.Format("{0:n0}", invoiceDiscount);
+            txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", sendByCustomer);
         }
         // Thiết lập giá trị cho txt Giảm giá và Tổng thanh toán sau khi giảm theo số tiền
         public void setDiscountMoney(string MONEY)
         {
-            SEND_BY_CUSTOMER = PRICE_BILL = BLL_CREATEBILL.Instance.getPriceBill(DATA, Convert.ToDouble(MONEY));
-            DISCOUNT_BILL = Convert.ToDouble(MONEY);
-            txtPRICE_BILL.Text = String.Format("{0:n0}", PRICE_BILL); // định dạng lại chuỗi, 2000 -> 2.000
-            txtDISCOUNT_BILL.Text = String.Format("{0:n0}", DISCOUNT_BILL);
-            txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", SEND_BY_CUSTOMER);
+            sendByCustomer = invoicePrice = BLL_CREATEINVOICE.Instance.getPrice_Invoice(DATA, Convert.ToDouble(MONEY));
+            invoiceDiscount = Convert.ToDouble(MONEY);
+            txtINVOICE_PRICE.Text = String.Format("{0:n0}", invoicePrice); // định dạng lại chuỗi, 2000 -> 2.000
+            txtINVOICE_DISCOUNT.Text = String.Format("{0:n0}", invoiceDiscount);
+            txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", sendByCustomer);
         }
         
         public void showITEMs()
@@ -135,7 +135,7 @@ namespace SaleManagement.VIEW
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             if (rbID_ITEM.Checked == true)
             {
-                var items = DB.tblHangHoas.Where(p => p.MaHangHoa.ToLower().Contains(txtSEARCH.Text.ToLower())).Select(p => new
+                var items = DB.tblHangHoas.Where(p => p.MaHangHoa.Contains(txtSEARCH.Text)).Select(p => new
                 {
                     p.MaHangHoa,
                     p.TenHangHoa,
@@ -146,7 +146,7 @@ namespace SaleManagement.VIEW
             }
             else
             {
-                var items = DB.tblHangHoas.Where(p => p.TenHangHoa.ToLower().Contains(txtSEARCH.Text.ToLower())).Select(p => new
+                var items = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(txtSEARCH.Text)).Select(p => new
                 {
                     p.MaHangHoa,
                     p.TenHangHoa,
@@ -160,20 +160,20 @@ namespace SaleManagement.VIEW
         private void btnADD_Click(object sender, EventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            ID_ITEM = dgvSELECT.SelectedRows[0].Cells["MaHangHoa"].Value.ToString(); // Mã hàng hóa
-            ITEM = dgvSELECT.SelectedRows[0].Cells["TenHangHoa"].Value.ToString(); // Tên hàng hóa
-            AMOUNT_ITEMs = Convert.ToInt32(txtAMOUNT_ITEM.Text); // Số lượng hàng hóa từ txtAMOUNT_ITEM
-            PRICE_ITEM = Convert.ToDouble(dgvSELECT.SelectedRows[0].Cells["GiaBan"].Value.ToString()); // Giá hàng hóa
-            DISCOUNT_ITEM = Convert.ToDouble(txtDISCOUNT_ITEM.Text); // Giảm giá theo hàng hóa từ txtDISCOUNT_ITEM
-            PRICE_ITEMs = AMOUNT_ITEMs * PRICE_ITEM - AMOUNT_ITEMs * PRICE_ITEM * DISCOUNT_ITEM / 100; // Tổng thanh toán trước khi giảm giá hóa đơn
-            if (AMOUNT_ITEMs > Convert.ToInt32(dgvSELECT.SelectedRows[0].Cells["SoLuong"].Value.ToString())) // Kiểm tra số lượng
+            idProduct = dgvSELECT.SelectedRows[0].Cells["MaHangHoa"].Value.ToString(); // Mã hàng hóa
+            nameProduct = dgvSELECT.SelectedRows[0].Cells["TenHangHoa"].Value.ToString(); // Tên hàng hóa
+            products = Convert.ToInt32(txtPRODUCT_QUANTITY_SELECY.Text); // Số lượng hàng hóa từ txtAMOUNT_ITEM
+            productPrice = Convert.ToDouble(dgvSELECT.SelectedRows[0].Cells["GiaBan"].Value.ToString()); // Giá hàng hóa
+            productDiscount = Convert.ToDouble(txtPRODUCT_DISCOUNT.Text); // Giảm giá theo hàng hóa từ txtDISCOUNT_ITEM
+            productsPrice = products * productPrice - products * productPrice * productDiscount / 100; // Tổng thanh toán trước khi giảm giá hóa đơn
+            if (products > Convert.ToInt32(dgvSELECT.SelectedRows[0].Cells["SoLuong"].Value.ToString())) // Kiểm tra số lượng
             {
                 MessageBox.Show("Không đủ số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                BLL_CREATEBILL.Instance.addITEMs(DATA, ID_ITEM, ITEM, AMOUNT_ITEMs, PRICE_ITEM, DISCOUNT_ITEM, PRICE_ITEMs);
-                int remain = Convert.ToInt32(dgvSELECT.SelectedRows[0].Cells["SoLuong"].Value.ToString()) - AMOUNT_ITEMs;
+                BLL_CREATEINVOICE.Instance.AddItem(DATA, idProduct, nameProduct, products, productPrice, productDiscount, productsPrice);
+                int remain = Convert.ToInt32(dgvSELECT.SelectedRows[0].Cells["SoLuong"].Value.ToString()) - products;
                 dgvSELECT.SelectedRows[0].Cells["SoLuong"].Value = remain.ToString();// Giảm số lượng hàng hóa sau khi thêm
                 //var item = DB.tblHangHoas.Find(ID_ITEM);
                 //item.SoLuong = remain;
@@ -191,7 +191,7 @@ namespace SaleManagement.VIEW
             {
                 LIST.Add(i.Cells[0].Value.ToString());
             }
-            BLL_CREATEBILL.Instance.delITEMS(LIST, DATA);
+            BLL_CREATEINVOICE.Instance.DelItem(LIST, DATA);
             // Dữ liệu hóa đơn sau khi xóa hàng hóa
             setDATA_FOR_TXT();
         }
@@ -205,38 +205,48 @@ namespace SaleManagement.VIEW
         // Btn thanh toán
         private void btnPAYMENT_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            tblHoaDonBanHang NEWBILL = new tblHoaDonBanHang();
-            if (txtID_BILL.Text == "" || PRICE_BILL == 0 || cbbCUSTOMER.SelectedIndex == 0 || cbbSTAFF.SelectedIndex == 0 ||
-                cbbSTAFF.SelectedIndex == 0 || cbbCUSTOMER.SelectedIndex == 0)
+            if (DATA.Rows.Count == 0)
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Không thể thực hiện chức năng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                NEWBILL.MaHoaDonBan = txtID_BILL.Text;
-                NEWBILL.MaNhanVien = ((CBBItem)cbbSTAFF.SelectedItem).VALUE;
-                NEWBILL.NgayBan = dpDAY.Value;
-                NEWBILL.MaKhachHang = ((CBBItem)cbbCUSTOMER.SelectedItem).VALUE;
-                NEWBILL.SoTien = PRICE_BILL;
-                try
+                SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+                tblHoaDonBanHang NEWINVOICE = new tblHoaDonBanHang();
+                if (string.IsNullOrEmpty(txtID_INVOICE.Text) || invoicePrice == 0 || cbbCUSTOMER.SelectedIndex == 0 || cbbSTAFF.SelectedIndex == 0 ||
+                    cbbSTAFF.SelectedIndex == 0 || cbbCUSTOMER.SelectedIndex == 0)
                 {
-                    MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DB.tblHoaDonBanHangs.Add(NEWBILL);
-                    DB.SaveChanges();
-                    foreach (DataRow data in DATA.Rows)
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    NEWINVOICE.MaHoaDonBan = txtID_INVOICE.Text;
+                    NEWINVOICE.MaNhanVien = ((CBBItem)cbbSTAFF.SelectedItem).VALUE;
+                    NEWINVOICE.NgayBan = dpDAY.Value;
+                    NEWINVOICE.MaKhachHang = ((CBBItem)cbbCUSTOMER.SelectedItem).VALUE;
+                    NEWINVOICE.SoTien = invoicePrice;
+                    NEWINVOICE.GiamGia = invoiceDiscount;
+                    try
                     {
-                        var item = DB.tblHangHoas.Find(data["MaHangHoa"].ToString());
-                        item.SoLuong -= Convert.ToInt32(data["SoLuong"].ToString());
-                        DB.SaveChanges();
-                    } 
-                    load();
+                        MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DB.tblHoaDonBanHangs.Add(NEWINVOICE);
+                        DB.SaveChanges();// thêm đơn hàng vào DB
+                        foreach (DataRow data in DATA.Rows)
+                        {
+                            DB.tblChiTietHoaDonBanHangs.Add(BLL_CREATEINVOICE.Instance.GetInvoice_Detail(data, NEWINVOICE.MaHoaDonBan));
+                            DB.SaveChanges();// thêm hóa đơn bán hàng chi tiết
+                            var item = DB.tblHangHoas.Find(data["MaHangHoa"].ToString());
+                            item.SoLuong -= Convert.ToInt32(data["SoLuong"].ToString());
+                            DB.SaveChanges();// thay đổi số lượng hàng hóa sau khi thanh toán
+                        }
+                        load();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Tạo hóa đơn thất bại. Mã đơn bị trùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Tạo hóa đơn thất bại. Mã đơn bị trùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            }   
         }
         // Btn Hủy bỏ, làm mới hóa đơn
         private void btnLOAD_Click(object sender, EventArgs e)
@@ -252,30 +262,30 @@ namespace SaleManagement.VIEW
         }
         private void txtDISCOUNT_ITEM_TextChanged(object sender, EventArgs e)
         {
-            if (txtDISCOUNT_ITEM.Text == "")
+            if (txtPRODUCT_DISCOUNT.Text == "")
             {
-                txtDISCOUNT_ITEM.Text = "0";
+                txtPRODUCT_DISCOUNT.Text = "0";
             }
-            if (Convert.ToInt32(txtDISCOUNT_ITEM.Text) > 100)
+            if (Convert.ToInt32(txtPRODUCT_DISCOUNT.Text) > 100)
             {
-                txtDISCOUNT_ITEM.Text = "100";
+                txtPRODUCT_DISCOUNT.Text = "100";
             }
         }
         private void txtAMOUNT_ITEM_TextChanged(object sender, EventArgs e)
         {
-            if (txtAMOUNT_ITEM.Text == "")
+            if (txtPRODUCT_QUANTITY_SELECY.Text == "")
             {
-                txtAMOUNT_ITEM.Text = "1";
+                txtPRODUCT_QUANTITY_SELECY.Text = "1";
             }
         }
         // Btn giảm theo số tiền, gọi form Discount_Money
         private void btnDISCOUNT_MONEY_Click(object sender, EventArgs e)
         {
-            FrmDiscount_Money FRM = new FrmDiscount_Money(TOTAL_MONEY);
+            FrmDiscount_Money FRM = new FrmDiscount_Money(totalMoney);
             FRM.d += new FrmDiscount_Money.myDEL(setDiscountMoney);
             FRM.Show();
         }
-
+        // Btn in giao diện cho hóa đơn
         private void btnPRINT_Click(object sender, EventArgs e)
         {
             if (DATA.Rows.Count == 0)
@@ -288,7 +298,7 @@ namespace SaleManagement.VIEW
                 printPreviewDialog1.ShowDialog();
             }
         }
-
+        // Giao diện hóa đơn
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawString("N3K STORE", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(340,50));
@@ -297,7 +307,7 @@ namespace SaleManagement.VIEW
             e.Graphics.DrawString("HÓA ĐƠN TÍNH TIỀN", new Font("Arial", 19, FontStyle.Bold), Brushes.Black, new Point(290, 180));
             e.Graphics.DrawString("NVTN: "+ cbbSTAFF.SelectedItem.ToString(), new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(330, 220));
             e.Graphics.DrawString("Khách hàng: "+ cbbCUSTOMER.SelectedItem.ToString(), new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(300, 250));
-            e.Graphics.DrawString("Số Bill: "+ txtID_BILL.Text, new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(200, 300));
+            e.Graphics.DrawString("Số Bill: "+ txtID_INVOICE.Text, new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(200, 300));
             e.Graphics.DrawString("Ngày: "+ DateTime.Now.ToString("dd/MM/yyyy HH:mm"), new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(380, 300));
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10,350));
             e.Graphics.DrawString("Tên sản phẩm" , new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(10, 400));
@@ -326,9 +336,9 @@ namespace SaleManagement.VIEW
             e.Graphics.DrawString("Tổng tiền ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50*2));
             e.Graphics.DrawString(txtTOTAL_MONEY.Text + " VNĐ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*2));
             e.Graphics.DrawString("Giảm giá ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50*3));
-            e.Graphics.DrawString(txtDISCOUNT_BILL.Text + " VNĐ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*3));
+            e.Graphics.DrawString(txtINVOICE_DISCOUNT.Text + " VNĐ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*3));
             e.Graphics.DrawString("Tổng thanh toán ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50*4));
-            e.Graphics.DrawString(txtPRICE_BILL.Text + " VNĐ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*4));
+            e.Graphics.DrawString(txtINVOICE_PRICE.Text + " VNĐ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*4));
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50*5));
             e.Graphics.DrawString("*** LƯU Ý: " + txtNOTE.Text, new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(50, distance + 50*6));
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50*7));
@@ -415,9 +425,9 @@ namespace SaleManagement.VIEW
             {
                 txtSEND_BY_CUSTOMER.Text = "0";
             }
-            SEND_BY_CUSTOMER = Convert.ToDouble(txtSEND_BY_CUSTOMER.Text);
-            SEND_BY_STAFF = SEND_BY_CUSTOMER - PRICE_BILL;
-            txtSEND_BY_STAFF.Text = String.Format("{0:n0}", SEND_BY_STAFF);
+            sendByCustomer = Convert.ToDouble(txtSEND_BY_CUSTOMER.Text);
+            sendByStaff = sendByCustomer - invoicePrice;
+            txtSEND_BY_STAFF.Text = String.Format("{0:n0}", sendByStaff);
         }
     }
 }

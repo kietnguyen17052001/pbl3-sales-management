@@ -4,10 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a29972fb27d643edab4055208ef2d98c" Name="Diagram1">
+      <Diagram DiagramId="538d1cec775e4978aa73ae72c6a5c49a" Name="Diagram1">
         <EntityTypeShape EntityType="PBL3Model.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model.tblChiTietHoaDonBanHang" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model.tblChiTietHoaDonNhapHang" Width="1.5" PointX="11.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PBL3Model.tblHangHoa" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.tblHoaDonBanHang" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model.tblHoaDonBanHang" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PBL3Model.tblHoaDonNhapHang" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PBL3Model.tblKhachHang" Width="1.5" PointX="3.75" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PBL3Model.tblLoaiHangHoa" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
@@ -15,17 +17,15 @@
         <EntityTypeShape EntityType="PBL3Model.tblNhanVien" Width="1.5" PointX="3.75" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PBL3Model.tblNhaSanXuat" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PBL3Model.tblTaiKhoan" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.tblChiTietHoaDonBanHang" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.tblChiTietHoaDonNhapHang" Width="1.5" PointX="11.25" PointY="4.625" IsExpanded="true" />
         <AssociationConnector Association="PBL3Model.FK__tblChiTie__MaHan__703EA55A" ManuallyRouted="false" />
+        <AssociationConnector Association="PBL3Model.FK__tblChiTie__MaHoa__6F4A8121" ManuallyRouted="false" />
         <AssociationConnector Association="PBL3Model.FK__tblChiTie__MaHan__78D3EB5B" ManuallyRouted="false" />
+        <AssociationConnector Association="PBL3Model.FK__tblChiTie__MaHoa__77DFC722" ManuallyRouted="false" />
         <AssociationConnector Association="PBL3Model.FK__tblHangHo__MaLoa__65C116E7" ManuallyRouted="false" />
         <AssociationConnector Association="PBL3Model.FK__tblHangHo__MaNha__66B53B20" ManuallyRouted="false" />
         <AssociationConnector Association="PBL3Model.FK__tblHangHo__MaNha__67A95F59" ManuallyRouted="false" />
-        <AssociationConnector Association="PBL3Model.FK__tblChiTie__MaHoa__6F4A8121" ManuallyRouted="false" />
         <AssociationConnector Association="PBL3Model.FK__tblHoaDon__MaKha__6D6238AF" ManuallyRouted="false" />
         <AssociationConnector Association="PBL3Model.FK__tblHoaDon__MaNha__6C6E1476" ManuallyRouted="false" />
-        <AssociationConnector Association="PBL3Model.FK__tblChiTie__MaHoa__77DFC722" ManuallyRouted="false" />
         <AssociationConnector Association="PBL3Model.FK__tblHoaDon__MaNha__75035A77" ManuallyRouted="false" />
         <AssociationConnector Association="PBL3Model.FK__tblHoaDon__MaNha__75F77EB0" ManuallyRouted="false" />
       </Diagram>

@@ -58,6 +58,7 @@ namespace SaleManagement.VIEW
             this.btnDELETE = new System.Windows.Forms.Button();
             this.btnSEARCH = new System.Windows.Forms.Button();
             this.btnSHOW = new System.Windows.Forms.Button();
+            this.btnEXCEL = new System.Windows.Forms.Button();
             this.gbGENDER.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTCUSTOMER)).BeginInit();
             this.panelMANAGE_CUSTOMER.SuspendLayout();
@@ -124,9 +125,6 @@ namespace SaleManagement.VIEW
             this.txtADDRESS.Name = "txtADDRESS";
             this.txtADDRESS.Size = new System.Drawing.Size(237, 28);
             this.txtADDRESS.TabIndex = 76;
-            this.txtADDRESS.Text = "Nhập địa chỉ";
-            this.txtADDRESS.Enter += new System.EventHandler(this.txtADDRESS_Enter);
-            this.txtADDRESS.Leave += new System.EventHandler(this.txtADDRESS_Leave);
             // 
             // txtPHONE
             // 
@@ -136,9 +134,6 @@ namespace SaleManagement.VIEW
             this.txtPHONE.Name = "txtPHONE";
             this.txtPHONE.Size = new System.Drawing.Size(237, 28);
             this.txtPHONE.TabIndex = 75;
-            this.txtPHONE.Text = "Nhập SĐT";
-            this.txtPHONE.Enter += new System.EventHandler(this.txtPHONE_Enter);
-            this.txtPHONE.Leave += new System.EventHandler(this.txtPHONE_Leave);
             // 
             // txtNAME_CUSTOMER
             // 
@@ -148,9 +143,6 @@ namespace SaleManagement.VIEW
             this.txtNAME_CUSTOMER.Name = "txtNAME_CUSTOMER";
             this.txtNAME_CUSTOMER.Size = new System.Drawing.Size(237, 28);
             this.txtNAME_CUSTOMER.TabIndex = 74;
-            this.txtNAME_CUSTOMER.Text = "Nhập tên khách hàng";
-            this.txtNAME_CUSTOMER.Enter += new System.EventHandler(this.txtNAME_CUSTOMER_Enter);
-            this.txtNAME_CUSTOMER.Leave += new System.EventHandler(this.txtNAME_CUSTOMER_Leave);
             // 
             // txtID_CUSTOMER
             // 
@@ -216,11 +208,11 @@ namespace SaleManagement.VIEW
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(854, 110);
+            this.label2.Location = new System.Drawing.Point(929, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(380, 34);
+            this.label2.Size = new System.Drawing.Size(293, 26);
             this.label2.TabIndex = 62;
             this.label2.Text = "DANH SÁCH KHÁCH HÀNG";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -458,11 +450,32 @@ namespace SaleManagement.VIEW
             this.btnSHOW.UseVisualStyleBackColor = false;
             this.btnSHOW.Click += new System.EventHandler(this.btnSHOW_Click);
             // 
+            // btnEXCEL
+            // 
+            this.btnEXCEL.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnEXCEL.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEXCEL.FlatAppearance.BorderSize = 0;
+            this.btnEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEXCEL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEXCEL.ForeColor = System.Drawing.Color.White;
+            this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
+            this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEXCEL.Location = new System.Drawing.Point(532, 103);
+            this.btnEXCEL.Name = "btnEXCEL";
+            this.btnEXCEL.Size = new System.Drawing.Size(154, 48);
+            this.btnEXCEL.TabIndex = 119;
+            this.btnEXCEL.Text = "Xuất Excel";
+            this.btnEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEXCEL.UseVisualStyleBackColor = false;
+            this.btnEXCEL.Click += new System.EventHandler(this.btnEXCEL_Click);
+            // 
             // FrmManage_Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.Controls.Add(this.btnEXCEL);
             this.Controls.Add(this.rbNAME_CUSTOMER);
             this.Controls.Add(this.rbID_CUSTOMER);
             this.Controls.Add(this.btnADD);
@@ -532,5 +545,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.RadioButton rbNAME_CUSTOMER;
         private System.Windows.Forms.RadioButton rbID_CUSTOMER;
         private System.Windows.Forms.Button btnHOME;
+        private System.Windows.Forms.Button btnEXCEL;
     }
 }

@@ -13,11 +13,12 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Customers : Form
     {
-        bool isADD; // Biến kiểm tra là thực hiện chức năng thêm hay sửa khách hàng.
+        bool isAdd; // Biến kiểm tra là thực hiện chức năng thêm hay sửa khách hàng.
         public FrmManage_Customers()
         {
             InitializeComponent();
             disable(false);
+            ShowCustomer();
             rbID_CUSTOMER.Checked = true;
         }
         // Cho phép hoặc không cho phép các textbox hay button nào được và không được thực hiện
@@ -37,35 +38,69 @@ namespace SaleManagement.VIEW
             btnCANCEL.Enabled = E;
         }
         // Liệt kê danh sách khách hàng từ DB
-        public void showCUSTOMER()
+        public void ShowCustomer()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var GETALLCUSTOMER = DB.tblKhachHangs.Select(p => new {
+            var getCustomer = DB.tblKhachHangs.Select(p => new {
                 p.MaKhachHang,
                 p.TenKhachHang,
                 p.SoDienThoai,
                 p.GioiTinh,
                 p.DiaChi,
             });
-            dgvLISTCUSTOMER.DataSource = GETALLCUSTOMER.ToList();
+            dgvLISTCUSTOMER.DataSource = getCustomer.ToList();
+            txtID_CUSTOMER.Clear();
+            txtNAME_CUSTOMER.Clear();
+            txtPHONE.Clear();
+            txtADDRESS.Clear();
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmSale_Management FRM = new FrmSale_Management();
-            FRM.Show();
+            FrmSale_Management frm = new FrmSale_Management();
+            frm.Show();
             this.Close();
         }
         // Btn liệt kê khách hàng
         private void btnSHOW_Click(object sender, EventArgs e)
         {
-            showCUSTOMER();
+            ShowCustomer();
+        }
+        // Xuất danh sách khách hàng ra file excel
+        private void btnEXCEL_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "ListCustomer";
+            for (int i = 1; i <= dgvLISTCUSTOMER.Columns.Count; i++)
+            {
+                worksheet.Cells[1, i] = dgvLISTCUSTOMER.Columns[i - 1].HeaderText;
+            }
+            for (int i = 0; i < dgvLISTCUSTOMER.Rows.Count; i++)
+            {
+                for (int j = 0; j < dgvLISTCUSTOMER.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = dgvLISTCUSTOMER.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "List Customer";
+            saveFileDialog.DefaultExt = ".xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(saveFileDialog.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive,
+                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            }
+            app.Quit();
         }
         // Btn thêm mới khách hàng
         private void btnADD_Click(object sender, EventArgs e)
         {
             disable(true);
-            isADD = true; // thêm
-            txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNEWID_CUSTOMER().ToString(); // gọi hàm tự điền mã số khách hàng từ BLL_CUSTOMER
+            isAdd = true; // thêm
+            txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.GetNewIdCustomer().ToString(); // gọi hàm tự điền mã số khách hàng từ BLL_CUSTOMER
             txtNAME_CUSTOMER.Clear();
             txtPHONE.Clear();
             rbMALE.Checked = true;
@@ -76,41 +111,42 @@ namespace SaleManagement.VIEW
         {
             disable(true);
             txtID_CUSTOMER.Enabled = false;
-            isADD = false; // sửa
+            isAdd = false; // sửa
         }
         // Btn lưu thông tin khách hàng
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            tblKhachHang KHACHHANG = new tblKhachHang();
-            KHACHHANG.MaKhachHang = txtID_CUSTOMER.Text;
-            KHACHHANG.TenKhachHang = txtNAME_CUSTOMER.Text;
+            tblKhachHang customer = new tblKhachHang();
+            customer.MaKhachHang = txtID_CUSTOMER.Text;
+            customer.TenKhachHang = txtNAME_CUSTOMER.Text;
             if (rbMALE.Checked == true)
             {
-                KHACHHANG.GioiTinh = true;
+                customer.GioiTinh = true;
             }
             else
             {
-                KHACHHANG.GioiTinh = false;
+                customer.GioiTinh = false;
             }
-            KHACHHANG.SoDienThoai = txtPHONE.Text;
-            KHACHHANG.DiaChi = txtADDRESS.Text;
-            if (txtID_CUSTOMER.Text == "" || txtNAME_CUSTOMER.Text == "" || txtPHONE.Text == "" || txtADDRESS.Text == "")
+            customer.SoDienThoai = txtPHONE.Text;
+            customer.DiaChi = txtADDRESS.Text;
+            if (string.IsNullOrEmpty(customer.MaKhachHang) || string.IsNullOrEmpty(customer.TenKhachHang) || string.IsNullOrEmpty(customer.SoDienThoai) ||
+                string.IsNullOrEmpty(customer.DiaChi))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 disable(true);
             }
             else
             {
-                if (isADD)
+                if (isAdd)
                 {
                     try
                     {
-                        DB.tblKhachHangs.Add(KHACHHANG);
+                        DB.tblKhachHangs.Add(customer);
                         DB.SaveChanges();
                         MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         disable(false);
-                        showCUSTOMER();
+                        ShowCustomer();
                     }
                     catch (Exception)
                     {
@@ -120,14 +156,14 @@ namespace SaleManagement.VIEW
                 }
                 else
                 {
-                    var GETCUSTOMER = DB.tblKhachHangs.Find(txtID_CUSTOMER.Text); // tìm kiếm khách hàng có mã txtID_CUSTOMER
-                    GETCUSTOMER.TenKhachHang = KHACHHANG.TenKhachHang;
-                    GETCUSTOMER.GioiTinh = KHACHHANG.GioiTinh;
-                    GETCUSTOMER.SoDienThoai = KHACHHANG.SoDienThoai;
-                    GETCUSTOMER.DiaChi = KHACHHANG.DiaChi;
+                    var getCustomer = DB.tblKhachHangs.Find(txtID_CUSTOMER.Text); // tìm kiếm khách hàng có mã txtID_CUSTOMER
+                    getCustomer.TenKhachHang = customer.TenKhachHang;
+                    getCustomer.GioiTinh = customer.GioiTinh;
+                    getCustomer.SoDienThoai = customer.SoDienThoai;
+                    getCustomer.DiaChi = customer.DiaChi;
                     DB.SaveChanges();
                     MessageBox.Show("Sửa khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    showCUSTOMER();
+                    ShowCustomer();
                     disable(false);
                 }
             }
@@ -136,26 +172,26 @@ namespace SaleManagement.VIEW
         private void btnDELETE_Click(object sender, EventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            List<string> LIST_ID_CUSTOMER = new List<string>();
-            DataGridViewSelectedRowCollection DATA = dgvLISTCUSTOMER.SelectedRows;
-            foreach (DataGridViewRow data in DATA)
+            List<string> listIdCustomer = new List<string>();
+            DataGridViewSelectedRowCollection data = dgvLISTCUSTOMER.SelectedRows;
+            foreach (DataGridViewRow dataGvr in data)
             {
-                LIST_ID_CUSTOMER.Add(data.Cells["MaKhachHang"].Value.ToString());
+                listIdCustomer.Add(dataGvr.Cells["MaKhachHang"].Value.ToString());
             }
-            foreach (string i in LIST_ID_CUSTOMER)
+            foreach (string i in listIdCustomer)
             {
-                foreach (tblKhachHang KHACHHANG in DB.tblKhachHangs)
+                foreach (tblKhachHang customer in DB.tblKhachHangs)
                 {
-                    if (KHACHHANG.MaKhachHang == i)
+                    if (customer.MaKhachHang == i)
                     {
-                        DB.tblKhachHangs.Remove(KHACHHANG);
+                        DB.tblKhachHangs.Remove(customer);
                         MessageBox.Show("Xóa khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                     }
                 }
                 DB.SaveChanges();
             }
-            showCUSTOMER();
+            ShowCustomer();
         }
         // Btn hủy bỏ
         private void btnCANCEL_Click(object sender, EventArgs e)
@@ -168,8 +204,8 @@ namespace SaleManagement.VIEW
             DialogResult d = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (d == DialogResult.Yes)
             {
-                FrmManage_Data FRM = new FrmManage_Data();
-                FRM.Show();
+                FrmManage_Data frm = new FrmManage_Data();
+                frm.Show();
                 this.Hide();
             }
             else
@@ -181,13 +217,13 @@ namespace SaleManagement.VIEW
         private void dgvLISTCUSTOMER_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            string ID_CUSTOMER = dgvLISTCUSTOMER.SelectedRows[0].Cells["MaKhachHang"].Value.ToString();
-            var KHACHHANG = DB.tblKhachHangs.Find(ID_CUSTOMER);
-            txtID_CUSTOMER.Text = KHACHHANG.MaKhachHang;
-            txtNAME_CUSTOMER.Text = KHACHHANG.TenKhachHang;
-            txtPHONE.Text = KHACHHANG.SoDienThoai;
-            txtADDRESS.Text = KHACHHANG.DiaChi;
-            if (KHACHHANG.GioiTinh == true)
+            string idCustomer = dgvLISTCUSTOMER.SelectedRows[0].Cells["MaKhachHang"].Value.ToString();
+            var getCustomer = DB.tblKhachHangs.Find(idCustomer);
+            txtID_CUSTOMER.Text = getCustomer.MaKhachHang;
+            txtNAME_CUSTOMER.Text = getCustomer.TenKhachHang;
+            txtPHONE.Text = getCustomer.SoDienThoai;
+            txtADDRESS.Text = getCustomer.DiaChi;
+            if (getCustomer.GioiTinh == true)
             {
                 rbMALE.Checked = true;
             }
@@ -202,7 +238,7 @@ namespace SaleManagement.VIEW
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             if (rbID_CUSTOMER.Checked == true) // Tìm kiếm theo mã số
             {
-                var GETCUSTOMERs = DB.tblKhachHangs.Where(p => p.MaKhachHang.ToLower().Contains(txtSEARCH.Text.ToLower())).Select(p => new
+                var getCustomer = DB.tblKhachHangs.Where(p => p.MaKhachHang.Contains(txtSEARCH.Text)).Select(p => new
                 {
                     p.MaKhachHang,
                     p.TenKhachHang,
@@ -210,11 +246,11 @@ namespace SaleManagement.VIEW
                     p.SoDienThoai,
                     p.DiaChi,
                 });
-                dgvLISTCUSTOMER.DataSource = GETCUSTOMERs.ToList();
+                dgvLISTCUSTOMER.DataSource = getCustomer.ToList();
             }
             else // Tìm kiếm theo tên
             {
-                var GETCUSTOMERs = DB.tblKhachHangs.Where(p => p.TenKhachHang.ToLower().Contains(txtSEARCH.Text.ToLower())).Select(p => new
+                var getCustomer = DB.tblKhachHangs.Where(p => p.TenKhachHang.Contains(txtSEARCH.Text)).Select(p => new
                 {
                     p.MaKhachHang,
                     p.TenKhachHang,
@@ -222,60 +258,7 @@ namespace SaleManagement.VIEW
                     p.SoDienThoai,
                     p.DiaChi,
                 });
-                dgvLISTCUSTOMER.DataSource = GETCUSTOMERs.ToList();
-            }
-        }
-
-        private void txtNAME_CUSTOMER_Enter(object sender, EventArgs e)
-        {
-            if(txtNAME_CUSTOMER.Text == "Nhập tên khách hàng")
-            {
-                txtNAME_CUSTOMER.Text = "";
-                txtNAME_CUSTOMER.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtNAME_CUSTOMER_Leave(object sender, EventArgs e)
-        {
-            if (txtNAME_CUSTOMER.Text == "")
-            {
-                txtNAME_CUSTOMER.Text = "Nhập tên khách hàng";
-                txtNAME_CUSTOMER.ForeColor = Color.Silver;
-            }
-        }
-
-        private void txtPHONE_Enter(object sender, EventArgs e)
-        {
-            if (txtPHONE.Text == "Nhập SĐT")
-            {
-                txtPHONE.Text = "";
-                txtPHONE.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtPHONE_Leave(object sender, EventArgs e)
-        {
-            if (txtPHONE.Text == "")
-            {
-                txtPHONE.Text = "Nhập SĐT";
-                txtPHONE.ForeColor = Color.Silver;
-            }
-        }
-
-        private void txtADDRESS_Enter(object sender, EventArgs e)
-        {
-            if (txtADDRESS.Text == "Nhập địa chỉ")
-            {
-                txtADDRESS.Text = "";
-                txtADDRESS.ForeColor = Color.Black;
-            }
-        }
-        private void txtADDRESS_Leave(object sender, EventArgs e)
-        {
-            if (txtADDRESS.Text == "")
-            {
-                txtADDRESS.Text = "Nhập địa chỉ";
-                txtADDRESS.ForeColor = Color.Silver;
+                dgvLISTCUSTOMER.DataSource = getCustomer.ToList();
             }
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)

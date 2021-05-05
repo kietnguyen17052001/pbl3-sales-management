@@ -14,32 +14,33 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Items : Form
     {
-        bool isADD;
+        bool isAdd;
         public FrmManage_Items()
         {
             InitializeComponent();
             setCBB();
+            ShowProduct();
             disable(false);
             rbID_ITEM.Checked = true;
         }
         public void setCBB()
         {
-            cbbTYPE_OF_ITEMS_DETAIL.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả" });
-            cbbTYPE_OF_ITEMS_DETAIL.Items.AddRange(BLL_ITEMS.Instance.getCBB_TYPEOFITEMS().ToArray());
-            cbbTYPE_OF_ITEMs.Items.AddRange(BLL_ITEMS.Instance.getCBB_TYPEOFITEMS().ToArray());
-            cbbSUPPLIERs.Items.AddRange(BLL_ITEMS.Instance.getCBB_SUPPLIERS().ToArray());
-            cbbPRODUCERs.Items.AddRange(BLL_ITEMS.Instance.getCBB_PRODUCERS().ToArray());
-            cbbTYPE_OF_ITEMS_DETAIL.SelectedIndex = 0;
+            cbbTYPE_OF__PRODUCT_DETAIL.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả" });
+            cbbTYPE_OF__PRODUCT_DETAIL.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
+            cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
+            cbbSUPPLIERs.Items.AddRange(BLL_ITEMS.Instance.GetCBBSupplier().ToArray());
+            cbbPRODUCERs.Items.AddRange(BLL_ITEMS.Instance.GetCBBProducer().ToArray());
+            cbbTYPE_OF__PRODUCT_DETAIL.SelectedIndex = 0;
         }
         void disable(bool E)
         {
-            txtID_ITEM.Enabled = E;
-            txtNAME_ITEM.Enabled = E;
-            txtAMOUNT.Enabled = E;
+            txtID_PRODUCT.Enabled = E;
+            txtNAME_PRODUCT.Enabled = E;
+            txtQUANTITY.Enabled = E;
             txtBUY.Enabled = E;
             txtSALE.Enabled = E;
             txtDESCRIBE.Enabled = E;
-            cbbTYPE_OF_ITEMs.Enabled = E;
+            cbbTYPE_OF_PRODUCT.Enabled = E;
             cbbPRODUCERs.Enabled = E;
             cbbSUPPLIERs.Enabled = E;
             btnADD.Enabled = !E;
@@ -49,11 +50,11 @@ namespace SaleManagement.VIEW
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
         }
-        public void showITEMS(int NUMBER)
+        public void ShowProduct()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            string ID_TYPEOFITEMS = ((CBBItem)cbbTYPE_OF_ITEMS_DETAIL.SelectedItem).VALUE;
-            if (NUMBER == 0)
+            string id_TypeOfProduct = ((CBBItem)cbbTYPE_OF__PRODUCT_DETAIL.SelectedItem).VALUE;
+            if (cbbTYPE_OF__PRODUCT_DETAIL.SelectedIndex == 0)
             {
                 var ITEMS = DB.tblHangHoas.Select(p => new
                 {
@@ -71,7 +72,7 @@ namespace SaleManagement.VIEW
             }
             else
             {
-                var ITEMS = DB.tblHangHoas.Where(p => p.MaLoaiHangHoa == ID_TYPEOFITEMS).Select(p => new
+                var ITEMS = DB.tblHangHoas.Where(p => p.MaLoaiHangHoa == id_TypeOfProduct).Select(p => new
                 {
                     p.MaHangHoa,
                     p.TenHangHoa,
@@ -85,10 +86,16 @@ namespace SaleManagement.VIEW
                 });
                 dgvLISTITEMS.DataSource = ITEMS.ToList();
             }
+            txtID_PRODUCT.Clear();
+            txtNAME_PRODUCT.Clear();
+            txtBUY.Clear();
+            txtSALE.Clear();
+            txtQUANTITY.Clear();
+            txtDESCRIBE.Clear();
         }
         public void addTYPEITEM(string ID, string NAME)
         {
-            cbbTYPE_OF_ITEMs.Items.Add(new CBBItem { VALUE = ID, TEXT = NAME });
+            cbbTYPE_OF_PRODUCT.Items.Add(new CBBItem { VALUE = ID, TEXT = NAME });
         }
         public void addSUPPLIER(string ID, string NAME)
         {
@@ -106,16 +113,45 @@ namespace SaleManagement.VIEW
         }
         private void btnSHOW_Click(object sender, EventArgs e)
         {
-            showITEMS(cbbTYPE_OF_ITEMS_DETAIL.SelectedIndex);
+            ShowProduct();
         }
-
+        private void btnEXCEL_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "ListProduct";
+            for (int i = 1; i <= dgvLISTITEMS.Columns.Count; i++)
+            {
+                worksheet.Cells[1, i] = dgvLISTITEMS.Columns[i - 1].HeaderText;
+            }
+            for (int i = 0; i < dgvLISTITEMS.Rows.Count; i++)
+            {
+                for (int j = 0; j < dgvLISTITEMS.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = dgvLISTITEMS.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "List Product";
+            saveFileDialog.DefaultExt = ".xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(saveFileDialog.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive,
+                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            }
+            app.Quit();
+        }
         private void btnADD_Click(object sender, EventArgs e)
         {
-            isADD = true;
+            isAdd = true;
             disable(true);
-            cbbPRODUCERs.SelectedIndex = cbbSUPPLIERs.SelectedIndex = cbbTYPE_OF_ITEMs.SelectedIndex = 0;
-            txtNAME_ITEM.Clear();
-            txtAMOUNT.Clear();
+            cbbPRODUCERs.SelectedIndex = cbbSUPPLIERs.SelectedIndex = cbbTYPE_OF_PRODUCT.SelectedIndex = 0;
+            txtID_PRODUCT.Text = BLL_ITEMS.Instance.GetNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
+            txtNAME_PRODUCT.Clear();
+            txtQUANTITY.Clear();
             txtBUY.Clear();
             txtSALE.Clear();
             txtDESCRIBE.Clear();
@@ -136,38 +172,38 @@ namespace SaleManagement.VIEW
 
         private void btnADDPRODUCER_Click(object sender, EventArgs e)
         {
-            FrmCreate_NewSupplier FRM = new FrmCreate_NewSupplier();
-            FRM.d += new FrmCreate_NewSupplier.myDEL(addSUPPLIER);
+            FrmCreate_NewProducer FRM = new FrmCreate_NewProducer();
+            FRM.d += new FrmCreate_NewProducer.myDEL(addPRODUCER);
             FRM.Show();
         }
         private void btnEDIT_Click(object sender, EventArgs e)
         {
-            isADD = false;
+            isAdd = false;
             disable(true);
-            txtID_ITEM.Enabled = false;
+            txtID_PRODUCT.Enabled = false;
         }
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             tblHangHoa HANGHOA = new tblHangHoa();
-            HANGHOA.MaHangHoa = txtID_ITEM.Text;
-            HANGHOA.TenHangHoa = txtNAME_ITEM.Text;
-            HANGHOA.SoLuong = Convert.ToInt32(txtAMOUNT.Text);
+            HANGHOA.MaHangHoa = txtID_PRODUCT.Text;
+            HANGHOA.TenHangHoa = txtNAME_PRODUCT.Text;
+            HANGHOA.SoLuong = Convert.ToInt32(txtQUANTITY.Text);
             HANGHOA.GiaBan = Convert.ToDouble(txtSALE.Text);
             HANGHOA.GiaNhap = Convert.ToDouble(txtBUY.Text);
             HANGHOA.MoTa = txtDESCRIBE.Text;
-            HANGHOA.MaLoaiHangHoa = ((CBBItem)cbbTYPE_OF_ITEMs.SelectedItem).VALUE;
+            HANGHOA.MaLoaiHangHoa = ((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE;
             HANGHOA.MaNhaCungCap = ((CBBItem)cbbSUPPLIERs.SelectedItem).VALUE;
             HANGHOA.MaNhaSanXuat = ((CBBItem)cbbPRODUCERs.SelectedItem).VALUE;
-            if (txtID_ITEM.Text == "" || txtNAME_ITEM.Text == "" || txtAMOUNT.Text == "" || txtBUY.Text == "" || txtSALE.Text == "" || txtDESCRIBE.Text == "")
+            if (txtID_PRODUCT.Text == "" || txtNAME_PRODUCT.Text == "" || txtQUANTITY.Text == "" || txtBUY.Text == "" || txtSALE.Text == "" || txtDESCRIBE.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin hàng hóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 disable(true);
             }
             else
             {
-                if (isADD)
+                if (isAdd)
                 {
                     try
                     {
@@ -175,7 +211,7 @@ namespace SaleManagement.VIEW
                         DB.SaveChanges();
                         MessageBox.Show("Thêm hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         disable(false);
-                        showITEMS(0);
+                        ShowProduct();
                     }
                     catch (Exception)
                     {
@@ -185,7 +221,7 @@ namespace SaleManagement.VIEW
                 }
                 else
                 {
-                    var GETITEM = DB.tblHangHoas.Find(txtID_ITEM.Text);
+                    var GETITEM = DB.tblHangHoas.Find(HANGHOA.MaHangHoa);
                     GETITEM.TenHangHoa = HANGHOA.TenHangHoa;
                     GETITEM.SoLuong = HANGHOA.SoLuong;
                     GETITEM.GiaBan = HANGHOA.GiaBan;
@@ -196,7 +232,7 @@ namespace SaleManagement.VIEW
                     DB.SaveChanges();
                     MessageBox.Show("Sửa hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     disable(false);
-                    showITEMS(0);
+                    ShowProduct();
                 }
             }
         }
@@ -223,7 +259,7 @@ namespace SaleManagement.VIEW
                 }
                 DB.SaveChanges();
             }
-            showITEMS(0);
+            ShowProduct();
         }
 
         private void btnCANCEL_Click(object sender, EventArgs e)
@@ -251,7 +287,7 @@ namespace SaleManagement.VIEW
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             if(rbID_ITEM.Checked == true)
             {
-                var GETITEMs = DB.tblHangHoas.Where(p => p.MaHangHoa.ToLower().Contains(txtSEARCH.Text.ToLower())).Select(p => new
+                var GETITEMs = DB.tblHangHoas.Where(p => p.MaHangHoa.Contains(txtSEARCH.Text)).Select(p => new
                 {
                     p.MaHangHoa,
                     p.TenHangHoa,
@@ -266,7 +302,7 @@ namespace SaleManagement.VIEW
             }
             else
             {
-                var GETITEMs = DB.tblHangHoas.Where(p => p.TenHangHoa.ToLower().Contains(txtSEARCH.Text.ToLower())).Select(p => new
+                var GETITEMs = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(txtSEARCH.Text)).Select(p => new
                 {
                     p.MaHangHoa,
                     p.TenHangHoa,
@@ -286,58 +322,58 @@ namespace SaleManagement.VIEW
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             string ID_ITEM = dgvLISTITEMS.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
             var HANGHOA = DB.tblHangHoas.Find(ID_ITEM);
-            txtID_ITEM.Text = HANGHOA.MaHangHoa;
-            txtNAME_ITEM.Text = HANGHOA.TenHangHoa;
-            txtAMOUNT.Text = HANGHOA.SoLuong.ToString();
+            txtID_PRODUCT.Text = HANGHOA.MaHangHoa;
+            txtNAME_PRODUCT.Text = HANGHOA.TenHangHoa;
+            txtQUANTITY.Text = HANGHOA.SoLuong.ToString();
             txtDESCRIBE.Text = HANGHOA.MoTa;
             string TYPEOFITEM = dgvLISTITEMS.SelectedRows[0].Cells["TenLoaiHangHoa"].Value.ToString();
             string SUPPLIER = dgvLISTITEMS.SelectedRows[0].Cells["TenNhaCungCap"].Value.ToString();
             string PRODUCER = dgvLISTITEMS.SelectedRows[0].Cells["TenNhaSanXuat"].Value.ToString();
-            cbbTYPE_OF_ITEMs.Text = BLL_ITEMS.Instance.getTEXT(TYPEOFITEM, BLL_ITEMS.Instance.getCBB_TYPEOFITEMS());
-            cbbSUPPLIERs.Text = BLL_ITEMS.Instance.getTEXT(SUPPLIER, BLL_ITEMS.Instance.getCBB_SUPPLIERS());
-            cbbPRODUCERs.Text = BLL_ITEMS.Instance.getTEXT(PRODUCER, BLL_ITEMS.Instance.getCBB_PRODUCERS());
+            cbbTYPE_OF_PRODUCT.Text = BLL_ITEMS.Instance.GetText(TYPEOFITEM, BLL_ITEMS.Instance.GetCBBTypeProduct());
+            cbbSUPPLIERs.Text = BLL_ITEMS.Instance.GetText(SUPPLIER, BLL_ITEMS.Instance.GetCBBSupplier());
+            cbbPRODUCERs.Text = BLL_ITEMS.Instance.GetText(PRODUCER, BLL_ITEMS.Instance.GetCBBProducer());
             txtBUY.Text = String.Format("{0:n0}", Convert.ToDouble(HANGHOA.GiaNhap));
             txtSALE.Text = String.Format("{0:n0}", Convert.ToDouble(HANGHOA.GiaBan));
         }
         // Thay đổi txtID_ITEM khi cbbTYPE_OF_ITEMS thay đổi
         private void cbbTYPE_OF_ITEMS_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtID_ITEM.Text = BLL_ITEMS.Instance.getNEWID_ITEM(((CBBItem)cbbTYPE_OF_ITEMs.SelectedItem).VALUE);
+            txtID_PRODUCT.Text = BLL_ITEMS.Instance.GetNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
         }
 
         private void txtNAME_ITEM_Enter(object sender, EventArgs e)
         {
-            if(txtNAME_ITEM.Text == "Nhập tên hàng hóa")
+            if(txtNAME_PRODUCT.Text == "Nhập tên hàng hóa")
             {
-                txtNAME_ITEM.Text = "";
-                txtNAME_ITEM.ForeColor = Color.Black;
+                txtNAME_PRODUCT.Text = "";
+                txtNAME_PRODUCT.ForeColor = Color.Black;
             }
         }
 
         private void txtNAME_ITEM_Leave(object sender, EventArgs e)
         {
-            if (txtNAME_ITEM.Text == "")
+            if (txtNAME_PRODUCT.Text == "")
             {
-                txtNAME_ITEM.Text = "Nhập tên hàng hóa";
-                txtNAME_ITEM.ForeColor = Color.Silver;
+                txtNAME_PRODUCT.Text = "Nhập tên hàng hóa";
+                txtNAME_PRODUCT.ForeColor = Color.Silver;
             }
         }
 
         private void txtAMOUNT_Enter(object sender, EventArgs e)
         {
-            if (txtAMOUNT.Text == "Nhập số lượng hàng hóa")
+            if (txtQUANTITY.Text == "Nhập số lượng hàng hóa")
             {
-                txtAMOUNT.Text = "";
-                txtAMOUNT.ForeColor = Color.Black;
+                txtQUANTITY.Text = "";
+                txtQUANTITY.ForeColor = Color.Black;
             }
         }
 
         private void txtAMOUNT_Leave(object sender, EventArgs e)
         {
-            if (txtAMOUNT.Text == "")
+            if (txtQUANTITY.Text == "")
             {
-                txtAMOUNT.Text = "Nhập số lượng hàng hóa";
-                txtAMOUNT.ForeColor = Color.Silver;
+                txtQUANTITY.Text = "Nhập số lượng hàng hóa";
+                txtQUANTITY.ForeColor = Color.Silver;
             }
         }
 
@@ -410,5 +446,7 @@ namespace SaleManagement.VIEW
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }
+
+        
     }
 }

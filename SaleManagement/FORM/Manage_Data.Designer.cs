@@ -88,6 +88,7 @@ namespace SaleManagement.VIEW
             this.btnLIST_BILLS.Text = "DS hóa đơn";
             this.btnLIST_BILLS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLIST_BILLS.UseVisualStyleBackColor = false;
+            this.btnLIST_BILLS.Click += new System.EventHandler(this.btnLIST_BILLS_Click);
             // 
             // btnBILL
             // 

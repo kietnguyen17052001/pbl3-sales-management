@@ -36,7 +36,7 @@ namespace SaleManagement.BLL
                 int LAST = Convert.ToInt32(LIST[LIST.Count - 1].MaNhaSanXuat.Remove(0, 3));
                 ID = LAST + 1;
             }
-            return "NCC" + ID;
+            return "NSX" + ID;
         }
     }
 }

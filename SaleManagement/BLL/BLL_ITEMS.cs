@@ -23,76 +23,76 @@ namespace SaleManagement.BLL
         }
         private BLL_ITEMS(){}
         // Lấy danh sách loại hàng hóa đổ vào CBB
-        public List<CBBItem> getCBB_TYPEOFITEMS()
+        public List<CBBItem> GetCBBTypeProduct()
         {
-            List<CBBItem> LIST = new List<CBBItem>();
+            List<CBBItem> list = new List<CBBItem>();
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            foreach(tblLoaiHangHoa LOAIHANGHOA in DB.tblLoaiHangHoas)
+            foreach(tblLoaiHangHoa typeProduct in DB.tblLoaiHangHoas)
             {
-                LIST.Add(new CBBItem { VALUE = LOAIHANGHOA.MaLoaiHangHoa, TEXT = LOAIHANGHOA.TenLoaiHangHoa });
+                list.Add(new CBBItem { VALUE = typeProduct.MaLoaiHangHoa, TEXT = typeProduct.TenLoaiHangHoa });
             }
-            return LIST;
+            return list;
         }
         // Lấy danh sách nhà cung cấp đổ vào CBB
-        public List<CBBItem> getCBB_SUPPLIERS()
+        public List<CBBItem> GetCBBSupplier()
         {
-            List<CBBItem> LIST = new List<CBBItem>();
+            List<CBBItem> list = new List<CBBItem>();
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            foreach (tblNhaCungCap NHACUNGCAP in DB.tblNhaCungCaps)
+            foreach (tblNhaCungCap supplier in DB.tblNhaCungCaps)
             {
-                LIST.Add(new CBBItem { VALUE = NHACUNGCAP.MaNhaCungCap, TEXT = NHACUNGCAP.TenNhaCungCap });
+                list.Add(new CBBItem { VALUE = supplier.MaNhaCungCap, TEXT = supplier.TenNhaCungCap });
             }
-            return LIST;
+            return list;
         }
         // Lấy danh sách nhà sản xuất đổ vào CBB
-        public List<CBBItem> getCBB_PRODUCERS()
+        public List<CBBItem> GetCBBProducer()
         {
-            List<CBBItem> LIST = new List<CBBItem>();
+            List<CBBItem> list = new List<CBBItem>();
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            foreach (tblNhaSanXuat NHASANXUAT in DB.tblNhaSanXuats)
+            foreach (tblNhaSanXuat producer in DB.tblNhaSanXuats)
             {
-                LIST.Add(new CBBItem { VALUE = NHASANXUAT.MaNhaSanXuat, TEXT = NHASANXUAT.TenNhaSanXuat });
+                list.Add(new CBBItem { VALUE = producer.MaNhaSanXuat, TEXT = producer.TenNhaSanXuat });
             }
-            return LIST;
+            return list;
         }
         // Trả về mã hàng hóa mới khi thực hiện chức năng thêm 
-        public string getNEWID_ITEM(string ITEM)
+        public string GetNewIdProduct(string ITEM)
         {
-            int ID, LAST; // last: kí tự cuối trong mã hàng hóa, vd BG1 -> 1
-            string FIRST = ""; // fisrt: 2 kí tự đầu trong mã loại hàng hóa, vd BG0X -> BG 
+            int id, lastId; // last: kí tự cuối trong mã hàng hóa, vd BG1 -> 1
+            string first = ""; // fisrt: 2 kí tự đầu trong mã loại hàng hóa, vd BG0X -> BG 
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            List<string> LISTSAVEID = new List<string>();
+            List<string> listSaveId = new List<string>();
             foreach (tblHangHoa HANGHOA in DB.tblHangHoas)
             {
                 if (HANGHOA.MaLoaiHangHoa == ITEM)
                 {
-                    LISTSAVEID.Add(HANGHOA.MaHangHoa);
+                    listSaveId.Add(HANGHOA.MaHangHoa);
                 }
             }
-            if (LISTSAVEID.Count == 0)
+            if (listSaveId.Count == 0)
             {
-                ID = 1;
+                id = 1;
             }
             else
             {
-                LAST = Convert.ToInt32(LISTSAVEID[LISTSAVEID.Count -1 ].Substring(LISTSAVEID[LISTSAVEID.Count - 1].Length - 1)); // số cuối trong mã hàng hóa
-                FIRST = LISTSAVEID[LISTSAVEID.Count - 1].Remove(LISTSAVEID[LISTSAVEID.Count - 1].LastIndexOf(LAST.ToString()), 1);
-                ID = LAST + 1;
+                lastId = Convert.ToInt32(listSaveId[listSaveId.Count -1 ].Substring(listSaveId[listSaveId.Count - 1].Length - 1)); // số cuối trong mã hàng hóa
+                first = listSaveId[listSaveId.Count - 1].Remove(listSaveId[listSaveId.Count - 1].LastIndexOf(lastId.ToString()), 1);
+                id = lastId + 1;
             }
-            return FIRST + ID;
+            return first + id;
         }
-        // Trả về loại hàng hóa, nhà cung cấp, nhà sản xuất từ dgvITEMS
-        public string getTEXT(string NAME, List<CBBItem> LIST)
+        //Trả về loại hàng hóa, nhà cung cấp, nhà sản xuất từ dgvITEMS
+        public string GetText(string name, List<CBBItem> list)
         {
-            string TYPE_OF_ITEM = "";
-            foreach(CBBItem item in LIST)
+            string typeOfProduct = "";
+            foreach (CBBItem product in list)
             {
-                if(item.TEXT == NAME)
+                if (product.TEXT == name)
                 {
-                    TYPE_OF_ITEM = item.ToString();
+                    typeOfProduct = product.ToString();
                 }
             }
-            return TYPE_OF_ITEM;
+            return typeOfProduct;
         }
     }
 }

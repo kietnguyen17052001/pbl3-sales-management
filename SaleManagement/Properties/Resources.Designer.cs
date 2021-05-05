@@ -223,6 +223,16 @@ namespace SaleManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cart_60_32 {
+            get {
+                object obj = ResourceManager.GetObject("cart-60-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap data {
             get {
                 object obj = ResourceManager.GetObject("data", resourceCulture);
@@ -306,6 +316,16 @@ namespace SaleManagement.Properties {
         internal static System.Drawing.Bitmap edit_3_24 {
             get {
                 object obj = ResourceManager.GetObject("edit-3-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap excel_3_24 {
+            get {
+                object obj = ResourceManager.GetObject("excel-3-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -516,6 +536,16 @@ namespace SaleManagement.Properties {
         internal static System.Drawing.Bitmap Printer_icon {
             get {
                 object obj = ResourceManager.GetObject("Printer-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap product_24 {
+            get {
+                object obj = ResourceManager.GetObject("product-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

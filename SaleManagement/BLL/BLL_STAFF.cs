@@ -22,34 +22,34 @@ namespace SaleManagement.BLL
             private set { }
         }
         // Lấy danh sách các vị trí nhân viên từ DB
-        public List<string> getList_Position()
+        public List<string> GetListPosition()
         {
-            List<string> LIST = new List<string>();
+            List<string> list = new List<string>();
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            foreach (tblNhanVien NHANVIEN in DB.tblNhanViens)
+            foreach (tblNhanVien staff in DB.tblNhanViens)
             {
-                LIST.Add(NHANVIEN.ViTri);
+                list.Add(staff.ViTri);
             }
-            return LIST;
+            return list;
         }
         // Trả về mã số khách hàng mới khi thực hiện chức năng thêm
-        public string getNEWID_STAFF()
+        public string GetNewIdStaff()
         {
-            int ID; // số cuối trong mã khách hàng
+            int id; // số cuối trong mã khách hàng
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            List<tblNhanVien> LIST = DB.tblNhanViens.ToList();
-            if (LIST.Count == 0)
+            List<tblNhanVien> list = DB.tblNhanViens.ToList();
+            if (list.Count == 0)
             {
-                ID = 1;
+                id = 1;
             }
             else
             {
                 // Nếu đã có khách hàng trong danh sách,
                 // LAST: Trả về số cuối của mã khách hàng, vd: KH1 -> 1
-                int LAST = Convert.ToInt32(LIST[LIST.Count - 1].MaNhanVien.Remove(0, 2));
-                ID = LAST + 1;
+                int lastId = Convert.ToInt32(list[list.Count - 1].MaNhanVien.Remove(0, 2));
+                id = lastId + 1;
             }
-            return "NV" + ID;
+            return "NV" + id;
         }
     }
 }

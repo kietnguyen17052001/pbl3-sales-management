@@ -28,7 +28,7 @@ namespace SaleManagement.FORM
         }
         private void btnCANCEL_Click(object sender, EventArgs e)
         {
-            d(txtDISCOUNT.Text);
+            this.Close();
         }
 
         private void txtDISCOUNT_Enter(object sender, EventArgs e)

@@ -64,6 +64,7 @@ namespace SaleManagement.VIEW
             this.dpDAY = new System.Windows.Forms.DateTimePicker();
             this.rbID_STAFF = new System.Windows.Forms.RadioButton();
             this.rbNAME_STAFF = new System.Windows.Forms.RadioButton();
+            this.btnEXCEL = new System.Windows.Forms.Button();
             this.panelMANAGE_DATA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_STAFF)).BeginInit();
             this.gbGENDER.SuspendLayout();
@@ -131,11 +132,11 @@ namespace SaleManagement.VIEW
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(879, 104);
+            this.label2.Location = new System.Drawing.Point(960, 108);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(343, 34);
+            this.label2.Size = new System.Drawing.Size(262, 26);
             this.label2.TabIndex = 30;
             this.label2.Text = "DANH SÁCH NHÂN VIÊN";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -390,9 +391,6 @@ namespace SaleManagement.VIEW
             this.txtNAME_STAFF.Name = "txtNAME_STAFF";
             this.txtNAME_STAFF.Size = new System.Drawing.Size(237, 28);
             this.txtNAME_STAFF.TabIndex = 45;
-            this.txtNAME_STAFF.Text = "Nhập tên nhân viên";
-            this.txtNAME_STAFF.Enter += new System.EventHandler(this.txtNAME_STAFF_Enter);
-            this.txtNAME_STAFF.Leave += new System.EventHandler(this.txtNAME_STAFF_Leave);
             // 
             // txtPHONE
             // 
@@ -402,9 +400,6 @@ namespace SaleManagement.VIEW
             this.txtPHONE.Name = "txtPHONE";
             this.txtPHONE.Size = new System.Drawing.Size(237, 28);
             this.txtPHONE.TabIndex = 46;
-            this.txtPHONE.Text = "Nhập SĐT";
-            this.txtPHONE.Enter += new System.EventHandler(this.txtPHONE_Enter);
-            this.txtPHONE.Leave += new System.EventHandler(this.txtPHONE_Leave);
             // 
             // txtADDRESS
             // 
@@ -414,9 +409,6 @@ namespace SaleManagement.VIEW
             this.txtADDRESS.Name = "txtADDRESS";
             this.txtADDRESS.Size = new System.Drawing.Size(237, 28);
             this.txtADDRESS.TabIndex = 47;
-            this.txtADDRESS.Text = "Nhập địa chỉ";
-            this.txtADDRESS.Enter += new System.EventHandler(this.txtADDRESS_Enter);
-            this.txtADDRESS.Leave += new System.EventHandler(this.txtADDRESS_Leave);
             // 
             // txtSALARY
             // 
@@ -426,9 +418,6 @@ namespace SaleManagement.VIEW
             this.txtSALARY.Name = "txtSALARY";
             this.txtSALARY.Size = new System.Drawing.Size(237, 28);
             this.txtSALARY.TabIndex = 48;
-            this.txtSALARY.Text = "Nhập tiền lương";
-            this.txtSALARY.Enter += new System.EventHandler(this.txtSALARY_Enter);
-            this.txtSALARY.Leave += new System.EventHandler(this.txtSALARY_Leave);
             // 
             // label10
             // 
@@ -526,12 +515,33 @@ namespace SaleManagement.VIEW
             this.rbNAME_STAFF.Text = "Tên NV";
             this.rbNAME_STAFF.UseVisualStyleBackColor = true;
             // 
+            // btnEXCEL
+            // 
+            this.btnEXCEL.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnEXCEL.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEXCEL.FlatAppearance.BorderSize = 0;
+            this.btnEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEXCEL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEXCEL.ForeColor = System.Drawing.Color.White;
+            this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
+            this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEXCEL.Location = new System.Drawing.Point(765, 98);
+            this.btnEXCEL.Name = "btnEXCEL";
+            this.btnEXCEL.Size = new System.Drawing.Size(154, 48);
+            this.btnEXCEL.TabIndex = 122;
+            this.btnEXCEL.Text = "Xuất Excel";
+            this.btnEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEXCEL.UseVisualStyleBackColor = false;
+            this.btnEXCEL.Click += new System.EventHandler(this.btnEXCEL_Click);
+            // 
             // FrmManage_Staffs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.Controls.Add(this.btnEXCEL);
             this.Controls.Add(this.rbNAME_STAFF);
             this.Controls.Add(this.rbID_STAFF);
             this.Controls.Add(this.btnADD);
@@ -613,5 +623,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.RadioButton rbID_STAFF;
         private System.Windows.Forms.RadioButton rbNAME_STAFF;
         private System.Windows.Forms.Button btnHOME;
+        private System.Windows.Forms.Button btnEXCEL;
     }
 }

@@ -55,7 +55,6 @@ namespace SaleManagement.FORM
             this.txtADDRESS.Name = "txtADDRESS";
             this.txtADDRESS.Size = new System.Drawing.Size(253, 28);
             this.txtADDRESS.TabIndex = 51;
-            this.txtADDRESS.Text = "Nhập địa chỉ";
             this.txtADDRESS.Enter += new System.EventHandler(this.txtADDRESS_Enter);
             this.txtADDRESS.Leave += new System.EventHandler(this.txtADDRESS_Leave);
             // 
@@ -68,7 +67,6 @@ namespace SaleManagement.FORM
             this.txtPHONE.Name = "txtPHONE";
             this.txtPHONE.Size = new System.Drawing.Size(253, 28);
             this.txtPHONE.TabIndex = 50;
-            this.txtPHONE.Text = "Nhập SĐT";
             this.txtPHONE.Enter += new System.EventHandler(this.txtPHONE_Enter);
             this.txtPHONE.Leave += new System.EventHandler(this.txtPHONE_Leave);
             // 
@@ -81,7 +79,6 @@ namespace SaleManagement.FORM
             this.txtNAME_CUSTOMER.Name = "txtNAME_CUSTOMER";
             this.txtNAME_CUSTOMER.Size = new System.Drawing.Size(253, 28);
             this.txtNAME_CUSTOMER.TabIndex = 49;
-            this.txtNAME_CUSTOMER.Text = "Nhập tên khách hàng";
             this.txtNAME_CUSTOMER.Enter += new System.EventHandler(this.txtNAME_CUSTOMER_Enter);
             this.txtNAME_CUSTOMER.Leave += new System.EventHandler(this.txtNAME_CUSTOMER_Leave);
             // 

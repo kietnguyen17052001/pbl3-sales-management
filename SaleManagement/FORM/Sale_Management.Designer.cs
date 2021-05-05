@@ -29,6 +29,7 @@ namespace SaleManagement
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSale_Management));
             this.panelSALE_MANAGEMENT = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -37,8 +38,11 @@ namespace SaleManagement
             this.btnThongKe = new System.Windows.Forms.Button();
             this.btnDoiMatKhau = new System.Windows.Forms.Button();
             this.btnQuanLyDuLieu = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelSALE_MANAGEMENT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSALE_MANAGEMENT
@@ -46,6 +50,8 @@ namespace SaleManagement
             this.panelSALE_MANAGEMENT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSALE_MANAGEMENT.BackColor = System.Drawing.Color.SteelBlue;
+            this.panelSALE_MANAGEMENT.Controls.Add(this.label2);
+            this.panelSALE_MANAGEMENT.Controls.Add(this.pictureBox2);
             this.panelSALE_MANAGEMENT.Controls.Add(this.label1);
             this.panelSALE_MANAGEMENT.Location = new System.Drawing.Point(0, -1);
             this.panelSALE_MANAGEMENT.Name = "panelSALE_MANAGEMENT";
@@ -185,6 +191,28 @@ namespace SaleManagement
             this.btnQuanLyDuLieu.UseVisualStyleBackColor = false;
             this.btnQuanLyDuLieu.Click += new System.EventHandler(this.btnQuanLyDuLieu_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::SaleManagement.Properties.Resources.cart_60_32;
+            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(25, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(82, 70);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Bauhaus 93", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(113, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 36);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "N3K";
+            // 
             // FrmSale_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -204,6 +232,7 @@ namespace SaleManagement
             this.panelSALE_MANAGEMENT.ResumeLayout(false);
             this.panelSALE_MANAGEMENT.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -218,6 +247,8 @@ namespace SaleManagement
         private System.Windows.Forms.Button btnDoiMatKhau;
         private System.Windows.Forms.Button btnQuanLyDuLieu;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
 

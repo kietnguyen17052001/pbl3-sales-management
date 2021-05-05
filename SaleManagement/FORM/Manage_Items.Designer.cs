@@ -36,10 +36,10 @@ namespace SaleManagement.VIEW
             this.panelMANAGE_STAFF = new System.Windows.Forms.Panel();
             this.btnHOME = new System.Windows.Forms.Button();
             this.cbbSUPPLIERs = new System.Windows.Forms.ComboBox();
-            this.cbbTYPE_OF_ITEMs = new System.Windows.Forms.ComboBox();
-            this.txtAMOUNT = new System.Windows.Forms.TextBox();
-            this.txtNAME_ITEM = new System.Windows.Forms.TextBox();
-            this.txtID_ITEM = new System.Windows.Forms.TextBox();
+            this.cbbTYPE_OF_PRODUCT = new System.Windows.Forms.ComboBox();
+            this.txtQUANTITY = new System.Windows.Forms.TextBox();
+            this.txtNAME_PRODUCT = new System.Windows.Forms.TextBox();
+            this.txtID_PRODUCT = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@ namespace SaleManagement.VIEW
             this.label11 = new System.Windows.Forms.Label();
             this.rbNAME_ITEM = new System.Windows.Forms.RadioButton();
             this.rbID_ITEM = new System.Windows.Forms.RadioButton();
-            this.cbbTYPE_OF_ITEMS_DETAIL = new System.Windows.Forms.ComboBox();
+            this.cbbTYPE_OF__PRODUCT_DETAIL = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnADD = new System.Windows.Forms.Button();
             this.btnEDIT = new System.Windows.Forms.Button();
@@ -70,6 +70,7 @@ namespace SaleManagement.VIEW
             this.btnADDTYPE = new System.Windows.Forms.Button();
             this.btnADDSUPPLIER = new System.Windows.Forms.Button();
             this.btnADDPRODUCER = new System.Windows.Forms.Button();
+            this.btnEXCEL = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTITEMS)).BeginInit();
             this.panelMANAGE_STAFF.SuspendLayout();
             this.gbMota.SuspendLayout();
@@ -92,11 +93,11 @@ namespace SaleManagement.VIEW
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(888, 110);
+            this.label2.Location = new System.Drawing.Point(966, 112);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(346, 34);
+            this.label2.Size = new System.Drawing.Size(265, 26);
             this.label2.TabIndex = 62;
             this.label2.Text = "DANH SÁCH HÀNG HÓA";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -171,48 +172,46 @@ namespace SaleManagement.VIEW
             this.cbbSUPPLIERs.Size = new System.Drawing.Size(210, 29);
             this.cbbSUPPLIERs.TabIndex = 98;
             // 
-            // cbbTYPE_OF_ITEMs
+            // cbbTYPE_OF_PRODUCT
             // 
-            this.cbbTYPE_OF_ITEMs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbTYPE_OF_ITEMs.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbTYPE_OF_ITEMs.FormattingEnabled = true;
-            this.cbbTYPE_OF_ITEMs.Location = new System.Drawing.Point(133, 161);
-            this.cbbTYPE_OF_ITEMs.Name = "cbbTYPE_OF_ITEMs";
-            this.cbbTYPE_OF_ITEMs.Size = new System.Drawing.Size(210, 29);
-            this.cbbTYPE_OF_ITEMs.TabIndex = 97;
-            this.cbbTYPE_OF_ITEMs.SelectedIndexChanged += new System.EventHandler(this.cbbTYPE_OF_ITEMS_SelectedIndexChanged);
+            this.cbbTYPE_OF_PRODUCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbTYPE_OF_PRODUCT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbTYPE_OF_PRODUCT.FormattingEnabled = true;
+            this.cbbTYPE_OF_PRODUCT.Location = new System.Drawing.Point(133, 161);
+            this.cbbTYPE_OF_PRODUCT.Name = "cbbTYPE_OF_PRODUCT";
+            this.cbbTYPE_OF_PRODUCT.Size = new System.Drawing.Size(210, 29);
+            this.cbbTYPE_OF_PRODUCT.TabIndex = 97;
+            this.cbbTYPE_OF_PRODUCT.SelectedIndexChanged += new System.EventHandler(this.cbbTYPE_OF_ITEMS_SelectedIndexChanged);
             // 
-            // txtAMOUNT
+            // txtQUANTITY
             // 
-            this.txtAMOUNT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAMOUNT.ForeColor = System.Drawing.Color.Black;
-            this.txtAMOUNT.Location = new System.Drawing.Point(133, 240);
-            this.txtAMOUNT.Name = "txtAMOUNT";
-            this.txtAMOUNT.Size = new System.Drawing.Size(210, 28);
-            this.txtAMOUNT.TabIndex = 96;
-            this.txtAMOUNT.Text = "Nhập số lượng hàng hóa";
-            this.txtAMOUNT.Enter += new System.EventHandler(this.txtAMOUNT_Enter);
-            this.txtAMOUNT.Leave += new System.EventHandler(this.txtAMOUNT_Leave);
+            this.txtQUANTITY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQUANTITY.ForeColor = System.Drawing.Color.Black;
+            this.txtQUANTITY.Location = new System.Drawing.Point(133, 240);
+            this.txtQUANTITY.Name = "txtQUANTITY";
+            this.txtQUANTITY.Size = new System.Drawing.Size(210, 28);
+            this.txtQUANTITY.TabIndex = 96;
+            this.txtQUANTITY.Enter += new System.EventHandler(this.txtAMOUNT_Enter);
+            this.txtQUANTITY.Leave += new System.EventHandler(this.txtAMOUNT_Leave);
             // 
-            // txtNAME_ITEM
+            // txtNAME_PRODUCT
             // 
-            this.txtNAME_ITEM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNAME_ITEM.ForeColor = System.Drawing.Color.Black;
-            this.txtNAME_ITEM.Location = new System.Drawing.Point(133, 201);
-            this.txtNAME_ITEM.Name = "txtNAME_ITEM";
-            this.txtNAME_ITEM.Size = new System.Drawing.Size(210, 28);
-            this.txtNAME_ITEM.TabIndex = 95;
-            this.txtNAME_ITEM.Text = "Nhập tên hàng hóa";
-            this.txtNAME_ITEM.Enter += new System.EventHandler(this.txtNAME_ITEM_Enter);
-            this.txtNAME_ITEM.Leave += new System.EventHandler(this.txtNAME_ITEM_Leave);
+            this.txtNAME_PRODUCT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNAME_PRODUCT.ForeColor = System.Drawing.Color.Black;
+            this.txtNAME_PRODUCT.Location = new System.Drawing.Point(133, 201);
+            this.txtNAME_PRODUCT.Name = "txtNAME_PRODUCT";
+            this.txtNAME_PRODUCT.Size = new System.Drawing.Size(210, 28);
+            this.txtNAME_PRODUCT.TabIndex = 95;
+            this.txtNAME_PRODUCT.Enter += new System.EventHandler(this.txtNAME_ITEM_Enter);
+            this.txtNAME_PRODUCT.Leave += new System.EventHandler(this.txtNAME_ITEM_Leave);
             // 
-            // txtID_ITEM
+            // txtID_PRODUCT
             // 
-            this.txtID_ITEM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID_ITEM.Location = new System.Drawing.Point(133, 122);
-            this.txtID_ITEM.Name = "txtID_ITEM";
-            this.txtID_ITEM.Size = new System.Drawing.Size(210, 28);
-            this.txtID_ITEM.TabIndex = 94;
+            this.txtID_PRODUCT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_PRODUCT.Location = new System.Drawing.Point(133, 122);
+            this.txtID_PRODUCT.Name = "txtID_PRODUCT";
+            this.txtID_PRODUCT.Size = new System.Drawing.Size(210, 28);
+            this.txtID_PRODUCT.TabIndex = 94;
             // 
             // label5
             // 
@@ -292,7 +291,6 @@ namespace SaleManagement.VIEW
             this.txtSALE.Name = "txtSALE";
             this.txtSALE.Size = new System.Drawing.Size(210, 28);
             this.txtSALE.TabIndex = 105;
-            this.txtSALE.Text = "Nhập giá bán";
             this.txtSALE.Enter += new System.EventHandler(this.txtSALE_Enter);
             this.txtSALE.Leave += new System.EventHandler(this.txtSALE_Leave);
             // 
@@ -314,7 +312,6 @@ namespace SaleManagement.VIEW
             this.txtBUY.Name = "txtBUY";
             this.txtBUY.Size = new System.Drawing.Size(210, 28);
             this.txtBUY.TabIndex = 103;
-            this.txtBUY.Text = "Nhập giá mua";
             this.txtBUY.Enter += new System.EventHandler(this.txtBUY_Enter);
             this.txtBUY.Leave += new System.EventHandler(this.txtBUY_Leave);
             // 
@@ -398,15 +395,15 @@ namespace SaleManagement.VIEW
             this.rbID_ITEM.Text = "Mã HH";
             this.rbID_ITEM.UseVisualStyleBackColor = true;
             // 
-            // cbbTYPE_OF_ITEMS_DETAIL
+            // cbbTYPE_OF__PRODUCT_DETAIL
             // 
-            this.cbbTYPE_OF_ITEMS_DETAIL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbTYPE_OF_ITEMS_DETAIL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbTYPE_OF_ITEMS_DETAIL.FormattingEnabled = true;
-            this.cbbTYPE_OF_ITEMS_DETAIL.Location = new System.Drawing.Point(477, 109);
-            this.cbbTYPE_OF_ITEMS_DETAIL.Name = "cbbTYPE_OF_ITEMS_DETAIL";
-            this.cbbTYPE_OF_ITEMS_DETAIL.Size = new System.Drawing.Size(197, 29);
-            this.cbbTYPE_OF_ITEMS_DETAIL.TabIndex = 117;
+            this.cbbTYPE_OF__PRODUCT_DETAIL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbTYPE_OF__PRODUCT_DETAIL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbTYPE_OF__PRODUCT_DETAIL.FormattingEnabled = true;
+            this.cbbTYPE_OF__PRODUCT_DETAIL.Location = new System.Drawing.Point(477, 109);
+            this.cbbTYPE_OF__PRODUCT_DETAIL.Name = "cbbTYPE_OF__PRODUCT_DETAIL";
+            this.cbbTYPE_OF__PRODUCT_DETAIL.Size = new System.Drawing.Size(197, 29);
+            this.cbbTYPE_OF__PRODUCT_DETAIL.TabIndex = 117;
             // 
             // label8
             // 
@@ -619,16 +616,37 @@ namespace SaleManagement.VIEW
             this.btnADDPRODUCER.UseVisualStyleBackColor = false;
             this.btnADDPRODUCER.Click += new System.EventHandler(this.btnADDPRODUCER_Click);
             // 
+            // btnEXCEL
+            // 
+            this.btnEXCEL.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnEXCEL.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEXCEL.FlatAppearance.BorderSize = 0;
+            this.btnEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEXCEL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEXCEL.ForeColor = System.Drawing.Color.White;
+            this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
+            this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEXCEL.Location = new System.Drawing.Point(807, 98);
+            this.btnEXCEL.Name = "btnEXCEL";
+            this.btnEXCEL.Size = new System.Drawing.Size(154, 48);
+            this.btnEXCEL.TabIndex = 121;
+            this.btnEXCEL.Text = "Xuất Excel";
+            this.btnEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEXCEL.UseVisualStyleBackColor = false;
+            this.btnEXCEL.Click += new System.EventHandler(this.btnEXCEL_Click);
+            // 
             // FrmManage_Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.Controls.Add(this.btnEXCEL);
             this.Controls.Add(this.btnADDPRODUCER);
             this.Controls.Add(this.btnADDSUPPLIER);
             this.Controls.Add(this.btnADDTYPE);
-            this.Controls.Add(this.cbbTYPE_OF_ITEMS_DETAIL);
+            this.Controls.Add(this.cbbTYPE_OF__PRODUCT_DETAIL);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.rbNAME_ITEM);
             this.Controls.Add(this.rbID_ITEM);
@@ -642,10 +660,10 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cbbSUPPLIERs);
-            this.Controls.Add(this.cbbTYPE_OF_ITEMs);
-            this.Controls.Add(this.txtAMOUNT);
-            this.Controls.Add(this.txtNAME_ITEM);
-            this.Controls.Add(this.txtID_ITEM);
+            this.Controls.Add(this.cbbTYPE_OF_PRODUCT);
+            this.Controls.Add(this.txtQUANTITY);
+            this.Controls.Add(this.txtNAME_PRODUCT);
+            this.Controls.Add(this.txtID_PRODUCT);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -692,10 +710,10 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelMANAGE_STAFF;
         private System.Windows.Forms.ComboBox cbbSUPPLIERs;
-        private System.Windows.Forms.ComboBox cbbTYPE_OF_ITEMs;
-        private System.Windows.Forms.TextBox txtAMOUNT;
-        private System.Windows.Forms.TextBox txtNAME_ITEM;
-        private System.Windows.Forms.TextBox txtID_ITEM;
+        private System.Windows.Forms.ComboBox cbbTYPE_OF_PRODUCT;
+        private System.Windows.Forms.TextBox txtQUANTITY;
+        private System.Windows.Forms.TextBox txtNAME_PRODUCT;
+        private System.Windows.Forms.TextBox txtID_PRODUCT;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -713,11 +731,12 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.RadioButton rbNAME_ITEM;
         private System.Windows.Forms.RadioButton rbID_ITEM;
-        private System.Windows.Forms.ComboBox cbbTYPE_OF_ITEMS_DETAIL;
+        private System.Windows.Forms.ComboBox cbbTYPE_OF__PRODUCT_DETAIL;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.Button btnADDTYPE;
         private System.Windows.Forms.Button btnADDSUPPLIER;
         private System.Windows.Forms.Button btnADDPRODUCER;
+        private System.Windows.Forms.Button btnEXCEL;
     }
 }

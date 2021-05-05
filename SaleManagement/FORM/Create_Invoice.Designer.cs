@@ -40,11 +40,11 @@ namespace SaleManagement.VIEW
             this.btnSEARCH = new System.Windows.Forms.Button();
             this.btnADD = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtDISCOUNT_ITEM = new System.Windows.Forms.TextBox();
+            this.txtPRODUCT_DISCOUNT = new System.Windows.Forms.TextBox();
             this.dgvSELECT = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.btnSHOW = new System.Windows.Forms.Button();
-            this.txtAMOUNT_ITEM = new System.Windows.Forms.TextBox();
+            this.txtPRODUCT_QUANTITY_SELECY = new System.Windows.Forms.TextBox();
             this.cbbTYPE_OF_ITEMS = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -52,27 +52,27 @@ namespace SaleManagement.VIEW
             this.btnADDCUSTOMER = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
             this.btnEDIT = new System.Windows.Forms.Button();
-            this.txtALL_AMOUNT_ITEMs = new System.Windows.Forms.TextBox();
+            this.txtALL_PRODUCT_QTY = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtITEMs = new System.Windows.Forms.TextBox();
+            this.txtPRODUCTS_QUANTITY = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvLIST = new System.Windows.Forms.DataGridView();
             this.cbbCUSTOMER = new System.Windows.Forms.ComboBox();
             this.dpDAY = new System.Windows.Forms.DateTimePicker();
             this.cbbSTAFF = new System.Windows.Forms.ComboBox();
-            this.txtID_BILL = new System.Windows.Forms.TextBox();
+            this.txtID_INVOICE = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtDISCOUNT_BILL = new System.Windows.Forms.TextBox();
+            this.txtINVOICE_DISCOUNT = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtTOTAL_MONEY = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtPRICE_BILL = new System.Windows.Forms.TextBox();
+            this.txtINVOICE_PRICE = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -152,11 +152,11 @@ namespace SaleManagement.VIEW
             this.groupBox1.Controls.Add(this.btnSEARCH);
             this.groupBox1.Controls.Add(this.btnADD);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.txtDISCOUNT_ITEM);
+            this.groupBox1.Controls.Add(this.txtPRODUCT_DISCOUNT);
             this.groupBox1.Controls.Add(this.dgvSELECT);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.btnSHOW);
-            this.groupBox1.Controls.Add(this.txtAMOUNT_ITEM);
+            this.groupBox1.Controls.Add(this.txtPRODUCT_QUANTITY_SELECY);
             this.groupBox1.Controls.Add(this.cbbTYPE_OF_ITEMS);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
@@ -254,15 +254,15 @@ namespace SaleManagement.VIEW
             this.label13.TabIndex = 63;
             this.label13.Text = "%";
             // 
-            // txtDISCOUNT_ITEM
+            // txtPRODUCT_DISCOUNT
             // 
-            this.txtDISCOUNT_ITEM.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtDISCOUNT_ITEM.Location = new System.Drawing.Point(484, 219);
-            this.txtDISCOUNT_ITEM.Name = "txtDISCOUNT_ITEM";
-            this.txtDISCOUNT_ITEM.Size = new System.Drawing.Size(44, 26);
-            this.txtDISCOUNT_ITEM.TabIndex = 26;
-            this.txtDISCOUNT_ITEM.TextChanged += new System.EventHandler(this.txtDISCOUNT_ITEM_TextChanged);
-            this.txtDISCOUNT_ITEM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDISCOUNT_ITEM_KeyPress);
+            this.txtPRODUCT_DISCOUNT.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPRODUCT_DISCOUNT.Location = new System.Drawing.Point(484, 219);
+            this.txtPRODUCT_DISCOUNT.Name = "txtPRODUCT_DISCOUNT";
+            this.txtPRODUCT_DISCOUNT.Size = new System.Drawing.Size(44, 26);
+            this.txtPRODUCT_DISCOUNT.TabIndex = 26;
+            this.txtPRODUCT_DISCOUNT.TextChanged += new System.EventHandler(this.txtDISCOUNT_ITEM_TextChanged);
+            this.txtPRODUCT_DISCOUNT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDISCOUNT_ITEM_KeyPress);
             // 
             // dgvSELECT
             // 
@@ -313,15 +313,15 @@ namespace SaleManagement.VIEW
             this.btnSHOW.UseVisualStyleBackColor = false;
             this.btnSHOW.Click += new System.EventHandler(this.btnSHOW_Click);
             // 
-            // txtAMOUNT_ITEM
+            // txtPRODUCT_QUANTITY_SELECY
             // 
-            this.txtAMOUNT_ITEM.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtAMOUNT_ITEM.Location = new System.Drawing.Point(484, 158);
-            this.txtAMOUNT_ITEM.Name = "txtAMOUNT_ITEM";
-            this.txtAMOUNT_ITEM.Size = new System.Drawing.Size(44, 26);
-            this.txtAMOUNT_ITEM.TabIndex = 24;
-            this.txtAMOUNT_ITEM.TextChanged += new System.EventHandler(this.txtAMOUNT_ITEM_TextChanged);
-            this.txtAMOUNT_ITEM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAMOUNT_ITEM_KeyPress);
+            this.txtPRODUCT_QUANTITY_SELECY.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPRODUCT_QUANTITY_SELECY.Location = new System.Drawing.Point(484, 158);
+            this.txtPRODUCT_QUANTITY_SELECY.Name = "txtPRODUCT_QUANTITY_SELECY";
+            this.txtPRODUCT_QUANTITY_SELECY.Size = new System.Drawing.Size(44, 26);
+            this.txtPRODUCT_QUANTITY_SELECY.TabIndex = 24;
+            this.txtPRODUCT_QUANTITY_SELECY.TextChanged += new System.EventHandler(this.txtAMOUNT_ITEM_TextChanged);
+            this.txtPRODUCT_QUANTITY_SELECY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAMOUNT_ITEM_KeyPress);
             // 
             // cbbTYPE_OF_ITEMS
             // 
@@ -364,15 +364,15 @@ namespace SaleManagement.VIEW
             this.groupBox2.Controls.Add(this.btnADDCUSTOMER);
             this.groupBox2.Controls.Add(this.btnDELETE);
             this.groupBox2.Controls.Add(this.btnEDIT);
-            this.groupBox2.Controls.Add(this.txtALL_AMOUNT_ITEMs);
+            this.groupBox2.Controls.Add(this.txtALL_PRODUCT_QTY);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txtITEMs);
+            this.groupBox2.Controls.Add(this.txtPRODUCTS_QUANTITY);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.dgvLIST);
             this.groupBox2.Controls.Add(this.cbbCUSTOMER);
             this.groupBox2.Controls.Add(this.dpDAY);
             this.groupBox2.Controls.Add(this.cbbSTAFF);
-            this.groupBox2.Controls.Add(this.txtID_BILL);
+            this.groupBox2.Controls.Add(this.txtID_INVOICE);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
@@ -443,15 +443,15 @@ namespace SaleManagement.VIEW
             this.btnEDIT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEDIT.UseVisualStyleBackColor = false;
             // 
-            // txtALL_AMOUNT_ITEMs
+            // txtALL_PRODUCT_QTY
             // 
-            this.txtALL_AMOUNT_ITEMs.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtALL_AMOUNT_ITEMs.Enabled = false;
-            this.txtALL_AMOUNT_ITEMs.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtALL_AMOUNT_ITEMs.Location = new System.Drawing.Point(311, 411);
-            this.txtALL_AMOUNT_ITEMs.Name = "txtALL_AMOUNT_ITEMs";
-            this.txtALL_AMOUNT_ITEMs.Size = new System.Drawing.Size(45, 28);
-            this.txtALL_AMOUNT_ITEMs.TabIndex = 41;
+            this.txtALL_PRODUCT_QTY.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtALL_PRODUCT_QTY.Enabled = false;
+            this.txtALL_PRODUCT_QTY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtALL_PRODUCT_QTY.Location = new System.Drawing.Point(311, 411);
+            this.txtALL_PRODUCT_QTY.Name = "txtALL_PRODUCT_QTY";
+            this.txtALL_PRODUCT_QTY.Size = new System.Drawing.Size(45, 28);
+            this.txtALL_PRODUCT_QTY.TabIndex = 41;
             // 
             // label9
             // 
@@ -464,15 +464,15 @@ namespace SaleManagement.VIEW
             this.label9.TabIndex = 40;
             this.label9.Text = "Số lượng";
             // 
-            // txtITEMs
+            // txtPRODUCTS_QUANTITY
             // 
-            this.txtITEMs.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtITEMs.Enabled = false;
-            this.txtITEMs.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtITEMs.Location = new System.Drawing.Point(143, 411);
-            this.txtITEMs.Name = "txtITEMs";
-            this.txtITEMs.Size = new System.Drawing.Size(49, 28);
-            this.txtITEMs.TabIndex = 39;
+            this.txtPRODUCTS_QUANTITY.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtPRODUCTS_QUANTITY.Enabled = false;
+            this.txtPRODUCTS_QUANTITY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPRODUCTS_QUANTITY.Location = new System.Drawing.Point(143, 411);
+            this.txtPRODUCTS_QUANTITY.Name = "txtPRODUCTS_QUANTITY";
+            this.txtPRODUCTS_QUANTITY.Size = new System.Drawing.Size(49, 28);
+            this.txtPRODUCTS_QUANTITY.TabIndex = 39;
             // 
             // label8
             // 
@@ -535,14 +535,14 @@ namespace SaleManagement.VIEW
             this.cbbSTAFF.Size = new System.Drawing.Size(161, 29);
             this.cbbSTAFF.TabIndex = 28;
             // 
-            // txtID_BILL
+            // txtID_INVOICE
             // 
-            this.txtID_BILL.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtID_BILL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID_BILL.Location = new System.Drawing.Point(145, 34);
-            this.txtID_BILL.Name = "txtID_BILL";
-            this.txtID_BILL.Size = new System.Drawing.Size(161, 28);
-            this.txtID_BILL.TabIndex = 27;
+            this.txtID_INVOICE.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtID_INVOICE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_INVOICE.Location = new System.Drawing.Point(145, 34);
+            this.txtID_INVOICE.Name = "txtID_INVOICE";
+            this.txtID_INVOICE.Size = new System.Drawing.Size(161, 28);
+            this.txtID_INVOICE.TabIndex = 27;
             // 
             // label4
             // 
@@ -610,15 +610,15 @@ namespace SaleManagement.VIEW
             this.label14.TabIndex = 67;
             this.label14.Text = "VNĐ";
             // 
-            // txtDISCOUNT_BILL
+            // txtINVOICE_DISCOUNT
             // 
-            this.txtDISCOUNT_BILL.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtDISCOUNT_BILL.Enabled = false;
-            this.txtDISCOUNT_BILL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDISCOUNT_BILL.Location = new System.Drawing.Point(118, 599);
-            this.txtDISCOUNT_BILL.Name = "txtDISCOUNT_BILL";
-            this.txtDISCOUNT_BILL.Size = new System.Drawing.Size(139, 28);
-            this.txtDISCOUNT_BILL.TabIndex = 66;
+            this.txtINVOICE_DISCOUNT.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtINVOICE_DISCOUNT.Enabled = false;
+            this.txtINVOICE_DISCOUNT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtINVOICE_DISCOUNT.Location = new System.Drawing.Point(118, 599);
+            this.txtINVOICE_DISCOUNT.Name = "txtINVOICE_DISCOUNT";
+            this.txtINVOICE_DISCOUNT.Size = new System.Drawing.Size(139, 28);
+            this.txtINVOICE_DISCOUNT.TabIndex = 66;
             // 
             // label6
             // 
@@ -663,15 +663,15 @@ namespace SaleManagement.VIEW
             this.label16.TabIndex = 73;
             this.label16.Text = "VNĐ";
             // 
-            // txtPRICE_BILL
+            // txtINVOICE_PRICE
             // 
-            this.txtPRICE_BILL.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtPRICE_BILL.Enabled = false;
-            this.txtPRICE_BILL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPRICE_BILL.Location = new System.Drawing.Point(417, 597);
-            this.txtPRICE_BILL.Name = "txtPRICE_BILL";
-            this.txtPRICE_BILL.Size = new System.Drawing.Size(125, 28);
-            this.txtPRICE_BILL.TabIndex = 72;
+            this.txtINVOICE_PRICE.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtINVOICE_PRICE.Enabled = false;
+            this.txtINVOICE_PRICE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtINVOICE_PRICE.Location = new System.Drawing.Point(417, 597);
+            this.txtINVOICE_PRICE.Name = "txtINVOICE_PRICE";
+            this.txtINVOICE_PRICE.Size = new System.Drawing.Size(125, 28);
+            this.txtINVOICE_PRICE.TabIndex = 72;
             // 
             // label17
             // 
@@ -933,13 +933,13 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.txtSEND_BY_CUSTOMER);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.txtPRICE_BILL);
+            this.Controls.Add(this.txtINVOICE_PRICE);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.btnDISCOUNT_MONEY);
             this.Controls.Add(this.btnDISCOUNT_PERCENT);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.txtDISCOUNT_BILL);
+            this.Controls.Add(this.txtINVOICE_DISCOUNT);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtTOTAL_MONEY);
             this.Controls.Add(this.label7);
@@ -948,7 +948,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.panelMANAGE_DATA);
             this.Name = "FrmBill";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bill";
+            this.Text = "Invoice";
             this.panelMANAGE_DATA.ResumeLayout(false);
             this.panelMANAGE_DATA.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -969,23 +969,23 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbbTYPE_OF_ITEMS;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtDISCOUNT_ITEM;
+        private System.Windows.Forms.TextBox txtPRODUCT_DISCOUNT;
         private System.Windows.Forms.DataGridView dgvSELECT;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnSHOW;
-        private System.Windows.Forms.TextBox txtAMOUNT_ITEM;
+        private System.Windows.Forms.TextBox txtPRODUCT_QUANTITY_SELECY;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnADD;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtALL_AMOUNT_ITEMs;
+        private System.Windows.Forms.TextBox txtALL_PRODUCT_QTY;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtITEMs;
+        private System.Windows.Forms.TextBox txtPRODUCTS_QUANTITY;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvLIST;
         private System.Windows.Forms.ComboBox cbbCUSTOMER;
         private System.Windows.Forms.DateTimePicker dpDAY;
         private System.Windows.Forms.ComboBox cbbSTAFF;
-        private System.Windows.Forms.TextBox txtID_BILL;
+        private System.Windows.Forms.TextBox txtID_INVOICE;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -994,14 +994,14 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnEDIT;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtDISCOUNT_BILL;
+        private System.Windows.Forms.TextBox txtINVOICE_DISCOUNT;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtTOTAL_MONEY;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnDISCOUNT_MONEY;
         private System.Windows.Forms.Button btnDISCOUNT_PERCENT;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtPRICE_BILL;
+        private System.Windows.Forms.TextBox txtINVOICE_PRICE;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;

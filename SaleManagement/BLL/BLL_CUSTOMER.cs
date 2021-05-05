@@ -21,34 +21,34 @@ namespace SaleManagement.BLL
             }
             private set { }
         }
-        public tblKhachHang getCUSTOMER_BYID(string ID_CUSTOMER)
+        public tblKhachHang GetCustomer_ById(string idCustomer)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            tblKhachHang GETKHACHHANG = new tblKhachHang();
-            foreach (tblKhachHang KHACHHANG in DB.tblKhachHangs)
+            tblKhachHang getCustomer = new tblKhachHang();
+            foreach (tblKhachHang customer in DB.tblKhachHangs)
             {
-                if (KHACHHANG.MaKhachHang == ID_CUSTOMER)
+                if (customer.MaKhachHang == idCustomer)
                 {
-                    GETKHACHHANG = KHACHHANG;
+                    getCustomer = customer;
                 }
             }
-            return GETKHACHHANG;
+            return getCustomer;
         }
-        public string getNEWID_CUSTOMER()
+        public string GetNewIdCustomer()
         {
-            int ID;
+            int id;
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            List<tblKhachHang> LIST = DB.tblKhachHangs.ToList();
-            if(LIST.Count == 0)
+            List<tblKhachHang> list = DB.tblKhachHangs.ToList();
+            if(list.Count == 0)
             {
-                ID = 1;
+                id = 1;
             }
             else
             {
-                int LAST = Convert.ToInt32(LIST[LIST.Count - 1].MaKhachHang.Remove(0, 2));
-                ID = LAST + 1;
+                int lastId = Convert.ToInt32(list[list.Count - 1].MaKhachHang.Remove(0, 2));
+                id = lastId + 1;
             }
-            return "KH" + ID;
+            return "KH" + id;
         }
     }
 }

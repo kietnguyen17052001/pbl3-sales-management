@@ -14,13 +14,20 @@ namespace SaleManagement
     
     public partial class tblHoaDonNhapHang
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblHoaDonNhapHang()
+        {
+            this.tblChiTietHoaDonNhapHangs = new HashSet<tblChiTietHoaDonNhapHang>();
+        }
+    
         public string MaHoaDonNhap { get; set; }
         public string MaNhaCungCap { get; set; }
         public string MaNhanVien { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
         public Nullable<double> SoTien { get; set; }
     
-        public virtual tblChiTietHoaDonNhapHang tblChiTietHoaDonNhapHang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblChiTietHoaDonNhapHang> tblChiTietHoaDonNhapHangs { get; set; }
         public virtual tblNhaCungCap tblNhaCungCap { get; set; }
         public virtual tblNhanVien tblNhanVien { get; set; }
     }

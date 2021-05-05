@@ -18,7 +18,7 @@ namespace SaleManagement.FORM
         public FrmCreate_NewCustomer()
         {
             InitializeComponent();
-            txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNEWID_CUSTOMER();
+            txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.GetNewIdCustomer();
         }
 
         private void btnCANCEL_Click(object sender, EventArgs e)
@@ -71,7 +71,6 @@ namespace SaleManagement.FORM
                 txtNAME_CUSTOMER.ForeColor = Color.Black;
             }
         }
-
         private void txtNAME_CUSTOMER_Leave(object sender, EventArgs e)
         {
             if (txtNAME_CUSTOMER.Text == "")

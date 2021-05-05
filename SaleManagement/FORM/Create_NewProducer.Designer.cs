@@ -111,9 +111,9 @@ namespace SaleManagement.FORM
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(116, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(320, 33);
+            this.label1.Size = new System.Drawing.Size(315, 33);
             this.label1.TabIndex = 84;
-            this.label1.Text = "THÊM NHÀ CUNG CẤP";
+            this.label1.Text = "THÊM NHÀ SẢN XUẤT";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnCANCEL

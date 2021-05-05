@@ -13,12 +13,13 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Staffs : Form
     {
-        bool isADD; // Kiểm tra xem thực hiện chức năng ADD hay EDIT
+        bool isAdd; // Kiểm tra xem thực hiện chức năng ADD hay EDIT
         public FrmManage_Staffs()
         {
             InitializeComponent();
-            setCBB();    
+            SetCbb();    
             disable(false);
+            ShowStaff();
             rbID_STAFF.Checked = true;        
         }
         void disable(bool E)
@@ -38,20 +39,21 @@ namespace SaleManagement.VIEW
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
         }
-        public void setCBB()
+        public void SetCbb()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             cbbPOSITION_DETAIL.Items.Add("Tất cả");
-            cbbPOSITION_DETAIL.Items.AddRange(BLL_STAFF.Instance.getList_Position().Distinct().ToArray());
-            cbbPOSITION.Items.AddRange(BLL_STAFF.Instance.getList_Position().Distinct().ToArray());
-            cbbPOSITION_DETAIL.SelectedIndex = 0;
+            cbbPOSITION_DETAIL.Items.AddRange(BLL_STAFF.Instance.GetListPosition().Distinct().ToArray());
+            cbbPOSITION.Items.Add("None");
+            cbbPOSITION.Items.AddRange(BLL_STAFF.Instance.GetListPosition().Distinct().ToArray());
+            cbbPOSITION_DETAIL.SelectedIndex = cbbPOSITION.SelectedIndex = 0;
         }
-        public void showSTAFF(int NUMBER)
+        public void ShowStaff()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            if (NUMBER == 0)
+            if (cbbPOSITION_DETAIL.SelectedIndex == 0)
             {
-                var GETSTAFF = DB.tblNhanViens.Select(p => new {
+                var getStaff = DB.tblNhanViens.Select(p => new {
                     p.MaNhanVien,
                     p.TenNhanVien,
                     p.ViTri,
@@ -61,11 +63,11 @@ namespace SaleManagement.VIEW
                     p.DiaChi,
                     p.Luong
                 });
-                dgvLIST_STAFF.DataSource = GETSTAFF.ToList();
+                dgvLIST_STAFF.DataSource = getStaff.ToList();
             }
             else
             {
-                var GETSTAFF = DB.tblNhanViens.Where(p => p.ViTri == cbbPOSITION_DETAIL.SelectedItem.ToString()).Select(p => new {
+                var getStaff = DB.tblNhanViens.Where(p => p.ViTri == cbbPOSITION_DETAIL.SelectedItem.ToString()).Select(p => new {
                     p.MaNhanVien,
                     p.TenNhanVien,
                     p.ViTri,
@@ -75,25 +77,59 @@ namespace SaleManagement.VIEW
                     p.DiaChi,
                     p.Luong
                 });
-                dgvLIST_STAFF.DataSource = GETSTAFF.ToList();
+                dgvLIST_STAFF.DataSource = getStaff.ToList();
             }
+            txtID_STAFF.Clear();
+            txtNAME_STAFF.Clear();
+            txtPHONE.Clear();
+            txtADDRESS.Clear();
+            txtSALARY.Clear();
+            cbbPOSITION.SelectedIndex = 0;
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmSale_Management FRM = new FrmSale_Management();
-            FRM.Show();
+            FrmSale_Management frm = new FrmSale_Management();
+            frm.Show();
             this.Close();
         }
         private void btnSHOW_Click(object sender, EventArgs e)
         {
-            showSTAFF(cbbPOSITION_DETAIL.SelectedIndex);
+            ShowStaff();
         }
-
+        private void btnEXCEL_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "ListStaff";
+            for (int i = 1; i <= dgvLIST_STAFF.Columns.Count; i++)
+            {
+                worksheet.Cells[1, i] = dgvLIST_STAFF.Columns[i - 1].HeaderText;
+            }
+            for (int i = 0; i < dgvLIST_STAFF.Rows.Count; i++)
+            {
+                for (int j = 0; j < dgvLIST_STAFF.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = dgvLIST_STAFF.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "List Staff";
+            saveFileDialog.DefaultExt = ".xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(saveFileDialog.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive,
+                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            }
+            app.Quit();
+        }
         private void btnADD_Click(object sender, EventArgs e)
         {
             disable(true);
-            isADD = true;
-            txtID_STAFF.Text = BLL_STAFF.Instance.getNEWID_STAFF().ToString();
+            isAdd = true;
+            txtID_STAFF.Text = BLL_STAFF.Instance.GetNewIdStaff().ToString();
             txtNAME_STAFF.Clear();
             txtPHONE.Clear();
             rbMALE.Checked = true;
@@ -105,44 +141,45 @@ namespace SaleManagement.VIEW
         {
             disable(true);
             txtID_STAFF.Enabled = false;
-            isADD = false;
+            isAdd = false;
         }
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            tblNhanVien NHANVIEN = new tblNhanVien();
-            NHANVIEN.MaNhanVien = txtID_STAFF.Text;
-            NHANVIEN.TenNhanVien = txtNAME_STAFF.Text;
-            NHANVIEN.ViTri = cbbPOSITION.SelectedItem.ToString();
-            NHANVIEN.NgaySinh = Convert.ToDateTime(dpDAY.Value.ToShortDateString());
+            tblNhanVien staff = new tblNhanVien();
+            staff.MaNhanVien = txtID_STAFF.Text;
+            staff.TenNhanVien = txtNAME_STAFF.Text;
+            staff.ViTri = cbbPOSITION.SelectedItem.ToString();
+            staff.NgaySinh = Convert.ToDateTime(dpDAY.Value.ToShortDateString());
             if(rbMALE.Checked == true)
             {
-                NHANVIEN.GioiTinh = true;
+                staff.GioiTinh = true;
             }
             else
             {
-                NHANVIEN.GioiTinh = false;
+                staff.GioiTinh = false;
             }
-            NHANVIEN.SoDienThoai = txtPHONE.Text;
-            NHANVIEN.DiaChi = txtADDRESS.Text;
-            NHANVIEN.Luong = txtSALARY.Text;
-            if(txtID_STAFF.Text == "" || txtNAME_STAFF.Text == "" || txtPHONE.Text == "" || txtADDRESS.Text == "" || txtSALARY.Text == "")
+            staff.SoDienThoai = txtPHONE.Text;
+            staff.DiaChi = txtADDRESS.Text;
+            staff.Luong = txtSALARY.Text;
+            if(string.IsNullOrEmpty(staff.MaNhanVien) || string.IsNullOrEmpty(staff.TenNhanVien) || string.IsNullOrEmpty(staff.SoDienThoai) || 
+                string.IsNullOrEmpty(staff.DiaChi) || string.IsNullOrEmpty(staff.Luong))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 disable(true);
             }
             else
             {
-                if (isADD)
+                if (isAdd)
                 {
                     try
                     {
-                        DB.tblNhanViens.Add(NHANVIEN);
+                        DB.tblNhanViens.Add(staff);
                         DB.SaveChanges();
                         MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         disable(false);
-                        showSTAFF(0);
+                        ShowStaff();
                     }
                     catch (Exception)
                     {
@@ -152,18 +189,18 @@ namespace SaleManagement.VIEW
                 }
                 else
                 {
-                    var GETSTAFF = DB.tblNhanViens.Find(txtID_STAFF.Text);
-                    GETSTAFF.TenNhanVien = NHANVIEN.TenNhanVien;
-                    GETSTAFF.ViTri = NHANVIEN.ViTri;
-                    GETSTAFF.NgaySinh = NHANVIEN.NgaySinh;
-                    GETSTAFF.GioiTinh = NHANVIEN.GioiTinh;
-                    GETSTAFF.SoDienThoai = NHANVIEN.SoDienThoai;
-                    GETSTAFF.DiaChi = NHANVIEN.DiaChi;
-                    GETSTAFF.Luong = NHANVIEN.Luong;
+                    var getStaff = DB.tblNhanViens.Find(txtID_STAFF.Text);
+                    getStaff.TenNhanVien = staff.TenNhanVien;
+                    getStaff.ViTri = staff.ViTri;
+                    getStaff.NgaySinh = staff.NgaySinh;
+                    getStaff.GioiTinh = staff.GioiTinh;
+                    getStaff.SoDienThoai = staff.SoDienThoai;
+                    getStaff.DiaChi = staff.DiaChi;
+                    getStaff.Luong = staff.Luong;
                     DB.SaveChanges();
                     MessageBox.Show("Sửa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     disable(false);
-                    showSTAFF(0);
+                    ShowStaff();
                 }
                 
             } 
@@ -171,33 +208,33 @@ namespace SaleManagement.VIEW
         private void btnDELETE_Click(object sender, EventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            List<string> LIST_ID_STAFF = new List<string>();
-            DataGridViewSelectedRowCollection DATA = dgvLIST_STAFF.SelectedRows;
-            foreach(DataGridViewRow data in DATA)
+            List<string> listIdStaff = new List<string>();
+            DataGridViewSelectedRowCollection data = dgvLIST_STAFF.SelectedRows;
+            foreach(DataGridViewRow dataGvr in data)
             {
-                LIST_ID_STAFF.Add(data.Cells["MaNhanVien"].Value.ToString());
+                listIdStaff.Add(dataGvr.Cells["MaNhanVien"].Value.ToString());
             }
-            foreach(string i in LIST_ID_STAFF)
+            foreach(string i in listIdStaff)
             {
-                foreach(tblNhanVien NHANVIEN in DB.tblNhanViens)
+                foreach(tblNhanVien staff in DB.tblNhanViens)
                 {
-                    if(NHANVIEN.MaNhanVien == i)
+                    if(staff.MaNhanVien == i)
                     {
-                        DB.tblNhanViens.Remove(NHANVIEN);
+                        DB.tblNhanViens.Remove(staff);
                         MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                     }
                 }
                 DB.SaveChanges();
             }
-            dgvLIST_STAFF.DataSource = DB.tblNhanViens.ToList();
+            ShowStaff();
         }
         private void btnSEARCH_Click(object sender, EventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             if (rbID_STAFF.Checked == true)
             {
-                var GETSTAFFs = DB.tblNhanViens.Where(p => p.MaNhanVien.ToLower().Contains(txtSEARCH.Text.ToLower())).Select(p => new
+                var getStaff = DB.tblNhanViens.Where(p => p.MaNhanVien.Contains(txtSEARCH.Text)).Select(p => new
                 {
                     p.MaNhanVien,
                     p.TenNhanVien,
@@ -208,11 +245,11 @@ namespace SaleManagement.VIEW
                     p.DiaChi,
                     p.Luong
                 });
-                dgvLIST_STAFF.DataSource = GETSTAFFs.ToList();
+                dgvLIST_STAFF.DataSource = getStaff.ToList();
             }
             else
             {
-                var GETSTAFFs = DB.tblNhanViens.Where(p => p.TenNhanVien.ToLower().Contains(txtSEARCH.Text.ToLower())).Select(p => new
+                var getStaff = DB.tblNhanViens.Where(p => p.TenNhanVien.Contains(txtSEARCH.Text)).Select(p => new
                 {
                     p.MaNhanVien,
                     p.TenNhanVien,
@@ -223,7 +260,7 @@ namespace SaleManagement.VIEW
                     p.DiaChi,
                     p.Luong
                 });
-                dgvLIST_STAFF.DataSource = GETSTAFFs.ToList();
+                dgvLIST_STAFF.DataSource = getStaff.ToList();
             }
         }
         private void btnCANCEL_Click(object sender, EventArgs e)
@@ -235,8 +272,8 @@ namespace SaleManagement.VIEW
             DialogResult d = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(d == DialogResult.Yes)
             {
-                FrmManage_Data FRM = new FrmManage_Data();
-                FRM.Show();
+                FrmManage_Data frm = new FrmManage_Data();
+                frm.Show();
                 this.Hide();
             }
             else
@@ -247,17 +284,16 @@ namespace SaleManagement.VIEW
         private void dgvLIST_STAFF_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            string ID_STAFF = dgvLIST_STAFF.SelectedRows[0].Cells["MaNhanVien"].Value.ToString();
-            var NHANVIEN = DB.tblNhanViens.Find(ID_STAFF);
-            txtID_STAFF.Text = NHANVIEN.MaNhanVien;
-            txtNAME_STAFF.Text = NHANVIEN.TenNhanVien;
-            cbbPOSITION.Text = NHANVIEN.ViTri;
-            dpDAY.Value = (DateTime)NHANVIEN.NgaySinh;
-            txtPHONE.Text = NHANVIEN.SoDienThoai;
-            txtADDRESS.Text = NHANVIEN.DiaChi;
-            //txtSALARY.Text = NHANVIEN.Luong;
-            txtSALARY.Text = String.Format("{0:n0}", Convert.ToDouble(NHANVIEN.Luong));
-            if(NHANVIEN.GioiTinh == true)
+            string idStaff = dgvLIST_STAFF.SelectedRows[0].Cells["MaNhanVien"].Value.ToString();
+            var staff = DB.tblNhanViens.Find(idStaff);
+            txtID_STAFF.Text = staff.MaNhanVien;
+            txtNAME_STAFF.Text = staff.TenNhanVien;
+            cbbPOSITION.Text = staff.ViTri;
+            dpDAY.Value = (DateTime)staff.NgaySinh;
+            txtPHONE.Text = staff.SoDienThoai;
+            txtADDRESS.Text = staff.DiaChi;
+            txtSALARY.Text = String.Format("{0:n0}", Convert.ToDouble(staff.Luong));
+            if(staff.GioiTinh == true)
             {
                 rbMALE.Checked = true;
             }
@@ -266,78 +302,6 @@ namespace SaleManagement.VIEW
                 rbFEMALE.Checked = true;
             }
         }
-        private void txtNAME_STAFF_Enter(object sender, EventArgs e)
-        {
-            if(txtNAME_STAFF.Text == "Nhập tên nhân viên")
-            {
-                txtNAME_STAFF.Text = "";
-                txtNAME_STAFF.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtNAME_STAFF_Leave(object sender, EventArgs e)
-        {
-            if (txtNAME_STAFF.Text == "")
-            {
-                txtNAME_STAFF.Text = "Nhập tên nhân viên";
-                txtNAME_STAFF.ForeColor = Color.Silver;
-            }
-        }
-
-        private void txtPHONE_Enter(object sender, EventArgs e)
-        {
-            if (txtPHONE.Text == "Nhập SĐT")
-            {
-                txtPHONE.Text = "";
-                txtPHONE.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtPHONE_Leave(object sender, EventArgs e)
-        {
-            if (txtPHONE.Text == "")
-            {
-                txtPHONE.Text = "Nhập SĐT";
-                txtPHONE.ForeColor = Color.Silver;
-            }
-        }
-
-        private void txtADDRESS_Enter(object sender, EventArgs e)
-        {
-            if (txtADDRESS.Text == "Nhập địa chỉ")
-            {
-                txtADDRESS.Text = "";
-                txtADDRESS.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtADDRESS_Leave(object sender, EventArgs e)
-        {
-            if (txtADDRESS.Text == "")
-            {
-                txtADDRESS.Text = "Nhập địa chỉ";
-                txtADDRESS.ForeColor = Color.Silver;
-            }
-        }
-
-        private void txtSALARY_Enter(object sender, EventArgs e)
-        {
-            if (txtSALARY.Text == "Nhập tiền lương")
-            {
-                txtSALARY.Text = "";
-                txtSALARY.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtSALARY_Leave(object sender, EventArgs e)
-        {
-            if (txtSALARY.Text == "")
-            {
-                txtSALARY.Text = "Nhập tiền lương";
-                txtSALARY.ForeColor = Color.Silver;
-            }
-        }
-
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
             if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
@@ -355,5 +319,7 @@ namespace SaleManagement.VIEW
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }
+
+        
     }
 }
