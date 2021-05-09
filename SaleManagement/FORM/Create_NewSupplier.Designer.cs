@@ -39,13 +39,13 @@ namespace SaleManagement.FORM
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtEMAIL = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtFAX = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCODE = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCANCEL
@@ -171,20 +171,6 @@ namespace SaleManagement.FORM
             this.label5.TabIndex = 85;
             this.label5.Text = "Mã NCC";
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(116, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(320, 33);
-            this.label1.TabIndex = 84;
-            this.label1.Text = "THÊM NHÀ CUNG CẤP";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // txtEMAIL
             // 
             this.txtEMAIL.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -245,11 +231,23 @@ namespace SaleManagement.FORM
             this.label8.TabIndex = 100;
             this.label8.Text = "Mã thuế";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label9.Location = new System.Drawing.Point(132, 20);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(254, 31);
+            this.label9.TabIndex = 121;
+            this.label9.Text = "Thêm nhà cung cấp";
+            // 
             // FrmCreate_NewSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 456);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCODE);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtFAX);
@@ -266,7 +264,6 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label1);
             this.Name = "FrmCreate_NewSupplier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create_NewSupplier";
@@ -287,12 +284,12 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtEMAIL;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtFAX;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCODE;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

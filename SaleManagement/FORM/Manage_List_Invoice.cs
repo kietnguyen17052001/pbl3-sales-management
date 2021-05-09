@@ -18,11 +18,14 @@ namespace SaleManagement.FORM
         string idInvoice;
         public FrmManage_List_Invoice()
         {
+            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             InitializeComponent();
             SetCBB();
-            ShowInvoice();   
             txtAMOUNT.Enabled = false;
             txtPRICE.Enabled = false;
+            var dateMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
+            dpFROM.Value = dateMin.Value;
+            ShowInvoice();
             disable(false);
         }
         public void disable(bool E)
@@ -67,7 +70,7 @@ namespace SaleManagement.FORM
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             if (cbbSTAFF_DETAIL.SelectedIndex == 0)
             {
-                var getInvoice = DB.tblHoaDonBanHangs.Select(p => new {
+                var getInvoice = DB.tblHoaDonBanHangs.Where(p => p.NgayBan >= dpFROM.Value && p.NgayBan <= dpTO.Value).Select(p => new {
                     p.MaHoaDonBan,
                     p.NgayBan,
                     p.tblNhanVien.TenNhanVien,
@@ -79,7 +82,7 @@ namespace SaleManagement.FORM
             }
             else
             {
-                var getInvoice = DB.tblHoaDonBanHangs.Where(p => p.MaNhanVien == ((CBBItem)cbbSTAFF_DETAIL.SelectedItem).VALUE).Select(p => new {
+                var getInvoice = DB.tblHoaDonBanHangs.Where(p => p.MaNhanVien == ((CBBItem)cbbSTAFF_DETAIL.SelectedItem).VALUE && p.NgayBan >= dpFROM.Value && p.NgayBan <= dpTO.Value).Select(p => new {
                     p.MaHoaDonBan,
                     p.NgayBan,
                     p.tblNhanVien.TenNhanVien,

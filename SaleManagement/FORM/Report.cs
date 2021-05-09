@@ -19,13 +19,13 @@ namespace SaleManagement.FORM
             InitializeComponent();
             var getDayMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
             dpFROM.Value = getDayMin.Value;
-            ShowList(dpFROM.Value, dpTO.Value);
+            ShowList();
         }
-        public void ShowList(DateTime dateMin, DateTime dateMax)
+        public void ShowList()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             // liet ke danh sach
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax).Select(p => new { 
+            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value).Select(p => new { 
                 p.MaHangHoa,
                 p.tblHangHoa.TenHangHoa,
                 p.tblHoaDonBanHang.NgayBan,
@@ -49,7 +49,7 @@ namespace SaleManagement.FORM
         // load lại danh sách theo thời gian
         private void btnLOAD_Click(object sender, EventArgs e)
         {
-            ShowList(dpFROM.Value, dpTO.Value);
+            ShowList();
             GetInformation();
         }
         // doanh số

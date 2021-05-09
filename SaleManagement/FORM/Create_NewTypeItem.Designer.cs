@@ -35,7 +35,7 @@ namespace SaleManagement.FORM
             this.txtID_TYPEOFITEM = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCANCEL
@@ -120,32 +120,29 @@ namespace SaleManagement.FORM
             this.label5.TabIndex = 85;
             this.label5.Text = "Mã loại HH";
             // 
-            // label1
+            // label6
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(104, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(329, 33);
-            this.label1.TabIndex = 84;
-            this.label1.Text = "THÊM LOẠI HÀNG HÓA";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label6.Location = new System.Drawing.Point(147, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(253, 31);
+            this.label6.TabIndex = 121;
+            this.label6.Text = "Thêm loại hàng hóa";
             // 
             // FrmCreate_NewTypeItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 440);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.btnSAVE);
             this.Controls.Add(this.txtNAME_TYPEOFITEM);
             this.Controls.Add(this.txtID_TYPEOFITEM);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label1);
             this.Name = "FrmCreate_NewTypeItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create_NewTypeItem";
@@ -162,6 +159,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.TextBox txtID_TYPEOFITEM;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SaleManagement.VIEW
@@ -44,6 +45,7 @@ namespace SaleManagement.VIEW
             cbbTYPE_OF_PRODUCT.Enabled = E;
             cbbPRODUCERs.Enabled = E;
             cbbSUPPLIERs.Enabled = E;
+            btnADDPIC.Enabled = E;
             btnADD.Enabled = !E;
             btnEDIT.Enabled = !E;
             btnBACK.Enabled = !E;
@@ -93,6 +95,7 @@ namespace SaleManagement.VIEW
             txtSALE.Clear();
             txtQUANTITY.Clear();
             txtDESCRIBE.Clear();
+            pbIMAGE.Image = null;
         }
         public void addTYPEITEM(string ID, string NAME)
         {
@@ -156,6 +159,7 @@ namespace SaleManagement.VIEW
             txtBUY.Clear();
             txtSALE.Clear();
             txtDESCRIBE.Clear();
+            pbIMAGE.Image = null;
         }
         private void btnADDTYPE_Click(object sender, EventArgs e)
         {
@@ -177,6 +181,25 @@ namespace SaleManagement.VIEW
             FRM.d += new FrmCreate_NewProducer.myDEL(addPRODUCER);
             FRM.Show();
         }
+        // thêm hình ảnh cho hàng hóa
+        string imageLocation = "";
+        private void btnADDPIC_Click(object sender, EventArgs e)
+        {  
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "jpg files (*.jpg)|*.jpg| PNG files (*.png)|*.png| All Files(*.*)|*.*";
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    imageLocation = dialog.FileName;
+                    pbIMAGE.ImageLocation = imageLocation;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Thêm ảnh thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void btnEDIT_Click(object sender, EventArgs e)
         {
             isAdd = false;
@@ -186,6 +209,10 @@ namespace SaleManagement.VIEW
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
+            byte[] images = null;
+            FileStream fStream = new FileStream(imageLocation, FileMode.Open, FileAccess.Read);
+            BinaryReader bReader = new BinaryReader(fStream);
+            images = bReader.ReadBytes((int)fStream.Length);
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             tblHangHoa HANGHOA = new tblHangHoa();
             HANGHOA.MaHangHoa = txtID_PRODUCT.Text;
@@ -197,8 +224,9 @@ namespace SaleManagement.VIEW
             HANGHOA.MaLoaiHangHoa = ((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE;
             HANGHOA.MaNhaCungCap = ((CBBItem)cbbSUPPLIERs.SelectedItem).VALUE;
             HANGHOA.MaNhaSanXuat = ((CBBItem)cbbPRODUCERs.SelectedItem).VALUE;
+            HANGHOA.HinhAnh = images;
             if (string.IsNullOrEmpty(txtID_PRODUCT.Text)|| string.IsNullOrEmpty(txtNAME_PRODUCT.Text) || string.IsNullOrEmpty(txtQUANTITY.Text) ||
-                string.IsNullOrEmpty(txtBUY.Text) || string.IsNullOrEmpty(txtSALE.Text) || string.IsNullOrEmpty(txtDESCRIBE.Text))
+                string.IsNullOrEmpty(txtBUY.Text) || string.IsNullOrEmpty(txtSALE.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin hàng hóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 disable(true);
@@ -231,6 +259,7 @@ namespace SaleManagement.VIEW
                     GETITEM.MaLoaiHangHoa = HANGHOA.MaLoaiHangHoa;
                     GETITEM.MaNhaCungCap = HANGHOA.MaNhaCungCap;
                     GETITEM.MaNhaSanXuat = HANGHOA.MaNhaSanXuat;
+                    GETITEM.HinhAnh = HANGHOA.HinhAnh;
                     DB.SaveChanges();
                     MessageBox.Show("Sửa hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     disable(false);
@@ -318,12 +347,20 @@ namespace SaleManagement.VIEW
                 dgvLISTITEMS.DataSource = GETITEMs.ToList();
             }
         }
+        public Image ByteArrayToImage(byte[] byArrayIn)
+        {
+            using (MemoryStream ms = new MemoryStream(byArrayIn))
+            {
+                Image returnImage = Image.FromStream(ms);
+                return returnImage;
+            }
+        }
         private void dgvLISTITEMS_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             string ID_ITEM = dgvLISTITEMS.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
+            txtID_PRODUCT.Text = ID_ITEM;
             var HANGHOA = DB.tblHangHoas.Find(ID_ITEM);
-            txtID_PRODUCT.Text = HANGHOA.MaHangHoa;
             txtNAME_PRODUCT.Text = HANGHOA.TenHangHoa;
             txtQUANTITY.Text = HANGHOA.SoLuong.ToString();
             txtDESCRIBE.Text = HANGHOA.MoTa;
@@ -335,6 +372,7 @@ namespace SaleManagement.VIEW
             cbbPRODUCERs.Text = BLL_ITEMS.Instance.GetText(PRODUCER, BLL_ITEMS.Instance.GetCBBProducer());
             txtBUY.Text = String.Format("{0:n0}", Convert.ToDouble(HANGHOA.GiaNhap));
             txtSALE.Text = String.Format("{0:n0}", Convert.ToDouble(HANGHOA.GiaBan));
+            pbIMAGE.Image = ByteArrayToImage(HANGHOA.HinhAnh.ToArray());
         }
         // Thay đổi txtID_ITEM khi cbbTYPE_OF_ITEMS thay đổi
         private void cbbTYPE_OF_ITEMS_SelectedIndexChanged(object sender, EventArgs e)
@@ -446,6 +484,7 @@ namespace SaleManagement.VIEW
                 txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
                 txtSEARCH.ForeColor = Color.Silver;
             }
-        }        
+        }
+
     }
 }

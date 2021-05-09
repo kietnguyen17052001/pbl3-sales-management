@@ -204,6 +204,7 @@ namespace SaleManagement
             this.btnThongKe.Text = "Thống Kê";
             this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnThongKe.UseVisualStyleBackColor = false;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // btnDoiMatKhau
             // 

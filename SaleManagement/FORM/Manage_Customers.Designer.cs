@@ -43,9 +43,6 @@ namespace SaleManagement.VIEW
             this.txtSEARCH = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvLISTCUSTOMER = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panelMANAGE_CUSTOMER = new System.Windows.Forms.Panel();
-            this.btnHOME = new System.Windows.Forms.Button();
             this.rbNAME_CUSTOMER = new System.Windows.Forms.RadioButton();
             this.rbID_CUSTOMER = new System.Windows.Forms.RadioButton();
             this.btnADD = new System.Windows.Forms.Button();
@@ -57,9 +54,10 @@ namespace SaleManagement.VIEW
             this.btnSEARCH = new System.Windows.Forms.Button();
             this.btnSHOW = new System.Windows.Forms.Button();
             this.btnEXCEL = new System.Windows.Forms.Button();
+            this.btnHOME = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbGENDER.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTCUSTOMER)).BeginInit();
-            this.panelMANAGE_CUSTOMER.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbGENDER
@@ -100,7 +98,7 @@ namespace SaleManagement.VIEW
             // 
             this.txtADDRESS.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtADDRESS.ForeColor = System.Drawing.Color.Black;
-            this.txtADDRESS.Location = new System.Drawing.Point(133, 277);
+            this.txtADDRESS.Location = new System.Drawing.Point(133, 289);
             this.txtADDRESS.Name = "txtADDRESS";
             this.txtADDRESS.Size = new System.Drawing.Size(237, 28);
             this.txtADDRESS.TabIndex = 76;
@@ -118,7 +116,7 @@ namespace SaleManagement.VIEW
             // 
             this.txtNAME_CUSTOMER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_CUSTOMER.ForeColor = System.Drawing.Color.Black;
-            this.txtNAME_CUSTOMER.Location = new System.Drawing.Point(133, 198);
+            this.txtNAME_CUSTOMER.Location = new System.Drawing.Point(133, 183);
             this.txtNAME_CUSTOMER.Name = "txtNAME_CUSTOMER";
             this.txtNAME_CUSTOMER.Size = new System.Drawing.Size(237, 28);
             this.txtNAME_CUSTOMER.TabIndex = 74;
@@ -126,7 +124,7 @@ namespace SaleManagement.VIEW
             // txtID_CUSTOMER
             // 
             this.txtID_CUSTOMER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID_CUSTOMER.Location = new System.Drawing.Point(133, 159);
+            this.txtID_CUSTOMER.Location = new System.Drawing.Point(133, 127);
             this.txtID_CUSTOMER.Name = "txtID_CUSTOMER";
             this.txtID_CUSTOMER.Size = new System.Drawing.Size(237, 28);
             this.txtID_CUSTOMER.TabIndex = 73;
@@ -135,7 +133,7 @@ namespace SaleManagement.VIEW
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(25, 278);
+            this.label4.Location = new System.Drawing.Point(25, 290);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 21);
             this.label4.TabIndex = 71;
@@ -155,7 +153,7 @@ namespace SaleManagement.VIEW
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(25, 199);
+            this.label6.Location = new System.Drawing.Point(25, 184);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 21);
             this.label6.TabIndex = 69;
@@ -165,7 +163,7 @@ namespace SaleManagement.VIEW
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(25, 160);
+            this.label7.Location = new System.Drawing.Point(25, 128);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 21);
             this.label7.TabIndex = 68;
@@ -189,7 +187,7 @@ namespace SaleManagement.VIEW
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(929, 113);
+            this.label2.Location = new System.Drawing.Point(929, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(293, 26);
             this.label2.TabIndex = 62;
@@ -201,58 +199,14 @@ namespace SaleManagement.VIEW
             this.dgvLISTCUSTOMER.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLISTCUSTOMER.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvLISTCUSTOMER.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLISTCUSTOMER.Location = new System.Drawing.Point(398, 157);
+            this.dgvLISTCUSTOMER.Location = new System.Drawing.Point(398, 127);
             this.dgvLISTCUSTOMER.Name = "dgvLISTCUSTOMER";
             this.dgvLISTCUSTOMER.RowHeadersWidth = 62;
             this.dgvLISTCUSTOMER.RowTemplate.Height = 28;
             this.dgvLISTCUSTOMER.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLISTCUSTOMER.Size = new System.Drawing.Size(824, 464);
+            this.dgvLISTCUSTOMER.Size = new System.Drawing.Size(824, 494);
             this.dgvLISTCUSTOMER.TabIndex = 61;
             this.dgvLISTCUSTOMER.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLISTCUSTOMER_CellClick);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(435, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(379, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "QUẢN LÝ KHÁCH HÀNG";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panelMANAGE_CUSTOMER
-            // 
-            this.panelMANAGE_CUSTOMER.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelMANAGE_CUSTOMER.BackColor = System.Drawing.Color.SteelBlue;
-            this.panelMANAGE_CUSTOMER.Controls.Add(this.btnHOME);
-            this.panelMANAGE_CUSTOMER.Controls.Add(this.label1);
-            this.panelMANAGE_CUSTOMER.Location = new System.Drawing.Point(0, 0);
-            this.panelMANAGE_CUSTOMER.Name = "panelMANAGE_CUSTOMER";
-            this.panelMANAGE_CUSTOMER.Size = new System.Drawing.Size(1234, 77);
-            this.panelMANAGE_CUSTOMER.TabIndex = 60;
-            // 
-            // btnHOME
-            // 
-            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnHOME.FlatAppearance.BorderSize = 0;
-            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHOME.ForeColor = System.Drawing.Color.White;
-            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
-            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHOME.Location = new System.Drawing.Point(1034, 3);
-            this.btnHOME.Name = "btnHOME";
-            this.btnHOME.Size = new System.Drawing.Size(197, 68);
-            this.btnHOME.TabIndex = 37;
-            this.btnHOME.Text = "Trang chủ";
-            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHOME.UseVisualStyleBackColor = false;
-            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
             // 
             // rbNAME_CUSTOMER
             // 
@@ -421,7 +375,7 @@ namespace SaleManagement.VIEW
             this.btnSHOW.ForeColor = System.Drawing.Color.White;
             this.btnSHOW.Image = global::SaleManagement.Properties.Resources.activity_feed_24;
             this.btnSHOW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSHOW.Location = new System.Drawing.Point(398, 103);
+            this.btnSHOW.Location = new System.Drawing.Point(398, 73);
             this.btnSHOW.Name = "btnSHOW";
             this.btnSHOW.Size = new System.Drawing.Size(119, 48);
             this.btnSHOW.TabIndex = 63;
@@ -441,7 +395,7 @@ namespace SaleManagement.VIEW
             this.btnEXCEL.ForeColor = System.Drawing.Color.White;
             this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
             this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEXCEL.Location = new System.Drawing.Point(532, 103);
+            this.btnEXCEL.Location = new System.Drawing.Point(532, 73);
             this.btnEXCEL.Name = "btnEXCEL";
             this.btnEXCEL.Size = new System.Drawing.Size(154, 48);
             this.btnEXCEL.TabIndex = 119;
@@ -450,11 +404,44 @@ namespace SaleManagement.VIEW
             this.btnEXCEL.UseVisualStyleBackColor = false;
             this.btnEXCEL.Click += new System.EventHandler(this.btnEXCEL_Click);
             // 
+            // btnHOME
+            // 
+            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnHOME.FlatAppearance.BorderSize = 0;
+            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHOME.ForeColor = System.Drawing.Color.White;
+            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
+            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHOME.Location = new System.Drawing.Point(1025, 12);
+            this.btnHOME.Name = "btnHOME";
+            this.btnHOME.Size = new System.Drawing.Size(197, 65);
+            this.btnHOME.TabIndex = 120;
+            this.btnHOME.Text = "Trang chủ";
+            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHOME.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label1.Location = new System.Drawing.Point(516, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(253, 31);
+            this.label1.TabIndex = 122;
+            this.label1.Text = "Quản lý khách hàng";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // FrmManage_Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnHOME);
             this.Controls.Add(this.btnEXCEL);
             this.Controls.Add(this.rbNAME_CUSTOMER);
             this.Controls.Add(this.rbID_CUSTOMER);
@@ -478,15 +465,12 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.btnSHOW);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvLISTCUSTOMER);
-            this.Controls.Add(this.panelMANAGE_CUSTOMER);
             this.Name = "FrmManage_Customers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage_Customers";
             this.gbGENDER.ResumeLayout(false);
             this.gbGENDER.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTCUSTOMER)).EndInit();
-            this.panelMANAGE_CUSTOMER.ResumeLayout(false);
-            this.panelMANAGE_CUSTOMER.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,11 +500,10 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnSHOW;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvLISTCUSTOMER;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panelMANAGE_CUSTOMER;
         private System.Windows.Forms.RadioButton rbNAME_CUSTOMER;
         private System.Windows.Forms.RadioButton rbID_CUSTOMER;
-        private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.Button btnEXCEL;
+        private System.Windows.Forms.Button btnHOME;
+        private System.Windows.Forms.Label label1;
     }
 }

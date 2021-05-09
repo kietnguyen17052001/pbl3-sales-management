@@ -29,8 +29,6 @@ namespace SaleManagement.VIEW
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelMANAGE_DATA = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnLIST_BILLS = new System.Windows.Forms.Button();
             this.btnBILL = new System.Windows.Forms.Button();
             this.btnSUPPLIERS = new System.Windows.Forms.Button();
@@ -40,33 +38,9 @@ namespace SaleManagement.VIEW
             this.btnITEMS = new System.Windows.Forms.Button();
             this.btnSTAFFS = new System.Windows.Forms.Button();
             this.btnCUSTOMERS = new System.Windows.Forms.Button();
-            this.panelMANAGE_DATA.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panelMANAGE_DATA
-            // 
-            this.panelMANAGE_DATA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelMANAGE_DATA.BackColor = System.Drawing.Color.SteelBlue;
-            this.panelMANAGE_DATA.Controls.Add(this.label1);
-            this.panelMANAGE_DATA.Location = new System.Drawing.Point(0, -1);
-            this.panelMANAGE_DATA.Name = "panelMANAGE_DATA";
-            this.panelMANAGE_DATA.Size = new System.Drawing.Size(1234, 99);
-            this.panelMANAGE_DATA.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(482, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(275, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "QUẢN LÝ DỮ LIỆU\r\n";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnLIST_BILLS
             // 
@@ -141,9 +115,9 @@ namespace SaleManagement.VIEW
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImage = global::SaleManagement.Properties.Resources.homeapp;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(687, 95);
+            this.pictureBox1.Location = new System.Drawing.Point(672, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(547, 596);
+            this.pictureBox1.Size = new System.Drawing.Size(562, 691);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
@@ -257,16 +231,28 @@ namespace SaleManagement.VIEW
             this.btnCUSTOMERS.UseVisualStyleBackColor = false;
             this.btnCUSTOMERS.Click += new System.EventHandler(this.btnCUSTOMERS_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label1.Location = new System.Drawing.Point(228, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 31);
+            this.label1.TabIndex = 122;
+            this.label1.Text = "Quản lý dữ liệu";
+            // 
             // FrmManage_Data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLIST_BILLS);
             this.Controls.Add(this.btnBILL);
             this.Controls.Add(this.btnSUPPLIERS);
-            this.Controls.Add(this.panelMANAGE_DATA);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnBACK);
             this.Controls.Add(this.btnTYPE_ITEMS);
@@ -276,17 +262,13 @@ namespace SaleManagement.VIEW
             this.Name = "FrmManage_Data";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MANAGE_DATA";
-            this.panelMANAGE_DATA.ResumeLayout(false);
-            this.panelMANAGE_DATA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelMANAGE_DATA;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnBACK;
         private System.Windows.Forms.Button btnTYPE_ITEMS;
@@ -296,5 +278,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnSUPPLIERS;
         private System.Windows.Forms.Button btnBILL;
         private System.Windows.Forms.Button btnLIST_BILLS;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -39,5 +39,12 @@ namespace SaleManagement
             frm.Show();
             this.Close();
         }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            FrmStatistic frm = new FrmStatistic();
+            frm.Show();
+            this.Close();
+        }
     }
 }

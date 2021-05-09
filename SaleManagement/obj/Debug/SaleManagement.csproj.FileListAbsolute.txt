@@ -33,3 +33,4 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmLogin.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.Staff.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmReport.resources
+C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmStatistic.resources
