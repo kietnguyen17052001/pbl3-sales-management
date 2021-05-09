@@ -1,4 +1,5 @@
 ﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,23 +69,24 @@ namespace SaleManagement.FORM
         private void btnADD_PRODUCT_Click(object sender, EventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            if(dgvProduct.SelectedRows.Count == 0)
+            idProduct = dgvProduct.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
+            productQty = Convert.ToInt32(txtQUANTITY.Text);
+            pricePro = Convert.ToDouble(dgvProduct.SelectedRows[0].Cells["GiaBan"].Value.ToString());
+            discount = Convert.ToInt32(txtDISCOUNT.Text);
+            if (productQty > Convert.ToInt32(dgvProduct.SelectedRows[0].Cells["SoLuong"].Value.ToString()))
             {
-                MessageBox.Show("Vui lòng chọn loại hàng hóa cần thêm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lbSTATUS.Text = "KHÔNG ĐỦ SL";
             }
             else
             {
+                lbSTATUS.Text = "";
                 tblChiTietHoaDonBanHang invoiceDetail = new tblChiTietHoaDonBanHang();
-                idProduct = dgvProduct.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
-                productQty = Convert.ToInt32(txtQUANTITY.Text);
-                pricePro = Convert.ToDouble(dgvProduct.SelectedRows[0].Cells["GiaBan"].Value.ToString());
-                discount = Convert.ToInt32(txtDISCOUNT.Text);
                 invoiceDetail.MaHoaDonBan = idInvoice;
                 invoiceDetail.MaHangHoa = idProduct;
                 invoiceDetail.SoLuong = productQty;
                 invoiceDetail.DonGia = pricePro;
                 invoiceDetail.GiamGia = discount;
-                invoiceDetail.TongTien = pricePro * productQty - pricePro * productQty * discount;
+                invoiceDetail.TongTien = pricePro * productQty - pricePro * productQty * discount/100;
                 DB.tblChiTietHoaDonBanHangs.Add(invoiceDetail);
                 var product = DB.tblHangHoas.Find(idProduct);
                 product.SoLuong -= productQty;
@@ -103,17 +105,69 @@ namespace SaleManagement.FORM
                 }
             }
         }
+        private void btnSEARCH_Click(object sender, EventArgs e)
+        {
+            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+            string information = txtSEARCH.Text;
+            var product = DB.tblHangHoas.Where(p => p.MaHangHoa.Contains(information) || p.TenHangHoa.Contains(information)).Select(p => new {
+                p.MaHangHoa,
+                p.TenHangHoa,
+                p.SoLuong,
+                p.GiaBan,
+            });
+            dgvProduct.DataSource = product.ToList();
+        }
+        private void txtSEARCH_Enter(object sender, EventArgs e)
+        {
+            if (txtSEARCH.Text == "Nhập mã hoặc tên hàng hóa")
+            {
+                txtSEARCH.Text = "";
+                txtSEARCH.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtSEARCH_Leave(object sender, EventArgs e)
+        {
+            if (txtSEARCH.Text == "")
+            {
+                txtSEARCH.Text = "Nhập mã hoặc tên hàng hóa";
+                txtSEARCH.ForeColor = Color.Silver;
+            }
+        }
         private void btnCANCEL_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        private void txtQUANTITY_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDISCOUNT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void txtQUANTITY_TextChanged(object sender, EventArgs e)
         {
-            //if (Convert.ToInt32(txtQUANTITY.Text) > Convert.ToInt32(dgvProduct.SelectedRows[0].Cells["SoLuong"].Value.ToString()))
-            //{
-            //    txtQUANTITY.Text = (Convert.ToInt32(txtQUANTITY.Text) / 10).ToString();
-            //}
+            if (string.IsNullOrEmpty(txtQUANTITY.Text))
+            {
+                txtQUANTITY.Text = "1";
+            }
+        }
+        private void txtDISCOUNT_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDISCOUNT.Text))
+            {
+                txtDISCOUNT.Text = "0";
+            }
         }
     }
 }

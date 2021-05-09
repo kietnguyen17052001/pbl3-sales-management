@@ -1,4 +1,5 @@
-﻿using SaleManagement.VIEW;
+﻿using SaleManagement.FORM;
+using SaleManagement.VIEW;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,21 @@ namespace SaleManagement
         {
             FrmManage_Data Frm = new FrmManage_Data();
             Frm.Show();
-            this.Hide();
+            this.Close();
+        }
+
+        private void btnLOGOUT_Click(object sender, EventArgs e)
+        {
+            FrmLogin frm = new FrmLogin();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            FrmReport frm = new FrmReport();
+            frm.Show();
+            this.Close();
         }
     }
 }

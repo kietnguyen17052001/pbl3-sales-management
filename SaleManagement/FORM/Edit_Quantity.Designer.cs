@@ -37,27 +37,28 @@ namespace SaleManagement.FORM
             this.label2 = new System.Windows.Forms.Label();
             this.txtQUANTITY = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lbSTATUS = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbQUANTITY = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNEW_QUANTITY
             // 
             this.txtNEW_QUANTITY.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtNEW_QUANTITY.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNEW_QUANTITY.ForeColor = System.Drawing.Color.Silver;
-            this.txtNEW_QUANTITY.Location = new System.Drawing.Point(244, 187);
+            this.txtNEW_QUANTITY.ForeColor = System.Drawing.Color.Black;
+            this.txtNEW_QUANTITY.Location = new System.Drawing.Point(263, 187);
             this.txtNEW_QUANTITY.Name = "txtNEW_QUANTITY";
             this.txtNEW_QUANTITY.Size = new System.Drawing.Size(203, 30);
             this.txtNEW_QUANTITY.TabIndex = 91;
-            this.txtNEW_QUANTITY.Text = "Nhập số lượng mới";
-            this.txtNEW_QUANTITY.Enter += new System.EventHandler(this.txtNEW_QUANTITY_Enter);
-            this.txtNEW_QUANTITY.Leave += new System.EventHandler(this.txtNEW_QUANTITY_Leave);
+            this.txtNEW_QUANTITY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNEW_QUANTITY_KeyPress);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(91, 190);
+            this.label1.Location = new System.Drawing.Point(69, 190);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 24);
             this.label1.TabIndex = 90;
@@ -74,7 +75,7 @@ namespace SaleManagement.FORM
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
             this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSAVE.Location = new System.Drawing.Point(128, 250);
+            this.btnSAVE.Location = new System.Drawing.Point(126, 280);
             this.btnSAVE.Name = "btnSAVE";
             this.btnSAVE.Size = new System.Drawing.Size(121, 48);
             this.btnSAVE.TabIndex = 93;
@@ -94,7 +95,7 @@ namespace SaleManagement.FORM
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCANCEL.Location = new System.Drawing.Point(265, 252);
+            this.btnCANCEL.Location = new System.Drawing.Point(263, 282);
             this.btnCANCEL.Name = "btnCANCEL";
             this.btnCANCEL.Size = new System.Drawing.Size(121, 46);
             this.btnCANCEL.TabIndex = 94;
@@ -108,10 +109,10 @@ namespace SaleManagement.FORM
             this.txtPRODUCT.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtPRODUCT.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPRODUCT.ForeColor = System.Drawing.Color.Black;
-            this.txtPRODUCT.Location = new System.Drawing.Point(244, 77);
+            this.txtPRODUCT.Location = new System.Drawing.Point(263, 12);
             this.txtPRODUCT.Multiline = true;
             this.txtPRODUCT.Name = "txtPRODUCT";
-            this.txtPRODUCT.Size = new System.Drawing.Size(203, 55);
+            this.txtPRODUCT.Size = new System.Drawing.Size(203, 87);
             this.txtPRODUCT.TabIndex = 96;
             // 
             // label2
@@ -119,7 +120,7 @@ namespace SaleManagement.FORM
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(91, 80);
+            this.label2.Location = new System.Drawing.Point(69, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 24);
             this.label2.TabIndex = 95;
@@ -130,7 +131,7 @@ namespace SaleManagement.FORM
             this.txtQUANTITY.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtQUANTITY.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQUANTITY.ForeColor = System.Drawing.Color.Black;
-            this.txtQUANTITY.Location = new System.Drawing.Point(244, 144);
+            this.txtQUANTITY.Location = new System.Drawing.Point(263, 141);
             this.txtQUANTITY.Name = "txtQUANTITY";
             this.txtQUANTITY.Size = new System.Drawing.Size(203, 30);
             this.txtQUANTITY.TabIndex = 98;
@@ -140,17 +141,51 @@ namespace SaleManagement.FORM
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(91, 147);
+            this.label3.Location = new System.Drawing.Point(69, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 24);
+            this.label3.Size = new System.Drawing.Size(173, 24);
             this.label3.TabIndex = 97;
-            this.label3.Text = "Số lượng";
+            this.label3.Text = "Số lượng đã mua";
+            // 
+            // lbSTATUS
+            // 
+            this.lbSTATUS.AutoSize = true;
+            this.lbSTATUS.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSTATUS.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lbSTATUS.Location = new System.Drawing.Point(150, 235);
+            this.lbSTATUS.Name = "lbSTATUS";
+            this.lbSTATUS.Size = new System.Drawing.Size(0, 27);
+            this.lbSTATUS.TabIndex = 142;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label4.Location = new System.Drawing.Point(68, 105);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 24);
+            this.label4.TabIndex = 144;
+            this.label4.Text = "Số lượng";
+            // 
+            // lbQUANTITY
+            // 
+            this.lbQUANTITY.AutoSize = true;
+            this.lbQUANTITY.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQUANTITY.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lbQUANTITY.Location = new System.Drawing.Point(258, 104);
+            this.lbQUANTITY.Name = "lbQUANTITY";
+            this.lbQUANTITY.Size = new System.Drawing.Size(0, 25);
+            this.lbQUANTITY.TabIndex = 145;
             // 
             // FrmEdit_Quantity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 315);
+            this.ClientSize = new System.Drawing.Size(513, 340);
+            this.Controls.Add(this.lbQUANTITY);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbSTATUS);
             this.Controls.Add(this.txtQUANTITY);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPRODUCT);
@@ -177,5 +212,8 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtQUANTITY;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbSTATUS;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbQUANTITY;
     }
 }

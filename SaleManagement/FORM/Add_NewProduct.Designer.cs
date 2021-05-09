@@ -42,6 +42,7 @@ namespace SaleManagement.FORM
             this.txtQUANTITY = new System.Windows.Forms.TextBox();
             this.txtDISCOUNT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lbSTATUS = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,6 +114,7 @@ namespace SaleManagement.FORM
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.RowHeadersWidth = 62;
             this.dgvProduct.RowTemplate.Height = 28;
+            this.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProduct.Size = new System.Drawing.Size(697, 279);
             this.dgvProduct.TabIndex = 136;
             // 
@@ -146,6 +148,8 @@ namespace SaleManagement.FORM
             this.txtSEARCH.Size = new System.Drawing.Size(309, 28);
             this.txtSEARCH.TabIndex = 140;
             this.txtSEARCH.Text = "Nhập mã hoặc tên hàng hóa";
+            this.txtSEARCH.Enter += new System.EventHandler(this.txtSEARCH_Enter);
+            this.txtSEARCH.Leave += new System.EventHandler(this.txtSEARCH_Leave);
             // 
             // btnSEARCH
             // 
@@ -165,6 +169,7 @@ namespace SaleManagement.FORM
             this.btnSEARCH.Text = "Tìm kiếm";
             this.btnSEARCH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSEARCH.UseVisualStyleBackColor = false;
+            this.btnSEARCH.Click += new System.EventHandler(this.btnSEARCH_Click);
             // 
             // label1
             // 
@@ -193,6 +198,7 @@ namespace SaleManagement.FORM
             this.txtQUANTITY.Size = new System.Drawing.Size(59, 26);
             this.txtQUANTITY.TabIndex = 143;
             this.txtQUANTITY.TextChanged += new System.EventHandler(this.txtQUANTITY_TextChanged);
+            this.txtQUANTITY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQUANTITY_KeyPress);
             // 
             // txtDISCOUNT
             // 
@@ -200,6 +206,8 @@ namespace SaleManagement.FORM
             this.txtDISCOUNT.Name = "txtDISCOUNT";
             this.txtDISCOUNT.Size = new System.Drawing.Size(59, 26);
             this.txtDISCOUNT.TabIndex = 144;
+            this.txtDISCOUNT.TextChanged += new System.EventHandler(this.txtDISCOUNT_TextChanged);
+            this.txtDISCOUNT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDISCOUNT_KeyPress);
             // 
             // label3
             // 
@@ -211,11 +219,21 @@ namespace SaleManagement.FORM
             this.label3.TabIndex = 145;
             this.label3.Text = "%";
             // 
+            // lbSTATUS
+            // 
+            this.lbSTATUS.AutoSize = true;
+            this.lbSTATUS.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSTATUS.Location = new System.Drawing.Point(715, 44);
+            this.lbSTATUS.Name = "lbSTATUS";
+            this.lbSTATUS.Size = new System.Drawing.Size(0, 27);
+            this.lbSTATUS.TabIndex = 146;
+            // 
             // FrmAdd_NewProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 442);
+            this.Controls.Add(this.lbSTATUS);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtDISCOUNT);
             this.Controls.Add(this.txtQUANTITY);
@@ -253,5 +271,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.TextBox txtQUANTITY;
         private System.Windows.Forms.TextBox txtDISCOUNT;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbSTATUS;
     }
 }

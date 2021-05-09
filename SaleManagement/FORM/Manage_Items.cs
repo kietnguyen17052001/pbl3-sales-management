@@ -1,4 +1,5 @@
 ﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using SaleManagement.FORM;
 using System;
 using System.Collections.Generic;
@@ -196,7 +197,8 @@ namespace SaleManagement.VIEW
             HANGHOA.MaLoaiHangHoa = ((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE;
             HANGHOA.MaNhaCungCap = ((CBBItem)cbbSUPPLIERs.SelectedItem).VALUE;
             HANGHOA.MaNhaSanXuat = ((CBBItem)cbbPRODUCERs.SelectedItem).VALUE;
-            if (txtID_PRODUCT.Text == "" || txtNAME_PRODUCT.Text == "" || txtQUANTITY.Text == "" || txtBUY.Text == "" || txtSALE.Text == "" || txtDESCRIBE.Text == "")
+            if (string.IsNullOrEmpty(txtID_PRODUCT.Text)|| string.IsNullOrEmpty(txtNAME_PRODUCT.Text) || string.IsNullOrEmpty(txtQUANTITY.Text) ||
+                string.IsNullOrEmpty(txtBUY.Text) || string.IsNullOrEmpty(txtSALE.Text) || string.IsNullOrEmpty(txtDESCRIBE.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin hàng hóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 disable(true);
@@ -315,9 +317,8 @@ namespace SaleManagement.VIEW
                 });
                 dgvLISTITEMS.DataSource = GETITEMs.ToList();
             }
-            
         }
-        private void dgvLISTITEMS_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvLISTITEMS_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             string ID_ITEM = dgvLISTITEMS.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
@@ -445,8 +446,6 @@ namespace SaleManagement.VIEW
                 txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
                 txtSEARCH.ForeColor = Color.Silver;
             }
-        }
-
-        
+        }        
     }
 }

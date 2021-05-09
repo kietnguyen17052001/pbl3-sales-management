@@ -52,6 +52,7 @@
           <Property Name="GiaNhap" Type="float" Nullable="false" />
           <Property Name="GiaBan" Type="float" Nullable="false" />
           <Property Name="MoTa" Type="ntext" />
+          <Property Name="HinhAnh" Type="image" />
         </EntityType>
         <EntityType Name="tblHoaDonBanHang">
           <Key>
@@ -126,11 +127,11 @@
         </EntityType>
         <EntityType Name="tblTaiKhoan">
           <Key>
-            <PropertyRef Name="MaNhanVien" />
+            <PropertyRef Name="MaNguoiDung" />
           </Key>
-          <Property Name="MaNhanVien" Type="nchar" MaxLength="100" Nullable="false" />
-          <Property Name="TenDangNhap" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MaNguoiDung" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ChucVu" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK__tblChiTie__MaHan__703EA55A">
           <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="1" />
@@ -378,6 +379,7 @@
           <Property Name="GiaNhap" Type="Double" Nullable="false" />
           <Property Name="GiaBan" Type="Double" Nullable="false" />
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="tblChiTietHoaDonBanHangs" Relationship="Self.FK__tblChiTie__MaHan__703EA55A" FromRole="tblHangHoa" ToRole="tblChiTietHoaDonBanHang" />
           <NavigationProperty Name="tblChiTietHoaDonNhapHangs" Relationship="Self.FK__tblChiTie__MaHan__78D3EB5B" FromRole="tblHangHoa" ToRole="tblChiTietHoaDonNhapHang" />
           <NavigationProperty Name="tblLoaiHangHoa" Relationship="Self.FK__tblHangHo__MaLoa__65C116E7" FromRole="tblHangHoa" ToRole="tblLoaiHangHoa" />
@@ -470,11 +472,11 @@
         </EntityType>
         <EntityType Name="tblTaiKhoan">
           <Key>
-            <PropertyRef Name="MaNhanVien" />
+            <PropertyRef Name="MaNguoiDung" />
           </Key>
-          <Property Name="MaNhanVien" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="TenDangNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaNguoiDung" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK__tblChiTie__MaHan__703EA55A">
           <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="1" />
@@ -719,6 +721,7 @@
                 <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
                 <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -803,9 +806,9 @@
           <EntitySetMapping Name="tblTaiKhoans">
             <EntityTypeMapping TypeName="PBL3Model.tblTaiKhoan">
               <MappingFragment StoreEntitySet="tblTaiKhoan">
-                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
-                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

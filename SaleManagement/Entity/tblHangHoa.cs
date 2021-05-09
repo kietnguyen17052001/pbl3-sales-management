@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaleManagement
+namespace SaleManagement.Entity
 {
     using System;
     using System.Collections.Generic;
@@ -30,6 +30,7 @@ namespace SaleManagement
         public double GiaNhap { get; set; }
         public double GiaBan { get; set; }
         public string MoTa { get; set; }
+        public byte[] HinhAnh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblChiTietHoaDonBanHang> tblChiTietHoaDonBanHangs { get; set; }

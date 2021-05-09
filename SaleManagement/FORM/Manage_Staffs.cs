@@ -1,4 +1,5 @@
 ﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -281,7 +282,7 @@ namespace SaleManagement.VIEW
                 return;
             }
         }
-        private void dgvLIST_STAFF_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvLIST_STAFF_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             string idStaff = dgvLIST_STAFF.SelectedRows[0].Cells["MaNhanVien"].Value.ToString();
@@ -293,7 +294,7 @@ namespace SaleManagement.VIEW
             txtPHONE.Text = staff.SoDienThoai;
             txtADDRESS.Text = staff.DiaChi;
             txtSALARY.Text = String.Format("{0:n0}", Convert.ToDouble(staff.Luong));
-            if(staff.GioiTinh == true)
+            if (staff.GioiTinh == true)
             {
                 rbMALE.Checked = true;
             }
@@ -319,7 +320,5 @@ namespace SaleManagement.VIEW
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }
-
-        
     }
 }

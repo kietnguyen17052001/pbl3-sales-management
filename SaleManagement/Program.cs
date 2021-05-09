@@ -1,4 +1,5 @@
-﻿using SaleManagement.VIEW;
+﻿using SaleManagement.FORM;
+using SaleManagement.VIEW;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace SaleManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmSale_Management());
+            Application.Run(new FrmReport());
         }
     }
 }

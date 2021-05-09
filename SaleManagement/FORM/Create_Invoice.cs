@@ -1,4 +1,5 @@
 ﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using SaleManagement.FORM;
 using System;
 using System.Collections.Generic;
@@ -95,7 +96,7 @@ namespace SaleManagement.VIEW
             txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", sendByCustomer);
         }
         
-        public void showITEMs()
+        public void ShowProduct()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             if (cbbTYPE_OF_ITEMS.SelectedIndex == 0)
@@ -127,7 +128,7 @@ namespace SaleManagement.VIEW
         // Btn liệt kê hàng hóa theo loại hàng hóa
         private void btnSHOW_Click(object sender, EventArgs e)
         {
-            showITEMs();
+            ShowProduct();
         }
         // Tìm kiếm hàng hóa theo mã hoặc tên hàng hóa
         private void btnSEARCH_Click(object sender, EventArgs e)
@@ -239,6 +240,7 @@ namespace SaleManagement.VIEW
                             item.SoLuong -= Convert.ToInt32(data["SoLuong"].ToString());
                             DB.SaveChanges();// thay đổi số lượng hàng hóa sau khi thanh toán
                         }
+                        ShowProduct();
                         load();
                     }
                     catch (Exception)
@@ -288,7 +290,7 @@ namespace SaleManagement.VIEW
         // Btn in giao diện cho hóa đơn
         private void btnPRINT_Click(object sender, EventArgs e)
         {
-            if (DATA.Rows.Count == 0)
+            if (DATA.Rows.Count == 0 || cbbSTAFF.SelectedIndex == 0 || cbbCUSTOMER.SelectedIndex == 0)
             {
                 MessageBox.Show("Không thể thực hiện chức năng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -343,6 +345,21 @@ namespace SaleManagement.VIEW
             e.Graphics.DrawString("*** LƯU Ý: " + txtNOTE.Text, new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(50, distance + 50*6));
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50*7));
             e.Graphics.DrawString("Cảm ơn và hẹn gặp lại quý khách!", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(250, distance + 50 * 8));
+        }
+        // set số lượng mới cho sản phẩm
+        public void setNewQtyForProduct(int newQty)
+        {
+            dgvLIST.SelectedRows[0].Cells["SoLuong"].Value = newQty;
+            double newPrice = (productPrice * newQty - productPrice * newQty * productDiscount / 100);
+            dgvLIST.SelectedRows[0].Cells["ThanhTien(VNĐ)"].Value = String.Format("{0:n0}",newPrice);
+            setDATA_FOR_TXT();
+        }
+        // Edit số lượng mới cho sản phẩm
+        private void btnEDIT_Click(object sender, EventArgs e)
+        {
+            FrmEditQty_CreateInvoice frm = new FrmEditQty_CreateInvoice(idProduct);
+            frm.d += new FrmEditQty_CreateInvoice.myDEL(setNewQtyForProduct);
+            frm.Show();
         }
 
         // Btn quay lại

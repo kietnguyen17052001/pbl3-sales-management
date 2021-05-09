@@ -1,4 +1,5 @@
-﻿using SaleManagement.VIEW;
+﻿using SaleManagement.Entity;
+using SaleManagement.VIEW;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

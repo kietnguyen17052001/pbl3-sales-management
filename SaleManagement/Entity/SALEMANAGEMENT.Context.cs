@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaleManagement
+namespace SaleManagement.Entity
 {
     using System;
     using System.Data.Entity;

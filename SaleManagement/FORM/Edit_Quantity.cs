@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaleManagement.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,41 +16,55 @@ namespace SaleManagement.FORM
         public delegate void myDEL(int quantity);
         public myDEL d { get; set; }
         public string idProduct { get; set; }
-        public FrmEdit_Quantity(string nameProduct, int quantity)
+        public FrmEdit_Quantity(string _idProduct, string nameProduct, int quantity)
         {
+            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             InitializeComponent();
             txtPRODUCT.Text = nameProduct;
             txtQUANTITY.Text = quantity.ToString();
+            idProduct = _idProduct;
+            var product = DB.tblHangHoas.Find(idProduct);
+            lbQUANTITY.Text = product.SoLuong.ToString();
             txtPRODUCT.Enabled = false;
             txtQUANTITY.Enabled = false;
+            txtNEW_QUANTITY.Text = "1";
         }
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            d(Convert.ToInt32(txtNEW_QUANTITY.Text));
-            this.Close();
+            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+            if (string.IsNullOrEmpty(txtNEW_QUANTITY.Text))
+            {
+                MessageBox.Show("Vui lòng nhập số lượng mới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                int oldQty = Convert.ToInt32(txtQUANTITY.Text);
+                int newQty = Convert.ToInt32(txtNEW_QUANTITY.Text);
+                var product = DB.tblHangHoas.Find(idProduct);
+                if (newQty > product.SoLuong)
+                {
+                    lbSTATUS.Text = "KHÔNG ĐỦ SL";
+                }
+                else
+                {
+                    product.SoLuong = product.SoLuong + oldQty - newQty;
+                    DB.SaveChanges();
+                    d(newQty);
+                    this.Close();
+                }
+            }
         }
 
         private void btnCANCEL_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void txtNEW_QUANTITY_Enter(object sender, EventArgs e)
+        private void txtNEW_QUANTITY_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtNEW_QUANTITY.Text == "Nhập số lượng mới")
+            if(!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
             {
-                txtNEW_QUANTITY.Text = "";
-                txtNEW_QUANTITY.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtNEW_QUANTITY_Leave(object sender, EventArgs e)
-        {
-            if (txtNEW_QUANTITY.Text == "")
-            {
-                txtNEW_QUANTITY.Text = "Nhập số lượng mới";
-                txtNEW_QUANTITY.ForeColor = Color.Silver;
+                e.Handled = true;
             }
         }
     }

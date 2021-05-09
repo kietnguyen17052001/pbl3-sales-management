@@ -29,11 +29,9 @@ namespace SaleManagement.VIEW
         /// </summary>
         private void InitializeComponent()
         {
-            this.dpDAY = new System.Windows.Forms.DateTimePicker();
             this.gbGENDER = new System.Windows.Forms.GroupBox();
             this.rbFEMALE = new System.Windows.Forms.RadioButton();
             this.rbMALE = new System.Windows.Forms.RadioButton();
-            this.label9 = new System.Windows.Forms.Label();
             this.txtADDRESS = new System.Windows.Forms.TextBox();
             this.txtPHONE = new System.Windows.Forms.TextBox();
             this.txtNAME_CUSTOMER = new System.Windows.Forms.TextBox();
@@ -64,21 +62,12 @@ namespace SaleManagement.VIEW
             this.panelMANAGE_CUSTOMER.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dpDAY
-            // 
-            this.dpDAY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpDAY.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpDAY.Location = new System.Drawing.Point(133, 318);
-            this.dpDAY.Name = "dpDAY";
-            this.dpDAY.Size = new System.Drawing.Size(236, 28);
-            this.dpDAY.TabIndex = 82;
-            // 
             // gbGENDER
             // 
             this.gbGENDER.Controls.Add(this.rbFEMALE);
             this.gbGENDER.Controls.Add(this.rbMALE);
             this.gbGENDER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbGENDER.Location = new System.Drawing.Point(29, 359);
+            this.gbGENDER.Location = new System.Drawing.Point(29, 339);
             this.gbGENDER.Name = "gbGENDER";
             this.gbGENDER.Size = new System.Drawing.Size(325, 114);
             this.gbGENDER.TabIndex = 80;
@@ -106,16 +95,6 @@ namespace SaleManagement.VIEW
             this.rbMALE.TabStop = true;
             this.rbMALE.Text = "Nam";
             this.rbMALE.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(25, 322);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(97, 21);
-            this.label9.TabIndex = 79;
-            this.label9.Text = "Ngày sinh";
             // 
             // txtADDRESS
             // 
@@ -226,9 +205,10 @@ namespace SaleManagement.VIEW
             this.dgvLISTCUSTOMER.Name = "dgvLISTCUSTOMER";
             this.dgvLISTCUSTOMER.RowHeadersWidth = 62;
             this.dgvLISTCUSTOMER.RowTemplate.Height = 28;
+            this.dgvLISTCUSTOMER.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLISTCUSTOMER.Size = new System.Drawing.Size(824, 464);
             this.dgvLISTCUSTOMER.TabIndex = 61;
-            this.dgvLISTCUSTOMER.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLISTCUSTOMER_RowHeaderMouseClick);
+            this.dgvLISTCUSTOMER.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLISTCUSTOMER_CellClick);
             // 
             // label1
             // 
@@ -484,9 +464,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.btnSAVE);
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.btnDELETE);
-            this.Controls.Add(this.dpDAY);
             this.Controls.Add(this.gbGENDER);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtADDRESS);
             this.Controls.Add(this.txtPHONE);
             this.Controls.Add(this.txtNAME_CUSTOMER);
@@ -522,11 +500,9 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnSAVE;
         private System.Windows.Forms.Button btnCANCEL;
         private System.Windows.Forms.Button btnDELETE;
-        private System.Windows.Forms.DateTimePicker dpDAY;
         private System.Windows.Forms.GroupBox gbGENDER;
         private System.Windows.Forms.RadioButton rbFEMALE;
         private System.Windows.Forms.RadioButton rbMALE;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtADDRESS;
         private System.Windows.Forms.TextBox txtPHONE;
         private System.Windows.Forms.TextBox txtNAME_CUSTOMER;

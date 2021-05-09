@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaleManagement.Entity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;

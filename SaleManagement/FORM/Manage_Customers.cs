@@ -1,4 +1,5 @@
 ﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,6 @@ namespace SaleManagement.VIEW
         {
             txtNAME_CUSTOMER.Enabled = E;
             txtID_CUSTOMER.Enabled = E;
-            dpDAY.Enabled = E;
             txtPHONE.Enabled = E;
             txtADDRESS.Enabled = E;
             gbGENDER.Enabled = E;
@@ -214,10 +214,10 @@ namespace SaleManagement.VIEW
             }
         }
         // Đổ dữ liêu từ row vào các txt
-        private void dgvLISTCUSTOMER_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvLISTCUSTOMER_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            string idCustomer = dgvLISTCUSTOMER.SelectedRows[0].Cells["MaKhachHang"].Value.ToString();
+            string idCustomer = dgvLISTCUSTOMER.Rows[e.RowIndex].Cells["MaKhachHang"].Value.ToString();
             var getCustomer = DB.tblKhachHangs.Find(idCustomer);
             txtID_CUSTOMER.Text = getCustomer.MaKhachHang;
             txtNAME_CUSTOMER.Text = getCustomer.TenKhachHang;

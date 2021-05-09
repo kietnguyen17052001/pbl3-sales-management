@@ -7,23 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaleManagement
+namespace SaleManagement.Entity
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tblLoaiHangHoa
+    public partial class tblKhachHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblLoaiHangHoa()
+        public tblKhachHang()
         {
-            this.tblHangHoas = new HashSet<tblHangHoa>();
+            this.tblHoaDonBanHangs = new HashSet<tblHoaDonBanHang>();
         }
     
-        public string MaLoaiHangHoa { get; set; }
-        public string TenLoaiHangHoa { get; set; }
+        public string MaKhachHang { get; set; }
+        public string TenKhachHang { get; set; }
+        public string SoDienThoai { get; set; }
+        public Nullable<bool> GioiTinh { get; set; }
+        public string DiaChi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblHangHoa> tblHangHoas { get; set; }
+        public virtual ICollection<tblHoaDonBanHang> tblHoaDonBanHangs { get; set; }
     }
 }

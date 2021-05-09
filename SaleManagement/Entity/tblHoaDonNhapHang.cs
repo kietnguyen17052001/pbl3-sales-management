@@ -7,26 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaleManagement
+namespace SaleManagement.Entity
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tblKhachHang
+    public partial class tblHoaDonNhapHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblKhachHang()
+        public tblHoaDonNhapHang()
         {
-            this.tblHoaDonBanHangs = new HashSet<tblHoaDonBanHang>();
+            this.tblChiTietHoaDonNhapHangs = new HashSet<tblChiTietHoaDonNhapHang>();
         }
     
-        public string MaKhachHang { get; set; }
-        public string TenKhachHang { get; set; }
-        public string SoDienThoai { get; set; }
-        public Nullable<bool> GioiTinh { get; set; }
-        public string DiaChi { get; set; }
+        public string MaHoaDonNhap { get; set; }
+        public string MaNhaCungCap { get; set; }
+        public string MaNhanVien { get; set; }
+        public Nullable<System.DateTime> NgayNhap { get; set; }
+        public Nullable<double> SoTien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblHoaDonBanHang> tblHoaDonBanHangs { get; set; }
+        public virtual ICollection<tblChiTietHoaDonNhapHang> tblChiTietHoaDonNhapHangs { get; set; }
+        public virtual tblNhaCungCap tblNhaCungCap { get; set; }
+        public virtual tblNhanVien tblNhanVien { get; set; }
     }
 }

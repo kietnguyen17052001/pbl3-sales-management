@@ -47,6 +47,7 @@
     <Property Name="GiaNhap" Type="float" Nullable="false" />
     <Property Name="GiaBan" Type="float" Nullable="false" />
     <Property Name="MoTa" Type="ntext" />
+    <Property Name="HinhAnh" Type="image" />
   </EntityType>
   <EntityType Name="tblHoaDonBanHang">
     <Key>

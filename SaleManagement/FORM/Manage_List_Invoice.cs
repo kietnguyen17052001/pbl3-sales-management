@@ -1,4 +1,5 @@
 ﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using SaleManagement.VIEW;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace SaleManagement.FORM
         {
             InitializeComponent();
             SetCBB();
-            ShowInvoice();
+            ShowInvoice();   
             txtAMOUNT.Enabled = false;
             txtPRICE.Enabled = false;
             disable(false);
@@ -32,7 +33,7 @@ namespace SaleManagement.FORM
             cbbSTAFF.Enabled = E;
             txtPRICE_.Enabled = E;
             txtDISCOUNT.Enabled = E;
-            btnSAVE.Enabled = !E;
+            btnSAVE.Enabled = E;
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
@@ -56,11 +57,9 @@ namespace SaleManagement.FORM
         {
             cbbSTAFF_DETAIL.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả"});
             cbbSTAFF_DETAIL.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Staff().ToArray());
-            cbbSTAFF.Items.Add(new CBBItem { VALUE = "0", TEXT = "None" });
             cbbSTAFF.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Staff().ToArray());
-            cbbCUSTOMER.Items.Add(new CBBItem { VALUE = "0", TEXT = "None" });
             cbbCUSTOMER.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Customer().ToArray());
-            cbbSTAFF_DETAIL.SelectedIndex = cbbSTAFF.SelectedIndex = cbbCUSTOMER.SelectedIndex = 0;
+            cbbSTAFF_DETAIL.SelectedIndex = 0;
         }
         // Liệt kê hóa đơn theo cbbStaff_Detail
         public void ShowInvoice()
@@ -93,10 +92,6 @@ namespace SaleManagement.FORM
             dgvINFO_INVOICE.DataSource = null;
             txtAMOUNT.Text = dgvLIST_INVOICE.Rows.Count.ToString(); // gán số lượng cho txtAmount
             txtPRICE.Text = String.Format("{0:n0}", GetAllPrice()); // gán giá trị cho txtPrice
-            txtID_INVOICE.Clear();
-            txtPRICE_.Clear();
-            txtDISCOUNT.Clear();
-            cbbSTAFF_DETAIL.SelectedIndex = cbbSTAFF.SelectedIndex = cbbCUSTOMER.SelectedIndex = 0;
         }
         // Liệt kê thông tin đơn hàng dựa vào mã hóa đơn từ dgvList_Invoice
         public void ShowInfoInvoice(string idInvoice)
@@ -112,17 +107,7 @@ namespace SaleManagement.FORM
             });
             dgvINFO_INVOICE.DataSource = infoInvoice.ToList();
         }
-        public void Show(string idInvoice)
-        {
-            ShowInvoice();
-            ShowInfoInvoice(idInvoice);
-        }
-        private void btnSHOW_Click(object sender, EventArgs e)
-        {
-            ShowInvoice();
-        }
-
-        private void dgvLIST_INVOICE_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        public void SetData_Dgv()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             idInvoice = dgvLIST_INVOICE.SelectedRows[0].Cells["MaHoaDonBan"].Value.ToString();
@@ -134,6 +119,19 @@ namespace SaleManagement.FORM
             txtPRICE_.Text = String.Format("{0:n0}", invoice.SoTien);
             txtDISCOUNT.Text = String.Format("{0:n0}", invoice.GiamGia);
             ShowInfoInvoice(idInvoice);
+        }
+        public void Show(string idInvoice)
+        {
+            ShowInvoice();
+            ShowInfoInvoice(idInvoice);
+        }
+        private void btnSHOW_Click(object sender, EventArgs e)
+        {
+            Show(idInvoice);
+        }
+        private void dgvLIST_INVOICE_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SetData_Dgv();
         }
         // Xuất list Invoice ra file excel
         private void btnEXCEL_Click(object sender, EventArgs e)
@@ -284,9 +282,7 @@ namespace SaleManagement.FORM
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             var getInvoiceDetail = DB.tblChiTietHoaDonBanHangs.Find(idInvoice, idProduct);
             getInvoiceDetail.SoLuong = _newQuantity;
-            getInvoiceDetail.TongTien = getInvoiceDetail.DonGia * _newQuantity - getInvoiceDetail.DonGia * _newQuantity * getInvoiceDetail.GiamGia; // thay đổi số tiền của chi tiết hóa đơn sau khi thay đổi số lượng mới
-            var getProduct = DB.tblHangHoas.Find(idProduct);
-            getProduct.SoLuong = (int)(getProduct.SoLuong + getInvoiceDetail.SoLuong - _newQuantity); // thay đổi số lượng hàng hóa của chi tiết đơn hàng
+            getInvoiceDetail.TongTien = getInvoiceDetail.DonGia * _newQuantity - getInvoiceDetail.DonGia * _newQuantity * getInvoiceDetail.GiamGia/100; // thay đổi số tiền của chi tiết hóa đơn sau khi thay đổi số lượng mới
             DB.SaveChanges();
             var getInvoice = DB.tblHoaDonBanHangs.Find(idInvoice);
             getInvoice.SoTien = BLL_LISTINVOICE.Instance.GetPriceInvoice(idInvoice) - getInvoice.GiamGia;
@@ -296,18 +292,12 @@ namespace SaleManagement.FORM
         // Thay đổi số lượng hàng hóa
         private void btnEDIT_QUANTITY_Click(object sender, EventArgs e)
         {
-            if (dgvINFO_INVOICE.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Vui lòng chọn hàng hóa muốn sửa số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {     
-                string nameProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["TenHangHoa"].Value.ToString();
-                int oldQuantity = Convert.ToInt32(dgvINFO_INVOICE.SelectedRows[0].Cells["SoLuong"].Value.ToString());               
-                FrmEdit_Quantity frm = new FrmEdit_Quantity(nameProduct, oldQuantity);
-                frm.d += new FrmEdit_Quantity.myDEL(setNewQuantity);
-                frm.Show();
-            }
+            string nameProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["TenHangHoa"].Value.ToString();
+            int oldQuantity = Convert.ToInt32(dgvINFO_INVOICE.SelectedRows[0].Cells["SoLuong"].Value.ToString());
+            string idProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
+            FrmEdit_Quantity frm = new FrmEdit_Quantity(idProduct, nameProduct, oldQuantity);
+            frm.d += new FrmEdit_Quantity.myDEL(setNewQuantity);
+            frm.Show();
         }
 
         private void btnDELETE_PRODUCT_Click(object sender, EventArgs e)
@@ -326,6 +316,8 @@ namespace SaleManagement.FORM
                     if(invoiceDetail.MaHoaDonBan == idInvoice && invoiceDetail.MaHangHoa == i)
                     {
                         DB.tblChiTietHoaDonBanHangs.Remove(invoiceDetail);
+                        var product = DB.tblHangHoas.Find(i);
+                        product.SoLuong += (int)invoiceDetail.SoLuong;
                     }
                 }
                 DB.SaveChanges();

@@ -7,14 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaleManagement
+namespace SaleManagement.Entity
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tblChiTietHoaDonNhapHang
+    public partial class tblChiTietHoaDonBanHang
     {
-        public string MaHoaDonNhap { get; set; }
+        public string MaHoaDonBan { get; set; }
         public string MaHangHoa { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<double> DonGia { get; set; }
@@ -22,6 +22,6 @@ namespace SaleManagement
         public Nullable<double> TongTien { get; set; }
     
         public virtual tblHangHoa tblHangHoa { get; set; }
-        public virtual tblHoaDonNhapHang tblHoaDonNhapHang { get; set; }
+        public virtual tblHoaDonBanHang tblHoaDonBanHang { get; set; }
     }
 }

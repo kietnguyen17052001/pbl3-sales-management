@@ -126,7 +126,7 @@ namespace SaleManagement.VIEW
             this.dgvLIST_STAFF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLIST_STAFF.Size = new System.Drawing.Size(824, 474);
             this.dgvLIST_STAFF.TabIndex = 29;
-            this.dgvLIST_STAFF.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLIST_STAFF_RowHeaderMouseClick);
+            this.dgvLIST_STAFF.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLIST_STAFF_CellClick);
             // 
             // label2
             // 
@@ -145,7 +145,7 @@ namespace SaleManagement.VIEW
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(807, 645);
+            this.txtSEARCH.Location = new System.Drawing.Point(791, 651);
             this.txtSEARCH.Name = "txtSEARCH";
             this.txtSEARCH.Size = new System.Drawing.Size(274, 28);
             this.txtSEARCH.TabIndex = 38;
@@ -277,9 +277,9 @@ namespace SaleManagement.VIEW
             this.btnSEARCH.ForeColor = System.Drawing.Color.White;
             this.btnSEARCH.Image = global::SaleManagement.Properties.Resources.search_12_24;
             this.btnSEARCH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSEARCH.Location = new System.Drawing.Point(1096, 631);
+            this.btnSEARCH.Location = new System.Drawing.Point(1085, 640);
             this.btnSEARCH.Name = "btnSEARCH";
-            this.btnSEARCH.Size = new System.Drawing.Size(126, 48);
+            this.btnSEARCH.Size = new System.Drawing.Size(137, 48);
             this.btnSEARCH.TabIndex = 37;
             this.btnSEARCH.Text = "Tìm kiếm";
             this.btnSEARCH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -495,7 +495,7 @@ namespace SaleManagement.VIEW
             // 
             this.rbID_STAFF.AutoSize = true;
             this.rbID_STAFF.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbID_STAFF.Location = new System.Drawing.Point(602, 648);
+            this.rbID_STAFF.Location = new System.Drawing.Point(586, 654);
             this.rbID_STAFF.Name = "rbID_STAFF";
             this.rbID_STAFF.Size = new System.Drawing.Size(83, 23);
             this.rbID_STAFF.TabIndex = 60;
@@ -507,7 +507,7 @@ namespace SaleManagement.VIEW
             // 
             this.rbNAME_STAFF.AutoSize = true;
             this.rbNAME_STAFF.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNAME_STAFF.Location = new System.Drawing.Point(691, 648);
+            this.rbNAME_STAFF.Location = new System.Drawing.Point(675, 654);
             this.rbNAME_STAFF.Name = "rbNAME_STAFF";
             this.rbNAME_STAFF.Size = new System.Drawing.Size(90, 23);
             this.rbNAME_STAFF.TabIndex = 61;

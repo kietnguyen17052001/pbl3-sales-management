@@ -7,28 +7,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaleManagement
+namespace SaleManagement.Entity
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tblHoaDonNhapHang
+    public partial class tblNhaCungCap
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblHoaDonNhapHang()
+        public tblNhaCungCap()
         {
-            this.tblChiTietHoaDonNhapHangs = new HashSet<tblChiTietHoaDonNhapHang>();
+            this.tblHangHoas = new HashSet<tblHangHoa>();
+            this.tblHoaDonNhapHangs = new HashSet<tblHoaDonNhapHang>();
         }
     
-        public string MaHoaDonNhap { get; set; }
         public string MaNhaCungCap { get; set; }
-        public string MaNhanVien { get; set; }
-        public Nullable<System.DateTime> NgayNhap { get; set; }
-        public Nullable<double> SoTien { get; set; }
+        public string TenNhaCungCap { get; set; }
+        public string DiaChi { get; set; }
+        public string Email { get; set; }
+        public string Fax { get; set; }
+        public string SoDienThoai { get; set; }
+        public Nullable<int> MaSoThue { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblChiTietHoaDonNhapHang> tblChiTietHoaDonNhapHangs { get; set; }
-        public virtual tblNhaCungCap tblNhaCungCap { get; set; }
-        public virtual tblNhanVien tblNhanVien { get; set; }
+        public virtual ICollection<tblHangHoa> tblHangHoas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblHoaDonNhapHang> tblHoaDonNhapHangs { get; set; }
     }
 }

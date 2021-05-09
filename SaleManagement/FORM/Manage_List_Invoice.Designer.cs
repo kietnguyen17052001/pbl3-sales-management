@@ -30,6 +30,7 @@ namespace SaleManagement.FORM
         private void InitializeComponent()
         {
             this.panelMANAGE_DATA = new System.Windows.Forms.Panel();
+            this.btnHOME = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPRICE_ = new System.Windows.Forms.TextBox();
             this.txtID_INVOICE = new System.Windows.Forms.TextBox();
@@ -66,7 +67,6 @@ namespace SaleManagement.FORM
             this.btnBACK = new System.Windows.Forms.Button();
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
-            this.btnHOME = new System.Windows.Forms.Button();
             this.panelMANAGE_DATA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_INVOICE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvINFO_INVOICE)).BeginInit();
@@ -83,6 +83,26 @@ namespace SaleManagement.FORM
             this.panelMANAGE_DATA.Name = "panelMANAGE_DATA";
             this.panelMANAGE_DATA.Size = new System.Drawing.Size(1247, 76);
             this.panelMANAGE_DATA.TabIndex = 61;
+            // 
+            // btnHOME
+            // 
+            this.btnHOME.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnHOME.FlatAppearance.BorderSize = 0;
+            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHOME.ForeColor = System.Drawing.Color.White;
+            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
+            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHOME.Location = new System.Drawing.Point(1047, 3);
+            this.btnHOME.Name = "btnHOME";
+            this.btnHOME.Size = new System.Drawing.Size(197, 68);
+            this.btnHOME.TabIndex = 36;
+            this.btnHOME.Text = "Trang chủ";
+            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHOME.UseVisualStyleBackColor = false;
+            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
             // 
             // label1
             // 
@@ -185,9 +205,9 @@ namespace SaleManagement.FORM
             this.dgvLIST_INVOICE.RowHeadersWidth = 62;
             this.dgvLIST_INVOICE.RowTemplate.Height = 28;
             this.dgvLIST_INVOICE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLIST_INVOICE.Size = new System.Drawing.Size(836, 269);
+            this.dgvLIST_INVOICE.Size = new System.Drawing.Size(836, 229);
             this.dgvLIST_INVOICE.TabIndex = 108;
-            this.dgvLIST_INVOICE.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLIST_INVOICE_RowHeaderMouseClick);
+            this.dgvLIST_INVOICE.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLIST_INVOICE_CellClick);
             // 
             // dgvINFO_INVOICE
             // 
@@ -196,11 +216,12 @@ namespace SaleManagement.FORM
             this.dgvINFO_INVOICE.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvINFO_INVOICE.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvINFO_INVOICE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvINFO_INVOICE.Location = new System.Drawing.Point(399, 476);
+            this.dgvINFO_INVOICE.Location = new System.Drawing.Point(399, 437);
             this.dgvINFO_INVOICE.Name = "dgvINFO_INVOICE";
             this.dgvINFO_INVOICE.RowHeadersWidth = 62;
             this.dgvINFO_INVOICE.RowTemplate.Height = 28;
-            this.dgvINFO_INVOICE.Size = new System.Drawing.Size(836, 145);
+            this.dgvINFO_INVOICE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvINFO_INVOICE.Size = new System.Drawing.Size(836, 184);
             this.dgvINFO_INVOICE.TabIndex = 111;
             // 
             // label5
@@ -209,7 +230,7 @@ namespace SaleManagement.FORM
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Navy;
-            this.label5.Location = new System.Drawing.Point(983, 434);
+            this.label5.Location = new System.Drawing.Point(983, 395);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(252, 26);
             this.label5.TabIndex = 112;
@@ -258,7 +279,6 @@ namespace SaleManagement.FORM
             // 
             // cbbSTAFF_DETAIL
             // 
-            this.cbbSTAFF_DETAIL.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbbSTAFF_DETAIL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSTAFF_DETAIL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbSTAFF_DETAIL.FormattingEnabled = true;
@@ -269,7 +289,6 @@ namespace SaleManagement.FORM
             // 
             // dpFROM
             // 
-            this.dpFROM.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dpFROM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpFROM.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dpFROM.Location = new System.Drawing.Point(748, 107);
@@ -279,7 +298,6 @@ namespace SaleManagement.FORM
             // 
             // dpTO
             // 
-            this.dpTO.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dpTO.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dpTO.Location = new System.Drawing.Point(910, 107);
@@ -289,7 +307,6 @@ namespace SaleManagement.FORM
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(782, 83);
@@ -300,7 +317,6 @@ namespace SaleManagement.FORM
             // 
             // label10
             // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(941, 83);
@@ -313,7 +329,7 @@ namespace SaleManagement.FORM
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(399, 434);
+            this.txtSEARCH.Location = new System.Drawing.Point(399, 395);
             this.txtSEARCH.Name = "txtSEARCH";
             this.txtSEARCH.Size = new System.Drawing.Size(309, 28);
             this.txtSEARCH.TabIndex = 125;
@@ -362,6 +378,7 @@ namespace SaleManagement.FORM
             // 
             // btnADD_PRODUCT
             // 
+            this.btnADD_PRODUCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnADD_PRODUCT.BackColor = System.Drawing.Color.SteelBlue;
             this.btnADD_PRODUCT.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnADD_PRODUCT.FlatAppearance.BorderSize = 0;
@@ -381,6 +398,7 @@ namespace SaleManagement.FORM
             // 
             // btnEDIT_QUANTITY
             // 
+            this.btnEDIT_QUANTITY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEDIT_QUANTITY.BackColor = System.Drawing.Color.SteelBlue;
             this.btnEDIT_QUANTITY.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEDIT_QUANTITY.FlatAppearance.BorderSize = 0;
@@ -400,6 +418,7 @@ namespace SaleManagement.FORM
             // 
             // btnDELETE_PRODUCT
             // 
+            this.btnDELETE_PRODUCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDELETE_PRODUCT.BackColor = System.Drawing.Color.IndianRed;
             this.btnDELETE_PRODUCT.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDELETE_PRODUCT.FlatAppearance.BorderSize = 0;
@@ -428,7 +447,7 @@ namespace SaleManagement.FORM
             this.btnSEARCH.ForeColor = System.Drawing.Color.White;
             this.btnSEARCH.Image = global::SaleManagement.Properties.Resources.search_12_24;
             this.btnSEARCH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSEARCH.Location = new System.Drawing.Point(714, 424);
+            this.btnSEARCH.Location = new System.Drawing.Point(714, 385);
             this.btnSEARCH.Name = "btnSEARCH";
             this.btnSEARCH.Size = new System.Drawing.Size(137, 46);
             this.btnSEARCH.TabIndex = 124;
@@ -439,7 +458,7 @@ namespace SaleManagement.FORM
             // 
             // btnEXCEL
             // 
-            this.btnEXCEL.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnEXCEL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEXCEL.BackColor = System.Drawing.Color.SeaGreen;
             this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEXCEL.FlatAppearance.BorderSize = 0;
@@ -459,7 +478,6 @@ namespace SaleManagement.FORM
             // 
             // btnSHOW
             // 
-            this.btnSHOW.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSHOW.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSHOW.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSHOW.FlatAppearance.BorderSize = 0;
@@ -508,7 +526,7 @@ namespace SaleManagement.FORM
             this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBACK.Location = new System.Drawing.Point(202, 479);
             this.btnBACK.Name = "btnBACK";
-            this.btnBACK.Size = new System.Drawing.Size(121, 59);
+            this.btnBACK.Size = new System.Drawing.Size(125, 59);
             this.btnBACK.TabIndex = 105;
             this.btnBACK.Text = "Quay lại";
             this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -527,7 +545,7 @@ namespace SaleManagement.FORM
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSAVE.Location = new System.Drawing.Point(202, 409);
             this.btnSAVE.Name = "btnSAVE";
-            this.btnSAVE.Size = new System.Drawing.Size(121, 61);
+            this.btnSAVE.Size = new System.Drawing.Size(125, 61);
             this.btnSAVE.TabIndex = 103;
             this.btnSAVE.Text = "Lưu";
             this.btnSAVE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -552,26 +570,6 @@ namespace SaleManagement.FORM
             this.btnDELETE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);
-            // 
-            // btnHOME
-            // 
-            this.btnHOME.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnHOME.FlatAppearance.BorderSize = 0;
-            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHOME.ForeColor = System.Drawing.Color.White;
-            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
-            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHOME.Location = new System.Drawing.Point(1047, 3);
-            this.btnHOME.Name = "btnHOME";
-            this.btnHOME.Size = new System.Drawing.Size(197, 68);
-            this.btnHOME.TabIndex = 36;
-            this.btnHOME.Text = "Trang chủ";
-            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHOME.UseVisualStyleBackColor = false;
-            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
             // 
             // FrmManage_List_Invoice
             // 

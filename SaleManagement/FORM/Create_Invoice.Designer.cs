@@ -442,6 +442,7 @@ namespace SaleManagement.VIEW
             this.btnEDIT.Text = "Sửa";
             this.btnEDIT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEDIT.UseVisualStyleBackColor = false;
+            this.btnEDIT.Click += new System.EventHandler(this.btnEDIT_Click);
             // 
             // txtALL_PRODUCT_QTY
             // 
