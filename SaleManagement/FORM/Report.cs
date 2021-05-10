@@ -18,7 +18,14 @@ namespace SaleManagement.FORM
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             InitializeComponent();
             var getDayMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
-            dpFROM.Value = getDayMin.Value;
+            if (getDayMin == null)
+            {
+                dpFROM.Value = DateTime.Now;
+            }
+            else
+            {
+                dpFROM.Value = getDayMin.Value;
+            }
             ShowList();
         }
         public void ShowList()

@@ -1,4 +1,5 @@
-﻿using SaleManagement.Entity;
+﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,16 +20,44 @@ namespace SaleManagement.FORM
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             InitializeComponent();
+            SetCBB();
             var getDayMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
-            dpFROM.Value = getDayMin.Value;
+            if (getDayMin == null)
+            {
+                dpFROM.Value = DateTime.Now;
+            }
+            else
+            {
+                dpFROM.Value = getDayMin.Value;
+            }
             fillChart();
         }
-        private void fillChart()
+        public void SetCBB()
+        {
+            cbbTYPEOFPRODUCT.Items.Add(new CBBItem { VALUE = "0", TEXT = "None" });
+            cbbTYPEOFPRODUCT.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
+            cbbTYPEOFPRODUCT.SelectedIndex = 0;
+        }
+        public void fillChart()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+            lbTIME.Text = "Từ ngày " + dpFROM.Value.ToShortDateString() + " đến ngày " + dpTO.Value.ToShortDateString();
             int quantity; // số lượng hiện tại của loại hàng hóa
             double money; // số tiền bán được của loại hàng hóa
             int count = 0; //
+            chartMONEY.Series.Clear();
+            chartPRODUCT_QTY.Series.Clear();
+            chartSCALE.Series.Clear();
+            chartMONEY.Series.Add("Số tiền");
+            chartPRODUCT_QTY.Series.Add("Số sản phẩm");
+            chartSCALE.Series.Add("Tỉ lệ %");
+            chartSCALE.Series["Tỉ lệ %"].ChartType = SeriesChartType.Pie;
+            chartSCALE.Series["Tỉ lệ %"].LabelBackColor = Color.Black;
+            chartSCALE.Series["Tỉ lệ %"].LabelForeColor = Color.White;
+            chartMONEY.Series["Số tiền"].LabelBackColor = Color.Black;
+            chartMONEY.Series["Số tiền"].LabelForeColor = Color.White;
+            chartPRODUCT_QTY.Series["Số sản phẩm"].LabelBackColor = Color.Black;
+            chartPRODUCT_QTY.Series["Số sản phẩm"].LabelForeColor = Color.White;
             double quantitySale; // số lượng bán được của loại hàng hóa
             chartSCALE.Series["Tỉ lệ %"].IsValueShownAsLabel = true;
             Color randomColor = new Color();
@@ -67,8 +96,23 @@ namespace SaleManagement.FORM
                 count++;
             }
         }
-
-        private void btnBACK_Click(object sender, EventArgs e)
+        // Thống kê theo loại sản phẩm
+        private void btnINFO_Click(object sender, EventArgs e)
+        {
+            string value = ((CBBItem)cbbTYPEOFPRODUCT.SelectedItem).VALUE;
+            string text = ((CBBItem)cbbTYPEOFPRODUCT.SelectedItem).TEXT;
+            FrmStatistic_Product frm = new FrmStatistic_Product(dpFROM.Value, dpTO.Value, value, text);
+            frm.Show();
+            this.Close();
+        }
+        // Thống kê doanh thu
+        private void btnSTATISTIC_Click(object sender, EventArgs e)
+        {
+            FrmRevenue_Statistic frm = new FrmRevenue_Statistic();
+            frm.Show();
+            this.Close();
+        }
+        private void btnHOME_Click(object sender, EventArgs e)
         {
             FrmSale_Management frm = new FrmSale_Management();
             frm.Show();
@@ -88,20 +132,8 @@ namespace SaleManagement.FORM
 
         private void btnLOAD_Click(object sender, EventArgs e)
         {
-            chartMONEY.Series.Clear();
-            chartPRODUCT_QTY.Series.Clear();
-            chartSCALE.Series.Clear();
-            chartMONEY.Series.Add("Số tiền");
-            chartPRODUCT_QTY.Series.Add("Số sản phẩm");
-            chartSCALE.Series.Add("Tỉ lệ %");
-            chartSCALE.Series["Tỉ lệ %"].ChartType = SeriesChartType.Pie;
-            chartSCALE.Series["Tỉ lệ %"].LabelBackColor = Color.Black;
-            chartSCALE.Series["Tỉ lệ %"].LabelForeColor = Color.White;
-            chartMONEY.Series["Số tiền"].LabelBackColor = Color.Black;
-            chartMONEY.Series["Số tiền"].LabelForeColor = Color.White;
-            chartPRODUCT_QTY.Series["Số sản phẩm"].LabelBackColor = Color.Black;
-            chartPRODUCT_QTY.Series["Số sản phẩm"].LabelForeColor = Color.White;
+            lbTIME.Text = ""; 
             fillChart();
-        }
+        }  
     }
 }

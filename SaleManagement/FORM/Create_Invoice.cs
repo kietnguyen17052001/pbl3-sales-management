@@ -361,7 +361,6 @@ namespace SaleManagement.VIEW
             frm.d += new FrmEditQty_CreateInvoice.myDEL(setNewQtyForProduct);
             frm.Show();
         }
-
         // Btn quay lại
         private void btnBACK_Click(object sender, EventArgs e)
         {

@@ -473,6 +473,16 @@ namespace SaleManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap house_481 {
+            get {
+                object obj = ResourceManager.GetObject("house-481", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Household_Washing_Machine_icon {
             get {
                 object obj = ResourceManager.GetObject("Household-Washing-Machine-icon", resourceCulture);

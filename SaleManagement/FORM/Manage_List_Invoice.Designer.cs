@@ -542,6 +542,7 @@ namespace SaleManagement.FORM
             this.btnHOME.Text = "Trang chủ";
             this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHOME.UseVisualStyleBackColor = false;
+            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
             // 
             // label1
             // 

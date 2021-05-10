@@ -485,6 +485,5 @@ namespace SaleManagement.VIEW
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }
-
     }
 }
