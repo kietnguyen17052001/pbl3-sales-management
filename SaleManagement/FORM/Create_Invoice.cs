@@ -16,7 +16,7 @@ namespace SaleManagement.VIEW
     public partial class FrmBill : Form
     {
         int products = 1, allProduct = 0 , productQty = 0;
-        string idProduct, nameProduct;
+        string idProduct, nameProduct, idCustomer; //idCustomer cho chức năng Payment
         double productPrice = 0, 
             productDiscount = 0, 
             productsPrice = 0, 
@@ -55,13 +55,11 @@ namespace SaleManagement.VIEW
         // Thiết lập dữ liệu cho các CBB
         public void setCBB()
         {
-            cbbTYPE_OF_ITEMS.Items.Add("None");
+            cbbTYPE_OF_ITEMS.Items.Add("Tất cả");
             cbbSTAFF.Items.Add("None");
-            cbbCUSTOMER.Items.Add("None");
             cbbTYPE_OF_ITEMS.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
             cbbSTAFF.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Staff().ToArray());
-            cbbCUSTOMER.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Customer().ToArray());
-            cbbCUSTOMER.SelectedIndex = cbbSTAFF.SelectedIndex = cbbTYPE_OF_ITEMS.SelectedIndex = 0;
+            cbbTYPE_OF_ITEMS.SelectedIndex = cbbSTAFF.SelectedIndex = 0;
         }
         // Load lại dữ liệu trobg Form 
         public void load()
@@ -95,13 +93,24 @@ namespace SaleManagement.VIEW
             txtINVOICE_DISCOUNT.Text = String.Format("{0:n0}", invoiceDiscount);
             txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", sendByCustomer);
         }
-        
+        // Lựa chọn khách hàng
+        public void SetCustomer(string idCus, string nameCus)
+        {
+            idCustomer = idCus;
+            txtCUSTOMER.Text = nameCus;
+        }
         public void ShowProduct()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             if (cbbTYPE_OF_ITEMS.SelectedIndex == 0)
             {
-                MessageBox.Show("Vui lòng chọn loại hàng hóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var item = DB.tblHangHoas.Select(p => new {
+                    p.MaHangHoa,
+                    p.TenHangHoa,
+                    p.SoLuong,
+                    p.GiaBan
+                });
+                dgvSELECT.DataSource = item.ToList();
             }
             else
             {
@@ -113,10 +122,6 @@ namespace SaleManagement.VIEW
                 });
                 dgvSELECT.DataSource = item.ToList();
             }
-        }
-        public void addCUSTOMER(string ID, string NAME)
-        {
-            cbbCUSTOMER.Items.Add(new CBBItem { VALUE = ID, TEXT = NAME });
         }
         // Quay trở lại trang chủ
         private void btnHOME_Click(object sender, EventArgs e)
@@ -197,11 +202,11 @@ namespace SaleManagement.VIEW
             setDATA_FOR_TXT();
         }
         // Btn thêm mới khách hàng -> load form CREATE_NEWCUSTOMER -> điền thông tin khách hàng -> thông tin được lưu vào DB
-        private void btnADDCUSTOMER_Click(object sender, EventArgs e)
+        private void btnCUSTOMER_Click(object sender, EventArgs e)
         {
-            FrmCreate_NewCustomer FRM = new FrmCreate_NewCustomer();
-            FRM.d += new FrmCreate_NewCustomer.myDEL(addCUSTOMER);
-            FRM.Show();
+            FrmCustomer_Invoice frm = new FrmCustomer_Invoice(); // gọi form khách hàng để lựa chọn khách hàng cũ hoặc thêm khách mới
+            frm.d += new FrmCustomer_Invoice.myDEL(SetCustomer);
+            frm.Show();
         }
         // Btn thanh toán
         private void btnPAYMENT_Click(object sender, EventArgs e)
@@ -214,8 +219,8 @@ namespace SaleManagement.VIEW
             {
                 SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
                 tblHoaDonBanHang NEWINVOICE = new tblHoaDonBanHang();
-                if (string.IsNullOrEmpty(txtID_INVOICE.Text) || invoicePrice == 0 || cbbCUSTOMER.SelectedIndex == 0 || cbbSTAFF.SelectedIndex == 0 ||
-                    cbbSTAFF.SelectedIndex == 0 || cbbCUSTOMER.SelectedIndex == 0)
+                if (string.IsNullOrEmpty(txtID_INVOICE.Text) || invoicePrice == 0 || cbbSTAFF.SelectedIndex == 0 ||
+                    cbbSTAFF.SelectedIndex == 0 || string.IsNullOrEmpty(txtCUSTOMER.Text))
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -224,7 +229,7 @@ namespace SaleManagement.VIEW
                     NEWINVOICE.MaHoaDonBan = txtID_INVOICE.Text;
                     NEWINVOICE.MaNhanVien = ((CBBItem)cbbSTAFF.SelectedItem).VALUE;
                     NEWINVOICE.NgayBan = dpDAY.Value;
-                    NEWINVOICE.MaKhachHang = ((CBBItem)cbbCUSTOMER.SelectedItem).VALUE;
+                    NEWINVOICE.MaKhachHang = idCustomer;
                     NEWINVOICE.SoTien = invoicePrice;
                     NEWINVOICE.GiamGia = invoiceDiscount;
                     try
@@ -290,7 +295,7 @@ namespace SaleManagement.VIEW
         // Btn in giao diện cho hóa đơn
         private void btnPRINT_Click(object sender, EventArgs e)
         {
-            if (DATA.Rows.Count == 0 || cbbSTAFF.SelectedIndex == 0 || cbbCUSTOMER.SelectedIndex == 0)
+            if (DATA.Rows.Count == 0 || cbbSTAFF.SelectedIndex == 0 || string.IsNullOrEmpty(txtCUSTOMER.Text))
             {
                 MessageBox.Show("Không thể thực hiện chức năng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -308,7 +313,7 @@ namespace SaleManagement.VIEW
             e.Graphics.DrawString("0911.888.999", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(350, 120));
             e.Graphics.DrawString("HÓA ĐƠN TÍNH TIỀN", new Font("Arial", 19, FontStyle.Bold), Brushes.Black, new Point(290, 180));
             e.Graphics.DrawString("NVTN: "+ cbbSTAFF.SelectedItem.ToString(), new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(330, 220));
-            e.Graphics.DrawString("Khách hàng: "+ cbbCUSTOMER.SelectedItem.ToString(), new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(300, 250));
+            e.Graphics.DrawString("Khách hàng: "+ txtCUSTOMER.Text, new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(300, 250));
             e.Graphics.DrawString("Số Bill: "+ txtID_INVOICE.Text, new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(200, 300));
             e.Graphics.DrawString("Ngày: "+ DateTime.Now.ToString("dd/MM/yyyy HH:mm"), new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(380, 300));
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10,350));

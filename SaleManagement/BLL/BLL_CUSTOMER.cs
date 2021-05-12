@@ -37,19 +37,30 @@ namespace SaleManagement.BLL
         }
         public string GetNewIdCustomer()
         {
-            int id;
+            string idCustomer = "";
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             List<tblKhachHang> list = DB.tblKhachHangs.ToList();
             if(list.Count == 0)
             {
-                id = 1;
+                idCustomer = "KH0001";
             }
             else
             {
                 int lastId = Convert.ToInt32(list[list.Count - 1].MaKhachHang.Remove(0, 2));
-                id = lastId + 1;
+                if (lastId + 1 < 10)
+                {
+                    idCustomer = "KH000" + (lastId + 1).ToString();
+                }
+                else if (lastId + 1 < 100)
+                {
+                    idCustomer = "KH00" + (lastId + 1).ToString();
+                }
+                else if (lastId + 1 < 1000)
+                {
+                    idCustomer = "KH0" + (lastId + 1).ToString();
+                }
             }
-            return "KH" + id;
+            return idCustomer;
         }
     }
 }

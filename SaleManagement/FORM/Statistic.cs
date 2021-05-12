@@ -44,6 +44,7 @@ namespace SaleManagement.FORM
             lbTIME.Text = "Từ ngày " + dpFROM.Value.ToShortDateString() + " đến ngày " + dpTO.Value.ToShortDateString();
             int quantity; // số lượng hiện tại của loại hàng hóa
             double money; // số tiền bán được của loại hàng hóa
+            double quantitySale; // số lượng bán được của loại hàng hóa
             int count = 0; //
             chartMONEY.Series.Clear();
             chartPRODUCT_QTY.Series.Clear();
@@ -58,7 +59,6 @@ namespace SaleManagement.FORM
             chartMONEY.Series["Số tiền"].LabelForeColor = Color.White;
             chartPRODUCT_QTY.Series["Số sản phẩm"].LabelBackColor = Color.Black;
             chartPRODUCT_QTY.Series["Số sản phẩm"].LabelForeColor = Color.White;
-            double quantitySale; // số lượng bán được của loại hàng hóa
             chartSCALE.Series["Tỉ lệ %"].IsValueShownAsLabel = true;
             Color randomColor = new Color();
             foreach (tblLoaiHangHoa typeProduct in DB.tblLoaiHangHoas)

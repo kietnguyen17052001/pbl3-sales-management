@@ -36,21 +36,32 @@ namespace SaleManagement.BLL
         // Trả về mã số khách hàng mới khi thực hiện chức năng thêm
         public string GetNewIdStaff()
         {
-            int id; // số cuối trong mã khách hàng
+            string idStaff = "";
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             List<tblNhanVien> list = DB.tblNhanViens.ToList();
             if (list.Count == 0)
             {
-                id = 1;
+                idStaff = "NV0001";
             }
             else
             {
                 // Nếu đã có khách hàng trong danh sách,
                 // LAST: Trả về số cuối của mã khách hàng, vd: KH1 -> 1
                 int lastId = Convert.ToInt32(list[list.Count - 1].MaNhanVien.Remove(0, 2));
-                id = lastId + 1;
+                if (lastId + 1 < 10)
+                {
+                    idStaff = "NV000" + (lastId + 1).ToString();
+                }
+                else if (lastId + 1 < 100)
+                {
+                    idStaff = "NV00" + (lastId + 1).ToString();
+                }
+                else if (lastId + 1 < 1000)
+                {
+                    idStaff = "NV0" + (lastId + 1).ToString();
+                }
             }
-            return "NV" + id;
+            return idStaff;
         }
     }
 }

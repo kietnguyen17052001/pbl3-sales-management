@@ -47,11 +47,11 @@ namespace SaleManagement.FORM
         }
         public void GetInformation()
         {
-            lbSALES.Text = string.Format("{0:n0}", GetRevenue(dpFROM.Value,dpTO.Value));
-            lbPROFIT.Text = string.Format("{0:n0}", GetProfit(dpFROM.Value, dpTO.Value));
-            lbDISCOUNT.Text = string.Format("{0:n0}", GetDiscount(dpFROM.Value, dpTO.Value));
-            lbPRODUCT_QTY.Text = string.Format("{0:n0}", GetQuantity(dpFROM.Value, dpTO.Value));
-            lbINVOICE_QTY.Text = string.Format("{0:n0}", GetInvoice(dpFROM.Value, dpTO.Value));
+            lbSALES.Text = string.Format("{0:n0}", GetRevenue());
+            lbPROFIT.Text = string.Format("{0:n0}", GetProfit());
+            lbDISCOUNT.Text = string.Format("{0:n0}", GetDiscount());
+            lbPRODUCT_QTY.Text = string.Format("{0:n0}", GetQuantity());
+            lbINVOICE_QTY.Text = string.Format("{0:n0}", GetInvoice());
         }
         // load lại danh sách theo thời gian
         private void btnLOAD_Click(object sender, EventArgs e)
@@ -60,10 +60,10 @@ namespace SaleManagement.FORM
             GetInformation();
         }
         // doanh số
-        public double GetRevenue(DateTime dateMin, DateTime dateMax)
+        public double GetRevenue()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
+            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
             double revenue = 0;
             foreach (tblChiTietHoaDonBanHang invoice_detail in list)
             {
@@ -72,10 +72,10 @@ namespace SaleManagement.FORM
             return revenue;
         }
         // lợi nhuận
-        public double GetProfit(DateTime dateMin, DateTime dateMax)
+        public double GetProfit()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
+            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
             double profit = 0;
             foreach (tblChiTietHoaDonBanHang invoice_detail in list)
             {
@@ -84,10 +84,10 @@ namespace SaleManagement.FORM
             return profit;
         }
         // giảm giá
-        public double GetDiscount(DateTime dateMin, DateTime dateMax)
+        public double GetDiscount()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
+            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
             double discount = 0;
             foreach(tblChiTietHoaDonBanHang invoice_detail in list)
             {
@@ -96,10 +96,10 @@ namespace SaleManagement.FORM
             return discount;
         }
         // sản phẩm
-        public int GetQuantity(DateTime dateMin, DateTime dateMax)
+        public int GetQuantity()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
+            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
             int quantity = 0;
             foreach (tblChiTietHoaDonBanHang invoice_detail in list)
             {
@@ -108,10 +108,10 @@ namespace SaleManagement.FORM
             return quantity;
         }
         // hóa đơn
-        public int GetInvoice(DateTime dateMin, DateTime dateMax)
+        public int GetInvoice()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var list = DB.tblHoaDonBanHangs.Where(p => p.NgayBan >= dateMin && p.NgayBan <= dateMax);
+            var list = DB.tblHoaDonBanHangs.Where(p => p.NgayBan >= dpFROM.Value && p.NgayBan <= dpTO.Value);
             int count = 0;
             foreach (tblHoaDonBanHang invoice in list)
             {

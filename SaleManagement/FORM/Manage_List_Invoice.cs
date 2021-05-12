@@ -24,7 +24,10 @@ namespace SaleManagement.FORM
             txtAMOUNT.Enabled = false;
             txtPRICE.Enabled = false;
             var dateMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
-            dpFROM.Value = dateMin.Value;
+            if (dateMin != null)
+            {
+                dpFROM.Value = dateMin.Value;
+            }
             ShowInvoice();
             disable(false);
         }
@@ -45,11 +48,20 @@ namespace SaleManagement.FORM
             this.Close();
         }
         // Tổng tiền tất cả hóa đơn
-        public double GetAllPrice()
+        public double GetAllPrice(int index)
         {
+            IEnumerable<tblHoaDonBanHang> listInvoice = null;
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+            if (index == 0)
+            {
+                listInvoice = DB.tblHoaDonBanHangs.Where(p => p.NgayBan >= dpFROM.Value && p.NgayBan <= dpTO.Value);
+            }
+            else
+            {
+                listInvoice = DB.tblHoaDonBanHangs.Where(p => p.NgayBan >= dpFROM.Value && p.NgayBan <= dpTO.Value && p.MaNhanVien == ((CBBItem)cbbSTAFF_DETAIL.SelectedItem).VALUE);
+            }
             double price = 0;
-            foreach(tblHoaDonBanHang invoice in DB.tblHoaDonBanHangs)
+            foreach (tblHoaDonBanHang invoice in listInvoice)
             {
                 price += Convert.ToDouble(invoice.SoTien);
             }
@@ -94,7 +106,7 @@ namespace SaleManagement.FORM
             }
             dgvINFO_INVOICE.DataSource = null;
             txtAMOUNT.Text = dgvLIST_INVOICE.Rows.Count.ToString(); // gán số lượng cho txtAmount
-            txtPRICE.Text = String.Format("{0:n0}", GetAllPrice()); // gán giá trị cho txtPrice
+            txtPRICE.Text = String.Format("{0:n0}", GetAllPrice(cbbSTAFF_DETAIL.SelectedIndex)); // gán giá trị cho txtPrice
         }
         // Liệt kê thông tin đơn hàng dựa vào mã hóa đơn từ dgvList_Invoice
         public void ShowInfoInvoice(string idInvoice)

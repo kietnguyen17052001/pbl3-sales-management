@@ -41,14 +41,14 @@ namespace SaleManagement.VIEW
         public void ShowCustomer()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var getCustomer = DB.tblKhachHangs.Select(p => new {
+            var listCus = DB.tblKhachHangs.Select(p => new {
                 p.MaKhachHang,
                 p.TenKhachHang,
-                p.SoDienThoai,
                 p.GioiTinh,
-                p.DiaChi,
+                p.SoDienThoai,
+                p.DiaChi
             });
-            dgvLISTCUSTOMER.DataSource = getCustomer.ToList();
+            dgvLISTCUSTOMER.DataSource = listCus.ToList();
             txtID_CUSTOMER.Clear();
             txtNAME_CUSTOMER.Clear();
             txtPHONE.Clear();
@@ -244,7 +244,7 @@ namespace SaleManagement.VIEW
                     p.TenKhachHang,
                     p.GioiTinh,
                     p.SoDienThoai,
-                    p.DiaChi,
+                    p.DiaChi
                 });
                 dgvLISTCUSTOMER.DataSource = getCustomer.ToList();
             }
@@ -256,7 +256,7 @@ namespace SaleManagement.VIEW
                     p.TenKhachHang,
                     p.GioiTinh,
                     p.SoDienThoai,
-                    p.DiaChi,
+                    p.DiaChi
                 });
                 dgvLISTCUSTOMER.DataSource = getCustomer.ToList();
             }

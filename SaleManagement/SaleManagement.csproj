@@ -128,12 +128,6 @@
     <Compile Include="FORM\Create_Invoice.Designer.cs">
       <DependentUpon>Create_Invoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Create_NewCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FORM\Create_NewCustomer.Designer.cs">
-      <DependentUpon>Create_NewCustomer.cs</DependentUpon>
-    </Compile>
     <Compile Include="FORM\Create_NewProducer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +145,12 @@
     </Compile>
     <Compile Include="FORM\Create_NewTypeItem.Designer.cs">
       <DependentUpon>Create_NewTypeItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Customer_Invoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Customer_Invoice.Designer.cs">
+      <DependentUpon>Customer_Invoice.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Discount_Money.cs">
       <SubType>Form</SubType>
@@ -264,9 +264,6 @@
     <EmbeddedResource Include="FORM\Add_NewProduct.resx">
       <DependentUpon>Add_NewProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\Create_NewCustomer.resx">
-      <DependentUpon>Create_NewCustomer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FORM\Create_NewProducer.resx">
       <DependentUpon>Create_NewProducer.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Create_NewTypeItem.resx">
       <DependentUpon>Create_NewTypeItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Customer_Invoice.resx">
+      <DependentUpon>Customer_Invoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Discount_Money.resx">
       <DependentUpon>Discount_Money.cs</DependentUpon>
@@ -466,6 +466,8 @@
       <DependentUpon>SALEMANAGEMENT.edmx</DependentUpon>
       <LastGenOutput>SALEMANAGEMENT.cs</LastGenOutput>
     </Content>
+    <None Include="IMG\checked-user-24.png" />
+    <None Include="IMG\user-5-24.png" />
     <None Include="IMG\sinchronize-32 %281%29.png" />
     <None Include="IMG\bank-2-24.png" />
     <None Include="IMG\product-32.png" />

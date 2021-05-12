@@ -273,6 +273,16 @@ namespace SaleManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap checked_user_24 {
+            get {
+                object obj = ResourceManager.GetObject("checked-user-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap coins_32 {
             get {
                 object obj = ResourceManager.GetObject("coins-32", resourceCulture);
@@ -806,6 +816,16 @@ namespace SaleManagement.Properties {
         internal static System.Drawing.Bitmap Time_Meeting_icon {
             get {
                 object obj = ResourceManager.GetObject("Time-Meeting-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_5_24 {
+            get {
+                object obj = ResourceManager.GetObject("user-5-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

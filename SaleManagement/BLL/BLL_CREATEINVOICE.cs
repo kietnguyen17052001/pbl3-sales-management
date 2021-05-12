@@ -49,7 +49,7 @@ namespace SaleManagement.BLL
             }
             return list;
         }
-        // Thiết lập danh sách khách hàng vào trong CBB_CUSTOMER
+        // Danh sách khách hàng
         public List<CBBItem> GetCbb_Customer()
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
@@ -166,19 +166,30 @@ namespace SaleManagement.BLL
         // Trả về mã hóa đơn mới
         public string GetNewID_Invoice()
         {
-            int idInvoice;
+            string idInvoice = "";
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             List<tblHoaDonBanHang> list = DB.tblHoaDonBanHangs.ToList();
             if (list.Count == 0)
             {
-                idInvoice = 1;
+                idInvoice = "HD0001";
             }
             else
             {
                 int lastId = Convert.ToInt32(list[list.Count - 1].MaHoaDonBan.Remove(0, 2));
-                idInvoice = lastId + 1;
+                if (lastId + 1 < 10)
+                {
+                    idInvoice = "HD000" + (lastId + 1).ToString();
+                }
+                else if (lastId + 1 < 100)
+                {
+                    idInvoice = "HD00" + (lastId + 1).ToString();
+                }
+                else if (lastId + 1 < 1000)
+                {
+                    idInvoice = "HD0"+ (lastId + 1).ToString(); 
+                }
             }
-            return "HD" + idInvoice;
+            return idInvoice;
         }
     }
 }
