@@ -38,7 +38,6 @@ namespace SaleManagement.VIEW
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnCANCEL = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
-            this.btnSEARCH = new System.Windows.Forms.Button();
             this.btnSHOW = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.cbbPOSITION_DETAIL = new System.Windows.Forms.ComboBox();
@@ -64,14 +63,17 @@ namespace SaleManagement.VIEW
             this.btnEXCEL = new System.Windows.Forms.Button();
             this.btnHOME = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_STAFF)).BeginInit();
             this.gbGENDER.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvLIST_STAFF
             // 
             this.dgvLIST_STAFF.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLIST_STAFF.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvLIST_STAFF.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvLIST_STAFF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLIST_STAFF.Location = new System.Drawing.Point(398, 135);
             this.dgvLIST_STAFF.Name = "dgvLIST_STAFF";
@@ -99,11 +101,12 @@ namespace SaleManagement.VIEW
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(791, 651);
+            this.txtSEARCH.Location = new System.Drawing.Point(891, 649);
             this.txtSEARCH.Name = "txtSEARCH";
             this.txtSEARCH.Size = new System.Drawing.Size(274, 28);
             this.txtSEARCH.TabIndex = 38;
             this.txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+            this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
             this.txtSEARCH.Enter += new System.EventHandler(this.txtSEARCH_Enter);
             this.txtSEARCH.Leave += new System.EventHandler(this.txtSEARCH_Leave);
             // 
@@ -220,25 +223,6 @@ namespace SaleManagement.VIEW
             this.btnDELETE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);
-            // 
-            // btnSEARCH
-            // 
-            this.btnSEARCH.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSEARCH.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSEARCH.FlatAppearance.BorderSize = 0;
-            this.btnSEARCH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSEARCH.ForeColor = System.Drawing.Color.White;
-            this.btnSEARCH.Image = global::SaleManagement.Properties.Resources.search_12_24;
-            this.btnSEARCH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSEARCH.Location = new System.Drawing.Point(1085, 640);
-            this.btnSEARCH.Name = "btnSEARCH";
-            this.btnSEARCH.Size = new System.Drawing.Size(137, 48);
-            this.btnSEARCH.TabIndex = 37;
-            this.btnSEARCH.Text = "Tìm kiếm";
-            this.btnSEARCH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSEARCH.UseVisualStyleBackColor = false;
-            this.btnSEARCH.Click += new System.EventHandler(this.btnSEARCH_Click);
             // 
             // btnSHOW
             // 
@@ -449,7 +433,7 @@ namespace SaleManagement.VIEW
             // 
             this.rbID_STAFF.AutoSize = true;
             this.rbID_STAFF.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbID_STAFF.Location = new System.Drawing.Point(586, 654);
+            this.rbID_STAFF.Location = new System.Drawing.Point(686, 652);
             this.rbID_STAFF.Name = "rbID_STAFF";
             this.rbID_STAFF.Size = new System.Drawing.Size(83, 23);
             this.rbID_STAFF.TabIndex = 60;
@@ -461,7 +445,7 @@ namespace SaleManagement.VIEW
             // 
             this.rbNAME_STAFF.AutoSize = true;
             this.rbNAME_STAFF.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNAME_STAFF.Location = new System.Drawing.Point(675, 654);
+            this.rbNAME_STAFF.Location = new System.Drawing.Point(775, 652);
             this.rbNAME_STAFF.Name = "rbNAME_STAFF";
             this.rbNAME_STAFF.Size = new System.Drawing.Size(90, 23);
             this.rbNAME_STAFF.TabIndex = 61;
@@ -521,12 +505,26 @@ namespace SaleManagement.VIEW
             this.label1.Text = "Quản lý nhân viên";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(1175, 639);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
+            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
+            this.pictureBox1.TabIndex = 137;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmManage_Staffs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHOME);
             this.Controls.Add(this.btnEXCEL);
@@ -554,7 +552,6 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtSEARCH);
-            this.Controls.Add(this.btnSEARCH);
             this.Controls.Add(this.cbbPOSITION_DETAIL);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnSHOW);
@@ -566,6 +563,7 @@ namespace SaleManagement.VIEW
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_STAFF)).EndInit();
             this.gbGENDER.ResumeLayout(false);
             this.gbGENDER.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -576,7 +574,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSHOW;
         private System.Windows.Forms.TextBox txtSEARCH;
-        private System.Windows.Forms.Button btnSEARCH;
         private System.Windows.Forms.Button btnADD;
         private System.Windows.Forms.Button btnEDIT;
         private System.Windows.Forms.Button btnBACK;
@@ -607,5 +604,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnEXCEL;
         private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

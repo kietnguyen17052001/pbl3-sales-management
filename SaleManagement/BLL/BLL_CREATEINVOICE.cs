@@ -5,11 +5,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SaleManagement.BLL
 {
     class BLL_CREATEINVOICE
     {
+        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_CREATEINVOICE _Instance;
         public static BLL_CREATEINVOICE Instance
         {
@@ -26,7 +28,8 @@ namespace SaleManagement.BLL
         private BLL_CREATEINVOICE() { }
         public tblChiTietHoaDonBanHang GetInvoice_Detail(DataRow data, string idInvoice)
         {
-            return new tblChiTietHoaDonBanHang {
+            return new tblChiTietHoaDonBanHang
+            {
                 MaHoaDonBan = idInvoice,
                 MaHangHoa = data["MaHangHoa"].ToString(),
                 SoLuong = Convert.ToInt32(data["SoLuong"].ToString()),
@@ -38,7 +41,6 @@ namespace SaleManagement.BLL
         // Thiết lập danh sách nhân viên thu ngân vào trong CBB_STAFF
         public List<CBBItem> GetCbb_Staff()
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             List<CBBItem> list = new List<CBBItem>();
             foreach(tblNhanVien staff in DB.tblNhanViens.ToList())
             {
@@ -52,7 +54,6 @@ namespace SaleManagement.BLL
         // Danh sách khách hàng
         public List<CBBItem> GetCbb_Customer()
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             List<CBBItem> list = new List<CBBItem>();
             foreach (tblKhachHang customer in DB.tblKhachHangs.ToList())
             {
@@ -163,11 +164,48 @@ namespace SaleManagement.BLL
             }
             return count;
         }
+        // search name product
+        public void FuncSearchName(DataGridView dgv, string name)
+        {
+            var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(name)).Select(p => new
+            {
+                p.MaHangHoa,
+                p.TenHangHoa,
+                p.SoLuong,
+                p.GiaBan
+            });
+            dgv.DataSource = product.ToList();
+        }
+        // search id product
+        public void FuncSearchId(DataGridView dgv, string id)
+        {
+            var product = DB.tblHangHoas.Where(p => p.MaHangHoa.Contains(id)).Select(p => new
+            {
+                p.MaHangHoa,
+                p.TenHangHoa,
+                p.SoLuong,
+                p.GiaBan
+            });
+            dgv.DataSource = product.ToList();
+        }
+        // payment for invoice
+        public void FuncPayment(tblHoaDonBanHang newInvoice, DataTable data)
+        {
+            DB.tblHoaDonBanHangs.Add(newInvoice);
+            DB.SaveChanges();// thêm đơn hàng vào DB
+            foreach (DataRow dataRow in data.Rows)
+            {
+                DB.tblChiTietHoaDonBanHangs.Add(GetInvoice_Detail(dataRow, newInvoice.MaHoaDonBan));
+                DB.SaveChanges();// thêm hóa đơn bán hàng chi tiết
+                var product = DB.tblHangHoas.Find(dataRow["MaHangHoa"].ToString());
+                product.SoLuong -= Convert.ToInt32(dataRow["SoLuong"].ToString());
+                DB.SaveChanges();// thay đổi số lượng hàng hóa sau khi thanh toán
+            }
+        }
         // Trả về mã hóa đơn mới
         public string GetNewID_Invoice()
         {
             string idInvoice = "";
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             List<tblHoaDonBanHang> list = DB.tblHoaDonBanHangs.ToList();
             if (list.Count == 0)
             {

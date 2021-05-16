@@ -41,5 +41,13 @@ namespace SaleManagement.FORM
         {
             this.Close();
         }
+
+        private void txtNEWQTY_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

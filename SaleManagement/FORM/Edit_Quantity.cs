@@ -13,12 +13,12 @@ namespace SaleManagement.FORM
 {
     public partial class FrmEdit_Quantity : Form
     {
+        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public delegate void myDEL(int quantity);
         public myDEL d { get; set; }
         public string idProduct { get; set; }
         public FrmEdit_Quantity(string _idProduct, string nameProduct, int quantity)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             InitializeComponent();
             txtPRODUCT.Text = nameProduct;
             txtQUANTITY.Text = quantity.ToString();
@@ -32,7 +32,6 @@ namespace SaleManagement.FORM
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             if (string.IsNullOrEmpty(txtNEW_QUANTITY.Text))
             {
                 MessageBox.Show("Vui lòng nhập số lượng mới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

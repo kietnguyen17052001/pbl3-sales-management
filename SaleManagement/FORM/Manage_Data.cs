@@ -20,50 +20,57 @@ namespace SaleManagement.VIEW
 
         private void btnSTAFFS_Click(object sender, EventArgs e)
         {
-            FrmManage_Staffs FRM = new FrmManage_Staffs();
-            FRM.Show();
+            FrmManage_Staffs frm = new FrmManage_Staffs();
+            frm.Show();
             this.Close();
         }
 
         private void btnCUSTOMERS_Click(object sender, EventArgs e)
         {
-            FrmManage_Customers FRM = new FrmManage_Customers();
-            FRM.Show();
+            FrmManage_Customers frm = new FrmManage_Customers();
+            frm.Show();
             this.Close();
         }
 
         private void btnITEMS_Click(object sender, EventArgs e)
         {
-            FrmManage_Items FRM = new FrmManage_Items();
-            FRM.Show();
+            FrmManage_Items frm = new FrmManage_Items();
+            frm.Show();
             this.Close();
         }
 
         private void btnBILL_Click(object sender, EventArgs e)
         {
-            FrmBill FRM = new FrmBill();
-            FRM.Show();
+            FrmBill frm = new FrmBill();
+            frm.Show();
             this.Close();
         }
 
         private void btnSUPPLIERS_Click(object sender, EventArgs e)
         {
-            FrmManage_Suppliers FRM = new FrmManage_Suppliers();
-            FRM.Show();
+            FrmManage_Suppliers frm = new FrmManage_Suppliers();
+            frm.Show();
             this.Close();
         }
 
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmSale_Management FRM = new FrmSale_Management();
-            FRM.Show();
+            FrmSale_Management frm = new FrmSale_Management();
+            frm.Show();
             this.Close();
         }
 
         private void btnLIST_BILLS_Click(object sender, EventArgs e)
         {
-            FrmManage_List_Invoice FRM = new FrmManage_List_Invoice();
-            FRM.Show();
+            FrmManage_List_Invoice frm = new FrmManage_List_Invoice();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnTYPE_ITEMS_Click(object sender, EventArgs e)
+        {
+            FrmManage_TypeOfProduct frm = new FrmManage_TypeOfProduct();
+            frm.Show();
             this.Close();
         }
     }

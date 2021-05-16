@@ -164,6 +164,7 @@ namespace SaleManagement.VIEW
             this.btnTYPE_ITEMS.Text = "Loại hàng hóa";
             this.btnTYPE_ITEMS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnTYPE_ITEMS.UseVisualStyleBackColor = false;
+            this.btnTYPE_ITEMS.Click += new System.EventHandler(this.btnTYPE_ITEMS_Click);
             // 
             // btnITEMS
             // 

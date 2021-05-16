@@ -9,6 +9,7 @@ namespace SaleManagement.BLL
 {
     class BLL_PRODUCER
     {
+        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_PRODUCER _Instance;
         public static BLL_PRODUCER Instance
         {
@@ -26,7 +27,6 @@ namespace SaleManagement.BLL
         public string getNEWID_PRODUCER()
         {
             int ID;
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             List<tblNhaSanXuat> LIST = DB.tblNhaSanXuats.ToList();
             if (LIST.Count == 0)
             {

@@ -14,6 +14,7 @@ namespace SaleManagement.FORM
 {
     public partial class FrmCreate_NewProducer : Form
     {
+        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public delegate void myDEL(string VALUE, string TEXT);
         public myDEL d { get; set; }
         public FrmCreate_NewProducer()
@@ -24,7 +25,6 @@ namespace SaleManagement.FORM
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             tblNhaSanXuat PRODUCER = new tblNhaSanXuat();
             if(string.IsNullOrEmpty(txtID_PRODUCER.Text) || string.IsNullOrEmpty(txtNAME_PRODUCER.Text) || string.IsNullOrEmpty(txtADDRESS.Text))
             {

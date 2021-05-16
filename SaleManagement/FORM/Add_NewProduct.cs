@@ -14,6 +14,7 @@ namespace SaleManagement.FORM
 {
     public partial class FrmAdd_NewProduct : Form
     {
+        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         string idInvoice, idProduct;
         int productQty, discount;
         double pricePro;
@@ -35,7 +36,6 @@ namespace SaleManagement.FORM
         }
         public void ShowProduct()
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             if(cbbTYPE_OF_PRODUCT.SelectedIndex == 0)
             {
                 var getProducts = DB.tblHangHoas.Select(p => new
@@ -68,7 +68,6 @@ namespace SaleManagement.FORM
 
         private void btnADD_PRODUCT_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             idProduct = dgvProduct.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
             productQty = Convert.ToInt32(txtQUANTITY.Text);
             pricePro = Convert.ToDouble(dgvProduct.SelectedRows[0].Cells["GiaBan"].Value.ToString());
@@ -107,7 +106,6 @@ namespace SaleManagement.FORM
         }
         private void btnSEARCH_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             string information = txtSEARCH.Text;
             var product = DB.tblHangHoas.Where(p => p.MaHangHoa.Contains(information) || p.TenHangHoa.Contains(information)).Select(p => new {
                 p.MaHangHoa,

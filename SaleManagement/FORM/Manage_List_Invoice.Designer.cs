@@ -54,20 +54,21 @@ namespace SaleManagement.FORM
             this.cbbSTAFF = new System.Windows.Forms.ComboBox();
             this.txtDISCOUNT = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnHOME = new System.Windows.Forms.Button();
             this.btnADD_PRODUCT = new System.Windows.Forms.Button();
             this.btnEDIT_QUANTITY = new System.Windows.Forms.Button();
             this.btnDELETE_PRODUCT = new System.Windows.Forms.Button();
-            this.btnSEARCH = new System.Windows.Forms.Button();
             this.btnEXCEL = new System.Windows.Forms.Button();
             this.btnSHOW = new System.Windows.Forms.Button();
             this.btnEDIT = new System.Windows.Forms.Button();
             this.btnBACK = new System.Windows.Forms.Button();
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
-            this.btnHOME = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_INVOICE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvINFO_INVOICE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPRICE_
@@ -284,9 +285,10 @@ namespace SaleManagement.FORM
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
             this.txtSEARCH.Location = new System.Drawing.Point(399, 395);
             this.txtSEARCH.Name = "txtSEARCH";
-            this.txtSEARCH.Size = new System.Drawing.Size(309, 28);
+            this.txtSEARCH.Size = new System.Drawing.Size(382, 28);
             this.txtSEARCH.TabIndex = 125;
             this.txtSEARCH.Text = "Nhập mã hóa đơn hoặc mã/ tên khách hàng";
+            this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
             this.txtSEARCH.Enter += new System.EventHandler(this.txtSEARCH_Enter);
             this.txtSEARCH.Leave += new System.EventHandler(this.txtSEARCH_Leave);
             // 
@@ -328,6 +330,39 @@ namespace SaleManagement.FORM
             this.label12.Size = new System.Drawing.Size(87, 21);
             this.label12.TabIndex = 128;
             this.label12.Text = "Giảm giá";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label1.Location = new System.Drawing.Point(456, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(364, 31);
+            this.label1.TabIndex = 135;
+            this.label1.Text = "Danh sách hóa đơn bán hàng";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnHOME
+            // 
+            this.btnHOME.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnHOME.FlatAppearance.BorderSize = 0;
+            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHOME.ForeColor = System.Drawing.Color.White;
+            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
+            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHOME.Location = new System.Drawing.Point(1038, 2);
+            this.btnHOME.Name = "btnHOME";
+            this.btnHOME.Size = new System.Drawing.Size(197, 65);
+            this.btnHOME.TabIndex = 134;
+            this.btnHOME.Text = "Trang chủ";
+            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHOME.UseVisualStyleBackColor = false;
+            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
             // 
             // btnADD_PRODUCT
             // 
@@ -388,26 +423,6 @@ namespace SaleManagement.FORM
             this.btnDELETE_PRODUCT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDELETE_PRODUCT.UseVisualStyleBackColor = false;
             this.btnDELETE_PRODUCT.Click += new System.EventHandler(this.btnDELETE_PRODUCT_Click);
-            // 
-            // btnSEARCH
-            // 
-            this.btnSEARCH.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSEARCH.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSEARCH.FlatAppearance.BorderSize = 0;
-            this.btnSEARCH.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
-            this.btnSEARCH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSEARCH.ForeColor = System.Drawing.Color.White;
-            this.btnSEARCH.Image = global::SaleManagement.Properties.Resources.search_12_24;
-            this.btnSEARCH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSEARCH.Location = new System.Drawing.Point(714, 385);
-            this.btnSEARCH.Name = "btnSEARCH";
-            this.btnSEARCH.Size = new System.Drawing.Size(137, 46);
-            this.btnSEARCH.TabIndex = 124;
-            this.btnSEARCH.Text = "Tìm kiếm";
-            this.btnSEARCH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSEARCH.UseVisualStyleBackColor = false;
-            this.btnSEARCH.Click += new System.EventHandler(this.btnSEARCH_Click);
             // 
             // btnEXCEL
             // 
@@ -524,44 +539,25 @@ namespace SaleManagement.FORM
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);
             // 
-            // btnHOME
+            // pictureBox1
             // 
-            this.btnHOME.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnHOME.FlatAppearance.BorderSize = 0;
-            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHOME.ForeColor = System.Drawing.Color.White;
-            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
-            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHOME.Location = new System.Drawing.Point(1038, 2);
-            this.btnHOME.Name = "btnHOME";
-            this.btnHOME.Size = new System.Drawing.Size(197, 65);
-            this.btnHOME.TabIndex = 134;
-            this.btnHOME.Text = "Trang chủ";
-            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHOME.UseVisualStyleBackColor = false;
-            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(456, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(364, 31);
-            this.label1.TabIndex = 135;
-            this.label1.Text = "Danh sách hóa đơn bán hàng";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(787, 384);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
+            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
+            this.pictureBox1.TabIndex = 136;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmManage_List_Invoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 691);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHOME);
             this.Controls.Add(this.btnADD_PRODUCT);
@@ -572,7 +568,6 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.cbbSTAFF);
             this.Controls.Add(this.cbbCUSTOMER);
             this.Controls.Add(this.txtSEARCH);
-            this.Controls.Add(this.btnSEARCH);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dpTO);
@@ -604,6 +599,7 @@ namespace SaleManagement.FORM
             this.Text = "Manage_List_Invoice";
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_INVOICE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvINFO_INVOICE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -637,7 +633,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtSEARCH;
-        private System.Windows.Forms.Button btnSEARCH;
         private System.Windows.Forms.ComboBox cbbCUSTOMER;
         private System.Windows.Forms.ComboBox cbbSTAFF;
         private System.Windows.Forms.TextBox txtDISCOUNT;
@@ -647,5 +642,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Button btnADD_PRODUCT;
         private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

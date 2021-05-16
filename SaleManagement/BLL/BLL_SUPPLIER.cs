@@ -9,6 +9,7 @@ namespace SaleManagement.BLL
 {
     class BLL_SUPPLIER
     {
+        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_SUPPLIER _Instance;
         public static BLL_SUPPLIER Instance
         {
@@ -23,21 +24,37 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_SUPPLIER() { }
-        public string getNEWID_SUPPLIER()
+        // add new supplier
+        public void FuncAddNewSupplier(tblNhaCungCap supplier)
         {
-            int ID;
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            List<tblNhaCungCap> LIST = DB.tblNhaCungCaps.ToList();
-            if ( LIST.Count == 0)
+            DB.tblNhaCungCaps.Add(supplier);
+            DB.SaveChanges();
+        }
+        public string GetNewIdSupplier()
+        {
+            string idSupplier;
+            List<tblNhaCungCap> list = DB.tblNhaCungCaps.ToList();
+            if (list.Count == 0)
             {
-                ID = 1;
+                idSupplier = "NCC001";
             }
             else
             {
-                int LAST = Convert.ToInt32(LIST[LIST.Count - 1].MaNhaCungCap.Remove(0, 3));
-                ID = LAST + 1;
+                int last = Convert.ToInt32(list[list.Count - 1].MaNhaCungCap.Remove(0, 3));
+                if (last + 1 < 10)
+                {
+                    idSupplier = "NCC00" + (last + 1);
+                }
+                else if (last + 1 < 100)
+                {
+                    idSupplier = "NCC0" + (last + 1);
+                }
+                else
+                {
+                    idSupplier = "NCC" + (last + 1);
+                }
             }
-            return "NCC" + ID;
+            return idSupplier;
         }
     }
 }

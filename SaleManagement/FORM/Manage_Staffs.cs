@@ -14,6 +14,7 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Staffs : Form
     {
+        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         bool isAdd; // Kiểm tra xem thực hiện chức năng ADD hay EDIT
         public FrmManage_Staffs()
         {
@@ -42,7 +43,6 @@ namespace SaleManagement.VIEW
         }
         public void SetCbb()
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             cbbPOSITION_DETAIL.Items.Add("Tất cả");
             cbbPOSITION_DETAIL.Items.AddRange(BLL_STAFF.Instance.GetListPosition().Distinct().ToArray());
             cbbPOSITION.Items.Add("None");
@@ -51,7 +51,6 @@ namespace SaleManagement.VIEW
         }
         public void ShowStaff()
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             if (cbbPOSITION_DETAIL.SelectedIndex == 0)
             {
                 var getStaff = DB.tblNhanViens.Select(p => new {
@@ -147,7 +146,6 @@ namespace SaleManagement.VIEW
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             tblNhanVien staff = new tblNhanVien();
             staff.MaNhanVien = txtID_STAFF.Text;
             staff.TenNhanVien = txtNAME_STAFF.Text;
@@ -176,8 +174,7 @@ namespace SaleManagement.VIEW
                 {
                     try
                     {
-                        DB.tblNhanViens.Add(staff);
-                        DB.SaveChanges();
+                        BLL_STAFF.Instance.FuncAddNewStaff(staff); // add new staff
                         MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         disable(false);
                         ShowStaff();
@@ -190,15 +187,7 @@ namespace SaleManagement.VIEW
                 }
                 else
                 {
-                    var getStaff = DB.tblNhanViens.Find(txtID_STAFF.Text);
-                    getStaff.TenNhanVien = staff.TenNhanVien;
-                    getStaff.ViTri = staff.ViTri;
-                    getStaff.NgaySinh = staff.NgaySinh;
-                    getStaff.GioiTinh = staff.GioiTinh;
-                    getStaff.SoDienThoai = staff.SoDienThoai;
-                    getStaff.DiaChi = staff.DiaChi;
-                    getStaff.Luong = staff.Luong;
-                    DB.SaveChanges();
+                    BLL_STAFF.Instance.FuncEditStaff(staff); // edit staff
                     MessageBox.Show("Sửa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     disable(false);
                     ShowStaff();
@@ -208,60 +197,46 @@ namespace SaleManagement.VIEW
         }
         private void btnDELETE_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             List<string> listIdStaff = new List<string>();
             DataGridViewSelectedRowCollection data = dgvLIST_STAFF.SelectedRows;
             foreach(DataGridViewRow dataGvr in data)
             {
                 listIdStaff.Add(dataGvr.Cells["MaNhanVien"].Value.ToString());
             }
-            foreach(string i in listIdStaff)
+            DialogResult question = MessageBox.Show("Bạn chắc chắn muốn xóa nhân viên này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (question == DialogResult.Yes)
             {
-                foreach(tblNhanVien staff in DB.tblNhanViens)
-                {
-                    if(staff.MaNhanVien == i)
-                    {
-                        DB.tblNhanViens.Remove(staff);
-                        MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-                    }
-                }
-                DB.SaveChanges();
+                BLL_STAFF.Instance.FuncDeleteStaff(listIdStaff); // delete staff
+                ShowStaff();
             }
-            ShowStaff();
         }
-        private void btnSEARCH_Click(object sender, EventArgs e)
+        private void txtSEARCH_Enter(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
+            {
+                txtSEARCH.Text = "";
+                txtSEARCH.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtSEARCH_Leave(object sender, EventArgs e)
+        {
+            if (txtSEARCH.Text == "")
+            {
+                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+                txtSEARCH.ForeColor = Color.Silver;
+            }
+        }
+
+        private void txtSEARCH_TextChanged(object sender, EventArgs e)
+        {
             if (rbID_STAFF.Checked == true)
             {
-                var getStaff = DB.tblNhanViens.Where(p => p.MaNhanVien.Contains(txtSEARCH.Text)).Select(p => new
-                {
-                    p.MaNhanVien,
-                    p.TenNhanVien,
-                    p.ViTri,
-                    p.NgaySinh,
-                    p.GioiTinh,
-                    p.SoDienThoai,
-                    p.DiaChi,
-                    p.Luong
-                });
-                dgvLIST_STAFF.DataSource = getStaff.ToList();
+                BLL_STAFF.Instance.FuncSearchID(dgvLIST_STAFF, txtSEARCH.Text); // search id 
             }
             else
             {
-                var getStaff = DB.tblNhanViens.Where(p => p.TenNhanVien.Contains(txtSEARCH.Text)).Select(p => new
-                {
-                    p.MaNhanVien,
-                    p.TenNhanVien,
-                    p.ViTri,
-                    p.NgaySinh,
-                    p.GioiTinh,
-                    p.SoDienThoai,
-                    p.DiaChi,
-                    p.Luong
-                });
-                dgvLIST_STAFF.DataSource = getStaff.ToList();
+                BLL_STAFF.Instance.FuncSearchName(dgvLIST_STAFF, txtSEARCH.Text); // search name
             }
         }
         private void btnCANCEL_Click(object sender, EventArgs e)
@@ -284,40 +259,20 @@ namespace SaleManagement.VIEW
         }
         private void dgvLIST_STAFF_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            string idStaff = dgvLIST_STAFF.SelectedRows[0].Cells["MaNhanVien"].Value.ToString();
-            var staff = DB.tblNhanViens.Find(idStaff);
-            txtID_STAFF.Text = staff.MaNhanVien;
-            txtNAME_STAFF.Text = staff.TenNhanVien;
-            cbbPOSITION.Text = staff.ViTri;
-            dpDAY.Value = (DateTime)staff.NgaySinh;
-            txtPHONE.Text = staff.SoDienThoai;
-            txtADDRESS.Text = staff.DiaChi;
-            txtSALARY.Text = String.Format("{0:n0}", Convert.ToDouble(staff.Luong));
-            if (staff.GioiTinh == true)
+            txtID_STAFF.Text = dgvLIST_STAFF.SelectedRows[0].Cells["MaNhanVien"].Value.ToString();
+            txtNAME_STAFF.Text = dgvLIST_STAFF.SelectedRows[0].Cells["TenNhanVien"].Value.ToString();
+            cbbPOSITION.Text = dgvLIST_STAFF.SelectedRows[0].Cells["ViTri"].Value.ToString();
+            dpDAY.Value = (DateTime)dgvLIST_STAFF.SelectedRows[0].Cells["NgaySinh"].Value;
+            txtPHONE.Text = dgvLIST_STAFF.SelectedRows[0].Cells["SoDienThoai"].Value.ToString();
+            txtADDRESS.Text = dgvLIST_STAFF.SelectedRows[0].Cells["DiaChi"].Value.ToString();
+            txtSALARY.Text = String.Format("{0:n0}", dgvLIST_STAFF.SelectedRows[0].Cells["Luong"].Value);
+            if (Convert.ToBoolean(dgvLIST_STAFF.SelectedRows[0].Cells["GioiTinh"].Value.ToString()) == true)
             {
                 rbMALE.Checked = true;
             }
             else
             {
                 rbFEMALE.Checked = true;
-            }
-        }
-        private void txtSEARCH_Enter(object sender, EventArgs e)
-        {
-            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
-            {
-                txtSEARCH.Text = "";
-                txtSEARCH.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtSEARCH_Leave(object sender, EventArgs e)
-        {
-            if (txtSEARCH.Text == "")
-            {
-                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
-                txtSEARCH.ForeColor = Color.Silver;
             }
         }
     }

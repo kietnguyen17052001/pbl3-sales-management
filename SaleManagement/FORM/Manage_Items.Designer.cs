@@ -56,36 +56,38 @@ namespace SaleManagement.VIEW
             this.rbID_ITEM = new System.Windows.Forms.RadioButton();
             this.cbbTYPE_OF__PRODUCT_DETAIL = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnADDPIC = new System.Windows.Forms.Button();
+            this.pbIMAGE = new System.Windows.Forms.PictureBox();
+            this.btnHOME = new System.Windows.Forms.Button();
+            this.btnEXCEL = new System.Windows.Forms.Button();
+            this.btnADDPRODUCER = new System.Windows.Forms.Button();
+            this.btnADDSUPPLIER = new System.Windows.Forms.Button();
+            this.btnADDTYPE = new System.Windows.Forms.Button();
             this.btnADD = new System.Windows.Forms.Button();
             this.btnEDIT = new System.Windows.Forms.Button();
             this.btnBACK = new System.Windows.Forms.Button();
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnCANCEL = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
-            this.btnSEARCH = new System.Windows.Forms.Button();
             this.btnSHOW = new System.Windows.Forms.Button();
-            this.btnADDTYPE = new System.Windows.Forms.Button();
-            this.btnADDSUPPLIER = new System.Windows.Forms.Button();
-            this.btnADDPRODUCER = new System.Windows.Forms.Button();
-            this.btnEXCEL = new System.Windows.Forms.Button();
-            this.btnHOME = new System.Windows.Forms.Button();
-            this.pbIMAGE = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnADDPIC = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTITEMS)).BeginInit();
             this.gbMota.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIMAGE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSEARCH
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(812, 626);
+            this.txtSEARCH.Location = new System.Drawing.Point(908, 620);
             this.txtSEARCH.Name = "txtSEARCH";
             this.txtSEARCH.Size = new System.Drawing.Size(274, 28);
             this.txtSEARCH.TabIndex = 67;
             this.txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+            this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
             this.txtSEARCH.Enter += new System.EventHandler(this.txtSEARCH_Enter);
             this.txtSEARCH.Leave += new System.EventHandler(this.txtSEARCH_Leave);
             // 
@@ -327,7 +329,7 @@ namespace SaleManagement.VIEW
             // 
             this.rbNAME_ITEM.AutoSize = true;
             this.rbNAME_ITEM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNAME_ITEM.Location = new System.Drawing.Point(708, 630);
+            this.rbNAME_ITEM.Location = new System.Drawing.Point(804, 624);
             this.rbNAME_ITEM.Name = "rbNAME_ITEM";
             this.rbNAME_ITEM.Size = new System.Drawing.Size(98, 25);
             this.rbNAME_ITEM.TabIndex = 115;
@@ -339,7 +341,7 @@ namespace SaleManagement.VIEW
             // 
             this.rbID_ITEM.AutoSize = true;
             this.rbID_ITEM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbID_ITEM.Location = new System.Drawing.Point(609, 630);
+            this.rbID_ITEM.Location = new System.Drawing.Point(705, 624);
             this.rbID_ITEM.Name = "rbID_ITEM";
             this.rbID_ITEM.Size = new System.Drawing.Size(91, 25);
             this.rbID_ITEM.TabIndex = 114;
@@ -366,6 +368,131 @@ namespace SaleManagement.VIEW
             this.label8.Size = new System.Drawing.Size(78, 21);
             this.label8.TabIndex = 116;
             this.label8.Text = "Loại HH";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label1.Location = new System.Drawing.Point(531, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(223, 31);
+            this.label1.TabIndex = 123;
+            this.label1.Text = "Quản lý hàng hóa";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnADDPIC
+            // 
+            this.btnADDPIC.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnADDPIC.FlatAppearance.BorderSize = 0;
+            this.btnADDPIC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnADDPIC.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnADDPIC.ForeColor = System.Drawing.Color.White;
+            this.btnADDPIC.Location = new System.Drawing.Point(250, 350);
+            this.btnADDPIC.Name = "btnADDPIC";
+            this.btnADDPIC.Size = new System.Drawing.Size(114, 32);
+            this.btnADDPIC.TabIndex = 125;
+            this.btnADDPIC.Text = "Thêm ảnh";
+            this.btnADDPIC.UseVisualStyleBackColor = false;
+            this.btnADDPIC.Click += new System.EventHandler(this.btnADDPIC_Click);
+            // 
+            // pbIMAGE
+            // 
+            this.pbIMAGE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbIMAGE.Location = new System.Drawing.Point(214, 388);
+            this.pbIMAGE.Name = "pbIMAGE";
+            this.pbIMAGE.Size = new System.Drawing.Size(179, 180);
+            this.pbIMAGE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbIMAGE.TabIndex = 124;
+            this.pbIMAGE.TabStop = false;
+            // 
+            // btnHOME
+            // 
+            this.btnHOME.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnHOME.FlatAppearance.BorderSize = 0;
+            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHOME.ForeColor = System.Drawing.Color.White;
+            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
+            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHOME.Location = new System.Drawing.Point(1041, 3);
+            this.btnHOME.Name = "btnHOME";
+            this.btnHOME.Size = new System.Drawing.Size(197, 65);
+            this.btnHOME.TabIndex = 122;
+            this.btnHOME.Text = "Trang chủ";
+            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHOME.UseVisualStyleBackColor = false;
+            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
+            // 
+            // btnEXCEL
+            // 
+            this.btnEXCEL.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEXCEL.FlatAppearance.BorderSize = 0;
+            this.btnEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEXCEL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEXCEL.ForeColor = System.Drawing.Color.White;
+            this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
+            this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEXCEL.Location = new System.Drawing.Point(822, 51);
+            this.btnEXCEL.Name = "btnEXCEL";
+            this.btnEXCEL.Size = new System.Drawing.Size(154, 46);
+            this.btnEXCEL.TabIndex = 121;
+            this.btnEXCEL.Text = "Xuất Excel";
+            this.btnEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEXCEL.UseVisualStyleBackColor = false;
+            this.btnEXCEL.Click += new System.EventHandler(this.btnEXCEL_Click);
+            // 
+            // btnADDPRODUCER
+            // 
+            this.btnADDPRODUCER.BackColor = System.Drawing.SystemColors.Control;
+            this.btnADDPRODUCER.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnADDPRODUCER.FlatAppearance.BorderSize = 0;
+            this.btnADDPRODUCER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnADDPRODUCER.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnADDPRODUCER.ForeColor = System.Drawing.Color.White;
+            this.btnADDPRODUCER.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
+            this.btnADDPRODUCER.Location = new System.Drawing.Point(349, 227);
+            this.btnADDPRODUCER.Name = "btnADDPRODUCER";
+            this.btnADDPRODUCER.Size = new System.Drawing.Size(44, 44);
+            this.btnADDPRODUCER.TabIndex = 120;
+            this.btnADDPRODUCER.UseVisualStyleBackColor = false;
+            this.btnADDPRODUCER.Click += new System.EventHandler(this.btnADDPRODUCER_Click);
+            // 
+            // btnADDSUPPLIER
+            // 
+            this.btnADDSUPPLIER.BackColor = System.Drawing.SystemColors.Control;
+            this.btnADDSUPPLIER.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnADDSUPPLIER.FlatAppearance.BorderSize = 0;
+            this.btnADDSUPPLIER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnADDSUPPLIER.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnADDSUPPLIER.ForeColor = System.Drawing.Color.White;
+            this.btnADDSUPPLIER.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
+            this.btnADDSUPPLIER.Location = new System.Drawing.Point(349, 183);
+            this.btnADDSUPPLIER.Name = "btnADDSUPPLIER";
+            this.btnADDSUPPLIER.Size = new System.Drawing.Size(44, 44);
+            this.btnADDSUPPLIER.TabIndex = 119;
+            this.btnADDSUPPLIER.UseVisualStyleBackColor = false;
+            this.btnADDSUPPLIER.Click += new System.EventHandler(this.btnADDSUPPLIER_Click);
+            // 
+            // btnADDTYPE
+            // 
+            this.btnADDTYPE.BackColor = System.Drawing.SystemColors.Control;
+            this.btnADDTYPE.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnADDTYPE.FlatAppearance.BorderSize = 0;
+            this.btnADDTYPE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnADDTYPE.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnADDTYPE.ForeColor = System.Drawing.Color.White;
+            this.btnADDTYPE.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
+            this.btnADDTYPE.Location = new System.Drawing.Point(349, 60);
+            this.btnADDTYPE.Name = "btnADDTYPE";
+            this.btnADDTYPE.Size = new System.Drawing.Size(44, 46);
+            this.btnADDTYPE.TabIndex = 118;
+            this.btnADDTYPE.UseVisualStyleBackColor = false;
+            this.btnADDTYPE.Click += new System.EventHandler(this.btnADDTYPE_Click);
             // 
             // btnADD
             // 
@@ -481,25 +608,6 @@ namespace SaleManagement.VIEW
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);
             // 
-            // btnSEARCH
-            // 
-            this.btnSEARCH.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSEARCH.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSEARCH.FlatAppearance.BorderSize = 0;
-            this.btnSEARCH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSEARCH.ForeColor = System.Drawing.Color.White;
-            this.btnSEARCH.Image = global::SaleManagement.Properties.Resources.search_12_24;
-            this.btnSEARCH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSEARCH.Location = new System.Drawing.Point(1098, 616);
-            this.btnSEARCH.Name = "btnSEARCH";
-            this.btnSEARCH.Size = new System.Drawing.Size(140, 47);
-            this.btnSEARCH.TabIndex = 66;
-            this.btnSEARCH.Text = "Tìm kiếm";
-            this.btnSEARCH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSEARCH.UseVisualStyleBackColor = false;
-            this.btnSEARCH.Click += new System.EventHandler(this.btnSEARCH_Click);
-            // 
             // btnSHOW
             // 
             this.btnSHOW.BackColor = System.Drawing.Color.SteelBlue;
@@ -519,130 +627,18 @@ namespace SaleManagement.VIEW
             this.btnSHOW.UseVisualStyleBackColor = false;
             this.btnSHOW.Click += new System.EventHandler(this.btnSHOW_Click);
             // 
-            // btnADDTYPE
+            // pictureBox1
             // 
-            this.btnADDTYPE.BackColor = System.Drawing.SystemColors.Control;
-            this.btnADDTYPE.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnADDTYPE.FlatAppearance.BorderSize = 0;
-            this.btnADDTYPE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADDTYPE.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnADDTYPE.ForeColor = System.Drawing.Color.White;
-            this.btnADDTYPE.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
-            this.btnADDTYPE.Location = new System.Drawing.Point(349, 60);
-            this.btnADDTYPE.Name = "btnADDTYPE";
-            this.btnADDTYPE.Size = new System.Drawing.Size(44, 46);
-            this.btnADDTYPE.TabIndex = 118;
-            this.btnADDTYPE.UseVisualStyleBackColor = false;
-            this.btnADDTYPE.Click += new System.EventHandler(this.btnADDTYPE_Click);
-            // 
-            // btnADDSUPPLIER
-            // 
-            this.btnADDSUPPLIER.BackColor = System.Drawing.SystemColors.Control;
-            this.btnADDSUPPLIER.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnADDSUPPLIER.FlatAppearance.BorderSize = 0;
-            this.btnADDSUPPLIER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADDSUPPLIER.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnADDSUPPLIER.ForeColor = System.Drawing.Color.White;
-            this.btnADDSUPPLIER.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
-            this.btnADDSUPPLIER.Location = new System.Drawing.Point(349, 183);
-            this.btnADDSUPPLIER.Name = "btnADDSUPPLIER";
-            this.btnADDSUPPLIER.Size = new System.Drawing.Size(44, 44);
-            this.btnADDSUPPLIER.TabIndex = 119;
-            this.btnADDSUPPLIER.UseVisualStyleBackColor = false;
-            this.btnADDSUPPLIER.Click += new System.EventHandler(this.btnADDSUPPLIER_Click);
-            // 
-            // btnADDPRODUCER
-            // 
-            this.btnADDPRODUCER.BackColor = System.Drawing.SystemColors.Control;
-            this.btnADDPRODUCER.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnADDPRODUCER.FlatAppearance.BorderSize = 0;
-            this.btnADDPRODUCER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADDPRODUCER.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnADDPRODUCER.ForeColor = System.Drawing.Color.White;
-            this.btnADDPRODUCER.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
-            this.btnADDPRODUCER.Location = new System.Drawing.Point(349, 227);
-            this.btnADDPRODUCER.Name = "btnADDPRODUCER";
-            this.btnADDPRODUCER.Size = new System.Drawing.Size(44, 44);
-            this.btnADDPRODUCER.TabIndex = 120;
-            this.btnADDPRODUCER.UseVisualStyleBackColor = false;
-            this.btnADDPRODUCER.Click += new System.EventHandler(this.btnADDPRODUCER_Click);
-            // 
-            // btnEXCEL
-            // 
-            this.btnEXCEL.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnEXCEL.FlatAppearance.BorderSize = 0;
-            this.btnEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEXCEL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEXCEL.ForeColor = System.Drawing.Color.White;
-            this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
-            this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEXCEL.Location = new System.Drawing.Point(822, 51);
-            this.btnEXCEL.Name = "btnEXCEL";
-            this.btnEXCEL.Size = new System.Drawing.Size(154, 46);
-            this.btnEXCEL.TabIndex = 121;
-            this.btnEXCEL.Text = "Xuất Excel";
-            this.btnEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEXCEL.UseVisualStyleBackColor = false;
-            this.btnEXCEL.Click += new System.EventHandler(this.btnEXCEL_Click);
-            // 
-            // btnHOME
-            // 
-            this.btnHOME.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnHOME.FlatAppearance.BorderSize = 0;
-            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHOME.ForeColor = System.Drawing.Color.White;
-            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
-            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHOME.Location = new System.Drawing.Point(1041, 3);
-            this.btnHOME.Name = "btnHOME";
-            this.btnHOME.Size = new System.Drawing.Size(197, 65);
-            this.btnHOME.TabIndex = 122;
-            this.btnHOME.Text = "Trang chủ";
-            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHOME.UseVisualStyleBackColor = false;
-            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
-            // 
-            // pbIMAGE
-            // 
-            this.pbIMAGE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbIMAGE.Location = new System.Drawing.Point(214, 388);
-            this.pbIMAGE.Name = "pbIMAGE";
-            this.pbIMAGE.Size = new System.Drawing.Size(179, 180);
-            this.pbIMAGE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbIMAGE.TabIndex = 124;
-            this.pbIMAGE.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(531, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 31);
-            this.label1.TabIndex = 123;
-            this.label1.Text = "Quản lý hàng hóa";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btnADDPIC
-            // 
-            this.btnADDPIC.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnADDPIC.FlatAppearance.BorderSize = 0;
-            this.btnADDPIC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADDPIC.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnADDPIC.ForeColor = System.Drawing.Color.White;
-            this.btnADDPIC.Location = new System.Drawing.Point(250, 350);
-            this.btnADDPIC.Name = "btnADDPIC";
-            this.btnADDPIC.Size = new System.Drawing.Size(114, 32);
-            this.btnADDPIC.TabIndex = 125;
-            this.btnADDPIC.Text = "Thêm ảnh";
-            this.btnADDPIC.UseVisualStyleBackColor = false;
-            this.btnADDPIC.Click += new System.EventHandler(this.btnADDPIC_Click);
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(1191, 606);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
+            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
+            this.pictureBox1.TabIndex = 137;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmManage_Items
             // 
@@ -650,6 +646,7 @@ namespace SaleManagement.VIEW
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1247, 691);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnADDPIC);
             this.Controls.Add(this.pbIMAGE);
             this.Controls.Add(this.label1);
@@ -688,7 +685,6 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.btnDELETE);
             this.Controls.Add(this.txtSEARCH);
-            this.Controls.Add(this.btnSEARCH);
             this.Controls.Add(this.btnSHOW);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvLISTITEMS);
@@ -699,6 +695,7 @@ namespace SaleManagement.VIEW
             this.gbMota.ResumeLayout(false);
             this.gbMota.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIMAGE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -713,7 +710,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnCANCEL;
         private System.Windows.Forms.Button btnDELETE;
         private System.Windows.Forms.TextBox txtSEARCH;
-        private System.Windows.Forms.Button btnSEARCH;
         private System.Windows.Forms.Button btnSHOW;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvLISTITEMS;
@@ -749,5 +745,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.PictureBox pbIMAGE;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnADDPIC;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using SaleManagement.Entity;
+﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using SaleManagement.VIEW;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace SaleManagement.FORM
 {
     public partial class FrmCreate_NewTypeItem : Form
     {
+        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public delegate void myDEL(string VALUE, string TEXT);
         public myDEL d { get; set; }
         public FrmCreate_NewTypeItem()
@@ -22,21 +24,19 @@ namespace SaleManagement.FORM
         }
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            tblLoaiHangHoa TYPEOFITEM = new tblLoaiHangHoa();
+            tblLoaiHangHoa typeOfProduct = new tblLoaiHangHoa();
             if(string.IsNullOrEmpty(txtID_TYPEOFITEM.Text) || string.IsNullOrEmpty(txtNAME_TYPEOFITEM.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                TYPEOFITEM.MaLoaiHangHoa = txtID_TYPEOFITEM.Text;
-                TYPEOFITEM.TenLoaiHangHoa = txtNAME_TYPEOFITEM.Text;
+                typeOfProduct.MaLoaiHangHoa = txtID_TYPEOFITEM.Text;
+                typeOfProduct.TenLoaiHangHoa = txtNAME_TYPEOFITEM.Text;
                 try
                 {
-                    DB.tblLoaiHangHoas.Add(TYPEOFITEM);
-                    DB.SaveChanges();
-                    d(TYPEOFITEM.MaLoaiHangHoa, TYPEOFITEM.TenLoaiHangHoa);
+                    BLL_TYPEOFITEM.Instance.FuncAddNewProduct(typeOfProduct);
+                    d(typeOfProduct.MaLoaiHangHoa, typeOfProduct.TenLoaiHangHoa);
                     this.Close();
                 }
                 catch (Exception)

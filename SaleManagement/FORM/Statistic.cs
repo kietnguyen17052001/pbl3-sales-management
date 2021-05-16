@@ -15,20 +15,20 @@ namespace SaleManagement.FORM
 {
     public partial class FrmStatistic : Form
     {
+        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private Random rand = new Random();
         public FrmStatistic()
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             InitializeComponent();
             SetCBB();
-            var getDayMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
-            if (getDayMin == null)
+            var dateMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
+            if (dateMin == null)
             {
                 dpFROM.Value = DateTime.Now;
             }
             else
             {
-                dpFROM.Value = getDayMin.Value;
+                dpFROM.Value = dateMin.Value;
             }
             fillChart();
         }
@@ -40,7 +40,6 @@ namespace SaleManagement.FORM
         }
         public void fillChart()
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             lbTIME.Text = "Từ ngày " + dpFROM.Value.ToShortDateString() + " đến ngày " + dpTO.Value.ToShortDateString();
             int quantity; // số lượng hiện tại của loại hàng hóa
             double money; // số tiền bán được của loại hàng hóa
@@ -121,7 +120,6 @@ namespace SaleManagement.FORM
         // Tổng số lượng hàng hóa bán được
         public double GetAllQuantitySale()
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             double quantity = 0;
             foreach(tblChiTietHoaDonBanHang invoiceDetail in DB.tblChiTietHoaDonBanHangs)
             {

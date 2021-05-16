@@ -61,6 +61,7 @@
     <Compile Include="BLL\BLL_ITEMS.cs" />
     <Compile Include="BLL\BLL_LISTINVOICE.cs" />
     <Compile Include="BLL\BLL_PRODUCER.cs" />
+    <Compile Include="BLL\BLL_REPORT.cs" />
     <Compile Include="BLL\BLL_STAFF.cs" />
     <Compile Include="BLL\BLL_SUPPLIER.cs" />
     <Compile Include="BLL\BLL_TYPEOFITEM.cs" />
@@ -218,6 +219,12 @@
     <Compile Include="FORM\Manage_Suppliers.Designer.cs">
       <DependentUpon>Manage_Suppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM\Manage_TypeOfProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Manage_TypeOfProduct.Designer.cs">
+      <DependentUpon>Manage_TypeOfProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\Report.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Manage_List_Invoice.resx">
       <DependentUpon>Manage_List_Invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Manage_TypeOfProduct.resx">
+      <DependentUpon>Manage_TypeOfProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>

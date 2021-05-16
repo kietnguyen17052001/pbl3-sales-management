@@ -1,4 +1,5 @@
-﻿using SaleManagement.Entity;
+﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,9 @@ namespace SaleManagement.FORM
 {
     public partial class FrmReport : Form
     {
+        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public FrmReport()
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             InitializeComponent();
             var getDayMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
             if (getDayMin == null)
@@ -47,11 +48,13 @@ namespace SaleManagement.FORM
         }
         public void GetInformation()
         {
-            lbSALES.Text = string.Format("{0:n0}", GetRevenue());
-            lbPROFIT.Text = string.Format("{0:n0}", GetProfit());
-            lbDISCOUNT.Text = string.Format("{0:n0}", GetDiscount());
-            lbPRODUCT_QTY.Text = string.Format("{0:n0}", GetQuantity());
-            lbINVOICE_QTY.Text = string.Format("{0:n0}", GetInvoice());
+            DateTime dateMin = dpFROM.Value;
+            DateTime dateMax = dpTO.Value;
+            lbSALES.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetRevenue(dateMin, dateMax));
+            lbPROFIT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetProfit(dateMin, dateMax));
+            lbDISCOUNT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetDiscount(dateMin, dateMax));
+            lbPRODUCT_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetQuantity(dateMin, dateMax));
+            lbINVOICE_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetInvoice(dateMin, dateMax));
         }
         // load lại danh sách theo thời gian
         private void btnLOAD_Click(object sender, EventArgs e)
@@ -59,67 +62,6 @@ namespace SaleManagement.FORM
             ShowList();
             GetInformation();
         }
-        // doanh số
-        public double GetRevenue()
-        {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
-            double revenue = 0;
-            foreach (tblChiTietHoaDonBanHang invoice_detail in list)
-            {
-                revenue += (double)invoice_detail.TongTien;
-            }
-            return revenue;
-        }
-        // lợi nhuận
-        public double GetProfit()
-        {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
-            double profit = 0;
-            foreach (tblChiTietHoaDonBanHang invoice_detail in list)
-            {
-                profit += (double)(invoice_detail.TongTien - invoice_detail.SoLuong * invoice_detail.tblHangHoa.GiaNhap);
-            }
-            return profit;
-        }
-        // giảm giá
-        public double GetDiscount()
-        {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
-            double discount = 0;
-            foreach(tblChiTietHoaDonBanHang invoice_detail in list)
-            {
-                discount += (double)((invoice_detail.GiamGia / 100) * (invoice_detail.DonGia * invoice_detail.SoLuong));
-            }
-            return discount;
-        }
-        // sản phẩm
-        public int GetQuantity()
-        {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
-            int quantity = 0;
-            foreach (tblChiTietHoaDonBanHang invoice_detail in list)
-            {
-                quantity += (int)invoice_detail.SoLuong;
-            }
-            return quantity;
-        }
-        // hóa đơn
-        public int GetInvoice()
-        {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var list = DB.tblHoaDonBanHangs.Where(p => p.NgayBan >= dpFROM.Value && p.NgayBan <= dpTO.Value);
-            int count = 0;
-            foreach (tblHoaDonBanHang invoice in list)
-            {
-                count ++;
-            }
-            return count;
-        }
-
         private void btnBACK_Click(object sender, EventArgs e)
         {
             FrmSale_Management frm = new FrmSale_Management();
