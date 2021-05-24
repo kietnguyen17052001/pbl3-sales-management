@@ -223,10 +223,14 @@ namespace SaleManagement.VIEW
                     newInvoice.GiamGia = invoiceDiscount;
                     try
                     {
-                        MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        BLL_CREATEINVOICE.Instance.FuncPayment(newInvoice, data); // payment invoice
-                        ShowProduct();
-                        load();
+                        DialogResult dialogResult = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            BLL_CREATEINVOICE.Instance.FuncPayment(newInvoice, data); // payment invoice
+                            ShowProduct();
+                            load();
+                        }
                     }
                     catch (Exception)
                     {
@@ -235,7 +239,7 @@ namespace SaleManagement.VIEW
                 }
             }   
         }
-        // Btn Hủy bỏ, làm mới hóa đơn
+        // Btn Load, làm mới hóa đơn
         private void btnLOAD_Click(object sender, EventArgs e)
         {
             load(); // load lại dữ liệu về trạng thái ban đầu
@@ -292,7 +296,7 @@ namespace SaleManagement.VIEW
             e.Graphics.DrawString("54 NGUYỄN LƯƠNG BẰNG", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(280, 100));
             e.Graphics.DrawString("0911.888.999", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(350, 120));
             e.Graphics.DrawString("HÓA ĐƠN TÍNH TIỀN", new Font("Arial", 19, FontStyle.Bold), Brushes.Black, new Point(290, 180));
-            e.Graphics.DrawString("NVTN: "+ cbbSTAFF.SelectedItem.ToString(), new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(330, 220));
+            e.Graphics.DrawString("NVTN: "+ cbbSTAFF.SelectedItem.ToString(), new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(300, 220));
             e.Graphics.DrawString("Khách hàng: "+ txtCUSTOMER.Text, new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(300, 250));
             e.Graphics.DrawString("Số Bill: "+ txtID_INVOICE.Text, new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(200, 300));
             e.Graphics.DrawString("Ngày: "+ DateTime.Now.ToString("dd/MM/yyyy HH:mm"), new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(380, 300));
@@ -321,11 +325,11 @@ namespace SaleManagement.VIEW
             }
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance+50));
             e.Graphics.DrawString("Tổng tiền ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50*2));
-            e.Graphics.DrawString(txtTOTAL_MONEY.Text + " VNĐ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*2));
+            e.Graphics.DrawString(txtTOTAL_MONEY.Text, new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*2));
             e.Graphics.DrawString("Giảm giá ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50*3));
-            e.Graphics.DrawString(txtINVOICE_DISCOUNT.Text + " VNĐ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*3));
+            e.Graphics.DrawString(txtINVOICE_DISCOUNT.Text, new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*3));
             e.Graphics.DrawString("Tổng thanh toán ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50*4));
-            e.Graphics.DrawString(txtINVOICE_PRICE.Text + " VNĐ", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*4));
+            e.Graphics.DrawString(txtINVOICE_PRICE.Text, new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*4));
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50*5));
             e.Graphics.DrawString("*** LƯU Ý: " + txtNOTE.Text, new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(50, distance + 50*6));
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50*7));

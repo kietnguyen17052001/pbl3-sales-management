@@ -26,7 +26,7 @@ namespace SaleManagement
             this.Close();
         }
 
-        private void btnLOGOUT_Click(object sender, EventArgs e)
+        private void btnLogOut_Click(object sender, EventArgs e)
         {
             FrmLogin frm = new FrmLogin();
             frm.Show();
@@ -43,6 +43,13 @@ namespace SaleManagement
         private void btnThongKe_Click(object sender, EventArgs e)
         {
             FrmStatistic frm = new FrmStatistic();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnGioiThieu_Click(object sender, EventArgs e)
+        {
+            FrmIntroduce frm = new FrmIntroduce();
             frm.Show();
             this.Close();
         }

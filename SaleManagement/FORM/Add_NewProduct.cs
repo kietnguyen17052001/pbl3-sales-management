@@ -104,9 +104,9 @@ namespace SaleManagement.FORM
                 }
             }
         }
-        private void btnSEARCH_Click(object sender, EventArgs e)
+        private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            string information = txtSEARCH.Text;
+            string information = txtSEARCH.Text.Trim();
             var product = DB.tblHangHoas.Where(p => p.MaHangHoa.Contains(information) || p.TenHangHoa.Contains(information)).Select(p => new {
                 p.MaHangHoa,
                 p.TenHangHoa,
@@ -115,6 +115,7 @@ namespace SaleManagement.FORM
             });
             dgvProduct.DataSource = product.ToList();
         }
+
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
             if (txtSEARCH.Text == "Nhập mã hoặc tên hàng hóa")

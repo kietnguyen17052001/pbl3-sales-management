@@ -35,9 +35,9 @@ namespace SaleManagement
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbINFO = new System.Windows.Forms.Label();
-            this.btnLOGOUT = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnTroGiup = new System.Windows.Forms.Button();
+            this.btnGioiThieu = new System.Windows.Forms.Button();
             this.btnBaoCao = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.btnDoiMatKhau = new System.Windows.Forms.Button();
@@ -105,27 +105,27 @@ namespace SaleManagement
             this.lbINFO.Size = new System.Drawing.Size(0, 28);
             this.lbINFO.TabIndex = 18;
             // 
-            // btnLOGOUT
+            // btnLogOut
             // 
-            this.btnLOGOUT.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLOGOUT.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLOGOUT.FlatAppearance.BorderSize = 0;
-            this.btnLOGOUT.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLOGOUT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.btnLOGOUT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLOGOUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLOGOUT.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLOGOUT.ForeColor = System.Drawing.Color.Black;
-            this.btnLOGOUT.Image = global::SaleManagement.Properties.Resources.Windows_Turn_Off_icon;
-            this.btnLOGOUT.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLOGOUT.Location = new System.Drawing.Point(492, 373);
-            this.btnLOGOUT.Name = "btnLOGOUT";
-            this.btnLOGOUT.Size = new System.Drawing.Size(189, 185);
-            this.btnLOGOUT.TabIndex = 19;
-            this.btnLOGOUT.Text = "Đăng xuất";
-            this.btnLOGOUT.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnLOGOUT.UseVisualStyleBackColor = false;
-            this.btnLOGOUT.Click += new System.EventHandler(this.btnLOGOUT_Click);
+            this.btnLogOut.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogOut.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogOut.FlatAppearance.BorderSize = 0;
+            this.btnLogOut.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnLogOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogOut.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.ForeColor = System.Drawing.Color.Black;
+            this.btnLogOut.Image = global::SaleManagement.Properties.Resources.Windows_Turn_Off_icon;
+            this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLogOut.Location = new System.Drawing.Point(492, 373);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(189, 185);
+            this.btnLogOut.TabIndex = 19;
+            this.btnLogOut.Text = "Đăng xuất";
+            this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // pictureBox1
             // 
@@ -141,26 +141,27 @@ namespace SaleManagement
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
-            // btnTroGiup
+            // btnGioiThieu
             // 
-            this.btnTroGiup.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnTroGiup.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnTroGiup.FlatAppearance.BorderSize = 0;
-            this.btnTroGiup.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnTroGiup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.btnTroGiup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnTroGiup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTroGiup.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTroGiup.ForeColor = System.Drawing.Color.Black;
-            this.btnTroGiup.Image = global::SaleManagement.Properties.Resources.Adobe_Help_Center_icon;
-            this.btnTroGiup.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTroGiup.Location = new System.Drawing.Point(489, 172);
-            this.btnTroGiup.Name = "btnTroGiup";
-            this.btnTroGiup.Size = new System.Drawing.Size(189, 185);
-            this.btnTroGiup.TabIndex = 16;
-            this.btnTroGiup.Text = "Trợ Giúp";
-            this.btnTroGiup.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnTroGiup.UseVisualStyleBackColor = false;
+            this.btnGioiThieu.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnGioiThieu.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnGioiThieu.FlatAppearance.BorderSize = 0;
+            this.btnGioiThieu.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnGioiThieu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnGioiThieu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnGioiThieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGioiThieu.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGioiThieu.ForeColor = System.Drawing.Color.Black;
+            this.btnGioiThieu.Image = global::SaleManagement.Properties.Resources.Adobe_Help_Center_icon;
+            this.btnGioiThieu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGioiThieu.Location = new System.Drawing.Point(489, 172);
+            this.btnGioiThieu.Name = "btnGioiThieu";
+            this.btnGioiThieu.Size = new System.Drawing.Size(189, 185);
+            this.btnGioiThieu.TabIndex = 16;
+            this.btnGioiThieu.Text = "Giới thiệu";
+            this.btnGioiThieu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGioiThieu.UseVisualStyleBackColor = false;
+            this.btnGioiThieu.Click += new System.EventHandler(this.btnGioiThieu_Click);
             // 
             // btnBaoCao
             // 
@@ -255,10 +256,10 @@ namespace SaleManagement
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
-            this.Controls.Add(this.btnLOGOUT);
+            this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.lbINFO);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnTroGiup);
+            this.Controls.Add(this.btnGioiThieu);
             this.Controls.Add(this.btnBaoCao);
             this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.btnDoiMatKhau);
@@ -280,7 +281,7 @@ namespace SaleManagement
 
         private System.Windows.Forms.Panel panelSALE_MANAGEMENT;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnTroGiup;
+        private System.Windows.Forms.Button btnGioiThieu;
         private System.Windows.Forms.Button btnBaoCao;
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Button btnDoiMatKhau;
@@ -289,7 +290,7 @@ namespace SaleManagement
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbINFO;
-        private System.Windows.Forms.Button btnLOGOUT;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }
 

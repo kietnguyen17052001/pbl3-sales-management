@@ -182,7 +182,7 @@ namespace SaleManagement.VIEW
         {
             disable(false);
         }
-        // Btn quay lại
+        // Btn quay lại frmManage_Data
         private void btnBACK_Click(object sender, EventArgs e)
         {
             DialogResult d = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -236,11 +236,11 @@ namespace SaleManagement.VIEW
         {
             if (rbID_CUSTOMER.Checked == true) // Tìm kiếm theo mã số
             {
-                BLL_CUSTOMER.Instance.FuncSearchID(dgvLISTCUSTOMER, txtSEARCH.Text);
+                BLL_CUSTOMER.Instance.FuncSearchID(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
             }
             else // Tìm kiếm theo tên
             {
-                BLL_CUSTOMER.Instance.FuncSearchName(dgvLISTCUSTOMER, txtSEARCH.Text);
+                BLL_CUSTOMER.Instance.FuncSearchName(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
             }
         }
     }

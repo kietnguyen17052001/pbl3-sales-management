@@ -36,14 +36,15 @@ namespace SaleManagement.FORM
             this.cbbTYPE_OF_PRODUCT = new System.Windows.Forms.ComboBox();
             this.lbID_PRODUCT = new System.Windows.Forms.Label();
             this.txtSEARCH = new System.Windows.Forms.TextBox();
-            this.btnSEARCH = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtQUANTITY = new System.Windows.Forms.TextBox();
             this.txtDISCOUNT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lbSTATUS = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCANCEL
@@ -149,28 +150,9 @@ namespace SaleManagement.FORM
             this.txtSEARCH.Size = new System.Drawing.Size(309, 28);
             this.txtSEARCH.TabIndex = 140;
             this.txtSEARCH.Text = "Nhập mã hoặc tên hàng hóa";
+            this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
             this.txtSEARCH.Enter += new System.EventHandler(this.txtSEARCH_Enter);
             this.txtSEARCH.Leave += new System.EventHandler(this.txtSEARCH_Leave);
-            // 
-            // btnSEARCH
-            // 
-            this.btnSEARCH.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSEARCH.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSEARCH.FlatAppearance.BorderSize = 0;
-            this.btnSEARCH.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
-            this.btnSEARCH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSEARCH.ForeColor = System.Drawing.Color.White;
-            this.btnSEARCH.Image = global::SaleManagement.Properties.Resources.search_12_24;
-            this.btnSEARCH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSEARCH.Location = new System.Drawing.Point(338, 384);
-            this.btnSEARCH.Name = "btnSEARCH";
-            this.btnSEARCH.Size = new System.Drawing.Size(137, 46);
-            this.btnSEARCH.TabIndex = 139;
-            this.btnSEARCH.Text = "Tìm kiếm";
-            this.btnSEARCH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSEARCH.UseVisualStyleBackColor = false;
-            this.btnSEARCH.Click += new System.EventHandler(this.btnSEARCH_Click);
             // 
             // label1
             // 
@@ -229,11 +211,25 @@ namespace SaleManagement.FORM
             this.lbSTATUS.Size = new System.Drawing.Size(0, 27);
             this.lbSTATUS.TabIndex = 146;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(327, 383);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
+            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
+            this.pictureBox1.TabIndex = 147;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmAdd_NewProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 442);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbSTATUS);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtDISCOUNT);
@@ -241,7 +237,6 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSEARCH);
-            this.Controls.Add(this.btnSEARCH);
             this.Controls.Add(this.lbID_PRODUCT);
             this.Controls.Add(this.cbbTYPE_OF_PRODUCT);
             this.Controls.Add(this.dgvProduct);
@@ -252,6 +247,7 @@ namespace SaleManagement.FORM
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddNewProduct";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,12 +262,12 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.ComboBox cbbTYPE_OF_PRODUCT;
         private System.Windows.Forms.Label lbID_PRODUCT;
         private System.Windows.Forms.TextBox txtSEARCH;
-        private System.Windows.Forms.Button btnSEARCH;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtQUANTITY;
         private System.Windows.Forms.TextBox txtDISCOUNT;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbSTATUS;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

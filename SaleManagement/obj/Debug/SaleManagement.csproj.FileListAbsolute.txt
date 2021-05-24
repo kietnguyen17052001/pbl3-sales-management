@@ -37,3 +37,4 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.csprojAssemblyReference.cache
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCustomer_Invoice.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmManage_TypeOfProduct.resources
+C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmIntroduce.resources

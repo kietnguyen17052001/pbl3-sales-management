@@ -232,11 +232,11 @@ namespace SaleManagement.VIEW
         {
             if (rbID_STAFF.Checked == true)
             {
-                BLL_STAFF.Instance.FuncSearchID(dgvLIST_STAFF, txtSEARCH.Text); // search id 
+                BLL_STAFF.Instance.FuncSearchID(dgvLIST_STAFF, txtSEARCH.Text.Trim()); // search id 
             }
             else
             {
-                BLL_STAFF.Instance.FuncSearchName(dgvLIST_STAFF, txtSEARCH.Text); // search name
+                BLL_STAFF.Instance.FuncSearchName(dgvLIST_STAFF, txtSEARCH.Text.Trim()); // search name
             }
         }
         private void btnCANCEL_Click(object sender, EventArgs e)

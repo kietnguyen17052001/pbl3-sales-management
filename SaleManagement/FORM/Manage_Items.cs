@@ -54,7 +54,7 @@ namespace SaleManagement.VIEW
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
         }
-        // load lại form sau khi thực hiện các chức năng
+        // load form
         public void LoadForm()
         {
             txtID_PRODUCT.Text = txtNAME_PRODUCT.Text = txtBUY.Text = txtSALE.Text = "";
@@ -144,6 +144,7 @@ namespace SaleManagement.VIEW
             var product = DB.tblHangHoas.Find(idProduct);
             pbIMAGE.Image = ByteArrayToImage(product.HinhAnh.ToArray());
         }
+        // export
         private void btnEXCEL_Click(object sender, EventArgs e)
         {
             Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
@@ -186,30 +187,30 @@ namespace SaleManagement.VIEW
             txtDESCRIBE.Clear();
             pbIMAGE.Image = null;
         }
+        // show frmCreate_NewTypeProduct
         private void btnADDTYPE_Click(object sender, EventArgs e)
         {
             FrmCreate_NewTypeItem frm = new FrmCreate_NewTypeItem();
             frm.d += new FrmCreate_NewTypeItem.myDEL(addTYPEITEM);
             frm.Show();
         }
-
+        // show ...
         private void btnADDSUPPLIER_Click(object sender, EventArgs e)
         {
             FrmCreate_NewSupplier frm = new FrmCreate_NewSupplier();
             frm.d += new FrmCreate_NewSupplier.myDEL(addSUPPLIER);
             frm.Show();
         }
-
+        // show ...
         private void btnADDPRODUCER_Click(object sender, EventArgs e)
         {
             FrmCreate_NewProducer frm = new FrmCreate_NewProducer();
             frm.d += new FrmCreate_NewProducer.myDEL(addPRODUCER);
             frm.Show();
         }
-        // thêm hình ảnh cho hàng hóa
         string imageLocation = "";
         byte[] images = null;
-        // add product
+        // add pic for product
         private void btnADDPIC_Click(object sender, EventArgs e)
         {  
             try
@@ -266,7 +267,7 @@ namespace SaleManagement.VIEW
                         BLL_ITEMS.Instance.FuncAddNewProduct(product); // add new product
                         MessageBox.Show("Thêm hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         disable(false);
-                        LoadForm(); // load form sau khi add new product
+                        LoadForm(); // load form after add new product
                     }
                     catch (Exception)
                     {
@@ -341,11 +342,11 @@ namespace SaleManagement.VIEW
         {
             if (rbID_ITEM.Checked == true)
             {
-                BLL_ITEMS.Instance.FuncSearchId(dgvLISTITEMS, txtSEARCH.Text);
+                BLL_ITEMS.Instance.FuncSearchId(dgvLISTITEMS, txtSEARCH.Text.Trim());
             }
             else
             {
-                BLL_ITEMS.Instance.FuncSearchName(dgvLISTITEMS, txtSEARCH.Text);
+                BLL_ITEMS.Instance.FuncSearchName(dgvLISTITEMS, txtSEARCH.Text.Trim());
             }
         }
         public Image ByteArrayToImage(byte[] byArrayIn)
@@ -356,7 +357,7 @@ namespace SaleManagement.VIEW
                 return returnImage;
             }
         }
-        // Thay đổi txtID_ITEM khi cbbTYPE_OF_ITEMS thay đổi
+        // change idProduct
         private void cbbTYPE_OF_ITEMS_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtID_PRODUCT.Text = BLL_ITEMS.Instance.GetNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);

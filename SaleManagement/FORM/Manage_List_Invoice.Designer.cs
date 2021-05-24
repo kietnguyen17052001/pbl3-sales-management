@@ -40,10 +40,6 @@ namespace SaleManagement.FORM
             this.dgvLIST_INVOICE = new System.Windows.Forms.DataGridView();
             this.dgvINFO_INVOICE = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtPRICE = new System.Windows.Forms.TextBox();
-            this.txtAMOUNT = new System.Windows.Forms.TextBox();
             this.cbbSTAFF_DETAIL = new System.Windows.Forms.ComboBox();
             this.dpFROM = new System.Windows.Forms.DateTimePicker();
             this.dpTO = new System.Windows.Forms.DateTimePicker();
@@ -153,6 +149,7 @@ namespace SaleManagement.FORM
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLIST_INVOICE.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLIST_INVOICE.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvLIST_INVOICE.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvLIST_INVOICE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLIST_INVOICE.Location = new System.Drawing.Point(399, 136);
             this.dgvLIST_INVOICE.Name = "dgvLIST_INVOICE";
@@ -169,6 +166,7 @@ namespace SaleManagement.FORM
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvINFO_INVOICE.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvINFO_INVOICE.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvINFO_INVOICE.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvINFO_INVOICE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvINFO_INVOICE.Location = new System.Drawing.Point(399, 437);
             this.dgvINFO_INVOICE.Name = "dgvINFO_INVOICE";
@@ -190,46 +188,6 @@ namespace SaleManagement.FORM
             this.label5.TabIndex = 112;
             this.label5.Text = "THÔNG TIN ĐƠN HÀNG";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label8.Location = new System.Drawing.Point(23, 635);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(123, 29);
-            this.label8.TabIndex = 115;
-            this.label8.Text = "Tổng tiền";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label11.Location = new System.Drawing.Point(23, 587);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(176, 29);
-            this.label11.TabIndex = 113;
-            this.label11.Text = "Số lượng đơn";
-            // 
-            // txtPRICE
-            // 
-            this.txtPRICE.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPRICE.ForeColor = System.Drawing.Color.IndianRed;
-            this.txtPRICE.Location = new System.Drawing.Point(202, 634);
-            this.txtPRICE.Name = "txtPRICE";
-            this.txtPRICE.Size = new System.Drawing.Size(179, 35);
-            this.txtPRICE.TabIndex = 117;
-            // 
-            // txtAMOUNT
-            // 
-            this.txtAMOUNT.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAMOUNT.ForeColor = System.Drawing.Color.IndianRed;
-            this.txtAMOUNT.Location = new System.Drawing.Point(202, 586);
-            this.txtAMOUNT.Name = "txtAMOUNT";
-            this.txtAMOUNT.Size = new System.Drawing.Size(179, 35);
-            this.txtAMOUNT.TabIndex = 116;
             // 
             // cbbSTAFF_DETAIL
             // 
@@ -574,10 +532,6 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.dpFROM);
             this.Controls.Add(this.cbbSTAFF_DETAIL);
             this.Controls.Add(this.btnEXCEL);
-            this.Controls.Add(this.txtPRICE);
-            this.Controls.Add(this.txtAMOUNT);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvINFO_INVOICE);
             this.Controls.Add(this.btnSHOW);
@@ -622,10 +576,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.DataGridView dgvLIST_INVOICE;
         private System.Windows.Forms.DataGridView dgvINFO_INVOICE;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtPRICE;
-        private System.Windows.Forms.TextBox txtAMOUNT;
         private System.Windows.Forms.Button btnEXCEL;
         private System.Windows.Forms.ComboBox cbbSTAFF_DETAIL;
         private System.Windows.Forms.DateTimePicker dpFROM;

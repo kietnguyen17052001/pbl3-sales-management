@@ -31,6 +31,7 @@ namespace SaleManagement.VIEW
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBill));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rbNAME_ITEM = new System.Windows.Forms.RadioButton();
             this.rbID_ITEM = new System.Windows.Forms.RadioButton();
             this.txtSEARCH = new System.Windows.Forms.TextBox();
@@ -54,10 +55,8 @@ namespace SaleManagement.VIEW
             this.txtPRODUCTS_QUANTITY = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvLIST = new System.Windows.Forms.DataGridView();
-            this.dpDAY = new System.Windows.Forms.DateTimePicker();
             this.cbbSTAFF = new System.Windows.Forms.ComboBox();
             this.txtID_INVOICE = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -88,12 +87,13 @@ namespace SaleManagement.VIEW
             this.btnLOAD = new System.Windows.Forms.Button();
             this.btnDISCOUNT_MONEY = new System.Windows.Forms.Button();
             this.btnDISCOUNT_PERCENT = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dpDAY = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSELECT)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -121,6 +121,19 @@ namespace SaleManagement.VIEW
             this.groupBox1.TabIndex = 61;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lựa chọn hàng hóa";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(478, 422);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
+            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
+            this.pictureBox1.TabIndex = 138;
+            this.pictureBox1.TabStop = false;
             // 
             // rbNAME_ITEM
             // 
@@ -155,7 +168,7 @@ namespace SaleManagement.VIEW
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
             this.txtSEARCH.Location = new System.Drawing.Point(210, 433);
             this.txtSEARCH.Name = "txtSEARCH";
-            this.txtSEARCH.Size = new System.Drawing.Size(209, 28);
+            this.txtSEARCH.Size = new System.Drawing.Size(262, 28);
             this.txtSEARCH.TabIndex = 116;
             this.txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
             this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
@@ -296,6 +309,8 @@ namespace SaleManagement.VIEW
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.dpDAY);
             this.groupBox2.Controls.Add(this.txtCUSTOMER);
             this.groupBox2.Controls.Add(this.btnCUSTOMER);
             this.groupBox2.Controls.Add(this.btnDELETE);
@@ -305,10 +320,8 @@ namespace SaleManagement.VIEW
             this.groupBox2.Controls.Add(this.txtPRODUCTS_QUANTITY);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.dgvLIST);
-            this.groupBox2.Controls.Add(this.dpDAY);
             this.groupBox2.Controls.Add(this.cbbSTAFF);
             this.groupBox2.Controls.Add(this.txtID_INVOICE);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label5);
@@ -450,46 +463,25 @@ namespace SaleManagement.VIEW
             this.dgvLIST.Size = new System.Drawing.Size(656, 297);
             this.dgvLIST.TabIndex = 37;
             // 
-            // dpDAY
-            // 
-            this.dpDAY.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dpDAY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpDAY.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpDAY.Location = new System.Drawing.Point(421, 31);
-            this.dpDAY.Name = "dpDAY";
-            this.dpDAY.Size = new System.Drawing.Size(187, 28);
-            this.dpDAY.TabIndex = 29;
-            // 
             // cbbSTAFF
             // 
             this.cbbSTAFF.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbbSTAFF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSTAFF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbSTAFF.FormattingEnabled = true;
-            this.cbbSTAFF.Location = new System.Drawing.Point(134, 76);
+            this.cbbSTAFF.Location = new System.Drawing.Point(421, 28);
             this.cbbSTAFF.Name = "cbbSTAFF";
-            this.cbbSTAFF.Size = new System.Drawing.Size(161, 29);
+            this.cbbSTAFF.Size = new System.Drawing.Size(247, 29);
             this.cbbSTAFF.TabIndex = 28;
             // 
             // txtID_INVOICE
             // 
             this.txtID_INVOICE.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtID_INVOICE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID_INVOICE.Location = new System.Drawing.Point(134, 35);
+            this.txtID_INVOICE.Location = new System.Drawing.Point(124, 35);
             this.txtID_INVOICE.Name = "txtID_INVOICE";
-            this.txtID_INVOICE.Size = new System.Drawing.Size(161, 28);
+            this.txtID_INVOICE.Size = new System.Drawing.Size(171, 28);
             this.txtID_INVOICE.TabIndex = 27;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(302, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 21);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Ngày lập";
             // 
             // label3
             // 
@@ -507,11 +499,11 @@ namespace SaleManagement.VIEW
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 78);
+            this.label2.Location = new System.Drawing.Point(302, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 21);
+            this.label2.Size = new System.Drawing.Size(97, 21);
             this.label2.TabIndex = 24;
-            this.label2.Text = "Nhân viên lập";
+            this.label2.Text = "Nhân viên";
             // 
             // label5
             // 
@@ -882,18 +874,26 @@ namespace SaleManagement.VIEW
             this.btnDISCOUNT_PERCENT.UseVisualStyleBackColor = false;
             this.btnDISCOUNT_PERCENT.Click += new System.EventHandler(this.btnDISCOUNT_PERCENT_Click);
             // 
-            // pictureBox1
+            // dpDAY
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
-            this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(425, 427);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
-            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
-            this.pictureBox1.TabIndex = 138;
-            this.pictureBox1.TabStop = false;
+            this.dpDAY.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dpDAY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpDAY.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpDAY.Location = new System.Drawing.Point(124, 75);
+            this.dpDAY.Name = "dpDAY";
+            this.dpDAY.Size = new System.Drawing.Size(172, 28);
+            this.dpDAY.TabIndex = 123;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 78);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 21);
+            this.label4.TabIndex = 122;
+            this.label4.Text = "Ngày lập";
             // 
             // FrmBill
             // 
@@ -932,11 +932,11 @@ namespace SaleManagement.VIEW
             this.Text = "Invoice";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSELECT)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -960,10 +960,8 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.TextBox txtPRODUCTS_QUANTITY;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvLIST;
-        private System.Windows.Forms.DateTimePicker dpDAY;
         private System.Windows.Forms.ComboBox cbbSTAFF;
         private System.Windows.Forms.TextBox txtID_INVOICE;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
@@ -1002,5 +1000,7 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCUSTOMER;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dpDAY;
     }
 }

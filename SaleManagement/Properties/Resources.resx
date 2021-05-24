@@ -121,6 +121,9 @@
   <data name="Food-List-Ingredients-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\Food-List-Ingredients-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="nga" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Card\nga.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="excel-3-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\excel-3-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,17 +163,20 @@
   <data name="delete-2-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\delete-2-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Printer-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Printer-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Household-Washing-Machine-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\Household-Washing-Machine-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search-12-241" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\search-12-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit-3-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\edit-3-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="backgroundLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\backgroundLogin.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="discount-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\discount-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="home-icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\home-icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -213,6 +219,9 @@
   </data>
   <data name="Money-2-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\Money-2-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kiet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Card\kiet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="product-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\product-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,8 +271,8 @@
   <data name="house-481" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\house-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Text-Edit-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Text-Edit-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Printer-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Printer-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="statistics-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\statistics-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -279,6 +288,9 @@
   </data>
   <data name="add-user-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\add-user-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Text-Edit-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Text-Edit-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="product-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\product-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -310,8 +322,8 @@
   <data name="statistics-market-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\statistics-market-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="discount-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\discount-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="nhat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Card\nhat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bank-cards-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\bank-cards-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -358,7 +370,7 @@
   <data name="delete-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\delete-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search-12-241" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\search-12-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="nam" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Card\nam.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

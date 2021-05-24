@@ -144,8 +144,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                string lastNum = listSaveId[listSaveId.Count - 1];
-                last = Convert.ToInt32(lastNum.Substring(lastNum.Length - 1));
+                last = Convert.ToInt32(listSaveId[listSaveId.Count - 1].Replace(idTypeProduct,""));
                 if (last + 1 < 10)
                 {
                     idProduct = idTypeProduct + "000" + (last + 1);

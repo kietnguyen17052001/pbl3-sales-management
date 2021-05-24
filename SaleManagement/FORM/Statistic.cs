@@ -132,6 +132,6 @@ namespace SaleManagement.FORM
         {
             lbTIME.Text = ""; 
             fillChart();
-        }  
+        }
     }
 }

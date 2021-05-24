@@ -29,10 +29,9 @@ namespace SaleManagement.FORM
             }
             ShowList();
         }
+        // show tblChiTiethoaDonBanHang theo time
         public void ShowList()
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            // liet ke danh sach
             var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value).Select(p => new { 
                 p.MaHangHoa,
                 p.tblHangHoa.TenHangHoa,
@@ -60,7 +59,6 @@ namespace SaleManagement.FORM
         private void btnLOAD_Click(object sender, EventArgs e)
         {
             ShowList();
-            GetInformation();
         }
         private void btnBACK_Click(object sender, EventArgs e)
         {

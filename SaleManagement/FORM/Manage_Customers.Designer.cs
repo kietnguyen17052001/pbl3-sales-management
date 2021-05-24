@@ -174,7 +174,7 @@ namespace SaleManagement.VIEW
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(895, 647);
+            this.txtSEARCH.Location = new System.Drawing.Point(895, 638);
             this.txtSEARCH.Name = "txtSEARCH";
             this.txtSEARCH.Size = new System.Drawing.Size(274, 28);
             this.txtSEARCH.TabIndex = 67;
@@ -214,7 +214,7 @@ namespace SaleManagement.VIEW
             // 
             this.rbNAME_CUSTOMER.AutoSize = true;
             this.rbNAME_CUSTOMER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNAME_CUSTOMER.Location = new System.Drawing.Point(772, 649);
+            this.rbNAME_CUSTOMER.Location = new System.Drawing.Point(772, 640);
             this.rbNAME_CUSTOMER.Name = "rbNAME_CUSTOMER";
             this.rbNAME_CUSTOMER.Size = new System.Drawing.Size(98, 25);
             this.rbNAME_CUSTOMER.TabIndex = 90;
@@ -226,7 +226,7 @@ namespace SaleManagement.VIEW
             // 
             this.rbID_CUSTOMER.AutoSize = true;
             this.rbID_CUSTOMER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbID_CUSTOMER.Location = new System.Drawing.Point(658, 649);
+            this.rbID_CUSTOMER.Location = new System.Drawing.Point(658, 640);
             this.rbID_CUSTOMER.Name = "rbID_CUSTOMER";
             this.rbID_CUSTOMER.Size = new System.Drawing.Size(91, 25);
             this.rbID_CUSTOMER.TabIndex = 89;
