@@ -46,6 +46,8 @@ namespace SaleManagement.VIEW
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dpDAY = new System.Windows.Forms.DateTimePicker();
             this.txtCUSTOMER = new System.Windows.Forms.TextBox();
             this.btnCUSTOMER = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
@@ -87,8 +89,6 @@ namespace SaleManagement.VIEW
             this.btnLOAD = new System.Windows.Forms.Button();
             this.btnDISCOUNT_MONEY = new System.Windows.Forms.Button();
             this.btnDISCOUNT_PERCENT = new System.Windows.Forms.Button();
-            this.dpDAY = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSELECT)).BeginInit();
@@ -114,7 +114,7 @@ namespace SaleManagement.VIEW
             this.groupBox1.Controls.Add(this.cbbTYPE_OF_ITEMS);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 64);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(561, 480);
@@ -139,10 +139,10 @@ namespace SaleManagement.VIEW
             // 
             this.rbNAME_ITEM.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.rbNAME_ITEM.AutoSize = true;
-            this.rbNAME_ITEM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNAME_ITEM.Location = new System.Drawing.Point(105, 434);
+            this.rbNAME_ITEM.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbNAME_ITEM.Location = new System.Drawing.Point(105, 433);
             this.rbNAME_ITEM.Name = "rbNAME_ITEM";
-            this.rbNAME_ITEM.Size = new System.Drawing.Size(98, 25);
+            this.rbNAME_ITEM.Size = new System.Drawing.Size(102, 26);
             this.rbNAME_ITEM.TabIndex = 118;
             this.rbNAME_ITEM.TabStop = true;
             this.rbNAME_ITEM.Text = "Tên HH";
@@ -152,10 +152,10 @@ namespace SaleManagement.VIEW
             // 
             this.rbID_ITEM.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.rbID_ITEM.AutoSize = true;
-            this.rbID_ITEM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbID_ITEM.Location = new System.Drawing.Point(8, 434);
+            this.rbID_ITEM.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbID_ITEM.Location = new System.Drawing.Point(8, 433);
             this.rbID_ITEM.Name = "rbID_ITEM";
-            this.rbID_ITEM.Size = new System.Drawing.Size(91, 25);
+            this.rbID_ITEM.Size = new System.Drawing.Size(95, 26);
             this.rbID_ITEM.TabIndex = 117;
             this.rbID_ITEM.TabStop = true;
             this.rbID_ITEM.Text = "Mã HH";
@@ -164,11 +164,11 @@ namespace SaleManagement.VIEW
             // txtSEARCH
             // 
             this.txtSEARCH.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSEARCH.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
             this.txtSEARCH.Location = new System.Drawing.Point(210, 433);
             this.txtSEARCH.Name = "txtSEARCH";
-            this.txtSEARCH.Size = new System.Drawing.Size(262, 28);
+            this.txtSEARCH.Size = new System.Drawing.Size(262, 29);
             this.txtSEARCH.TabIndex = 116;
             this.txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
             this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
@@ -195,18 +195,20 @@ namespace SaleManagement.VIEW
             // 
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(531, 222);
+            this.label13.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(529, 222);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(22, 18);
+            this.label13.Size = new System.Drawing.Size(28, 19);
             this.label13.TabIndex = 63;
             this.label13.Text = "%";
             // 
             // txtPRODUCT_DISCOUNT
             // 
             this.txtPRODUCT_DISCOUNT.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPRODUCT_DISCOUNT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPRODUCT_DISCOUNT.Location = new System.Drawing.Point(484, 219);
             this.txtPRODUCT_DISCOUNT.Name = "txtPRODUCT_DISCOUNT";
-            this.txtPRODUCT_DISCOUNT.Size = new System.Drawing.Size(44, 26);
+            this.txtPRODUCT_DISCOUNT.Size = new System.Drawing.Size(44, 27);
             this.txtPRODUCT_DISCOUNT.TabIndex = 26;
             this.txtPRODUCT_DISCOUNT.TextChanged += new System.EventHandler(this.txtDISCOUNT_ITEM_TextChanged);
             this.txtPRODUCT_DISCOUNT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDISCOUNT_ITEM_KeyPress);
@@ -224,20 +226,22 @@ namespace SaleManagement.VIEW
             this.dgvSELECT.GridColor = System.Drawing.Color.Silver;
             this.dgvSELECT.Location = new System.Drawing.Point(6, 96);
             this.dgvSELECT.Name = "dgvSELECT";
+            this.dgvSELECT.RowHeadersVisible = false;
             this.dgvSELECT.RowHeadersWidth = 62;
             this.dgvSELECT.RowTemplate.Height = 28;
             this.dgvSELECT.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSELECT.Size = new System.Drawing.Size(466, 319);
             this.dgvSELECT.TabIndex = 36;
+            this.dgvSELECT.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvSELECT_CellFormatting);
             // 
             // label12
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(480, 196);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 18);
+            this.label12.Size = new System.Drawing.Size(54, 19);
             this.label12.TabIndex = 25;
             this.label12.Text = "K.Mãi";
             // 
@@ -248,7 +252,7 @@ namespace SaleManagement.VIEW
             this.btnSHOW.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSHOW.FlatAppearance.BorderSize = 0;
             this.btnSHOW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSHOW.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSHOW.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSHOW.ForeColor = System.Drawing.Color.White;
             this.btnSHOW.Image = global::SaleManagement.Properties.Resources.activity_feed_24;
             this.btnSHOW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -264,9 +268,10 @@ namespace SaleManagement.VIEW
             // txtPRODUCT_QUANTITY_SELECY
             // 
             this.txtPRODUCT_QUANTITY_SELECY.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPRODUCT_QUANTITY_SELECY.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPRODUCT_QUANTITY_SELECY.Location = new System.Drawing.Point(484, 158);
             this.txtPRODUCT_QUANTITY_SELECY.Name = "txtPRODUCT_QUANTITY_SELECY";
-            this.txtPRODUCT_QUANTITY_SELECY.Size = new System.Drawing.Size(44, 26);
+            this.txtPRODUCT_QUANTITY_SELECY.Size = new System.Drawing.Size(44, 27);
             this.txtPRODUCT_QUANTITY_SELECY.TabIndex = 24;
             this.txtPRODUCT_QUANTITY_SELECY.TextChanged += new System.EventHandler(this.txtAMOUNT_ITEM_TextChanged);
             this.txtPRODUCT_QUANTITY_SELECY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAMOUNT_ITEM_KeyPress);
@@ -275,21 +280,21 @@ namespace SaleManagement.VIEW
             // 
             this.cbbTYPE_OF_ITEMS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbbTYPE_OF_ITEMS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbTYPE_OF_ITEMS.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbTYPE_OF_ITEMS.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbTYPE_OF_ITEMS.FormattingEnabled = true;
             this.cbbTYPE_OF_ITEMS.Location = new System.Drawing.Point(150, 46);
             this.cbbTYPE_OF_ITEMS.Name = "cbbTYPE_OF_ITEMS";
-            this.cbbTYPE_OF_ITEMS.Size = new System.Drawing.Size(190, 29);
+            this.cbbTYPE_OF_ITEMS.Size = new System.Drawing.Size(190, 30);
             this.cbbTYPE_OF_ITEMS.TabIndex = 15;
             // 
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(480, 135);
+            this.label11.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(473, 135);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 18);
+            this.label11.Size = new System.Drawing.Size(80, 19);
             this.label11.TabIndex = 23;
             this.label11.Text = "Số lượng";
             // 
@@ -297,10 +302,10 @@ namespace SaleManagement.VIEW
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(12, 49);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(132, 21);
+            this.label10.Size = new System.Drawing.Size(137, 22);
             this.label10.TabIndex = 14;
             this.label10.Text = "Loại hàng hóa";
             // 
@@ -325,7 +330,7 @@ namespace SaleManagement.VIEW
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(567, 64);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(677, 480);
@@ -333,14 +338,35 @@ namespace SaleManagement.VIEW
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin hóa đơn";
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 78);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 22);
+            this.label4.TabIndex = 122;
+            this.label4.Text = "Ngày lập";
+            // 
+            // dpDAY
+            // 
+            this.dpDAY.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dpDAY.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpDAY.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpDAY.Location = new System.Drawing.Point(124, 75);
+            this.dpDAY.Name = "dpDAY";
+            this.dpDAY.Size = new System.Drawing.Size(172, 29);
+            this.dpDAY.TabIndex = 123;
+            // 
             // txtCUSTOMER
             // 
             this.txtCUSTOMER.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtCUSTOMER.Enabled = false;
-            this.txtCUSTOMER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCUSTOMER.Location = new System.Drawing.Point(421, 75);
             this.txtCUSTOMER.Name = "txtCUSTOMER";
-            this.txtCUSTOMER.Size = new System.Drawing.Size(187, 28);
+            this.txtCUSTOMER.Size = new System.Drawing.Size(187, 29);
             this.txtCUSTOMER.TabIndex = 82;
             // 
             // btnCUSTOMER
@@ -368,7 +394,7 @@ namespace SaleManagement.VIEW
             this.btnDELETE.FlatAppearance.BorderSize = 0;
             this.btnDELETE.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightSkyBlue;
             this.btnDELETE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDELETE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDELETE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDELETE.ForeColor = System.Drawing.Color.White;
             this.btnDELETE.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnDELETE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -389,7 +415,7 @@ namespace SaleManagement.VIEW
             this.btnEDIT.FlatAppearance.BorderSize = 0;
             this.btnEDIT.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
             this.btnEDIT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEDIT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEDIT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEDIT.ForeColor = System.Drawing.Color.White;
             this.btnEDIT.Image = global::SaleManagement.Properties.Resources.edit_3_24;
             this.btnEDIT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -416,10 +442,10 @@ namespace SaleManagement.VIEW
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(214, 442);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(91, 21);
+            this.label9.Size = new System.Drawing.Size(89, 22);
             this.label9.TabIndex = 40;
             this.label9.Text = "Số lượng";
             // 
@@ -437,10 +463,10 @@ namespace SaleManagement.VIEW
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(19, 442);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(118, 21);
+            this.label8.Size = new System.Drawing.Size(122, 22);
             this.label8.TabIndex = 38;
             this.label8.Text = "Số hàng hóa";
             // 
@@ -457,40 +483,42 @@ namespace SaleManagement.VIEW
             this.dgvLIST.GridColor = System.Drawing.Color.Silver;
             this.dgvLIST.Location = new System.Drawing.Point(15, 118);
             this.dgvLIST.Name = "dgvLIST";
+            this.dgvLIST.RowHeadersVisible = false;
             this.dgvLIST.RowHeadersWidth = 62;
             this.dgvLIST.RowTemplate.Height = 28;
             this.dgvLIST.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLIST.Size = new System.Drawing.Size(656, 297);
             this.dgvLIST.TabIndex = 37;
+            this.dgvLIST.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLIST_CellFormatting);
             // 
             // cbbSTAFF
             // 
             this.cbbSTAFF.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbbSTAFF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbSTAFF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbSTAFF.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbSTAFF.FormattingEnabled = true;
             this.cbbSTAFF.Location = new System.Drawing.Point(421, 28);
             this.cbbSTAFF.Name = "cbbSTAFF";
-            this.cbbSTAFF.Size = new System.Drawing.Size(247, 29);
+            this.cbbSTAFF.Size = new System.Drawing.Size(247, 30);
             this.cbbSTAFF.TabIndex = 28;
             // 
             // txtID_INVOICE
             // 
             this.txtID_INVOICE.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtID_INVOICE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_INVOICE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_INVOICE.Location = new System.Drawing.Point(124, 35);
             this.txtID_INVOICE.Name = "txtID_INVOICE";
-            this.txtID_INVOICE.Size = new System.Drawing.Size(171, 28);
+            this.txtID_INVOICE.Size = new System.Drawing.Size(171, 29);
             this.txtID_INVOICE.TabIndex = 27;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(302, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 21);
+            this.label3.Size = new System.Drawing.Size(119, 22);
             this.label3.TabIndex = 25;
             this.label3.Text = "Khách hàng";
             // 
@@ -498,10 +526,10 @@ namespace SaleManagement.VIEW
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(302, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 21);
+            this.label2.Size = new System.Drawing.Size(102, 22);
             this.label2.TabIndex = 24;
             this.label2.Text = "Nhân viên";
             // 
@@ -509,10 +537,10 @@ namespace SaleManagement.VIEW
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(6, 36);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 21);
+            this.label5.Size = new System.Drawing.Size(115, 22);
             this.label5.TabIndex = 23;
             this.label5.Text = "Mã hóa đơn";
             // 
@@ -520,10 +548,10 @@ namespace SaleManagement.VIEW
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(263, 604);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(42, 18);
+            this.label15.Size = new System.Drawing.Size(41, 19);
             this.label15.TabIndex = 68;
             this.label15.Text = "VNĐ";
             // 
@@ -531,10 +559,10 @@ namespace SaleManagement.VIEW
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(263, 558);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(42, 18);
+            this.label14.Size = new System.Drawing.Size(41, 19);
             this.label14.TabIndex = 67;
             this.label14.Text = "VNĐ";
             // 
@@ -542,20 +570,20 @@ namespace SaleManagement.VIEW
             // 
             this.txtINVOICE_DISCOUNT.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtINVOICE_DISCOUNT.Enabled = false;
-            this.txtINVOICE_DISCOUNT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtINVOICE_DISCOUNT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtINVOICE_DISCOUNT.Location = new System.Drawing.Point(118, 599);
             this.txtINVOICE_DISCOUNT.Name = "txtINVOICE_DISCOUNT";
-            this.txtINVOICE_DISCOUNT.Size = new System.Drawing.Size(139, 28);
+            this.txtINVOICE_DISCOUNT.Size = new System.Drawing.Size(139, 29);
             this.txtINVOICE_DISCOUNT.TabIndex = 66;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(10, 602);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 21);
+            this.label6.Size = new System.Drawing.Size(61, 22);
             this.label6.TabIndex = 65;
             this.label6.Text = "Giảm ";
             // 
@@ -563,20 +591,20 @@ namespace SaleManagement.VIEW
             // 
             this.txtTOTAL_MONEY.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtTOTAL_MONEY.Enabled = false;
-            this.txtTOTAL_MONEY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTOTAL_MONEY.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTOTAL_MONEY.Location = new System.Drawing.Point(118, 553);
             this.txtTOTAL_MONEY.Name = "txtTOTAL_MONEY";
-            this.txtTOTAL_MONEY.Size = new System.Drawing.Size(139, 28);
+            this.txtTOTAL_MONEY.Size = new System.Drawing.Size(139, 29);
             this.txtTOTAL_MONEY.TabIndex = 64;
             // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(10, 556);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 21);
+            this.label7.Size = new System.Drawing.Size(104, 22);
             this.label7.TabIndex = 63;
             this.label7.Text = "Tổng cộng";
             // 
@@ -584,10 +612,10 @@ namespace SaleManagement.VIEW
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(550, 601);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(42, 18);
+            this.label16.Size = new System.Drawing.Size(41, 19);
             this.label16.TabIndex = 73;
             this.label16.Text = "VNĐ";
             // 
@@ -595,20 +623,20 @@ namespace SaleManagement.VIEW
             // 
             this.txtINVOICE_PRICE.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtINVOICE_PRICE.Enabled = false;
-            this.txtINVOICE_PRICE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtINVOICE_PRICE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtINVOICE_PRICE.Location = new System.Drawing.Point(417, 597);
             this.txtINVOICE_PRICE.Name = "txtINVOICE_PRICE";
-            this.txtINVOICE_PRICE.Size = new System.Drawing.Size(125, 28);
+            this.txtINVOICE_PRICE.Size = new System.Drawing.Size(125, 29);
             this.txtINVOICE_PRICE.TabIndex = 72;
             // 
             // label17
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(312, 600);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(102, 21);
+            this.label17.Size = new System.Drawing.Size(108, 22);
             this.label17.TabIndex = 71;
             this.label17.Text = "Thành tiền";
             // 
@@ -616,10 +644,10 @@ namespace SaleManagement.VIEW
             // 
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(884, 601);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(42, 18);
+            this.label18.Size = new System.Drawing.Size(41, 19);
             this.label18.TabIndex = 79;
             this.label18.Text = "VNĐ";
             // 
@@ -627,10 +655,10 @@ namespace SaleManagement.VIEW
             // 
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(884, 555);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(42, 18);
+            this.label19.Size = new System.Drawing.Size(41, 19);
             this.label19.TabIndex = 78;
             this.label19.Text = "VNĐ";
             // 
@@ -638,10 +666,10 @@ namespace SaleManagement.VIEW
             // 
             this.txtSEND_BY_STAFF.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtSEND_BY_STAFF.Enabled = false;
-            this.txtSEND_BY_STAFF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSEND_BY_STAFF.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEND_BY_STAFF.Location = new System.Drawing.Point(739, 597);
             this.txtSEND_BY_STAFF.Name = "txtSEND_BY_STAFF";
-            this.txtSEND_BY_STAFF.Size = new System.Drawing.Size(139, 28);
+            this.txtSEND_BY_STAFF.Size = new System.Drawing.Size(139, 29);
             this.txtSEND_BY_STAFF.TabIndex = 77;
             this.txtSEND_BY_STAFF.TextChanged += new System.EventHandler(this.txtSEND_BY_STAFF_TextChanged);
             // 
@@ -649,20 +677,20 @@ namespace SaleManagement.VIEW
             // 
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(600, 599);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(133, 21);
+            this.label20.Size = new System.Drawing.Size(141, 22);
             this.label20.TabIndex = 76;
             this.label20.Text = "Tiền trả khách";
             // 
             // txtSEND_BY_CUSTOMER
             // 
             this.txtSEND_BY_CUSTOMER.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtSEND_BY_CUSTOMER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSEND_BY_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEND_BY_CUSTOMER.Location = new System.Drawing.Point(739, 551);
             this.txtSEND_BY_CUSTOMER.Name = "txtSEND_BY_CUSTOMER";
-            this.txtSEND_BY_CUSTOMER.Size = new System.Drawing.Size(139, 28);
+            this.txtSEND_BY_CUSTOMER.Size = new System.Drawing.Size(139, 29);
             this.txtSEND_BY_CUSTOMER.TabIndex = 75;
             this.txtSEND_BY_CUSTOMER.TextChanged += new System.EventHandler(this.txtSEND_BY_CUSTOMER_TextChanged);
             this.txtSEND_BY_CUSTOMER.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSEND_BY_CUSTOMER_KeyPress);
@@ -671,10 +699,10 @@ namespace SaleManagement.VIEW
             // 
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(600, 553);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(133, 21);
+            this.label21.Size = new System.Drawing.Size(141, 22);
             this.label21.TabIndex = 74;
             this.label21.Text = "Tiền khách trả";
             // 
@@ -682,22 +710,22 @@ namespace SaleManagement.VIEW
             // 
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(954, 553);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(60, 21);
+            this.label22.Size = new System.Drawing.Size(60, 22);
             this.label22.TabIndex = 84;
             this.label22.Text = "Lưu ý";
             // 
             // txtNOTE
             // 
             this.txtNOTE.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtNOTE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNOTE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNOTE.ForeColor = System.Drawing.Color.Silver;
-            this.txtNOTE.Location = new System.Drawing.Point(1012, 552);
+            this.txtNOTE.Location = new System.Drawing.Point(1021, 552);
             this.txtNOTE.Multiline = true;
             this.txtNOTE.Name = "txtNOTE";
-            this.txtNOTE.Size = new System.Drawing.Size(179, 72);
+            this.txtNOTE.Size = new System.Drawing.Size(223, 72);
             this.txtNOTE.TabIndex = 85;
             this.txtNOTE.Text = "Nhập thông tin ...";
             this.txtNOTE.Enter += new System.EventHandler(this.txtNOTE_Enter);
@@ -735,7 +763,7 @@ namespace SaleManagement.VIEW
             this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHOME.FlatAppearance.BorderSize = 0;
             this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHOME.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHOME.ForeColor = System.Drawing.Color.White;
             this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
             this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -756,13 +784,13 @@ namespace SaleManagement.VIEW
             this.btnPRINT.FlatAppearance.BorderSize = 0;
             this.btnPRINT.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
             this.btnPRINT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPRINT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPRINT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPRINT.ForeColor = System.Drawing.Color.White;
             this.btnPRINT.Image = global::SaleManagement.Properties.Resources.printer_3_24;
             this.btnPRINT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPRINT.Location = new System.Drawing.Point(800, 642);
+            this.btnPRINT.Location = new System.Drawing.Point(785, 642);
             this.btnPRINT.Name = "btnPRINT";
-            this.btnPRINT.Size = new System.Drawing.Size(156, 44);
+            this.btnPRINT.Size = new System.Drawing.Size(171, 44);
             this.btnPRINT.TabIndex = 86;
             this.btnPRINT.Text = "In hóa đơn";
             this.btnPRINT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -777,13 +805,13 @@ namespace SaleManagement.VIEW
             this.btnPAYMENT.FlatAppearance.BorderSize = 0;
             this.btnPAYMENT.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
             this.btnPAYMENT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPAYMENT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPAYMENT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPAYMENT.ForeColor = System.Drawing.Color.White;
             this.btnPAYMENT.Image = global::SaleManagement.Properties.Resources.bank_cards_24;
             this.btnPAYMENT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPAYMENT.Location = new System.Drawing.Point(644, 642);
+            this.btnPAYMENT.Location = new System.Drawing.Point(621, 643);
             this.btnPAYMENT.Name = "btnPAYMENT";
-            this.btnPAYMENT.Size = new System.Drawing.Size(150, 44);
+            this.btnPAYMENT.Size = new System.Drawing.Size(157, 44);
             this.btnPAYMENT.TabIndex = 83;
             this.btnPAYMENT.Text = "Thanh toán";
             this.btnPAYMENT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -798,7 +826,7 @@ namespace SaleManagement.VIEW
             this.btnBACK.FlatAppearance.BorderSize = 0;
             this.btnBACK.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
             this.btnBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBACK.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBACK.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBACK.ForeColor = System.Drawing.Color.White;
             this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
             this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -819,7 +847,7 @@ namespace SaleManagement.VIEW
             this.btnLOAD.FlatAppearance.BorderSize = 0;
             this.btnLOAD.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
             this.btnLOAD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLOAD.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLOAD.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLOAD.ForeColor = System.Drawing.Color.White;
             this.btnLOAD.Image = global::SaleManagement.Properties.Resources.sinchronize_24;
             this.btnLOAD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -840,13 +868,13 @@ namespace SaleManagement.VIEW
             this.btnDISCOUNT_MONEY.FlatAppearance.BorderSize = 0;
             this.btnDISCOUNT_MONEY.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
             this.btnDISCOUNT_MONEY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDISCOUNT_MONEY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDISCOUNT_MONEY.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDISCOUNT_MONEY.ForeColor = System.Drawing.Color.White;
             this.btnDISCOUNT_MONEY.Image = global::SaleManagement.Properties.Resources.banknotes_24;
             this.btnDISCOUNT_MONEY.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDISCOUNT_MONEY.Location = new System.Drawing.Point(168, 639);
+            this.btnDISCOUNT_MONEY.Location = new System.Drawing.Point(166, 639);
             this.btnDISCOUNT_MONEY.Name = "btnDISCOUNT_MONEY";
-            this.btnDISCOUNT_MONEY.Size = new System.Drawing.Size(138, 43);
+            this.btnDISCOUNT_MONEY.Size = new System.Drawing.Size(145, 43);
             this.btnDISCOUNT_MONEY.TabIndex = 70;
             this.btnDISCOUNT_MONEY.Text = "Giảm tiền";
             this.btnDISCOUNT_MONEY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -861,7 +889,7 @@ namespace SaleManagement.VIEW
             this.btnDISCOUNT_PERCENT.FlatAppearance.BorderSize = 0;
             this.btnDISCOUNT_PERCENT.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
             this.btnDISCOUNT_PERCENT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDISCOUNT_PERCENT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDISCOUNT_PERCENT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDISCOUNT_PERCENT.ForeColor = System.Drawing.Color.White;
             this.btnDISCOUNT_PERCENT.Image = global::SaleManagement.Properties.Resources.percentage_3_24;
             this.btnDISCOUNT_PERCENT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -873,27 +901,6 @@ namespace SaleManagement.VIEW
             this.btnDISCOUNT_PERCENT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDISCOUNT_PERCENT.UseVisualStyleBackColor = false;
             this.btnDISCOUNT_PERCENT.Click += new System.EventHandler(this.btnDISCOUNT_PERCENT_Click);
-            // 
-            // dpDAY
-            // 
-            this.dpDAY.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dpDAY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpDAY.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpDAY.Location = new System.Drawing.Point(124, 75);
-            this.dpDAY.Name = "dpDAY";
-            this.dpDAY.Size = new System.Drawing.Size(172, 28);
-            this.dpDAY.TabIndex = 123;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 78);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 21);
-            this.label4.TabIndex = 122;
-            this.label4.Text = "Ngày lập";
             // 
             // FrmBill
             // 

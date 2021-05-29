@@ -65,7 +65,7 @@ namespace SaleManagement.VIEW
             // 
             this.gbGENDER.Controls.Add(this.rbFEMALE);
             this.gbGENDER.Controls.Add(this.rbMALE);
-            this.gbGENDER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbGENDER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbGENDER.Location = new System.Drawing.Point(29, 339);
             this.gbGENDER.Name = "gbGENDER";
             this.gbGENDER.Size = new System.Drawing.Size(325, 114);
@@ -78,7 +78,7 @@ namespace SaleManagement.VIEW
             this.rbFEMALE.AutoSize = true;
             this.rbFEMALE.Location = new System.Drawing.Point(65, 65);
             this.rbFEMALE.Name = "rbFEMALE";
-            this.rbFEMALE.Size = new System.Drawing.Size(61, 25);
+            this.rbFEMALE.Size = new System.Drawing.Size(62, 26);
             this.rbFEMALE.TabIndex = 1;
             this.rbFEMALE.TabStop = true;
             this.rbFEMALE.Text = "Nữ";
@@ -89,7 +89,7 @@ namespace SaleManagement.VIEW
             this.rbMALE.AutoSize = true;
             this.rbMALE.Location = new System.Drawing.Point(65, 25);
             this.rbMALE.Name = "rbMALE";
-            this.rbMALE.Size = new System.Drawing.Size(75, 25);
+            this.rbMALE.Size = new System.Drawing.Size(77, 26);
             this.rbMALE.TabIndex = 0;
             this.rbMALE.TabStop = true;
             this.rbMALE.Text = "Nam";
@@ -97,86 +97,86 @@ namespace SaleManagement.VIEW
             // 
             // txtADDRESS
             // 
-            this.txtADDRESS.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtADDRESS.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtADDRESS.ForeColor = System.Drawing.Color.Black;
-            this.txtADDRESS.Location = new System.Drawing.Point(133, 289);
+            this.txtADDRESS.Location = new System.Drawing.Point(133, 288);
             this.txtADDRESS.Name = "txtADDRESS";
-            this.txtADDRESS.Size = new System.Drawing.Size(237, 28);
+            this.txtADDRESS.Size = new System.Drawing.Size(237, 29);
             this.txtADDRESS.TabIndex = 76;
             // 
             // txtPHONE
             // 
-            this.txtPHONE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPHONE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPHONE.ForeColor = System.Drawing.Color.Black;
-            this.txtPHONE.Location = new System.Drawing.Point(133, 238);
+            this.txtPHONE.Location = new System.Drawing.Point(133, 237);
             this.txtPHONE.Name = "txtPHONE";
-            this.txtPHONE.Size = new System.Drawing.Size(237, 28);
+            this.txtPHONE.Size = new System.Drawing.Size(237, 29);
             this.txtPHONE.TabIndex = 75;
             // 
             // txtNAME_CUSTOMER
             // 
-            this.txtNAME_CUSTOMER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNAME_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_CUSTOMER.ForeColor = System.Drawing.Color.Black;
-            this.txtNAME_CUSTOMER.Location = new System.Drawing.Point(133, 183);
+            this.txtNAME_CUSTOMER.Location = new System.Drawing.Point(133, 182);
             this.txtNAME_CUSTOMER.Name = "txtNAME_CUSTOMER";
-            this.txtNAME_CUSTOMER.Size = new System.Drawing.Size(237, 28);
+            this.txtNAME_CUSTOMER.Size = new System.Drawing.Size(237, 29);
             this.txtNAME_CUSTOMER.TabIndex = 74;
             // 
             // txtID_CUSTOMER
             // 
-            this.txtID_CUSTOMER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID_CUSTOMER.Location = new System.Drawing.Point(133, 127);
+            this.txtID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_CUSTOMER.Location = new System.Drawing.Point(133, 126);
             this.txtID_CUSTOMER.Name = "txtID_CUSTOMER";
-            this.txtID_CUSTOMER.Size = new System.Drawing.Size(237, 28);
+            this.txtID_CUSTOMER.Size = new System.Drawing.Size(237, 29);
             this.txtID_CUSTOMER.TabIndex = 73;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(25, 290);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 21);
+            this.label4.Size = new System.Drawing.Size(72, 22);
             this.label4.TabIndex = 71;
             this.label4.Text = "Địa chỉ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(25, 239);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 21);
+            this.label3.Size = new System.Drawing.Size(62, 22);
             this.label3.TabIndex = 70;
             this.label3.Text = "Số ĐT";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(25, 184);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 21);
+            this.label6.Size = new System.Drawing.Size(76, 22);
             this.label6.TabIndex = 69;
             this.label6.Text = "Tên KH";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(25, 128);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 21);
+            this.label7.Size = new System.Drawing.Size(69, 22);
             this.label7.TabIndex = 68;
             this.label7.Text = "Mã KH";
             // 
             // txtSEARCH
             // 
-            this.txtSEARCH.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSEARCH.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
             this.txtSEARCH.Location = new System.Drawing.Point(895, 638);
             this.txtSEARCH.Name = "txtSEARCH";
-            this.txtSEARCH.Size = new System.Drawing.Size(274, 28);
+            this.txtSEARCH.Size = new System.Drawing.Size(274, 29);
             this.txtSEARCH.TabIndex = 67;
             this.txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
             this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
@@ -200,23 +200,27 @@ namespace SaleManagement.VIEW
             // 
             this.dgvLISTCUSTOMER.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLISTCUSTOMER.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvLISTCUSTOMER.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvLISTCUSTOMER.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvLISTCUSTOMER.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLISTCUSTOMER.Location = new System.Drawing.Point(398, 127);
             this.dgvLISTCUSTOMER.Name = "dgvLISTCUSTOMER";
+            this.dgvLISTCUSTOMER.RowHeadersVisible = false;
             this.dgvLISTCUSTOMER.RowHeadersWidth = 62;
             this.dgvLISTCUSTOMER.RowTemplate.Height = 28;
             this.dgvLISTCUSTOMER.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLISTCUSTOMER.Size = new System.Drawing.Size(824, 494);
             this.dgvLISTCUSTOMER.TabIndex = 61;
             this.dgvLISTCUSTOMER.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLISTCUSTOMER_CellClick);
+            this.dgvLISTCUSTOMER.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLISTCUSTOMER_CellFormatting);
             // 
             // rbNAME_CUSTOMER
             // 
             this.rbNAME_CUSTOMER.AutoSize = true;
-            this.rbNAME_CUSTOMER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbNAME_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbNAME_CUSTOMER.Location = new System.Drawing.Point(772, 640);
             this.rbNAME_CUSTOMER.Name = "rbNAME_CUSTOMER";
-            this.rbNAME_CUSTOMER.Size = new System.Drawing.Size(98, 25);
+            this.rbNAME_CUSTOMER.Size = new System.Drawing.Size(101, 26);
             this.rbNAME_CUSTOMER.TabIndex = 90;
             this.rbNAME_CUSTOMER.TabStop = true;
             this.rbNAME_CUSTOMER.Text = "Tên KH";
@@ -225,10 +229,10 @@ namespace SaleManagement.VIEW
             // rbID_CUSTOMER
             // 
             this.rbID_CUSTOMER.AutoSize = true;
-            this.rbID_CUSTOMER.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbID_CUSTOMER.Location = new System.Drawing.Point(658, 640);
             this.rbID_CUSTOMER.Name = "rbID_CUSTOMER";
-            this.rbID_CUSTOMER.Size = new System.Drawing.Size(91, 25);
+            this.rbID_CUSTOMER.Size = new System.Drawing.Size(94, 26);
             this.rbID_CUSTOMER.TabIndex = 89;
             this.rbID_CUSTOMER.TabStop = true;
             this.rbID_CUSTOMER.Text = "Mã KH";
@@ -240,7 +244,7 @@ namespace SaleManagement.VIEW
             this.btnADD.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnADD.FlatAppearance.BorderSize = 0;
             this.btnADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADD.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnADD.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADD.ForeColor = System.Drawing.Color.White;
             this.btnADD.Image = global::SaleManagement.Properties.Resources.add_user_24;
             this.btnADD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -259,7 +263,7 @@ namespace SaleManagement.VIEW
             this.btnEDIT.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEDIT.FlatAppearance.BorderSize = 0;
             this.btnEDIT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEDIT.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEDIT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEDIT.ForeColor = System.Drawing.Color.White;
             this.btnEDIT.Image = global::SaleManagement.Properties.Resources.edit_3_24;
             this.btnEDIT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -278,13 +282,13 @@ namespace SaleManagement.VIEW
             this.btnBACK.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnBACK.FlatAppearance.BorderSize = 0;
             this.btnBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBACK.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBACK.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBACK.ForeColor = System.Drawing.Color.White;
             this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
             this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBACK.Location = new System.Drawing.Point(260, 562);
             this.btnBACK.Name = "btnBACK";
-            this.btnBACK.Size = new System.Drawing.Size(121, 59);
+            this.btnBACK.Size = new System.Drawing.Size(132, 59);
             this.btnBACK.TabIndex = 88;
             this.btnBACK.Text = "Quay lại";
             this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -297,13 +301,13 @@ namespace SaleManagement.VIEW
             this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSAVE.FlatAppearance.BorderSize = 0;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSAVE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
             this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSAVE.Location = new System.Drawing.Point(260, 492);
             this.btnSAVE.Name = "btnSAVE";
-            this.btnSAVE.Size = new System.Drawing.Size(121, 61);
+            this.btnSAVE.Size = new System.Drawing.Size(132, 61);
             this.btnSAVE.TabIndex = 86;
             this.btnSAVE.Text = "Lưu";
             this.btnSAVE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -316,7 +320,7 @@ namespace SaleManagement.VIEW
             this.btnCANCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCANCEL.FlatAppearance.BorderSize = 0;
             this.btnCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCANCEL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCANCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -335,7 +339,7 @@ namespace SaleManagement.VIEW
             this.btnDELETE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDELETE.FlatAppearance.BorderSize = 0;
             this.btnDELETE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDELETE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDELETE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDELETE.ForeColor = System.Drawing.Color.White;
             this.btnDELETE.Image = global::SaleManagement.Properties.Resources.delete_property_24;
             this.btnDELETE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -354,7 +358,7 @@ namespace SaleManagement.VIEW
             this.btnSHOW.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSHOW.FlatAppearance.BorderSize = 0;
             this.btnSHOW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSHOW.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSHOW.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSHOW.ForeColor = System.Drawing.Color.White;
             this.btnSHOW.Image = global::SaleManagement.Properties.Resources.activity_feed_24;
             this.btnSHOW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -374,13 +378,13 @@ namespace SaleManagement.VIEW
             this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEXCEL.FlatAppearance.BorderSize = 0;
             this.btnEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEXCEL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEXCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEXCEL.ForeColor = System.Drawing.Color.White;
             this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
             this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEXCEL.Location = new System.Drawing.Point(532, 73);
             this.btnEXCEL.Name = "btnEXCEL";
-            this.btnEXCEL.Size = new System.Drawing.Size(154, 48);
+            this.btnEXCEL.Size = new System.Drawing.Size(161, 48);
             this.btnEXCEL.TabIndex = 119;
             this.btnEXCEL.Text = "Xuất Excel";
             this.btnEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -393,7 +397,7 @@ namespace SaleManagement.VIEW
             this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHOME.FlatAppearance.BorderSize = 0;
             this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHOME.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHOME.ForeColor = System.Drawing.Color.White;
             this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
             this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

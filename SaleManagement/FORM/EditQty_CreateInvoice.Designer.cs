@@ -43,7 +43,7 @@ namespace SaleManagement.FORM
             this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSAVE.FlatAppearance.BorderSize = 0;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSAVE.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
             this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -63,7 +63,7 @@ namespace SaleManagement.FORM
             this.btnCANCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCANCEL.FlatAppearance.BorderSize = 0;
             this.btnCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCANCEL.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCANCEL.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -79,29 +79,30 @@ namespace SaleManagement.FORM
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(62, 26);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(62, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 24);
+            this.label1.Size = new System.Drawing.Size(198, 24);
             this.label1.TabIndex = 92;
             this.label1.Text = "Nhập số lượng mới";
             // 
             // txtNEWQTY
             // 
-            this.txtNEWQTY.Location = new System.Drawing.Point(272, 24);
+            this.txtNEWQTY.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNEWQTY.Location = new System.Drawing.Point(266, 29);
             this.txtNEWQTY.Name = "txtNEWQTY";
-            this.txtNEWQTY.Size = new System.Drawing.Size(151, 26);
+            this.txtNEWQTY.Size = new System.Drawing.Size(151, 27);
             this.txtNEWQTY.TabIndex = 93;
             this.txtNEWQTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNEWQTY_KeyPress);
             // 
             // lbQTY
             // 
             this.lbQTY.AutoSize = true;
-            this.lbQTY.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQTY.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbQTY.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lbQTY.Location = new System.Drawing.Point(170, 59);
+            this.lbQTY.Location = new System.Drawing.Point(170, 61);
             this.lbQTY.Name = "lbQTY";
-            this.lbQTY.Size = new System.Drawing.Size(0, 25);
+            this.lbQTY.Size = new System.Drawing.Size(0, 24);
             this.lbQTY.TabIndex = 94;
             // 
             // FrmEditQty_CreateInvoice

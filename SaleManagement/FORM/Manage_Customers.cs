@@ -15,15 +15,27 @@ namespace SaleManagement.VIEW
     public partial class FrmManage_Customers : Form
     {
         SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        bool isAdd; // Biến kiểm tra là thực hiện chức năng thêm hay sửa khách hàng.
+        bool isAdd; // true: add new customer, false: edit customer
         public FrmManage_Customers()
         {
             InitializeComponent();
             disable(false);
             ShowCustomer();
             rbID_CUSTOMER.Checked = true;
+            // Set style for ColumnHeader
+            dgvLISTCUSTOMER.EnableHeadersVisualStyles = false;
+            dgvLISTCUSTOMER.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dgvLISTCUSTOMER.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvLISTCUSTOMER.ColumnHeadersDefaultCellStyle.Font = new Font("tahoma", 7, FontStyle.Bold);
+            dgvLISTCUSTOMER.ColumnHeadersDefaultCellStyle.Padding = new Padding(5);
+            // Set HearderText
+            dgvLISTCUSTOMER.Columns[0].HeaderText = "Mã k.hàng";
+            dgvLISTCUSTOMER.Columns[1].HeaderText = "Tên k.hàng";
+            dgvLISTCUSTOMER.Columns[2].HeaderText = "Giới tính";
+            dgvLISTCUSTOMER.Columns[3].HeaderText = "SĐT";
+            dgvLISTCUSTOMER.Columns[4].HeaderText = "Địa chỉ";
         }
-        // Cho phép hoặc không cho phép các textbox hay button nào được và không được thực hiện
+        // Disable button, textbox
         void disable(bool E)
         {
             txtNAME_CUSTOMER.Enabled = E;
@@ -38,7 +50,7 @@ namespace SaleManagement.VIEW
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
         }
-        // danh sách khách hàng 
+        // func show customers
         public void ShowCustomer()
         {
             var listCus = DB.tblKhachHangs.Select(p => new {
@@ -54,18 +66,40 @@ namespace SaleManagement.VIEW
             txtPHONE.Clear();
             txtADDRESS.Clear();
         }
+        // Set backColor for row in dgvListCustomer
+        private void dgvLISTCUSTOMER_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvLISTCUSTOMER.DefaultCellStyle.BackColor = Color.OldLace;
+            dgvLISTCUSTOMER.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
+        }
+        // Đổ dữ liêu từ row vào các txt
+        private void dgvLISTCUSTOMER_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtID_CUSTOMER.Text = dgvLISTCUSTOMER.SelectedRows[0].Cells["MaKhachHang"].Value.ToString();
+            txtNAME_CUSTOMER.Text = dgvLISTCUSTOMER.SelectedRows[0].Cells["TenKhachHang"].Value.ToString();
+            txtPHONE.Text = dgvLISTCUSTOMER.SelectedRows[0].Cells["SoDienThoai"].Value.ToString();
+            txtADDRESS.Text = dgvLISTCUSTOMER.SelectedRows[0].Cells["DiaChi"].Value.ToString();
+            if (Convert.ToBoolean(dgvLISTCUSTOMER.SelectedRows[0].Cells["GioiTinh"].Value) == true)
+            {
+                rbMALE.Checked = true;
+            }
+            else
+            {
+                rbFEMALE.Checked = true;
+            }
+        }
         private void btnHOME_Click(object sender, EventArgs e)
         {
             FrmSale_Management frm = new FrmSale_Management();
             frm.Show();
             this.Close();
         }
-        // Btn liệt kê khách hàng
+        // Button show customes
         private void btnSHOW_Click(object sender, EventArgs e)
         {
             ShowCustomer();
         }
-        // Xuất danh sách khách hàng ra file excel
+        // Export file Excel
         private void btnEXCEL_Click(object sender, EventArgs e)
         {
             Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
@@ -95,7 +129,7 @@ namespace SaleManagement.VIEW
             }
             app.Quit();
         }
-        // Btn thêm mới khách hàng
+        // Button Add customer
         private void btnADD_Click(object sender, EventArgs e)
         {
             disable(true);
@@ -106,14 +140,14 @@ namespace SaleManagement.VIEW
             rbMALE.Checked = true;
             txtADDRESS.Clear();
         }
-        // Btn sửa khách hàng
+        // Button Edit customer
         private void btnEDIT_Click(object sender, EventArgs e)
         {
             disable(true);
             txtID_CUSTOMER.Enabled = false;
             isAdd = false; // sửa
         }
-        // Btn lưu thông tin khách hàng
+        // Button Save changes
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             tblKhachHang customer = new tblKhachHang();
@@ -161,7 +195,7 @@ namespace SaleManagement.VIEW
                 }
             }
         }
-        // Btn xóa khách hàng
+        // Delete customer
         private void btnDELETE_Click(object sender, EventArgs e)
         {
             List<string> listIdCustomer = new List<string>();
@@ -177,12 +211,12 @@ namespace SaleManagement.VIEW
                 ShowCustomer();
             }
         }
-        // Btn hủy bỏ chức năng đang thực hiện
+        // Cancel
         private void btnCANCEL_Click(object sender, EventArgs e)
         {
             disable(false);
         }
-        // Btn quay lại frmManage_Data
+        // Back to frmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
             DialogResult d = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -197,23 +231,19 @@ namespace SaleManagement.VIEW
                 return;
             }
         }
-        // Đổ dữ liêu từ row vào các txt
-        private void dgvLISTCUSTOMER_CellClick(object sender, DataGridViewCellEventArgs e)
+        // search customer
+        private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            txtID_CUSTOMER.Text = dgvLISTCUSTOMER.SelectedRows[0].Cells["MaKhachHang"].Value.ToString();
-            txtNAME_CUSTOMER.Text = dgvLISTCUSTOMER.SelectedRows[0].Cells["TenKhachHang"].Value.ToString();
-            txtPHONE.Text = dgvLISTCUSTOMER.SelectedRows[0].Cells["SoDienThoai"].Value.ToString();
-            txtADDRESS.Text = dgvLISTCUSTOMER.SelectedRows[0].Cells["DiaChi"].Value.ToString();
-            if (Convert.ToBoolean(dgvLISTCUSTOMER.SelectedRows[0].Cells["GioiTinh"].Value) == true)
+            if (rbID_CUSTOMER.Checked == true) // Tìm kiếm theo mã số
             {
-                rbMALE.Checked = true;
+                BLL_CUSTOMER.Instance.FuncSearchID(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
             }
-            else
+            else // Tìm kiếm theo tên
             {
-                rbFEMALE.Checked = true;
+                BLL_CUSTOMER.Instance.FuncSearchName(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
             }
         }
-        // search customer
+        // input information
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
             if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
@@ -232,16 +262,5 @@ namespace SaleManagement.VIEW
             }
         }
 
-        private void txtSEARCH_TextChanged(object sender, EventArgs e)
-        {
-            if (rbID_CUSTOMER.Checked == true) // Tìm kiếm theo mã số
-            {
-                BLL_CUSTOMER.Instance.FuncSearchID(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
-            }
-            else // Tìm kiếm theo tên
-            {
-                BLL_CUSTOMER.Instance.FuncSearchName(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
-            }
-        }
     }
 }

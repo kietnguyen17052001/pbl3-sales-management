@@ -25,6 +25,22 @@ namespace SaleManagement.VIEW
             ShowProduct();
             disable(false);
             rbID_ITEM.Checked = true;
+            // set style for ColumnHeader
+            dgvLISTITEMS.EnableHeadersVisualStyles = false;
+            dgvLISTITEMS.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dgvLISTITEMS.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvLISTITEMS.ColumnHeadersDefaultCellStyle.Font = new Font("tahoma", 7, FontStyle.Bold);
+            dgvLISTITEMS.ColumnHeadersDefaultCellStyle.Padding = new Padding(5);
+            // set hearderText
+            dgvLISTITEMS.Columns[0].HeaderText = "Mã h.hóa";
+            dgvLISTITEMS.Columns[1].HeaderText = "Tên h.hóa";
+            dgvLISTITEMS.Columns[2].HeaderText = "Số lượng";
+            dgvLISTITEMS.Columns[3].HeaderText = "Loại h.hóa";
+            dgvLISTITEMS.Columns[4].HeaderText = "Nhà c.cấp";
+            dgvLISTITEMS.Columns[5].HeaderText = "Nhà s.xuất";
+            dgvLISTITEMS.Columns[6].HeaderText = "Giá mua";
+            dgvLISTITEMS.Columns[7].HeaderText = "Giá bán";
+            dgvLISTITEMS.Columns[8].HeaderText = "Mô tả";
         }
         public void setCBB()
         {
@@ -115,15 +131,11 @@ namespace SaleManagement.VIEW
         {
             cbbPRODUCERs.Items.Add(new CBBItem { VALUE = id, TEXT = name });
         }
-        private void btnHOME_Click(object sender, EventArgs e)
+        // Set backColor for dgv
+        private void dgvLISTITEMS_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            FrmSale_Management frm = new FrmSale_Management();
-            frm.Show();
-            this.Close();
-        }
-        private void btnSHOW_Click(object sender, EventArgs e)
-        {
-            ShowProduct();
+            dgvLISTITEMS.DefaultCellStyle.BackColor = Color.OldLace;
+            dgvLISTITEMS.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
         }
         // click event
         private void dgvLISTITEMS_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -143,6 +155,16 @@ namespace SaleManagement.VIEW
             txtSALE.Text = String.Format("{0:n0}", dgvLISTITEMS.SelectedRows[0].Cells["GiaBan"].Value);
             var product = DB.tblHangHoas.Find(idProduct);
             pbIMAGE.Image = ByteArrayToImage(product.HinhAnh.ToArray());
+        }
+        private void btnHOME_Click(object sender, EventArgs e)
+        {
+            FrmSale_Management frm = new FrmSale_Management();
+            frm.Show();
+            this.Close();
+        }
+        private void btnSHOW_Click(object sender, EventArgs e)
+        {
+            ShowProduct();
         }
         // export
         private void btnEXCEL_Click(object sender, EventArgs e)
@@ -451,6 +473,6 @@ namespace SaleManagement.VIEW
                 txtDESCRIBE.Text = "Nhập mô tả ...";
                 txtDESCRIBE.ForeColor = Color.Silver;
             }
-        }        
+        }
     }
 }

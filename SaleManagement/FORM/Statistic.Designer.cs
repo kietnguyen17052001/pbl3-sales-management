@@ -117,33 +117,33 @@ namespace SaleManagement.FORM
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(655, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(329, 26);
+            this.label2.Size = new System.Drawing.Size(349, 27);
             this.label2.TabIndex = 123;
             this.label2.Text = "Số tiền bán được của từng loại";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(46, 104);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(285, 26);
+            this.label1.Size = new System.Drawing.Size(303, 27);
             this.label1.TabIndex = 122;
             this.label1.Text = "Số sản phẩm của từng loại";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(46, 437);
+            this.label3.Location = new System.Drawing.Point(13, 437);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(415, 26);
+            this.label3.Size = new System.Drawing.Size(452, 27);
             this.label3.TabIndex = 131;
             this.label3.Text = "So sánh tỉ lệ bán được của từng loại(%)";
             // 
@@ -167,17 +167,18 @@ namespace SaleManagement.FORM
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chartSCALE.Series.Add(series3);
-            this.chartSCALE.Size = new System.Drawing.Size(576, 242);
+            this.chartSCALE.Size = new System.Drawing.Size(587, 242);
             this.chartSCALE.TabIndex = 132;
             this.chartSCALE.Text = "chart1";
             // 
             // cbbTYPEOFPRODUCT
             // 
             this.cbbTYPEOFPRODUCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbTYPEOFPRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbTYPEOFPRODUCT.FormattingEnabled = true;
             this.cbbTYPEOFPRODUCT.Location = new System.Drawing.Point(702, 55);
             this.cbbTYPEOFPRODUCT.Name = "cbbTYPEOFPRODUCT";
-            this.cbbTYPEOFPRODUCT.Size = new System.Drawing.Size(282, 28);
+            this.cbbTYPEOFPRODUCT.Size = new System.Drawing.Size(282, 27);
             this.cbbTYPEOFPRODUCT.TabIndex = 138;
             // 
             // groupBox1
@@ -187,7 +188,7 @@ namespace SaleManagement.FORM
             this.groupBox1.Controls.Add(this.btnLOAD);
             this.groupBox1.Controls.Add(this.dpTO);
             this.groupBox1.Controls.Add(this.dpFROM);
-            this.groupBox1.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(51, 483);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(343, 195);
@@ -198,20 +199,20 @@ namespace SaleManagement.FORM
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(53, 115);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 21);
+            this.label10.Size = new System.Drawing.Size(96, 22);
             this.label10.TabIndex = 140;
             this.label10.Text = "Đến ngày";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(48, 35);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 21);
+            this.label8.Size = new System.Drawing.Size(83, 22);
             this.label8.TabIndex = 139;
             this.label8.Text = "Từ ngày";
             // 
@@ -234,20 +235,20 @@ namespace SaleManagement.FORM
             // 
             // dpTO
             // 
-            this.dpTO.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpTO.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dpTO.Location = new System.Drawing.Point(52, 148);
             this.dpTO.Name = "dpTO";
-            this.dpTO.Size = new System.Drawing.Size(156, 28);
+            this.dpTO.Size = new System.Drawing.Size(156, 29);
             this.dpTO.TabIndex = 138;
             // 
             // dpFROM
             // 
-            this.dpFROM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpFROM.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpFROM.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dpFROM.Location = new System.Drawing.Point(52, 70);
             this.dpFROM.Name = "dpFROM";
-            this.dpFROM.Size = new System.Drawing.Size(156, 28);
+            this.dpFROM.Size = new System.Drawing.Size(156, 29);
             this.dpFROM.TabIndex = 137;
             // 
             // btnINFO
@@ -256,7 +257,7 @@ namespace SaleManagement.FORM
             this.btnINFO.FlatAppearance.BorderSize = 0;
             this.btnINFO.FlatAppearance.MouseDownBackColor = System.Drawing.Color.OrangeRed;
             this.btnINFO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnINFO.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnINFO.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnINFO.ForeColor = System.Drawing.Color.White;
             this.btnINFO.Location = new System.Drawing.Point(990, 43);
             this.btnINFO.Name = "btnINFO";
@@ -282,7 +283,7 @@ namespace SaleManagement.FORM
             this.btnSTATISTIC.FlatAppearance.BorderSize = 0;
             this.btnSTATISTIC.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             this.btnSTATISTIC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSTATISTIC.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSTATISTIC.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSTATISTIC.ForeColor = System.Drawing.Color.White;
             this.btnSTATISTIC.Location = new System.Drawing.Point(347, 46);
             this.btnSTATISTIC.Name = "btnSTATISTIC";
@@ -298,7 +299,7 @@ namespace SaleManagement.FORM
             this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHOME.FlatAppearance.BorderSize = 0;
             this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHOME.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHOME.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHOME.ForeColor = System.Drawing.Color.White;
             this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
             this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

@@ -22,7 +22,22 @@ namespace SaleManagement.VIEW
             SetCbb();    
             disable(false);
             ShowStaff();
-            rbID_STAFF.Checked = true;        
+            rbID_STAFF.Checked = true;
+            // Set style for ColumnHeader
+            dgvLIST_STAFF.EnableHeadersVisualStyles = false;
+            dgvLIST_STAFF.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dgvLIST_STAFF.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvLIST_STAFF.ColumnHeadersDefaultCellStyle.Font = new Font("tahoma", 7, FontStyle.Bold);
+            dgvLIST_STAFF.ColumnHeadersDefaultCellStyle.Padding = new Padding(5);
+            // Set HearderText
+            dgvLIST_STAFF.Columns[0].HeaderText = "Mã n.viên";
+            dgvLIST_STAFF.Columns[1].HeaderText = "Tên n.viên";
+            dgvLIST_STAFF.Columns[2].HeaderText = "Vị trí";
+            dgvLIST_STAFF.Columns[3].HeaderText = "Ngày sinh";
+            dgvLIST_STAFF.Columns[4].HeaderText = "Giới tính";
+            dgvLIST_STAFF.Columns[5].HeaderText = "SĐT";
+            dgvLIST_STAFF.Columns[6].HeaderText = "Địa chỉ";
+            dgvLIST_STAFF.Columns[7].HeaderText = "Lương";
         }
         void disable(bool E)
         {
@@ -49,6 +64,7 @@ namespace SaleManagement.VIEW
             cbbPOSITION.Items.AddRange(BLL_STAFF.Instance.GetListPosition().Distinct().ToArray());
             cbbPOSITION_DETAIL.SelectedIndex = cbbPOSITION.SelectedIndex = 0;
         }
+        // show data staff
         public void ShowStaff()
         {
             if (cbbPOSITION_DETAIL.SelectedIndex == 0)
@@ -86,16 +102,44 @@ namespace SaleManagement.VIEW
             txtSALARY.Clear();
             cbbPOSITION.SelectedIndex = 0;
         }
+        // dgv
+        private void dgvLIST_STAFF_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtID_STAFF.Text = dgvLIST_STAFF.SelectedRows[0].Cells["MaNhanVien"].Value.ToString();
+            txtNAME_STAFF.Text = dgvLIST_STAFF.SelectedRows[0].Cells["TenNhanVien"].Value.ToString();
+            cbbPOSITION.Text = dgvLIST_STAFF.SelectedRows[0].Cells["ViTri"].Value.ToString();
+            dpDAY.Value = (DateTime)dgvLIST_STAFF.SelectedRows[0].Cells["NgaySinh"].Value;
+            txtPHONE.Text = dgvLIST_STAFF.SelectedRows[0].Cells["SoDienThoai"].Value.ToString();
+            txtADDRESS.Text = dgvLIST_STAFF.SelectedRows[0].Cells["DiaChi"].Value.ToString();
+            txtSALARY.Text = String.Format("{0:n0}", dgvLIST_STAFF.SelectedRows[0].Cells["Luong"].Value);
+            if (Convert.ToBoolean(dgvLIST_STAFF.SelectedRows[0].Cells["GioiTinh"].Value.ToString()) == true)
+            {
+                rbMALE.Checked = true;
+            }
+            else
+            {
+                rbFEMALE.Checked = true;
+            }
+        }
+        // Set backgroundColor for row in dgvListStaff
+        private void dgvLIST_STAFF_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvLIST_STAFF.DefaultCellStyle.BackColor = Color.OldLace;
+            dgvLIST_STAFF.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
+        }
+        // back to FrmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
             FrmSale_Management frm = new FrmSale_Management();
             frm.Show();
             this.Close();
         }
+        // show staff
         private void btnSHOW_Click(object sender, EventArgs e)
         {
             ShowStaff();
         }
+        // export file Excel
         private void btnEXCEL_Click(object sender, EventArgs e)
         {
             Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
@@ -125,6 +169,7 @@ namespace SaleManagement.VIEW
             }
             app.Quit();
         }
+        // add new staff
         private void btnADD_Click(object sender, EventArgs e)
         {
             disable(true);
@@ -136,14 +181,14 @@ namespace SaleManagement.VIEW
             txtADDRESS.Clear();
             txtSALARY.Clear();
         }
-
+        // edit staff
         private void btnEDIT_Click(object sender, EventArgs e)
         {
             disable(true);
             txtID_STAFF.Enabled = false;
             isAdd = false;
         }
-
+        // save change
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             tblNhanVien staff = new tblNhanVien();
@@ -195,6 +240,7 @@ namespace SaleManagement.VIEW
                 
             } 
         }
+        // delete staff
         private void btnDELETE_Click(object sender, EventArgs e)
         {
             List<string> listIdStaff = new List<string>();
@@ -227,7 +273,7 @@ namespace SaleManagement.VIEW
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }
-
+        // search staff
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
             if (rbID_STAFF.Checked == true)
@@ -239,10 +285,12 @@ namespace SaleManagement.VIEW
                 BLL_STAFF.Instance.FuncSearchName(dgvLIST_STAFF, txtSEARCH.Text.Trim()); // search name
             }
         }
+        // cancel
         private void btnCANCEL_Click(object sender, EventArgs e)
         {
             disable(false);
         }
+        // back to FrmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
             DialogResult d = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -255,24 +303,6 @@ namespace SaleManagement.VIEW
             else
             {
                 return;
-            }
-        }
-        private void dgvLIST_STAFF_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtID_STAFF.Text = dgvLIST_STAFF.SelectedRows[0].Cells["MaNhanVien"].Value.ToString();
-            txtNAME_STAFF.Text = dgvLIST_STAFF.SelectedRows[0].Cells["TenNhanVien"].Value.ToString();
-            cbbPOSITION.Text = dgvLIST_STAFF.SelectedRows[0].Cells["ViTri"].Value.ToString();
-            dpDAY.Value = (DateTime)dgvLIST_STAFF.SelectedRows[0].Cells["NgaySinh"].Value;
-            txtPHONE.Text = dgvLIST_STAFF.SelectedRows[0].Cells["SoDienThoai"].Value.ToString();
-            txtADDRESS.Text = dgvLIST_STAFF.SelectedRows[0].Cells["DiaChi"].Value.ToString();
-            txtSALARY.Text = String.Format("{0:n0}", dgvLIST_STAFF.SelectedRows[0].Cells["Luong"].Value);
-            if (Convert.ToBoolean(dgvLIST_STAFF.SelectedRows[0].Cells["GioiTinh"].Value.ToString()) == true)
-            {
-                rbMALE.Checked = true;
-            }
-            else
-            {
-                rbFEMALE.Checked = true;
             }
         }
     }

@@ -28,6 +28,21 @@ namespace SaleManagement.FORM
                 dpFROM.Value = getDayMin.Value;
             }
             ShowList();
+            // Set style for ColumnHeader
+            dgvREVENUE.EnableHeadersVisualStyles = false;
+            dgvREVENUE.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dgvREVENUE.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvREVENUE.ColumnHeadersDefaultCellStyle.Font = new Font("tahoma", 7, FontStyle.Bold);
+            dgvREVENUE.ColumnHeadersDefaultCellStyle.Padding = new Padding(5);
+            // Set headerText
+            dgvREVENUE.Columns[0].HeaderText = "Mã h.hóa";
+            dgvREVENUE.Columns[1].HeaderText = "Tên h.hóa";
+            dgvREVENUE.Columns[2].HeaderText = "Ngày bán";
+            dgvREVENUE.Columns[3].HeaderText = "Khách hàng";
+            dgvREVENUE.Columns[4].HeaderText = "Số lượng";
+            dgvREVENUE.Columns[5].HeaderText = "Giá(VNĐ)";
+            dgvREVENUE.Columns[6].HeaderText = "Giảm giá(%)";
+            dgvREVENUE.Columns[7].HeaderText = "Tổng tiền(VNĐ)";
         }
         // show tblChiTiethoaDonBanHang theo time
         public void ShowList()
@@ -55,18 +70,25 @@ namespace SaleManagement.FORM
             lbPRODUCT_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetQuantity(dateMin, dateMax));
             lbINVOICE_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetInvoice(dateMin, dateMax));
         }
+        // set backColor for dgv
+        private void dgvREVENUE_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvREVENUE.DefaultCellStyle.BackColor = Color.OldLace;
+            dgvREVENUE.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
+        }
         // load lại danh sách theo thời gian
         private void btnLOAD_Click(object sender, EventArgs e)
         {
             ShowList();
         }
+        // back to FrmQLBanHang
         private void btnBACK_Click(object sender, EventArgs e)
         {
             FrmSale_Management frm = new FrmSale_Management();
             frm.Show();
             this.Close();
         }
-
+        // export file Excel
         private void btnEXCEL_Click(object sender, EventArgs e)
         {
             Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();

@@ -18,21 +18,28 @@ namespace SaleManagement.FORM
         string idInvoice, idProduct;
         int productQty, discount;
         double pricePro;
-        public delegate void myDEL(string idInvoice);
-        public myDEL d { get; set; }
         public FrmAdd_NewProduct(string _idInvoice)
         {
             InitializeComponent();
             idInvoice = _idInvoice;
             lbID_PRODUCT.Text += " "+ _idInvoice;
             SetCBB();
+            ShowProduct();
+            dgvProduct.EnableHeadersVisualStyles = false;
+            dgvProduct.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dgvProduct.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvProduct.ColumnHeadersDefaultCellStyle.Font = new Font("tahoma", 8, FontStyle.Bold);
+            dgvProduct.ColumnHeadersDefaultCellStyle.Padding = new Padding(5);
+            dgvProduct.Columns[0].HeaderText = "Mã h.hóa";
+            dgvProduct.Columns[1].HeaderText = "Tên h.hóa";
+            dgvProduct.Columns[2].HeaderText = "Số lượng";
+            dgvProduct.Columns[3].HeaderText = "Giá bán";
         }
         public void SetCBB()
         {
             cbbTYPE_OF_PRODUCT.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả" });
             cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
             cbbTYPE_OF_PRODUCT.SelectedIndex = 0;
-            ShowProduct();
         }
         public void ShowProduct()
         {
@@ -92,7 +99,6 @@ namespace SaleManagement.FORM
                 var invoice = DB.tblHoaDonBanHangs.Find(idInvoice);
                 invoice.SoTien += invoiceDetail.TongTien;
                 DB.SaveChanges();
-                d(idInvoice);
                 DialogResult dR = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dR == DialogResult.Yes)
                 {
@@ -152,6 +158,12 @@ namespace SaleManagement.FORM
             {
                 e.Handled = true;
             }
+        }
+        // set backColor and Font for DGV
+        private void dgvProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvProduct.DefaultCellStyle.BackColor = Color.OldLace;
+            dgvProduct.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
         }
 
         private void txtQUANTITY_TextChanged(object sender, EventArgs e)

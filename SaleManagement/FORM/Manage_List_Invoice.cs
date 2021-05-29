@@ -20,14 +20,34 @@ namespace SaleManagement.FORM
         public FrmManage_List_Invoice()
         {
             InitializeComponent();
+            disable(false);
             SetCBB();
             var dateMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
             if (dateMin != null)
             {
                 dpFROM.Value = dateMin.Value;
             }
-            ShowListInvoice();
-            disable(false);
+            ShowList();
+            // Set style for columnHeader dgvListInvoice and dgvInfo_Invoice
+            dgvLIST_INVOICE.EnableHeadersVisualStyles = dgvINFO_INVOICE.EnableHeadersVisualStyles = false;
+            dgvLIST_INVOICE.ColumnHeadersDefaultCellStyle.BackColor = dgvINFO_INVOICE.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dgvLIST_INVOICE.ColumnHeadersDefaultCellStyle.ForeColor = dgvINFO_INVOICE.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvLIST_INVOICE.ColumnHeadersDefaultCellStyle.Font = dgvINFO_INVOICE.ColumnHeadersDefaultCellStyle.Font = new Font("tahoma", 7, FontStyle.Bold);
+            dgvLIST_INVOICE.ColumnHeadersDefaultCellStyle.Padding = dgvINFO_INVOICE.ColumnHeadersDefaultCellStyle.Padding = new Padding(5);
+            // Set headerText for dgvList_Invoice
+            dgvLIST_INVOICE.Columns[0].HeaderText = "Mã h.đơn";
+            dgvLIST_INVOICE.Columns[1].HeaderText = "Ngày bán";
+            dgvLIST_INVOICE.Columns[2].HeaderText = "Nhân viên";
+            dgvLIST_INVOICE.Columns[3].HeaderText = "Khách hàng";
+            dgvLIST_INVOICE.Columns[4].HeaderText = "Số tiền(VNĐ)";
+            dgvLIST_INVOICE.Columns[5].HeaderText = "Giảm giá(VNĐ)";
+            // Set headertext for dgvInfo_Invoice
+            dgvINFO_INVOICE.Columns[0].HeaderText = "Mã h.hóa";
+            dgvINFO_INVOICE.Columns[1].HeaderText = "Tên h.hóa";
+            dgvINFO_INVOICE.Columns[2].HeaderText = "Số lượng";
+            dgvINFO_INVOICE.Columns[3].HeaderText = "Giá(VNĐ)";
+            dgvINFO_INVOICE.Columns[4].HeaderText = "Giảm giá(%)";
+            dgvINFO_INVOICE.Columns[5].HeaderText = "Tổng tiền(VNĐ)";
         }
         public void disable(bool E)
         {
@@ -45,7 +65,18 @@ namespace SaleManagement.FORM
             frm.Show();
             this.Close();
         }
-        //
+        // set BackColor and Font for DGV
+        private void dgvLIST_INVOICE_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvLIST_INVOICE.DefaultCellStyle.BackColor = Color.Azure;
+            dgvLIST_INVOICE.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
+        }
+
+        private void dgvINFO_INVOICE_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvINFO_INVOICE.DefaultCellStyle.BackColor = Color.OldLace;
+            dgvINFO_INVOICE.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
+        }
         public void SetCBB()
         {
             cbbSTAFF_DETAIL.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả"});
@@ -108,14 +139,16 @@ namespace SaleManagement.FORM
             txtDISCOUNT.Text = String.Format("{0:n0}", dgvLIST_INVOICE.SelectedRows[0].Cells["GiamGia"].Value);
             ShowInfoInvoice(idInvoice);
         }
-        public void Show(string idInvoice)
+        // Func show listInvoice and infoInvoice
+        public void ShowList()
         {
             ShowListInvoice();
+            idInvoice = dgvLIST_INVOICE.Rows[0].Cells["MaHoaDonBan"].Value.ToString();
             ShowInfoInvoice(idInvoice);
         }
         private void btnSHOW_Click(object sender, EventArgs e)
         {
-            Show(idInvoice);
+            ShowList();
         }
         private void dgvLIST_INVOICE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -167,7 +200,7 @@ namespace SaleManagement.FORM
             invoice.MaKhachHang = ((CBBItem)cbbCUSTOMER.SelectedItem).VALUE;
             BLL_LISTINVOICE.Instance.FuncEditInvoice(invoice); // edit invoice
             MessageBox.Show("Sửa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Show(idInvoice);
+            Show();
             disable(false);
         }
         // Delete invoice
@@ -228,8 +261,8 @@ namespace SaleManagement.FORM
         private void btnADD_PRODUCT_Click(object sender, EventArgs e)
         {
             FrmAdd_NewProduct frm = new FrmAdd_NewProduct(idInvoice);
-            frm.d += new FrmAdd_NewProduct.myDEL(Show);
-            frm.Show();   
+            frm.Show();
+            ShowList();
         }
         // Func set new Quantity for product in invoice
         public void setNewQuantity(int _newQuantity)
@@ -242,7 +275,7 @@ namespace SaleManagement.FORM
             var getInvoice = DB.tblHoaDonBanHangs.Find(idInvoice);
             getInvoice.SoTien = BLL_LISTINVOICE.Instance.GetPriceInvoice(idInvoice) - getInvoice.GiamGia;
             DB.SaveChanges();
-            Show(idInvoice);
+            ShowList();
         }
         // Edit quantity product
         private void btnEDIT_QUANTITY_Click(object sender, EventArgs e)
@@ -264,7 +297,7 @@ namespace SaleManagement.FORM
                 listIdProduct.Add(dataGVR.Cells["MaHangHoa"].Value.ToString());
             }
             BLL_LISTINVOICE.Instance.FuncDeleteProduct(listIdProduct, idInvoice); // delete product
-            Show(idInvoice);
+            ShowList();
         }
     }
 }

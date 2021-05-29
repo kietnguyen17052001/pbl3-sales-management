@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SaleManagement.BLL
 {
@@ -29,6 +30,49 @@ namespace SaleManagement.BLL
         {
             DB.tblNhaCungCaps.Add(supplier);
             DB.SaveChanges();
+        }
+        // edit supplier
+        public void FuncEditSupplier(tblNhaCungCap supplier)
+        {
+            var getSupplier = DB.tblNhaCungCaps.Find(supplier.MaNhaCungCap);
+            getSupplier.TenNhaCungCap = supplier.TenNhaCungCap;
+            getSupplier.DiaChi = supplier.DiaChi;
+            getSupplier.Email = supplier.Email;
+            getSupplier.Fax = supplier.Fax;
+            getSupplier.SoDienThoai = supplier.SoDienThoai;
+            getSupplier.MaSoThue = supplier.MaSoThue;
+            DB.SaveChanges();
+        }
+        // delete supplier
+        public void FuncDeleteSupplier(List<string> listID)
+        {
+            foreach(string idSupplier in listID)
+            {
+                foreach(tblNhaCungCap supplier in DB.tblNhaCungCaps)
+                {
+                    if(supplier.MaNhaCungCap == idSupplier)
+                    {
+                        DB.tblNhaCungCaps.Remove(supplier);
+                        break;
+                    }
+                }
+                DB.SaveChanges();
+            }
+        }
+        // search supplier
+        public void FuncSearchSupplier(DataGridView dgv, string information)
+        {
+            var getSupplier = DB.tblNhaCungCaps.Where(p => p.MaNhaCungCap.Contains(information) || p.TenNhaCungCap.Contains(information)).Select(p => new
+            {
+                p.MaNhaCungCap,
+                p.TenNhaCungCap,
+                p.DiaChi,
+                p.Email,
+                p.Fax,
+                p.SoDienThoai,
+                p.MaSoThue
+            });
+            dgv.DataSource = getSupplier.ToList();
         }
         public string GetNewIdSupplier()
         {

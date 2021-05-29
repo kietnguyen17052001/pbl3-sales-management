@@ -45,7 +45,7 @@ namespace SaleManagement.FORM
             this.btnCANCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCANCEL.FlatAppearance.BorderSize = 0;
             this.btnCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCANCEL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCANCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -65,7 +65,7 @@ namespace SaleManagement.FORM
             this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSAVE.FlatAppearance.BorderSize = 0;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSAVE.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
             this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -83,7 +83,7 @@ namespace SaleManagement.FORM
             this.txtNAME_TYPEOFITEM.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtNAME_TYPEOFITEM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_TYPEOFITEM.ForeColor = System.Drawing.Color.Black;
-            this.txtNAME_TYPEOFITEM.Location = new System.Drawing.Point(191, 174);
+            this.txtNAME_TYPEOFITEM.Location = new System.Drawing.Point(199, 174);
             this.txtNAME_TYPEOFITEM.Name = "txtNAME_TYPEOFITEM";
             this.txtNAME_TYPEOFITEM.Size = new System.Drawing.Size(253, 28);
             this.txtNAME_TYPEOFITEM.TabIndex = 91;
@@ -93,7 +93,7 @@ namespace SaleManagement.FORM
             this.txtID_TYPEOFITEM.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtID_TYPEOFITEM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_TYPEOFITEM.ForeColor = System.Drawing.Color.Black;
-            this.txtID_TYPEOFITEM.Location = new System.Drawing.Point(191, 113);
+            this.txtID_TYPEOFITEM.Location = new System.Drawing.Point(199, 113);
             this.txtID_TYPEOFITEM.Name = "txtID_TYPEOFITEM";
             this.txtID_TYPEOFITEM.Size = new System.Drawing.Size(253, 28);
             this.txtID_TYPEOFITEM.TabIndex = 90;
@@ -102,10 +102,10 @@ namespace SaleManagement.FORM
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(83, 177);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 21);
+            this.label2.Size = new System.Drawing.Size(114, 22);
             this.label2.TabIndex = 86;
             this.label2.Text = "Tên loại HH";
             // 
@@ -113,10 +113,10 @@ namespace SaleManagement.FORM
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(83, 116);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 21);
+            this.label5.Size = new System.Drawing.Size(107, 22);
             this.label5.TabIndex = 85;
             this.label5.Text = "Mã loại HH";
             // 
