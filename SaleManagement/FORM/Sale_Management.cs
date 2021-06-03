@@ -14,9 +14,11 @@ namespace SaleManagement
 {
     public partial class FrmSale_Management : Form
     {
-        public FrmSale_Management()
+        private string usernameLogin;
+        public FrmSale_Management(string name = null)
         {
             InitializeComponent();
+            usernameLogin = name;
         }
 
         private void btnQuanLyDuLieu_Click(object sender, EventArgs e)
@@ -50,6 +52,19 @@ namespace SaleManagement
             FrmIntroduce frm = new FrmIntroduce();
             frm.Show();
             this.Close();
+        }
+        
+        public void SetStaff()
+        {
+            this.btnBaoCao.Enabled = false;
+            this.btnDoiMatKhau.Enabled = false;
+            this.btnThongKe.Enabled = false;
+        }
+
+        private void btnDoiMatKhau_Click(object sender, EventArgs e)
+        {
+            FrmChange_Password frm = new FrmChange_Password(usernameLogin);
+            frm.Show();
         }
     }
 }

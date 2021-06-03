@@ -49,9 +49,10 @@ namespace SaleManagement.FORM
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(135, 113);
+            this.pictureBox1.Location = new System.Drawing.Point(105, 84);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(561, 481);
+            this.pictureBox1.Size = new System.Drawing.Size(499, 385);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -60,9 +61,9 @@ namespace SaleManagement.FORM
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(277, 113);
+            this.label1.Location = new System.Drawing.Point(236, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(273, 33);
+            this.label1.Size = new System.Drawing.Size(224, 28);
             this.label1.TabIndex = 1;
             this.label1.Text = "Đăng nhập hệ thống";
             // 
@@ -71,9 +72,10 @@ namespace SaleManagement.FORM
             this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.BackgroundImage = global::SaleManagement.Properties.Resources.contacts_32;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(247, 245);
+            this.pictureBox2.Location = new System.Drawing.Point(210, 197);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(68, 58);
+            this.pictureBox2.Size = new System.Drawing.Size(60, 46);
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
@@ -82,9 +84,10 @@ namespace SaleManagement.FORM
             this.pictureBox3.BackColor = System.Drawing.Color.White;
             this.pictureBox3.BackgroundImage = global::SaleManagement.Properties.Resources.key_4_32;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(247, 353);
+            this.pictureBox3.Location = new System.Drawing.Point(210, 283);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(68, 58);
+            this.pictureBox3.Size = new System.Drawing.Size(60, 46);
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
@@ -93,10 +96,11 @@ namespace SaleManagement.FORM
             this.txtUSER.BackColor = System.Drawing.Color.White;
             this.txtUSER.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUSER.ForeColor = System.Drawing.Color.Silver;
-            this.txtUSER.Location = new System.Drawing.Point(344, 253);
+            this.txtUSER.Location = new System.Drawing.Point(296, 203);
+            this.txtUSER.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUSER.Multiline = true;
             this.txtUSER.Name = "txtUSER";
-            this.txtUSER.Size = new System.Drawing.Size(199, 50);
+            this.txtUSER.Size = new System.Drawing.Size(177, 41);
             this.txtUSER.TabIndex = 6;
             this.txtUSER.Text = "Nhập tài khoản";
             this.txtUSER.Enter += new System.EventHandler(this.txtUSER_Enter);
@@ -107,10 +111,11 @@ namespace SaleManagement.FORM
             this.txtPASSWORD.BackColor = System.Drawing.Color.White;
             this.txtPASSWORD.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPASSWORD.ForeColor = System.Drawing.Color.Silver;
-            this.txtPASSWORD.Location = new System.Drawing.Point(344, 361);
+            this.txtPASSWORD.Location = new System.Drawing.Point(296, 290);
+            this.txtPASSWORD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPASSWORD.Multiline = true;
             this.txtPASSWORD.Name = "txtPASSWORD";
-            this.txtPASSWORD.Size = new System.Drawing.Size(199, 50);
+            this.txtPASSWORD.Size = new System.Drawing.Size(177, 41);
             this.txtPASSWORD.TabIndex = 7;
             this.txtPASSWORD.Text = "Nhập mật khẩu";
             this.txtPASSWORD.Enter += new System.EventHandler(this.txtPASSWORD_Enter);
@@ -122,9 +127,9 @@ namespace SaleManagement.FORM
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Cooper Black", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label2.Location = new System.Drawing.Point(410, 173);
+            this.label2.Location = new System.Drawing.Point(355, 139);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 23);
+            this.label2.Size = new System.Drawing.Size(47, 20);
             this.label2.TabIndex = 8;
             this.label2.Text = "N3K";
             // 
@@ -133,9 +138,10 @@ namespace SaleManagement.FORM
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.BackgroundImage = global::SaleManagement.Properties.Resources.cart_8_32;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(336, 155);
+            this.pictureBox4.Location = new System.Drawing.Point(289, 125);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(68, 58);
+            this.pictureBox4.Size = new System.Drawing.Size(60, 46);
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
             // 
@@ -148,9 +154,10 @@ namespace SaleManagement.FORM
             this.btnSTAFF.ForeColor = System.Drawing.Color.White;
             this.btnSTAFF.Image = global::SaleManagement.Properties.Resources.shopping_basket_24;
             this.btnSTAFF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSTAFF.Location = new System.Drawing.Point(414, 499);
+            this.btnSTAFF.Location = new System.Drawing.Point(358, 400);
+            this.btnSTAFF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSTAFF.Name = "btnSTAFF";
-            this.btnSTAFF.Size = new System.Drawing.Size(182, 70);
+            this.btnSTAFF.Size = new System.Drawing.Size(162, 56);
             this.btnSTAFF.TabIndex = 11;
             this.btnSTAFF.Text = "Bán hàng";
             this.btnSTAFF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -166,9 +173,10 @@ namespace SaleManagement.FORM
             this.btnADMIN.ForeColor = System.Drawing.Color.White;
             this.btnADMIN.Image = global::SaleManagement.Properties.Resources.statistics_24;
             this.btnADMIN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnADMIN.Location = new System.Drawing.Point(227, 499);
+            this.btnADMIN.Location = new System.Drawing.Point(192, 400);
+            this.btnADMIN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnADMIN.Name = "btnADMIN";
-            this.btnADMIN.Size = new System.Drawing.Size(181, 70);
+            this.btnADMIN.Size = new System.Drawing.Size(161, 56);
             this.btnADMIN.TabIndex = 10;
             this.btnADMIN.Text = "Quản lý";
             this.btnADMIN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -181,18 +189,18 @@ namespace SaleManagement.FORM
             this.lbINFO.BackColor = System.Drawing.Color.White;
             this.lbINFO.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbINFO.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lbINFO.Location = new System.Drawing.Point(199, 452);
+            this.lbINFO.Location = new System.Drawing.Point(167, 362);
             this.lbINFO.Name = "lbINFO";
-            this.lbINFO.Size = new System.Drawing.Size(0, 28);
+            this.lbINFO.Size = new System.Drawing.Size(0, 24);
             this.lbINFO.TabIndex = 12;
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SaleManagement.Properties.Resources.backgroundLogin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(794, 675);
+            this.ClientSize = new System.Drawing.Size(706, 540);
             this.Controls.Add(this.lbINFO);
             this.Controls.Add(this.btnSTAFF);
             this.Controls.Add(this.btnADMIN);
@@ -204,6 +212,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

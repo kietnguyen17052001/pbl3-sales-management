@@ -56,8 +56,9 @@ namespace SaleManagement
             this.panelSALE_MANAGEMENT.Controls.Add(this.pictureBox2);
             this.panelSALE_MANAGEMENT.Controls.Add(this.label1);
             this.panelSALE_MANAGEMENT.Location = new System.Drawing.Point(0, -1);
+            this.panelSALE_MANAGEMENT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSALE_MANAGEMENT.Name = "panelSALE_MANAGEMENT";
-            this.panelSALE_MANAGEMENT.Size = new System.Drawing.Size(1234, 99);
+            this.panelSALE_MANAGEMENT.Size = new System.Drawing.Size(1097, 79);
             this.panelSALE_MANAGEMENT.TabIndex = 0;
             // 
             // label2
@@ -65,9 +66,9 @@ namespace SaleManagement
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Bauhaus 93", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(113, 27);
+            this.label2.Location = new System.Drawing.Point(100, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 36);
+            this.label2.Size = new System.Drawing.Size(64, 30);
             this.label2.TabIndex = 2;
             this.label2.Text = "N3K";
             // 
@@ -75,9 +76,10 @@ namespace SaleManagement
             // 
             this.pictureBox2.Image = global::SaleManagement.Properties.Resources.cart_60_32;
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(25, 13);
+            this.pictureBox2.Location = new System.Drawing.Point(22, 10);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(82, 70);
+            this.pictureBox2.Size = new System.Drawing.Size(73, 56);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -88,9 +90,9 @@ namespace SaleManagement
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(248, 25);
+            this.label1.Location = new System.Drawing.Point(220, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(771, 38);
+            this.label1.Size = new System.Drawing.Size(665, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "PHẦN MỀM QUẢN LÝ BÁN HÀNG ĐIỆN GIA DỤNG";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -100,9 +102,9 @@ namespace SaleManagement
             this.lbINFO.AutoSize = true;
             this.lbINFO.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbINFO.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lbINFO.Location = new System.Drawing.Point(12, 115);
+            this.lbINFO.Location = new System.Drawing.Point(11, 92);
             this.lbINFO.Name = "lbINFO";
-            this.lbINFO.Size = new System.Drawing.Size(0, 28);
+            this.lbINFO.Size = new System.Drawing.Size(0, 24);
             this.lbINFO.TabIndex = 18;
             // 
             // btnLogOut
@@ -118,9 +120,10 @@ namespace SaleManagement
             this.btnLogOut.ForeColor = System.Drawing.Color.Black;
             this.btnLogOut.Image = global::SaleManagement.Properties.Resources.Windows_Turn_Off_icon;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLogOut.Location = new System.Drawing.Point(492, 373);
+            this.btnLogOut.Location = new System.Drawing.Point(437, 298);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(189, 185);
+            this.btnLogOut.Size = new System.Drawing.Size(168, 148);
             this.btnLogOut.TabIndex = 19;
             this.btnLogOut.Text = "Đăng xuất";
             this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -134,9 +137,10 @@ namespace SaleManagement
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImage = global::SaleManagement.Properties.Resources.homeapp;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(687, 98);
+            this.pictureBox1.Location = new System.Drawing.Point(611, 78);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(547, 594);
+            this.pictureBox1.Size = new System.Drawing.Size(486, 475);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
@@ -154,9 +158,10 @@ namespace SaleManagement
             this.btnGioiThieu.ForeColor = System.Drawing.Color.Black;
             this.btnGioiThieu.Image = global::SaleManagement.Properties.Resources.Adobe_Help_Center_icon;
             this.btnGioiThieu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGioiThieu.Location = new System.Drawing.Point(489, 172);
+            this.btnGioiThieu.Location = new System.Drawing.Point(435, 138);
+            this.btnGioiThieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGioiThieu.Name = "btnGioiThieu";
-            this.btnGioiThieu.Size = new System.Drawing.Size(189, 185);
+            this.btnGioiThieu.Size = new System.Drawing.Size(168, 148);
             this.btnGioiThieu.TabIndex = 16;
             this.btnGioiThieu.Text = "Giới thiệu";
             this.btnGioiThieu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -176,9 +181,10 @@ namespace SaleManagement
             this.btnBaoCao.ForeColor = System.Drawing.Color.Black;
             this.btnBaoCao.Image = global::SaleManagement.Properties.Resources.Reports_icon;
             this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBaoCao.Location = new System.Drawing.Point(269, 373);
+            this.btnBaoCao.Location = new System.Drawing.Point(239, 298);
+            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBaoCao.Name = "btnBaoCao";
-            this.btnBaoCao.Size = new System.Drawing.Size(189, 184);
+            this.btnBaoCao.Size = new System.Drawing.Size(168, 147);
             this.btnBaoCao.TabIndex = 15;
             this.btnBaoCao.Text = "Báo Cáo";
             this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -198,9 +204,10 @@ namespace SaleManagement
             this.btnThongKe.ForeColor = System.Drawing.Color.Black;
             this.btnThongKe.Image = global::SaleManagement.Properties.Resources.statistics_market_icon;
             this.btnThongKe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnThongKe.Location = new System.Drawing.Point(47, 373);
+            this.btnThongKe.Location = new System.Drawing.Point(42, 298);
+            this.btnThongKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(189, 184);
+            this.btnThongKe.Size = new System.Drawing.Size(168, 147);
             this.btnThongKe.TabIndex = 14;
             this.btnThongKe.Text = "Thống Kê";
             this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -220,13 +227,15 @@ namespace SaleManagement
             this.btnDoiMatKhau.ForeColor = System.Drawing.Color.Black;
             this.btnDoiMatKhau.Image = global::SaleManagement.Properties.Resources.pass;
             this.btnDoiMatKhau.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDoiMatKhau.Location = new System.Drawing.Point(269, 172);
+            this.btnDoiMatKhau.Location = new System.Drawing.Point(239, 138);
+            this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
-            this.btnDoiMatKhau.Size = new System.Drawing.Size(189, 184);
+            this.btnDoiMatKhau.Size = new System.Drawing.Size(168, 147);
             this.btnDoiMatKhau.TabIndex = 13;
             this.btnDoiMatKhau.Text = "Đổi Mật Khẩu";
             this.btnDoiMatKhau.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDoiMatKhau.UseVisualStyleBackColor = false;
+            this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
             // 
             // btnQuanLyDuLieu
             // 
@@ -241,9 +250,10 @@ namespace SaleManagement
             this.btnQuanLyDuLieu.ForeColor = System.Drawing.Color.Black;
             this.btnQuanLyDuLieu.Image = global::SaleManagement.Properties.Resources.data;
             this.btnQuanLyDuLieu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnQuanLyDuLieu.Location = new System.Drawing.Point(47, 172);
+            this.btnQuanLyDuLieu.Location = new System.Drawing.Point(42, 138);
+            this.btnQuanLyDuLieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnQuanLyDuLieu.Name = "btnQuanLyDuLieu";
-            this.btnQuanLyDuLieu.Size = new System.Drawing.Size(189, 184);
+            this.btnQuanLyDuLieu.Size = new System.Drawing.Size(168, 147);
             this.btnQuanLyDuLieu.TabIndex = 12;
             this.btnQuanLyDuLieu.Text = "Quản Lý Dữ Liệu";
             this.btnQuanLyDuLieu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -252,10 +262,10 @@ namespace SaleManagement
             // 
             // FrmSale_Management
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.ClientSize = new System.Drawing.Size(1097, 553);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.lbINFO);
             this.Controls.Add(this.pictureBox1);
@@ -265,6 +275,7 @@ namespace SaleManagement
             this.Controls.Add(this.btnDoiMatKhau);
             this.Controls.Add(this.btnQuanLyDuLieu);
             this.Controls.Add(this.panelSALE_MANAGEMENT);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmSale_Management";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SALE_MANAGEMENT";
