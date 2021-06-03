@@ -25,7 +25,6 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewSupplier.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmManage_List_Invoice.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.csproj.ResolveComReference.cache
-C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEdit_Quantity.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmAdd_NewProduct.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQty_CreateInvoice.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmLogin.resources
@@ -38,3 +37,4 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCustomer_Invoice.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmManage_TypeOfProduct.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmIntroduce.resources
+C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEdit_Quantity_ListInvoice.resources

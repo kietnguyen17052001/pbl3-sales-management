@@ -21,7 +21,7 @@ namespace SaleManagement.FORM
         {
             InitializeComponent();
             disable(false);
-            SetCBB();
+            setCombobox();
             var dateMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
             if (dateMin != null)
             {
@@ -65,6 +65,19 @@ namespace SaleManagement.FORM
             frm.Show();
             this.Close();
         }
+        // event CellClick in dgvListInvoice
+        private void dgvLIST_INVOICE_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idInvoice = dgvLIST_INVOICE.SelectedRows[0].Cells["MaHoaDonBan"].Value.ToString();
+            var invoice = DB.tblHoaDonBanHangs.Find(idInvoice);
+            txtID_INVOICE.Text = invoice.MaHoaDonBan;
+            dpDAY.Value = (DateTime)invoice.NgayBan;
+            cbbSTAFF.Text = BLL_LISTINVOICE.Instance.GetStaff(invoice.tblNhanVien.TenNhanVien);
+            cbbCUSTOMER.Text = BLL_LISTINVOICE.Instance.GetCustomer(invoice.tblKhachHang.TenKhachHang);
+            txtPRICE_.Text = String.Format("{0:n0}", dgvLIST_INVOICE.SelectedRows[0].Cells["SoTien"].Value);
+            txtDISCOUNT.Text = String.Format("{0:n0}", dgvLIST_INVOICE.SelectedRows[0].Cells["GiamGia"].Value);
+            ShowInfoInvoice(idInvoice);
+        }
         // set BackColor and Font for DGV
         private void dgvLIST_INVOICE_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -77,7 +90,8 @@ namespace SaleManagement.FORM
             dgvINFO_INVOICE.DefaultCellStyle.BackColor = Color.OldLace;
             dgvINFO_INVOICE.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
         }
-        public void SetCBB()
+        // set data for combobox
+        public void setCombobox()
         {
             cbbSTAFF_DETAIL.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả"});
             cbbSTAFF_DETAIL.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Staff().ToArray());
@@ -126,19 +140,6 @@ namespace SaleManagement.FORM
             });
             dgvINFO_INVOICE.DataSource = infoInvoice.ToList();
         }
-        // set data for txt, cbb
-        public void SetData_Dgv()
-        {
-            idInvoice = dgvLIST_INVOICE.SelectedRows[0].Cells["MaHoaDonBan"].Value.ToString();
-            var invoice = DB.tblHoaDonBanHangs.Find(idInvoice);
-            txtID_INVOICE.Text = invoice.MaHoaDonBan;
-            dpDAY.Value = (DateTime)invoice.NgayBan;
-            cbbSTAFF.Text = BLL_LISTINVOICE.Instance.GetStaff(invoice.tblNhanVien.TenNhanVien);
-            cbbCUSTOMER.Text = BLL_LISTINVOICE.Instance.GetCustomer(invoice.tblKhachHang.TenKhachHang);
-            txtPRICE_.Text = String.Format("{0:n0}", dgvLIST_INVOICE.SelectedRows[0].Cells["SoTien"].Value);
-            txtDISCOUNT.Text = String.Format("{0:n0}", dgvLIST_INVOICE.SelectedRows[0].Cells["GiamGia"].Value);
-            ShowInfoInvoice(idInvoice);
-        }
         // Func show listInvoice and infoInvoice
         public void ShowList()
         {
@@ -149,10 +150,6 @@ namespace SaleManagement.FORM
         private void btnSHOW_Click(object sender, EventArgs e)
         {
             ShowList();
-        }
-        private void dgvLIST_INVOICE_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            SetData_Dgv();
         }
         // Export Excel
         private void btnEXCEL_Click(object sender, EventArgs e)
@@ -220,7 +217,7 @@ namespace SaleManagement.FORM
                 ShowListInvoice();
             }
         }
-
+        // back to frmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
             DialogResult d = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -283,8 +280,8 @@ namespace SaleManagement.FORM
             string nameProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["TenHangHoa"].Value.ToString();
             int oldQuantity = Convert.ToInt32(dgvINFO_INVOICE.SelectedRows[0].Cells["SoLuong"].Value.ToString());
             string idProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
-            FrmEdit_Quantity frm = new FrmEdit_Quantity(idProduct, nameProduct, oldQuantity);
-            frm.d += new FrmEdit_Quantity.myDEL(setNewQuantity);
+            FrmEdit_Quantity_ListInvoice frm = new FrmEdit_Quantity_ListInvoice(idProduct, nameProduct, oldQuantity);
+            frm.d += new FrmEdit_Quantity_ListInvoice.myDEL(setNewQuantity);
             frm.Show();
         }
         // Delete product in invoice

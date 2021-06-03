@@ -671,7 +671,6 @@ namespace SaleManagement.VIEW
             this.txtSEND_BY_STAFF.Name = "txtSEND_BY_STAFF";
             this.txtSEND_BY_STAFF.Size = new System.Drawing.Size(139, 29);
             this.txtSEND_BY_STAFF.TabIndex = 77;
-            this.txtSEND_BY_STAFF.TextChanged += new System.EventHandler(this.txtSEND_BY_STAFF_TextChanged);
             // 
             // label20
             // 

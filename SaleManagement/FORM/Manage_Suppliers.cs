@@ -20,10 +20,10 @@ namespace SaleManagement.VIEW
         {
             InitializeComponent();
             ShowData();
-            SetStyleAndHearderText();
+            setStyleAndHearderText();
             Disable(false);
         }
-        public void SetStyleAndHearderText()
+        public void setStyleAndHearderText()
         {
             // set style
             dgvSUPPLIER.EnableHeadersVisualStyles = false;
