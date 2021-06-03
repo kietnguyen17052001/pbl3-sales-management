@@ -20,10 +20,10 @@ namespace SaleManagement.VIEW
         {
             InitializeComponent();
             ShowData();
-            SetStyleAndHearderText();
+            setStyleAndHearderText();
             Disable(false);
         }
-        public void SetStyleAndHearderText()
+        public void setStyleAndHearderText()
         {
             // set style
             dgvSUPPLIER.EnableHeadersVisualStyles = false;
@@ -174,21 +174,21 @@ namespace SaleManagement.VIEW
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             tblNhaCungCap supplier = new tblNhaCungCap();
-            supplier.MaNhaCungCap = txtID_SUPPLIER.Text;
-            supplier.TenNhaCungCap = txtNAME_SUPPLIER.Text;
-            supplier.DiaChi = txtADDRESS.Text;
-            supplier.SoDienThoai = txtPHONE.Text;
-            supplier.Email = txtEMAIL.Text;
-            supplier.Fax = txtFAX.Text;
-            supplier.MaSoThue = Convert.ToInt32(txtID_TAX.ToString());
-            if (string.IsNullOrEmpty(supplier.TenNhaCungCap) || string.IsNullOrEmpty(supplier.DiaChi) || string.IsNullOrEmpty(supplier.SoDienThoai) ||
-                string.IsNullOrEmpty(supplier.Email) || string.IsNullOrEmpty(supplier.Fax) || supplier.MaSoThue == 0)
+            if (string.IsNullOrEmpty(txtNAME_SUPPLIER.Text) || string.IsNullOrEmpty(txtADDRESS.Text) || string.IsNullOrEmpty(txtPHONE.Text) ||
+                string.IsNullOrEmpty(txtEMAIL.Text) || string.IsNullOrEmpty(txtFAX.Text) || string.IsNullOrEmpty(txtID_TAX.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin nhà cung cấp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Disable(true);
             }
             else
             {
+                supplier.MaNhaCungCap = txtID_SUPPLIER.Text;
+                supplier.TenNhaCungCap = txtNAME_SUPPLIER.Text;
+                supplier.DiaChi = txtADDRESS.Text;
+                supplier.SoDienThoai = txtPHONE.Text;
+                supplier.Email = txtEMAIL.Text;
+                supplier.Fax = txtFAX.Text;
+                supplier.MaSoThue = Convert.ToInt32(txtID_TAX.Text);
                 if (isAdd)
                 {
                     try

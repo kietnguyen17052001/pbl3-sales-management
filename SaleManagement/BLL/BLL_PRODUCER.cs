@@ -24,20 +24,32 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_PRODUCER() { }
-        public string getNEWID_PRODUCER()
+        public string getNewIDProduct()
         {
-            int ID;
-            List<tblNhaSanXuat> LIST = DB.tblNhaSanXuats.ToList();
-            if (LIST.Count == 0)
+            string idProducer;
+            int lastId;
+            List<tblNhaSanXuat> listIdProducer = DB.tblNhaSanXuats.ToList();
+            if(listIdProducer == null)
             {
-                ID = 1;
+                idProducer = "NSX001";
             }
             else
             {
-                int LAST = Convert.ToInt32(LIST[LIST.Count - 1].MaNhaSanXuat.Remove(0, 3));
-                ID = LAST + 1;
+                lastId = Convert.ToInt32(listIdProducer[listIdProducer.Count - 1].MaNhaSanXuat.Remove(0, 3));
+                if(lastId + 1 < 10)
+                {
+                    idProducer = "NSX00" + (lastId + 1);
+                }
+                else if(lastId + 1 < 100)
+                {
+                    idProducer = "NSX0" + (lastId + 1);
+                }
+                else
+                {
+                    idProducer = "NSX" + (lastId + 1);
+                }
             }
-            return "NSX" + ID;
+            return idProducer;
         }
     }
 }

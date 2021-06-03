@@ -23,15 +23,13 @@ namespace SaleManagement
 
         private void btnQuanLyDuLieu_Click(object sender, EventArgs e)
         {
-            FrmManage_Data Frm = new FrmManage_Data();
-            Frm.Show();
+            FrmManage_Data frm = new FrmManage_Data();
+            frm.Show();
             this.Close();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            FrmLogin frm = new FrmLogin();
-            frm.Show();
             this.Close();
         }
 

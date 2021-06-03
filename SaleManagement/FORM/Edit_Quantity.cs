@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace SaleManagement.FORM
 {
-    public partial class FrmEdit_Quantity : Form
+    public partial class FrmEdit_Quantity_ListInvoice : Form
     {
         SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public delegate void myDEL(int quantity);
         public myDEL d { get; set; }
         public string idProduct { get; set; }
-        public FrmEdit_Quantity(string _idProduct, string nameProduct, int quantity)
+        public FrmEdit_Quantity_ListInvoice(string _idProduct, string nameProduct, int quantity)
         {
             InitializeComponent();
             txtPRODUCT.Text = nameProduct;

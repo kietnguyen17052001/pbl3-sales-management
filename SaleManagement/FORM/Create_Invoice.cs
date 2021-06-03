@@ -30,9 +30,9 @@ namespace SaleManagement.VIEW
         public FrmBill()
         {
             InitializeComponent();
-            setCBB();
+            setCombobox();
             rbID_ITEM.Checked = true;
-            setDATA_FOR_TXT();
+            setDataForToolBox();
             var product = DB.tblHangHoas.Select(p => new {
                 p.MaHangHoa,
                 p.TenHangHoa,
@@ -61,7 +61,7 @@ namespace SaleManagement.VIEW
             dgvSELECT.Columns[3].HeaderText = "Giá(VNĐ)";
         }
         // Thiết lập dữ liệu cho các textbox
-        public void setDATA_FOR_TXT()
+        public void setDataForToolBox()
         {
             sendByCustomer = invoicePrice = BLL_CREATEINVOICE.Instance.getPrice_Invoice(data, invoiceDiscount); // tổng thanh toán đơn hàng
             totalMoney = BLL_CREATEINVOICE.Instance.GetTotal_Money(data); // tổng tiền đơn hàng
@@ -79,7 +79,7 @@ namespace SaleManagement.VIEW
             txtSEND_BY_STAFF.Text = String.Format("{0:n0}", sendByStaff);
         }
         // set data for Cbb
-        public void setCBB()
+        public void setCombobox()
         {
             cbbTYPE_OF_ITEMS.Items.Add("Tất cả");
             cbbSTAFF.Items.Add("None");
@@ -101,7 +101,7 @@ namespace SaleManagement.VIEW
             btnADD.Enabled = true;
             btnEDIT.Enabled = true;
             dgvLIST.DataSource = data;
-            setDATA_FOR_TXT();
+            setDataForToolBox();
         }
         // Thiết lập giá trị cho txt Giảm giá và Tổng thanh toán sau khi giảm theo % 
         public void setDiscountPercent(string PERCENT)
@@ -122,7 +122,7 @@ namespace SaleManagement.VIEW
             txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", sendByCustomer);
         }
         // Lựa chọn khách hàng
-        public void SetCustomer(string idCus, string nameCus)
+        public void setCustomer(string idCus, string nameCus)
         {
             idCustomer = idCus;
             txtCUSTOMER.Text = nameCus;
@@ -205,7 +205,7 @@ namespace SaleManagement.VIEW
                 dgvSELECT.SelectedRows[0].Cells["SoLuong"].Value = remain.ToString();// Giảm số lượng hàng hóa sau khi thêm
             }
             // Thông tin hóa đơn sau khi thêm hàng hóa
-            setDATA_FOR_TXT();
+            setDataForToolBox();
         }
         // delete product
         private void btnDELETE_Click(object sender, EventArgs e)
@@ -218,13 +218,13 @@ namespace SaleManagement.VIEW
             }
             BLL_CREATEINVOICE.Instance.DelItem(LIST, data);
             // Dữ liệu hóa đơn sau khi xóa hàng hóa
-            setDATA_FOR_TXT();
+            setDataForToolBox();
         }
         // add customer -> load form CREATE_NEWCUSTOMER -> choose or add new customer
         private void btnCUSTOMER_Click(object sender, EventArgs e)
         {
             FrmCustomer_Invoice frm = new FrmCustomer_Invoice(); // gọi form khách hàng để lựa chọn khách hàng cũ hoặc thêm khách mới
-            frm.d += new FrmCustomer_Invoice.myDEL(SetCustomer);
+            frm.d += new FrmCustomer_Invoice.myDEL(setCustomer);
             frm.Show();
         }
         // Btn thanh toán
@@ -370,7 +370,7 @@ namespace SaleManagement.VIEW
             dgvLIST.SelectedRows[0].Cells["SoLuong"].Value = newQty;
             double newPrice = (productPrice * newQty - productPrice * newQty * productDiscount / 100);
             dgvLIST.SelectedRows[0].Cells["ThanhTien(VNĐ)"].Value = String.Format("{0:n0}",newPrice);
-            setDATA_FOR_TXT();
+            setDataForToolBox();
         }
         // edit quantity product
         private void btnEDIT_Click(object sender, EventArgs e)
@@ -446,11 +446,6 @@ namespace SaleManagement.VIEW
             {
                 e.Handled = true;
             }
-        }
-        // Số tiền trả lại khách hàng
-        private void txtSEND_BY_STAFF_TextChanged(object sender, EventArgs e)
-        {
-            
         }
         // Số tiền khách hàng trả
         private void txtSEND_BY_CUSTOMER_TextChanged(object sender, EventArgs e)

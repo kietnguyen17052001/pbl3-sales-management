@@ -53,14 +53,14 @@ namespace SaleManagement.VIEW
         // func show customers
         public void ShowCustomer()
         {
-            var listCus = DB.tblKhachHangs.Select(p => new {
+            var listCustomer = DB.tblKhachHangs.Select(p => new {
                 p.MaKhachHang,
                 p.TenKhachHang,
                 p.GioiTinh,
                 p.SoDienThoai,
                 p.DiaChi
             });
-            dgvLISTCUSTOMER.DataSource = listCus.ToList(); 
+            dgvLISTCUSTOMER.DataSource = listCustomer.ToList(); 
             txtID_CUSTOMER.Clear();
             txtNAME_CUSTOMER.Clear();
             txtPHONE.Clear();
@@ -219,8 +219,8 @@ namespace SaleManagement.VIEW
         // Back to frmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            DialogResult d = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (d == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
                 FrmManage_Data frm = new FrmManage_Data();
                 frm.Show();

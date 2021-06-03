@@ -20,7 +20,7 @@ namespace SaleManagement.FORM
         public FrmCreate_NewProducer()
         {
             InitializeComponent();
-            txtID_PRODUCER.Text = BLL_PRODUCER.Instance.getNEWID_PRODUCER();
+            txtID_PRODUCER.Text = BLL_PRODUCER.Instance.getNewIDProduct();
         }
 
         private void btnSAVE_Click(object sender, EventArgs e)

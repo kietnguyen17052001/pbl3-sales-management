@@ -57,6 +57,12 @@ namespace SaleManagement.FORM
             txtID_TYPEPRODUCT.Text = dgvLISTTYPE.SelectedRows[0].Cells["MaLoaiHangHoa"].Value.ToString();
             txtNAME_TYPEPRODUCT.Text = dgvLISTTYPE.SelectedRows[0].Cells["TenLoaiHangHoa"].Value.ToString();
         }
+        // set BackColor and Font for DGV
+        private void dgvLISTTYPE_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvLISTTYPE.DefaultCellStyle.BackColor = Color.OldLace;
+            dgvLISTTYPE.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
+        }
         // Button home -> back to frmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
@@ -214,12 +220,6 @@ namespace SaleManagement.FORM
             {
                 BLL_TYPEOFITEM.Instance.FuncSearchTypeProduct(false, txtSEARCH.Text.Trim(), dgvLISTTYPE);
             }
-        }
-        // set BackColor and Font for DGV
-        private void dgvLISTTYPE_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            dgvLISTTYPE.DefaultCellStyle.BackColor = Color.OldLace;
-            dgvLISTTYPE.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
         }
     }
 }
