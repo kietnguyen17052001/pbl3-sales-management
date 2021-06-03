@@ -99,6 +99,7 @@ namespace SaleManagement.BLL
         public string GetNewIdCustomer()
         {
             string idCustomer = "";
+            int lastId;
             List<tblKhachHang> list = DB.tblKhachHangs.ToList();
             if(list.Count == 0)
             {
@@ -106,7 +107,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                int lastId = Convert.ToInt32(list[list.Count - 1].MaKhachHang.Remove(0, 2));
+                lastId = Convert.ToInt32(list[list.Count - 1].MaKhachHang.Remove(0, 2));
                 if (lastId + 1 < 10)
                 {
                     idCustomer = "KH000" + (lastId + 1).ToString();

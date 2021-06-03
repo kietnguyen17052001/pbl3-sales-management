@@ -144,7 +144,10 @@ namespace SaleManagement.FORM
         public void ShowList()
         {
             ShowListInvoice();
-            idInvoice = dgvLIST_INVOICE.Rows[0].Cells["MaHoaDonBan"].Value.ToString();
+            if(dgvLIST_INVOICE.Rows.Count != 0)
+            {
+                idInvoice = dgvLIST_INVOICE.Rows[0].Cells["MaHoaDonBan"].Value.ToString();
+            }
             ShowInfoInvoice(idInvoice);
         }
         private void btnSHOW_Click(object sender, EventArgs e)
