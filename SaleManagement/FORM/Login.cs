@@ -18,50 +18,46 @@ namespace SaleManagement.FORM
             InitializeComponent();
         }
 
-        private void btnADMIN_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var admin = DB.tblTaiKhoans.Find(txtUSER.Text);
-            if(string.IsNullOrEmpty(txtUSER.Text) || admin == null)
+            SALEMANAGEMENT_DB db = new SALEMANAGEMENT_DB();
+            var user = db.tblTaiKhoans.Find(txtUSER.Text);
+            if (string.IsNullOrEmpty(txtUSER.Text) || user == null)
             {
                 lbINFO.ForeColor = Color.IndianRed;
                 lbINFO.Text = "Tên tài khoản không hợp lệ";
             }
             else
             {
-                if (admin.MatKhau == txtPASSWORD.Text)
+                if (user.ChucVu == "admin")
                 {
-                    lbINFO.ForeColor = Color.SteelBlue;
-                    lbINFO.Text = "Đăng nhập thành công";
-                    FrmSale_Management frm = new FrmSale_Management(txtUSER.Text);
-                    frm.Show();
-                    this.Hide();
+                    if (user.MatKhau == txtPASSWORD.Text)
+                    {
+                        FrmSale_Management frm = new FrmSale_Management(txtUSER.Text);
+                        frm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        lbINFO.ForeColor = Color.IndianRed;
+                        lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+                    }
                 }
-                else
+                else if (user.ChucVu == "nhanvien")
                 {
-                    lbINFO.ForeColor = Color.IndianRed;
-                    lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+                    if (user.MatKhau == txtPASSWORD.Text)
+                    {
+                        FrmSale_Management frm = new FrmSale_Management();
+                        frm.SetStaff();
+                        frm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        lbINFO.ForeColor = Color.IndianRed;
+                        lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+                    }
                 }
-            }
-        }
-
-        private void btnSTAFF_Click(object sender, EventArgs e)
-        {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var staff = DB.tblTaiKhoans.Find(txtUSER.Text);
-            if (staff.MatKhau == txtPASSWORD.Text)
-            {
-                lbINFO.ForeColor = Color.SteelBlue;
-                lbINFO.Text = "Đăng nhập thành công";
-                FrmSale_Management frm = new FrmSale_Management();
-                frm.SetStaff();
-                frm.Show();
-                this.Hide();
-            }
-            else
-            {
-                lbINFO.ForeColor = Color.IndianRed;
-                lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
             }
         }
 
