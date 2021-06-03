@@ -33,7 +33,7 @@ namespace SaleManagement.FORM
                 {
                     lbINFO.ForeColor = Color.SteelBlue;
                     lbINFO.Text = "Đăng nhập thành công";
-                    FrmSale_Management frm = new FrmSale_Management();
+                    FrmSale_Management frm = new FrmSale_Management(txtUSER.Text);
                     frm.Show();
                     this.Hide();
                 }
@@ -54,6 +54,7 @@ namespace SaleManagement.FORM
                 lbINFO.ForeColor = Color.SteelBlue;
                 lbINFO.Text = "Đăng nhập thành công";
                 FrmSale_Management frm = new FrmSale_Management();
+                frm.SetStaff();
                 frm.Show();
                 this.Hide();
             }
@@ -96,6 +97,7 @@ namespace SaleManagement.FORM
         {
             if (txtPASSWORD.Text == "")
             {
+                txtPASSWORD.PasswordChar = '\0';
                 txtPASSWORD.Text = "Nhập mật khẩu";
                 txtPASSWORD.ForeColor = Color.Silver;
             }
