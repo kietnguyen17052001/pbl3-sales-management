@@ -14,7 +14,7 @@ namespace SaleManagement
     
     public partial class tblTaiKhoan
     {
-        public string Id { get; set; }
+        public string MaNhanVien { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
     }

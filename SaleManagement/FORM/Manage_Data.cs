@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaleManagement.FORM;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,6 +56,13 @@ namespace SaleManagement.VIEW
         private void btnBACK_Click(object sender, EventArgs e)
         {
             FrmSale_Management FRM = new FrmSale_Management();
+            FRM.Show();
+            this.Close();
+        }
+
+        private void btnManage_Warehouse_Click(object sender, EventArgs e)
+        {
+            FrmManage_Warehouse FRM = new FrmManage_Warehouse();
             FRM.Show();
             this.Close();
         }

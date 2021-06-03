@@ -293,6 +293,16 @@ namespace SaleManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap download {
+            get {
+                object obj = ResourceManager.GetObject("download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Ecommerce_Discount_icon {
             get {
                 object obj = ResourceManager.GetObject("Ecommerce-Discount-icon", resourceCulture);
@@ -666,6 +676,36 @@ namespace SaleManagement.Properties {
         internal static System.Drawing.Bitmap user_group_icon1 {
             get {
                 object obj = ResourceManager.GetObject("user-group-icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warehouse__1_ {
+            get {
+                object obj = ResourceManager.GetObject("warehouse (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warehouse__2_ {
+            get {
+                object obj = ResourceManager.GetObject("warehouse (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warehouse_icon_isometric_style_vector_21161161 {
+            get {
+                object obj = ResourceManager.GetObject("warehouse-icon-isometric-style-vector-21161161", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

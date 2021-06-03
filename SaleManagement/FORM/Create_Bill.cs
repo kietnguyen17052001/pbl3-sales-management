@@ -17,13 +17,13 @@ namespace SaleManagement.VIEW
         int AMOUNT_ITEMs = 1, ALL_AMOUNT_ITEMs = 0 , ITEMs = 0;
         string ID_ITEM, ITEM;
         double PRICE_ITEM = 0, 
-            DISCOUNT_ITEM = 0, 
-            PRICE_ITEMs = 0, 
-            PRICE_BILL = 0, 
-            DISCOUNT_BILL = 0, 
-            SEND_BY_CUSTOMER = 0, 
-            SEND_BY_STAFF = 0, 
-            TOTAL_MONEY = 0;
+                DISCOUNT_ITEM = 0, 
+                PRICE_ITEMs = 0, 
+                PRICE_BILL = 0, 
+                DISCOUNT_BILL = 0, 
+                SEND_BY_CUSTOMER = 0, 
+                SEND_BY_STAFF = 0, 
+                TOTAL_MONEY = 0;
         DataTable DATA = BLL_CREATEBILL.Instance.getTblORDER();
         public FrmBill()
         {
@@ -333,6 +333,11 @@ namespace SaleManagement.VIEW
             e.Graphics.DrawString("*** LƯU Ý: " + txtNOTE.Text, new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(50, distance + 50*6));
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50*7));
             e.Graphics.DrawString("Cảm ơn và hẹn gặp lại quý khách!", new Font("Arial", 17, FontStyle.Bold), Brushes.Black, new Point(250, distance + 50 * 8));
+        }
+
+        private void dgvSELECT_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         // Btn quay lại

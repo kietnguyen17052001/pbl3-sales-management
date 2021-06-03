@@ -17,7 +17,9 @@ namespace SaleManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmBill());
+            Application.Run(new FrmSale_Management());
+
+            // ok roi nghe, gio trong FrmManage_Data, m add button, danh sách nhập kho
         }
     }
 }

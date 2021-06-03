@@ -26,6 +26,8 @@ namespace SaleManagement
         }
     
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<tblChiTietHoaDonBanHang> tblChiTietHoaDonBanHangs { get; set; }
+        public virtual DbSet<tblChiTietHoaDonNhapHang> tblChiTietHoaDonNhapHangs { get; set; }
         public virtual DbSet<tblHangHoa> tblHangHoas { get; set; }
         public virtual DbSet<tblHoaDonBanHang> tblHoaDonBanHangs { get; set; }
         public virtual DbSet<tblHoaDonNhapHang> tblHoaDonNhapHangs { get; set; }
@@ -35,7 +37,5 @@ namespace SaleManagement
         public virtual DbSet<tblNhanVien> tblNhanViens { get; set; }
         public virtual DbSet<tblNhaSanXuat> tblNhaSanXuats { get; set; }
         public virtual DbSet<tblTaiKhoan> tblTaiKhoans { get; set; }
-        public virtual DbSet<tblChiTietHoaDonBanHang> tblChiTietHoaDonBanHangs { get; set; }
-        public virtual DbSet<tblChiTietHoaDonNhapHang> tblChiTietHoaDonNhapHangs { get; set; }
     }
 }

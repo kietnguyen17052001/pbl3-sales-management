@@ -40,6 +40,7 @@ namespace SaleManagement.VIEW
             this.btnITEMS = new System.Windows.Forms.Button();
             this.btnSTAFFS = new System.Windows.Forms.Button();
             this.btnCUSTOMERS = new System.Windows.Forms.Button();
+            this.btnManage_Warehouse = new System.Windows.Forms.Button();
             this.panelMANAGE_DATA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,8 +52,9 @@ namespace SaleManagement.VIEW
             this.panelMANAGE_DATA.BackColor = System.Drawing.Color.SteelBlue;
             this.panelMANAGE_DATA.Controls.Add(this.label1);
             this.panelMANAGE_DATA.Location = new System.Drawing.Point(0, -1);
+            this.panelMANAGE_DATA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMANAGE_DATA.Name = "panelMANAGE_DATA";
-            this.panelMANAGE_DATA.Size = new System.Drawing.Size(1234, 99);
+            this.panelMANAGE_DATA.Size = new System.Drawing.Size(1097, 79);
             this.panelMANAGE_DATA.TabIndex = 18;
             // 
             // label1
@@ -61,9 +63,9 @@ namespace SaleManagement.VIEW
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(482, 28);
+            this.label1.Location = new System.Drawing.Point(428, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(275, 38);
+            this.label1.Size = new System.Drawing.Size(245, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "QUẢN LÝ DỮ LIỆU\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -81,9 +83,10 @@ namespace SaleManagement.VIEW
             this.btnLIST_BILLS.ForeColor = System.Drawing.Color.Black;
             this.btnLIST_BILLS.Image = global::SaleManagement.Properties.Resources.list_icon;
             this.btnLIST_BILLS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLIST_BILLS.Location = new System.Drawing.Point(234, 507);
+            this.btnLIST_BILLS.Location = new System.Drawing.Point(208, 406);
+            this.btnLIST_BILLS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLIST_BILLS.Name = "btnLIST_BILLS";
-            this.btnLIST_BILLS.Size = new System.Drawing.Size(189, 184);
+            this.btnLIST_BILLS.Size = new System.Drawing.Size(168, 147);
             this.btnLIST_BILLS.TabIndex = 27;
             this.btnLIST_BILLS.Text = "DS hóa đơn";
             this.btnLIST_BILLS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -102,9 +105,10 @@ namespace SaleManagement.VIEW
             this.btnBILL.ForeColor = System.Drawing.Color.Black;
             this.btnBILL.Image = global::SaleManagement.Properties.Resources.App_edit_icon;
             this.btnBILL.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBILL.Location = new System.Drawing.Point(12, 507);
+            this.btnBILL.Location = new System.Drawing.Point(11, 406);
+            this.btnBILL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBILL.Name = "btnBILL";
-            this.btnBILL.Size = new System.Drawing.Size(189, 184);
+            this.btnBILL.Size = new System.Drawing.Size(168, 147);
             this.btnBILL.TabIndex = 26;
             this.btnBILL.Text = "Lập hóa đơn";
             this.btnBILL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -124,9 +128,10 @@ namespace SaleManagement.VIEW
             this.btnSUPPLIERS.ForeColor = System.Drawing.Color.Black;
             this.btnSUPPLIERS.Image = global::SaleManagement.Properties.Resources.Time_Meeting_icon;
             this.btnSUPPLIERS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSUPPLIERS.Location = new System.Drawing.Point(454, 304);
+            this.btnSUPPLIERS.Location = new System.Drawing.Point(404, 243);
+            this.btnSUPPLIERS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSUPPLIERS.Name = "btnSUPPLIERS";
-            this.btnSUPPLIERS.Size = new System.Drawing.Size(189, 185);
+            this.btnSUPPLIERS.Size = new System.Drawing.Size(168, 148);
             this.btnSUPPLIERS.TabIndex = 25;
             this.btnSUPPLIERS.Text = "Nhà cung cấp";
             this.btnSUPPLIERS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -140,9 +145,10 @@ namespace SaleManagement.VIEW
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImage = global::SaleManagement.Properties.Resources.homeapp;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(687, 95);
+            this.pictureBox1.Location = new System.Drawing.Point(611, 76);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(547, 596);
+            this.pictureBox1.Size = new System.Drawing.Size(486, 477);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
@@ -160,9 +166,10 @@ namespace SaleManagement.VIEW
             this.btnBACK.ForeColor = System.Drawing.Color.Black;
             this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_back_icon;
             this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBACK.Location = new System.Drawing.Point(454, 104);
+            this.btnBACK.Location = new System.Drawing.Point(404, 83);
+            this.btnBACK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBACK.Name = "btnBACK";
-            this.btnBACK.Size = new System.Drawing.Size(189, 185);
+            this.btnBACK.Size = new System.Drawing.Size(168, 148);
             this.btnBACK.TabIndex = 23;
             this.btnBACK.Text = "Trở về";
             this.btnBACK.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -182,9 +189,10 @@ namespace SaleManagement.VIEW
             this.btnTYPE_ITEMS.ForeColor = System.Drawing.Color.Black;
             this.btnTYPE_ITEMS.Image = global::SaleManagement.Properties.Resources.Box_icon;
             this.btnTYPE_ITEMS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTYPE_ITEMS.Location = new System.Drawing.Point(234, 304);
+            this.btnTYPE_ITEMS.Location = new System.Drawing.Point(208, 243);
+            this.btnTYPE_ITEMS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTYPE_ITEMS.Name = "btnTYPE_ITEMS";
-            this.btnTYPE_ITEMS.Size = new System.Drawing.Size(189, 184);
+            this.btnTYPE_ITEMS.Size = new System.Drawing.Size(168, 147);
             this.btnTYPE_ITEMS.TabIndex = 22;
             this.btnTYPE_ITEMS.Text = "Loại hàng hóa";
             this.btnTYPE_ITEMS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -203,9 +211,10 @@ namespace SaleManagement.VIEW
             this.btnITEMS.ForeColor = System.Drawing.Color.Black;
             this.btnITEMS.Image = global::SaleManagement.Properties.Resources.Household_Washing_Machine_icon;
             this.btnITEMS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnITEMS.Location = new System.Drawing.Point(12, 304);
+            this.btnITEMS.Location = new System.Drawing.Point(11, 243);
+            this.btnITEMS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnITEMS.Name = "btnITEMS";
-            this.btnITEMS.Size = new System.Drawing.Size(189, 184);
+            this.btnITEMS.Size = new System.Drawing.Size(168, 147);
             this.btnITEMS.TabIndex = 21;
             this.btnITEMS.Text = "Hàng hóa";
             this.btnITEMS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -225,9 +234,10 @@ namespace SaleManagement.VIEW
             this.btnSTAFFS.ForeColor = System.Drawing.Color.Black;
             this.btnSTAFFS.Image = global::SaleManagement.Properties.Resources.Admin_icon;
             this.btnSTAFFS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSTAFFS.Location = new System.Drawing.Point(234, 104);
+            this.btnSTAFFS.Location = new System.Drawing.Point(208, 83);
+            this.btnSTAFFS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSTAFFS.Name = "btnSTAFFS";
-            this.btnSTAFFS.Size = new System.Drawing.Size(189, 184);
+            this.btnSTAFFS.Size = new System.Drawing.Size(168, 147);
             this.btnSTAFFS.TabIndex = 20;
             this.btnSTAFFS.Text = "Nhân viên";
             this.btnSTAFFS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -247,21 +257,46 @@ namespace SaleManagement.VIEW
             this.btnCUSTOMERS.ForeColor = System.Drawing.Color.Black;
             this.btnCUSTOMERS.Image = global::SaleManagement.Properties.Resources.user_group_icon;
             this.btnCUSTOMERS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCUSTOMERS.Location = new System.Drawing.Point(12, 104);
+            this.btnCUSTOMERS.Location = new System.Drawing.Point(11, 83);
+            this.btnCUSTOMERS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCUSTOMERS.Name = "btnCUSTOMERS";
-            this.btnCUSTOMERS.Size = new System.Drawing.Size(189, 184);
+            this.btnCUSTOMERS.Size = new System.Drawing.Size(168, 147);
             this.btnCUSTOMERS.TabIndex = 19;
             this.btnCUSTOMERS.Text = "Khách hàng";
             this.btnCUSTOMERS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCUSTOMERS.UseVisualStyleBackColor = false;
             this.btnCUSTOMERS.Click += new System.EventHandler(this.btnCUSTOMERS_Click);
             // 
+            // btnManage_Warehouse
+            // 
+            this.btnManage_Warehouse.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnManage_Warehouse.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnManage_Warehouse.FlatAppearance.BorderSize = 0;
+            this.btnManage_Warehouse.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnManage_Warehouse.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnManage_Warehouse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnManage_Warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManage_Warehouse.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManage_Warehouse.ForeColor = System.Drawing.Color.Black;
+            this.btnManage_Warehouse.Image = global::SaleManagement.Properties.Resources.warehouse__2_;
+            this.btnManage_Warehouse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnManage_Warehouse.Location = new System.Drawing.Point(404, 406);
+            this.btnManage_Warehouse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnManage_Warehouse.Name = "btnManage_Warehouse";
+            this.btnManage_Warehouse.Size = new System.Drawing.Size(168, 147);
+            this.btnManage_Warehouse.TabIndex = 29;
+            this.btnManage_Warehouse.Text = "Nhập kho";
+            this.btnManage_Warehouse.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnManage_Warehouse.UseVisualStyleBackColor = false;
+            this.btnManage_Warehouse.Click += new System.EventHandler(this.btnManage_Warehouse_Click);
+            // 
             // FrmManage_Data
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.ClientSize = new System.Drawing.Size(1097, 553);
+            this.Controls.Add(this.btnManage_Warehouse);
             this.Controls.Add(this.btnLIST_BILLS);
             this.Controls.Add(this.btnBILL);
             this.Controls.Add(this.btnSUPPLIERS);
@@ -272,6 +307,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.btnITEMS);
             this.Controls.Add(this.btnSTAFFS);
             this.Controls.Add(this.btnCUSTOMERS);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmManage_Data";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MANAGE_DATA";
@@ -295,5 +331,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnSUPPLIERS;
         private System.Windows.Forms.Button btnBILL;
         private System.Windows.Forms.Button btnLIST_BILLS;
+        private System.Windows.Forms.Button btnManage_Warehouse;
     }
 }

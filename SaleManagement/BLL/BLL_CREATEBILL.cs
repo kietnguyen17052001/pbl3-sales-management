@@ -9,6 +9,7 @@ namespace SaleManagement.BLL
 {
     class BLL_CREATEBILL
     {
+        
         private static BLL_CREATEBILL _Instance;
         public static BLL_CREATEBILL Instance
         {
@@ -73,7 +74,7 @@ namespace SaleManagement.BLL
             {
                 MONEY_AFTERADD = Convert.ToDouble(i["ThanhTien(VNĐ)"].ToString());
                 AMOUNT = Convert.ToInt32(i["SoLuong"].ToString());
-                if (i["MaHangHoa"].ToString() == obj[0].ToString())
+                if (i["MaHangHoa"].ToString() == obj[0].ToString()) 
                 {
                     CHECK = false; // hàng hóa đã có
                     AMOUNT += Convert.ToInt32(obj[2].ToString());

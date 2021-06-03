@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PBL3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PBL3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -15,27 +15,25 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonBanHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblChiTietHoaDonBanHang">
           <Key>
             <PropertyRef Name="MaHoaDonBan" />
+            <PropertyRef Name="MaHangHoa" />
           </Key>
           <Property Name="MaHoaDonBan" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="MaHangHoa" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaHangHoa" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="DonGia" Type="float" />
           <Property Name="GiamGia" Type="float" />
           <Property Name="TongTien" Type="float" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblChiTietHoaDonNhapHang">
           <Key>
             <PropertyRef Name="MaHoaDonNhap" />
+            <PropertyRef Name="MaHangHoa" />
           </Key>
           <Property Name="MaHoaDonNhap" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="MaHangHoa" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaHangHoa" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="DonGia" Type="float" />
           <Property Name="GiamGia" Type="float" />
@@ -127,14 +125,14 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
         </EntityType>
         <EntityType Name="tblTaiKhoan">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="MaNhanVien" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaNhanVien" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="TenDangNhap" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK__tblChiTie__MaHan__703EA55A">
-          <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="0..1" />
+          <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="1" />
           <End Role="tblChiTietHoaDonBanHang" Type="Self.tblChiTietHoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblHangHoa">
@@ -146,7 +144,7 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__tblChiTie__MaHan__78D3EB5B">
-          <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="0..1" />
+          <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="1" />
           <End Role="tblChiTietHoaDonNhapHang" Type="Self.tblChiTietHoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblHangHoa">
@@ -159,7 +157,7 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
         </Association>
         <Association Name="FK__tblChiTie__MaHoa__6F4A8121">
           <End Role="tblHoaDonBanHang" Type="Self.tblHoaDonBanHang" Multiplicity="1" />
-          <End Role="tblChiTietHoaDonBanHang" Type="Self.tblChiTietHoaDonBanHang" Multiplicity="0..1" />
+          <End Role="tblChiTietHoaDonBanHang" Type="Self.tblChiTietHoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblHoaDonBanHang">
               <PropertyRef Name="MaHoaDonBan" />
@@ -171,7 +169,7 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
         </Association>
         <Association Name="FK__tblChiTie__MaHoa__77DFC722">
           <End Role="tblHoaDonNhapHang" Type="Self.tblHoaDonNhapHang" Multiplicity="1" />
-          <End Role="tblChiTietHoaDonNhapHang" Type="Self.tblChiTietHoaDonNhapHang" Multiplicity="0..1" />
+          <End Role="tblChiTietHoaDonNhapHang" Type="Self.tblChiTietHoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblHoaDonNhapHang">
               <PropertyRef Name="MaHoaDonNhap" />
@@ -267,6 +265,8 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
         </Association>
         <EntityContainer Name="PBL3ModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblChiTietHoaDonBanHang" EntityType="Self.tblChiTietHoaDonBanHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblChiTietHoaDonNhapHang" EntityType="Self.tblChiTietHoaDonNhapHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblHangHoa" EntityType="Self.tblHangHoa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblHoaDonBanHang" EntityType="Self.tblHoaDonBanHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblHoaDonNhapHang" EntityType="Self.tblHoaDonNhapHang" Schema="dbo" store:Type="Tables" />
@@ -276,26 +276,6 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
           <EntitySet Name="tblNhanVien" EntityType="Self.tblNhanVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblNhaSanXuat" EntityType="Self.tblNhaSanXuat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTaiKhoan" EntityType="Self.tblTaiKhoan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblChiTietHoaDonBanHang" EntityType="Self.tblChiTietHoaDonBanHang" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblChiTietHoaDonBanHang].[MaHoaDonBan] AS [MaHoaDonBan], 
-    [tblChiTietHoaDonBanHang].[MaHangHoa] AS [MaHangHoa], 
-    [tblChiTietHoaDonBanHang].[SoLuong] AS [SoLuong], 
-    [tblChiTietHoaDonBanHang].[DonGia] AS [DonGia], 
-    [tblChiTietHoaDonBanHang].[GiamGia] AS [GiamGia], 
-    [tblChiTietHoaDonBanHang].[TongTien] AS [TongTien]
-    FROM [dbo].[tblChiTietHoaDonBanHang] AS [tblChiTietHoaDonBanHang]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblChiTietHoaDonNhapHang" EntityType="Self.tblChiTietHoaDonNhapHang" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblChiTietHoaDonNhapHang].[MaHoaDonNhap] AS [MaHoaDonNhap], 
-    [tblChiTietHoaDonNhapHang].[MaHangHoa] AS [MaHangHoa], 
-    [tblChiTietHoaDonNhapHang].[SoLuong] AS [SoLuong], 
-    [tblChiTietHoaDonNhapHang].[DonGia] AS [DonGia], 
-    [tblChiTietHoaDonNhapHang].[GiamGia] AS [GiamGia], 
-    [tblChiTietHoaDonNhapHang].[TongTien] AS [TongTien]
-    FROM [dbo].[tblChiTietHoaDonNhapHang] AS [tblChiTietHoaDonNhapHang]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__tblChiTie__MaHan__703EA55A" Association="Self.FK__tblChiTie__MaHan__703EA55A">
             <End Role="tblHangHoa" EntitySet="tblHangHoa" />
             <End Role="tblChiTietHoaDonBanHang" EntitySet="tblChiTietHoaDonBanHang" />
@@ -356,6 +336,34 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="tblChiTietHoaDonBanHang">
+          <Key>
+            <PropertyRef Name="MaHoaDonBan" />
+            <PropertyRef Name="MaHangHoa" />
+          </Key>
+          <Property Name="MaHoaDonBan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaHangHoa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="DonGia" Type="Double" />
+          <Property Name="GiamGia" Type="Double" />
+          <Property Name="TongTien" Type="Double" />
+          <NavigationProperty Name="tblHangHoa" Relationship="Self.FK__tblChiTie__MaHan__703EA55A" FromRole="tblChiTietHoaDonBanHang" ToRole="tblHangHoa" />
+          <NavigationProperty Name="tblHoaDonBanHang" Relationship="Self.FK__tblChiTie__MaHoa__6F4A8121" FromRole="tblChiTietHoaDonBanHang" ToRole="tblHoaDonBanHang" />
+        </EntityType>
+        <EntityType Name="tblChiTietHoaDonNhapHang">
+          <Key>
+            <PropertyRef Name="MaHoaDonNhap" />
+            <PropertyRef Name="MaHangHoa" />
+          </Key>
+          <Property Name="MaHoaDonNhap" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaHangHoa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="DonGia" Type="Double" />
+          <Property Name="GiamGia" Type="Double" />
+          <Property Name="TongTien" Type="Double" />
+          <NavigationProperty Name="tblHangHoa" Relationship="Self.FK__tblChiTie__MaHan__78D3EB5B" FromRole="tblChiTietHoaDonNhapHang" ToRole="tblHangHoa" />
+          <NavigationProperty Name="tblHoaDonNhapHang" Relationship="Self.FK__tblChiTie__MaHoa__77DFC722" FromRole="tblChiTietHoaDonNhapHang" ToRole="tblHoaDonNhapHang" />
+        </EntityType>
         <EntityType Name="tblHangHoa">
           <Key>
             <PropertyRef Name="MaHangHoa" />
@@ -384,7 +392,7 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
           <Property Name="NgayBan" Type="DateTime" Precision="0" />
           <Property Name="MaKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoTien" Type="Double" />
-          <NavigationProperty Name="tblChiTietHoaDonBanHang" Relationship="Self.FK__tblChiTie__MaHoa__6F4A8121" FromRole="tblHoaDonBanHang" ToRole="tblChiTietHoaDonBanHang" />
+          <NavigationProperty Name="tblChiTietHoaDonBanHangs" Relationship="Self.FK__tblChiTie__MaHoa__6F4A8121" FromRole="tblHoaDonBanHang" ToRole="tblChiTietHoaDonBanHang" />
           <NavigationProperty Name="tblKhachHang" Relationship="Self.FK__tblHoaDon__MaKha__6D6238AF" FromRole="tblHoaDonBanHang" ToRole="tblKhachHang" />
           <NavigationProperty Name="tblNhanVien" Relationship="Self.FK__tblHoaDon__MaNha__6C6E1476" FromRole="tblHoaDonBanHang" ToRole="tblNhanVien" />
         </EntityType>
@@ -397,7 +405,7 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
           <Property Name="MaNhanVien" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NgayNhap" Type="DateTime" Precision="0" />
           <Property Name="SoTien" Type="Double" />
-          <NavigationProperty Name="tblChiTietHoaDonNhapHang" Relationship="Self.FK__tblChiTie__MaHoa__77DFC722" FromRole="tblHoaDonNhapHang" ToRole="tblChiTietHoaDonNhapHang" />
+          <NavigationProperty Name="tblChiTietHoaDonNhapHangs" Relationship="Self.FK__tblChiTie__MaHoa__77DFC722" FromRole="tblHoaDonNhapHang" ToRole="tblChiTietHoaDonNhapHang" />
           <NavigationProperty Name="tblNhaCungCap" Relationship="Self.FK__tblHoaDon__MaNha__75035A77" FromRole="tblHoaDonNhapHang" ToRole="tblNhaCungCap" />
           <NavigationProperty Name="tblNhanVien" Relationship="Self.FK__tblHoaDon__MaNha__75F77EB0" FromRole="tblHoaDonNhapHang" ToRole="tblNhanVien" />
         </EntityType>
@@ -460,40 +468,14 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
         </EntityType>
         <EntityType Name="tblTaiKhoan">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="MaNhanVien" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaNhanVien" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="TenDangNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblChiTietHoaDonBanHang">
-          <Key>
-            <PropertyRef Name="MaHoaDonBan" />
-          </Key>
-          <Property Name="MaHoaDonBan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MaHangHoa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="SoLuong" Type="Int32" />
-          <Property Name="DonGia" Type="Double" />
-          <Property Name="GiamGia" Type="Double" />
-          <Property Name="TongTien" Type="Double" />
-          <NavigationProperty Name="tblHangHoa" Relationship="Self.FK__tblChiTie__MaHan__703EA55A" FromRole="tblChiTietHoaDonBanHang" ToRole="tblHangHoa" />
-          <NavigationProperty Name="tblHoaDonBanHang" Relationship="Self.FK__tblChiTie__MaHoa__6F4A8121" FromRole="tblChiTietHoaDonBanHang" ToRole="tblHoaDonBanHang" />
-        </EntityType>
-        <EntityType Name="tblChiTietHoaDonNhapHang">
-          <Key>
-            <PropertyRef Name="MaHoaDonNhap" />
-          </Key>
-          <Property Name="MaHoaDonNhap" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MaHangHoa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="SoLuong" Type="Int32" />
-          <Property Name="DonGia" Type="Double" />
-          <Property Name="GiamGia" Type="Double" />
-          <Property Name="TongTien" Type="Double" />
-          <NavigationProperty Name="tblHangHoa" Relationship="Self.FK__tblChiTie__MaHan__78D3EB5B" FromRole="tblChiTietHoaDonNhapHang" ToRole="tblHangHoa" />
-          <NavigationProperty Name="tblHoaDonNhapHang" Relationship="Self.FK__tblChiTie__MaHoa__77DFC722" FromRole="tblChiTietHoaDonNhapHang" ToRole="tblHoaDonNhapHang" />
-        </EntityType>
         <Association Name="FK__tblChiTie__MaHan__703EA55A">
-          <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="0..1" />
+          <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="1" />
           <End Role="tblChiTietHoaDonBanHang" Type="Self.tblChiTietHoaDonBanHang" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblHangHoa">
@@ -504,8 +486,20 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__tblChiTie__MaHoa__6F4A8121">
+          <End Role="tblHoaDonBanHang" Type="Self.tblHoaDonBanHang" Multiplicity="1" />
+          <End Role="tblChiTietHoaDonBanHang" Type="Self.tblChiTietHoaDonBanHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHoaDonBanHang">
+              <PropertyRef Name="MaHoaDonBan" />
+            </Principal>
+            <Dependent Role="tblChiTietHoaDonBanHang">
+              <PropertyRef Name="MaHoaDonBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tblChiTie__MaHan__78D3EB5B">
-          <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="0..1" />
+          <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="1" />
           <End Role="tblChiTietHoaDonNhapHang" Type="Self.tblChiTietHoaDonNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblHangHoa">
@@ -513,6 +507,18 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
             </Principal>
             <Dependent Role="tblChiTietHoaDonNhapHang">
               <PropertyRef Name="MaHangHoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblChiTie__MaHoa__77DFC722">
+          <End Role="tblHoaDonNhapHang" Type="Self.tblHoaDonNhapHang" Multiplicity="1" />
+          <End Role="tblChiTietHoaDonNhapHang" Type="Self.tblChiTietHoaDonNhapHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHoaDonNhapHang">
+              <PropertyRef Name="MaHoaDonNhap" />
+            </Principal>
+            <Dependent Role="tblChiTietHoaDonNhapHang">
+              <PropertyRef Name="MaHoaDonNhap" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -552,18 +558,6 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblChiTie__MaHoa__6F4A8121">
-          <End Role="tblHoaDonBanHang" Type="Self.tblHoaDonBanHang" Multiplicity="1" />
-          <End Role="tblChiTietHoaDonBanHang" Type="Self.tblChiTietHoaDonBanHang" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tblHoaDonBanHang">
-              <PropertyRef Name="MaHoaDonBan" />
-            </Principal>
-            <Dependent Role="tblChiTietHoaDonBanHang">
-              <PropertyRef Name="MaHoaDonBan" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__tblHoaDon__MaKha__6D6238AF">
           <End Role="tblKhachHang" Type="Self.tblKhachHang" Multiplicity="1" />
           <End Role="tblHoaDonBanHang" Type="Self.tblHoaDonBanHang" Multiplicity="*" />
@@ -585,18 +579,6 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
             </Principal>
             <Dependent Role="tblHoaDonBanHang">
               <PropertyRef Name="MaNhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tblChiTie__MaHoa__77DFC722">
-          <End Role="tblHoaDonNhapHang" Type="Self.tblHoaDonNhapHang" Multiplicity="1" />
-          <End Role="tblChiTietHoaDonNhapHang" Type="Self.tblChiTietHoaDonNhapHang" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tblHoaDonNhapHang">
-              <PropertyRef Name="MaHoaDonNhap" />
-            </Principal>
-            <Dependent Role="tblChiTietHoaDonNhapHang">
-              <PropertyRef Name="MaHoaDonNhap" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -626,6 +608,8 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
         </Association>
         <EntityContainer Name="SALEMANAGEMENT_DB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblChiTietHoaDonBanHangs" EntityType="Self.tblChiTietHoaDonBanHang" />
+          <EntitySet Name="tblChiTietHoaDonNhapHangs" EntityType="Self.tblChiTietHoaDonNhapHang" />
           <EntitySet Name="tblHangHoas" EntityType="Self.tblHangHoa" />
           <EntitySet Name="tblHoaDonBanHangs" EntityType="Self.tblHoaDonBanHang" />
           <EntitySet Name="tblHoaDonNhapHangs" EntityType="Self.tblHoaDonNhapHang" />
@@ -635,14 +619,20 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
           <EntitySet Name="tblNhanViens" EntityType="Self.tblNhanVien" />
           <EntitySet Name="tblNhaSanXuats" EntityType="Self.tblNhaSanXuat" />
           <EntitySet Name="tblTaiKhoans" EntityType="Self.tblTaiKhoan" />
-          <EntitySet Name="tblChiTietHoaDonBanHangs" EntityType="Self.tblChiTietHoaDonBanHang" />
-          <EntitySet Name="tblChiTietHoaDonNhapHangs" EntityType="Self.tblChiTietHoaDonNhapHang" />
           <AssociationSet Name="FK__tblChiTie__MaHan__703EA55A" Association="Self.FK__tblChiTie__MaHan__703EA55A">
             <End Role="tblHangHoa" EntitySet="tblHangHoas" />
             <End Role="tblChiTietHoaDonBanHang" EntitySet="tblChiTietHoaDonBanHangs" />
           </AssociationSet>
+          <AssociationSet Name="FK__tblChiTie__MaHoa__6F4A8121" Association="Self.FK__tblChiTie__MaHoa__6F4A8121">
+            <End Role="tblHoaDonBanHang" EntitySet="tblHoaDonBanHangs" />
+            <End Role="tblChiTietHoaDonBanHang" EntitySet="tblChiTietHoaDonBanHangs" />
+          </AssociationSet>
           <AssociationSet Name="FK__tblChiTie__MaHan__78D3EB5B" Association="Self.FK__tblChiTie__MaHan__78D3EB5B">
             <End Role="tblHangHoa" EntitySet="tblHangHoas" />
+            <End Role="tblChiTietHoaDonNhapHang" EntitySet="tblChiTietHoaDonNhapHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblChiTie__MaHoa__77DFC722" Association="Self.FK__tblChiTie__MaHoa__77DFC722">
+            <End Role="tblHoaDonNhapHang" EntitySet="tblHoaDonNhapHangs" />
             <End Role="tblChiTietHoaDonNhapHang" EntitySet="tblChiTietHoaDonNhapHangs" />
           </AssociationSet>
           <AssociationSet Name="FK__tblHangHo__MaLoa__65C116E7" Association="Self.FK__tblHangHo__MaLoa__65C116E7">
@@ -657,10 +647,6 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
             <End Role="tblNhaSanXuat" EntitySet="tblNhaSanXuats" />
             <End Role="tblHangHoa" EntitySet="tblHangHoas" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblChiTie__MaHoa__6F4A8121" Association="Self.FK__tblChiTie__MaHoa__6F4A8121">
-            <End Role="tblHoaDonBanHang" EntitySet="tblHoaDonBanHangs" />
-            <End Role="tblChiTietHoaDonBanHang" EntitySet="tblChiTietHoaDonBanHangs" />
-          </AssociationSet>
           <AssociationSet Name="FK__tblHoaDon__MaKha__6D6238AF" Association="Self.FK__tblHoaDon__MaKha__6D6238AF">
             <End Role="tblKhachHang" EntitySet="tblKhachHangs" />
             <End Role="tblHoaDonBanHang" EntitySet="tblHoaDonBanHangs" />
@@ -668,10 +654,6 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
           <AssociationSet Name="FK__tblHoaDon__MaNha__6C6E1476" Association="Self.FK__tblHoaDon__MaNha__6C6E1476">
             <End Role="tblNhanVien" EntitySet="tblNhanViens" />
             <End Role="tblHoaDonBanHang" EntitySet="tblHoaDonBanHangs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tblChiTie__MaHoa__77DFC722" Association="Self.FK__tblChiTie__MaHoa__77DFC722">
-            <End Role="tblHoaDonNhapHang" EntitySet="tblHoaDonNhapHangs" />
-            <End Role="tblChiTietHoaDonNhapHang" EntitySet="tblChiTietHoaDonNhapHangs" />
           </AssociationSet>
           <AssociationSet Name="FK__tblHoaDon__MaNha__75035A77" Association="Self.FK__tblHoaDon__MaNha__75035A77">
             <End Role="tblNhaCungCap" EntitySet="tblNhaCungCaps" />
@@ -696,6 +678,30 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChiTietHoaDonBanHangs">
+            <EntityTypeMapping TypeName="PBL3Model.tblChiTietHoaDonBanHang">
+              <MappingFragment StoreEntitySet="tblChiTietHoaDonBanHang">
+                <ScalarProperty Name="MaHoaDonBan" ColumnName="MaHoaDonBan" />
+                <ScalarProperty Name="MaHangHoa" ColumnName="MaHangHoa" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChiTietHoaDonNhapHangs">
+            <EntityTypeMapping TypeName="PBL3Model.tblChiTietHoaDonNhapHang">
+              <MappingFragment StoreEntitySet="tblChiTietHoaDonNhapHang">
+                <ScalarProperty Name="MaHoaDonNhap" ColumnName="MaHoaDonNhap" />
+                <ScalarProperty Name="MaHangHoa" ColumnName="MaHangHoa" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -794,33 +800,9 @@ warning 6002: The table/view 'PBL3.dbo.tblChiTietHoaDonNhapHang' does not have a
           <EntitySetMapping Name="tblTaiKhoans">
             <EntityTypeMapping TypeName="PBL3Model.tblTaiKhoan">
               <MappingFragment StoreEntitySet="tblTaiKhoan">
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblChiTietHoaDonBanHangs">
-            <EntityTypeMapping TypeName="PBL3Model.tblChiTietHoaDonBanHang">
-              <MappingFragment StoreEntitySet="tblChiTietHoaDonBanHang">
-                <ScalarProperty Name="MaHoaDonBan" ColumnName="MaHoaDonBan" />
-                <ScalarProperty Name="MaHangHoa" ColumnName="MaHangHoa" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
-                <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
-                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblChiTietHoaDonNhapHangs">
-            <EntityTypeMapping TypeName="PBL3Model.tblChiTietHoaDonNhapHang">
-              <MappingFragment StoreEntitySet="tblChiTietHoaDonNhapHang">
-                <ScalarProperty Name="MaHoaDonNhap" ColumnName="MaHoaDonNhap" />
-                <ScalarProperty Name="MaHangHoa" ColumnName="MaHangHoa" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
-                <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
-                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

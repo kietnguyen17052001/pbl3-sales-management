@@ -62,6 +62,7 @@
     <Compile Include="BLL\BLL_STAFF.cs" />
     <Compile Include="BLL\BLL_SUPPLIER.cs" />
     <Compile Include="BLL\BLL_TYPEOFITEM.cs" />
+    <Compile Include="BLL\BLL_WAREHOUSE.cs" />
     <Compile Include="CBBItem.cs" />
     <Compile Include="FORM\Create_Bill.cs">
       <SubType>Form</SubType>
@@ -135,6 +136,12 @@
     <Compile Include="FORM\Manage_Suppliers.Designer.cs">
       <DependentUpon>Manage_Suppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM\Manage_Warehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Manage_Warehouse.Designer.cs">
+      <DependentUpon>Manage_Warehouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\Sale_Management.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,56 +155,56 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SALEMANAGEMENT_DB.Context.cs">
+    <Compile Include="SALEMANAGEMENT.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SALEMANAGEMENT_DB.Context.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SALEMANAGEMENT_DB.cs">
+    <Compile Include="SALEMANAGEMENT.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
-    <Compile Include="SALEMANAGEMENT_DB.Designer.cs">
+    <Compile Include="SALEMANAGEMENT.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SALEMANAGEMENT_DB.edmx</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.edmx</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblChiTietHoaDonBanHang.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblChiTietHoaDonNhapHang.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblHangHoa.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblHoaDonBanHang.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblHoaDonNhapHang.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKhachHang.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblLoaiHangHoa.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblNhaCungCap.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblNhanVien.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblNhaSanXuat.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <Compile Include="tblTaiKhoan.cs">
-      <DependentUpon>SALEMANAGEMENT_DB.tt</DependentUpon>
+      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FORM\Create_NewCustomer.resx">
       <DependentUpon>Create_NewCustomer.cs</DependentUpon>
@@ -216,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Discount_Percent.resx">
       <DependentUpon>Discount_Percent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Manage_Warehouse.resx">
+      <DependentUpon>Manage_Warehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -253,12 +263,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EntityDeploy Include="SALEMANAGEMENT_DB.edmx">
+    <EntityDeploy Include="SALEMANAGEMENT.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SALEMANAGEMENT_DB.Designer.cs</LastGenOutput>
+      <LastGenOutput>SALEMANAGEMENT.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="SALEMANAGEMENT_DB.edmx.diagram">
-      <DependentUpon>SALEMANAGEMENT_DB.edmx</DependentUpon>
+    <None Include="SALEMANAGEMENT.edmx.diagram">
+      <DependentUpon>SALEMANAGEMENT.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -323,20 +333,25 @@
     <None Include="IMG\save-as-24.png" />
     <None Include="IMG\delete-property-24.png" />
     <None Include="IMG\house-48.png" />
-    <Content Include="SALEMANAGEMENT_DB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SALEMANAGEMENT_DB.Context.cs</LastGenOutput>
-      <DependentUpon>SALEMANAGEMENT_DB.edmx</DependentUpon>
-    </Content>
-    <Content Include="SALEMANAGEMENT_DB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SALEMANAGEMENT_DB.edmx</DependentUpon>
-      <LastGenOutput>SALEMANAGEMENT_DB.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\warehouse %282%29.png" />
+    <None Include="Resources\warehouse %281%29.png" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\warehouse-icon-isometric-style-vector-21161161.jpg" />
+    <Content Include="SALEMANAGEMENT.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SALEMANAGEMENT.edmx</DependentUpon>
+      <LastGenOutput>SALEMANAGEMENT.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SALEMANAGEMENT.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SALEMANAGEMENT.edmx</DependentUpon>
+      <LastGenOutput>SALEMANAGEMENT.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
