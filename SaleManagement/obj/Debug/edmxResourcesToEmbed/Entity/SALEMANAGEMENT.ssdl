@@ -110,7 +110,7 @@
     <Property Name="GioiTinh" Type="bit" />
     <Property Name="SoDienThoai" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="Luong" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Luong" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="tblNhaSanXuat">
     <Key>

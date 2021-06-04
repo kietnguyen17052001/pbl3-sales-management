@@ -112,6 +112,7 @@ namespace SaleManagement.VIEW
             this.txtPHONE.Name = "txtPHONE";
             this.txtPHONE.Size = new System.Drawing.Size(237, 29);
             this.txtPHONE.TabIndex = 75;
+            this.txtPHONE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPHONE_KeyPress);
             // 
             // txtNAME_CUSTOMER
             // 

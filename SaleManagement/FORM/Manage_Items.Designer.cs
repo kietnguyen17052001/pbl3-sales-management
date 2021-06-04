@@ -151,6 +151,7 @@ namespace SaleManagement.VIEW
             this.txtQUANTITY.Size = new System.Drawing.Size(210, 27);
             this.txtQUANTITY.TabIndex = 96;
             this.txtQUANTITY.Enter += new System.EventHandler(this.txtAMOUNT_Enter);
+            this.txtQUANTITY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSALE_KeyPress);
             this.txtQUANTITY.Leave += new System.EventHandler(this.txtAMOUNT_Leave);
             // 
             // txtNAME_PRODUCT
@@ -251,6 +252,7 @@ namespace SaleManagement.VIEW
             this.txtSALE.Size = new System.Drawing.Size(210, 27);
             this.txtSALE.TabIndex = 105;
             this.txtSALE.Enter += new System.EventHandler(this.txtSALE_Enter);
+            this.txtSALE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSALE_KeyPress);
             this.txtSALE.Leave += new System.EventHandler(this.txtSALE_Leave);
             // 
             // label10
@@ -272,6 +274,7 @@ namespace SaleManagement.VIEW
             this.txtBUY.Size = new System.Drawing.Size(210, 27);
             this.txtBUY.TabIndex = 103;
             this.txtBUY.Enter += new System.EventHandler(this.txtBUY_Enter);
+            this.txtBUY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSALE_KeyPress);
             this.txtBUY.Leave += new System.EventHandler(this.txtBUY_Leave);
             // 
             // cbbPRODUCERs

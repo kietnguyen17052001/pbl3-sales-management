@@ -261,6 +261,13 @@ namespace SaleManagement.VIEW
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }
-
+        // KeyPress Event
+        private void txtPHONE_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

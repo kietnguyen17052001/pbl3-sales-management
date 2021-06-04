@@ -28,7 +28,7 @@ namespace SaleManagement.Entity
         public Nullable<bool> GioiTinh { get; set; }
         public string SoDienThoai { get; set; }
         public string DiaChi { get; set; }
-        public string Luong { get; set; }
+        public double Luong { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblHoaDonBanHang> tblHoaDonBanHangs { get; set; }
