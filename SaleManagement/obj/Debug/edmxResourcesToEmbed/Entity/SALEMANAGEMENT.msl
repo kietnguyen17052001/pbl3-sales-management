@@ -28,8 +28,7 @@
       <EntityTypeMapping TypeName="PBL3Model.tblChiTietHoaDonNhapHang">
         <MappingFragment StoreEntitySet="tblChiTietHoaDonNhapHang">
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
-          <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
-          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="MaHangHoa" ColumnName="MaHangHoa" />
           <ScalarProperty Name="MaHoaDonNhap" ColumnName="MaHoaDonNhap" />
@@ -44,7 +43,6 @@
           <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
           <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
           <ScalarProperty Name="MaNhaSanXuat" ColumnName="MaNhaSanXuat" />
-          <ScalarProperty Name="MaNhaCungCap" ColumnName="MaNhaCungCap" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="TenHangHoa" ColumnName="TenHangHoa" />
           <ScalarProperty Name="MaLoaiHangHoa" ColumnName="MaLoaiHangHoa" />
@@ -67,6 +65,7 @@
     <EntitySetMapping Name="tblHoaDonNhapHangs">
       <EntityTypeMapping TypeName="PBL3Model.tblHoaDonNhapHang">
         <MappingFragment StoreEntitySet="tblHoaDonNhapHang">
+          <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
           <ScalarProperty Name="SoTien" ColumnName="SoTien" />
           <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
           <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />

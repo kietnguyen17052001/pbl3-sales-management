@@ -17,8 +17,7 @@ namespace SaleManagement.Entity
         public string MaHoaDonNhap { get; set; }
         public string MaHangHoa { get; set; }
         public Nullable<int> SoLuong { get; set; }
-        public Nullable<double> DonGia { get; set; }
-        public Nullable<double> GiamGia { get; set; }
+        public Nullable<double> GiaNhap { get; set; }
         public Nullable<double> TongTien { get; set; }
     
         public virtual tblHangHoa tblHangHoa { get; set; }

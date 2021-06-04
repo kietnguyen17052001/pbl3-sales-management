@@ -442,7 +442,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.dgvSUPPLIER);
             this.Name = "FrmManage_Suppliers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manage_Suppliers";
+            this.Text = "Quản lý nhà cung cấp";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSUPPLIER)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

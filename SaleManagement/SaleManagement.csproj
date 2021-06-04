@@ -62,6 +62,7 @@
     <Compile Include="BLL\BLL_CHANGEPASSWORD.cs" />
     <Compile Include="BLL\BLL_CREATEINVOICE.cs" />
     <Compile Include="BLL\BLL_CUSTOMER.cs" />
+    <Compile Include="BLL\BLL_IMPORTPRODUCT.cs" />
     <Compile Include="BLL\BLL_ITEMS.cs" />
     <Compile Include="BLL\BLL_LISTINVOICE.cs" />
     <Compile Include="BLL\BLL_PRODUCER.cs" />
@@ -121,11 +122,11 @@
     <Compile Include="Entity\tblTaiKhoan.cs">
       <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Add_NewProduct.cs">
+    <Compile Include="FORM\AddProduct_Invoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\Add_NewProduct.Designer.cs">
-      <DependentUpon>Add_NewProduct.cs</DependentUpon>
+    <Compile Include="FORM\AddProduct_Invoice.Designer.cs">
+      <DependentUpon>AddProduct_Invoice.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Change_Password.cs">
       <SubType>Form</SubType>
@@ -133,11 +134,17 @@
     <Compile Include="FORM\Change_Password.Designer.cs">
       <DependentUpon>Change_Password.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Create_Invoice.cs">
+    <Compile Include="FORM\Create_NewProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\Create_Invoice.Designer.cs">
-      <DependentUpon>Create_Invoice.cs</DependentUpon>
+    <Compile Include="FORM\Create_NewProduct.Designer.cs">
+      <DependentUpon>Create_NewProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Invoice_SaleProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Invoice_SaleProduct.Designer.cs">
+      <DependentUpon>Invoice_SaleProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Create_NewProducer.cs">
       <SubType>Form</SubType>
@@ -157,11 +164,11 @@
     <Compile Include="FORM\Create_NewTypeItem.Designer.cs">
       <DependentUpon>Create_NewTypeItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Customer_Invoice.cs">
+    <Compile Include="FORM\Select_Customer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\Customer_Invoice.Designer.cs">
-      <DependentUpon>Customer_Invoice.cs</DependentUpon>
+    <Compile Include="FORM\Select_Customer.Designer.cs">
+      <DependentUpon>Select_Customer.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Discount_Money.cs">
       <SubType>Form</SubType>
@@ -192,6 +199,12 @@
     </Compile>
     <Compile Include="FORM\Introduce.Designer.cs">
       <DependentUpon>Introduce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Invoice_ImportProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Invoice_ImportProduct.Designer.cs">
+      <DependentUpon>Invoice_ImportProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Login.cs">
       <SubType>Form</SubType>
@@ -259,6 +272,12 @@
     <Compile Include="FORM\Sale_Management.Designer.cs">
       <DependentUpon>Sale_Management.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM\Select_Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Select_Supplier.Designer.cs">
+      <DependentUpon>Select_Supplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\Staff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,8 +303,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FORM\Add_NewProduct.resx">
-      <DependentUpon>Add_NewProduct.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\AddProduct_Invoice.resx">
+      <DependentUpon>AddProduct_Invoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Change_Password.resx">
       <DependentUpon>Change_Password.cs</DependentUpon>
@@ -293,14 +312,17 @@
     <EmbeddedResource Include="FORM\Create_NewProducer.resx">
       <DependentUpon>Create_NewProducer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Create_NewProduct.resx">
+      <DependentUpon>Create_NewProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORM\Create_NewSupplier.resx">
       <DependentUpon>Create_NewSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Create_NewTypeItem.resx">
       <DependentUpon>Create_NewTypeItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\Customer_Invoice.resx">
-      <DependentUpon>Customer_Invoice.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\Select_Customer.resx">
+      <DependentUpon>Select_Customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Discount_Money.resx">
       <DependentUpon>Discount_Money.cs</DependentUpon>
@@ -317,6 +339,9 @@
     <EmbeddedResource Include="FORM\Introduce.resx">
       <DependentUpon>Introduce.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Invoice_ImportProduct.resx">
+      <DependentUpon>Invoice_ImportProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORM\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,6 +357,9 @@
     <EmbeddedResource Include="FORM\Revenue_Statistic.resx">
       <DependentUpon>Revenue_Statistic.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Select_Supplier.resx">
+      <DependentUpon>Select_Supplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORM\Staff.resx">
       <DependentUpon>Staff.cs</DependentUpon>
     </EmbeddedResource>
@@ -346,8 +374,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\Create_Invoice.resx">
-      <DependentUpon>Create_Invoice.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\Invoice_SaleProduct.resx">
+      <DependentUpon>Invoice_SaleProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Manage_Customers.resx">
       <DependentUpon>Manage_Customers.cs</DependentUpon>
@@ -479,6 +507,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="IMG\check.png" />
+    <None Include="IMG\right.png" />
     <None Include="Card\kiet.png" />
     <None Include="Card\nhat.png" />
     <None Include="Card\nga.png" />

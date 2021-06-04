@@ -43,17 +43,7 @@ namespace SaleManagement.VIEW
         // func show data 
         public void ShowData()
         {
-            var getListSupplier = DB.tblNhaCungCaps.Select(p => new
-            {
-                p.MaNhaCungCap,
-                p.TenNhaCungCap,
-                p.DiaChi,
-                p.Email,
-                p.Fax,
-                p.SoDienThoai,
-                p.MaSoThue
-            });
-            dgvSUPPLIER.DataSource = getListSupplier.ToList();
+            BLL_SUPPLIER.Instance.ShowData(dgvSUPPLIER);
         }
         // disable
         public void Disable(bool E)
@@ -99,10 +89,6 @@ namespace SaleManagement.VIEW
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
             BLL_SUPPLIER.Instance.FuncSearchSupplier(dgvSUPPLIER, txtSEARCH.Text.Trim());
-            if(txtSEARCH.Text == "Nhập tên hoặc mã nhà cung cấp")
-            {
-                ShowData();
-            }
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {

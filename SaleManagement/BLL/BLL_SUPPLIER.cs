@@ -25,6 +25,21 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_SUPPLIER() { }
+        // load data form database
+        public void ShowData(DataGridView dgv)
+        {
+            var getListSupplier = DB.tblNhaCungCaps.Select(p => new
+            {
+                p.MaNhaCungCap,
+                p.TenNhaCungCap,
+                p.DiaChi,
+                p.Email,
+                p.Fax,
+                p.SoDienThoai,
+                p.MaSoThue
+            });
+            dgv.DataSource = getListSupplier.ToList();
+        }
         // add new supplier
         public void FuncAddNewSupplier(tblNhaCungCap supplier)
         {
@@ -62,17 +77,24 @@ namespace SaleManagement.BLL
         // search supplier
         public void FuncSearchSupplier(DataGridView dgv, string information)
         {
-            var getSupplier = DB.tblNhaCungCaps.Where(p => p.MaNhaCungCap.Contains(information) || p.TenNhaCungCap.Contains(information)).Select(p => new
+            if(information == "Nhập tên hoặc mã nhà cung cấp" || string.IsNullOrEmpty(information))
             {
-                p.MaNhaCungCap,
-                p.TenNhaCungCap,
-                p.DiaChi,
-                p.Email,
-                p.Fax,
-                p.SoDienThoai,
-                p.MaSoThue
-            });
-            dgv.DataSource = getSupplier.ToList();
+                ShowData(dgv);
+            }
+            else
+            {
+                var getSupplier = DB.tblNhaCungCaps.Where(p => p.MaNhaCungCap.Contains(information) || p.TenNhaCungCap.Contains(information)).Select(p => new
+                {
+                    p.MaNhaCungCap,
+                    p.TenNhaCungCap,
+                    p.DiaChi,
+                    p.Email,
+                    p.Fax,
+                    p.SoDienThoai,
+                    p.MaSoThue
+                });
+                dgv.DataSource = getSupplier.ToList();
+            }
         }
         public string GetNewIdSupplier()
         {

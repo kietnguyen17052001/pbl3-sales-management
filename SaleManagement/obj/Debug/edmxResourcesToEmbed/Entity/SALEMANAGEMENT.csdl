@@ -33,10 +33,6 @@
       <End Role="tblLoaiHangHoa" EntitySet="tblLoaiHangHoas" />
       <End Role="tblHangHoa" EntitySet="tblHangHoas" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblHangHo__MaNha__66B53B20" Association="PBL3Model.FK__tblHangHo__MaNha__66B53B20">
-      <End Role="tblNhaCungCap" EntitySet="tblNhaCungCaps" />
-      <End Role="tblHangHoa" EntitySet="tblHangHoas" />
-    </AssociationSet>
     <AssociationSet Name="FK__tblHangHo__MaNha__67A95F59" Association="PBL3Model.FK__tblHangHo__MaNha__67A95F59">
       <End Role="tblNhaSanXuat" EntitySet="tblNhaSanXuats" />
       <End Role="tblHangHoa" EntitySet="tblHangHoas" />
@@ -90,8 +86,7 @@
     <Property Name="MaHoaDonNhap" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="MaHangHoa" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="SoLuong" Type="Int32" />
-    <Property Name="DonGia" Type="Double" />
-    <Property Name="GiamGia" Type="Double" />
+    <Property Name="GiaNhap" Type="Double" />
     <Property Name="TongTien" Type="Double" />
     <NavigationProperty Name="tblHangHoa" Relationship="PBL3Model.FK__tblChiTie__MaHan__78D3EB5B" FromRole="tblChiTietHoaDonNhapHang" ToRole="tblHangHoa" />
     <NavigationProperty Name="tblHoaDonNhapHang" Relationship="PBL3Model.FK__tblChiTie__MaHoa__77DFC722" FromRole="tblChiTietHoaDonNhapHang" ToRole="tblHoaDonNhapHang" />
@@ -104,7 +99,6 @@
     <Property Name="MaLoaiHangHoa" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="TenHangHoa" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SoLuong" Type="Int32" Nullable="false" />
-    <Property Name="MaNhaCungCap" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="MaNhaSanXuat" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="GiaNhap" Type="Double" Nullable="false" />
     <Property Name="GiaBan" Type="Double" Nullable="false" />
@@ -113,7 +107,6 @@
     <NavigationProperty Name="tblChiTietHoaDonBanHangs" Relationship="PBL3Model.FK__tblChiTie__MaHan__703EA55A" FromRole="tblHangHoa" ToRole="tblChiTietHoaDonBanHang" />
     <NavigationProperty Name="tblChiTietHoaDonNhapHangs" Relationship="PBL3Model.FK__tblChiTie__MaHan__78D3EB5B" FromRole="tblHangHoa" ToRole="tblChiTietHoaDonNhapHang" />
     <NavigationProperty Name="tblLoaiHangHoa" Relationship="PBL3Model.FK__tblHangHo__MaLoa__65C116E7" FromRole="tblHangHoa" ToRole="tblLoaiHangHoa" />
-    <NavigationProperty Name="tblNhaCungCap" Relationship="PBL3Model.FK__tblHangHo__MaNha__66B53B20" FromRole="tblHangHoa" ToRole="tblNhaCungCap" />
     <NavigationProperty Name="tblNhaSanXuat" Relationship="PBL3Model.FK__tblHangHo__MaNha__67A95F59" FromRole="tblHangHoa" ToRole="tblNhaSanXuat" />
   </EntityType>
   <EntityType Name="tblHoaDonBanHang">
@@ -139,6 +132,7 @@
     <Property Name="MaNhanVien" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="NgayNhap" Type="DateTime" Precision="0" />
     <Property Name="SoTien" Type="Double" />
+    <Property Name="GiamGia" Type="Double" />
     <NavigationProperty Name="tblChiTietHoaDonNhapHangs" Relationship="PBL3Model.FK__tblChiTie__MaHoa__77DFC722" FromRole="tblHoaDonNhapHang" ToRole="tblChiTietHoaDonNhapHang" />
     <NavigationProperty Name="tblNhaCungCap" Relationship="PBL3Model.FK__tblHoaDon__MaNha__75035A77" FromRole="tblHoaDonNhapHang" ToRole="tblNhaCungCap" />
     <NavigationProperty Name="tblNhanVien" Relationship="PBL3Model.FK__tblHoaDon__MaNha__75F77EB0" FromRole="tblHoaDonNhapHang" ToRole="tblNhanVien" />
@@ -173,7 +167,6 @@
     <Property Name="Fax" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="MaSoThue" Type="Int32" />
-    <NavigationProperty Name="tblHangHoas" Relationship="PBL3Model.FK__tblHangHo__MaNha__66B53B20" FromRole="tblNhaCungCap" ToRole="tblHangHoa" />
     <NavigationProperty Name="tblHoaDonNhapHangs" Relationship="PBL3Model.FK__tblHoaDon__MaNha__75035A77" FromRole="tblNhaCungCap" ToRole="tblHoaDonNhapHang" />
   </EntityType>
   <EntityType Name="tblNhanVien">
@@ -265,18 +258,6 @@
       </Principal>
       <Dependent Role="tblHangHoa">
         <PropertyRef Name="MaLoaiHangHoa" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__tblHangHo__MaNha__66B53B20">
-    <End Type="PBL3Model.tblNhaCungCap" Role="tblNhaCungCap" Multiplicity="0..1" />
-    <End Type="PBL3Model.tblHangHoa" Role="tblHangHoa" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblNhaCungCap">
-        <PropertyRef Name="MaNhaCungCap" />
-      </Principal>
-      <Dependent Role="tblHangHoa">
-        <PropertyRef Name="MaNhaCungCap" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

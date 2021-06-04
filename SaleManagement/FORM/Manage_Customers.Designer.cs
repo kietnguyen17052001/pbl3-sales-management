@@ -469,7 +469,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.dgvLISTCUSTOMER);
             this.Name = "FrmManage_Customers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manage_Customers";
+            this.Text = "Quản lý khách hàng";
             this.gbGENDER.ResumeLayout(false);
             this.gbGENDER.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTCUSTOMER)).EndInit();
