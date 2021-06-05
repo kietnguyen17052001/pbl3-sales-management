@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\BLL_CHANGEPASSWORD.cs" />
-    <Compile Include="BLL\BLL_CREATEINVOICE.cs" />
+    <Compile Include="BLL\BLL_SALEPRODUCT.cs" />
     <Compile Include="BLL\BLL_CUSTOMER.cs" />
     <Compile Include="BLL\BLL_IMPORTPRODUCT.cs" />
     <Compile Include="BLL\BLL_ITEMS.cs" />

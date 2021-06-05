@@ -9,23 +9,23 @@ using System.Windows.Forms;
 
 namespace SaleManagement.BLL
 {
-    class BLL_CREATEINVOICE
+    class BLL_SALEPRODUCT
     {
         SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        private static BLL_CREATEINVOICE _Instance;
-        public static BLL_CREATEINVOICE Instance
+        private static BLL_SALEPRODUCT _Instance;
+        public static BLL_SALEPRODUCT Instance
         {
             get
             {
                 if (_Instance == null)
                 {
-                    _Instance = new BLL_CREATEINVOICE();
+                    _Instance = new BLL_SALEPRODUCT();
                 }
                 return _Instance;
             }
             private set { }
         }
-        private BLL_CREATEINVOICE() { }
+        private BLL_SALEPRODUCT() { }
         public tblChiTietHoaDonBanHang GetInvoice_Detail(DataRow data, string idInvoice)
         {
             return new tblChiTietHoaDonBanHang
