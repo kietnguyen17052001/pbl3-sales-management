@@ -13,21 +13,22 @@ using System.Windows.Forms;
 
 namespace SaleManagement.FORM
 {
-    public partial class FrmManage_List_Invoice : Form
+    public partial class FrmList_SaleInvoice : Form
     {
-        string idInvoice;
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        public FrmManage_List_Invoice()
+        private string idInvoice, idProduct, nameProduct;
+        private int quantityProduct;
+        public FrmList_SaleInvoice()
         {
             InitializeComponent();
             disable(false);
             setCombobox();
-            var dateMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
-            if (dateMin != null)
-            {
-                dpFROM.Value = dateMin.Value;
-            }
-            ShowList();
+            LoadDataDGVs();
+            FormatColumnHeader();
+            dpFROM.Value = BLL_LISTSALEINVOICE.Instance.getDate();
+        }
+        // Format ColumnHeader
+        public void FormatColumnHeader()
+        {
             // Set style for columnHeader dgvListInvoice and dgvInfo_Invoice
             dgvLIST_INVOICE.EnableHeadersVisualStyles = dgvINFO_INVOICE.EnableHeadersVisualStyles = false;
             dgvLIST_INVOICE.ColumnHeadersDefaultCellStyle.BackColor = dgvINFO_INVOICE.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
@@ -39,7 +40,7 @@ namespace SaleManagement.FORM
             dgvLIST_INVOICE.Columns[1].HeaderText = "Ngày bán";
             dgvLIST_INVOICE.Columns[2].HeaderText = "Nhân viên";
             dgvLIST_INVOICE.Columns[3].HeaderText = "Khách hàng";
-            dgvLIST_INVOICE.Columns[4].HeaderText = "Số tiền(VNĐ)";
+            dgvLIST_INVOICE.Columns[4].HeaderText = "Thành tiền(VNĐ)";
             dgvLIST_INVOICE.Columns[5].HeaderText = "Giảm giá(VNĐ)";
             // Set headertext for dgvInfo_Invoice
             dgvINFO_INVOICE.Columns[0].HeaderText = "Mã h.hóa";
@@ -51,13 +52,9 @@ namespace SaleManagement.FORM
         }
         public void disable(bool E)
         {
-            txtID_INVOICE.Enabled = E;
             dpDAY.Enabled = E;
             cbbCUSTOMER.Enabled = E;
             cbbSTAFF.Enabled = E;
-            txtPRICE_.Enabled = E;
-            txtDISCOUNT.Enabled = E;
-            btnSAVE.Enabled = E;
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
@@ -69,14 +66,13 @@ namespace SaleManagement.FORM
         private void dgvLIST_INVOICE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             idInvoice = dgvLIST_INVOICE.SelectedRows[0].Cells["MaHoaDonBan"].Value.ToString();
-            var invoice = DB.tblHoaDonBanHangs.Find(idInvoice);
-            txtID_INVOICE.Text = invoice.MaHoaDonBan;
-            dpDAY.Value = (DateTime)invoice.NgayBan;
-            cbbSTAFF.Text = BLL_LISTINVOICE.Instance.GetStaff(invoice.tblNhanVien.TenNhanVien);
-            cbbCUSTOMER.Text = BLL_LISTINVOICE.Instance.GetCustomer(invoice.tblKhachHang.TenKhachHang);
+            txtID_INVOICE.Text = idInvoice;
+            dpDAY.Value = Convert.ToDateTime(dgvLIST_INVOICE.SelectedRows[0].Cells["NgayBan"].Value.ToString());
+            cbbSTAFF.Text = BLL_LISTSALEINVOICE.Instance.getTextForCbb(dgvLIST_INVOICE.SelectedRows[0].Cells["TenNhanVien"].Value.ToString(), BLL_STAFF.Instance.getCbbStaff());
+            cbbCUSTOMER.Text = BLL_LISTSALEINVOICE.Instance.getTextForCbb(dgvLIST_INVOICE.SelectedRows[0].Cells["TenKhachHang"].Value.ToString(), BLL_CUSTOMER.Instance.getCbbCustomer());
             txtPRICE_.Text = String.Format("{0:n0}", dgvLIST_INVOICE.SelectedRows[0].Cells["SoTien"].Value);
             txtDISCOUNT.Text = String.Format("{0:n0}", dgvLIST_INVOICE.SelectedRows[0].Cells["GiamGia"].Value);
-            ShowInfoInvoice(idInvoice);
+            BLL_LISTSALEINVOICE.Instance.LoadDataFrmDetail(dgvINFO_INVOICE, idInvoice);
         }
         // set BackColor and Font for DGV
         private void dgvLIST_INVOICE_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -93,66 +89,35 @@ namespace SaleManagement.FORM
         // set data for combobox
         public void setCombobox()
         {
-            cbbSTAFF_DETAIL.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả"});
-            cbbSTAFF_DETAIL.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Staff().ToArray());
-            cbbSTAFF.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Staff().ToArray());
-            cbbCUSTOMER.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Customer().ToArray());
-            cbbSTAFF_DETAIL.SelectedIndex = 0;
+            cbbSTAFF.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
+            cbbCUSTOMER.Items.AddRange(BLL_CUSTOMER.Instance.getCbbCustomer().ToArray());
         }
         // Liệt kê hóa đơn theo cbbStaff_Detail
-        public void ShowListInvoice()
+        public void LoadDataDGVs()
         {
-            if (cbbSTAFF_DETAIL.SelectedIndex == 0)
+            BLL_LISTSALEINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, dpFROM.Value, dpTO.Value, txtSEARCH.Text.Trim());
+            BLL_LISTSALEINVOICE.Instance.LoadDataFrmDetail(dgvINFO_INVOICE, idInvoice);
+        }
+        // Search invoice
+        private void txtSEARCH_TextChanged(object sender, EventArgs e)
+        {
+            BLL_LISTSALEINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, dpFROM.Value, dpTO.Value, txtSEARCH.Text.Trim()); // search invoice
+        }
+        private void txtSEARCH_Enter(object sender, EventArgs e)
+        {
+            if (txtSEARCH.Text == "Nhập mã hóa đơn hoặc mã/ tên khách hàng")
             {
-                var getInvoice = DB.tblHoaDonBanHangs.Where(p => p.NgayBan >= dpFROM.Value && p.NgayBan <= dpTO.Value).Select(p => new {
-                    p.MaHoaDonBan,
-                    p.NgayBan,
-                    p.tblNhanVien.TenNhanVien,
-                    p.tblKhachHang.TenKhachHang,
-                    p.SoTien,
-                    p.GiamGia
-                });
-                dgvLIST_INVOICE.DataSource = getInvoice.ToList();
-            }
-            else
-            {
-                var getInvoice = DB.tblHoaDonBanHangs.Where(p => p.MaNhanVien == ((CBBItem)cbbSTAFF_DETAIL.SelectedItem).VALUE && p.NgayBan >= dpFROM.Value && p.NgayBan <= dpTO.Value).Select(p => new {
-                    p.MaHoaDonBan,
-                    p.NgayBan,
-                    p.tblNhanVien.TenNhanVien,
-                    p.tblKhachHang.TenKhachHang,
-                    p.SoTien,
-                    p.GiamGia
-                });
-                dgvLIST_INVOICE.DataSource = getInvoice.ToList();
+                txtSEARCH.Text = "";
+                txtSEARCH.ForeColor = Color.Black;
             }
         }
-        // Liệt kê thông tin đơn hàng dựa vào mã hóa đơn từ dgvList_Invoice
-        public void ShowInfoInvoice(string idInvoice)
+        private void txtSEARCH_Leave(object sender, EventArgs e)
         {
-            var infoInvoice = DB.tblChiTietHoaDonBanHangs.Where(p => p.MaHoaDonBan == idInvoice).Select(p => new {
-                p.MaHangHoa,
-                p.tblHangHoa.TenHangHoa,
-                p.SoLuong,
-                p.DonGia,
-                p.GiamGia,
-                p.TongTien
-            });
-            dgvINFO_INVOICE.DataSource = infoInvoice.ToList();
-        }
-        // Func show listInvoice and infoInvoice
-        public void ShowList()
-        {
-            ShowListInvoice();
-            if(dgvLIST_INVOICE.Rows.Count != 0)
+            if (txtSEARCH.Text == "")
             {
-                idInvoice = dgvLIST_INVOICE.Rows[0].Cells["MaHoaDonBan"].Value.ToString();
+                txtSEARCH.Text = "Nhập mã hóa đơn hoặc mã/ tên khách hàng";
+                txtSEARCH.ForeColor = Color.Silver;
             }
-            ShowInfoInvoice(idInvoice);
-        }
-        private void btnSHOW_Click(object sender, EventArgs e)
-        {
-            ShowList();
         }
         // Export Excel
         private void btnEXCEL_Click(object sender, EventArgs e)
@@ -188,20 +153,20 @@ namespace SaleManagement.FORM
         private void btnEDIT_Click(object sender, EventArgs e)
         {
             disable(true);
-            txtID_INVOICE.Enabled = false;
         }
         // Save changes
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            tblHoaDonBanHang invoice = new tblHoaDonBanHang();
-            invoice.MaHoaDonBan = txtID_INVOICE.Text;
-            invoice.NgayBan = Convert.ToDateTime(dpDAY.Value);
-            invoice.MaNhanVien = ((CBBItem)cbbSTAFF.SelectedItem).VALUE;
-            invoice.MaKhachHang = ((CBBItem)cbbCUSTOMER.SelectedItem).VALUE;
-            BLL_LISTINVOICE.Instance.FuncEditInvoice(invoice); // edit invoice
-            MessageBox.Show("Sửa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Show();
-            disable(false);
+            try
+            {
+                BLL_LISTSALEINVOICE.Instance.FuncEditInvoice(idInvoice, dpDAY.Value, ((CBBItem)cbbSTAFF.SelectedItem).VALUE, ((CBBItem)cbbCUSTOMER.SelectedItem).VALUE);
+                MessageBox.Show("Sửa thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadDataDGVs();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Sửa thất bại hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         // Delete invoice
         private void btnDELETE_Click(object sender, EventArgs e)
@@ -212,12 +177,11 @@ namespace SaleManagement.FORM
             {
                 listIdInvoice.Add(dataGvr.Cells["MaHoaDonBan"].Value.ToString());
             }
-            DialogResult question = MessageBox.Show("Bạn chắc chắn xóa hóa đơn này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (question == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Bạn chắc chắn xóa hóa đơn này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-                BLL_LISTINVOICE.Instance.FuncDeleteInvoice(listIdInvoice); // delete invoice
-                MessageBox.Show("Xóa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information); 
-                ShowListInvoice();
+                BLL_LISTSALEINVOICE.Instance.FuncDeleteInvoice(listIdInvoice); // delete invoice
+                LoadDataDGVs();
             }
         }
         // back to frmQuanLyDuLieu
@@ -230,61 +194,28 @@ namespace SaleManagement.FORM
                 frm.Show();
                 this.Close();
             }
-            else
-            {
-                return;
-            }
-        }
-        // Search invoice
-        private void txtSEARCH_TextChanged(object sender, EventArgs e)
-        {
-            // Tìm kiếm theo mã đơn, mã khách hoặc tên khách hàng
-            BLL_LISTINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, txtSEARCH.Text.Trim()); // search invoice
-        }
-        private void txtSEARCH_Enter(object sender, EventArgs e)
-        {
-            if(txtSEARCH.Text == "Nhập mã hóa đơn hoặc mã/ tên khách hàng")
-            {
-                txtSEARCH.Text = "";
-                txtSEARCH.ForeColor = Color.Black;
-            }
-        }
-        private void txtSEARCH_Leave(object sender, EventArgs e)
-        {
-            if (txtSEARCH.Text == "")
-            {
-                txtSEARCH.Text = "Nhập mã hóa đơn hoặc mã/ tên khách hàng";
-                txtSEARCH.ForeColor = Color.Silver;
-            }
         }
         // Add product for invoice
         private void btnADD_PRODUCT_Click(object sender, EventArgs e)
         {
             FrmAdd_NewProduct frm = new FrmAdd_NewProduct(idInvoice);
             frm.Show();
-            ShowList();
+            LoadDataDGVs();
         }
         // Func set new Quantity for product in invoice
-        public void setNewQuantity(int _newQuantity)
+        public void setNewQuantity(int newQuantity)
         {
-            string idProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
-            var getInvoiceDetail = DB.tblChiTietHoaDonBanHangs.Find(idInvoice, idProduct);
-            getInvoiceDetail.SoLuong = _newQuantity;
-            getInvoiceDetail.TongTien = getInvoiceDetail.DonGia * _newQuantity - getInvoiceDetail.DonGia * _newQuantity * getInvoiceDetail.GiamGia/100; // thay đổi số tiền của chi tiết hóa đơn sau khi thay đổi số lượng mới
-            DB.SaveChanges();
-            var getInvoice = DB.tblHoaDonBanHangs.Find(idInvoice);
-            getInvoice.SoTien = BLL_LISTINVOICE.Instance.GetPriceInvoice(idInvoice) - getInvoice.GiamGia;
-            DB.SaveChanges();
-            ShowList();
+            BLL_LISTSALEINVOICE.Instance.ChangeQuantityProduct(quantityProduct, newQuantity, idInvoice, idProduct);
+            LoadDataDGVs();
         }
         // Edit quantity product
         private void btnEDIT_QUANTITY_Click(object sender, EventArgs e)
         {
-            string nameProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["TenHangHoa"].Value.ToString();
-            int oldQuantity = Convert.ToInt32(dgvINFO_INVOICE.SelectedRows[0].Cells["SoLuong"].Value.ToString());
-            string idProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
-            FrmEdit_Quantity_ListInvoice frm = new FrmEdit_Quantity_ListInvoice(idProduct, nameProduct, oldQuantity);
-            frm.d += new FrmEdit_Quantity_ListInvoice.myDEL(setNewQuantity);
+            nameProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["TenHangHoa"].Value.ToString();
+            quantityProduct = Convert.ToInt32(dgvINFO_INVOICE.SelectedRows[0].Cells["SoLuong"].Value.ToString());
+            idProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
+            FrmEditQuantityProduct_ListSaleInvoice frm = new FrmEditQuantityProduct_ListSaleInvoice(idProduct, nameProduct, quantityProduct);
+            frm.d += new FrmEditQuantityProduct_ListSaleInvoice.myDEL(setNewQuantity);
             frm.Show();
         }
         // Delete product in invoice
@@ -296,8 +227,16 @@ namespace SaleManagement.FORM
             {
                 listIdProduct.Add(dataGVR.Cells["MaHangHoa"].Value.ToString());
             }
-            BLL_LISTINVOICE.Instance.FuncDeleteProduct(listIdProduct, idInvoice); // delete product
-            ShowList();
+            DialogResult result = MessageBox.Show("Bạn chắc chắn hàng hóa này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                BLL_LISTSALEINVOICE.Instance.FuncDeleteProduct(listIdProduct, idInvoice); // delete product
+                LoadDataDGVs();
+            }        
+        }
+        private void txtID_INVOICE_TextChanged(object sender, EventArgs e)
+        {
+            lbIdInvoice.Text = idInvoice;
         }
     }
 }

@@ -39,9 +39,9 @@ namespace SaleManagement.VIEW
             this.Close();
         }
 
-        private void btnBILL_Click(object sender, EventArgs e)
+        private void btnSALE_Click(object sender, EventArgs e)
         {
-            FrmBill frm = new FrmBill();
+            FrmInvoice_SaleProduct frm = new FrmInvoice_SaleProduct();
             frm.Show();
             this.Close();
         }
@@ -60,9 +60,9 @@ namespace SaleManagement.VIEW
             this.Close();
         }
 
-        private void btnLIST_BILLS_Click(object sender, EventArgs e)
+        private void btnLIST_SALEINVOICE_Click(object sender, EventArgs e)
         {
-            FrmManage_List_Invoice frm = new FrmManage_List_Invoice();
+            FrmList_SaleInvoice frm = new FrmList_SaleInvoice();
             frm.Show();
             this.Close();
         }
@@ -77,6 +77,13 @@ namespace SaleManagement.VIEW
         private void btnImportProduct_Click(object sender, EventArgs e)
         {
             FrmInvoice_ImportProduct frm = new FrmInvoice_ImportProduct();
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnLIST_IMPORTINVOICE_Click(object sender, EventArgs e)
+        {
+            FrmList_ImportInvoice frm = new FrmList_ImportInvoice();
             frm.Show();
             this.Close();
         }

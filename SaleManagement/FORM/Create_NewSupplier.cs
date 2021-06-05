@@ -14,7 +14,6 @@ namespace SaleManagement.FORM
 {
     public partial class FrmCreate_NewSupplier : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public delegate void myDEL(string VALUE, string TEXT);
         public myDEL d { get; set; }
         public FrmCreate_NewSupplier()

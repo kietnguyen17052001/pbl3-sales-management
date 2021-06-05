@@ -1,7 +1,7 @@
 ﻿
 namespace SaleManagement.FORM
 {
-    partial class FrmManage_List_Invoice
+    partial class FrmList_SaleInvoice
     {
         /// <summary>
         /// Required designer variable.
@@ -39,8 +39,7 @@ namespace SaleManagement.FORM
             this.label9 = new System.Windows.Forms.Label();
             this.dgvLIST_INVOICE = new System.Windows.Forms.DataGridView();
             this.dgvINFO_INVOICE = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbbSTAFF_DETAIL = new System.Windows.Forms.ComboBox();
+            this.lbInvoiceDetail = new System.Windows.Forms.Label();
             this.dpFROM = new System.Windows.Forms.DateTimePicker();
             this.dpTO = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,12 +55,12 @@ namespace SaleManagement.FORM
             this.btnEDIT_QUANTITY = new System.Windows.Forms.Button();
             this.btnDELETE_PRODUCT = new System.Windows.Forms.Button();
             this.btnEXCEL = new System.Windows.Forms.Button();
-            this.btnSHOW = new System.Windows.Forms.Button();
             this.btnEDIT = new System.Windows.Forms.Button();
             this.btnBACK = new System.Windows.Forms.Button();
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbIdInvoice = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_INVOICE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvINFO_INVOICE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,6 +68,7 @@ namespace SaleManagement.FORM
             // 
             // txtPRICE_
             // 
+            this.txtPRICE_.Enabled = false;
             this.txtPRICE_.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPRICE_.ForeColor = System.Drawing.Color.Black;
             this.txtPRICE_.Location = new System.Drawing.Point(150, 297);
@@ -78,11 +78,13 @@ namespace SaleManagement.FORM
             // 
             // txtID_INVOICE
             // 
+            this.txtID_INVOICE.Enabled = false;
             this.txtID_INVOICE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_INVOICE.Location = new System.Drawing.Point(150, 136);
             this.txtID_INVOICE.Name = "txtID_INVOICE";
             this.txtID_INVOICE.Size = new System.Drawing.Size(237, 29);
             this.txtID_INVOICE.TabIndex = 93;
+            this.txtID_INVOICE.TextChanged += new System.EventHandler(this.txtID_INVOICE_TextChanged);
             // 
             // label4
             // 
@@ -158,7 +160,7 @@ namespace SaleManagement.FORM
             this.dgvLIST_INVOICE.RowHeadersWidth = 62;
             this.dgvLIST_INVOICE.RowTemplate.Height = 28;
             this.dgvLIST_INVOICE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLIST_INVOICE.Size = new System.Drawing.Size(836, 242);
+            this.dgvLIST_INVOICE.Size = new System.Drawing.Size(836, 239);
             this.dgvLIST_INVOICE.TabIndex = 108;
             this.dgvLIST_INVOICE.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLIST_INVOICE_CellClick);
             this.dgvLIST_INVOICE.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLIST_INVOICE_CellFormatting);
@@ -182,34 +184,24 @@ namespace SaleManagement.FORM
             this.dgvINFO_INVOICE.TabIndex = 111;
             this.dgvINFO_INVOICE.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvINFO_INVOICE_CellFormatting);
             // 
-            // label5
+            // lbInvoiceDetail
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Navy;
-            this.label5.Location = new System.Drawing.Point(983, 395);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(252, 26);
-            this.label5.TabIndex = 112;
-            this.label5.Text = "THÔNG TIN ĐƠN HÀNG";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // cbbSTAFF_DETAIL
-            // 
-            this.cbbSTAFF_DETAIL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbSTAFF_DETAIL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbSTAFF_DETAIL.FormattingEnabled = true;
-            this.cbbSTAFF_DETAIL.Location = new System.Drawing.Point(399, 93);
-            this.cbbSTAFF_DETAIL.Name = "cbbSTAFF_DETAIL";
-            this.cbbSTAFF_DETAIL.Size = new System.Drawing.Size(201, 30);
-            this.cbbSTAFF_DETAIL.TabIndex = 119;
+            this.lbInvoiceDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbInvoiceDetail.AutoSize = true;
+            this.lbInvoiceDetail.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbInvoiceDetail.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lbInvoiceDetail.Location = new System.Drawing.Point(912, 397);
+            this.lbInvoiceDetail.Name = "lbInvoiceDetail";
+            this.lbInvoiceDetail.Size = new System.Drawing.Size(187, 27);
+            this.lbInvoiceDetail.TabIndex = 112;
+            this.lbInvoiceDetail.Text = "Chi tiết hóa đơn";
+            this.lbInvoiceDetail.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // dpFROM
             // 
             this.dpFROM.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpFROM.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpFROM.Location = new System.Drawing.Point(748, 94);
+            this.dpFROM.Location = new System.Drawing.Point(409, 402);
             this.dpFROM.Name = "dpFROM";
             this.dpFROM.Size = new System.Drawing.Size(156, 29);
             this.dpFROM.TabIndex = 120;
@@ -218,7 +210,7 @@ namespace SaleManagement.FORM
             // 
             this.dpTO.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpTO.Location = new System.Drawing.Point(910, 94);
+            this.dpTO.Location = new System.Drawing.Point(571, 402);
             this.dpTO.Name = "dpTO";
             this.dpTO.Size = new System.Drawing.Size(156, 29);
             this.dpTO.TabIndex = 121;
@@ -227,7 +219,7 @@ namespace SaleManagement.FORM
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(782, 70);
+            this.label2.Location = new System.Drawing.Point(443, 378);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 22);
             this.label2.TabIndex = 122;
@@ -237,7 +229,7 @@ namespace SaleManagement.FORM
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(941, 70);
+            this.label10.Location = new System.Drawing.Point(602, 378);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 22);
             this.label10.TabIndex = 123;
@@ -247,7 +239,7 @@ namespace SaleManagement.FORM
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(399, 395);
+            this.txtSEARCH.Location = new System.Drawing.Point(399, 93);
             this.txtSEARCH.Name = "txtSEARCH";
             this.txtSEARCH.Size = new System.Drawing.Size(382, 29);
             this.txtSEARCH.TabIndex = 125;
@@ -278,6 +270,7 @@ namespace SaleManagement.FORM
             // 
             // txtDISCOUNT
             // 
+            this.txtDISCOUNT.Enabled = false;
             this.txtDISCOUNT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDISCOUNT.ForeColor = System.Drawing.Color.Black;
             this.txtDISCOUNT.Location = new System.Drawing.Point(150, 337);
@@ -399,7 +392,7 @@ namespace SaleManagement.FORM
             this.btnEXCEL.ForeColor = System.Drawing.Color.White;
             this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
             this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEXCEL.Location = new System.Drawing.Point(1083, 82);
+            this.btnEXCEL.Location = new System.Drawing.Point(840, 81);
             this.btnEXCEL.Name = "btnEXCEL";
             this.btnEXCEL.Size = new System.Drawing.Size(152, 48);
             this.btnEXCEL.TabIndex = 118;
@@ -407,25 +400,6 @@ namespace SaleManagement.FORM
             this.btnEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEXCEL.UseVisualStyleBackColor = false;
             this.btnEXCEL.Click += new System.EventHandler(this.btnEXCEL_Click);
-            // 
-            // btnSHOW
-            // 
-            this.btnSHOW.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSHOW.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSHOW.FlatAppearance.BorderSize = 0;
-            this.btnSHOW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSHOW.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSHOW.ForeColor = System.Drawing.Color.White;
-            this.btnSHOW.Image = global::SaleManagement.Properties.Resources.activity_feed_24;
-            this.btnSHOW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSHOW.Location = new System.Drawing.Point(610, 82);
-            this.btnSHOW.Name = "btnSHOW";
-            this.btnSHOW.Size = new System.Drawing.Size(119, 48);
-            this.btnSHOW.TabIndex = 110;
-            this.btnSHOW.Text = "Liệt kê";
-            this.btnSHOW.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSHOW.UseVisualStyleBackColor = false;
-            this.btnSHOW.Click += new System.EventHandler(this.btnSHOW_Click);
             // 
             // btnEDIT
             // 
@@ -509,18 +483,29 @@ namespace SaleManagement.FORM
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
             this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(787, 384);
+            this.pictureBox1.Location = new System.Drawing.Point(787, 82);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
             this.pictureBox1.Size = new System.Drawing.Size(47, 47);
             this.pictureBox1.TabIndex = 136;
             this.pictureBox1.TabStop = false;
             // 
-            // FrmManage_List_Invoice
+            // lbIdInvoice
+            // 
+            this.lbIdInvoice.AutoSize = true;
+            this.lbIdInvoice.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIdInvoice.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lbIdInvoice.Location = new System.Drawing.Point(1114, 397);
+            this.lbIdInvoice.Name = "lbIdInvoice";
+            this.lbIdInvoice.Size = new System.Drawing.Size(0, 27);
+            this.lbIdInvoice.TabIndex = 137;
+            // 
+            // FrmList_SaleInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 691);
+            this.Controls.Add(this.lbIdInvoice);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHOME);
@@ -536,11 +521,9 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dpTO);
             this.Controls.Add(this.dpFROM);
-            this.Controls.Add(this.cbbSTAFF_DETAIL);
             this.Controls.Add(this.btnEXCEL);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lbInvoiceDetail);
             this.Controls.Add(this.dgvINFO_INVOICE);
-            this.Controls.Add(this.btnSHOW);
             this.Controls.Add(this.dgvLIST_INVOICE);
             this.Controls.Add(this.dpDAY);
             this.Controls.Add(this.label9);
@@ -554,9 +537,9 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
-            this.Name = "FrmManage_List_Invoice";
+            this.Name = "FrmList_SaleInvoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manage_List_Invoice";
+            this.Text = "Danh sách hóa đơn bán hàng";
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_INVOICE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvINFO_INVOICE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -578,12 +561,10 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dpDAY;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnSHOW;
         private System.Windows.Forms.DataGridView dgvLIST_INVOICE;
         private System.Windows.Forms.DataGridView dgvINFO_INVOICE;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbInvoiceDetail;
         private System.Windows.Forms.Button btnEXCEL;
-        private System.Windows.Forms.ComboBox cbbSTAFF_DETAIL;
         private System.Windows.Forms.DateTimePicker dpFROM;
         private System.Windows.Forms.DateTimePicker dpTO;
         private System.Windows.Forms.Label label2;
@@ -599,5 +580,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbIdInvoice;
     }
 }

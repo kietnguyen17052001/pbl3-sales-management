@@ -14,20 +14,24 @@ namespace SaleManagement.FORM
 {
     public partial class FrmReport : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public FrmReport()
         {
             InitializeComponent();
-            var getDayMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
-            if (getDayMin == null)
+            DateTime dateMin = BLL_REPORT.Instance.getDateMin();
+            if (dateMin == null)
             {
                 dpFROM.Value = DateTime.Now;
             }
             else
             {
-                dpFROM.Value = getDayMin.Value;
+                dpFROM.Value = dateMin;
             }
-            ShowList();
+            ShowData();
+            FormatColumnHeader();
+        }
+        // Format column header
+        public void FormatColumnHeader()
+        {
             // Set style for ColumnHeader
             dgvREVENUE.EnableHeadersVisualStyles = false;
             dgvREVENUE.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
@@ -45,30 +49,20 @@ namespace SaleManagement.FORM
             dgvREVENUE.Columns[7].HeaderText = "Tổng tiền(VNĐ)";
         }
         // show tblChiTiethoaDonBanHang theo time
-        public void ShowList()
+        public void ShowData()
         {
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value).Select(p => new { 
-                p.MaHangHoa,
-                p.tblHangHoa.TenHangHoa,
-                p.tblHoaDonBanHang.NgayBan,
-                p.tblHoaDonBanHang.tblKhachHang.TenKhachHang,
-                p.SoLuong,
-                p.DonGia,
-                p.GiamGia,
-                p.TongTien
-            });
-            dgvREVENUE.DataSource = list.ToList();
-            GetInformation();
+            BLL_REPORT.Instance.LoadDataReport(dgvREVENUE, dpFROM.Value, dpTO.Value);
+            getInformation();
         }
-        public void GetInformation()
+        public void getInformation()
         {
             DateTime dateMin = dpFROM.Value;
             DateTime dateMax = dpTO.Value;
-            lbSALES.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetRevenue(dateMin, dateMax));
-            lbPROFIT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetProfit(dateMin, dateMax));
-            lbDISCOUNT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetDiscount(dateMin, dateMax));
-            lbPRODUCT_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetQuantity(dateMin, dateMax));
-            lbINVOICE_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetInvoice(dateMin, dateMax));
+            lbSALES.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getRevenue(dateMin, dateMax));
+            lbPROFIT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getProfit(dateMin, dateMax));
+            lbDISCOUNT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getDiscount(dateMin, dateMax));
+            lbPRODUCT_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getQuantity(dateMin, dateMax));
+            lbINVOICE_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getInvoice(dateMin, dateMax));
         }
         // set backColor for dgv
         private void dgvREVENUE_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -79,7 +73,7 @@ namespace SaleManagement.FORM
         // load lại danh sách theo thời gian
         private void btnLOAD_Click(object sender, EventArgs e)
         {
-            ShowList();
+            ShowData();
         }
         // back to FrmQLBanHang
         private void btnBACK_Click(object sender, EventArgs e)

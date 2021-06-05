@@ -27,7 +27,7 @@ namespace SaleManagement.FORM
         }
         public void setCbbStaff()
         {
-            cbbStaff.Items.AddRange(BLL_IMPORTPRODUCT.instance.getCbbStaff().ToArray());
+            cbbStaff.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
             cbbStaff.SelectedIndex = 0;
         }
         // Load data for DGVs

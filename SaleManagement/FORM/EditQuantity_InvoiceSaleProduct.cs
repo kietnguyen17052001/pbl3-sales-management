@@ -1,4 +1,5 @@
-﻿using SaleManagement.Entity;
+﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,12 +12,12 @@ using System.Windows.Forms;
 
 namespace SaleManagement.FORM
 {
-    public partial class FrmEditQty_CreateInvoice : Form
+    public partial class FrmEditQuantity_InvoiceSaleProduct : Form
     {
-        public delegate void myDEL(int quantity);
-        public myDEL d { get; set; }
-        public string idProduct { get; set; }
-        public FrmEditQty_CreateInvoice(string _idProduct)
+        public delegate void myDel(int quantity);
+        public myDel d { get; set; }
+        private string idProduct { get; set; }
+        public FrmEditQuantity_InvoiceSaleProduct(string _idProduct)
         {
             InitializeComponent();
             idProduct = _idProduct;
@@ -25,15 +26,13 @@ namespace SaleManagement.FORM
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var product = DB.tblHangHoas.Find(idProduct);
             if (string.IsNullOrEmpty(txtNEWQTY.Text))
             {
                 lbQTY.Text = "Bạn chưa nhập số lượng mới!"; 
             }
             else
             {
-                if (Convert.ToInt32(txtNEWQTY.Text) > product.SoLuong)
+                if (Convert.ToInt32(txtNEWQTY.Text) > BLL_PRODUCTS.Instance.getQuantityProduct(idProduct))
                 {
                     lbQTY.Text = "KHÔNG ĐỦ SL";
                 }

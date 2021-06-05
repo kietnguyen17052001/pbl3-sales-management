@@ -16,7 +16,6 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Items : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         bool isAdd;
         public FrmManage_Items()
         {
@@ -44,9 +43,9 @@ namespace SaleManagement.VIEW
         public void setCBB()
         {
             cbbTYPE_OF__PRODUCT_DETAIL.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả" });
-            cbbTYPE_OF__PRODUCT_DETAIL.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
-            cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
-            cbbPRODUCERs.Items.AddRange(BLL_ITEMS.Instance.GetCBBProducer().ToArray());
+            cbbTYPE_OF__PRODUCT_DETAIL.Items.AddRange(BLL_PRODUCTS.Instance.getCBBTypeProduct().ToArray());
+            cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_PRODUCTS.Instance.getCBBTypeProduct().ToArray());
+            cbbPRODUCERs.Items.AddRange(BLL_PRODUCER.Instance.getCbbProducer().ToArray());
             cbbTYPE_OF__PRODUCT_DETAIL.SelectedIndex = 0;
         }
         void disable(bool E)
@@ -76,36 +75,7 @@ namespace SaleManagement.VIEW
         public void ShowProduct()
         {
             string idTypeOfProduct = ((CBBItem)cbbTYPE_OF__PRODUCT_DETAIL.SelectedItem).VALUE;
-            if (cbbTYPE_OF__PRODUCT_DETAIL.SelectedIndex == 0)
-            {
-                var product = DB.tblHangHoas.Select(p => new
-                {
-                    p.MaHangHoa,
-                    p.TenHangHoa,
-                    p.SoLuong,
-                    p.tblLoaiHangHoa.TenLoaiHangHoa,
-                    p.tblNhaSanXuat.TenNhaSanXuat,
-                    p.GiaNhap,
-                    p.GiaBan,
-                    p.MoTa
-                });
-                dgvLISTITEMS.DataSource = product.ToList();
-            }
-            else
-            {
-                var product = DB.tblHangHoas.Where(p => p.MaLoaiHangHoa == idTypeOfProduct).Select(p => new
-                {
-                    p.MaHangHoa,
-                    p.TenHangHoa,
-                    p.SoLuong,
-                    p.tblLoaiHangHoa.TenLoaiHangHoa,
-                    p.tblNhaSanXuat.TenNhaSanXuat,
-                    p.GiaNhap,
-                    p.GiaBan,
-                    p.MoTa
-                });
-                dgvLISTITEMS.DataSource = product.ToList();
-            }
+            BLL_PRODUCTS.Instance.LoadDataProduct(dgvLISTITEMS, idTypeOfProduct);
             txtID_PRODUCT.Clear();
             txtNAME_PRODUCT.Clear();
             txtBUY.Clear();
@@ -128,6 +98,14 @@ namespace SaleManagement.VIEW
             dgvLISTITEMS.DefaultCellStyle.BackColor = Color.OldLace;
             dgvLISTITEMS.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
         }
+        public Image ByteArrayToImage(byte[] byArrayIn)
+        {
+            using (MemoryStream ms = new MemoryStream(byArrayIn))
+            {
+                Image returnImage = Image.FromStream(ms);
+                return returnImage;
+            }
+        }
         // click event
         private void dgvLISTITEMS_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -138,14 +116,11 @@ namespace SaleManagement.VIEW
             txtDESCRIBE.Text = dgvLISTITEMS.SelectedRows[0].Cells["MoTa"].Value.ToString();
             string typeProduct = dgvLISTITEMS.SelectedRows[0].Cells["TenLoaiHangHoa"].Value.ToString();
             string producer = dgvLISTITEMS.SelectedRows[0].Cells["TenNhaSanXuat"].Value.ToString();
-            cbbTYPE_OF_PRODUCT.Text = BLL_ITEMS.Instance.GetText(typeProduct, BLL_ITEMS.Instance.GetCBBTypeProduct());
-            cbbPRODUCERs.Text = BLL_ITEMS.Instance.GetText(producer, BLL_ITEMS.Instance.GetCBBProducer());
+            cbbTYPE_OF_PRODUCT.Text = BLL_PRODUCTS.Instance.getText(typeProduct, BLL_PRODUCTS.Instance.getCBBTypeProduct());
+            cbbPRODUCERs.Text = BLL_PRODUCTS.Instance.getText(producer, BLL_PRODUCER.Instance.getCbbProducer());
             txtBUY.Text = String.Format("{0:n0}", dgvLISTITEMS.SelectedRows[0].Cells["GiaNhap"].Value);
             txtSALE.Text = String.Format("{0:n0}", dgvLISTITEMS.SelectedRows[0].Cells["GiaBan"].Value);
-            var product = DB.tblHangHoas.Find(idProduct);
-            if (ByteArrayToImage(product.HinhAnh.ToArray()) != null) {
-                pbIMAGE.Image = ByteArrayToImage(product.HinhAnh.ToArray());
-            } 
+            pbIMAGE.Image = BLL_PRODUCTS.Instance.image(idProduct);
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
@@ -192,7 +167,7 @@ namespace SaleManagement.VIEW
             isAdd = true;
             disable(true);
             cbbPRODUCERs.SelectedIndex = cbbPRODUCERs.SelectedIndex = cbbTYPE_OF_PRODUCT.SelectedIndex = 0;
-            txtID_PRODUCT.Text = BLL_ITEMS.Instance.GetNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
+            txtID_PRODUCT.Text = BLL_PRODUCTS.Instance.getNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
             txtNAME_PRODUCT.Clear();
             txtQUANTITY.Text = "0";
             txtQUANTITY.Enabled = false;
@@ -270,7 +245,7 @@ namespace SaleManagement.VIEW
                     try
                     {
                         product.HinhAnh = images;
-                        BLL_ITEMS.Instance.FuncAddNewProduct(product); // add new product
+                        BLL_PRODUCTS.Instance.FuncAddNewProduct(product); // add new product
                         MessageBox.Show("Thêm hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         disable(false);
                         LoadForm(); // load form after add new product
@@ -283,7 +258,7 @@ namespace SaleManagement.VIEW
                 }
                 else
                 {
-                    BLL_ITEMS.Instance.FuncEditProduct(product); // edit product
+                    BLL_PRODUCTS.Instance.FuncEditProduct(product); // edit product
                     MessageBox.Show("Sửa hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     disable(false);
                     ShowProduct();
@@ -302,7 +277,7 @@ namespace SaleManagement.VIEW
             DialogResult question = MessageBox.Show("Bạn chắc chắn xóa hàng hóa này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (question == DialogResult.Yes)
             {
-                BLL_ITEMS.Instance.FuncDeleteProduct(listIdProduct); // delete product 
+                BLL_PRODUCTS.Instance.FuncDeleteProduct(listIdProduct); // delete product 
                 LoadForm(); // load form sau khi delete
             }
         }
@@ -348,25 +323,17 @@ namespace SaleManagement.VIEW
         {
             if (rbID_ITEM.Checked == true)
             {
-                BLL_ITEMS.Instance.FuncSearchId(dgvLISTITEMS, txtSEARCH.Text.Trim());
+                BLL_PRODUCTS.Instance.FuncSearchId(dgvLISTITEMS, txtSEARCH.Text.Trim());
             }
             else
             {
-                BLL_ITEMS.Instance.FuncSearchName(dgvLISTITEMS, txtSEARCH.Text.Trim());
-            }
-        }
-        public Image ByteArrayToImage(byte[] byArrayIn)
-        {
-            using (MemoryStream ms = new MemoryStream(byArrayIn))
-            {
-                Image returnImage = Image.FromStream(ms);
-                return returnImage;
+                BLL_PRODUCTS.Instance.FuncSearchName(dgvLISTITEMS, txtSEARCH.Text.Trim());
             }
         }
         // change idProduct
         private void cbbTYPE_OF_ITEMS_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtID_PRODUCT.Text = BLL_ITEMS.Instance.GetNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
+            txtID_PRODUCT.Text = BLL_PRODUCTS.Instance.getNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
         }
 
         private void txtNAME_ITEM_Enter(object sender, EventArgs e)

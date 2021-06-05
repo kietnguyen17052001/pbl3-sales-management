@@ -1,4 +1,5 @@
-﻿using SaleManagement.Entity;
+﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,20 +12,19 @@ using System.Windows.Forms;
 
 namespace SaleManagement.FORM
 {
-    public partial class FrmEdit_Quantity_ListInvoice : Form
+    public partial class FrmEditQuantityProduct_ListSaleInvoice : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public delegate void myDEL(int quantity);
         public myDEL d { get; set; }
-        public string idProduct { get; set; }
-        public FrmEdit_Quantity_ListInvoice(string _idProduct, string nameProduct, int quantity)
+        private string idProduct;
+        private int newQuantity;
+        public FrmEditQuantityProduct_ListSaleInvoice(string _idProduct, string nameProduct, int quantity)
         {
             InitializeComponent();
             txtPRODUCT.Text = nameProduct;
             txtQUANTITY.Text = quantity.ToString();
             idProduct = _idProduct;
-            var product = DB.tblHangHoas.Find(idProduct);
-            lbQUANTITY.Text = product.SoLuong.ToString();
+            lbQUANTITY.Text = BLL_PRODUCTS.Instance.getQuantityProduct(idProduct).ToString();
             txtPRODUCT.Enabled = false;
             txtQUANTITY.Enabled = false;
             txtNEW_QUANTITY.Text = "1";
@@ -38,18 +38,14 @@ namespace SaleManagement.FORM
             }
             else
             {
-                int oldQty = Convert.ToInt32(txtQUANTITY.Text);
-                int newQty = Convert.ToInt32(txtNEW_QUANTITY.Text);
-                var product = DB.tblHangHoas.Find(idProduct);
-                if (newQty > product.SoLuong)
+                newQuantity= Convert.ToInt32(txtNEW_QUANTITY.Text);
+                if (newQuantity > BLL_PRODUCTS.Instance.getQuantityProduct(idProduct))
                 {
                     lbSTATUS.Text = "KHÔNG ĐỦ SL";
                 }
                 else
                 {
-                    product.SoLuong = product.SoLuong + oldQty - newQty;
-                    DB.SaveChanges();
-                    d(newQty);
+                    d(newQuantity);
                     this.Close();
                 }
             }

@@ -14,8 +14,7 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Staffs : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        bool isAdd; // Kiểm tra xem thực hiện chức năng ADD hay EDIT
+        private bool isAdd; // Kiểm tra xem thực hiện chức năng ADD hay EDIT
         public FrmManage_Staffs()
         {
             InitializeComponent();
@@ -59,42 +58,17 @@ namespace SaleManagement.VIEW
         public void SetCbb()
         {
             cbbPOSITION_DETAIL.Items.Add("Tất cả");
-            cbbPOSITION_DETAIL.Items.AddRange(BLL_STAFF.Instance.GetListPosition().Distinct().ToArray());
+            cbbPOSITION_DETAIL.Items.AddRange(BLL_STAFF.Instance.getListPosition().Distinct().ToArray());
             cbbPOSITION.Items.Add("None");
-            cbbPOSITION.Items.AddRange(BLL_STAFF.Instance.GetListPosition().Distinct().ToArray());
+            cbbPOSITION.Items.AddRange(BLL_STAFF.Instance.getListPosition().Distinct().ToArray());
             cbbPOSITION_DETAIL.SelectedIndex = cbbPOSITION.SelectedIndex = 0;
         }
         // show data staff
         public void ShowStaff()
         {
-            if (cbbPOSITION_DETAIL.SelectedIndex == 0)
-            {
-                var getStaff = DB.tblNhanViens.Select(p => new {
-                    p.MaNhanVien,
-                    p.TenNhanVien,
-                    p.ViTri,
-                    p.NgaySinh,
-                    p.GioiTinh,
-                    p.SoDienThoai,
-                    p.DiaChi,
-                    p.Luong
-                });
-                dgvLIST_STAFF.DataSource = getStaff.ToList();
-            }
-            else
-            {
-                var getStaff = DB.tblNhanViens.Where(p => p.ViTri == cbbPOSITION_DETAIL.SelectedItem.ToString()).Select(p => new {
-                    p.MaNhanVien,
-                    p.TenNhanVien,
-                    p.ViTri,
-                    p.NgaySinh,
-                    p.GioiTinh,
-                    p.SoDienThoai,
-                    p.DiaChi,
-                    p.Luong
-                });
-                dgvLIST_STAFF.DataSource = getStaff.ToList();
-            }
+            int index = cbbPOSITION_DETAIL.SelectedIndex;
+            string position = cbbPOSITION_DETAIL.SelectedItem.ToString();
+            BLL_STAFF.Instance.LoadDataStaff(dgvLIST_STAFF, index, position);
             txtID_STAFF.Clear();
             txtNAME_STAFF.Clear();
             txtPHONE.Clear();
@@ -174,7 +148,7 @@ namespace SaleManagement.VIEW
         {
             disable(true);
             isAdd = true;
-            txtID_STAFF.Text = BLL_STAFF.Instance.GetNewIdStaff().ToString();
+            txtID_STAFF.Text = BLL_STAFF.Instance.getNewIdStaff().ToString();
             txtNAME_STAFF.Clear();
             txtPHONE.Clear();
             rbMALE.Checked = true;

@@ -14,16 +14,15 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Suppliers : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        bool isAdd; // add?
+        private bool isAdd; // add?
         public FrmManage_Suppliers()
         {
             InitializeComponent();
             ShowData();
-            setStyleAndHearderText();
+            FormatColumnHeader();
             Disable(false);
         }
-        public void setStyleAndHearderText()
+        public void FormatColumnHeader()
         {
             // set style
             dgvSUPPLIER.EnableHeadersVisualStyles = false;

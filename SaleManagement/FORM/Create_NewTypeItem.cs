@@ -15,7 +15,6 @@ namespace SaleManagement.FORM
 {
     public partial class FrmCreate_NewTypeItem : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public delegate void myDEL(string VALUE, string TEXT);
         public myDEL d { get; set; }
         public FrmCreate_NewTypeItem()
@@ -35,7 +34,7 @@ namespace SaleManagement.FORM
                 typeOfProduct.TenLoaiHangHoa = txtNAME_TYPEOFITEM.Text;
                 try
                 {
-                    BLL_TYPEOFITEM.Instance.FuncAddNewProduct(typeOfProduct);
+                    BLL_TYPEOFPRODUCT.Instance.FuncAddNewProduct(typeOfProduct);
                     d(typeOfProduct.MaLoaiHangHoa, typeOfProduct.TenLoaiHangHoa);
                     this.Close();
                 }

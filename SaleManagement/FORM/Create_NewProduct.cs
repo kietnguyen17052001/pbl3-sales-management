@@ -24,8 +24,8 @@ namespace SaleManagement.FORM
         }
         public void setCbbTypeProduct()
         {
-            cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
-            cbbPRODUCERs.Items.AddRange(BLL_ITEMS.Instance.GetCBBProducer().ToArray());
+            cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_PRODUCTS.Instance.getCBBTypeProduct().ToArray());
+            cbbPRODUCERs.Items.AddRange(BLL_PRODUCER.Instance.getCbbProducer().ToArray());
         }
         string imageLocation = "";
         byte[] images = null;
@@ -71,7 +71,7 @@ namespace SaleManagement.FORM
                 try
                 {
                     product.HinhAnh = images;
-                    BLL_ITEMS.Instance.FuncAddNewProduct(product); // add new product
+                    BLL_PRODUCTS.Instance.FuncAddNewProduct(product); // add new product
                     MessageBox.Show("Thêm hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     d(product.TenHangHoa);
                     this.Close();
@@ -90,7 +90,7 @@ namespace SaleManagement.FORM
 
         private void cbbTYPE_OF_PRODUCT_TextChanged(object sender, EventArgs e)
         {
-            txtID_PRODUCT.Text = BLL_ITEMS.Instance.GetNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
+            txtID_PRODUCT.Text = BLL_PRODUCTS.Instance.getNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
         }
         public void NewTypeProduct(string id, string name)
         {

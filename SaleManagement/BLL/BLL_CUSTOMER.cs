@@ -25,7 +25,16 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_CUSTOMER() { }
-        public tblKhachHang GetCustomer_ById(string idCustomer)
+        public List<CBBItem> getCbbCustomer()
+        {
+            List<CBBItem> cbbCustomer = new List<CBBItem>();
+            foreach(tblKhachHang customer in DB.tblKhachHangs)
+            {
+                cbbCustomer.Add(new CBBItem { VALUE = customer.MaKhachHang, TEXT = customer.TenKhachHang });
+            }
+            return cbbCustomer;
+        }
+        public tblKhachHang getCustomer_ById(string idCustomer)
         {
             tblKhachHang getCustomer = new tblKhachHang();
             foreach (tblKhachHang customer in DB.tblKhachHangs)
@@ -36,6 +45,18 @@ namespace SaleManagement.BLL
                 }
             }
             return getCustomer;
+        }
+        // load data customer 
+        public void LoadData(DataGridView dgv)
+        {
+            var listCustomer = DB.tblKhachHangs.Select(p => new {
+                p.MaKhachHang,
+                p.TenKhachHang,
+                p.GioiTinh,
+                p.SoDienThoai,
+                p.DiaChi
+            });
+            dgv.DataSource = listCustomer.ToList();
         }
         // add new customer
         public void FuncAddNewCustomer(tblKhachHang customer)
@@ -96,7 +117,7 @@ namespace SaleManagement.BLL
             dgv.DataSource = getCustomer.ToList();
         }
         // tạo mã khách hàng mới
-        public string GetNewIdCustomer()
+        public string getNewIdCustomer()
         {
             string idCustomer = "";
             int lastId;

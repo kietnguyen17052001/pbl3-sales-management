@@ -29,8 +29,8 @@ namespace SaleManagement.VIEW
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLIST_BILLS = new System.Windows.Forms.Button();
-            this.btnBILL = new System.Windows.Forms.Button();
+            this.btnLIST_SALEINVOICE = new System.Windows.Forms.Button();
+            this.btnSALE = new System.Windows.Forms.Button();
             this.btnSUPPLIERS = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnBACK = new System.Windows.Forms.Button();
@@ -40,52 +40,53 @@ namespace SaleManagement.VIEW
             this.btnCUSTOMERS = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnImportProduct = new System.Windows.Forms.Button();
+            this.btnLIST_IMPORTINVOICE = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnLIST_BILLS
+            // btnLIST_SALEINVOICE
             // 
-            this.btnLIST_BILLS.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLIST_BILLS.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLIST_BILLS.FlatAppearance.BorderSize = 0;
-            this.btnLIST_BILLS.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLIST_BILLS.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.btnLIST_BILLS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLIST_BILLS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLIST_BILLS.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLIST_BILLS.ForeColor = System.Drawing.Color.Black;
-            this.btnLIST_BILLS.Image = global::SaleManagement.Properties.Resources.list_icon;
-            this.btnLIST_BILLS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLIST_BILLS.Location = new System.Drawing.Point(234, 507);
-            this.btnLIST_BILLS.Name = "btnLIST_BILLS";
-            this.btnLIST_BILLS.Size = new System.Drawing.Size(189, 184);
-            this.btnLIST_BILLS.TabIndex = 27;
-            this.btnLIST_BILLS.Text = "DS hóa đơn";
-            this.btnLIST_BILLS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnLIST_BILLS.UseVisualStyleBackColor = false;
-            this.btnLIST_BILLS.Click += new System.EventHandler(this.btnLIST_BILLS_Click);
+            this.btnLIST_SALEINVOICE.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLIST_SALEINVOICE.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLIST_SALEINVOICE.FlatAppearance.BorderSize = 0;
+            this.btnLIST_SALEINVOICE.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLIST_SALEINVOICE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnLIST_SALEINVOICE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLIST_SALEINVOICE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLIST_SALEINVOICE.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLIST_SALEINVOICE.ForeColor = System.Drawing.Color.Black;
+            this.btnLIST_SALEINVOICE.Image = global::SaleManagement.Properties.Resources.list_icon;
+            this.btnLIST_SALEINVOICE.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLIST_SALEINVOICE.Location = new System.Drawing.Point(454, 507);
+            this.btnLIST_SALEINVOICE.Name = "btnLIST_SALEINVOICE";
+            this.btnLIST_SALEINVOICE.Size = new System.Drawing.Size(189, 184);
+            this.btnLIST_SALEINVOICE.TabIndex = 27;
+            this.btnLIST_SALEINVOICE.Text = "DS đơn bán hàng";
+            this.btnLIST_SALEINVOICE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLIST_SALEINVOICE.UseVisualStyleBackColor = false;
+            this.btnLIST_SALEINVOICE.Click += new System.EventHandler(this.btnLIST_SALEINVOICE_Click);
             // 
-            // btnBILL
+            // btnSALE
             // 
-            this.btnBILL.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBILL.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBILL.FlatAppearance.BorderSize = 0;
-            this.btnBILL.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBILL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.btnBILL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBILL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBILL.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBILL.ForeColor = System.Drawing.Color.Black;
-            this.btnBILL.Image = global::SaleManagement.Properties.Resources.App_edit_icon;
-            this.btnBILL.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBILL.Location = new System.Drawing.Point(12, 507);
-            this.btnBILL.Name = "btnBILL";
-            this.btnBILL.Size = new System.Drawing.Size(189, 184);
-            this.btnBILL.TabIndex = 26;
-            this.btnBILL.Text = "Lập hóa đơn";
-            this.btnBILL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBILL.UseVisualStyleBackColor = false;
-            this.btnBILL.Click += new System.EventHandler(this.btnBILL_Click);
+            this.btnSALE.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSALE.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSALE.FlatAppearance.BorderSize = 0;
+            this.btnSALE.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSALE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSALE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSALE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSALE.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSALE.ForeColor = System.Drawing.Color.Black;
+            this.btnSALE.Image = global::SaleManagement.Properties.Resources.App_edit_icon;
+            this.btnSALE.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSALE.Location = new System.Drawing.Point(12, 507);
+            this.btnSALE.Name = "btnSALE";
+            this.btnSALE.Size = new System.Drawing.Size(189, 184);
+            this.btnSALE.TabIndex = 26;
+            this.btnSALE.Text = "Bán hàng";
+            this.btnSALE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSALE.UseVisualStyleBackColor = false;
+            this.btnSALE.Click += new System.EventHandler(this.btnSALE_Click);
             // 
             // btnSUPPLIERS
             // 
@@ -116,9 +117,9 @@ namespace SaleManagement.VIEW
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImage = global::SaleManagement.Properties.Resources.homeapp;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(672, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(888, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(562, 691);
+            this.pictureBox1.Size = new System.Drawing.Size(346, 691);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
@@ -258,7 +259,7 @@ namespace SaleManagement.VIEW
             this.btnImportProduct.ForeColor = System.Drawing.Color.Black;
             this.btnImportProduct.Image = global::SaleManagement.Properties.Resources.App_edit_icon;
             this.btnImportProduct.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnImportProduct.Location = new System.Drawing.Point(454, 507);
+            this.btnImportProduct.Location = new System.Drawing.Point(234, 507);
             this.btnImportProduct.Name = "btnImportProduct";
             this.btnImportProduct.Size = new System.Drawing.Size(189, 184);
             this.btnImportProduct.TabIndex = 123;
@@ -267,16 +268,39 @@ namespace SaleManagement.VIEW
             this.btnImportProduct.UseVisualStyleBackColor = false;
             this.btnImportProduct.Click += new System.EventHandler(this.btnImportProduct_Click);
             // 
+            // btnLIST_IMPORTINVOICE
+            // 
+            this.btnLIST_IMPORTINVOICE.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLIST_IMPORTINVOICE.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLIST_IMPORTINVOICE.FlatAppearance.BorderSize = 0;
+            this.btnLIST_IMPORTINVOICE.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLIST_IMPORTINVOICE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnLIST_IMPORTINVOICE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLIST_IMPORTINVOICE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLIST_IMPORTINVOICE.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLIST_IMPORTINVOICE.ForeColor = System.Drawing.Color.Black;
+            this.btnLIST_IMPORTINVOICE.Image = global::SaleManagement.Properties.Resources.list_icon;
+            this.btnLIST_IMPORTINVOICE.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLIST_IMPORTINVOICE.Location = new System.Drawing.Point(675, 507);
+            this.btnLIST_IMPORTINVOICE.Name = "btnLIST_IMPORTINVOICE";
+            this.btnLIST_IMPORTINVOICE.Size = new System.Drawing.Size(189, 184);
+            this.btnLIST_IMPORTINVOICE.TabIndex = 124;
+            this.btnLIST_IMPORTINVOICE.Text = "DS đơn nhập hàng";
+            this.btnLIST_IMPORTINVOICE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLIST_IMPORTINVOICE.UseVisualStyleBackColor = false;
+            this.btnLIST_IMPORTINVOICE.Click += new System.EventHandler(this.btnLIST_IMPORTINVOICE_Click);
+            // 
             // FrmManage_Data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.Controls.Add(this.btnLIST_IMPORTINVOICE);
             this.Controls.Add(this.btnImportProduct);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnLIST_BILLS);
-            this.Controls.Add(this.btnBILL);
+            this.Controls.Add(this.btnLIST_SALEINVOICE);
+            this.Controls.Add(this.btnSALE);
             this.Controls.Add(this.btnSUPPLIERS);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnBACK);
@@ -301,9 +325,10 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnSTAFFS;
         private System.Windows.Forms.Button btnCUSTOMERS;
         private System.Windows.Forms.Button btnSUPPLIERS;
-        private System.Windows.Forms.Button btnBILL;
-        private System.Windows.Forms.Button btnLIST_BILLS;
+        private System.Windows.Forms.Button btnSALE;
+        private System.Windows.Forms.Button btnLIST_SALEINVOICE;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnImportProduct;
+        private System.Windows.Forms.Button btnLIST_IMPORTINVOICE;
     }
 }

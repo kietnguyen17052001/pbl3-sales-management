@@ -14,14 +14,17 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Customers : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         bool isAdd; // true: add new customer, false: edit customer
         public FrmManage_Customers()
         {
             InitializeComponent();
-            disable(false);
+            Disable(false);
             ShowCustomer();
             rbID_CUSTOMER.Checked = true;
+        }
+        // Format column header
+        public void FormatColumnHeader()
+        {
             // Set style for ColumnHeader
             dgvLISTCUSTOMER.EnableHeadersVisualStyles = false;
             dgvLISTCUSTOMER.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
@@ -36,7 +39,7 @@ namespace SaleManagement.VIEW
             dgvLISTCUSTOMER.Columns[4].HeaderText = "Địa chỉ";
         }
         // Disable button, textbox
-        void disable(bool E)
+        void Disable(bool E)
         {
             txtNAME_CUSTOMER.Enabled = E;
             txtID_CUSTOMER.Enabled = E;
@@ -53,14 +56,7 @@ namespace SaleManagement.VIEW
         // func show customers
         public void ShowCustomer()
         {
-            var listCustomer = DB.tblKhachHangs.Select(p => new {
-                p.MaKhachHang,
-                p.TenKhachHang,
-                p.GioiTinh,
-                p.SoDienThoai,
-                p.DiaChi
-            });
-            dgvLISTCUSTOMER.DataSource = listCustomer.ToList(); 
+            BLL_CUSTOMER.Instance.LoadData(dgvLISTCUSTOMER);
             txtID_CUSTOMER.Clear();
             txtNAME_CUSTOMER.Clear();
             txtPHONE.Clear();
@@ -132,9 +128,9 @@ namespace SaleManagement.VIEW
         // Button Add customer
         private void btnADD_Click(object sender, EventArgs e)
         {
-            disable(true);
+            Disable(true);
             isAdd = true; // thêm
-            txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.GetNewIdCustomer().ToString(); // gọi hàm tự điền mã số khách hàng từ BLL_CUSTOMER
+            txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNewIdCustomer().ToString(); // gọi hàm tự điền mã số khách hàng từ BLL_CUSTOMER
             txtNAME_CUSTOMER.Clear();
             txtPHONE.Clear();
             rbMALE.Checked = true;
@@ -143,7 +139,7 @@ namespace SaleManagement.VIEW
         // Button Edit customer
         private void btnEDIT_Click(object sender, EventArgs e)
         {
-            disable(true);
+            Disable(true);
             txtID_CUSTOMER.Enabled = false;
             isAdd = false; // sửa
         }
@@ -167,7 +163,7 @@ namespace SaleManagement.VIEW
                 string.IsNullOrEmpty(customer.DiaChi))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                disable(true);
+                Disable(true);
             }
             else
             {
@@ -177,13 +173,13 @@ namespace SaleManagement.VIEW
                     {
                         BLL_CUSTOMER.Instance.FuncAddNewCustomer(customer); // add new customer 
                         MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        disable(false);
+                        Disable(false);
                         ShowCustomer();
                     }
                     catch (Exception)
                     {
                         MessageBox.Show("Mã số khách hàng bị trùng. Vui lòng nhập mã khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        disable(true);
+                        Disable(true);
                     }
                 }
                 else
@@ -191,7 +187,7 @@ namespace SaleManagement.VIEW
                     BLL_CUSTOMER.Instance.FuncEditCustomer(customer); // edit customer
                     MessageBox.Show("Sửa khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ShowCustomer();
-                    disable(false);
+                    Disable(false);
                 }
             }
         }
@@ -214,7 +210,7 @@ namespace SaleManagement.VIEW
         // Cancel
         private void btnCANCEL_Click(object sender, EventArgs e)
         {
-            disable(false);
+            Disable(false);
         }
         // Back to frmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)

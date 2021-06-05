@@ -164,16 +164,6 @@ namespace SaleManagement.BLL
             }
             return idInvoice;
         }
-        // Set combobox staff
-        public List<CBBItem> getCbbStaff()
-        {
-            List<CBBItem> listCbbStaff = new List<CBBItem>();
-            foreach(tblNhanVien staff in DB.tblNhanViens)
-            {
-                listCbbStaff.Add(new CBBItem { VALUE = staff.MaNhanVien, TEXT = staff.TenNhanVien});
-            }
-            return listCbbStaff;
-        }
         // Get total money for invoice
         public double getTotalMoney(DataTable dataTable)
         {

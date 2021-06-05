@@ -13,34 +13,29 @@ using System.Windows.Forms;
 
 namespace SaleManagement.VIEW
 {
-    public partial class FrmBill : Form
+    public partial class FrmInvoice_SaleProduct : Form
     {
-        int products = 1, allProduct = 0 , productQty = 0;
-        string idProduct, nameProduct, idCustomer; //idCustomer cho chức năng Payment
-        double productPrice = 0, 
-            productDiscount = 0, 
-            productsPrice = 0, 
-            invoicePrice = 0, 
-            invoiceDiscount = 0, 
-            sendByCustomer = 0, 
-            sendByStaff = 0, 
-            totalMoney = 0;
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        DataTable data = BLL_SALEPRODUCT.Instance.GetTbl_Order();
-        public FrmBill()
+        private int products = 1, allProduct, productQty;
+        private string idProduct, nameProduct, idCustomer; //idCustomer cho chức năng Payment
+        private double productPrice, 
+            productDiscount, 
+            productsPrice, 
+            invoicePrice, 
+            invoiceDiscount, 
+            sendByCustomer, 
+            sendByStaff, 
+            totalMoney;
+        DataTable dataTable = BLL_SALEPRODUCT.Instance.TableInvoice();
+        public FrmInvoice_SaleProduct()
         {
             InitializeComponent();
-            setCombobox();
-            rbID_ITEM.Checked = true;
+            setComboboxStaff();
             setDataForToolBox();
-            var product = DB.tblHangHoas.Select(p => new {
-                p.MaHangHoa,
-                p.TenHangHoa,
-                p.SoLuong,
-                p.GiaBan
-            });
-            dgvInfoProduct.DataSource = product.ToList();
-            dgvInvoice.DataSource = data;
+            LoadDGVs();
+            FormatHeader();
+        }
+        public void FormatHeader()
+        {
             // set style for ColumnHeader dgvList and dgvSelect
             dgvInvoice.EnableHeadersVisualStyles = dgvInfoProduct.EnableHeadersVisualStyles = false;
             dgvInvoice.ColumnHeadersDefaultCellStyle.BackColor = dgvInfoProduct.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
@@ -63,10 +58,10 @@ namespace SaleManagement.VIEW
         // Thiết lập dữ liệu cho các textbox
         public void setDataForToolBox()
         {
-            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getPrice_Invoice(data, invoiceDiscount); // tổng thanh toán đơn hàng
-            totalMoney = BLL_SALEPRODUCT.Instance.GetTotal_Money(data); // tổng tiền đơn hàng
-            productQty = BLL_SALEPRODUCT.Instance.getAll_ProQty(data); // Tổng số lượng hàng 
-            allProduct = BLL_SALEPRODUCT.Instance.getAll_Product(data); // Tổng loại hàng
+            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount); // tổng thanh toán đơn hàng
+            totalMoney = BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable); // tổng tiền đơn hàng
+            productQty = BLL_SALEPRODUCT.Instance.getTotalQuantityProduct(dataTable); // Tổng số lượng hàng 
+            allProduct = BLL_SALEPRODUCT.Instance.getTotalProduct(dataTable); // Tổng loại hàng
             txtID_INVOICE.Text = BLL_SALEPRODUCT.Instance.getNewIdInvoice(); // khởi tạo mã hóa đơn mới
             txtINVOICE_DISCOUNT.Text = String.Format("{0:n0}", invoiceDiscount);
             txtPRODUCT_DISCOUNT.Text = productDiscount.ToString();
@@ -78,19 +73,17 @@ namespace SaleManagement.VIEW
             txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", sendByCustomer);
             txtSEND_BY_STAFF.Text = String.Format("{0:n0}", sendByStaff);
         }
-        // set data for Cbb
-        public void setCombobox()
+        // set data for cbbStaff
+        public void setComboboxStaff()
         {
-            cbbTYPE_OF_ITEMS.Items.Add("Tất cả");
             cbbSTAFF.Items.Add("None");
-            cbbTYPE_OF_ITEMS.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
-            cbbSTAFF.Items.AddRange(BLL_SALEPRODUCT.Instance.GetCbb_Staff().ToArray());
-            cbbTYPE_OF_ITEMS.SelectedIndex = cbbSTAFF.SelectedIndex = 0;
+            cbbSTAFF.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
+            cbbSTAFF.SelectedIndex = 0;
         }
-        // load data
-        public void load()
+        // load dataTable
+        public void LoadForm()
         {
-            data = BLL_SALEPRODUCT.Instance.GetTbl_Order();
+            dataTable = BLL_SALEPRODUCT.Instance.TableInvoice();
             totalMoney = invoicePrice = sendByCustomer = sendByStaff = allProduct = productQty = 0;
             invoiceDiscount = 0;
             products = 1;
@@ -100,14 +93,14 @@ namespace SaleManagement.VIEW
             btnDELETE.Enabled = true;
             btnADD.Enabled = true;
             btnEDIT.Enabled = true;
-            dgvInvoice.DataSource = data;
+            dgvInvoice.DataSource = dataTable;
             setDataForToolBox();
         }
         // Thiết lập giá trị cho txt Giảm giá và Tổng thanh toán sau khi giảm theo % 
         public void setDiscountPercent(string PERCENT)
         {
-            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getPrice_Invoice(data, (BLL_SALEPRODUCT.Instance.GetTotal_Money(data) * Convert.ToDouble(PERCENT) / 100));
-            invoiceDiscount = BLL_SALEPRODUCT.Instance.GetTotal_Money(data) * Convert.ToDouble(PERCENT) / 100;
+            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, (BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable) * Convert.ToDouble(PERCENT) / 100));
+            invoiceDiscount = BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable) * Convert.ToDouble(PERCENT) / 100;
             txtINVOICE_PRICE.Text = String.Format("{0:n0}", invoicePrice);
             txtINVOICE_DISCOUNT.Text = String.Format("{0:n0}", invoiceDiscount);
             txtSEND_BY_CUSTOMER.Text = String.Format("{0:n0}", sendByCustomer);
@@ -115,7 +108,7 @@ namespace SaleManagement.VIEW
         // Thiết lập giá trị cho txt Giảm giá và Tổng thanh toán sau khi giảm theo số tiền
         public void setDiscountMoney(string MONEY)
         {
-            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getPrice_Invoice(data, Convert.ToDouble(MONEY));
+            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, Convert.ToDouble(MONEY));
             invoiceDiscount = Convert.ToDouble(MONEY);
             txtINVOICE_PRICE.Text = String.Format("{0:n0}", invoicePrice); // định dạng lại chuỗi, 2000 -> 2.000
             txtINVOICE_DISCOUNT.Text = String.Format("{0:n0}", invoiceDiscount);
@@ -127,28 +120,10 @@ namespace SaleManagement.VIEW
             idCustomer = idCus;
             txtCUSTOMER.Text = nameCus;
         }
-        public void ShowProduct()
+        public void LoadDGVs()
         {
-            if (cbbTYPE_OF_ITEMS.SelectedIndex == 0)
-            {
-                var product = DB.tblHangHoas.Select(p => new {
-                    p.MaHangHoa,
-                    p.TenHangHoa,
-                    p.SoLuong,
-                    p.GiaBan
-                });
-                dgvInfoProduct.DataSource = product.ToList();
-            }
-            else
-            {
-                var product = DB.tblHangHoas.Where(p => p.MaLoaiHangHoa == ((CBBItem)cbbTYPE_OF_ITEMS.SelectedItem).VALUE).Select(p => new {
-                    p.MaHangHoa,
-                    p.TenHangHoa,
-                    p.SoLuong,
-                    p.GiaBan
-                });
-                dgvInfoProduct.DataSource = product.ToList();
-            }
+            BLL_SALEPRODUCT.Instance.LoadDataProduct(dgvInfoProduct);
+            dgvInvoice.DataSource = dataTable;
         }
         // set backColor and Font for rows in DGV
         private void dgvInfoProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -168,22 +143,10 @@ namespace SaleManagement.VIEW
             FRM.Show();
             this.Close();
         }
-        // Btn liệt kê hàng hóa theo loại hàng hóa
-        private void btnSHOW_Click(object sender, EventArgs e)
-        {
-            ShowProduct();
-        }
         // search product
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            if (rbID_ITEM.Checked == true)
-            {
-                BLL_SALEPRODUCT.Instance.FuncSearchId(dgvInfoProduct, txtSEARCH.Text);
-            }
-            else
-            {
-                BLL_SALEPRODUCT.Instance.FuncSearchName(dgvInfoProduct, txtSEARCH.Text);
-            }
+            BLL_SALEPRODUCT.Instance.FuncSearchProduct(dgvInfoProduct, txtSEARCH.Text.Trim());
         }
         // add product
         private void btnADD_Click(object sender, EventArgs e)
@@ -200,9 +163,9 @@ namespace SaleManagement.VIEW
             }
             else
             {
-                BLL_SALEPRODUCT.Instance.AddItem(data, idProduct, nameProduct, products, productPrice, productDiscount, productsPrice);
-                int remain = Convert.ToInt32(dgvInfoProduct.SelectedRows[0].Cells["SoLuong"].Value.ToString()) - products;
-                dgvInfoProduct.SelectedRows[0].Cells["SoLuong"].Value = remain.ToString();// Giảm số lượng hàng hóa sau khi thêm
+                BLL_SALEPRODUCT.Instance.FuncAddProduct(dataTable, idProduct, nameProduct, products, productPrice, productDiscount, productsPrice);
+                //int remain = Convert.ToInt32(dgvInfoProduct.SelectedRows[0].Cells["SoLuong"].Value.ToString()) - products;
+                //dgvInfoProduct.SelectedRows[0].Cells["SoLuong"].Value = remain.ToString();// Giảm số lượng hàng hóa sau khi thêm
             }
             // Thông tin hóa đơn sau khi thêm hàng hóa
             setDataForToolBox();
@@ -210,13 +173,13 @@ namespace SaleManagement.VIEW
         // delete product
         private void btnDELETE_Click(object sender, EventArgs e)
         {
-            List<string> LIST = new List<string>();
-            DataGridViewSelectedRowCollection dgvsrc = dgvInvoice.SelectedRows;
-            foreach (DataGridViewRow i in dgvsrc)
+            List<string> ListIdProduct = new List<string>();
+            DataGridViewSelectedRowCollection data = dgvInvoice.SelectedRows;
+            foreach (DataGridViewRow dgvRow in data)
             {
-                LIST.Add(i.Cells[0].Value.ToString());
+                ListIdProduct.Add(dgvRow.Cells[0].Value.ToString());
             }
-            BLL_SALEPRODUCT.Instance.DelItem(LIST, data);
+            BLL_SALEPRODUCT.Instance.FuncDeleteProduct(ListIdProduct, dataTable);
             // Dữ liệu hóa đơn sau khi xóa hàng hóa
             setDataForToolBox();
         }
@@ -230,7 +193,7 @@ namespace SaleManagement.VIEW
         // Btn thanh toán
         private void btnPAYMENT_Click(object sender, EventArgs e)
         {
-            if (data.Rows.Count == 0)
+            if (dataTable.Rows.Count == 0)
             {
                 MessageBox.Show("Không thể thực hiện chức năng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -255,9 +218,9 @@ namespace SaleManagement.VIEW
                         if (dialogResult == DialogResult.Yes)
                         {
                             MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            BLL_SALEPRODUCT.Instance.FuncPayment(newInvoice, data); // payment invoice
-                            ShowProduct();
-                            load();
+                            BLL_SALEPRODUCT.Instance.FuncPayment(newInvoice, dataTable); // payment invoice
+                            LoadDGVs();
+                            LoadForm();
                         }
                     }
                     catch (Exception)
@@ -270,7 +233,7 @@ namespace SaleManagement.VIEW
         // load invoice
         private void btnLOAD_Click(object sender, EventArgs e)
         {
-            load(); // load new invoice
+            LoadForm(); // load new invoice
         }
         // Btn giảm theo phần trăm, gọi form Discount_Percent
         private void btnDISCOUNT_PERCENT_Click(object sender, EventArgs e)
@@ -297,6 +260,15 @@ namespace SaleManagement.VIEW
                 txtPRODUCT_QUANTITY_SELECY.Text = "1";
             }
         }
+
+        private void txtPRODUCT_DISCOUNT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
         // Btn giảm theo số tiền, gọi form Discount_Money
         private void btnDISCOUNT_MONEY_Click(object sender, EventArgs e)
         {
@@ -307,7 +279,7 @@ namespace SaleManagement.VIEW
         // Btn in giao diện cho hóa đơn
         private void btnPRINT_Click(object sender, EventArgs e)
         {
-            if (data.Rows.Count == 0 || cbbSTAFF.SelectedIndex == 0 || string.IsNullOrEmpty(txtCUSTOMER.Text))
+            if (dataTable.Rows.Count == 0 || cbbSTAFF.SelectedIndex == 0 || string.IsNullOrEmpty(txtCUSTOMER.Text))
             {
                 MessageBox.Show("Không thể thực hiện chức năng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -336,7 +308,7 @@ namespace SaleManagement.VIEW
             e.Graphics.DrawString("Thành tiền", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(700, 400));
             int distance = 400;
             string str;
-            foreach(DataRow dr in data.Rows)
+            foreach(DataRow dr in dataTable.Rows)
             {
                 distance += 50;
                 str = "";
@@ -374,8 +346,8 @@ namespace SaleManagement.VIEW
         // edit quantity product
         private void btnEDIT_Click(object sender, EventArgs e)
         {
-            FrmEditQty_CreateInvoice frm = new FrmEditQty_CreateInvoice(idProduct);
-            frm.d += new FrmEditQty_CreateInvoice.myDEL(setNewQtyForProduct);
+            FrmEditQuantity_InvoiceSaleProduct frm = new FrmEditQuantity_InvoiceSaleProduct(idProduct);
+            frm.d += new FrmEditQuantity_InvoiceSaleProduct.myDel(setNewQtyForProduct);
             frm.Show();
         }
         // back to frmQuanLyDuLieu
@@ -411,7 +383,7 @@ namespace SaleManagement.VIEW
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
-            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
+            if (txtSEARCH.Text == "Nhập tên hoặc mã hàng hóa")
             {
                 txtSEARCH.Text = "";
                 txtSEARCH.ForeColor = Color.Black;
@@ -421,29 +393,8 @@ namespace SaleManagement.VIEW
         {
             if (txtSEARCH.Text == "")
             {
-                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+                txtSEARCH.Text = "Nhập tên hoặc mã hàng hóa";
                 txtSEARCH.ForeColor = Color.Silver;
-            }
-        }
-        private void txtAMOUNT_ITEM_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
-            {
-                e.Handled = true;
-            }
-        }
-        private void txtDISCOUNT_ITEM_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
-            {
-                e.Handled = true;
-            }
-        }
-        private void txtSEND_BY_CUSTOMER_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
-            {
-                e.Handled = true;
             }
         }
         // Số tiền khách hàng trả

@@ -1,7 +1,7 @@
 ﻿
 namespace SaleManagement.FORM
 {
-    partial class FrmEdit_Quantity_ListInvoice
+    partial class FrmEditQuantityProduct_ListSaleInvoice
     {
         /// <summary>
         /// Required designer variable.
@@ -178,7 +178,7 @@ namespace SaleManagement.FORM
             this.lbQUANTITY.Size = new System.Drawing.Size(0, 24);
             this.lbQUANTITY.TabIndex = 145;
             // 
-            // FrmEdit_Quantity_ListInvoice
+            // FrmEditQuantityProduct_ListSaleInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -194,9 +194,9 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.txtNEW_QUANTITY);
             this.Controls.Add(this.label1);
-            this.Name = "FrmEdit_Quantity_ListInvoice";
+            this.Name = "FrmEditQuantityProduct_ListSaleInvoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Edit_Quantity";
+            this.Text = "Sửa số lượng hàng hóa";
             this.ResumeLayout(false);
             this.PerformLayout();
 

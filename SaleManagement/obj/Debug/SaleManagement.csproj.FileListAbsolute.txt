@@ -56,11 +56,8 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewTypeItem.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmDiscount_Money.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmDiscount_Percent.resources
-C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQty_CreateInvoice.resources
-C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEdit_Quantity_ListInvoice.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmIntroduce.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmLogin.resources
-C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmManage_List_Invoice.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmManage_TypeOfProduct.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmReport.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmRevenue_Statistic.resources
@@ -68,7 +65,6 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmStatistic.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmStatistic_Product.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.Properties.Resources.resources
-C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmBill.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmManage_Customers.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmManage_Data.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmManage_Items.resources
@@ -84,3 +80,8 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Customer.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewProduct.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Supplier.resources
+C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmInvoice_SaleProduct.resources
+C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_ImportInvoice.resources
+C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_SaleInvoice.resources
+C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantity_InvoiceSaleProduct.resources
+C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantityProduct_ListSaleInvoice.resources

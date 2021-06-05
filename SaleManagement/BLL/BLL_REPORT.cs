@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SaleManagement.BLL
 {
@@ -24,8 +25,29 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_REPORT() { }
+        // get date min in invoice
+        public DateTime getDateMin()
+        {
+            var getDate = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
+            return (DateTime)getDate;
+        }
+        // load data report
+        public void LoadDataReport(DataGridView dgv, DateTime dateFrom, DateTime dateTo)
+        {
+            var listReport = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateFrom && p.tblHoaDonBanHang.NgayBan <= dateTo).Select(p => new {
+                p.MaHangHoa,
+                p.tblHangHoa.TenHangHoa,
+                p.tblHoaDonBanHang.NgayBan,
+                p.tblHoaDonBanHang.tblKhachHang.TenKhachHang,
+                p.SoLuong,
+                p.DonGia,
+                p.GiamGia,
+                p.TongTien
+            });
+            dgv.DataSource = listReport.ToList();
+        }
         // doanh số
-        public double GetRevenue(DateTime dateMin, DateTime dateMax)
+        public double getRevenue(DateTime dateMin, DateTime dateMax)
         {
             var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
             double revenue = 0;
@@ -36,7 +58,7 @@ namespace SaleManagement.BLL
             return revenue;
         }
         // lợi nhuận
-        public double GetProfit(DateTime dateMin, DateTime dateMax)
+        public double getProfit(DateTime dateMin, DateTime dateMax)
         {
             var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
             double profit = 0;
@@ -47,7 +69,7 @@ namespace SaleManagement.BLL
             return profit;
         }
         // giảm giá
-        public double GetDiscount(DateTime dateMin, DateTime dateMax)
+        public double getDiscount(DateTime dateMin, DateTime dateMax)
         {
             var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
             double discount = 0;
@@ -58,7 +80,7 @@ namespace SaleManagement.BLL
             return discount;
         }
         // sản phẩm
-        public int GetQuantity(DateTime dateMin, DateTime dateMax)
+        public int getQuantity(DateTime dateMin, DateTime dateMax)
         {
             var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
             int quantity = 0;
@@ -69,7 +91,7 @@ namespace SaleManagement.BLL
             return quantity;
         }
         // hóa đơn
-        public int GetInvoice(DateTime dateMin, DateTime dateMax)
+        public int getInvoice(DateTime dateMin, DateTime dateMax)
         {
             var list = DB.tblHoaDonBanHangs.Where(p => p.NgayBan >= dateMin && p.NgayBan <= dateMax);
             int count = 0;

@@ -24,7 +24,21 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_PRODUCER() { }
-        public string getNewIDProduct()
+        public List<CBBItem> getCbbProducer()
+        {
+            List<CBBItem> listProducer = new List<CBBItem>();
+            foreach(tblNhaSanXuat producer in DB.tblNhaSanXuats)
+            {
+                listProducer.Add(new CBBItem { VALUE = producer.MaNhaSanXuat, TEXT = producer.TenNhaSanXuat });
+            }
+            return listProducer;
+        }
+        public void FuncAddProducer(tblNhaSanXuat producer)
+        {
+            DB.tblNhaSanXuats.Add(producer);
+            DB.SaveChanges();
+        }
+        public string getNewIDProducer()
         {
             string idProducer;
             int lastId;

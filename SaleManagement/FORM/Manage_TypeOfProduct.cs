@@ -15,14 +15,16 @@ namespace SaleManagement.FORM
 {
     public partial class FrmManage_TypeOfProduct : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        bool isAdd; // true: add, false: edit customer
+        private bool isAdd; // true: add, false: edit customer
         public FrmManage_TypeOfProduct()
         {
             InitializeComponent();
             Disable(false);
             rbID_TYPE.Checked = true;
-            ShowType();
+            ShowData();    
+        }
+        public void FormatColumnHeader()
+        {
             // Set style for ColumnHeader 
             dgvLISTTYPE.EnableHeadersVisualStyles = false;
             dgvLISTTYPE.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
@@ -42,14 +44,9 @@ namespace SaleManagement.FORM
             btnADD.Enabled = btnEDIT.Enabled = btnDELETE.Enabled = !E;
         }
         // func show type of product
-        public void ShowType()
+        public void ShowData()
         {
-            var getType = DB.tblLoaiHangHoas.Select(p => new
-            {
-                p.MaLoaiHangHoa,
-                p.TenLoaiHangHoa
-            });
-            dgvLISTTYPE.DataSource = getType.ToList();
+            
         }
         // click
         private void dgvLISTTYPE_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -73,7 +70,7 @@ namespace SaleManagement.FORM
         // Button show list type of product
         private void btnSHOW_Click(object sender, EventArgs e)
         {
-            ShowType();
+            ShowData();
         }
         // export file excel
         private void btnEXCEL_Click(object sender, EventArgs e)
@@ -137,10 +134,10 @@ namespace SaleManagement.FORM
                 {
                     try
                     {
-                        BLL_TYPEOFITEM.Instance.FuncAddNewProduct(typeOfProduct);
+                        BLL_TYPEOFPRODUCT.Instance.FuncAddNewProduct(typeOfProduct);
                         MessageBox.Show("Thêm loại hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Disable(false);
-                        ShowType();
+                        ShowData();
                     }
                     catch (Exception)
                     {
@@ -149,10 +146,10 @@ namespace SaleManagement.FORM
                 }
                 else
                 {
-                    BLL_TYPEOFITEM.Instance.FuncAddNewProduct(typeOfProduct);
+                    BLL_TYPEOFPRODUCT.Instance.FuncAddNewProduct(typeOfProduct);
                     MessageBox.Show("Sửa loại hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Disable(false);
-                    ShowType();
+                    ShowData();
                 }
             }
         }
@@ -168,7 +165,7 @@ namespace SaleManagement.FORM
             DialogResult result = MessageBox.Show("Bạn chắc chắn xóa loại hàng hóa này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                BLL_TYPEOFITEM.Instance.FuncDeleteTypeProduct(listIdType);
+                BLL_TYPEOFPRODUCT.Instance.FuncDeleteTypeProduct(listIdType);
             }
         }
         // cancel func add or edit
@@ -214,11 +211,11 @@ namespace SaleManagement.FORM
         {
             if (rbID_TYPE.Checked)
             {
-                BLL_TYPEOFITEM.Instance.FuncSearchTypeProduct(true, txtSEARCH.Text.Trim(), dgvLISTTYPE);
+                BLL_TYPEOFPRODUCT.Instance.FuncSearchTypeProduct(true, txtSEARCH.Text.Trim(), dgvLISTTYPE);
             }
             else
             {
-                BLL_TYPEOFITEM.Instance.FuncSearchTypeProduct(false, txtSEARCH.Text.Trim(), dgvLISTTYPE);
+                BLL_TYPEOFPRODUCT.Instance.FuncSearchTypeProduct(false, txtSEARCH.Text.Trim(), dgvLISTTYPE);
             }
         }
     }

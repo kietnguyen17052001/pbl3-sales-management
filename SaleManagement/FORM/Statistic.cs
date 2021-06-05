@@ -35,7 +35,7 @@ namespace SaleManagement.FORM
         public void SetCBB()
         {
             cbbTYPEOFPRODUCT.Items.Add(new CBBItem { VALUE = "0", TEXT = "None" });
-            cbbTYPEOFPRODUCT.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
+            cbbTYPEOFPRODUCT.Items.AddRange(BLL_PRODUCTS.Instance.getCBBTypeProduct().ToArray());
             cbbTYPEOFPRODUCT.SelectedIndex = 0;
         }
         public void fillChart()

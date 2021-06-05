@@ -24,8 +24,18 @@ namespace SaleManagement.BLL
             }
             private set { }
         }
+        // Set combobox staff
+        public List<CBBItem> getCbbStaff()
+        {
+            List<CBBItem> listCbbStaff = new List<CBBItem>();
+            foreach (tblNhanVien staff in DB.tblNhanViens)
+            {
+                listCbbStaff.Add(new CBBItem { VALUE = staff.MaNhanVien, TEXT = staff.TenNhanVien });
+            }
+            return listCbbStaff;
+        }
         // Lấy danh sách các vị trí nhân viên từ DB
-        public List<string> GetListPosition()
+        public List<string> getListPosition()
         {
             List<string> list = new List<string>();
             foreach (tblNhanVien staff in DB.tblNhanViens)
@@ -33,6 +43,38 @@ namespace SaleManagement.BLL
                 list.Add(staff.ViTri);
             }
             return list;
+        }
+        // load data staff
+        public void LoadDataStaff(DataGridView dgv, int index, string position)
+        {
+            if (index == 0)
+            {
+                var getStaff = DB.tblNhanViens.Select(p => new {
+                    p.MaNhanVien,
+                    p.TenNhanVien,
+                    p.ViTri,
+                    p.NgaySinh,
+                    p.GioiTinh,
+                    p.SoDienThoai,
+                    p.DiaChi,
+                    p.Luong
+                });
+                dgv.DataSource = getStaff.ToList();
+            }
+            else
+            {
+                var getStaff = DB.tblNhanViens.Where(p => p.ViTri == position).Select(p => new {
+                    p.MaNhanVien,
+                    p.TenNhanVien,
+                    p.ViTri,
+                    p.NgaySinh,
+                    p.GioiTinh,
+                    p.SoDienThoai,
+                    p.DiaChi,
+                    p.Luong
+                });
+                dgv.DataSource = getStaff.ToList();
+            }
         }
         // add new staff
         public void FuncAddNewStaff(tblNhanVien staff)
@@ -102,7 +144,7 @@ namespace SaleManagement.BLL
             dgv.DataSource = getStaff.ToList();
         }
         // Trả về mã số khách hàng mới khi thực hiện chức năng thêm
-        public string GetNewIdStaff()
+        public string getNewIdStaff()
         {
             string idStaff = "";
             List<tblNhanVien> list = DB.tblNhanViens.ToList();
