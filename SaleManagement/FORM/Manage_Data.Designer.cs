@@ -39,6 +39,7 @@ namespace SaleManagement.VIEW
             this.btnSTAFFS = new System.Windows.Forms.Button();
             this.btnCUSTOMERS = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnImportProduct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -244,12 +245,35 @@ namespace SaleManagement.VIEW
             this.label1.TabIndex = 122;
             this.label1.Text = "Quản lý dữ liệu";
             // 
+            // btnImportProduct
+            // 
+            this.btnImportProduct.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImportProduct.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImportProduct.FlatAppearance.BorderSize = 0;
+            this.btnImportProduct.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImportProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnImportProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImportProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportProduct.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportProduct.ForeColor = System.Drawing.Color.Black;
+            this.btnImportProduct.Image = global::SaleManagement.Properties.Resources.App_edit_icon;
+            this.btnImportProduct.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnImportProduct.Location = new System.Drawing.Point(454, 507);
+            this.btnImportProduct.Name = "btnImportProduct";
+            this.btnImportProduct.Size = new System.Drawing.Size(189, 184);
+            this.btnImportProduct.TabIndex = 123;
+            this.btnImportProduct.Text = "Nhập hàng";
+            this.btnImportProduct.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnImportProduct.UseVisualStyleBackColor = false;
+            this.btnImportProduct.Click += new System.EventHandler(this.btnImportProduct_Click);
+            // 
             // FrmManage_Data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.Controls.Add(this.btnImportProduct);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLIST_BILLS);
             this.Controls.Add(this.btnBILL);
@@ -262,7 +286,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.btnCUSTOMERS);
             this.Name = "FrmManage_Data";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MANAGE_DATA";
+            this.Text = "Quản lý dữ liệu";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -280,5 +304,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnBILL;
         private System.Windows.Forms.Button btnLIST_BILLS;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnImportProduct;
     }
 }

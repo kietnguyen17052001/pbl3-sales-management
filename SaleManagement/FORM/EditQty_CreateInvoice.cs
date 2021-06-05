@@ -20,21 +20,29 @@ namespace SaleManagement.FORM
         {
             InitializeComponent();
             idProduct = _idProduct;
+            txtNEWQTY.Text = "1";
         }
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
             var product = DB.tblHangHoas.Find(idProduct);
-            if (Convert.ToInt32(txtNEWQTY.Text) > product.SoLuong)
+            if (string.IsNullOrEmpty(txtNEWQTY.Text))
             {
-                lbQTY.Text = "KHÔNG ĐỦ SL";
+                lbQTY.Text = "Bạn chưa nhập số lượng mới!"; 
             }
             else
             {
-                d(Convert.ToInt32(txtNEWQTY.Text));
-                this.Close();
-            }
+                if (Convert.ToInt32(txtNEWQTY.Text) > product.SoLuong)
+                {
+                    lbQTY.Text = "KHÔNG ĐỦ SL";
+                }
+                else
+                {
+                    d(Convert.ToInt32(txtNEWQTY.Text));
+                    this.Close();
+                }
+            } 
         }
 
         private void btnCANCEL_Click(object sender, EventArgs e)

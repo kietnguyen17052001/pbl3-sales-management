@@ -70,7 +70,6 @@ namespace SaleManagement.BLL
             getProduct.GiaBan = product.GiaBan;
             getProduct.GiaNhap = product.GiaNhap;
             getProduct.MaLoaiHangHoa = product.MaLoaiHangHoa;
-            getProduct.MaNhaCungCap = product.MaNhaCungCap;
             getProduct.MaNhaSanXuat = product.MaNhaSanXuat;
             //getProduct.HinhAnh = product.HinhAnh;
             DB.SaveChanges();
@@ -99,7 +98,6 @@ namespace SaleManagement.BLL
                 p.TenHangHoa,
                 p.SoLuong,
                 p.tblLoaiHangHoa.TenLoaiHangHoa,
-                p.tblNhaCungCap.TenNhaCungCap,
                 p.tblNhaSanXuat.TenNhaSanXuat,
                 p.GiaNhap,
                 p.GiaBan,
@@ -115,7 +113,6 @@ namespace SaleManagement.BLL
                 p.TenHangHoa,
                 p.SoLuong,
                 p.tblLoaiHangHoa.TenLoaiHangHoa,
-                p.tblNhaCungCap.TenNhaCungCap,
                 p.tblNhaSanXuat.TenNhaSanXuat,
                 p.GiaNhap,
                 p.GiaBan,

@@ -203,28 +203,28 @@ namespace SaleManagement.BLL
             }
         }
         // Trả về mã hóa đơn mới
-        public string GetNewID_Invoice()
+        public string getNewIdInvoice()
         {
             string idInvoice = "";
             List<tblHoaDonBanHang> list = DB.tblHoaDonBanHangs.ToList();
             if (list.Count == 0)
             {
-                idInvoice = "HD0001";
+                idInvoice = "HDB0001";
             }
             else
             {
-                int lastId = Convert.ToInt32(list[list.Count - 1].MaHoaDonBan.Remove(0, 2));
+                int lastId = Convert.ToInt32(list[list.Count - 1].MaHoaDonBan.Remove(0, 3));
                 if (lastId + 1 < 10)
                 {
-                    idInvoice = "HD000" + (lastId + 1).ToString();
+                    idInvoice = "HDB000" + (lastId + 1).ToString();
                 }
                 else if (lastId + 1 < 100)
                 {
-                    idInvoice = "HD00" + (lastId + 1).ToString();
+                    idInvoice = "HDB00" + (lastId + 1).ToString();
                 }
                 else if (lastId + 1 < 1000)
                 {
-                    idInvoice = "HD0"+ (lastId + 1).ToString(); 
+                    idInvoice = "HDB0"+ (lastId + 1).ToString(); 
                 }
             }
             return idInvoice;

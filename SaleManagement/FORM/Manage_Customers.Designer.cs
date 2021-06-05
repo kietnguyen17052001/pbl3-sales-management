@@ -112,6 +112,7 @@ namespace SaleManagement.VIEW
             this.txtPHONE.Name = "txtPHONE";
             this.txtPHONE.Size = new System.Drawing.Size(237, 29);
             this.txtPHONE.TabIndex = 75;
+            this.txtPHONE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPHONE_KeyPress);
             // 
             // txtNAME_CUSTOMER
             // 
@@ -468,7 +469,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.dgvLISTCUSTOMER);
             this.Name = "FrmManage_Customers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manage_Customers";
+            this.Text = "Quản lý khách hàng";
             this.gbGENDER.ResumeLayout(false);
             this.gbGENDER.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTCUSTOMER)).EndInit();

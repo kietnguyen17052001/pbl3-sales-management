@@ -25,7 +25,6 @@ namespace SaleManagement.Entity
         public string MaLoaiHangHoa { get; set; }
         public string TenHangHoa { get; set; }
         public int SoLuong { get; set; }
-        public string MaNhaCungCap { get; set; }
         public string MaNhaSanXuat { get; set; }
         public double GiaNhap { get; set; }
         public double GiaBan { get; set; }
@@ -37,7 +36,6 @@ namespace SaleManagement.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblChiTietHoaDonNhapHang> tblChiTietHoaDonNhapHangs { get; set; }
         public virtual tblLoaiHangHoa tblLoaiHangHoa { get; set; }
-        public virtual tblNhaCungCap tblNhaCungCap { get; set; }
         public virtual tblNhaSanXuat tblNhaSanXuat { get; set; }
     }
 }

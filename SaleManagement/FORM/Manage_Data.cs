@@ -73,5 +73,12 @@ namespace SaleManagement.VIEW
             frm.Show();
             this.Close();
         }
+
+        private void btnImportProduct_Click(object sender, EventArgs e)
+        {
+            FrmInvoice_ImportProduct frm = new FrmInvoice_ImportProduct();
+            frm.Show();
+            this.Close();
+        }
     }
 }

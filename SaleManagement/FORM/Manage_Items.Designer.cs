@@ -32,12 +32,10 @@ namespace SaleManagement.VIEW
             this.txtSEARCH = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvLISTITEMS = new System.Windows.Forms.DataGridView();
-            this.cbbSUPPLIERs = new System.Windows.Forms.ComboBox();
             this.cbbTYPE_OF_PRODUCT = new System.Windows.Forms.ComboBox();
             this.txtQUANTITY = new System.Windows.Forms.TextBox();
             this.txtNAME_PRODUCT = new System.Windows.Forms.TextBox();
             this.txtID_PRODUCT = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -47,11 +45,9 @@ namespace SaleManagement.VIEW
             this.txtSALE = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtBUY = new System.Windows.Forms.TextBox();
-            this.cbbPRODUCERs = new System.Windows.Forms.ComboBox();
             this.gbMota = new System.Windows.Forms.GroupBox();
             this.txtDESCRIBE = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.rbNAME_ITEM = new System.Windows.Forms.RadioButton();
             this.rbID_ITEM = new System.Windows.Forms.RadioButton();
             this.cbbTYPE_OF__PRODUCT_DETAIL = new System.Windows.Forms.ComboBox();
@@ -61,8 +57,6 @@ namespace SaleManagement.VIEW
             this.pbIMAGE = new System.Windows.Forms.PictureBox();
             this.btnHOME = new System.Windows.Forms.Button();
             this.btnEXCEL = new System.Windows.Forms.Button();
-            this.btnADDPRODUCER = new System.Windows.Forms.Button();
-            this.btnADDSUPPLIER = new System.Windows.Forms.Button();
             this.btnADDTYPE = new System.Windows.Forms.Button();
             this.btnADD = new System.Windows.Forms.Button();
             this.btnEDIT = new System.Windows.Forms.Button();
@@ -72,6 +66,9 @@ namespace SaleManagement.VIEW
             this.btnDELETE = new System.Windows.Forms.Button();
             this.btnSHOW = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnADDSUPPLIER = new System.Windows.Forms.Button();
+            this.cbbPRODUCERs = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTITEMS)).BeginInit();
             this.gbMota.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIMAGE)).BeginInit();
@@ -121,22 +118,12 @@ namespace SaleManagement.VIEW
             this.dgvLISTITEMS.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLISTITEMS_CellClick);
             this.dgvLISTITEMS.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLISTITEMS_CellFormatting);
             // 
-            // cbbSUPPLIERs
-            // 
-            this.cbbSUPPLIERs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbSUPPLIERs.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbSUPPLIERs.FormattingEnabled = true;
-            this.cbbSUPPLIERs.Location = new System.Drawing.Point(133, 192);
-            this.cbbSUPPLIERs.Name = "cbbSUPPLIERs";
-            this.cbbSUPPLIERs.Size = new System.Drawing.Size(210, 27);
-            this.cbbSUPPLIERs.TabIndex = 98;
-            // 
             // cbbTYPE_OF_PRODUCT
             // 
             this.cbbTYPE_OF_PRODUCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbTYPE_OF_PRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbTYPE_OF_PRODUCT.FormattingEnabled = true;
-            this.cbbTYPE_OF_PRODUCT.Location = new System.Drawing.Point(133, 68);
+            this.cbbTYPE_OF_PRODUCT.Location = new System.Drawing.Point(133, 115);
             this.cbbTYPE_OF_PRODUCT.Name = "cbbTYPE_OF_PRODUCT";
             this.cbbTYPE_OF_PRODUCT.Size = new System.Drawing.Size(210, 27);
             this.cbbTYPE_OF_PRODUCT.TabIndex = 97;
@@ -146,18 +133,18 @@ namespace SaleManagement.VIEW
             // 
             this.txtQUANTITY.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQUANTITY.ForeColor = System.Drawing.Color.Black;
-            this.txtQUANTITY.Location = new System.Drawing.Point(133, 147);
+            this.txtQUANTITY.Location = new System.Drawing.Point(133, 236);
             this.txtQUANTITY.Name = "txtQUANTITY";
             this.txtQUANTITY.Size = new System.Drawing.Size(210, 27);
             this.txtQUANTITY.TabIndex = 96;
-            this.txtQUANTITY.Enter += new System.EventHandler(this.txtAMOUNT_Enter);
-            this.txtQUANTITY.Leave += new System.EventHandler(this.txtAMOUNT_Leave);
+            this.txtQUANTITY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQUANTITY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSALE_KeyPress);
             // 
             // txtNAME_PRODUCT
             // 
             this.txtNAME_PRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_PRODUCT.ForeColor = System.Drawing.Color.Black;
-            this.txtNAME_PRODUCT.Location = new System.Drawing.Point(133, 108);
+            this.txtNAME_PRODUCT.Location = new System.Drawing.Point(133, 155);
             this.txtNAME_PRODUCT.Name = "txtNAME_PRODUCT";
             this.txtNAME_PRODUCT.Size = new System.Drawing.Size(263, 27);
             this.txtNAME_PRODUCT.TabIndex = 95;
@@ -167,26 +154,16 @@ namespace SaleManagement.VIEW
             // txtID_PRODUCT
             // 
             this.txtID_PRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID_PRODUCT.Location = new System.Drawing.Point(133, 29);
+            this.txtID_PRODUCT.Location = new System.Drawing.Point(133, 75);
             this.txtID_PRODUCT.Name = "txtID_PRODUCT";
             this.txtID_PRODUCT.Size = new System.Drawing.Size(210, 27);
             this.txtID_PRODUCT.TabIndex = 94;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(27, 195);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 22);
-            this.label5.TabIndex = 93;
-            this.label5.Text = "Nhà CC";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(27, 150);
+            this.label4.Location = new System.Drawing.Point(27, 239);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 22);
             this.label4.TabIndex = 92;
@@ -196,7 +173,7 @@ namespace SaleManagement.VIEW
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(27, 111);
+            this.label3.Location = new System.Drawing.Point(27, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 22);
             this.label3.TabIndex = 91;
@@ -206,7 +183,7 @@ namespace SaleManagement.VIEW
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(27, 71);
+            this.label6.Location = new System.Drawing.Point(27, 118);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 22);
             this.label6.TabIndex = 90;
@@ -216,7 +193,7 @@ namespace SaleManagement.VIEW
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(27, 32);
+            this.label7.Location = new System.Drawing.Point(27, 78);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(70, 22);
             this.label7.TabIndex = 89;
@@ -250,7 +227,9 @@ namespace SaleManagement.VIEW
             this.txtSALE.Name = "txtSALE";
             this.txtSALE.Size = new System.Drawing.Size(210, 27);
             this.txtSALE.TabIndex = 105;
+            this.txtSALE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSALE.Enter += new System.EventHandler(this.txtSALE_Enter);
+            this.txtSALE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSALE_KeyPress);
             this.txtSALE.Leave += new System.EventHandler(this.txtSALE_Leave);
             // 
             // label10
@@ -271,18 +250,10 @@ namespace SaleManagement.VIEW
             this.txtBUY.Name = "txtBUY";
             this.txtBUY.Size = new System.Drawing.Size(210, 27);
             this.txtBUY.TabIndex = 103;
+            this.txtBUY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBUY.Enter += new System.EventHandler(this.txtBUY_Enter);
+            this.txtBUY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSALE_KeyPress);
             this.txtBUY.Leave += new System.EventHandler(this.txtBUY_Leave);
-            // 
-            // cbbPRODUCERs
-            // 
-            this.cbbPRODUCERs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbPRODUCERs.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbPRODUCERs.FormattingEnabled = true;
-            this.cbbPRODUCERs.Location = new System.Drawing.Point(133, 236);
-            this.cbbPRODUCERs.Name = "cbbPRODUCERs";
-            this.cbbPRODUCERs.Size = new System.Drawing.Size(210, 27);
-            this.cbbPRODUCERs.TabIndex = 102;
             // 
             // gbMota
             // 
@@ -317,16 +288,6 @@ namespace SaleManagement.VIEW
             this.label9.Size = new System.Drawing.Size(84, 22);
             this.label9.TabIndex = 100;
             this.label9.Text = "Giá mua";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(27, 239);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 22);
-            this.label11.TabIndex = 99;
-            this.label11.Text = "Nhà SX";
             // 
             // rbNAME_ITEM
             // 
@@ -449,38 +410,6 @@ namespace SaleManagement.VIEW
             this.btnEXCEL.UseVisualStyleBackColor = false;
             this.btnEXCEL.Click += new System.EventHandler(this.btnEXCEL_Click);
             // 
-            // btnADDPRODUCER
-            // 
-            this.btnADDPRODUCER.BackColor = System.Drawing.SystemColors.Control;
-            this.btnADDPRODUCER.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnADDPRODUCER.FlatAppearance.BorderSize = 0;
-            this.btnADDPRODUCER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADDPRODUCER.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnADDPRODUCER.ForeColor = System.Drawing.Color.White;
-            this.btnADDPRODUCER.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
-            this.btnADDPRODUCER.Location = new System.Drawing.Point(349, 227);
-            this.btnADDPRODUCER.Name = "btnADDPRODUCER";
-            this.btnADDPRODUCER.Size = new System.Drawing.Size(44, 44);
-            this.btnADDPRODUCER.TabIndex = 120;
-            this.btnADDPRODUCER.UseVisualStyleBackColor = false;
-            this.btnADDPRODUCER.Click += new System.EventHandler(this.btnADDPRODUCER_Click);
-            // 
-            // btnADDSUPPLIER
-            // 
-            this.btnADDSUPPLIER.BackColor = System.Drawing.SystemColors.Control;
-            this.btnADDSUPPLIER.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnADDSUPPLIER.FlatAppearance.BorderSize = 0;
-            this.btnADDSUPPLIER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADDSUPPLIER.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnADDSUPPLIER.ForeColor = System.Drawing.Color.White;
-            this.btnADDSUPPLIER.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
-            this.btnADDSUPPLIER.Location = new System.Drawing.Point(349, 183);
-            this.btnADDSUPPLIER.Name = "btnADDSUPPLIER";
-            this.btnADDSUPPLIER.Size = new System.Drawing.Size(44, 44);
-            this.btnADDSUPPLIER.TabIndex = 119;
-            this.btnADDSUPPLIER.UseVisualStyleBackColor = false;
-            this.btnADDSUPPLIER.Click += new System.EventHandler(this.btnADDSUPPLIER_Click);
-            // 
             // btnADDTYPE
             // 
             this.btnADDTYPE.BackColor = System.Drawing.SystemColors.Control;
@@ -490,7 +419,7 @@ namespace SaleManagement.VIEW
             this.btnADDTYPE.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADDTYPE.ForeColor = System.Drawing.Color.White;
             this.btnADDTYPE.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
-            this.btnADDTYPE.Location = new System.Drawing.Point(349, 60);
+            this.btnADDTYPE.Location = new System.Drawing.Point(349, 107);
             this.btnADDTYPE.Name = "btnADDTYPE";
             this.btnADDTYPE.Size = new System.Drawing.Size(44, 46);
             this.btnADDTYPE.TabIndex = 118;
@@ -643,20 +572,56 @@ namespace SaleManagement.VIEW
             this.pictureBox1.TabIndex = 137;
             this.pictureBox1.TabStop = false;
             // 
+            // btnADDSUPPLIER
+            // 
+            this.btnADDSUPPLIER.BackColor = System.Drawing.SystemColors.Control;
+            this.btnADDSUPPLIER.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnADDSUPPLIER.FlatAppearance.BorderSize = 0;
+            this.btnADDSUPPLIER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnADDSUPPLIER.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnADDSUPPLIER.ForeColor = System.Drawing.Color.White;
+            this.btnADDSUPPLIER.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
+            this.btnADDSUPPLIER.Location = new System.Drawing.Point(349, 188);
+            this.btnADDSUPPLIER.Name = "btnADDSUPPLIER";
+            this.btnADDSUPPLIER.Size = new System.Drawing.Size(44, 44);
+            this.btnADDSUPPLIER.TabIndex = 140;
+            this.btnADDSUPPLIER.UseVisualStyleBackColor = false;
+            // 
+            // cbbPRODUCERs
+            // 
+            this.cbbPRODUCERs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbPRODUCERs.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbPRODUCERs.FormattingEnabled = true;
+            this.cbbPRODUCERs.Location = new System.Drawing.Point(133, 197);
+            this.cbbPRODUCERs.Name = "cbbPRODUCERs";
+            this.cbbPRODUCERs.Size = new System.Drawing.Size(210, 27);
+            this.cbbPRODUCERs.TabIndex = 139;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(27, 200);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 22);
+            this.label5.TabIndex = 138;
+            this.label5.Text = "Nhà SX";
+            // 
             // FrmManage_Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1247, 691);
+            this.Controls.Add(this.btnADDSUPPLIER);
+            this.Controls.Add(this.cbbPRODUCERs);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnADDPIC);
             this.Controls.Add(this.pbIMAGE);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHOME);
             this.Controls.Add(this.btnEXCEL);
-            this.Controls.Add(this.btnADDPRODUCER);
-            this.Controls.Add(this.btnADDSUPPLIER);
             this.Controls.Add(this.btnADDTYPE);
             this.Controls.Add(this.cbbTYPE_OF__PRODUCT_DETAIL);
             this.Controls.Add(this.label8);
@@ -667,16 +632,12 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.txtSALE);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtBUY);
-            this.Controls.Add(this.cbbPRODUCERs);
             this.Controls.Add(this.gbMota);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.cbbSUPPLIERs);
             this.Controls.Add(this.cbbTYPE_OF_PRODUCT);
             this.Controls.Add(this.txtQUANTITY);
             this.Controls.Add(this.txtNAME_PRODUCT);
             this.Controls.Add(this.txtID_PRODUCT);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
@@ -716,12 +677,10 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnSHOW;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvLISTITEMS;
-        private System.Windows.Forms.ComboBox cbbSUPPLIERs;
         private System.Windows.Forms.ComboBox cbbTYPE_OF_PRODUCT;
         private System.Windows.Forms.TextBox txtQUANTITY;
         private System.Windows.Forms.TextBox txtNAME_PRODUCT;
         private System.Windows.Forms.TextBox txtID_PRODUCT;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
@@ -731,23 +690,22 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.TextBox txtSALE;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtBUY;
-        private System.Windows.Forms.ComboBox cbbPRODUCERs;
         private System.Windows.Forms.GroupBox gbMota;
         private System.Windows.Forms.TextBox txtDESCRIBE;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.RadioButton rbNAME_ITEM;
         private System.Windows.Forms.RadioButton rbID_ITEM;
         private System.Windows.Forms.ComboBox cbbTYPE_OF__PRODUCT_DETAIL;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnADDTYPE;
-        private System.Windows.Forms.Button btnADDSUPPLIER;
-        private System.Windows.Forms.Button btnADDPRODUCER;
         private System.Windows.Forms.Button btnEXCEL;
         private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.PictureBox pbIMAGE;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnADDPIC;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnADDSUPPLIER;
+        private System.Windows.Forms.ComboBox cbbPRODUCERs;
+        private System.Windows.Forms.Label label5;
     }
 }

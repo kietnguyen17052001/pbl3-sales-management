@@ -206,9 +206,9 @@ namespace SaleManagement.VIEW
             }
             staff.SoDienThoai = txtPHONE.Text;
             staff.DiaChi = txtADDRESS.Text;
-            staff.Luong = txtSALARY.Text;
+            staff.Luong = Convert.ToDouble(txtSALARY.Text);
             if(string.IsNullOrEmpty(staff.MaNhanVien) || string.IsNullOrEmpty(staff.TenNhanVien) || string.IsNullOrEmpty(staff.SoDienThoai) || 
-                string.IsNullOrEmpty(staff.DiaChi) || string.IsNullOrEmpty(staff.Luong))
+                string.IsNullOrEmpty(staff.DiaChi) || string.IsNullOrEmpty(staff.Luong.ToString()))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 disable(true);
@@ -256,23 +256,6 @@ namespace SaleManagement.VIEW
                 ShowStaff();
             }
         }
-        private void txtSEARCH_Enter(object sender, EventArgs e)
-        {
-            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
-            {
-                txtSEARCH.Text = "";
-                txtSEARCH.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtSEARCH_Leave(object sender, EventArgs e)
-        {
-            if (txtSEARCH.Text == "")
-            {
-                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
-                txtSEARCH.ForeColor = Color.Silver;
-            }
-        }
         // search staff
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
@@ -283,6 +266,22 @@ namespace SaleManagement.VIEW
             else
             {
                 BLL_STAFF.Instance.FuncSearchName(dgvLIST_STAFF, txtSEARCH.Text.Trim()); // search name
+            }
+        }
+        private void txtSEARCH_Enter(object sender, EventArgs e)
+        {
+            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
+            {
+                txtSEARCH.Text = "";
+                txtSEARCH.ForeColor = Color.Black;
+            }
+        }
+        private void txtSEARCH_Leave(object sender, EventArgs e)
+        {
+            if (txtSEARCH.Text == "")
+            {
+                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+                txtSEARCH.ForeColor = Color.Silver;
             }
         }
         // cancel
@@ -303,6 +302,14 @@ namespace SaleManagement.VIEW
             else
             {
                 return;
+            }
+        }
+        // KeyPress Event
+        private void txtPHONE_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
             }
         }
     }

@@ -30,8 +30,7 @@
     <Property Name="MaHoaDonNhap" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="MaHangHoa" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="SoLuong" Type="int" />
-    <Property Name="DonGia" Type="float" />
-    <Property Name="GiamGia" Type="float" />
+    <Property Name="GiaNhap" Type="float" />
     <Property Name="TongTien" Type="float" />
   </EntityType>
   <EntityType Name="tblHangHoa">
@@ -42,7 +41,6 @@
     <Property Name="MaLoaiHangHoa" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="TenHangHoa" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="SoLuong" Type="int" Nullable="false" />
-    <Property Name="MaNhaCungCap" Type="nvarchar" MaxLength="20" />
     <Property Name="MaNhaSanXuat" Type="nvarchar" MaxLength="20" />
     <Property Name="GiaNhap" Type="float" Nullable="false" />
     <Property Name="GiaBan" Type="float" Nullable="false" />
@@ -69,6 +67,7 @@
     <Property Name="MaNhanVien" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="NgayNhap" Type="date" />
     <Property Name="SoTien" Type="float" />
+    <Property Name="GiamGia" Type="float" />
   </EntityType>
   <EntityType Name="tblKhachHang">
     <Key>
@@ -110,7 +109,7 @@
     <Property Name="GioiTinh" Type="bit" />
     <Property Name="SoDienThoai" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="Luong" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Luong" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="tblNhaSanXuat">
     <Key>
@@ -185,18 +184,6 @@
       </Principal>
       <Dependent Role="tblHangHoa">
         <PropertyRef Name="MaLoaiHangHoa" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__tblHangHo__MaNha__66B53B20">
-    <End Role="tblNhaCungCap" Type="Self.tblNhaCungCap" Multiplicity="0..1" />
-    <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblNhaCungCap">
-        <PropertyRef Name="MaNhaCungCap" />
-      </Principal>
-      <Dependent Role="tblHangHoa">
-        <PropertyRef Name="MaNhaCungCap" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -291,10 +278,6 @@
     </AssociationSet>
     <AssociationSet Name="FK__tblHangHo__MaLoa__65C116E7" Association="Self.FK__tblHangHo__MaLoa__65C116E7">
       <End Role="tblLoaiHangHoa" EntitySet="tblLoaiHangHoa" />
-      <End Role="tblHangHoa" EntitySet="tblHangHoa" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tblHangHo__MaNha__66B53B20" Association="Self.FK__tblHangHo__MaNha__66B53B20">
-      <End Role="tblNhaCungCap" EntitySet="tblNhaCungCap" />
       <End Role="tblHangHoa" EntitySet="tblHangHoa" />
     </AssociationSet>
     <AssociationSet Name="FK__tblHangHo__MaNha__67A95F59" Association="Self.FK__tblHangHo__MaNha__67A95F59">

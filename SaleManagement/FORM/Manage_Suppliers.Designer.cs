@@ -96,6 +96,7 @@ namespace SaleManagement.VIEW
             this.txtPHONE.Name = "txtPHONE";
             this.txtPHONE.Size = new System.Drawing.Size(237, 29);
             this.txtPHONE.TabIndex = 75;
+            this.txtPHONE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFAX_KeyPress);
             // 
             // txtNAME_SUPPLIER
             // 
@@ -213,19 +214,21 @@ namespace SaleManagement.VIEW
             // 
             this.txtFAX.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFAX.ForeColor = System.Drawing.Color.Black;
-            this.txtFAX.Location = new System.Drawing.Point(146, 362);
+            this.txtFAX.Location = new System.Drawing.Point(147, 362);
             this.txtFAX.Name = "txtFAX";
             this.txtFAX.Size = new System.Drawing.Size(237, 29);
-            this.txtFAX.TabIndex = 89;
+            this.txtFAX.TabIndex = 78;
+            this.txtFAX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFAX_KeyPress);
             // 
             // txtID_TAX
             // 
             this.txtID_TAX.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_TAX.ForeColor = System.Drawing.Color.Black;
-            this.txtID_TAX.Location = new System.Drawing.Point(146, 404);
+            this.txtID_TAX.Location = new System.Drawing.Point(147, 404);
             this.txtID_TAX.Name = "txtID_TAX";
             this.txtID_TAX.Size = new System.Drawing.Size(237, 29);
-            this.txtID_TAX.TabIndex = 91;
+            this.txtID_TAX.TabIndex = 79;
+            this.txtID_TAX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFAX_KeyPress);
             // 
             // label8
             // 
@@ -439,7 +442,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.dgvSUPPLIER);
             this.Name = "FrmManage_Suppliers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manage_Suppliers";
+            this.Text = "Quản lý nhà cung cấp";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSUPPLIER)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
