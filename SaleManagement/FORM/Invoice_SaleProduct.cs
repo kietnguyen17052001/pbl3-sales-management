@@ -25,7 +25,7 @@ namespace SaleManagement.VIEW
             sendByCustomer, 
             sendByStaff, 
             totalMoney;
-        DataTable dataTable = BLL_SALEPRODUCT.Instance.TableInvoice();
+        private DataTable dataTable = BLL_SALEPRODUCT.Instance.TableInvoice();
         public FrmInvoice_SaleProduct()
         {
             InitializeComponent();
@@ -83,17 +83,16 @@ namespace SaleManagement.VIEW
         // load dataTable
         public void LoadForm()
         {
-            dataTable = BLL_SALEPRODUCT.Instance.TableInvoice();
+            dataTable.Clear();
             totalMoney = invoicePrice = sendByCustomer = sendByStaff = allProduct = productQty = 0;
             invoiceDiscount = 0;
             products = 1;
             productDiscount = 0;
-            txtCUSTOMER.Text = "";
+            txtCUSTOMER.Clear();
             cbbSTAFF.SelectedIndex = 0;
             btnDELETE.Enabled = true;
             btnADD.Enabled = true;
-            btnEDIT.Enabled = true;
-            dgvInvoice.DataSource = dataTable;
+            btnEDIT.Enabled = true;;
             setDataForToolBox();
         }
         // Thiết lập giá trị cho txt Giảm giá và Tổng thanh toán sau khi giảm theo % 

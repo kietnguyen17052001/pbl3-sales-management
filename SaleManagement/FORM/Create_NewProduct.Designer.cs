@@ -378,7 +378,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label7);
             this.Name = "FrmCreate_NewProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create_NewProduct";
+            this.Text = "Thêm hàng hóa";
             this.gbMota.ResumeLayout(false);
             this.gbMota.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIMAGE)).EndInit();

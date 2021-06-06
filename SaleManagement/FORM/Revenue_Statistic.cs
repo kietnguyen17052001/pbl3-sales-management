@@ -1,4 +1,5 @@
-﻿using SaleManagement.Entity;
+﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,6 @@ namespace SaleManagement.FORM
 {
     public partial class FrmRevenue_Statistic : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public FrmRevenue_Statistic()
         {
             InitializeComponent();
@@ -21,11 +21,10 @@ namespace SaleManagement.FORM
             rbYEAR.Checked = true;
             fillChartYear();
         }
-        int year, month;
+        private int year, month;
         public void fillChartYear()
         {
             year = Convert.ToInt32(cbbYEAR.SelectedItem.ToString());
-            var StatisticByYear = DB.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year);
             chartSTATISTIC.Series.Clear();
             chartSTATISTIC.Series.Add("Doanh thu");
             chartSTATISTIC.Series["Doanh thu"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -34,7 +33,7 @@ namespace SaleManagement.FORM
             for(int i = 1; i <= 12; i++)
             {
                 revenue = 0.0;
-                foreach(tblHoaDonBanHang invoice in StatisticByYear)
+                foreach(tblHoaDonBanHang invoice in BLL_STATISTIC.instance.getListInvoiceByYear(year))
                 {
                     if(invoice.NgayBan.Value.Month == i)
                     {
@@ -48,8 +47,6 @@ namespace SaleManagement.FORM
         {
             year = Convert.ToInt32(cbbYEAR.SelectedItem.ToString());
             month = Convert.ToInt32(cbbMONTH.SelectedItem.ToString());
-            var StatisticByMonth = DB.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year
-            && p.NgayBan.Value.Month == month);
             chartSTATISTIC.Series.Clear();
             chartSTATISTIC.Series.Add("Doanh thu");
             chartSTATISTIC.Series["Doanh thu"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -58,7 +55,7 @@ namespace SaleManagement.FORM
             for (int i = 1; i <= 31; i++)
             {
                 revenue = 0.0;
-                foreach (tblHoaDonBanHang invoice in StatisticByMonth)
+                foreach (tblHoaDonBanHang invoice in BLL_STATISTIC.instance.getListInvoiceByMonthInYear(year, month))
                 {
                     if (invoice.NgayBan.Value.Day == i)
                     {

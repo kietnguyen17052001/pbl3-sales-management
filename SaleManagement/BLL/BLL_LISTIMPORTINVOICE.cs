@@ -75,7 +75,7 @@ namespace SaleManagement.BLL
         // func search invoice
         public void FuncSearchInvoice(DataGridView dgv, DateTime dateFrom, DateTime dateTo, string information)
         {
-            if(information == "Nhập mã hóa đơn hoặc mã/ tên nhà c.cấp" || string.IsNullOrEmpty(information))
+            if(information == "Nhập mã hóa đơn hoặc mã/ tên nhà c.cấp" || String.IsNullOrEmpty(information))
             {
                 LoadDataFrmInvoice(dgv, dateFrom, dateTo);
             }

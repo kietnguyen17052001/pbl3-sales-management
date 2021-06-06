@@ -17,7 +17,7 @@ namespace SaleManagement.FORM
         public FrmReport()
         {
             InitializeComponent();
-            DateTime dateMin = BLL_REPORT.Instance.getDateMin();
+            DateTime dateMin = BLL_LISTSALEINVOICE.Instance.getDate();
             if (dateMin == null)
             {
                 dpFROM.Value = DateTime.Now;

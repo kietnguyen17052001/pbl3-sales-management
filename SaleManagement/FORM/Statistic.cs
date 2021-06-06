@@ -15,20 +15,19 @@ namespace SaleManagement.FORM
 {
     public partial class FrmStatistic : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private Random rand = new Random();
+        private DateTime dateMin = BLL_LISTSALEINVOICE.Instance.getDate();
         public FrmStatistic()
         {
             InitializeComponent();
             SetCBB();
-            var dateMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
             if (dateMin == null)
             {
                 dpFROM.Value = DateTime.Now;
             }
             else
             {
-                dpFROM.Value = dateMin.Value;
+                dpFROM.Value = dateMin;
             }
             fillChart();
         }
@@ -60,36 +59,37 @@ namespace SaleManagement.FORM
             chartPRODUCT_QTY.Series["Số sản phẩm"].LabelForeColor = Color.White;
             chartSCALE.Series["Tỉ lệ %"].IsValueShownAsLabel = true;
             Color randomColor = new Color();
-            foreach (tblLoaiHangHoa typeProduct in DB.tblLoaiHangHoas)
+            foreach (tblLoaiHangHoa typeOfProduct in BLL_STATISTIC.instance.getListTypeOfProduct())
             {
                 quantitySale = 0; 
                 randomColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
                 quantity = 0;
                 money = 0;
-                foreach (tblHangHoa product in DB.tblHangHoas)
+                foreach (tblHangHoa product in BLL_STATISTIC.instance.getListProduct())
                 {
-                    if (product.MaLoaiHangHoa == typeProduct.MaLoaiHangHoa)
+                    if (product.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
                     {
                         quantity += product.SoLuong;
                     }
                 }
                 // Biểu đồ số sản phẩm
-                chartPRODUCT_QTY.Series["Số sản phẩm"].Points.AddXY(typeProduct.TenLoaiHangHoa, quantity);
+                chartPRODUCT_QTY.Series["Số sản phẩm"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, quantity);
                 chartPRODUCT_QTY.Series["Số sản phẩm"].Points[count].Color = randomColor;
                 chartPRODUCT_QTY.Series["Số sản phẩm"].Points[count].Label = quantity.ToString();
-                var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
-                foreach (tblChiTietHoaDonBanHang invoiceDetail in list)
+                //var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
+                
+                foreach (tblChiTietHoaDonBanHang invoiceDetail in BLL_STATISTIC.instance.getListInvoiceDetail(dpFROM.Value, dpTO.Value))
                 {
-                    if(invoiceDetail.tblHangHoa.MaLoaiHangHoa == typeProduct.MaLoaiHangHoa)
+                    if(invoiceDetail.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
                     {
                         money += (double)invoiceDetail.TongTien;
                         quantitySale += (int)invoiceDetail.SoLuong;
                     }
                 }
                 // Biểu đồ so sánh
-                chartSCALE.Series["Tỉ lệ %"].Points.AddXY(typeProduct.TenLoaiHangHoa, Math.Round((quantitySale / GetAllQuantitySale()) * 100, 2));
+                chartSCALE.Series["Tỉ lệ %"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, Math.Round((quantitySale / BLL_STATISTIC.instance.getTotalQuantityProduct()) * 100, 2));
                 // Biểu đồ tiền bán được
-                chartMONEY.Series["Số tiền"].Points.AddXY(typeProduct.TenLoaiHangHoa, money);
+                chartMONEY.Series["Số tiền"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, money);
                 chartMONEY.Series["Số tiền"].Points[count].Color = randomColor;
                 chartMONEY.Series["Số tiền"].Points[count].Label = money.ToString();
                 count++;
@@ -117,17 +117,6 @@ namespace SaleManagement.FORM
             frm.Show();
             this.Close();
         }
-        // Tổng số lượng hàng hóa bán được
-        public double GetAllQuantitySale()
-        {
-            double quantity = 0;
-            foreach(tblChiTietHoaDonBanHang invoiceDetail in DB.tblChiTietHoaDonBanHangs)
-            {
-                quantity += (double)invoiceDetail.SoLuong;
-            }
-            return quantity;
-        }
-
         private void btnLOAD_Click(object sender, EventArgs e)
         {
             lbTIME.Text = ""; 

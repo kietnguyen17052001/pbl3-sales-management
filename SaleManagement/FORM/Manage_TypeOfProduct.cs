@@ -21,7 +21,8 @@ namespace SaleManagement.FORM
             InitializeComponent();
             Disable(false);
             rbID_TYPE.Checked = true;
-            ShowData();    
+            ShowData();
+            FormatColumnHeader();
         }
         public void FormatColumnHeader()
         {
@@ -46,7 +47,7 @@ namespace SaleManagement.FORM
         // func show type of product
         public void ShowData()
         {
-            
+            BLL_TYPEOFPRODUCT.Instance.LoadDataTypeOfProduct(dgvLISTTYPE);
         }
         // click
         private void dgvLISTTYPE_CellClick(object sender, DataGridViewCellEventArgs e)

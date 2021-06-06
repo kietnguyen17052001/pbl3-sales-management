@@ -48,7 +48,9 @@ namespace SaleManagement.FORM
             this.btnSHOW = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvLISTTYPE = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTTYPE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -107,7 +109,7 @@ namespace SaleManagement.FORM
             // 
             this.rbNAME_TYPE.AutoSize = true;
             this.rbNAME_TYPE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNAME_TYPE.Location = new System.Drawing.Point(811, 572);
+            this.rbNAME_TYPE.Location = new System.Drawing.Point(783, 578);
             this.rbNAME_TYPE.Name = "rbNAME_TYPE";
             this.rbNAME_TYPE.Size = new System.Drawing.Size(106, 26);
             this.rbNAME_TYPE.TabIndex = 144;
@@ -119,7 +121,7 @@ namespace SaleManagement.FORM
             // 
             this.rbID_TYPE.AutoSize = true;
             this.rbID_TYPE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbID_TYPE.Location = new System.Drawing.Point(697, 572);
+            this.rbID_TYPE.Location = new System.Drawing.Point(669, 578);
             this.rbID_TYPE.Name = "rbID_TYPE";
             this.rbID_TYPE.Size = new System.Drawing.Size(99, 26);
             this.rbID_TYPE.TabIndex = 143;
@@ -282,7 +284,7 @@ namespace SaleManagement.FORM
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(952, 570);
+            this.txtSEARCH.Location = new System.Drawing.Point(895, 577);
             this.txtSEARCH.Name = "txtSEARCH";
             this.txtSEARCH.Size = new System.Drawing.Size(274, 29);
             this.txtSEARCH.TabIndex = 127;
@@ -340,11 +342,25 @@ namespace SaleManagement.FORM
             this.dgvLISTTYPE.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLISTTYPE_CellClick);
             this.dgvLISTTYPE.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLISTTYPE_CellFormatting);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(1175, 571);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
+            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
+            this.pictureBox1.TabIndex = 148;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmManage_TypeOfProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHOME);
             this.Controls.Add(this.btnEXCEL);
@@ -368,6 +384,7 @@ namespace SaleManagement.FORM
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage_TypeOfProduct";
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTTYPE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,5 +411,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Button btnSHOW;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvLISTTYPE;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

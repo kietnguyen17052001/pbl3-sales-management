@@ -51,6 +51,7 @@ namespace SaleManagement.FORM
             this.txtNEW_QUANTITY.Name = "txtNEW_QUANTITY";
             this.txtNEW_QUANTITY.Size = new System.Drawing.Size(203, 32);
             this.txtNEW_QUANTITY.TabIndex = 91;
+            this.txtNEW_QUANTITY.TextChanged += new System.EventHandler(this.txtNEW_QUANTITY_TextChanged);
             this.txtNEW_QUANTITY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNEW_QUANTITY_KeyPress);
             // 
             // label1

@@ -11,7 +11,7 @@ namespace SaleManagement.BLL
 {
     class BLL_LISTSALEINVOICE
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_LISTSALEINVOICE _Instance;
         public static BLL_LISTSALEINVOICE Instance
         {
@@ -28,10 +28,8 @@ namespace SaleManagement.BLL
         private BLL_LISTSALEINVOICE() { }
         public DateTime getDate()
         {
-            DateTime date = new DateTime();
-            var dateMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
-            date = dateMin.Value;
-            return date;
+            var getDate = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
+            return (DateTime)getDate;
         }
         // load data for from Invoice
         public void LoadDataFrmInvoice(DataGridView dgv, DateTime dateFrom, DateTime dateTo)
@@ -62,7 +60,7 @@ namespace SaleManagement.BLL
         // search invoice
         public void FuncSearchInvoice(DataGridView dgv, DateTime dateFrom, DateTime dateTo, string content)
         {
-            if (content == "Nhập mã hóa đơn hoặc mã/ tên khách hàng" || string.IsNullOrEmpty(content))
+            if (content == "Nhập mã hóa đơn hoặc mã/ tên khách hàng" || String.IsNullOrEmpty(content))
             {
                 LoadDataFrmInvoice(dgv, dateFrom, dateTo);
             }

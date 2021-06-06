@@ -49,25 +49,32 @@ namespace SaleManagement.BLL
             DB.SaveChanges();
         }
         // search id
-        public void FuncSearchTypeProduct(bool isSearchId, string type, DataGridView dgv)
+        public void FuncSearchTypeProduct(bool isSearchId, string information, DataGridView dgv)
         {
-            if(isSearchId == true)
+            if (information == "Nhập thông tin cần tìm kiếm" || String.IsNullOrEmpty(information))
             {
-                var getType = DB.tblLoaiHangHoas.Where(p => p.MaLoaiHangHoa.Contains(type)).Select(p => new
-                {
-                    p.MaLoaiHangHoa,
-                    p.TenLoaiHangHoa
-                });
-                dgv.DataSource = getType.ToList();
+                LoadDataTypeOfProduct(dgv);
             }
             else
             {
-                var getType = DB.tblLoaiHangHoas.Where(p => p.TenLoaiHangHoa.Contains(type)).Select(p => new
+                if (isSearchId == true)
                 {
-                    p.MaLoaiHangHoa,
-                    p.TenLoaiHangHoa
-                });
-                dgv.DataSource = getType.ToList();
+                    var getType = DB.tblLoaiHangHoas.Where(p => p.MaLoaiHangHoa.Contains(information)).Select(p => new
+                    {
+                        p.MaLoaiHangHoa,
+                        p.TenLoaiHangHoa
+                    });
+                    dgv.DataSource = getType.ToList();
+                }
+                else
+                {
+                    var getType = DB.tblLoaiHangHoas.Where(p => p.TenLoaiHangHoa.Contains(information)).Select(p => new
+                    {
+                        p.MaLoaiHangHoa,
+                        p.TenLoaiHangHoa
+                    });
+                    dgv.DataSource = getType.ToList();
+                }
             }
         }
         // delete type of product

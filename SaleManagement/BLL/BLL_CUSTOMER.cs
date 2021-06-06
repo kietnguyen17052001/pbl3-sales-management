@@ -10,7 +10,7 @@ namespace SaleManagement.BLL
 {
     class BLL_CUSTOMER
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_CUSTOMER _Instance;
         public static BLL_CUSTOMER Instance
         {
@@ -49,7 +49,8 @@ namespace SaleManagement.BLL
         // load data customer 
         public void LoadData(DataGridView dgv)
         {
-            var listCustomer = DB.tblKhachHangs.Select(p => new {
+            var listCustomer = DB.tblKhachHangs.Select(p => new
+            {
                 p.MaKhachHang,
                 p.TenKhachHang,
                 p.GioiTinh,

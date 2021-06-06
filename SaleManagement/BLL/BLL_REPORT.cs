@@ -25,12 +25,6 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_REPORT() { }
-        // get date min in invoice
-        public DateTime getDateMin()
-        {
-            var getDate = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
-            return (DateTime)getDate;
-        }
         // load data report
         public void LoadDataReport(DataGridView dgv, DateTime dateFrom, DateTime dateTo)
         {

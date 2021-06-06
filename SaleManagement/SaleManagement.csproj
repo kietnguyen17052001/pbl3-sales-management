@@ -69,6 +69,7 @@
     <Compile Include="BLL\BLL_PRODUCER.cs" />
     <Compile Include="BLL\BLL_REPORT.cs" />
     <Compile Include="BLL\BLL_STAFF.cs" />
+    <Compile Include="BLL\BLL_STATISTIC.cs" />
     <Compile Include="BLL\BLL_SUPPLIER.cs" />
     <Compile Include="BLL\BLL_TYPEOFPRODUCT.cs" />
     <Compile Include="CBBItem.cs" />

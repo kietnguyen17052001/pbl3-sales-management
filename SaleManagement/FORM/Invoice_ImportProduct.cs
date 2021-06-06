@@ -14,7 +14,7 @@ namespace SaleManagement.FORM
 {
     public partial class FrmInvoice_ImportProduct : Form
     {
-        DataTable dataTable = BLL_IMPORTPRODUCT.instance.TableInvoice();
+        private DataTable dataTable = BLL_IMPORTPRODUCT.instance.TableInvoice();
         private string idProduct, idSupplier;
         private double intoMoney, totalMoney;
         public FrmInvoice_ImportProduct()
@@ -40,9 +40,9 @@ namespace SaleManagement.FORM
         {
             txtIdInvoice.Text = BLL_IMPORTPRODUCT.instance.getNewIdInvoice();
             txtIntoMoney.Text = txtTotalMoney.Text = txtPercent.Text = txtMoney.Text = "0";
-            txtSupplier.Text = "";
+            txtSupplier.Clear();
             txtQuantity.Text = "1";
-            dataTable = BLL_IMPORTPRODUCT.instance.TableInvoice();
+            dataTable.Clear();
         }
         // Format headerCell for DGVs
         public void FormatHeaderCell()
@@ -293,6 +293,14 @@ namespace SaleManagement.FORM
             {
                 txtNote.ForeColor = Color.Black;
                 txtNote.Text = "";
+            }
+        }
+
+        private void txtQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtQuantity.Text))
+            {
+                txtQuantity.Text = "1";
             }
         }
 

@@ -32,7 +32,7 @@ namespace SaleManagement.VIEW
             this.Close();
         }
 
-        private void btnITEMS_Click(object sender, EventArgs e)
+        private void btnPRODUCT_Click(object sender, EventArgs e)
         {
             FrmManage_Items frm = new FrmManage_Items();
             frm.Show();
@@ -67,7 +67,7 @@ namespace SaleManagement.VIEW
             this.Close();
         }
 
-        private void btnTYPE_ITEMS_Click(object sender, EventArgs e)
+        private void btnTYPE_PRODUCT_Click(object sender, EventArgs e)
         {
             FrmManage_TypeOfProduct frm = new FrmManage_TypeOfProduct();
             frm.Show();

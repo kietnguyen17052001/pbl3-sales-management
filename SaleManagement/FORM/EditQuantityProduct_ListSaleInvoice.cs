@@ -62,5 +62,13 @@ namespace SaleManagement.FORM
                 e.Handled = true;
             }
         }
+
+        private void txtNEW_QUANTITY_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtNEW_QUANTITY.Text))
+            {
+                txtNEW_QUANTITY.Text = "1";
+            }
+        }
     }
 }

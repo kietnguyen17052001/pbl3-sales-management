@@ -20,6 +20,7 @@ namespace SaleManagement.VIEW
             InitializeComponent();
             Disable(false);
             ShowCustomer();
+            FormatColumnHeader();
             rbID_CUSTOMER.Checked = true;
         }
         // Format column header
