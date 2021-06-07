@@ -109,6 +109,7 @@
     <EntitySetMapping Name="tblNhanViens">
       <EntityTypeMapping TypeName="PBL3Model.tblNhanVien">
         <MappingFragment StoreEntitySet="tblNhanVien">
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
           <ScalarProperty Name="Luong" ColumnName="Luong" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />

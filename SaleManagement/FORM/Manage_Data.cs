@@ -41,7 +41,7 @@ namespace SaleManagement.VIEW
 
         private void btnSALE_Click(object sender, EventArgs e)
         {
-            FrmInvoice_SaleProduct frm = new FrmInvoice_SaleProduct();
+            FrmInvoice_SaleProduct frm = new FrmInvoice_SaleProduct(true);
             frm.Show();
             this.Close();
         }
@@ -55,7 +55,7 @@ namespace SaleManagement.VIEW
 
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmSale_Management frm = new FrmSale_Management();
+            FrmMain_Admin frm = new FrmMain_Admin();
             frm.Show();
             this.Close();
         }
@@ -76,7 +76,7 @@ namespace SaleManagement.VIEW
 
         private void btnImportProduct_Click(object sender, EventArgs e)
         {
-            FrmInvoice_ImportProduct frm = new FrmInvoice_ImportProduct();
+            FrmInvoice_ImportProduct frm = new FrmInvoice_ImportProduct(true);
             frm.Show();
             this.Close();
         }

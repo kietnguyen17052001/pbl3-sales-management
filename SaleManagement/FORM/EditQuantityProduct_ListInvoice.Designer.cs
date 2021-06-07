@@ -1,7 +1,7 @@
 ﻿
 namespace SaleManagement.FORM
 {
-    partial class FrmEditQuantityProduct_ListSaleInvoice
+    partial class FrmEditQuantityProduct_ListInvoice
     {
         /// <summary>
         /// Required designer variable.
@@ -144,9 +144,9 @@ namespace SaleManagement.FORM
             this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(69, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 24);
+            this.label3.Size = new System.Drawing.Size(129, 24);
             this.label3.TabIndex = 97;
-            this.label3.Text = "Số lượng đã mua";
+            this.label3.Text = "Số lượng cũ";
             // 
             // lbSTATUS
             // 
@@ -179,7 +179,7 @@ namespace SaleManagement.FORM
             this.lbQUANTITY.Size = new System.Drawing.Size(0, 24);
             this.lbQUANTITY.TabIndex = 145;
             // 
-            // FrmEditQuantityProduct_ListSaleInvoice
+            // FrmEditQuantityProduct_ListInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -195,7 +195,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.txtNEW_QUANTITY);
             this.Controls.Add(this.label1);
-            this.Name = "FrmEditQuantityProduct_ListSaleInvoice";
+            this.Name = "FrmEditQuantityProduct_ListInvoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sửa số lượng hàng hóa";
             this.ResumeLayout(false);

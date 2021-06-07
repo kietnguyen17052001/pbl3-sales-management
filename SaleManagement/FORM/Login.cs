@@ -1,4 +1,5 @@
-﻿using SaleManagement.Entity;
+﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,15 +14,14 @@ namespace SaleManagement.FORM
 {
     public partial class FrmLogin : Form
     {
+        //private string idAccount;
         public FrmLogin()
         {
             InitializeComponent();
         }
-
         private void btnADMIN_Click(object sender, EventArgs e)
-        {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var admin = DB.tblTaiKhoans.Find(txtUSER.Text);
+        {   
+            tblTaiKhoan admin = BLL_ACCOUNT.Instance.getUser(txtUSER.Text);
             if(string.IsNullOrEmpty(txtUSER.Text) || admin == null)
             {
                 lbINFO.ForeColor = Color.IndianRed;
@@ -31,37 +31,52 @@ namespace SaleManagement.FORM
             {
                 if (admin.MatKhau == txtPASSWORD.Text)
                 {
-                    lbINFO.ForeColor = Color.SteelBlue;
-                    lbINFO.Text = "Đăng nhập thành công";
-                    FrmSale_Management frm = new FrmSale_Management(txtUSER.Text);
-                    frm.Show();
-                    this.Hide();
+                    if (admin.ChucVu == "Admin")
+                    {
+                        lbINFO.ForeColor = Color.SteelBlue;
+                        lbINFO.Text = "Đăng nhập thành công";
+                        FrmMain_Admin frm = new FrmMain_Admin(txtUSER.Text);
+                        frm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        lbINFO.ForeColor = Color.IndianRed;
+                        lbINFO.Text = "Không được quyền đăng nhập chức năng này";
+                    }
                 }
                 else
                 {
                     lbINFO.ForeColor = Color.IndianRed;
                     lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+                    txtPASSWORD.Clear();
                 }
             }
         }
 
         private void btnSTAFF_Click(object sender, EventArgs e)
         {
-            SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-            var staff = DB.tblTaiKhoans.Find(txtUSER.Text);
+            tblTaiKhoan staff = BLL_ACCOUNT.Instance.getUser(txtUSER.Text);
             if (staff.MatKhau == txtPASSWORD.Text)
             {
-                lbINFO.ForeColor = Color.SteelBlue;
-                lbINFO.Text = "Đăng nhập thành công";
-                FrmSale_Management frm = new FrmSale_Management();
-                frm.SetStaff();
-                frm.Show();
-                this.Hide();
+                if (staff.ChucVu == "Member")
+                {
+                    lbINFO.ForeColor = Color.SteelBlue;
+                    lbINFO.Text = "Đăng nhập thành công";
+                    FrmMain_Member frm = new FrmMain_Member();
+                    frm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    lbINFO.Text = "Không được quyền đăng nhập chức năng này";
+                }
             }
             else
             {
                 lbINFO.ForeColor = Color.IndianRed;
                 lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+                txtPASSWORD.Clear();
             }
         }
 

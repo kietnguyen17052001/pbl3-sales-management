@@ -80,7 +80,7 @@ namespace SaleManagement.VIEW
         // back FrmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmSale_Management frm = new FrmSale_Management();
+            FrmMain_Admin frm = new FrmMain_Admin();
             frm.Show();
             this.Close();
         }

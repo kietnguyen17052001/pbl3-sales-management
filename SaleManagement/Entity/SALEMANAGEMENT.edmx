@@ -108,13 +108,14 @@
             <PropertyRef Name="MaNhanVien" />
           </Key>
           <Property Name="MaNhanVien" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="TenNhanVien" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ViTri" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TenNhanVien" Type="nvarchar" MaxLength="100" />
+          <Property Name="ViTri" Type="nvarchar" MaxLength="100" />
           <Property Name="NgaySinh" Type="date" />
           <Property Name="GioiTinh" Type="bit" />
-          <Property Name="SoDienThoai" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Luong" Type="float" Nullable="false" />
+          <Property Name="SoDienThoai" Type="char" MaxLength="10" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Luong" Type="float" />
+          <Property Name="MatKhau" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tblNhaSanXuat">
           <Key>
@@ -129,8 +130,8 @@
             <PropertyRef Name="MaNguoiDung" />
           </Key>
           <Property Name="MaNguoiDung" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="MatKhau" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ChucVu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MatKhau" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChucVu" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK__tblChiTie__MaHan__703EA55A">
           <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="1" />
@@ -484,13 +485,14 @@
             <PropertyRef Name="MaNhanVien" />
           </Key>
           <Property Name="MaNhanVien" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TenNhanVien" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ViTri" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenNhanVien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ViTri" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
           <Property Name="GioiTinh" Type="Boolean" />
-          <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Luong" Type="Double" Nullable="false" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Luong" Type="Double" />
+          <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblHoaDonBanHangs" Relationship="PBL3Model.FK__tblHoaDon__MaNha__6C6E1476" FromRole="tblNhanVien" ToRole="tblHoaDonBanHang" />
           <NavigationProperty Name="tblHoaDonNhapHangs" Relationship="PBL3Model.FK__tblHoaDon__MaNha__75F77EB0" FromRole="tblNhanVien" ToRole="tblHoaDonNhapHang" />
         </EntityType>
@@ -508,8 +510,8 @@
             <PropertyRef Name="MaNguoiDung" />
           </Key>
           <Property Name="MaNguoiDung" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ChucVu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ChucVu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__tblChiTie__MaHan__703EA55A">
           <End Type="PBL3Model.tblHangHoa" Role="tblHangHoa" Multiplicity="1" />
@@ -745,6 +747,7 @@
           <EntitySetMapping Name="tblNhanViens">
             <EntityTypeMapping TypeName="PBL3Model.tblNhanVien">
               <MappingFragment StoreEntitySet="tblNhanVien">
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
                 <ScalarProperty Name="Luong" ColumnName="Luong" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />

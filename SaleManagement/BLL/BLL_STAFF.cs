@@ -10,7 +10,7 @@ namespace SaleManagement.BLL
 {
     class BLL_STAFF
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_STAFF _Instance;
         public static BLL_STAFF Instance
         {
@@ -37,12 +37,13 @@ namespace SaleManagement.BLL
         // Lấy danh sách các vị trí nhân viên từ DB
         public List<string> getListPosition()
         {
-            List<string> list = new List<string>();
-            foreach (tblNhanVien staff in DB.tblNhanViens)
+            string[] arrayPosition = {"Thu ngân", "Bán hàng", "Kho"};
+            List<string> listPosition = new List<string>();
+            foreach(string position in arrayPosition)
             {
-                list.Add(staff.ViTri);
+                listPosition.Add(position);
             }
-            return list;
+            return listPosition;
         }
         // load data staff
         public void LoadDataStaff(DataGridView dgv, int index, string position)
@@ -57,7 +58,8 @@ namespace SaleManagement.BLL
                     p.GioiTinh,
                     p.SoDienThoai,
                     p.DiaChi,
-                    p.Luong
+                    p.Luong,
+                    p.MatKhau
                 });
                 dgv.DataSource = getStaff.ToList();
             }
@@ -71,7 +73,8 @@ namespace SaleManagement.BLL
                     p.GioiTinh,
                     p.SoDienThoai,
                     p.DiaChi,
-                    p.Luong
+                    p.Luong,
+                    p.MatKhau
                 });
                 dgv.DataSource = getStaff.ToList();
             }
@@ -93,16 +96,17 @@ namespace SaleManagement.BLL
             getStaff.SoDienThoai = staff.SoDienThoai;
             getStaff.DiaChi = staff.DiaChi;
             getStaff.Luong = staff.Luong;
+            getStaff.MatKhau = staff.MatKhau;
             DB.SaveChanges();
         }
         // remove staff
         public void FuncDeleteStaff(List<string> listIdStaff)
         {
-            foreach (string i in listIdStaff)
+            foreach (string idStaff in listIdStaff)
             {
                 foreach (tblNhanVien staff in DB.tblNhanViens)
                 {
-                    if (staff.MaNhanVien == i)
+                    if (staff.MaNhanVien == idStaff)
                     {
                         DB.tblNhanViens.Remove(staff);
                         break;

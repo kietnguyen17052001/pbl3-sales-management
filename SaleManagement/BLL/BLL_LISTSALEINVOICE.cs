@@ -153,7 +153,7 @@ namespace SaleManagement.BLL
             product.SoLuong += (quantityProduct - newQuantity);
             DB.SaveChanges();
             var getInvoice = DB.tblHoaDonBanHangs.Find(idInvoice);
-            getInvoice.SoTien = BLL_LISTSALEINVOICE.Instance.getPriceInvoice(idInvoice) - getInvoice.GiamGia;
+            getInvoice.SoTien = getPriceInvoice(idInvoice) - getInvoice.GiamGia;
             DB.SaveChanges();
         }
         public double getPriceInvoice(string idInvoice)

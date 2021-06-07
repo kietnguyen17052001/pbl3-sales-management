@@ -30,7 +30,14 @@ namespace SaleManagement.BLL
         {
             DateTime date = new DateTime();
             var dateMin = DB.tblHoaDonNhapHangs.Min(p => p.NgayNhap);
-            date = dateMin.Value;
+            if (dateMin == null)
+            {
+                date = DateTime.Now;
+            }
+            else
+            {
+                date = dateMin.Value;
+            }
             return date;
         }
         // get text for combobox (staff, supplier)
@@ -144,6 +151,32 @@ namespace SaleManagement.BLL
                 }
                 DB.SaveChanges();
             }
+        }
+        // change quantity product
+        public void ChangeQuantityProduct(string idInvoice, string idProduct, int newQuantity)
+        {
+            var invoiceDetail = DB.tblChiTietHoaDonNhapHangs.Find(idInvoice, idProduct);
+            var product = DB.tblHangHoas.Find(idProduct);
+            product.SoLuong += (int)(newQuantity - invoiceDetail.SoLuong);
+            invoiceDetail.SoLuong = newQuantity;
+            invoiceDetail.TongTien = (int)(invoiceDetail.GiaNhap * invoiceDetail.SoLuong);
+            DB.SaveChanges();
+            var invoiceImport = DB.tblHoaDonNhapHangs.Find(idInvoice);
+            invoiceImport.SoTien = getPriceInvoice(idInvoice) - invoiceImport.GiamGia;
+            DB.SaveChanges();
+        }
+        // get price invoice;
+        public double getPriceInvoice(string idInvoice)
+        {
+            double priceInvoice = 0;
+            foreach(tblChiTietHoaDonNhapHang invoiceImport in DB.tblChiTietHoaDonNhapHangs)
+            {
+                if(invoiceImport.MaHoaDonNhap == idInvoice)
+                {
+                    priceInvoice += (double)invoiceImport.TongTien;
+                }
+            }
+            return priceInvoice;
         }
     }
 }

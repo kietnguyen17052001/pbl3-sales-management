@@ -12,15 +12,17 @@ using System.Windows.Forms;
 
 namespace SaleManagement.FORM
 {
-    public partial class FrmEditQuantityProduct_ListSaleInvoice : Form
+    public partial class FrmEditQuantityProduct_ListInvoice : Form
     {
         public delegate void myDEL(int quantity);
         public myDEL d { get; set; }
         private string idProduct;
         private int newQuantity;
-        public FrmEditQuantityProduct_ListSaleInvoice(string _idProduct, string nameProduct, int quantity)
+        private bool isListSale;
+        public FrmEditQuantityProduct_ListInvoice(string _idProduct, string nameProduct, int quantity, bool _isListSale)
         {
             InitializeComponent();
+            isListSale = _isListSale;
             txtPRODUCT.Text = nameProduct;
             txtQUANTITY.Text = quantity.ToString();
             idProduct = _idProduct;
@@ -39,9 +41,17 @@ namespace SaleManagement.FORM
             else
             {
                 newQuantity= Convert.ToInt32(txtNEW_QUANTITY.Text);
-                if (newQuantity > BLL_PRODUCTS.Instance.getQuantityProduct(idProduct))
+                if(isListSale == true)
                 {
-                    lbSTATUS.Text = "KHÔNG ĐỦ SL";
+                    if (newQuantity > BLL_PRODUCTS.Instance.getQuantityProduct(idProduct))
+                    {
+                        lbSTATUS.Text = "KHÔNG ĐỦ SL";
+                    }
+                    else
+                    {
+                        d(newQuantity);
+                        this.Close();
+                    }
                 }
                 else
                 {

@@ -20,7 +20,7 @@ namespace SaleManagement.FORM
         public FrmList_SaleInvoice()
         {
             InitializeComponent();
-            disable(false);
+            Disable(false);
             setCombobox();
             LoadDataDGVs();
             FormatColumnHeader();
@@ -50,7 +50,7 @@ namespace SaleManagement.FORM
             dgvINFO_INVOICE.Columns[4].HeaderText = "Giảm giá(%)";
             dgvINFO_INVOICE.Columns[5].HeaderText = "Tổng tiền(VNĐ)";
         }
-        public void disable(bool E)
+        public void Disable(bool E)
         {
             dpDAY.Enabled = E;
             cbbCUSTOMER.Enabled = E;
@@ -58,7 +58,7 @@ namespace SaleManagement.FORM
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmSale_Management frm = new FrmSale_Management();
+            FrmMain_Admin frm = new FrmMain_Admin();
             frm.Show();
             this.Close();
         }
@@ -152,7 +152,7 @@ namespace SaleManagement.FORM
 
         private void btnEDIT_Click(object sender, EventArgs e)
         {
-            disable(true);
+            Disable(true);
         }
         // Save changes
         private void btnSAVE_Click(object sender, EventArgs e)
@@ -162,6 +162,7 @@ namespace SaleManagement.FORM
                 BLL_LISTSALEINVOICE.Instance.FuncEditInvoice(idInvoice, dpDAY.Value, ((CBBItem)cbbSTAFF.SelectedItem).VALUE, ((CBBItem)cbbCUSTOMER.SelectedItem).VALUE);
                 MessageBox.Show("Sửa thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadDataDGVs();
+                Disable(false);
             }
             catch (Exception)
             {
@@ -214,8 +215,8 @@ namespace SaleManagement.FORM
             nameProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["TenHangHoa"].Value.ToString();
             quantityProduct = Convert.ToInt32(dgvINFO_INVOICE.SelectedRows[0].Cells["SoLuong"].Value.ToString());
             idProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
-            FrmEditQuantityProduct_ListSaleInvoice frm = new FrmEditQuantityProduct_ListSaleInvoice(idProduct, nameProduct, quantityProduct);
-            frm.d += new FrmEditQuantityProduct_ListSaleInvoice.myDEL(setNewQuantity);
+            FrmEditQuantityProduct_ListInvoice frm = new FrmEditQuantityProduct_ListInvoice(idProduct, nameProduct, quantityProduct, true);
+            frm.d += new FrmEditQuantityProduct_ListInvoice.myDEL(setNewQuantity);
             frm.Show();
         }
         // Delete product in invoice

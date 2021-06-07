@@ -78,7 +78,7 @@ namespace SaleManagement.FORM
         // back to FrmQLBanHang
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmSale_Management frm = new FrmSale_Management();
+            FrmMain_Admin frm = new FrmMain_Admin();
             frm.Show();
             this.Close();
         }

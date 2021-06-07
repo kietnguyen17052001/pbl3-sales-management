@@ -15,6 +15,7 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmInvoice_SaleProduct : Form
     {
+        private bool isAdmin;
         private int products = 1, allProduct, productQty;
         private string idProduct, nameProduct, idCustomer; //idCustomer cho chức năng Payment
         private double productPrice, 
@@ -26,8 +27,9 @@ namespace SaleManagement.VIEW
             sendByStaff, 
             totalMoney;
         private DataTable dataTable = BLL_SALEPRODUCT.Instance.TableInvoice();
-        public FrmInvoice_SaleProduct()
+        public FrmInvoice_SaleProduct(bool _isAdmin)
         {
+            isAdmin = _isAdmin;
             InitializeComponent();
             setComboboxStaff();
             setDataForToolBox();
@@ -76,7 +78,6 @@ namespace SaleManagement.VIEW
         // set data for cbbStaff
         public void setComboboxStaff()
         {
-            cbbSTAFF.Items.Add("None");
             cbbSTAFF.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
             cbbSTAFF.SelectedIndex = 0;
         }
@@ -138,8 +139,16 @@ namespace SaleManagement.VIEW
         // back to FrmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmSale_Management FRM = new FrmSale_Management();
-            FRM.Show();
+            if (isAdmin)
+            {
+                FrmMain_Admin frm = new FrmMain_Admin();
+                frm.Show();
+            }
+            else
+            {
+                FrmMain_Member frm = new FrmMain_Member();
+                frm.Show();
+            }
             this.Close();
         }
         // search product
@@ -192,42 +201,37 @@ namespace SaleManagement.VIEW
         // Btn thanh toán
         private void btnPAYMENT_Click(object sender, EventArgs e)
         {
-            if (dataTable.Rows.Count == 0)
+            tblHoaDonBanHang newInvoice = new tblHoaDonBanHang();
+            if (string.IsNullOrEmpty(txtID_INVOICE.Text) 
+                || string.IsNullOrEmpty(txtCUSTOMER.Text)
+                || dataTable.Rows.Count == 0)
             {
-                MessageBox.Show("Không thể thực hiện chức năng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vui lòng nhập kiểm tra lại thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                tblHoaDonBanHang newInvoice = new tblHoaDonBanHang();
-                if (string.IsNullOrEmpty(txtID_INVOICE.Text) || invoicePrice == 0 || cbbSTAFF.SelectedIndex == 0 || string.IsNullOrEmpty(txtCUSTOMER.Text))
+                newInvoice.MaHoaDonBan = txtID_INVOICE.Text;
+                newInvoice.MaNhanVien = ((CBBItem)cbbSTAFF.SelectedItem).VALUE;
+                newInvoice.NgayBan = dpDAY.Value;
+                newInvoice.MaKhachHang = idCustomer;
+                newInvoice.SoTien = invoicePrice;
+                newInvoice.GiamGia = invoiceDiscount;
+                try
                 {
-                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    newInvoice.MaHoaDonBan = txtID_INVOICE.Text;
-                    newInvoice.MaNhanVien = ((CBBItem)cbbSTAFF.SelectedItem).VALUE;
-                    newInvoice.NgayBan = dpDAY.Value;
-                    newInvoice.MaKhachHang = idCustomer;
-                    newInvoice.SoTien = invoicePrice;
-                    newInvoice.GiamGia = invoiceDiscount;
-                    try
+                    DialogResult dialogResult = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        DialogResult dialogResult = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            BLL_SALEPRODUCT.Instance.FuncPayment(newInvoice, dataTable); // payment invoice
-                            LoadDGVs();
-                            LoadForm();
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Tạo hóa đơn thất bại. Mã đơn bị trùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        BLL_SALEPRODUCT.Instance.FuncPayment(newInvoice, dataTable); // payment invoice
+                        LoadDGVs();
+                        LoadForm();
                     }
                 }
-            }   
+                catch (Exception)
+                {
+                    MessageBox.Show("Tạo hóa đơn thất bại. Mã đơn bị trùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
         // load invoice
         private void btnLOAD_Click(object sender, EventArgs e)
@@ -278,9 +282,9 @@ namespace SaleManagement.VIEW
         // Btn in giao diện cho hóa đơn
         private void btnPRINT_Click(object sender, EventArgs e)
         {
-            if (dataTable.Rows.Count == 0 || cbbSTAFF.SelectedIndex == 0 || string.IsNullOrEmpty(txtCUSTOMER.Text))
+            if (dataTable.Rows.Count == 0 || string.IsNullOrEmpty(txtCUSTOMER.Text))
             {
-                MessageBox.Show("Không thể thực hiện chức năng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vui lòng kiểm tra lại thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

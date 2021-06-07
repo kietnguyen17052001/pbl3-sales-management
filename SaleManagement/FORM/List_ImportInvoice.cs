@@ -14,7 +14,8 @@ namespace SaleManagement.FORM
 {
     public partial class FrmList_ImportInvoice : Form
     {
-        private string idInvoice;
+        private string idInvoice, idProduct, nameProduct;
+        private int quantityProduct;
         public FrmList_ImportInvoice()
         {
             InitializeComponent();
@@ -86,7 +87,7 @@ namespace SaleManagement.FORM
         // button home
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmSale_Management frm = new FrmSale_Management();
+            FrmMain_Admin frm = new FrmMain_Admin();
             frm.Show();
             this.Close();
         }
@@ -154,6 +155,7 @@ namespace SaleManagement.FORM
                 BLL_LISTIMPORTINVOICE.Instance.FuncEditInvoice(idInvoice, dpDAY.Value, ((CBBItem)cbbSUPPLIER.SelectedItem).VALUE, ((CBBItem)cbbSTAFF.SelectedItem).VALUE);
                 MessageBox.Show("Sửa thành công đơn nhập hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadDGVs();
+                Disable(false);
             }
             catch (Exception) {
                 MessageBox.Show("Sửa thất bại đơn nhập hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -187,10 +189,20 @@ namespace SaleManagement.FORM
         {
 
         }
+        public void setNewQuantity(int newQuantity)
+        {
+            BLL_LISTIMPORTINVOICE.Instance.ChangeQuantityProduct(idInvoice, idProduct, newQuantity);
+            LoadDGVs();
+        }
         // button edit quantity
         private void btnEDIT_QUANTITY_Click(object sender, EventArgs e)
         {
-
+            idProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
+            nameProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["TenHangHoa"].Value.ToString();
+            quantityProduct = Convert.ToInt32(dgvINFO_INVOICE.SelectedRows[0].Cells["SoLuong"].Value.ToString());
+            FrmEditQuantityProduct_ListInvoice frm = new FrmEditQuantityProduct_ListInvoice(idProduct, nameProduct, quantityProduct, false);
+            frm.d += new FrmEditQuantityProduct_ListInvoice.myDEL(setNewQuantity);
+            frm.Show();
         }
         // button delete product
         private void btnDELETE_PRODUCT_Click(object sender, EventArgs e)

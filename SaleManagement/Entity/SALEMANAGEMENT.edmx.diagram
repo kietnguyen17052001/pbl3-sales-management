@@ -11,10 +11,10 @@
         <EntityTypeShape EntityType="PBL3Model.tblHangHoa" Width="1.5" PointX="3" PointY="2.75" />
         <EntityTypeShape EntityType="PBL3Model.tblHoaDonBanHang" Width="1.5" PointX="3" PointY="9.125" />
         <EntityTypeShape EntityType="PBL3Model.tblHoaDonNhapHang" Width="1.5" PointX="6" PointY="13.125" />
-        <EntityTypeShape EntityType="PBL3Model.tblKhachHang" Width="1.5" PointX="0.75" PointY="11.25" />
+        <EntityTypeShape EntityType="PBL3Model.tblKhachHang" Width="1.5" PointX="0.75" PointY="7.5" />
         <EntityTypeShape EntityType="PBL3Model.tblLoaiHangHoa" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="PBL3Model.tblNhaCungCap" Width="1.5" PointX="3.75" PointY="13.25" />
-        <EntityTypeShape EntityType="PBL3Model.tblNhanVien" Width="1.5" PointX="0.75" PointY="7.625" />
+        <EntityTypeShape EntityType="PBL3Model.tblNhanVien" Width="1.5" PointX="0.75" PointY="10.5" />
         <EntityTypeShape EntityType="PBL3Model.tblNhaSanXuat" Width="1.5" PointX="0.75" PointY="3.625" />
         <EntityTypeShape EntityType="PBL3Model.tblTaiKhoan" Width="1.5" PointX="7.75" PointY="7.375" />
         <AssociationConnector Association="PBL3Model.FK__tblChiTie__MaHan__703EA55A" />
