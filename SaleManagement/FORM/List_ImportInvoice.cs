@@ -83,6 +83,8 @@ namespace SaleManagement.FORM
         {
             BLL_LISTIMPORTINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, dpFROM.Value, dpTO.Value, txtSEARCH.Text.Trim());
             BLL_LISTIMPORTINVOICE.Instance.LoadDataFrmDetail(dgvINFO_INVOICE, idInvoice);
+            //lbQuantity.Text = BLL_LISTIMPORTINVOICE.Instance.getQuantityInvoice(dgvLIST_INVOICE).ToString();
+            //lbTotalMoney.Text = BLL_LISTIMPORTINVOICE.Instance.getTotalMoney(dgvLIST_INVOICE).ToString();
         }
         // button home
         private void btnHOME_Click(object sender, EventArgs e)
@@ -95,6 +97,8 @@ namespace SaleManagement.FORM
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
             BLL_LISTIMPORTINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, dpFROM.Value, dpTO.Value, txtSEARCH.Text.Trim());
+            lbQuantity.Text = BLL_LISTIMPORTINVOICE.Instance.getQuantityInvoice(dgvLIST_INVOICE).ToString();
+            lbTotalMoney.Text = String.Format("{0:n0}", BLL_LISTIMPORTINVOICE.Instance.getTotalMoney(dgvLIST_INVOICE));
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {

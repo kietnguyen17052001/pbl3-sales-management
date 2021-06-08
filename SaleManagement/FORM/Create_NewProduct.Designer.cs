@@ -352,6 +352,7 @@ namespace SaleManagement.FORM
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 663);
+            this.ControlBox = false;
             this.Controls.Add(this.btnSAVE);
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.label1);

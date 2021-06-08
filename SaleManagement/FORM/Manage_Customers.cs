@@ -21,7 +21,6 @@ namespace SaleManagement.VIEW
             Disable(false);
             ShowCustomer();
             FormatColumnHeader();
-            rbID_CUSTOMER.Checked = true;
         }
         // Format column header
         public void FormatColumnHeader()
@@ -62,6 +61,7 @@ namespace SaleManagement.VIEW
             txtNAME_CUSTOMER.Clear();
             txtPHONE.Clear();
             txtADDRESS.Clear();
+            lbQuantity.Text = BLL_CUSTOMER.Instance.getQuantityCustomer(dgvLISTCUSTOMER).ToString();
         }
         // Set backColor for row in dgvListCustomer
         private void dgvLISTCUSTOMER_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -231,19 +231,13 @@ namespace SaleManagement.VIEW
         // search customer
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            if (rbID_CUSTOMER.Checked == true) // Tìm kiếm theo mã số
-            {
-                BLL_CUSTOMER.Instance.FuncSearchID(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
-            }
-            else // Tìm kiếm theo tên
-            {
-                BLL_CUSTOMER.Instance.FuncSearchName(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
-            }
+            BLL_CUSTOMER.Instance.FuncSearchCustomer(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
+            lbQuantity.Text = BLL_CUSTOMER.Instance.getQuantityCustomer(dgvLISTCUSTOMER).ToString();
         }
         // input information
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
-            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
+            if (txtSEARCH.Text == "Nhập mã hoặc tên khách hàng")
             {
                 txtSEARCH.Text = "";
                 txtSEARCH.ForeColor = Color.Black;
@@ -254,7 +248,7 @@ namespace SaleManagement.VIEW
         {
             if (txtSEARCH.Text == "")
             {
-                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+                txtSEARCH.Text = "Nhập mã hoặc tên khách hàng";
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }

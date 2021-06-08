@@ -97,11 +97,15 @@ namespace SaleManagement.FORM
         {
             BLL_LISTSALEINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, dpFROM.Value, dpTO.Value, txtSEARCH.Text.Trim());
             BLL_LISTSALEINVOICE.Instance.LoadDataFrmDetail(dgvINFO_INVOICE, idInvoice);
+            //lbQuantity.Text = BLL_LISTSALEINVOICE.Instance.getQuantityInvoice(dgvLIST_INVOICE).ToString();
+            //lbTotalMoney.Text = BLL_LISTSALEINVOICE.Instance.getTotalMoney(dgvLIST_INVOICE).ToString();
         }
         // Search invoice
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
             BLL_LISTSALEINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, dpFROM.Value, dpTO.Value, txtSEARCH.Text.Trim()); // search invoice
+            lbQuantity.Text = BLL_LISTSALEINVOICE.Instance.getQuantityInvoice(dgvLIST_INVOICE).ToString();
+            lbTotalMoney.Text = String.Format("{0:n0}", BLL_LISTSALEINVOICE.Instance.getTotalMoney(dgvLIST_INVOICE));
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {

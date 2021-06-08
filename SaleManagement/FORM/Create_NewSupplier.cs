@@ -19,7 +19,7 @@ namespace SaleManagement.FORM
         public FrmCreate_NewSupplier()
         {
             InitializeComponent();
-            txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.GetNewIdSupplier();
+            txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.getNewIdSupplier();
         }
 
         private void btnSAVE_Click(object sender, EventArgs e)

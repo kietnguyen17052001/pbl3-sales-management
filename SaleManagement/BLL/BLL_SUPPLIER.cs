@@ -106,7 +106,13 @@ namespace SaleManagement.BLL
                 dgv.DataSource = getSupplier.ToList();
             }
         }
-        public string GetNewIdSupplier()
+        // get quantity supplier
+        public int getQuantitySupplier(DataGridView dgv)
+        {
+            return dgv.Rows.Count;
+        }
+        // get new id supplier
+        public string getNewIdSupplier()
         {
             string idSupplier;
             List<tblNhaCungCap> list = DB.tblNhaCungCaps.ToList();

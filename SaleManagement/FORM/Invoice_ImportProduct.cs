@@ -1,5 +1,6 @@
 ﻿using SaleManagement.BLL;
 using SaleManagement.Entity;
+using SaleManagement.VIEW;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,8 +21,12 @@ namespace SaleManagement.FORM
         private double intoMoney, totalMoney;
         public FrmInvoice_ImportProduct(bool _isAdmin)
         {
-            isAdmin = _isAdmin;
             InitializeComponent();
+            isAdmin = _isAdmin;
+            if (isAdmin == false)
+            {
+                btnBACK.Enabled = false;
+            }
             LoadDGVs();
             FormatHeaderCell();
             setCbbStaff();
@@ -62,6 +67,13 @@ namespace SaleManagement.FORM
             dgvInvoice.Columns["GiaNhap"].HeaderText = "Giá nhập";
             dgvInvoice.Columns["TongTien"].HeaderText = "Tổng tiền";
         }
+        // Format cell DGV
+        private void dgvInvoice_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvInvoice.DefaultCellStyle.BackColor = Color.OldLace;
+            dgvInvoice.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
+        }
+
         // button Home -> back to frmSaleManagement
         private void btnHome_Click(object sender, EventArgs e)
         {
@@ -231,9 +243,9 @@ namespace SaleManagement.FORM
             e.Graphics.DrawString("N3K STORE", new Font("Tahoma", 20, FontStyle.Bold), Brushes.Black, new Point(340, 50));
             e.Graphics.DrawString("54 NGUYỄN LƯƠNG BẰNG", new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(280, 100));
             e.Graphics.DrawString("0911.888.999", new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(350, 120));
-            e.Graphics.DrawString("HÓA ĐƠN THANH TOÁN", new Font("Tahoma", 19, FontStyle.Bold), Brushes.Black, new Point(290, 180));
-            e.Graphics.DrawString("Nhân viên: " + cbbStaff.SelectedItem.ToString(), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(300, 220));
-            e.Graphics.DrawString("Nhà cung cấp: " + txtSupplier.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(300, 250));
+            e.Graphics.DrawString("HÓA ĐƠN THANH TOÁN", new Font("Tahoma", 19, FontStyle.Bold), Brushes.Black, new Point(270, 180));
+            e.Graphics.DrawString("Nhân viên: " + cbbStaff.SelectedItem.ToString(), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(270, 220));
+            e.Graphics.DrawString("Nhà cung cấp: " + txtSupplier.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(270, 250));
             e.Graphics.DrawString("Số hóa đơn: " + txtIdInvoice.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(200, 300));
             e.Graphics.DrawString("Ngày: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(450, 300));
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, 350));
@@ -269,7 +281,7 @@ namespace SaleManagement.FORM
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50 * 7));
             e.Graphics.DrawString("Cảm ơn và hẹn gặp lại!", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(250, distance + 50 * 8));
         }
-
+        // print invoice
         private void btnPrint_Click(object sender, EventArgs e)
         {
             if (dataTable.Rows.Count == 0 || string.IsNullOrEmpty(txtSupplier.Text))
@@ -282,13 +294,21 @@ namespace SaleManagement.FORM
                 printPreviewDialog1.ShowDialog();
             }
         }
-        // Format cell DGV
-        private void dgvInvoice_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        // back to frmManage_Data
+        private void btnBACK_Click(object sender, EventArgs e)
         {
-            dgvInvoice.DefaultCellStyle.BackColor = Color.OldLace;
-            dgvInvoice.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
+            DialogResult answer = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (answer == DialogResult.Yes)
+            {
+                FrmManage_Data frm = new FrmManage_Data();
+                frm.Show();
+                this.Close();
+            }
+            else
+            {
+                return;
+            }
         }
-
         // Note information
         private void txtNote_Enter(object sender, EventArgs e)
         {
@@ -298,7 +318,6 @@ namespace SaleManagement.FORM
                 txtNote.Text = "";
             }
         }
-
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txtQuantity.Text))
@@ -306,7 +325,6 @@ namespace SaleManagement.FORM
                 txtQuantity.Text = "1";
             }
         }
-
         private void txtNote_Leave(object sender, EventArgs e)
         {
             if (txtNote.Text == "")

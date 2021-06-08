@@ -56,6 +56,8 @@ namespace SaleManagement.VIEW
             this.label1 = new System.Windows.Forms.Label();
             this.btnHOME = new System.Windows.Forms.Button();
             this.btnEXCEL = new System.Windows.Forms.Button();
+            this.lbQuantity = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSUPPLIER)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -407,12 +409,36 @@ namespace SaleManagement.VIEW
             this.btnEXCEL.UseVisualStyleBackColor = false;
             this.btnEXCEL.Click += new System.EventHandler(this.btnEXCEL_Click);
             // 
+            // lbQuantity
+            // 
+            this.lbQuantity.AutoSize = true;
+            this.lbQuantity.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQuantity.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbQuantity.Location = new System.Drawing.Point(646, 648);
+            this.lbQuantity.Name = "lbQuantity";
+            this.lbQuantity.Size = new System.Drawing.Size(0, 22);
+            this.lbQuantity.TabIndex = 146;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label9.Location = new System.Drawing.Point(411, 648);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(223, 22);
+            this.label9.TabIndex = 145;
+            this.label9.Text = "Số lượng nhà cung cấp:";
+            // 
             // FrmManage_Suppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.ControlBox = false;
+            this.Controls.Add(this.lbQuantity);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnEXCEL);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHOME);
@@ -442,7 +468,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.dgvSUPPLIER);
             this.Name = "FrmManage_Suppliers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản lý nhà cung cấp";
+            this.Text = "Nhà cung cấp";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSUPPLIER)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -479,5 +505,7 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.Button btnEXCEL;
+        private System.Windows.Forms.Label lbQuantity;
+        private System.Windows.Forms.Label label9;
     }
 }

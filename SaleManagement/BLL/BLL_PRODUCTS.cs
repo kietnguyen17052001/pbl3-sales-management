@@ -12,7 +12,7 @@ namespace SaleManagement.BLL
 {
     class BLL_PRODUCTS
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_PRODUCTS _Instance;
         public static BLL_PRODUCTS Instance
         {
@@ -38,38 +38,20 @@ namespace SaleManagement.BLL
             return list;
         }
         // load data product
-        public void LoadDataProduct(DataGridView dgv, string value)
+        public void LoadDataProduct(DataGridView dgv)
         {
-            if(value == "0")
+            var product = DB.tblHangHoas.Select(p => new
             {
-                var product = DB.tblHangHoas.Select(p => new
-                {
-                    p.MaHangHoa,
-                    p.TenHangHoa,
-                    p.SoLuong,
-                    p.tblLoaiHangHoa.TenLoaiHangHoa,
-                    p.tblNhaSanXuat.TenNhaSanXuat,
-                    p.GiaNhap,
-                    p.GiaBan,
-                    p.MoTa
-                });
-                dgv.DataSource = product.ToList();
-            }
-            else
-            {
-                var product = DB.tblHangHoas.Where(p => p.MaLoaiHangHoa == value).Select(p => new
-                {
-                    p.MaHangHoa,
-                    p.TenHangHoa,
-                    p.SoLuong,
-                    p.tblLoaiHangHoa.TenLoaiHangHoa,
-                    p.tblNhaSanXuat.TenNhaSanXuat,
-                    p.GiaNhap,
-                    p.GiaBan,
-                    p.MoTa
-                });
-                dgv.DataSource = product.ToList();
-            }
+                p.MaHangHoa,
+                p.TenHangHoa,
+                p.SoLuong,
+                p.tblLoaiHangHoa.TenLoaiHangHoa,
+                p.tblNhaSanXuat.TenNhaSanXuat,
+                p.GiaNhap,
+                p.GiaBan,
+                p.MoTa
+            });
+            dgv.DataSource = product.ToList();
         }
         public Image ByteArrayToImage(byte[] byArrayIn)
         {
@@ -122,35 +104,29 @@ namespace SaleManagement.BLL
                 DB.SaveChanges();
             }
         }
-        // search name
-        public void FuncSearchName(DataGridView dgv, string name)
+        // search product
+        public void FuncSearchProduct(DataGridView dgv, string information)
         {
-            var getProduct = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(name)).Select(p => new
+            if (information == "Nhập mã hoặc tên hàng hóa, loại hàng hóa" || String.IsNullOrEmpty(information))
             {
-                p.MaHangHoa,
-                p.TenHangHoa,
-                p.SoLuong,
-                p.tblLoaiHangHoa.TenLoaiHangHoa,
-                p.tblNhaSanXuat.TenNhaSanXuat,
-                p.GiaNhap,
-                p.GiaBan,
-            });
-            dgv.DataSource = getProduct.ToList();
-        }
-        // search id
-        public void FuncSearchId(DataGridView dgv, string id)
-        {
-            var getProduct = DB.tblHangHoas.Where(p => p.MaHangHoa.Contains(id)).Select(p => new
+                LoadDataProduct(dgv);
+            }
+            else
             {
-                p.MaHangHoa,
-                p.TenHangHoa,
-                p.SoLuong,
-                p.tblLoaiHangHoa.TenLoaiHangHoa,
-                p.tblNhaSanXuat.TenNhaSanXuat,
-                p.GiaNhap,
-                p.GiaBan,
-            });
-            dgv.DataSource = getProduct.ToList();
+                var getProduct = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
+                || p.tblLoaiHangHoa.TenLoaiHangHoa.Contains(information)).Select(p => new
+                {
+                    p.MaHangHoa,
+                    p.TenHangHoa,
+                    p.SoLuong,
+                    p.tblLoaiHangHoa.TenLoaiHangHoa,
+                    p.tblNhaSanXuat.TenNhaSanXuat,
+                    p.GiaNhap,
+                    p.GiaBan,
+                    p.MoTa
+                });
+                dgv.DataSource = getProduct.ToList();
+            }
         }
         // Trả về mã hàng hóa mới khi thực hiện chức năng thêm 
         public string getNewIdProduct(string idTypeProduct)
@@ -190,8 +166,13 @@ namespace SaleManagement.BLL
             }
             return idProduct;
         }
+        // get quantity product in database
+        public int getQuantityProduct(DataGridView dgv)
+        {
+            return dgv.Rows.Count;
+        }
         // get quantity product by idProduct
-        public int getQuantityProduct(string idProduct)
+        public int getQuantityProductByIdProduct(string idProduct)
         {
             var value = DB.tblHangHoas.Find(idProduct);
             return value.SoLuong;

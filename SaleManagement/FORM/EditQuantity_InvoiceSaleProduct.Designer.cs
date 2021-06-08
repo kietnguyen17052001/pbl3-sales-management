@@ -110,12 +110,12 @@ namespace SaleManagement.FORM
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 176);
+            this.ControlBox = false;
             this.Controls.Add(this.lbQTY);
             this.Controls.Add(this.txtNEWQTY);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSAVE);
             this.Controls.Add(this.btnCANCEL);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmEditQuantity_InvoiceSaleProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sửa số lượng hàng hóa";

@@ -61,6 +61,10 @@ namespace SaleManagement.FORM
             this.btnDELETE = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbIdInvoice = new System.Windows.Forms.Label();
+            this.lbQuantity = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lbTotalMoney = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_INVOICE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvINFO_INVOICE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -411,7 +415,7 @@ namespace SaleManagement.FORM
             this.btnEDIT.ForeColor = System.Drawing.Color.White;
             this.btnEDIT.Image = global::SaleManagement.Properties.Resources.edit_3_24;
             this.btnEDIT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEDIT.Location = new System.Drawing.Point(63, 409);
+            this.btnEDIT.Location = new System.Drawing.Point(40, 403);
             this.btnEDIT.Name = "btnEDIT";
             this.btnEDIT.Size = new System.Drawing.Size(131, 61);
             this.btnEDIT.TabIndex = 101;
@@ -430,7 +434,7 @@ namespace SaleManagement.FORM
             this.btnBACK.ForeColor = System.Drawing.Color.White;
             this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
             this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBACK.Location = new System.Drawing.Point(202, 479);
+            this.btnBACK.Location = new System.Drawing.Point(179, 473);
             this.btnBACK.Name = "btnBACK";
             this.btnBACK.Size = new System.Drawing.Size(132, 59);
             this.btnBACK.TabIndex = 105;
@@ -449,7 +453,7 @@ namespace SaleManagement.FORM
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
             this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSAVE.Location = new System.Drawing.Point(202, 409);
+            this.btnSAVE.Location = new System.Drawing.Point(179, 403);
             this.btnSAVE.Name = "btnSAVE";
             this.btnSAVE.Size = new System.Drawing.Size(132, 61);
             this.btnSAVE.TabIndex = 103;
@@ -468,9 +472,9 @@ namespace SaleManagement.FORM
             this.btnDELETE.ForeColor = System.Drawing.Color.White;
             this.btnDELETE.Image = global::SaleManagement.Properties.Resources.delete_property_24;
             this.btnDELETE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDELETE.Location = new System.Drawing.Point(63, 479);
+            this.btnDELETE.Location = new System.Drawing.Point(40, 473);
             this.btnDELETE.Name = "btnDELETE";
-            this.btnDELETE.Size = new System.Drawing.Size(132, 59);
+            this.btnDELETE.Size = new System.Drawing.Size(131, 59);
             this.btnDELETE.TabIndex = 102;
             this.btnDELETE.Text = "Xóa đơn";
             this.btnDELETE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -500,11 +504,58 @@ namespace SaleManagement.FORM
             this.lbIdInvoice.Size = new System.Drawing.Size(0, 27);
             this.lbIdInvoice.TabIndex = 137;
             // 
+            // lbQuantity
+            // 
+            this.lbQuantity.AutoSize = true;
+            this.lbQuantity.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQuantity.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbQuantity.Location = new System.Drawing.Point(232, 572);
+            this.lbQuantity.Name = "lbQuantity";
+            this.lbQuantity.Size = new System.Drawing.Size(0, 22);
+            this.lbQuantity.TabIndex = 146;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label8.Location = new System.Drawing.Point(36, 572);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(186, 22);
+            this.label8.TabIndex = 145;
+            this.label8.Text = "Số lượng đơn hàng:";
+            // 
+            // lbTotalMoney
+            // 
+            this.lbTotalMoney.AutoSize = true;
+            this.lbTotalMoney.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalMoney.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbTotalMoney.Location = new System.Drawing.Point(232, 611);
+            this.lbTotalMoney.Name = "lbTotalMoney";
+            this.lbTotalMoney.Size = new System.Drawing.Size(0, 22);
+            this.lbTotalMoney.TabIndex = 148;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label11.Location = new System.Drawing.Point(36, 611);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(102, 22);
+            this.label11.TabIndex = 147;
+            this.label11.Text = "Tổng tiền:";
+            // 
             // FrmList_SaleInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 691);
+            this.ControlBox = false;
+            this.Controls.Add(this.lbTotalMoney);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lbQuantity);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.lbIdInvoice);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -581,5 +632,9 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbIdInvoice;
+        private System.Windows.Forms.Label lbQuantity;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbTotalMoney;
+        private System.Windows.Forms.Label label11;
     }
 }

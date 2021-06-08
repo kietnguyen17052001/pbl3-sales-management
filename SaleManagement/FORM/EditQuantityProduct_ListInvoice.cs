@@ -26,7 +26,7 @@ namespace SaleManagement.FORM
             txtPRODUCT.Text = nameProduct;
             txtQUANTITY.Text = quantity.ToString();
             idProduct = _idProduct;
-            lbQUANTITY.Text = BLL_PRODUCTS.Instance.getQuantityProduct(idProduct).ToString();
+            lbQUANTITY.Text = BLL_PRODUCTS.Instance.getQuantityProductByIdProduct(idProduct).ToString();
             txtPRODUCT.Enabled = false;
             txtQUANTITY.Enabled = false;
             txtNEW_QUANTITY.Text = "1";
@@ -43,7 +43,7 @@ namespace SaleManagement.FORM
                 newQuantity= Convert.ToInt32(txtNEW_QUANTITY.Text);
                 if(isListSale == true)
                 {
-                    if (newQuantity > BLL_PRODUCTS.Instance.getQuantityProduct(idProduct))
+                    if (newQuantity > BLL_PRODUCTS.Instance.getQuantityProductByIdProduct(idProduct))
                     {
                         lbSTATUS.Text = "KHÔNG ĐỦ SL";
                     }

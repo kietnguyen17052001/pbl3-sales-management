@@ -115,37 +115,34 @@ namespace SaleManagement.BLL
                 DB.SaveChanges();
             }
         }
-        // search name
-        public void FuncSearchName(DataGridView dgv, string name)
+        // search staff
+        public void FuncSearchStaff(DataGridView dgv, string information)
         {
-            var getStaff = DB.tblNhanViens.Where(p => p.TenNhanVien.Contains(name)).Select(p => new
+            if (information == "Nhập mã hoặc tên nhân viên" || String.IsNullOrEmpty(information))
             {
-                p.MaNhanVien,
-                p.TenNhanVien,
-                p.ViTri,
-                p.NgaySinh,
-                p.GioiTinh,
-                p.SoDienThoai,
-                p.DiaChi,
-                p.Luong
-            });
-            dgv.DataSource = getStaff.ToList();
+                LoadDataStaff(dgv,0,null);
+            }
+            else
+            {
+                var getStaff = DB.tblNhanViens.Where(p => p.TenNhanVien.Contains(information) || p.MaNhanVien.Contains(information)).Select(p => new
+                {
+                    p.MaNhanVien,
+                    p.TenNhanVien,
+                    p.ViTri,
+                    p.NgaySinh,
+                    p.GioiTinh,
+                    p.SoDienThoai,
+                    p.DiaChi,
+                    p.Luong,
+                    p.MatKhau
+                });
+                dgv.DataSource = getStaff.ToList();
+            }
         }
-        // search id
-        public void FuncSearchID(DataGridView dgv, string id)
+        // get quantity staff
+        public int getQuantityStaff(DataGridView dgv)
         {
-            var getStaff = DB.tblNhanViens.Where(p => p.MaNhanVien.Contains(id)).Select(p => new
-            {
-                p.MaNhanVien,
-                p.TenNhanVien,
-                p.ViTri,
-                p.NgaySinh,
-                p.GioiTinh,
-                p.SoDienThoai,
-                p.DiaChi,
-                p.Luong
-            });
-            dgv.DataSource = getStaff.ToList();
+            return dgv.Rows.Count;
         }
         // Trả về mã số khách hàng mới khi thực hiện chức năng thêm
         public string getNewIdStaff()

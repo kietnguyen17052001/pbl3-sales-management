@@ -20,7 +20,6 @@ namespace SaleManagement.FORM
         {
             InitializeComponent();
             Disable(false);
-            rbID_TYPE.Checked = true;
             ShowData();
             FormatColumnHeader();
         }
@@ -192,7 +191,7 @@ namespace SaleManagement.FORM
         // search type of product
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
-            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
+            if (txtSEARCH.Text == "Nhập mã hoặc tên loại hàng hóa")
             {
                 txtSEARCH.Text = "";
                 txtSEARCH.ForeColor = Color.Black;
@@ -203,21 +202,14 @@ namespace SaleManagement.FORM
         {
             if (txtSEARCH.Text == "")
             {
-                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+                txtSEARCH.Text = "Nhập mã hoặc tên loại hàng hóa";
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }
 
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            if (rbID_TYPE.Checked)
-            {
-                BLL_TYPEOFPRODUCT.Instance.FuncSearchTypeProduct(true, txtSEARCH.Text.Trim(), dgvLISTTYPE);
-            }
-            else
-            {
-                BLL_TYPEOFPRODUCT.Instance.FuncSearchTypeProduct(false, txtSEARCH.Text.Trim(), dgvLISTTYPE);
-            }
+            BLL_TYPEOFPRODUCT.Instance.FuncSearchTypeProduct(dgvLISTTYPE, txtSEARCH.Text.Trim());
         }
     }
 }

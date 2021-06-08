@@ -459,6 +459,7 @@ namespace SaleManagement.FORM
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 691);
+            this.ControlBox = false;
             this.Controls.Add(this.btnLOAD);
             this.Controls.Add(this.btnBACK);
             this.Controls.Add(this.label10);
@@ -493,7 +494,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.pictureBox1);
             this.Name = "FrmReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Report";
+            this.Text = "Báo cáo doanh thu";
             ((System.ComponentModel.ISupportInitialize)(this.dgvREVENUE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();

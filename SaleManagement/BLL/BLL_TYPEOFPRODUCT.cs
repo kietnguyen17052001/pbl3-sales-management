@@ -49,32 +49,21 @@ namespace SaleManagement.BLL
             DB.SaveChanges();
         }
         // search id
-        public void FuncSearchTypeProduct(bool isSearchId, string information, DataGridView dgv)
+        public void FuncSearchTypeProduct(DataGridView dgv, string information)
         {
-            if (information == "Nhập thông tin cần tìm kiếm" || String.IsNullOrEmpty(information))
+            if (information == "Nhập mã hoặc tên loại hàng hóa" || String.IsNullOrEmpty(information))
             {
                 LoadDataTypeOfProduct(dgv);
             }
             else
             {
-                if (isSearchId == true)
-                {
-                    var getType = DB.tblLoaiHangHoas.Where(p => p.MaLoaiHangHoa.Contains(information)).Select(p => new
-                    {
-                        p.MaLoaiHangHoa,
-                        p.TenLoaiHangHoa
-                    });
-                    dgv.DataSource = getType.ToList();
-                }
-                else
-                {
-                    var getType = DB.tblLoaiHangHoas.Where(p => p.TenLoaiHangHoa.Contains(information)).Select(p => new
-                    {
-                        p.MaLoaiHangHoa,
-                        p.TenLoaiHangHoa
-                    });
-                    dgv.DataSource = getType.ToList();
-                }
+                var getType = DB.tblLoaiHangHoas.Where(p => p.MaLoaiHangHoa.Contains(information)
+            || p.TenLoaiHangHoa.Contains(information)).Select(p => new
+            {
+                p.MaLoaiHangHoa,
+                p.TenLoaiHangHoa
+            });
+                dgv.DataSource = getType.ToList();
             }
         }
         // delete type of product

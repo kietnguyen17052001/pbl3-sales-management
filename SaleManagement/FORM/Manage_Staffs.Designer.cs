@@ -36,10 +36,7 @@ namespace SaleManagement.VIEW
             this.cbbPOSITION_DETAIL = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtID_STAFF = new System.Windows.Forms.TextBox();
-            this.rbID_STAFF = new System.Windows.Forms.RadioButton();
-            this.rbNAME_STAFF = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnHOME = new System.Windows.Forms.Button();
             this.btnEXCEL = new System.Windows.Forms.Button();
             this.btnADD = new System.Windows.Forms.Button();
@@ -66,9 +63,12 @@ namespace SaleManagement.VIEW
             this.dpDAY = new System.Windows.Forms.DateTimePicker();
             this.txtPASSWORD = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbQuantity = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_STAFF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbGENDER.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvLIST_STAFF
@@ -107,12 +107,12 @@ namespace SaleManagement.VIEW
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(891, 649);
+            this.txtSEARCH.Location = new System.Drawing.Point(813, 643);
             this.txtSEARCH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSEARCH.Name = "txtSEARCH";
-            this.txtSEARCH.Size = new System.Drawing.Size(274, 29);
+            this.txtSEARCH.Size = new System.Drawing.Size(356, 29);
             this.txtSEARCH.TabIndex = 38;
-            this.txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+            this.txtSEARCH.Text = "Nhập mã hoặc tên nhân viên";
             this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
             this.txtSEARCH.Enter += new System.EventHandler(this.txtSEARCH_Enter);
             this.txtSEARCH.Leave += new System.EventHandler(this.txtSEARCH_Leave);
@@ -157,32 +157,6 @@ namespace SaleManagement.VIEW
             this.txtID_STAFF.Size = new System.Drawing.Size(244, 27);
             this.txtID_STAFF.TabIndex = 44;
             // 
-            // rbID_STAFF
-            // 
-            this.rbID_STAFF.AutoSize = true;
-            this.rbID_STAFF.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbID_STAFF.Location = new System.Drawing.Point(686, 652);
-            this.rbID_STAFF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rbID_STAFF.Name = "rbID_STAFF";
-            this.rbID_STAFF.Size = new System.Drawing.Size(86, 23);
-            this.rbID_STAFF.TabIndex = 60;
-            this.rbID_STAFF.TabStop = true;
-            this.rbID_STAFF.Text = "Mã NV";
-            this.rbID_STAFF.UseVisualStyleBackColor = true;
-            // 
-            // rbNAME_STAFF
-            // 
-            this.rbNAME_STAFF.AutoSize = true;
-            this.rbNAME_STAFF.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNAME_STAFF.Location = new System.Drawing.Point(775, 652);
-            this.rbNAME_STAFF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rbNAME_STAFF.Name = "rbNAME_STAFF";
-            this.rbNAME_STAFF.Size = new System.Drawing.Size(93, 23);
-            this.rbNAME_STAFF.TabIndex = 61;
-            this.rbNAME_STAFF.TabStop = true;
-            this.rbNAME_STAFF.Text = "Tên NV";
-            this.rbNAME_STAFF.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -195,20 +169,6 @@ namespace SaleManagement.VIEW
             this.label1.TabIndex = 124;
             this.label1.Text = "Quản lý nhân viên";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
-            this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(1174, 639);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(4, 5, 0, 0);
-            this.pictureBox1.Size = new System.Drawing.Size(47, 48);
-            this.pictureBox1.TabIndex = 137;
-            this.pictureBox1.TabStop = false;
             // 
             // btnHOME
             // 
@@ -561,6 +521,40 @@ namespace SaleManagement.VIEW
             this.label11.TabIndex = 152;
             this.label11.Text = "Mật khẩu";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(1175, 632);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
+            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
+            this.pictureBox1.TabIndex = 154;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lbQuantity
+            // 
+            this.lbQuantity.AutoSize = true;
+            this.lbQuantity.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQuantity.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbQuantity.Location = new System.Drawing.Point(630, 646);
+            this.lbQuantity.Name = "lbQuantity";
+            this.lbQuantity.Size = new System.Drawing.Size(0, 22);
+            this.lbQuantity.TabIndex = 156;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label12.Location = new System.Drawing.Point(426, 646);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(191, 22);
+            this.label12.TabIndex = 155;
+            this.label12.Text = "Số lượng nhân viên:";
+            // 
             // FrmManage_Staffs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -568,6 +562,9 @@ namespace SaleManagement.VIEW
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
             this.ControlBox = false;
+            this.Controls.Add(this.lbQuantity);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtPASSWORD);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dpDAY);
@@ -583,12 +580,9 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtNAME_STAFF);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHOME);
             this.Controls.Add(this.btnEXCEL);
-            this.Controls.Add(this.rbNAME_STAFF);
-            this.Controls.Add(this.rbID_STAFF);
             this.Controls.Add(this.btnADD);
             this.Controls.Add(this.btnEDIT);
             this.Controls.Add(this.btnBACK);
@@ -606,11 +600,11 @@ namespace SaleManagement.VIEW
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmManage_Staffs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản lý nhân viên";
+            this.Text = "Nhân viên";
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_STAFF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbGENDER.ResumeLayout(false);
             this.gbGENDER.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,12 +625,9 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.ComboBox cbbPOSITION_DETAIL;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtID_STAFF;
-        private System.Windows.Forms.RadioButton rbID_STAFF;
-        private System.Windows.Forms.RadioButton rbNAME_STAFF;
         private System.Windows.Forms.Button btnEXCEL;
         private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtNAME_STAFF;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbbPOSITION;
@@ -654,5 +645,8 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.RadioButton rbMALE;
         private System.Windows.Forms.TextBox txtPASSWORD;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbQuantity;
+        private System.Windows.Forms.Label label12;
     }
 }

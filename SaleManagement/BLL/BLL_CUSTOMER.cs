@@ -91,31 +91,30 @@ namespace SaleManagement.BLL
                 DB.SaveChanges();
             }
         }
-        // search name
-        public void FuncSearchName(DataGridView dgv, string name)
+        // search customer
+        public void FuncSearchCustomer(DataGridView dgv, string information)
         {
-            var getCustomer = DB.tblKhachHangs.Where(p => p.TenKhachHang.Contains(name)).Select(p => new
+            if(information == "Nhập mã hoặc tên khách hàng" || String.IsNullOrEmpty(information))
             {
-                p.MaKhachHang,
-                p.TenKhachHang,
-                p.GioiTinh,
-                p.SoDienThoai,
-                p.DiaChi
-            });
-            dgv.DataSource = getCustomer.ToList();
+                LoadData(dgv);
+            }
+            else
+            {
+                var getCustomer = DB.tblKhachHangs.Where(p => p.TenKhachHang.Contains(information) || p.MaKhachHang.Contains(information)).Select(p => new
+                {
+                    p.MaKhachHang,
+                    p.TenKhachHang,
+                    p.GioiTinh,
+                    p.SoDienThoai,
+                    p.DiaChi
+                });
+                dgv.DataSource = getCustomer.ToList();
+            }
         }
-        // search id
-        public void FuncSearchID(DataGridView dgv, string id)
+        // get quantity customer
+        public int getQuantityCustomer(DataGridView dgv)
         {
-            var getCustomer = DB.tblKhachHangs.Where(p => p.MaKhachHang.Contains(id)).Select(p => new
-            {
-                p.MaKhachHang,
-                p.TenKhachHang,
-                p.GioiTinh,
-                p.SoDienThoai,
-                p.DiaChi
-            });
-            dgv.DataSource = getCustomer.ToList();
+            return dgv.Rows.Count;
         }
         // tạo mã khách hàng mới
         public string getNewIdCustomer()

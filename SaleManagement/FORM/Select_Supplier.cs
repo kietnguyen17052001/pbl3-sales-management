@@ -83,7 +83,7 @@ namespace SaleManagement.FORM
         private void btnADD_Click(object sender, EventArgs e)
         {
             Disable(true);
-            txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.GetNewIdSupplier();
+            txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.getNewIdSupplier();
             txtNAME_SUPPLIER.Clear();
             txtPHONE.Clear();
             txtEMAIL.Clear();

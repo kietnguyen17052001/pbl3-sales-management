@@ -43,6 +43,7 @@ namespace SaleManagement.VIEW
         public void ShowData()
         {
             BLL_SUPPLIER.Instance.ShowData(dgvSUPPLIER);
+            lbQuantity.Text = BLL_SUPPLIER.Instance.getQuantitySupplier(dgvSUPPLIER).ToString();
         }
         // disable
         public void Disable(bool E)
@@ -88,6 +89,7 @@ namespace SaleManagement.VIEW
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
             BLL_SUPPLIER.Instance.FuncSearchSupplier(dgvSUPPLIER, txtSEARCH.Text.Trim());
+            lbQuantity.Text = BLL_SUPPLIER.Instance.getQuantitySupplier(dgvSUPPLIER).ToString();
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
@@ -140,7 +142,7 @@ namespace SaleManagement.VIEW
         {
             Disable(true);
             isAdd = true;
-            txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.GetNewIdSupplier();
+            txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.getNewIdSupplier();
             txtNAME_SUPPLIER.Clear();
             txtPHONE.Clear();
             txtEMAIL.Clear();

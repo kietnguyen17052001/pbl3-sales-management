@@ -43,19 +43,18 @@ namespace SaleManagement.VIEW
             this.txtSEARCH = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvLISTCUSTOMER = new System.Windows.Forms.DataGridView();
-            this.rbNAME_CUSTOMER = new System.Windows.Forms.RadioButton();
-            this.rbID_CUSTOMER = new System.Windows.Forms.RadioButton();
             this.btnADD = new System.Windows.Forms.Button();
             this.btnEDIT = new System.Windows.Forms.Button();
             this.btnBACK = new System.Windows.Forms.Button();
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnCANCEL = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
-            this.btnSHOW = new System.Windows.Forms.Button();
             this.btnEXCEL = new System.Windows.Forms.Button();
             this.btnHOME = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbQuantity = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.gbGENDER.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTCUSTOMER)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -175,11 +174,11 @@ namespace SaleManagement.VIEW
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(895, 638);
+            this.txtSEARCH.Location = new System.Drawing.Point(398, 81);
             this.txtSEARCH.Name = "txtSEARCH";
-            this.txtSEARCH.Size = new System.Drawing.Size(274, 29);
+            this.txtSEARCH.Size = new System.Drawing.Size(293, 29);
             this.txtSEARCH.TabIndex = 67;
-            this.txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+            this.txtSEARCH.Text = "Nhập mã hoặc tên khách hàng";
             this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
             this.txtSEARCH.Enter += new System.EventHandler(this.txtSEARCH_Enter);
             this.txtSEARCH.Leave += new System.EventHandler(this.txtSEARCH_Leave);
@@ -214,30 +213,6 @@ namespace SaleManagement.VIEW
             this.dgvLISTCUSTOMER.TabIndex = 61;
             this.dgvLISTCUSTOMER.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLISTCUSTOMER_CellClick);
             this.dgvLISTCUSTOMER.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLISTCUSTOMER_CellFormatting);
-            // 
-            // rbNAME_CUSTOMER
-            // 
-            this.rbNAME_CUSTOMER.AutoSize = true;
-            this.rbNAME_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNAME_CUSTOMER.Location = new System.Drawing.Point(772, 640);
-            this.rbNAME_CUSTOMER.Name = "rbNAME_CUSTOMER";
-            this.rbNAME_CUSTOMER.Size = new System.Drawing.Size(101, 26);
-            this.rbNAME_CUSTOMER.TabIndex = 90;
-            this.rbNAME_CUSTOMER.TabStop = true;
-            this.rbNAME_CUSTOMER.Text = "Tên KH";
-            this.rbNAME_CUSTOMER.UseVisualStyleBackColor = true;
-            // 
-            // rbID_CUSTOMER
-            // 
-            this.rbID_CUSTOMER.AutoSize = true;
-            this.rbID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbID_CUSTOMER.Location = new System.Drawing.Point(658, 640);
-            this.rbID_CUSTOMER.Name = "rbID_CUSTOMER";
-            this.rbID_CUSTOMER.Size = new System.Drawing.Size(94, 26);
-            this.rbID_CUSTOMER.TabIndex = 89;
-            this.rbID_CUSTOMER.TabStop = true;
-            this.rbID_CUSTOMER.Text = "Mã KH";
-            this.rbID_CUSTOMER.UseVisualStyleBackColor = true;
             // 
             // btnADD
             // 
@@ -353,25 +328,6 @@ namespace SaleManagement.VIEW
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);
             // 
-            // btnSHOW
-            // 
-            this.btnSHOW.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSHOW.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSHOW.FlatAppearance.BorderSize = 0;
-            this.btnSHOW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSHOW.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSHOW.ForeColor = System.Drawing.Color.White;
-            this.btnSHOW.Image = global::SaleManagement.Properties.Resources.activity_feed_24;
-            this.btnSHOW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSHOW.Location = new System.Drawing.Point(398, 73);
-            this.btnSHOW.Name = "btnSHOW";
-            this.btnSHOW.Size = new System.Drawing.Size(119, 48);
-            this.btnSHOW.TabIndex = 63;
-            this.btnSHOW.Text = "Liệt kê";
-            this.btnSHOW.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSHOW.UseVisualStyleBackColor = false;
-            this.btnSHOW.Click += new System.EventHandler(this.btnSHOW_Click);
-            // 
             // btnEXCEL
             // 
             this.btnEXCEL.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -383,7 +339,7 @@ namespace SaleManagement.VIEW
             this.btnEXCEL.ForeColor = System.Drawing.Color.White;
             this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
             this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEXCEL.Location = new System.Drawing.Point(532, 73);
+            this.btnEXCEL.Location = new System.Drawing.Point(750, 73);
             this.btnEXCEL.Name = "btnEXCEL";
             this.btnEXCEL.Size = new System.Drawing.Size(161, 48);
             this.btnEXCEL.TabIndex = 119;
@@ -430,24 +386,46 @@ namespace SaleManagement.VIEW
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
             this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(1175, 638);
+            this.pictureBox1.Location = new System.Drawing.Point(697, 73);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
             this.pictureBox1.Size = new System.Drawing.Size(47, 47);
             this.pictureBox1.TabIndex = 138;
             this.pictureBox1.TabStop = false;
             // 
+            // lbQuantity
+            // 
+            this.lbQuantity.AutoSize = true;
+            this.lbQuantity.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQuantity.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbQuantity.Location = new System.Drawing.Point(635, 638);
+            this.lbQuantity.Name = "lbQuantity";
+            this.lbQuantity.Size = new System.Drawing.Size(0, 22);
+            this.lbQuantity.TabIndex = 144;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label8.Location = new System.Drawing.Point(419, 638);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(208, 22);
+            this.label8.TabIndex = 143;
+            this.label8.Text = "Số lượng khách hàng:";
+            // 
             // FrmManage_Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.ControlBox = false;
+            this.Controls.Add(this.lbQuantity);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHOME);
             this.Controls.Add(this.btnEXCEL);
-            this.Controls.Add(this.rbNAME_CUSTOMER);
-            this.Controls.Add(this.rbID_CUSTOMER);
             this.Controls.Add(this.btnADD);
             this.Controls.Add(this.btnEDIT);
             this.Controls.Add(this.btnBACK);
@@ -464,12 +442,11 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtSEARCH);
-            this.Controls.Add(this.btnSHOW);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvLISTCUSTOMER);
             this.Name = "FrmManage_Customers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản lý khách hàng";
+            this.Text = "Khách hàng";
             this.gbGENDER.ResumeLayout(false);
             this.gbGENDER.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTCUSTOMER)).EndInit();
@@ -499,14 +476,13 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSEARCH;
-        private System.Windows.Forms.Button btnSHOW;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvLISTCUSTOMER;
-        private System.Windows.Forms.RadioButton rbNAME_CUSTOMER;
-        private System.Windows.Forms.RadioButton rbID_CUSTOMER;
         private System.Windows.Forms.Button btnEXCEL;
         private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbQuantity;
+        private System.Windows.Forms.Label label8;
     }
 }

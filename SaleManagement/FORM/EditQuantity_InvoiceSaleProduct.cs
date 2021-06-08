@@ -32,7 +32,7 @@ namespace SaleManagement.FORM
             }
             else
             {
-                if (Convert.ToInt32(txtNEWQTY.Text) > BLL_PRODUCTS.Instance.getQuantityProduct(idProduct))
+                if (Convert.ToInt32(txtNEWQTY.Text) > BLL_PRODUCTS.Instance.getQuantityProductByIdProduct(idProduct))
                 {
                     lbQTY.Text = "KHÔNG ĐỦ SL";
                 }

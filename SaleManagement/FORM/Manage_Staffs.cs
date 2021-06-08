@@ -22,7 +22,6 @@ namespace SaleManagement.VIEW
             Disable(false);
             ShowStaff();
             FormatColumnsHeader();
-            rbID_STAFF.Checked = true;
         }
         // Format columns hearder
         public void FormatColumnsHeader()
@@ -83,6 +82,7 @@ namespace SaleManagement.VIEW
             txtSALARY.Clear();
             txtPASSWORD.Clear();
             cbbPOSITION.SelectedIndex = 0;
+            lbQuantity.Text = BLL_STAFF.Instance.getQuantityStaff(dgvLIST_STAFF).ToString();
         }
         // dgv
         private void dgvLIST_STAFF_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -247,18 +247,12 @@ namespace SaleManagement.VIEW
         // search staff
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            if (rbID_STAFF.Checked == true)
-            {
-                BLL_STAFF.Instance.FuncSearchID(dgvLIST_STAFF, txtSEARCH.Text.Trim()); // search id 
-            }
-            else
-            {
-                BLL_STAFF.Instance.FuncSearchName(dgvLIST_STAFF, txtSEARCH.Text.Trim()); // search name
-            }
+            BLL_STAFF.Instance.FuncSearchStaff(dgvLIST_STAFF, txtSEARCH.Text.Trim());
+            lbQuantity.Text = BLL_STAFF.Instance.getQuantityStaff(dgvLIST_STAFF).ToString();
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
-            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
+            if (txtSEARCH.Text == "Nhập mã hoặc tên nhân viên")
             {
                 txtSEARCH.Text = "";
                 txtSEARCH.ForeColor = Color.Black;
@@ -268,7 +262,7 @@ namespace SaleManagement.VIEW
         {
             if (txtSEARCH.Text == "")
             {
-                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+                txtSEARCH.Text = "Nhập mã hoặc tên nhân viên";
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }

@@ -168,5 +168,20 @@ namespace SaleManagement.BLL
             }
             return price;
         }
+        // get quantity invoice
+        public int getQuantityInvoice(DataGridView dgv)
+        {
+            return dgv.Rows.Count;
+        }
+        // get total money
+        public double getTotalMoney(DataGridView dgv)
+        {
+            double value = 0;
+            foreach(DataGridViewRow dataRow in dgv.Rows)
+            {
+                value += Convert.ToDouble(dataRow.Cells["SoTien"].Value.ToString());
+            }
+            return value;
+        }
     }
 }

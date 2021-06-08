@@ -1,6 +1,7 @@
 ﻿using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace SaleManagement.BLL
 {
     class BLL_LISTIMPORTINVOICE
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_LISTIMPORTINVOICE _Instance;
         public static BLL_LISTIMPORTINVOICE Instance
         {
@@ -177,6 +178,20 @@ namespace SaleManagement.BLL
                 }
             }
             return priceInvoice;
+        }
+        public int getQuantityInvoice(DataGridView dgv)
+        {
+            return dgv.Rows.Count;
+        }
+        // get total money
+        public double getTotalMoney(DataGridView dgv)
+        {
+            double value = 0;
+            foreach (DataGridViewRow dataRow in dgv.Rows)
+            {
+                value += Convert.ToDouble(dataRow.Cells["SoTien"].Value.ToString());
+            }
+            return value;
         }
     }
 }
