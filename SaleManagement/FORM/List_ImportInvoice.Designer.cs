@@ -211,9 +211,9 @@ namespace SaleManagement.FORM
             this.btnBACK.ForeColor = System.Drawing.Color.White;
             this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
             this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBACK.Location = new System.Drawing.Point(172, 445);
+            this.btnBACK.Location = new System.Drawing.Point(18, 13);
             this.btnBACK.Name = "btnBACK";
-            this.btnBACK.Size = new System.Drawing.Size(132, 59);
+            this.btnBACK.Size = new System.Drawing.Size(146, 59);
             this.btnBACK.TabIndex = 152;
             this.btnBACK.Text = "Quay lại";
             this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -251,9 +251,9 @@ namespace SaleManagement.FORM
             this.btnDELETE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDELETE.Location = new System.Drawing.Point(33, 445);
             this.btnDELETE.Name = "btnDELETE";
-            this.btnDELETE.Size = new System.Drawing.Size(131, 59);
+            this.btnDELETE.Size = new System.Drawing.Size(271, 59);
             this.btnDELETE.TabIndex = 150;
-            this.btnDELETE.Text = "Xóa đơn";
+            this.btnDELETE.Text = "Xóa đơn nhập hàng";
             this.btnDELETE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);

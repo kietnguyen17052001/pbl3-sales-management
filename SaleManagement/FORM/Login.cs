@@ -63,7 +63,7 @@ namespace SaleManagement.FORM
                 {
                     lbINFO.ForeColor = Color.SteelBlue;
                     lbINFO.Text = "Đăng nhập thành công";
-                    FrmMain_Member frm = new FrmMain_Member();
+                    FrmMain_Member frm = new FrmMain_Member(txtUSER.Text);
                     frm.Show();
                     this.Hide();
                 }

@@ -16,9 +16,17 @@ namespace SaleManagement.FORM
     {
         private string idInvoice, idProduct, nameProduct;
         private int quantityProduct;
-        public FrmList_ImportInvoice()
+        private bool isAdmin;
+        private string idStaff;
+        public FrmList_ImportInvoice(bool _isAdmin, string _idStaff)
         {
             InitializeComponent();
+            isAdmin = _isAdmin;
+            if(isAdmin == false)
+            {
+                idStaff = _idStaff;
+                btnBACK.Enabled = btnEDIT.Enabled = btnDELETE.Enabled = btnSAVE.Enabled = false;
+            }
             Disable(false);
             LoadDGVs();
             FormatColumnHeader();
@@ -89,8 +97,16 @@ namespace SaleManagement.FORM
         // button home
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin();
-            frm.Show();
+            if (isAdmin)
+            {
+                FrmMain_Admin frm = new FrmMain_Admin();
+                frm.Show();
+            }
+            else
+            {
+                FrmMain_Member frm = new FrmMain_Member(idStaff);
+                frm.Show();
+            }
             this.Close();
         }
         // search invoice

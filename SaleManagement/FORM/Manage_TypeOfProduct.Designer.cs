@@ -112,7 +112,7 @@ namespace SaleManagement.FORM
             this.btnADD.ForeColor = System.Drawing.Color.White;
             this.btnADD.Image = global::SaleManagement.Properties.Resources.product_24;
             this.btnADD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnADD.Location = new System.Drawing.Point(11, 264);
+            this.btnADD.Location = new System.Drawing.Point(11, 298);
             this.btnADD.Name = "btnADD";
             this.btnADD.Size = new System.Drawing.Size(122, 61);
             this.btnADD.TabIndex = 137;
@@ -131,7 +131,7 @@ namespace SaleManagement.FORM
             this.btnEDIT.ForeColor = System.Drawing.Color.White;
             this.btnEDIT.Image = global::SaleManagement.Properties.Resources.edit_3_24;
             this.btnEDIT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEDIT.Location = new System.Drawing.Point(139, 264);
+            this.btnEDIT.Location = new System.Drawing.Point(139, 298);
             this.btnEDIT.Name = "btnEDIT";
             this.btnEDIT.Size = new System.Drawing.Size(121, 61);
             this.btnEDIT.TabIndex = 138;
@@ -150,9 +150,9 @@ namespace SaleManagement.FORM
             this.btnBACK.ForeColor = System.Drawing.Color.White;
             this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
             this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBACK.Location = new System.Drawing.Point(266, 334);
+            this.btnBACK.Location = new System.Drawing.Point(13, 13);
             this.btnBACK.Name = "btnBACK";
-            this.btnBACK.Size = new System.Drawing.Size(130, 59);
+            this.btnBACK.Size = new System.Drawing.Size(144, 59);
             this.btnBACK.TabIndex = 142;
             this.btnBACK.Text = "Quay lại";
             this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -169,7 +169,7 @@ namespace SaleManagement.FORM
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
             this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSAVE.Location = new System.Drawing.Point(266, 264);
+            this.btnSAVE.Location = new System.Drawing.Point(266, 298);
             this.btnSAVE.Name = "btnSAVE";
             this.btnSAVE.Size = new System.Drawing.Size(130, 61);
             this.btnSAVE.TabIndex = 140;
@@ -188,9 +188,9 @@ namespace SaleManagement.FORM
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCANCEL.Location = new System.Drawing.Point(139, 334);
+            this.btnCANCEL.Location = new System.Drawing.Point(266, 365);
             this.btnCANCEL.Name = "btnCANCEL";
-            this.btnCANCEL.Size = new System.Drawing.Size(121, 59);
+            this.btnCANCEL.Size = new System.Drawing.Size(130, 59);
             this.btnCANCEL.TabIndex = 141;
             this.btnCANCEL.Text = "Hủy bỏ";
             this.btnCANCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -207,11 +207,11 @@ namespace SaleManagement.FORM
             this.btnDELETE.ForeColor = System.Drawing.Color.White;
             this.btnDELETE.Image = global::SaleManagement.Properties.Resources.delete_property_24;
             this.btnDELETE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDELETE.Location = new System.Drawing.Point(11, 334);
+            this.btnDELETE.Location = new System.Drawing.Point(13, 365);
             this.btnDELETE.Name = "btnDELETE";
-            this.btnDELETE.Size = new System.Drawing.Size(122, 59);
+            this.btnDELETE.Size = new System.Drawing.Size(247, 59);
             this.btnDELETE.TabIndex = 139;
-            this.btnDELETE.Text = "Xóa";
+            this.btnDELETE.Text = "Xóa loại hàng hóa";
             this.btnDELETE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);

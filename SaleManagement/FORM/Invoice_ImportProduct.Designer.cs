@@ -521,7 +521,7 @@ namespace SaleManagement.FORM
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(515, 29);
             this.txtNote.TabIndex = 79;
-            this.txtNote.Text = "Nhập thông tin";
+            this.txtNote.Text = "Nhập thông tin ...";
             this.txtNote.Enter += new System.EventHandler(this.txtNote_Enter);
             this.txtNote.Leave += new System.EventHandler(this.txtNote_Leave);
             // 

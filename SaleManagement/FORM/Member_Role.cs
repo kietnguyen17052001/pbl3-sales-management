@@ -13,21 +13,23 @@ namespace SaleManagement.FORM
 {
     public partial class FrmMain_Member : Form
     {
-        public FrmMain_Member()
+        private string idStaff;
+        public FrmMain_Member(string _idStaff)
         {
             InitializeComponent();
+            idStaff = _idStaff;
         }
 
         private void btnSaleProduct_Click(object sender, EventArgs e)
         {
-            FrmInvoice_SaleProduct frm = new FrmInvoice_SaleProduct(false);
+            FrmInvoice_SaleProduct frm = new FrmInvoice_SaleProduct(false, idStaff);
             frm.Show();
             this.Close();
         }
 
         private void btnImportProduct_Click(object sender, EventArgs e)
         {
-            FrmInvoice_ImportProduct frm = new FrmInvoice_ImportProduct(false);
+            FrmInvoice_ImportProduct frm = new FrmInvoice_ImportProduct(false, idStaff);
             frm.Show();
             this.Close();
         }
@@ -40,7 +42,21 @@ namespace SaleManagement.FORM
 
         private void btnIntroduce_Click(object sender, EventArgs e)
         {
-            FrmIntroduce frm = new FrmIntroduce(false);
+            FrmIntroduce frm = new FrmIntroduce(false, idStaff);
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnList_SaleInvoice_Click(object sender, EventArgs e)
+        {
+            FrmList_SaleInvoice frm = new FrmList_SaleInvoice(false, idStaff);
+            frm.Show();
+            this.Close();
+        }
+
+        private void btnList_ImportInvoice_Click(object sender, EventArgs e)
+        {
+            FrmList_ImportInvoice frm = new FrmList_ImportInvoice(false, idStaff);
             frm.Show();
             this.Close();
         }

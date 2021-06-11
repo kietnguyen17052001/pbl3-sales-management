@@ -17,14 +17,15 @@ namespace SaleManagement.FORM
     {
         private bool isAdmin;
         private DataTable dataTable = BLL_IMPORTPRODUCT.instance.TableInvoice();
-        private string idProduct, idSupplier;
+        private string idProduct, idSupplier, idStaff;
         private double intoMoney, totalMoney;
-        public FrmInvoice_ImportProduct(bool _isAdmin)
+        public FrmInvoice_ImportProduct(bool _isAdmin, string _idStaff)
         {
             InitializeComponent();
             isAdmin = _isAdmin;
             if (isAdmin == false)
             {
+                idStaff = _idStaff;
                 btnBACK.Enabled = false;
             }
             LoadDGVs();
@@ -35,7 +36,14 @@ namespace SaleManagement.FORM
         public void setCbbStaff()
         {
             cbbStaff.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
-            cbbStaff.SelectedIndex = 0;
+            if(isAdmin == false)
+            {
+                cbbStaff.Text = BLL_STAFF.Instance.getStaffById(idStaff);
+            }
+            else
+            {
+                cbbStaff.SelectedIndex = 0;
+            }
         }
         // Load data for DGVs
         public void LoadDGVs()
@@ -84,7 +92,7 @@ namespace SaleManagement.FORM
             }
             else
             {
-                FrmMain_Member frm = new FrmMain_Member();
+                FrmMain_Member frm = new FrmMain_Member(idStaff);
                 frm.Show();
             }
             this.Close();
@@ -233,7 +241,7 @@ namespace SaleManagement.FORM
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Tạo hóa đơn thất bại. Mã đơn bị trùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mã hóa đơn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -297,17 +305,9 @@ namespace SaleManagement.FORM
         // back to frmManage_Data
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            DialogResult answer = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (answer == DialogResult.Yes)
-            {
-                FrmManage_Data frm = new FrmManage_Data();
-                frm.Show();
-                this.Close();
-            }
-            else
-            {
-                return;
-            }
+            FrmManage_Data frm = new FrmManage_Data();
+            frm.Show();
+            this.Close();
         }
         // Note information
         private void txtNote_Enter(object sender, EventArgs e)

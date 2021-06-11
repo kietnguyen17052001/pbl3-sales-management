@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaleManagement.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -88,7 +89,7 @@ namespace SaleManagement.FORM
             }
             else
             {
-                bool flag = BLL.BLL_CHANGEPASSWORD.Instance.ChangePassword(usernameLogin, 
+                bool flag = BLL_CHANGEPASSWORD.Instance.ChangePassword(usernameLogin, 
                                                                            txtOldPassword.Text, 
                                                                            txtNewPassword.Text);
                 if(flag)

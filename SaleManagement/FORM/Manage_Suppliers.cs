@@ -224,17 +224,9 @@ namespace SaleManagement.VIEW
         // back to FrmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                FrmManage_Data frm = new FrmManage_Data();
-                frm.Show();
-                this.Hide();
-            }
-            else
-            {
-                return;
-            }
+            FrmManage_Data frm = new FrmManage_Data();
+            frm.Show();
+            this.Hide();
         }
         // KeyPress Event
         private void txtFAX_KeyPress(object sender, KeyPressEventArgs e)

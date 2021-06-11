@@ -51,7 +51,7 @@ namespace SaleManagement
 
         private void btnIntroduce_Click(object sender, EventArgs e)
         {
-            FrmIntroduce frm = new FrmIntroduce(true);
+            FrmIntroduce frm = new FrmIntroduce(true, null);
             frm.Show();
             this.Close();
         }

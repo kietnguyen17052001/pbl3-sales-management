@@ -284,17 +284,9 @@ namespace SaleManagement.VIEW
 
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            DialogResult d = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (d == DialogResult.Yes)
-            {
-                FrmManage_Data FRM = new FrmManage_Data();
-                FRM.Show();
-                this.Close();
-            }
-            else
-            {
-                return;
-            }
+            FrmManage_Data frm = new FrmManage_Data();
+            frm.Show();
+            this.Close();
         }
         // search product
         private void txtSEARCH_Enter(object sender, EventArgs e)

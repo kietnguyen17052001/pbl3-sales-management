@@ -176,17 +176,9 @@ namespace SaleManagement.FORM
         // back FrmManage_data
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                FrmManage_Data frm = new FrmManage_Data();
-                frm.Show();
-                this.Close();
-            }
-            else
-            {
-                return;
-            }
+            FrmManage_Data frm = new FrmManage_Data();
+            frm.Show();
+            this.Hide();
         }
         // search type of product
         private void txtSEARCH_Enter(object sender, EventArgs e)

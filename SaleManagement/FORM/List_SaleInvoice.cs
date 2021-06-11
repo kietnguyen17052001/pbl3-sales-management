@@ -17,9 +17,17 @@ namespace SaleManagement.FORM
     {
         private string idInvoice, idProduct, nameProduct;
         private int quantityProduct;
-        public FrmList_SaleInvoice()
+        private bool isAdmin;
+        private string idStaff;
+        public FrmList_SaleInvoice(bool _isAdmin, string _idStaff)
         {
             InitializeComponent();
+            isAdmin = _isAdmin;
+            if (isAdmin == false)
+            {
+                idStaff = _idStaff;
+                btnBACK.Enabled = btnEDIT.Enabled = btnDELETE.Enabled = btnSAVE.Enabled = false;
+            }
             Disable(false);
             setCombobox();
             LoadDataDGVs();
@@ -58,8 +66,16 @@ namespace SaleManagement.FORM
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin();
-            frm.Show();
+            if (isAdmin)
+            {
+                FrmMain_Admin frm = new FrmMain_Admin();
+                frm.Show();
+            }
+            else
+            {
+                FrmMain_Member frm = new FrmMain_Member(idStaff);
+                frm.Show();
+            }
             this.Close();
         }
         // event CellClick in dgvListInvoice
@@ -192,13 +208,9 @@ namespace SaleManagement.FORM
         // back to frmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            DialogResult d = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (d == DialogResult.Yes)
-            {
-                FrmManage_Data frm = new FrmManage_Data();
-                frm.Show();
-                this.Close();
-            }
+            FrmManage_Data frm = new FrmManage_Data();
+            frm.Show();
+            this.Close();
         }
         // Add product for invoice
         private void btnADD_PRODUCT_Click(object sender, EventArgs e)

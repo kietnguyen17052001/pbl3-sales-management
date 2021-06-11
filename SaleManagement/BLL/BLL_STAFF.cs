@@ -34,6 +34,20 @@ namespace SaleManagement.BLL
             }
             return listCbbStaff;
         }
+        // Get item by idStaff
+        public string getStaffById(string idStaff)
+        {
+            string staff = null;
+            foreach(CBBItem item in getCbbStaff())
+            {
+                if(idStaff == item.VALUE)
+                {
+                    staff = item.ToString();
+                    break;
+                }
+            }
+            return staff;
+        }
         // Lấy danh sách các vị trí nhân viên từ DB
         public List<string> getListPosition()
         {

@@ -261,10 +261,10 @@ namespace SaleManagement.VIEW
             this.btnBACK.ForeColor = System.Drawing.Color.White;
             this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
             this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBACK.Location = new System.Drawing.Point(260, 624);
+            this.btnBACK.Location = new System.Drawing.Point(12, 18);
             this.btnBACK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBACK.Name = "btnBACK";
-            this.btnBACK.Size = new System.Drawing.Size(132, 55);
+            this.btnBACK.Size = new System.Drawing.Size(148, 55);
             this.btnBACK.TabIndex = 59;
             this.btnBACK.Text = "Quay lại";
             this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -301,10 +301,10 @@ namespace SaleManagement.VIEW
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCANCEL.Location = new System.Drawing.Point(133, 624);
+            this.btnCANCEL.Location = new System.Drawing.Point(260, 624);
             this.btnCANCEL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCANCEL.Name = "btnCANCEL";
-            this.btnCANCEL.Size = new System.Drawing.Size(122, 55);
+            this.btnCANCEL.Size = new System.Drawing.Size(132, 55);
             this.btnCANCEL.TabIndex = 58;
             this.btnCANCEL.Text = "Hủy bỏ";
             this.btnCANCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -324,9 +324,9 @@ namespace SaleManagement.VIEW
             this.btnDELETE.Location = new System.Drawing.Point(4, 624);
             this.btnDELETE.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDELETE.Name = "btnDELETE";
-            this.btnDELETE.Size = new System.Drawing.Size(122, 55);
+            this.btnDELETE.Size = new System.Drawing.Size(251, 55);
             this.btnDELETE.TabIndex = 56;
-            this.btnDELETE.Text = "Xóa";
+            this.btnDELETE.Text = "Xóa nhân viên";
             this.btnDELETE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);

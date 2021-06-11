@@ -216,17 +216,9 @@ namespace SaleManagement.VIEW
         // Back to frmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                FrmManage_Data frm = new FrmManage_Data();
-                frm.Show();
-                this.Close();
-            }
-            else
-            {
-                return;
-            }
+            FrmManage_Data frm = new FrmManage_Data();
+            frm.Show();
+            this.Close();
         }
         // search customer
         private void txtSEARCH_TextChanged(object sender, EventArgs e)

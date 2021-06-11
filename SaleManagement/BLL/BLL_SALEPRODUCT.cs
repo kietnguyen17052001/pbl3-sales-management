@@ -11,7 +11,7 @@ namespace SaleManagement.BLL
 {
     class BLL_SALEPRODUCT
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_SALEPRODUCT _Instance;
         public static BLL_SALEPRODUCT Instance
         {
