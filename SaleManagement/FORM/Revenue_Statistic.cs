@@ -14,9 +14,11 @@ namespace SaleManagement.FORM
 {
     public partial class FrmRevenue_Statistic : Form
     {
-        public FrmRevenue_Statistic()
+        private string usernamelogin;
+        public FrmRevenue_Statistic(string _usernamelogin)
         {
             InitializeComponent();
+            usernamelogin = _usernamelogin;
             cbbYEAR.SelectedIndex = cbbMONTH.SelectedIndex = 0;
             rbYEAR.Checked = true;
             fillChartYear();
@@ -68,7 +70,7 @@ namespace SaleManagement.FORM
 
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmStatistic frm = new FrmStatistic();
+            FrmStatistic frm = new FrmStatistic(usernamelogin);
             frm.Show();
             this.Close();
         }

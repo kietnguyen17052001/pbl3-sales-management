@@ -17,14 +17,14 @@ namespace SaleManagement.FORM
         private string idInvoice, idProduct, nameProduct;
         private int quantityProduct;
         private bool isAdmin;
-        private string idStaff;
-        public FrmList_ImportInvoice(bool _isAdmin, string _idStaff)
+        private string usernameLogin;
+        public FrmList_ImportInvoice(bool _isAdmin, string _usernameLogin)
         {
             InitializeComponent();
             isAdmin = _isAdmin;
             if(isAdmin == false)
             {
-                idStaff = _idStaff;
+                usernameLogin = _usernameLogin;
                 btnBACK.Enabled = btnEDIT.Enabled = btnDELETE.Enabled = btnSAVE.Enabled = false;
             }
             Disable(false);
@@ -84,7 +84,7 @@ namespace SaleManagement.FORM
             cbbSTAFF.Text = BLL_LISTIMPORTINVOICE.Instance.getTextForCbb(dgvLIST_INVOICE.SelectedRows[0].Cells["TenNhanVien"].Value.ToString(), BLL_STAFF.Instance.getCbbStaff());
             cbbSUPPLIER.Text = BLL_LISTIMPORTINVOICE.Instance.getTextForCbb(dgvLIST_INVOICE.SelectedRows[0].Cells["TenNhaCungCap"].Value.ToString(), BLL_SUPPLIER.Instance.ListSupplier());
             dpDAY.Value = Convert.ToDateTime(dgvLIST_INVOICE.SelectedRows[0].Cells["NgayNhap"].Value.ToString());
-            txtDISCOUNT.Text = dgvLIST_INVOICE.SelectedRows[0].Cells["GiamGia"].Value.ToString();
+            txtDISCOUNT.Text = String.Format("{0:n0}", Convert.ToDouble(dgvLIST_INVOICE.SelectedRows[0].Cells["GiamGia"].Value.ToString()));
             txtPRICE.Text = String.Format("{0:n0}", Convert.ToDouble(dgvLIST_INVOICE.SelectedRows[0].Cells["SoTien"].Value.ToString()));
         }
         public void LoadDGVs()
@@ -104,7 +104,7 @@ namespace SaleManagement.FORM
             }
             else
             {
-                FrmMain_Member frm = new FrmMain_Member(idStaff);
+                FrmMain_Member frm = new FrmMain_Member(usernameLogin);
                 frm.Show();
             }
             this.Close();
@@ -200,7 +200,7 @@ namespace SaleManagement.FORM
         // button back to frmManage_Data
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data();
+            FrmManage_Data frm = new FrmManage_Data(usernameLogin);
             frm.Show();
             this.Close();
         }

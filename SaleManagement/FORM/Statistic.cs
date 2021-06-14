@@ -17,9 +17,11 @@ namespace SaleManagement.FORM
     {
         private Random rand = new Random();
         private DateTime dateMin = BLL_LISTSALEINVOICE.Instance.getDate();
-        public FrmStatistic()
+        private string usernamelogin;
+        public FrmStatistic(string _usernamelogin)
         {
             InitializeComponent();
+            usernamelogin = _usernamelogin;
             SetCBB();
             if (dateMin == null)
             {
@@ -87,7 +89,7 @@ namespace SaleManagement.FORM
                     }
                 }
                 // Biểu đồ so sánh
-                chartSCALE.Series["Tỉ lệ %"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, Math.Round((quantitySale / BLL_STATISTIC.instance.getTotalQuantityProduct()) * 100, 2));
+                chartSCALE.Series["Tỉ lệ %"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, Math.Round((quantitySale / BLL_STATISTIC.instance.getTotalQuantityProduct(dpFROM.Value, dpTO.Value)) * 100, 2));
                 // Biểu đồ tiền bán được
                 chartMONEY.Series["Số tiền"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, money);
                 chartMONEY.Series["Số tiền"].Points[count].Color = randomColor;
@@ -100,20 +102,20 @@ namespace SaleManagement.FORM
         {
             string value = ((CBBItem)cbbTYPEOFPRODUCT.SelectedItem).VALUE;
             string text = ((CBBItem)cbbTYPEOFPRODUCT.SelectedItem).TEXT;
-            FrmStatistic_Product frm = new FrmStatistic_Product(dpFROM.Value, dpTO.Value, value, text);
+            FrmStatistic_Product frm = new FrmStatistic_Product(dpFROM.Value, dpTO.Value, value, text, usernamelogin);
             frm.Show();
             this.Close();
         }
         // Thống kê doanh thu
         private void btnSTATISTIC_Click(object sender, EventArgs e)
         {
-            FrmRevenue_Statistic frm = new FrmRevenue_Statistic();
+            FrmRevenue_Statistic frm = new FrmRevenue_Statistic(usernamelogin);
             frm.Show();
             this.Close();
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin();
+            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
             frm.Show();
             this.Close();
         }

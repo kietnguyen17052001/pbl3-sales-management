@@ -14,11 +14,12 @@ namespace SaleManagement.FORM
 {
     public partial class FrmStatistic_Product : Form
     {
-        private String idTypeOfProduct;
+        private String idTypeOfProduct, usernamelogin;
         private DateTime dateMin, dateMax;
-        public FrmStatistic_Product(DateTime _dateMin, DateTime _dateMax, string value, string text)
+        public FrmStatistic_Product(DateTime _dateMin, DateTime _dateMax, string value, string text, string _usernamelogin)
         {
             InitializeComponent();
+            usernamelogin = _usernamelogin;
             lbINFO.Text = text + " từ ngày " + _dateMin.ToShortDateString() + " đến ngày " + _dateMax.ToShortDateString();
             dateMin = _dateMin;
             dateMax = _dateMax;
@@ -63,7 +64,7 @@ namespace SaleManagement.FORM
 
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmStatistic frm = new FrmStatistic();
+            FrmStatistic frm = new FrmStatistic(usernamelogin);
             frm.Show();
             this.Close();
         }

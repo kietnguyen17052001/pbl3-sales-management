@@ -17,15 +17,15 @@ namespace SaleManagement.FORM
     {
         private bool isAdmin;
         private DataTable dataTable = BLL_IMPORTPRODUCT.instance.TableInvoice();
-        private string idProduct, idSupplier, idStaff;
+        private string idProduct, idSupplier, usernameLogin;
         private double intoMoney, totalMoney;
-        public FrmInvoice_ImportProduct(bool _isAdmin, string _idStaff)
+        public FrmInvoice_ImportProduct(bool _isAdmin, string _usernameLogin)
         {
             InitializeComponent();
             isAdmin = _isAdmin;
+            usernameLogin = _usernameLogin;
             if (isAdmin == false)
             {
-                idStaff = _idStaff;
                 btnBACK.Enabled = false;
             }
             LoadDGVs();
@@ -38,7 +38,7 @@ namespace SaleManagement.FORM
             cbbStaff.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
             if(isAdmin == false)
             {
-                cbbStaff.Text = BLL_STAFF.Instance.getStaffById(idStaff);
+                cbbStaff.Text = BLL_STAFF.Instance.getStaffById(usernameLogin);
             }
             else
             {
@@ -87,12 +87,12 @@ namespace SaleManagement.FORM
         {
             if (isAdmin)
             {
-                FrmMain_Admin frm = new FrmMain_Admin();
+                FrmMain_Admin frm = new FrmMain_Admin(usernameLogin);
                 frm.Show();
             }
             else
             {
-                FrmMain_Member frm = new FrmMain_Member(idStaff);
+                FrmMain_Member frm = new FrmMain_Member(usernameLogin);
                 frm.Show();
             }
             this.Close();
@@ -305,7 +305,7 @@ namespace SaleManagement.FORM
         // back to frmManage_Data
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data();
+            FrmManage_Data frm = new FrmManage_Data(usernameLogin);
             frm.Show();
             this.Close();
         }

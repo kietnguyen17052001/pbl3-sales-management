@@ -15,9 +15,11 @@ namespace SaleManagement.VIEW
     public partial class FrmManage_Customers : Form
     {
         bool isAdd; // true: add new customer, false: edit customer
-        public FrmManage_Customers()
+        private string usernamelogin;
+        public FrmManage_Customers(string _usernamelogin)
         {
             InitializeComponent();
+            usernamelogin = _usernamelogin;
             Disable(false);
             ShowCustomer();
             FormatColumnHeader();
@@ -87,7 +89,7 @@ namespace SaleManagement.VIEW
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin();
+            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
             frm.Show();
             this.Close();
         }
@@ -216,7 +218,7 @@ namespace SaleManagement.VIEW
         // Back to frmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data();
+            FrmManage_Data frm = new FrmManage_Data(usernamelogin);
             frm.Show();
             this.Close();
         }

@@ -14,9 +14,11 @@ namespace SaleManagement.FORM
 {
     public partial class FrmReport : Form
     {
-        public FrmReport()
+        private string usernamelogin;
+        public FrmReport(string _usernamelogin)
         {
             InitializeComponent();
+            usernamelogin = _usernamelogin;
             DateTime dateMin = BLL_LISTSALEINVOICE.Instance.getDate();
             if (dateMin == null)
             {
@@ -78,7 +80,7 @@ namespace SaleManagement.FORM
         // back to FrmQLBanHang
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin();
+            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
             frm.Show();
             this.Close();
         }

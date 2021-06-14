@@ -69,6 +69,7 @@ namespace SaleManagement.FORM
                 }
                 else
                 {
+                    lbINFO.ForeColor = Color.IndianRed;
                     lbINFO.Text = "Không được quyền đăng nhập chức năng này";
                 }
             }

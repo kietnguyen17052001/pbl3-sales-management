@@ -89,11 +89,11 @@ namespace SaleManagement.BLL
             }
         }
         // Xóa hàng hóa khỏi hóa đơn
-        public void FuncDeleteProduct(List<string> ListIdProduct, DataTable dataTable)
+        public void FuncDeleteProduct(List<string> listIdProduct, DataTable dataTable)
         {
             try
             {
-                foreach (string idProduct in ListIdProduct)
+                foreach (string idProduct in listIdProduct)
                 {
                     foreach (DataRow dataRow in dataTable.Rows)
                     {
@@ -173,14 +173,9 @@ namespace SaleManagement.BLL
             return quantity;
         }
         // Số lượng hàng hóa (nếu cùng tên thì tính là 1)
-        public int getTotalProduct(DataTable DATA)
+        public int getTotalProduct(DataTable dataTable)
         {
-            int value = 0;
-            foreach (DataRow data in DATA.Rows)
-            {
-                value++;
-            }
-            return value;
+            return dataTable.Rows.Count;
         }
         // Trả về mã hóa đơn mới
         public string getNewIdInvoice()

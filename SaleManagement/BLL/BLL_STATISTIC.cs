@@ -24,11 +24,11 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_STATISTIC(){}
-        // get all product in database
-        public int getTotalQuantityProduct()
+        // get quantity product in database dFrom->dTo
+        public int getTotalQuantityProduct(DateTime dateFrom, DateTime dateTo)
         {
             int quantity = 0;
-            foreach (tblChiTietHoaDonBanHang invoiceDetail in DB.tblChiTietHoaDonBanHangs)
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateFrom, dateTo))
             {
                 quantity += (int)invoiceDetail.SoLuong;
             }

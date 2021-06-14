@@ -16,7 +16,7 @@ namespace SaleManagement.VIEW
     public partial class FrmInvoice_SaleProduct : Form
     {
         private bool isAdmin;
-        private string idStaff;
+        private string usernameLogin;
         private int products = 1, allProduct, productQty;
         private string idProduct, nameProduct, idCustomer; //idCustomer cho chức năng Payment
         private double productPrice, 
@@ -28,13 +28,13 @@ namespace SaleManagement.VIEW
             sendByStaff, 
             totalMoney;
         private DataTable dataTable = BLL_SALEPRODUCT.Instance.TableInvoice();
-        public FrmInvoice_SaleProduct(bool _isAdmin, string _idStaff)
+        public FrmInvoice_SaleProduct(bool _isAdmin, string _usernameLogin)
         {  
             InitializeComponent();
             isAdmin = _isAdmin;
+            usernameLogin = _usernameLogin;
             if (isAdmin == false)
             {
-                idStaff = _idStaff;
                 btnBack.Enabled = false;
             }
             setComboboxStaff();
@@ -87,7 +87,7 @@ namespace SaleManagement.VIEW
             cbbStaff.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
             if (isAdmin == false)
             {
-                cbbStaff.Text = BLL_STAFF.Instance.getStaffById(idStaff);
+                cbbStaff.Text = BLL_STAFF.Instance.getStaffById(usernameLogin);
             }
             else { cbbStaff.SelectedIndex = 0; }
         }
@@ -151,12 +151,12 @@ namespace SaleManagement.VIEW
         {
             if (isAdmin)
             {
-                FrmMain_Admin frm = new FrmMain_Admin();
+                FrmMain_Admin frm = new FrmMain_Admin(usernameLogin);
                 frm.Show();
             }
             else
             {
-                FrmMain_Member frm = new FrmMain_Member(idStaff);
+                FrmMain_Member frm = new FrmMain_Member(usernameLogin);
                 frm.Show();
             }
             this.Close();
@@ -365,7 +365,7 @@ namespace SaleManagement.VIEW
         // back to frmQuanLyDuLieu
         private void btnBack_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data();
+            FrmManage_Data frm = new FrmManage_Data(usernameLogin);
             frm.Show();
             this.Close();
         }

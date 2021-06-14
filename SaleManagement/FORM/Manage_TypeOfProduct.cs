@@ -16,9 +16,11 @@ namespace SaleManagement.FORM
     public partial class FrmManage_TypeOfProduct : Form
     {
         private bool isAdd; // true: add, false: edit customer
-        public FrmManage_TypeOfProduct()
+        private string usernamelogin;
+        public FrmManage_TypeOfProduct(string _usernamelogin)
         {
             InitializeComponent();
+            usernamelogin = _usernamelogin;
             Disable(false);
             ShowData();
             FormatColumnHeader();
@@ -63,7 +65,7 @@ namespace SaleManagement.FORM
         // Button home -> back to frmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin();
+            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
             frm.Show();
             this.Close();
         }
@@ -176,7 +178,7 @@ namespace SaleManagement.FORM
         // back FrmManage_data
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data();
+            FrmManage_Data frm = new FrmManage_Data(usernamelogin);
             frm.Show();
             this.Hide();
         }

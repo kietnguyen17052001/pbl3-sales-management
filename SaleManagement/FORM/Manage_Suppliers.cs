@@ -15,9 +15,11 @@ namespace SaleManagement.VIEW
     public partial class FrmManage_Suppliers : Form
     {
         private bool isAdd; // add?
-        public FrmManage_Suppliers()
+        private string usernamelogin;
+        public FrmManage_Suppliers(string _usernamelogin)
         {
             InitializeComponent();
+            usernamelogin = _usernamelogin;
             ShowData();
             FormatColumnHeader();
             Disable(false);
@@ -81,7 +83,7 @@ namespace SaleManagement.VIEW
         // back FrmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin();
+            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
             frm.Show();
             this.Close();
         }
@@ -224,7 +226,7 @@ namespace SaleManagement.VIEW
         // back to FrmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data();
+            FrmManage_Data frm = new FrmManage_Data(usernamelogin);
             frm.Show();
             this.Hide();
         }

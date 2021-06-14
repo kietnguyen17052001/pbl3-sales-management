@@ -15,17 +15,17 @@ namespace SaleManagement
     public partial class FrmMain_Admin : Form
     {
         private string usernameLogin;
-        public FrmMain_Admin(string name = null)
+        public FrmMain_Admin(string _usernameLogin = null)
         {
             InitializeComponent();
-            usernameLogin = name;
-            lbWelcome.Text += " " + name;
+            usernameLogin = _usernameLogin;
+            lbWelcome.Text += " " + _usernameLogin;
             lbDate.Text += " " + DateTime.Now.ToString("dddd, dd/MM/yyyy");
         }
 
         private void btnManage_Data_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data();
+            FrmManage_Data frm = new FrmManage_Data(usernameLogin);
             frm.Show();
             this.Close();
         }
@@ -37,21 +37,21 @@ namespace SaleManagement
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            FrmReport frm = new FrmReport();
+            FrmReport frm = new FrmReport(usernameLogin);
             frm.Show();
             this.Close();
         }
 
         private void btnStatistic_Click(object sender, EventArgs e)
         {
-            FrmStatistic frm = new FrmStatistic();
+            FrmStatistic frm = new FrmStatistic(usernameLogin);
             frm.Show();
             this.Close();
         }
 
         private void btnIntroduce_Click(object sender, EventArgs e)
         {
-            FrmIntroduce frm = new FrmIntroduce(true, null);
+            FrmIntroduce frm = new FrmIntroduce(true, usernameLogin);
             frm.Show();
             this.Close();
         }

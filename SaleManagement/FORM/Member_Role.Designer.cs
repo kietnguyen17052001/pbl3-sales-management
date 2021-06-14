@@ -41,6 +41,8 @@ namespace SaleManagement.FORM
             this.btnIntroduce = new System.Windows.Forms.Button();
             this.btnList_ImportInvoice = new System.Windows.Forms.Button();
             this.btnList_SaleInvoice = new System.Windows.Forms.Button();
+            this.lbWelcome = new System.Windows.Forms.Label();
+            this.lbDate = new System.Windows.Forms.Label();
             this.panelSALE_MANAGEMENT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -166,7 +168,7 @@ namespace SaleManagement.FORM
             this.btnLogOut.ForeColor = System.Drawing.Color.Black;
             this.btnLogOut.Image = global::SaleManagement.Properties.Resources.Windows_Turn_Off_icon;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLogOut.Location = new System.Drawing.Point(491, 378);
+            this.btnLogOut.Location = new System.Drawing.Point(492, 379);
             this.btnLogOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(189, 185);
@@ -189,7 +191,7 @@ namespace SaleManagement.FORM
             this.btnIntroduce.ForeColor = System.Drawing.Color.Black;
             this.btnIntroduce.Image = global::SaleManagement.Properties.Resources.Adobe_Help_Center_icon;
             this.btnIntroduce.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnIntroduce.Location = new System.Drawing.Point(491, 157);
+            this.btnIntroduce.Location = new System.Drawing.Point(492, 157);
             this.btnIntroduce.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIntroduce.Name = "btnIntroduce";
             this.btnIntroduce.Size = new System.Drawing.Size(189, 185);
@@ -243,12 +245,34 @@ namespace SaleManagement.FORM
             this.btnList_SaleInvoice.UseVisualStyleBackColor = false;
             this.btnList_SaleInvoice.Click += new System.EventHandler(this.btnList_SaleInvoice_Click);
             // 
+            // lbWelcome
+            // 
+            this.lbWelcome.AutoSize = true;
+            this.lbWelcome.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWelcome.Location = new System.Drawing.Point(44, 114);
+            this.lbWelcome.Name = "lbWelcome";
+            this.lbWelcome.Size = new System.Drawing.Size(84, 19);
+            this.lbWelcome.TabIndex = 131;
+            this.lbWelcome.Text = "Xin chào:";
+            // 
+            // lbDate
+            // 
+            this.lbDate.AutoSize = true;
+            this.lbDate.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDate.Location = new System.Drawing.Point(266, 114);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Size = new System.Drawing.Size(91, 19);
+            this.lbDate.TabIndex = 130;
+            this.lbDate.Text = "Thời gian:";
+            // 
             // FrmMain_Member
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.Controls.Add(this.lbWelcome);
+            this.Controls.Add(this.lbDate);
             this.Controls.Add(this.btnList_ImportInvoice);
             this.Controls.Add(this.btnList_SaleInvoice);
             this.Controls.Add(this.btnIntroduce);
@@ -265,6 +289,7 @@ namespace SaleManagement.FORM
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -281,5 +306,7 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Button btnIntroduce;
         private System.Windows.Forms.Button btnList_ImportInvoice;
         private System.Windows.Forms.Button btnList_SaleInvoice;
+        private System.Windows.Forms.Label lbWelcome;
+        private System.Windows.Forms.Label lbDate;
     }
 }

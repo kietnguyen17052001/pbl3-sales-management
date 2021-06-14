@@ -29,7 +29,14 @@ namespace SaleManagement.BLL
         public DateTime getDate()
         {
             var getDate = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
-            return (DateTime)getDate;
+            if (getDate == null)
+            {
+                return DateTime.Now;
+            }
+            else
+            {
+                return (DateTime)getDate;
+            }
         }
         // load data for from Invoice
         public void LoadDataFrmInvoice(DataGridView dgv, DateTime dateFrom, DateTime dateTo)

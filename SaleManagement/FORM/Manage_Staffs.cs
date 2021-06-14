@@ -15,9 +15,11 @@ namespace SaleManagement.VIEW
     public partial class FrmManage_Staffs : Form
     {
         private bool isAdd; // Kiểm tra xem thực hiện chức năng ADD hay EDIT
-        public FrmManage_Staffs()
+        private string usernamelogin;
+        public FrmManage_Staffs(string _usernamelogin)
         {
             InitializeComponent();
+            usernamelogin = _usernamelogin;
             setCombobox();    
             Disable(false);
             ShowStaff();
@@ -274,7 +276,7 @@ namespace SaleManagement.VIEW
         // back to FrmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data();
+            FrmManage_Data frm = new FrmManage_Data(usernamelogin);
             frm.Show();
             this.Hide();
         }

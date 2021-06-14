@@ -13,11 +13,11 @@ namespace SaleManagement.FORM
     public partial class FrmIntroduce : Form
     {
         private bool isAdmin;
-        private string idStaff;
-        public FrmIntroduce(bool _isAdmin, string _idStaff)
+        private string usernameLogin;
+        public FrmIntroduce(bool _isAdmin, string _usernameLogin)
         {
             isAdmin = _isAdmin;
-            idStaff = _idStaff;
+            usernameLogin = _usernameLogin;
             InitializeComponent();
         }
 
@@ -25,12 +25,12 @@ namespace SaleManagement.FORM
         {
             if (isAdmin)
             {
-                FrmMain_Admin frm = new FrmMain_Admin();
+                FrmMain_Admin frm = new FrmMain_Admin(usernameLogin);
                 frm.Show();
             }
             else
             {
-                FrmMain_Member frm = new FrmMain_Member(idStaff);
+                FrmMain_Member frm = new FrmMain_Member(usernameLogin);
                 frm.Show();
             }
             this.Close();
