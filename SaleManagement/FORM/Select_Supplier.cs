@@ -118,7 +118,7 @@ namespace SaleManagement.FORM
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Mã số nhà cung cấp bị trùng. Vui lòng nhập mã khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mã số nhà cung cấp đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Disable(true);
                 }
             }

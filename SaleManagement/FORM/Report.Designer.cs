@@ -29,7 +29,7 @@ namespace SaleManagement.FORM
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,7 +61,7 @@ namespace SaleManagement.FORM
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnLOAD = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvREVENUE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -83,7 +83,7 @@ namespace SaleManagement.FORM
             this.label1.BackColor = System.Drawing.Color.SteelBlue;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(117, 106);
+            this.label1.Location = new System.Drawing.Point(110, 106);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 24);
             this.label1.TabIndex = 4;
@@ -95,7 +95,7 @@ namespace SaleManagement.FORM
             this.label2.BackColor = System.Drawing.Color.SteelBlue;
             this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(363, 106);
+            this.label2.Location = new System.Drawing.Point(355, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 24);
             this.label2.TabIndex = 5;
@@ -212,14 +212,14 @@ namespace SaleManagement.FORM
             this.dgvREVENUE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvREVENUE.Location = new System.Drawing.Point(29, 281);
             this.dgvREVENUE.Name = "dgvREVENUE";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvREVENUE.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvREVENUE.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvREVENUE.RowHeadersVisible = false;
             this.dgvREVENUE.RowHeadersWidth = 62;
             this.dgvREVENUE.RowTemplate.Height = 28;
@@ -244,7 +244,7 @@ namespace SaleManagement.FORM
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(819, 157);
+            this.label10.Location = new System.Drawing.Point(898, 157);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 22);
             this.label10.TabIndex = 128;
@@ -254,7 +254,7 @@ namespace SaleManagement.FORM
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(644, 157);
+            this.label8.Location = new System.Drawing.Point(713, 157);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(83, 22);
             this.label8.TabIndex = 127;
@@ -264,19 +264,21 @@ namespace SaleManagement.FORM
             // 
             this.dpTO.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpTO.Location = new System.Drawing.Point(788, 181);
+            this.dpTO.Location = new System.Drawing.Point(867, 181);
             this.dpTO.Name = "dpTO";
             this.dpTO.Size = new System.Drawing.Size(156, 29);
             this.dpTO.TabIndex = 126;
+            this.dpTO.ValueChanged += new System.EventHandler(this.dpTO_ValueChanged);
             // 
             // dpFROM
             // 
             this.dpFROM.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpFROM.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpFROM.Location = new System.Drawing.Point(610, 181);
+            this.dpFROM.Location = new System.Drawing.Point(679, 181);
             this.dpFROM.Name = "dpFROM";
             this.dpFROM.Size = new System.Drawing.Size(156, 29);
             this.dpFROM.TabIndex = 125;
+            this.dpFROM.ValueChanged += new System.EventHandler(this.dpTO_ValueChanged);
             // 
             // btnBACK
             // 
@@ -328,9 +330,9 @@ namespace SaleManagement.FORM
             this.btnEXCEL.ForeColor = System.Drawing.Color.White;
             this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
             this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEXCEL.Location = new System.Drawing.Point(1063, 173);
+            this.btnEXCEL.Location = new System.Drawing.Point(1041, 173);
             this.btnEXCEL.Name = "btnEXCEL";
-            this.btnEXCEL.Size = new System.Drawing.Size(154, 48);
+            this.btnEXCEL.Size = new System.Drawing.Size(176, 48);
             this.btnEXCEL.TabIndex = 119;
             this.btnEXCEL.Text = "Xuất Excel";
             this.btnEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -384,7 +386,7 @@ namespace SaleManagement.FORM
             this.pictureBox6.BackColor = System.Drawing.Color.SteelBlue;
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox6.Image = global::SaleManagement.Properties.Resources.area_chart_32;
-            this.pictureBox6.Location = new System.Drawing.Point(288, 83);
+            this.pictureBox6.Location = new System.Drawing.Point(284, 83);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(64, 47);
             this.pictureBox6.TabIndex = 9;
@@ -437,22 +439,15 @@ namespace SaleManagement.FORM
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btnLOAD
+            // label9
             // 
-            this.btnLOAD.BackColor = System.Drawing.SystemColors.Control;
-            this.btnLOAD.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnLOAD.FlatAppearance.BorderSize = 0;
-            this.btnLOAD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLOAD.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLOAD.ForeColor = System.Drawing.Color.White;
-            this.btnLOAD.Image = global::SaleManagement.Properties.Resources.sinchronize_32__1_;
-            this.btnLOAD.Location = new System.Drawing.Point(950, 155);
-            this.btnLOAD.Name = "btnLOAD";
-            this.btnLOAD.Size = new System.Drawing.Size(60, 64);
-            this.btnLOAD.TabIndex = 130;
-            this.btnLOAD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLOAD.UseVisualStyleBackColor = false;
-            this.btnLOAD.Click += new System.EventHandler(this.btnLOAD_Click);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(843, 186);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 22);
+            this.label9.TabIndex = 130;
+            this.label9.Text = "-";
             // 
             // FrmReport
             // 
@@ -460,7 +455,7 @@ namespace SaleManagement.FORM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 691);
             this.ControlBox = false;
-            this.Controls.Add(this.btnLOAD);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnBACK);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
@@ -546,6 +541,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.DateTimePicker dpTO;
         private System.Windows.Forms.DateTimePicker dpFROM;
         private System.Windows.Forms.Button btnBACK;
-        private System.Windows.Forms.Button btnLOAD;
+        private System.Windows.Forms.Label label9;
     }
 }

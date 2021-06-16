@@ -65,6 +65,7 @@ namespace SaleManagement.FORM
             this.label8 = new System.Windows.Forms.Label();
             this.lbTotalMoney = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_INVOICE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvINFO_INVOICE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -209,15 +210,17 @@ namespace SaleManagement.FORM
             this.dpFROM.Name = "dpFROM";
             this.dpFROM.Size = new System.Drawing.Size(156, 29);
             this.dpFROM.TabIndex = 120;
+            this.dpFROM.ValueChanged += new System.EventHandler(this.dpTO_ValueChanged);
             // 
             // dpTO
             // 
             this.dpTO.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpTO.Location = new System.Drawing.Point(571, 402);
+            this.dpTO.Location = new System.Drawing.Point(595, 402);
             this.dpTO.Name = "dpTO";
             this.dpTO.Size = new System.Drawing.Size(156, 29);
             this.dpTO.TabIndex = 121;
+            this.dpTO.ValueChanged += new System.EventHandler(this.dpTO_ValueChanged);
             // 
             // label2
             // 
@@ -233,7 +236,7 @@ namespace SaleManagement.FORM
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(602, 378);
+            this.label10.Location = new System.Drawing.Point(626, 378);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 22);
             this.label10.TabIndex = 123;
@@ -546,12 +549,23 @@ namespace SaleManagement.FORM
             this.label11.TabIndex = 147;
             this.label11.Text = "Tổng tiền:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(571, 407);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(18, 22);
+            this.label5.TabIndex = 176;
+            this.label5.Text = "-";
+            // 
             // FrmList_SaleInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 691);
             this.ControlBox = false;
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lbTotalMoney);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.lbQuantity);
@@ -636,5 +650,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbTotalMoney;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label5;
     }
 }

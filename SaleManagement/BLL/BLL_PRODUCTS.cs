@@ -86,6 +86,7 @@ namespace SaleManagement.BLL
             getProduct.GiaNhap = product.GiaNhap;
             getProduct.MaLoaiHangHoa = product.MaLoaiHangHoa;
             getProduct.MaNhaSanXuat = product.MaNhaSanXuat;
+            getProduct.MoTa = product.MoTa;
             //getProduct.HinhAnh = product.HinhAnh;
             DB.SaveChanges();
         }

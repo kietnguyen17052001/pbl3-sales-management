@@ -20,12 +20,13 @@ namespace SaleManagement.FORM
         public FrmCreate_NewProduct()
         {
             InitializeComponent();
-            setCbbTypeProduct();
+            setCombobox();
         }
-        public void setCbbTypeProduct()
+        public void setCombobox()
         {
             cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_PRODUCTS.Instance.getCBBTypeProduct().ToArray());
             cbbPRODUCERs.Items.AddRange(BLL_PRODUCER.Instance.getCbbProducer().ToArray());
+            cbbTYPE_OF_PRODUCT.SelectedIndex = cbbPRODUCERs.SelectedIndex = 0;
         }
         string imageLocation = "";
         byte[] images = null;

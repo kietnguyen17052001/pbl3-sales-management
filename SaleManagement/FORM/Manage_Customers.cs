@@ -14,7 +14,7 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Customers : Form
     {
-        bool isAdd; // true: add new customer, false: edit customer
+        private bool isAdd; // true: add new customer, false: edit customer
         private string usernamelogin;
         public FrmManage_Customers(string _usernamelogin)
         {

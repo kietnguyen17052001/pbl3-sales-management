@@ -22,7 +22,7 @@ namespace SaleManagement.VIEW
         {
             InitializeComponent();
             usernamelogin = _usernamelogin;
-            setCBB();
+            setCombobox();
             ShowProduct();
             FormatColumnHeader();
             disable(false);
@@ -46,7 +46,7 @@ namespace SaleManagement.VIEW
             dgvLISTPRODUCT.Columns[6].HeaderText = "Giá bán";
             dgvLISTPRODUCT.Columns[7].HeaderText = "Mô tả";
         }
-        public void setCBB()
+        public void setCombobox()
         {
             cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_PRODUCTS.Instance.getCBBTypeProduct().ToArray());
             cbbPRODUCERs.Items.AddRange(BLL_PRODUCER.Instance.getCbbProducer().ToArray());
@@ -81,11 +81,11 @@ namespace SaleManagement.VIEW
             lbQuantity.Text = BLL_PRODUCTS.Instance.getQuantityProduct(dgvLISTPRODUCT).ToString();
             pbIMAGE.Image = null;
         }
-        public void addTYPEITEM(string id, string name)
+        public void addTypeOfProduct(string id, string name)
         {
             cbbTYPE_OF_PRODUCT.Items.Add(new CBBItem { VALUE = id, TEXT = name });
         }
-        public void addPRODUCER(string id, string name)
+        public void addProducer(string id, string name)
         {
             cbbPRODUCERs.Items.Add(new CBBItem { VALUE = id, TEXT = name });
         }
@@ -177,14 +177,14 @@ namespace SaleManagement.VIEW
         private void btnADDTYPE_Click(object sender, EventArgs e)
         {
             FrmCreate_NewTypeItem frm = new FrmCreate_NewTypeItem();
-            frm.d += new FrmCreate_NewTypeItem.myDEL(addTYPEITEM);
+            frm.d += new FrmCreate_NewTypeItem.myDEL(addTypeOfProduct);
             frm.Show();
         }
         // show ...
         private void btnADDPRODUCER_Click(object sender, EventArgs e)
         {
             FrmCreate_NewProducer frm = new FrmCreate_NewProducer();
-            frm.d += new FrmCreate_NewProducer.myDEL(addPRODUCER);
+            frm.d += new FrmCreate_NewProducer.myDEL(addProducer);
             frm.Show();
         }
         string imageLocation = "";
@@ -316,7 +316,10 @@ namespace SaleManagement.VIEW
         // change idProduct
         private void cbbTYPE_OF_ITEMS_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtID_PRODUCT.Text = BLL_PRODUCTS.Instance.getNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
+            if(btnADD.Enabled == false)
+            {
+                txtID_PRODUCT.Text = BLL_PRODUCTS.Instance.getNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
+            }
         }
 
         private void txtNAME_ITEM_Enter(object sender, EventArgs e)

@@ -95,7 +95,7 @@ namespace SaleManagement.FORM
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Mã khách hàng bị trùng. Vui lòng nhập mã khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mã khách hàng đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

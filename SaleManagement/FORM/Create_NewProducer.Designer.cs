@@ -169,6 +169,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Name = "FrmCreate_NewProducer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm nhà sản xuất";
             this.ResumeLayout(false);
             this.PerformLayout();

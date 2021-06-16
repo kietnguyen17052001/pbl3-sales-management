@@ -22,16 +22,16 @@ namespace SaleManagement.FORM
         {
             InitializeComponent();
             isAdmin = _isAdmin;
-            if(isAdmin == false)
+            usernameLogin = _usernameLogin;
+            if (isAdmin == false)
             {
-                usernameLogin = _usernameLogin;
                 btnBACK.Enabled = btnEDIT.Enabled = btnDELETE.Enabled = btnSAVE.Enabled = false;
             }
             Disable(false);
+            setCombobox();
+            dpFROM.Value = BLL_LISTIMPORTINVOICE.Instance.getDate();
             LoadDGVs();
             FormatColumnHeader();
-            setCbb();
-            dpFROM.Value = BLL_LISTIMPORTINVOICE.Instance.getDate();
         }
         public void Disable(bool E)
         {
@@ -39,7 +39,7 @@ namespace SaleManagement.FORM
             cbbSTAFF.Enabled = E;
             cbbSUPPLIER.Enabled = E;
         }
-        public void setCbb()
+        public void setCombobox()
         {
             cbbSUPPLIER.Items.AddRange(BLL_SUPPLIER.Instance.ListSupplier().ToArray());
             cbbSTAFF.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
@@ -91,15 +91,15 @@ namespace SaleManagement.FORM
         {
             BLL_LISTIMPORTINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, dpFROM.Value, dpTO.Value, txtSEARCH.Text.Trim());
             BLL_LISTIMPORTINVOICE.Instance.LoadDataFrmDetail(dgvINFO_INVOICE, idInvoice);
-            //lbQuantity.Text = BLL_LISTIMPORTINVOICE.Instance.getQuantityInvoice(dgvLIST_INVOICE).ToString();
-            //lbTotalMoney.Text = BLL_LISTIMPORTINVOICE.Instance.getTotalMoney(dgvLIST_INVOICE).ToString();
+            lbQuantity.Text = BLL_LISTIMPORTINVOICE.Instance.getQuantityInvoice(dgvLIST_INVOICE).ToString();
+            lbTotalMoney.Text = String.Format("{0:n0}", BLL_LISTIMPORTINVOICE.Instance.getTotalMoney(dgvLIST_INVOICE));
         }
         // button home
         private void btnHOME_Click(object sender, EventArgs e)
         {
             if (isAdmin)
             {
-                FrmMain_Admin frm = new FrmMain_Admin();
+                FrmMain_Admin frm = new FrmMain_Admin(usernameLogin);
                 frm.Show();
             }
             else
@@ -112,9 +112,7 @@ namespace SaleManagement.FORM
         // search invoice
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            BLL_LISTIMPORTINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, dpFROM.Value, dpTO.Value, txtSEARCH.Text.Trim());
-            lbQuantity.Text = BLL_LISTIMPORTINVOICE.Instance.getQuantityInvoice(dgvLIST_INVOICE).ToString();
-            lbTotalMoney.Text = String.Format("{0:n0}", BLL_LISTIMPORTINVOICE.Instance.getTotalMoney(dgvLIST_INVOICE));
+            LoadDGVs();
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
@@ -223,6 +221,11 @@ namespace SaleManagement.FORM
             FrmEditQuantityProduct_ListInvoice frm = new FrmEditQuantityProduct_ListInvoice(idProduct, nameProduct, quantityProduct, false);
             frm.d += new FrmEditQuantityProduct_ListInvoice.myDEL(setNewQuantity);
             frm.Show();
+        }
+        // Load dgv when valuechange datetimepickers
+        private void dpTO_ValueChanged(object sender, EventArgs e)
+        {
+            LoadDGVs();
         }
         // button delete product
         private void btnDELETE_PRODUCT_Click(object sender, EventArgs e)

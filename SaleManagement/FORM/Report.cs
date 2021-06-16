@@ -19,15 +19,7 @@ namespace SaleManagement.FORM
         {
             InitializeComponent();
             usernamelogin = _usernamelogin;
-            DateTime dateMin = BLL_LISTSALEINVOICE.Instance.getDate();
-            if (dateMin == null)
-            {
-                dpFROM.Value = DateTime.Now;
-            }
-            else
-            {
-                dpFROM.Value = dateMin;
-            }
+            dpFROM.Value = BLL_LISTSALEINVOICE.Instance.getDate();
             ShowData();
             FormatColumnHeader();
         }
@@ -72,11 +64,6 @@ namespace SaleManagement.FORM
             dgvREVENUE.DefaultCellStyle.BackColor = Color.OldLace;
             dgvREVENUE.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
         }
-        // load lại danh sách theo thời gian
-        private void btnLOAD_Click(object sender, EventArgs e)
-        {
-            ShowData();
-        }
         // back to FrmQLBanHang
         private void btnBACK_Click(object sender, EventArgs e)
         {
@@ -113,6 +100,11 @@ namespace SaleManagement.FORM
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             }
             app.Quit();
+        }
+        // Load form when valuechange in datetimepickers
+        private void dpTO_ValueChanged(object sender, EventArgs e)
+        {
+            ShowData();
         }
     }
 }

@@ -65,7 +65,7 @@ namespace SaleManagement.FORM
             this.cbbPRODUCERs.FormattingEnabled = true;
             this.cbbPRODUCERs.Location = new System.Drawing.Point(219, 192);
             this.cbbPRODUCERs.Name = "cbbPRODUCERs";
-            this.cbbPRODUCERs.Size = new System.Drawing.Size(210, 27);
+            this.cbbPRODUCERs.Size = new System.Drawing.Size(263, 27);
             this.cbbPRODUCERs.TabIndex = 160;
             // 
             // label5
@@ -181,7 +181,7 @@ namespace SaleManagement.FORM
             this.cbbTYPE_OF_PRODUCT.FormattingEnabled = true;
             this.cbbTYPE_OF_PRODUCT.Location = new System.Drawing.Point(219, 113);
             this.cbbTYPE_OF_PRODUCT.Name = "cbbTYPE_OF_PRODUCT";
-            this.cbbTYPE_OF_PRODUCT.Size = new System.Drawing.Size(210, 27);
+            this.cbbTYPE_OF_PRODUCT.Size = new System.Drawing.Size(263, 27);
             this.cbbTYPE_OF_PRODUCT.TabIndex = 148;
             this.cbbTYPE_OF_PRODUCT.TextChanged += new System.EventHandler(this.cbbTYPE_OF_PRODUCT_TextChanged);
             // 
@@ -263,7 +263,7 @@ namespace SaleManagement.FORM
             this.btnADDPRODUCER.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADDPRODUCER.ForeColor = System.Drawing.Color.White;
             this.btnADDPRODUCER.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
-            this.btnADDPRODUCER.Location = new System.Drawing.Point(435, 183);
+            this.btnADDPRODUCER.Location = new System.Drawing.Point(486, 182);
             this.btnADDPRODUCER.Name = "btnADDPRODUCER";
             this.btnADDPRODUCER.Size = new System.Drawing.Size(44, 44);
             this.btnADDPRODUCER.TabIndex = 161;
@@ -289,7 +289,7 @@ namespace SaleManagement.FORM
             this.btnADDTYPE.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADDTYPE.ForeColor = System.Drawing.Color.White;
             this.btnADDTYPE.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
-            this.btnADDTYPE.Location = new System.Drawing.Point(435, 105);
+            this.btnADDTYPE.Location = new System.Drawing.Point(486, 105);
             this.btnADDTYPE.Name = "btnADDTYPE";
             this.btnADDTYPE.Size = new System.Drawing.Size(44, 46);
             this.btnADDTYPE.TabIndex = 156;

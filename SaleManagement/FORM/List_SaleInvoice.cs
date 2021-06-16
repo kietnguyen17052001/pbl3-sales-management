@@ -30,9 +30,9 @@ namespace SaleManagement.FORM
             }
             Disable(false);
             setCombobox();
+            dpFROM.Value = BLL_LISTSALEINVOICE.Instance.getDate();
             LoadDataDGVs();
             FormatColumnHeader();
-            dpFROM.Value = BLL_LISTSALEINVOICE.Instance.getDate();
         }
         // Format ColumnHeader
         public void FormatColumnHeader()
@@ -113,15 +113,13 @@ namespace SaleManagement.FORM
         {
             BLL_LISTSALEINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, dpFROM.Value, dpTO.Value, txtSEARCH.Text.Trim());
             BLL_LISTSALEINVOICE.Instance.LoadDataFrmDetail(dgvINFO_INVOICE, idInvoice);
-            //lbQuantity.Text = BLL_LISTSALEINVOICE.Instance.getQuantityInvoice(dgvLIST_INVOICE).ToString();
-            //lbTotalMoney.Text = BLL_LISTSALEINVOICE.Instance.getTotalMoney(dgvLIST_INVOICE).ToString();
+            lbQuantity.Text = BLL_LISTSALEINVOICE.Instance.getQuantityInvoice(dgvLIST_INVOICE).ToString();
+            lbTotalMoney.Text = String.Format("{0:n0}", BLL_LISTSALEINVOICE.Instance.getTotalMoney(dgvLIST_INVOICE));
         }
         // Search invoice
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            BLL_LISTSALEINVOICE.Instance.FuncSearchInvoice(dgvLIST_INVOICE, dpFROM.Value, dpTO.Value, txtSEARCH.Text.Trim()); // search invoice
-            lbQuantity.Text = BLL_LISTSALEINVOICE.Instance.getQuantityInvoice(dgvLIST_INVOICE).ToString();
-            lbTotalMoney.Text = String.Format("{0:n0}", BLL_LISTSALEINVOICE.Instance.getTotalMoney(dgvLIST_INVOICE));
+            LoadDataDGVs();
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
@@ -234,6 +232,11 @@ namespace SaleManagement.FORM
             FrmEditQuantityProduct_ListInvoice frm = new FrmEditQuantityProduct_ListInvoice(idProduct, nameProduct, quantityProduct, true);
             frm.d += new FrmEditQuantityProduct_ListInvoice.myDEL(setNewQuantity);
             frm.Show();
+        }
+        // Load dgv when valuechange datetimepickers
+        private void dpTO_ValueChanged(object sender, EventArgs e)
+        {
+            LoadDataDGVs();
         }
         // Delete product in invoice
         private void btnDELETE_PRODUCT_Click(object sender, EventArgs e)
