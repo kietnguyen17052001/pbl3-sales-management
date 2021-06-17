@@ -81,7 +81,7 @@ namespace SaleManagement.FORM
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSAVE.Location = new System.Drawing.Point(138, 388);
             this.btnSAVE.Name = "btnSAVE";
-            this.btnSAVE.Size = new System.Drawing.Size(121, 55);
+            this.btnSAVE.Size = new System.Drawing.Size(124, 55);
             this.btnSAVE.TabIndex = 94;
             this.btnSAVE.Text = "Lưu";
             this.btnSAVE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -247,6 +247,7 @@ namespace SaleManagement.FORM
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 456);
+            this.ControlBox = false;
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCODE);
             this.Controls.Add(this.label8);
@@ -266,7 +267,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label5);
             this.Name = "FrmCreate_NewSupplier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create_NewSupplier";
+            this.Text = "Thêm nhà cung cấp";
             this.ResumeLayout(false);
             this.PerformLayout();
 

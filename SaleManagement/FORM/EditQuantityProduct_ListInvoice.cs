@@ -1,4 +1,5 @@
-﻿using SaleManagement.Entity;
+﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,20 +12,21 @@ using System.Windows.Forms;
 
 namespace SaleManagement.FORM
 {
-    public partial class FrmEdit_Quantity_ListInvoice : Form
+    public partial class FrmEditQuantityProduct_ListInvoice : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public delegate void myDEL(int quantity);
         public myDEL d { get; set; }
-        public string idProduct { get; set; }
-        public FrmEdit_Quantity_ListInvoice(string _idProduct, string nameProduct, int quantity)
+        private string idProduct;
+        private int newQuantity;
+        private bool isListSale;
+        public FrmEditQuantityProduct_ListInvoice(string _idProduct, string nameProduct, int quantity, bool _isListSale)
         {
             InitializeComponent();
+            isListSale = _isListSale;
             txtPRODUCT.Text = nameProduct;
             txtQUANTITY.Text = quantity.ToString();
             idProduct = _idProduct;
-            var product = DB.tblHangHoas.Find(idProduct);
-            lbQUANTITY.Text = product.SoLuong.ToString();
+            lbQUANTITY.Text = BLL_PRODUCTS.Instance.getQuantityProductByIdProduct(idProduct).ToString();
             txtPRODUCT.Enabled = false;
             txtQUANTITY.Enabled = false;
             txtNEW_QUANTITY.Text = "1";
@@ -38,18 +40,22 @@ namespace SaleManagement.FORM
             }
             else
             {
-                int oldQty = Convert.ToInt32(txtQUANTITY.Text);
-                int newQty = Convert.ToInt32(txtNEW_QUANTITY.Text);
-                var product = DB.tblHangHoas.Find(idProduct);
-                if (newQty > product.SoLuong)
+                newQuantity= Convert.ToInt32(txtNEW_QUANTITY.Text);
+                if(isListSale == true)
                 {
-                    lbSTATUS.Text = "KHÔNG ĐỦ SL";
+                    if (newQuantity > BLL_PRODUCTS.Instance.getQuantityProductByIdProduct(idProduct))
+                    {
+                        lbSTATUS.Text = "KHÔNG ĐỦ SL";
+                    }
+                    else
+                    {
+                        d(newQuantity);
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    product.SoLuong = product.SoLuong + oldQty - newQty;
-                    DB.SaveChanges();
-                    d(newQty);
+                    d(newQuantity);
                     this.Close();
                 }
             }
@@ -64,6 +70,14 @@ namespace SaleManagement.FORM
             if(!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtNEW_QUANTITY_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtNEW_QUANTITY.Text))
+            {
+                txtNEW_QUANTITY.Text = "1";
             }
         }
     }

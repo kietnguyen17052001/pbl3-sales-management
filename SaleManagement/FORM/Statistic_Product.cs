@@ -1,4 +1,5 @@
-﻿using SaleManagement.Entity;
+﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,12 @@ namespace SaleManagement.FORM
 {
     public partial class FrmStatistic_Product : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        String idTypeOfProduct;
-        DateTime dateMin, dateMax;
-        public FrmStatistic_Product(DateTime _dateMin, DateTime _dateMax, string value, string text)
+        private String idTypeOfProduct, usernamelogin;
+        private DateTime dateMin, dateMax;
+        public FrmStatistic_Product(DateTime _dateMin, DateTime _dateMax, string value, string text, string _usernamelogin)
         {
             InitializeComponent();
+            usernamelogin = _usernamelogin;
             lbINFO.Text = text + " từ ngày " + _dateMin.ToShortDateString() + " đến ngày " + _dateMax.ToShortDateString();
             dateMin = _dateMin;
             dateMax = _dateMax;
@@ -34,14 +35,12 @@ namespace SaleManagement.FORM
             double money; // số tiền bán được của loại hàng hóa
             Color randomColor = new Color();
             int count = 0;
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
-            var product = DB.tblHangHoas.Where(p => p.MaLoaiHangHoa == idTypeOfProduct);
-            foreach(tblHangHoa _product in product)
+            foreach(tblHangHoa _product in BLL_STATISTIC.instance.getListProductByIdTypeOfProduct(idTypeOfProduct))
             {
                 quantity = 0;
                 money = 0.0;
                 randomColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
-                foreach (tblChiTietHoaDonBanHang invoiceDetail in list)
+                foreach (tblChiTietHoaDonBanHang invoiceDetail in BLL_STATISTIC.instance.getListInvoiceDetail(dateMin, dateMax))
                 {
                     if (invoiceDetail.MaHangHoa == _product.MaHangHoa)
                     {
@@ -65,7 +64,7 @@ namespace SaleManagement.FORM
 
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmStatistic frm = new FrmStatistic();
+            FrmStatistic frm = new FrmStatistic(usernamelogin);
             frm.Show();
             this.Close();
         }

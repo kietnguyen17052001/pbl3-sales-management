@@ -317,6 +317,7 @@ namespace SaleManagement.FORM
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 691);
+            this.ControlBox = false;
             this.Controls.Add(this.btnSTATISTIC);
             this.Controls.Add(this.lbTIME);
             this.Controls.Add(this.btnINFO);
@@ -332,7 +333,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label6);
             this.Name = "FrmStatistic";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Statistic";
+            this.Text = "Thống kê";
             ((System.ComponentModel.ISupportInitialize)(this.chartPRODUCT_QTY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMONEY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSCALE)).EndInit();

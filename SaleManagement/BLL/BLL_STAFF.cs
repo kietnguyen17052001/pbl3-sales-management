@@ -10,7 +10,7 @@ namespace SaleManagement.BLL
 {
     class BLL_STAFF
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_STAFF _Instance;
         public static BLL_STAFF Instance
         {
@@ -24,15 +24,74 @@ namespace SaleManagement.BLL
             }
             private set { }
         }
-        // Lấy danh sách các vị trí nhân viên từ DB
-        public List<string> GetListPosition()
+        // Set combobox staff
+        public List<CBBItem> getCbbStaff()
         {
-            List<string> list = new List<string>();
+            List<CBBItem> listCbbStaff = new List<CBBItem>();
             foreach (tblNhanVien staff in DB.tblNhanViens)
             {
-                list.Add(staff.ViTri);
+                listCbbStaff.Add(new CBBItem { VALUE = staff.MaNhanVien, TEXT = staff.TenNhanVien });
             }
-            return list;
+            return listCbbStaff;
+        }
+        // Get item by idStaff
+        public string getStaffById(string idStaff)
+        {
+            string staff = null;
+            foreach(CBBItem item in getCbbStaff())
+            {
+                if(idStaff == item.VALUE)
+                {
+                    staff = item.ToString();
+                    break;
+                }
+            }
+            return staff;
+        }
+        // Lấy danh sách các vị trí nhân viên từ DB
+        public List<string> getListPosition()
+        {
+            string[] arrayPosition = {"Thu ngân", "Bán hàng", "Kho"};
+            List<string> listPosition = new List<string>();
+            foreach(string position in arrayPosition)
+            {
+                listPosition.Add(position);
+            }
+            return listPosition;
+        }
+        // load data staff
+        public void LoadDataStaff(DataGridView dgv, int index, string position)
+        {
+            if (index == 0)
+            {
+                var getStaff = DB.tblNhanViens.Select(p => new {
+                    p.MaNhanVien,
+                    p.TenNhanVien,
+                    p.ViTri,
+                    p.NgaySinh,
+                    p.GioiTinh,
+                    p.SoDienThoai,
+                    p.DiaChi,
+                    p.Luong,
+                    p.MatKhau
+                });
+                dgv.DataSource = getStaff.ToList();
+            }
+            else
+            {
+                var getStaff = DB.tblNhanViens.Where(p => p.ViTri == position).Select(p => new {
+                    p.MaNhanVien,
+                    p.TenNhanVien,
+                    p.ViTri,
+                    p.NgaySinh,
+                    p.GioiTinh,
+                    p.SoDienThoai,
+                    p.DiaChi,
+                    p.Luong,
+                    p.MatKhau
+                });
+                dgv.DataSource = getStaff.ToList();
+            }
         }
         // add new staff
         public void FuncAddNewStaff(tblNhanVien staff)
@@ -51,16 +110,17 @@ namespace SaleManagement.BLL
             getStaff.SoDienThoai = staff.SoDienThoai;
             getStaff.DiaChi = staff.DiaChi;
             getStaff.Luong = staff.Luong;
+            getStaff.MatKhau = staff.MatKhau;
             DB.SaveChanges();
         }
         // remove staff
         public void FuncDeleteStaff(List<string> listIdStaff)
         {
-            foreach (string i in listIdStaff)
+            foreach (string idStaff in listIdStaff)
             {
                 foreach (tblNhanVien staff in DB.tblNhanViens)
                 {
-                    if (staff.MaNhanVien == i)
+                    if (staff.MaNhanVien == idStaff)
                     {
                         DB.tblNhanViens.Remove(staff);
                         break;
@@ -69,40 +129,37 @@ namespace SaleManagement.BLL
                 DB.SaveChanges();
             }
         }
-        // search name
-        public void FuncSearchName(DataGridView dgv, string name)
+        // search staff
+        public void FuncSearchStaff(DataGridView dgv, string information)
         {
-            var getStaff = DB.tblNhanViens.Where(p => p.TenNhanVien.Contains(name)).Select(p => new
+            if (information == "Nhập mã hoặc tên nhân viên" || String.IsNullOrEmpty(information))
             {
-                p.MaNhanVien,
-                p.TenNhanVien,
-                p.ViTri,
-                p.NgaySinh,
-                p.GioiTinh,
-                p.SoDienThoai,
-                p.DiaChi,
-                p.Luong
-            });
-            dgv.DataSource = getStaff.ToList();
+                LoadDataStaff(dgv,0,null);
+            }
+            else
+            {
+                var getStaff = DB.tblNhanViens.Where(p => p.TenNhanVien.Contains(information) || p.MaNhanVien.Contains(information)).Select(p => new
+                {
+                    p.MaNhanVien,
+                    p.TenNhanVien,
+                    p.ViTri,
+                    p.NgaySinh,
+                    p.GioiTinh,
+                    p.SoDienThoai,
+                    p.DiaChi,
+                    p.Luong,
+                    p.MatKhau
+                });
+                dgv.DataSource = getStaff.ToList();
+            }
         }
-        // search id
-        public void FuncSearchID(DataGridView dgv, string id)
+        // get quantity staff
+        public int getQuantityStaff(DataGridView dgv)
         {
-            var getStaff = DB.tblNhanViens.Where(p => p.MaNhanVien.Contains(id)).Select(p => new
-            {
-                p.MaNhanVien,
-                p.TenNhanVien,
-                p.ViTri,
-                p.NgaySinh,
-                p.GioiTinh,
-                p.SoDienThoai,
-                p.DiaChi,
-                p.Luong
-            });
-            dgv.DataSource = getStaff.ToList();
+            return dgv.Rows.Count;
         }
         // Trả về mã số khách hàng mới khi thực hiện chức năng thêm
-        public string GetNewIdStaff()
+        public string getNewIdStaff()
         {
             string idStaff = "";
             List<tblNhanVien> list = DB.tblNhanViens.ToList();

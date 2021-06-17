@@ -23,8 +23,18 @@ namespace SaleManagement.FORM
             InitializeComponent();
             idInvoice = _idInvoice;
             lbID_PRODUCT.Text += " "+ _idInvoice;
-            SetCBB();
+            setCbbTypeOfProduct();
             ShowProduct();
+            FormatColumnHeader();
+        }
+        public void setCbbTypeOfProduct()
+        {
+            cbbTYPE_OF_PRODUCT.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả" });
+            cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_PRODUCTS.Instance.getCBBTypeProduct().ToArray());
+            cbbTYPE_OF_PRODUCT.SelectedIndex = 0;
+        }
+        public void FormatColumnHeader()
+        {
             dgvProduct.EnableHeadersVisualStyles = false;
             dgvProduct.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
             dgvProduct.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -34,12 +44,6 @@ namespace SaleManagement.FORM
             dgvProduct.Columns[1].HeaderText = "Tên h.hóa";
             dgvProduct.Columns[2].HeaderText = "Số lượng";
             dgvProduct.Columns[3].HeaderText = "Giá bán";
-        }
-        public void SetCBB()
-        {
-            cbbTYPE_OF_PRODUCT.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả" });
-            cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_ITEMS.Instance.GetCBBTypeProduct().ToArray());
-            cbbTYPE_OF_PRODUCT.SelectedIndex = 0;
         }
         public void ShowProduct()
         {
@@ -72,7 +76,6 @@ namespace SaleManagement.FORM
         {
             ShowProduct();
         }
-
         private void btnADD_PRODUCT_Click(object sender, EventArgs e)
         {
             idProduct = dgvProduct.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();

@@ -72,6 +72,7 @@ namespace SaleManagement.FORM
             this.label8 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.btnBACK = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoProduct)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -201,6 +202,7 @@ namespace SaleManagement.FORM
             this.txtQuantity.TabIndex = 24;
             this.txtQuantity.Text = "1";
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUpdateQuantity_KeyPress);
             // 
             // label11
@@ -461,7 +463,7 @@ namespace SaleManagement.FORM
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.txtTotalMoney);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(128, 555);
+            this.groupBox3.Location = new System.Drawing.Point(130, 555);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(988, 130);
             this.groupBox3.TabIndex = 127;
@@ -519,7 +521,7 @@ namespace SaleManagement.FORM
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(515, 29);
             this.txtNote.TabIndex = 79;
-            this.txtNote.Text = "Nhập thông tin";
+            this.txtNote.Text = "Nhập thông tin ...";
             this.txtNote.Enter += new System.EventHandler(this.txtNote_Enter);
             this.txtNote.Leave += new System.EventHandler(this.txtNote_Leave);
             // 
@@ -668,11 +670,32 @@ namespace SaleManagement.FORM
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // btnBACK
+            // 
+            this.btnBACK.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnBACK.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnBACK.FlatAppearance.BorderSize = 0;
+            this.btnBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBACK.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBACK.ForeColor = System.Drawing.Color.White;
+            this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
+            this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBACK.Location = new System.Drawing.Point(8, 11);
+            this.btnBACK.Name = "btnBACK";
+            this.btnBACK.Size = new System.Drawing.Size(147, 50);
+            this.btnBACK.TabIndex = 153;
+            this.btnBACK.Text = "Quay lại";
+            this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBACK.UseVisualStyleBackColor = false;
+            this.btnBACK.Click += new System.EventHandler(this.btnBACK_Click);
+            // 
             // FrmInvoice_ImportProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 691);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnBACK);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -738,5 +761,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Button btnPrint;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.Button btnBACK;
     }
 }

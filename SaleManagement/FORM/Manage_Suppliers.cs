@@ -14,16 +14,17 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Suppliers : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        bool isAdd; // add?
-        public FrmManage_Suppliers()
+        private bool isAdd; // add?
+        private string usernamelogin;
+        public FrmManage_Suppliers(string _usernamelogin)
         {
             InitializeComponent();
+            usernamelogin = _usernamelogin;
             ShowData();
-            setStyleAndHearderText();
+            FormatColumnHeader();
             Disable(false);
         }
-        public void setStyleAndHearderText()
+        public void FormatColumnHeader()
         {
             // set style
             dgvSUPPLIER.EnableHeadersVisualStyles = false;
@@ -44,6 +45,7 @@ namespace SaleManagement.VIEW
         public void ShowData()
         {
             BLL_SUPPLIER.Instance.ShowData(dgvSUPPLIER);
+            lbQuantity.Text = BLL_SUPPLIER.Instance.getQuantitySupplier(dgvSUPPLIER).ToString();
         }
         // disable
         public void Disable(bool E)
@@ -81,7 +83,7 @@ namespace SaleManagement.VIEW
         // back FrmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmSale_Management frm = new FrmSale_Management();
+            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
             frm.Show();
             this.Close();
         }
@@ -89,6 +91,7 @@ namespace SaleManagement.VIEW
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
             BLL_SUPPLIER.Instance.FuncSearchSupplier(dgvSUPPLIER, txtSEARCH.Text.Trim());
+            lbQuantity.Text = BLL_SUPPLIER.Instance.getQuantitySupplier(dgvSUPPLIER).ToString();
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
@@ -141,7 +144,7 @@ namespace SaleManagement.VIEW
         {
             Disable(true);
             isAdd = true;
-            txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.GetNewIdSupplier();
+            txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.getNewIdSupplier();
             txtNAME_SUPPLIER.Clear();
             txtPHONE.Clear();
             txtEMAIL.Clear();
@@ -223,17 +226,9 @@ namespace SaleManagement.VIEW
         // back to FrmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                FrmManage_Data frm = new FrmManage_Data();
-                frm.Show();
-                this.Hide();
-            }
-            else
-            {
-                return;
-            }
+            FrmManage_Data frm = new FrmManage_Data(usernamelogin);
+            frm.Show();
+            this.Hide();
         }
         // KeyPress Event
         private void txtFAX_KeyPress(object sender, KeyPressEventArgs e)

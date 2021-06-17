@@ -15,15 +15,18 @@ namespace SaleManagement.FORM
 {
     public partial class FrmSelect_Customer : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public delegate void myDEL(string idCus, string nameCus);
         public myDEL d { get; set; }
         public FrmSelect_Customer()
         {
             InitializeComponent();
-            ShowCustomer();
+            ShowData();
             rbMALE.Checked = true;
-            rbID_CUSTOMER.Checked = true;
+            FormatColumnHeaders();
+        }
+        // Format Column header
+        public void FormatColumnHeaders()
+        {
             // Set style
             dgvLISTCUSTOMER.EnableHeadersVisualStyles = false;
             dgvLISTCUSTOMER.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
@@ -44,17 +47,10 @@ namespace SaleManagement.FORM
             btnSAVE.Enabled = E;
         }
         // Hiển thị thông tin các khách hàng
-        public void ShowCustomer()
+        public void ShowData()
         {
             Disable(false);
-            var listCus = DB.tblKhachHangs.Select(p => new { 
-                p.MaKhachHang,
-                p.TenKhachHang,
-                p.GioiTinh,
-                p.SoDienThoai,
-                p.DiaChi
-            });
-            dgvLISTCUSTOMER.DataSource = listCus.ToList();
+            BLL_CUSTOMER.Instance.LoadData(dgvLISTCUSTOMER);
         }
         // Set backColor for row in dgvListCustomer
         private void dgvLISTCUSTOMER_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -65,7 +61,7 @@ namespace SaleManagement.FORM
         // load lại dgv
         private void btnLOAD_Click(object sender, EventArgs e)
         {
-            ShowCustomer();
+            ShowData();
         }
         // Thêm khách hàng mới
         private void btnADD_Click(object sender, EventArgs e)
@@ -74,7 +70,7 @@ namespace SaleManagement.FORM
             txtNAME_CUSTOMER.Clear();
             txtPHONE.Clear();
             txtADDRESS.Clear();
-            txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.GetNewIdCustomer();
+            txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNewIdCustomer();
         }
         // Lưu khách hàng vừa thêm 
         private void btnSAVE_Click(object sender, EventArgs e)
@@ -95,11 +91,11 @@ namespace SaleManagement.FORM
                 try
                 {
                     BLL_CUSTOMER.Instance.FuncAddNewCustomer(newCustomer);
-                    ShowCustomer();
+                    ShowData();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Mã khách hàng bị trùng. Vui lòng nhập mã khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mã khách hàng đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -127,18 +123,11 @@ namespace SaleManagement.FORM
         // search customer
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            if (rbID_CUSTOMER.Checked == true) // Tìm kiếm theo mã số
-            {
-                BLL_CUSTOMER.Instance.FuncSearchID(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
-            }
-            else // Tìm kiếm theo tên
-            {
-                BLL_CUSTOMER.Instance.FuncSearchName(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
-            }
+            BLL_CUSTOMER.Instance.FuncSearchCustomer(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
-            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
+            if (txtSEARCH.Text == "Nhập mã hoặc tên khách hàng")
             {
                 txtSEARCH.Text = "";
                 txtSEARCH.ForeColor = Color.Black;
@@ -149,7 +138,7 @@ namespace SaleManagement.FORM
         {
             if (txtSEARCH.Text == "")
             {
-                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+                txtSEARCH.Text = "Nhập mã hoặc tên khách hàng";
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }

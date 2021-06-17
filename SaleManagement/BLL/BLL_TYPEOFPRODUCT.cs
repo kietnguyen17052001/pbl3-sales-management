@@ -8,23 +8,33 @@ using System.Windows.Forms;
 
 namespace SaleManagement.BLL
 {
-    class BLL_TYPEOFITEM
+    class BLL_TYPEOFPRODUCT
     {
         SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        private static BLL_TYPEOFITEM _Instance;
-        public static BLL_TYPEOFITEM Instance
+        private static BLL_TYPEOFPRODUCT _Instance;
+        public static BLL_TYPEOFPRODUCT Instance
         {
             get
             {
                 if (_Instance == null)
                 {
-                    _Instance = new BLL_TYPEOFITEM();
+                    _Instance = new BLL_TYPEOFPRODUCT();
                 }
                 return _Instance;
             }
             private set { }
         }
-        private BLL_TYPEOFITEM() { }
+        private BLL_TYPEOFPRODUCT() { }
+        // load data type of product
+        public void LoadDataTypeOfProduct(DataGridView dgv)
+        {
+            var getType = DB.tblLoaiHangHoas.Select(p => new
+            {
+                p.MaLoaiHangHoa,
+                p.TenLoaiHangHoa
+            });
+            dgv.DataSource = getType.ToList();
+        }
         // add new type of product
         public void FuncAddNewProduct(tblLoaiHangHoa typeOfProduct)
         {
@@ -39,24 +49,20 @@ namespace SaleManagement.BLL
             DB.SaveChanges();
         }
         // search id
-        public void FuncSearchTypeProduct(bool isSearchId, string type, DataGridView dgv)
+        public void FuncSearchTypeProduct(DataGridView dgv, string information)
         {
-            if(isSearchId == true)
+            if (information == "Nhập mã hoặc tên loại hàng hóa" || String.IsNullOrEmpty(information))
             {
-                var getType = DB.tblLoaiHangHoas.Where(p => p.MaLoaiHangHoa.Contains(type)).Select(p => new
-                {
-                    p.MaLoaiHangHoa,
-                    p.TenLoaiHangHoa
-                });
-                dgv.DataSource = getType.ToList();
+                LoadDataTypeOfProduct(dgv);
             }
             else
             {
-                var getType = DB.tblLoaiHangHoas.Where(p => p.TenLoaiHangHoa.Contains(type)).Select(p => new
-                {
-                    p.MaLoaiHangHoa,
-                    p.TenLoaiHangHoa
-                });
+                var getType = DB.tblLoaiHangHoas.Where(p => p.MaLoaiHangHoa.Contains(information)
+            || p.TenLoaiHangHoa.Contains(information)).Select(p => new
+            {
+                p.MaLoaiHangHoa,
+                p.TenLoaiHangHoa
+            });
                 dgv.DataSource = getType.ToList();
             }
         }

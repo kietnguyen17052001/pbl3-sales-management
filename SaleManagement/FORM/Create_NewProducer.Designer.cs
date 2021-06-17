@@ -115,7 +115,7 @@ namespace SaleManagement.FORM
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCANCEL.Location = new System.Drawing.Point(277, 306);
             this.btnCANCEL.Name = "btnCANCEL";
-            this.btnCANCEL.Size = new System.Drawing.Size(121, 56);
+            this.btnCANCEL.Size = new System.Drawing.Size(129, 56);
             this.btnCANCEL.TabIndex = 95;
             this.btnCANCEL.Text = "Hủy bỏ";
             this.btnCANCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -135,7 +135,7 @@ namespace SaleManagement.FORM
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSAVE.Location = new System.Drawing.Point(138, 307);
             this.btnSAVE.Name = "btnSAVE";
-            this.btnSAVE.Size = new System.Drawing.Size(121, 55);
+            this.btnSAVE.Size = new System.Drawing.Size(133, 55);
             this.btnSAVE.TabIndex = 94;
             this.btnSAVE.Text = "Lưu";
             this.btnSAVE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -158,6 +158,7 @@ namespace SaleManagement.FORM
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 440);
+            this.ControlBox = false;
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.btnSAVE);
@@ -168,7 +169,8 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Name = "FrmCreate_NewProducer";
-            this.Text = "Create_NewProducer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Thêm nhà sản xuất";
             this.ResumeLayout(false);
             this.PerformLayout();
 

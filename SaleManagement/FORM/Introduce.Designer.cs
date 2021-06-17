@@ -121,6 +121,7 @@ namespace SaleManagement.FORM
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.ControlBox = false;
             this.Controls.Add(this.btnHOME);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -129,7 +130,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label1);
             this.Name = "FrmIntroduce";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Introduce";
+            this.Text = "Giới thiệu";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

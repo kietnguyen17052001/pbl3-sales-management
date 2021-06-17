@@ -1,4 +1,5 @@
-﻿using SaleManagement.Entity;
+﻿using SaleManagement.BLL;
+using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +14,24 @@ namespace SaleManagement.FORM
 {
     public partial class FrmLogin : Form
     {
+        //private string idAccount;
         public FrmLogin()
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             SALEMANAGEMENT_DB db = new SALEMANAGEMENT_DB();
             var user = db.tblTaiKhoans.Find(txtUSER.Text);
             if (string.IsNullOrEmpty(txtUSER.Text) || user == null)
+=======
+        private void btnADMIN_Click(object sender, EventArgs e)
+        {   
+            tblTaiKhoan admin = BLL_ACCOUNT.Instance.getUser(txtUSER.Text);
+            if(string.IsNullOrEmpty(txtUSER.Text) || admin == null)
+>>>>>>> 795067ba8acda540f708f304e54a63890968a871
             {
                 lbINFO.ForeColor = Color.IndianRed;
                 lbINFO.Text = "Tên tài khoản không hợp lệ";
@@ -31,20 +40,33 @@ namespace SaleManagement.FORM
             {
                 if (user.ChucVu == "admin")
                 {
+<<<<<<< HEAD
                     if (user.MatKhau == txtPASSWORD.Text)
                     {
                         FrmSale_Management frm = new FrmSale_Management(txtUSER.Text);
+=======
+                    if (admin.ChucVu == "Admin")
+                    {
+                        lbINFO.ForeColor = Color.SteelBlue;
+                        lbINFO.Text = "Đăng nhập thành công";
+                        FrmMain_Admin frm = new FrmMain_Admin(txtUSER.Text);
+>>>>>>> 795067ba8acda540f708f304e54a63890968a871
                         frm.Show();
                         this.Hide();
                     }
                     else
                     {
                         lbINFO.ForeColor = Color.IndianRed;
+<<<<<<< HEAD
                         lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+=======
+                        lbINFO.Text = "Không được quyền đăng nhập chức năng này";
+>>>>>>> 795067ba8acda540f708f304e54a63890968a871
                     }
                 }
                 else if (user.ChucVu == "nhanvien")
                 {
+<<<<<<< HEAD
                     if (user.MatKhau == txtPASSWORD.Text)
                     {
                         FrmSale_Management frm = new FrmSale_Management();
@@ -57,10 +79,45 @@ namespace SaleManagement.FORM
                         lbINFO.ForeColor = Color.IndianRed;
                         lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
                     }
+=======
+                    lbINFO.ForeColor = Color.IndianRed;
+                    lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+                    txtPASSWORD.Clear();
+>>>>>>> 795067ba8acda540f708f304e54a63890968a871
                 }
             }
         }
 
+<<<<<<< HEAD
+=======
+        private void btnSTAFF_Click(object sender, EventArgs e)
+        {
+            tblTaiKhoan staff = BLL_ACCOUNT.Instance.getUser(txtUSER.Text);
+            if (staff.MatKhau == txtPASSWORD.Text)
+            {
+                if (staff.ChucVu == "Member")
+                {
+                    lbINFO.ForeColor = Color.SteelBlue;
+                    lbINFO.Text = "Đăng nhập thành công";
+                    FrmMain_Member frm = new FrmMain_Member(txtUSER.Text);
+                    frm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    lbINFO.ForeColor = Color.IndianRed;
+                    lbINFO.Text = "Không được quyền đăng nhập chức năng này";
+                }
+            }
+            else
+            {
+                lbINFO.ForeColor = Color.IndianRed;
+                lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+                txtPASSWORD.Clear();
+            }
+        }
+
+>>>>>>> 795067ba8acda540f708f304e54a63890968a871
         private void txtUSER_Enter(object sender, EventArgs e)
         {
             if (txtUSER.Text == "Nhập tài khoản")

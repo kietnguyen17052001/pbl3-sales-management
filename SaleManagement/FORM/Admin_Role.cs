@@ -12,18 +12,20 @@ using System.Windows.Forms;
 
 namespace SaleManagement
 {
-    public partial class FrmSale_Management : Form
+    public partial class FrmMain_Admin : Form
     {
         private string usernameLogin;
-        public FrmSale_Management(string name = null)
+        public FrmMain_Admin(string _usernameLogin = null)
         {
             InitializeComponent();
-            usernameLogin = name;
+            usernameLogin = _usernameLogin;
+            lbWelcome.Text += " " + _usernameLogin;
+            lbDate.Text += " " + DateTime.Now.ToString("dddd, dd/MM/yyyy");
         }
 
-        private void btnQuanLyDuLieu_Click(object sender, EventArgs e)
+        private void btnManage_Data_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data();
+            FrmManage_Data frm = new FrmManage_Data(usernameLogin);
             frm.Show();
             this.Close();
         }
@@ -33,35 +35,27 @@ namespace SaleManagement
             this.Close();
         }
 
-        private void btnBaoCao_Click(object sender, EventArgs e)
+        private void btnReport_Click(object sender, EventArgs e)
         {
-            FrmReport frm = new FrmReport();
+            FrmReport frm = new FrmReport(usernameLogin);
             frm.Show();
             this.Close();
         }
 
-        private void btnThongKe_Click(object sender, EventArgs e)
+        private void btnStatistic_Click(object sender, EventArgs e)
         {
-            FrmStatistic frm = new FrmStatistic();
+            FrmStatistic frm = new FrmStatistic(usernameLogin);
             frm.Show();
             this.Close();
         }
 
-        private void btnGioiThieu_Click(object sender, EventArgs e)
+        private void btnIntroduce_Click(object sender, EventArgs e)
         {
-            FrmIntroduce frm = new FrmIntroduce();
+            FrmIntroduce frm = new FrmIntroduce(true, usernameLogin);
             frm.Show();
             this.Close();
         }
-        
-        public void SetStaff()
-        {
-            this.btnBaoCao.Enabled = false;
-            this.btnDoiMatKhau.Enabled = false;
-            this.btnThongKe.Enabled = false;
-        }
-
-        private void btnDoiMatKhau_Click(object sender, EventArgs e)
+        private void btnChange_Password_Click(object sender, EventArgs e)
         {
             FrmChange_Password frm = new FrmChange_Password(usernameLogin);
             frm.Show();

@@ -14,15 +14,20 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Staffs : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        bool isAdd; // Kiểm tra xem thực hiện chức năng ADD hay EDIT
-        public FrmManage_Staffs()
+        private bool isAdd; // Kiểm tra xem thực hiện chức năng ADD hay EDIT
+        private string usernamelogin;
+        public FrmManage_Staffs(string _usernamelogin)
         {
             InitializeComponent();
-            SetCbb();    
-            disable(false);
+            usernamelogin = _usernamelogin;
+            setCombobox();    
+            Disable(false);
             ShowStaff();
-            rbID_STAFF.Checked = true;
+            FormatColumnsHeader();
+        }
+        // Format columns hearder
+        public void FormatColumnsHeader()
+        {
             // Set style for ColumnHeader
             dgvLIST_STAFF.EnableHeadersVisualStyles = false;
             dgvLIST_STAFF.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
@@ -38,8 +43,9 @@ namespace SaleManagement.VIEW
             dgvLIST_STAFF.Columns[5].HeaderText = "SĐT";
             dgvLIST_STAFF.Columns[6].HeaderText = "Địa chỉ";
             dgvLIST_STAFF.Columns[7].HeaderText = "Lương";
+            dgvLIST_STAFF.Columns[8].HeaderText = "Mật Khẩu";
         }
-        void disable(bool E)
+        void Disable(bool E)
         {
             txtNAME_STAFF.Enabled = E;
             txtID_STAFF.Enabled = E;
@@ -49,6 +55,7 @@ namespace SaleManagement.VIEW
             txtADDRESS.Enabled = E;
             txtSALARY.Enabled = E;
             gbGENDER.Enabled = E;
+            txtPASSWORD.Enabled = E;
             btnADD.Enabled = !E;
             btnEDIT.Enabled = !E;
             btnBACK.Enabled = !E;
@@ -56,51 +63,28 @@ namespace SaleManagement.VIEW
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
         }
-        public void SetCbb()
+        public void setCombobox()
         {
             cbbPOSITION_DETAIL.Items.Add("Tất cả");
-            cbbPOSITION_DETAIL.Items.AddRange(BLL_STAFF.Instance.GetListPosition().Distinct().ToArray());
+            cbbPOSITION_DETAIL.Items.AddRange(BLL_STAFF.Instance.getListPosition().Distinct().ToArray());
             cbbPOSITION.Items.Add("None");
-            cbbPOSITION.Items.AddRange(BLL_STAFF.Instance.GetListPosition().Distinct().ToArray());
+            cbbPOSITION.Items.AddRange(BLL_STAFF.Instance.getListPosition().Distinct().ToArray());
             cbbPOSITION_DETAIL.SelectedIndex = cbbPOSITION.SelectedIndex = 0;
         }
         // show data staff
         public void ShowStaff()
         {
-            if (cbbPOSITION_DETAIL.SelectedIndex == 0)
-            {
-                var getStaff = DB.tblNhanViens.Select(p => new {
-                    p.MaNhanVien,
-                    p.TenNhanVien,
-                    p.ViTri,
-                    p.NgaySinh,
-                    p.GioiTinh,
-                    p.SoDienThoai,
-                    p.DiaChi,
-                    p.Luong
-                });
-                dgvLIST_STAFF.DataSource = getStaff.ToList();
-            }
-            else
-            {
-                var getStaff = DB.tblNhanViens.Where(p => p.ViTri == cbbPOSITION_DETAIL.SelectedItem.ToString()).Select(p => new {
-                    p.MaNhanVien,
-                    p.TenNhanVien,
-                    p.ViTri,
-                    p.NgaySinh,
-                    p.GioiTinh,
-                    p.SoDienThoai,
-                    p.DiaChi,
-                    p.Luong
-                });
-                dgvLIST_STAFF.DataSource = getStaff.ToList();
-            }
+            int index = cbbPOSITION_DETAIL.SelectedIndex;
+            string position = cbbPOSITION_DETAIL.SelectedItem.ToString();
+            BLL_STAFF.Instance.LoadDataStaff(dgvLIST_STAFF, index, position);
             txtID_STAFF.Clear();
             txtNAME_STAFF.Clear();
             txtPHONE.Clear();
             txtADDRESS.Clear();
             txtSALARY.Clear();
+            txtPASSWORD.Clear();
             cbbPOSITION.SelectedIndex = 0;
+            lbQuantity.Text = BLL_STAFF.Instance.getQuantityStaff(dgvLIST_STAFF).ToString();
         }
         // dgv
         private void dgvLIST_STAFF_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -112,6 +96,7 @@ namespace SaleManagement.VIEW
             txtPHONE.Text = dgvLIST_STAFF.SelectedRows[0].Cells["SoDienThoai"].Value.ToString();
             txtADDRESS.Text = dgvLIST_STAFF.SelectedRows[0].Cells["DiaChi"].Value.ToString();
             txtSALARY.Text = String.Format("{0:n0}", dgvLIST_STAFF.SelectedRows[0].Cells["Luong"].Value);
+            txtPASSWORD.Text = dgvLIST_STAFF.SelectedRows[0].Cells["MatKhau"].Value.ToString();
             if (Convert.ToBoolean(dgvLIST_STAFF.SelectedRows[0].Cells["GioiTinh"].Value.ToString()) == true)
             {
                 rbMALE.Checked = true;
@@ -130,7 +115,7 @@ namespace SaleManagement.VIEW
         // back to FrmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmSale_Management frm = new FrmSale_Management();
+            FrmMain_Admin frm = new FrmMain_Admin();
             frm.Show();
             this.Close();
         }
@@ -172,9 +157,9 @@ namespace SaleManagement.VIEW
         // add new staff
         private void btnADD_Click(object sender, EventArgs e)
         {
-            disable(true);
+            Disable(true);
             isAdd = true;
-            txtID_STAFF.Text = BLL_STAFF.Instance.GetNewIdStaff().ToString();
+            txtID_STAFF.Text = BLL_STAFF.Instance.getNewIdStaff().ToString();
             txtNAME_STAFF.Clear();
             txtPHONE.Clear();
             rbMALE.Checked = true;
@@ -184,15 +169,17 @@ namespace SaleManagement.VIEW
         // edit staff
         private void btnEDIT_Click(object sender, EventArgs e)
         {
-            disable(true);
+            Disable(true);
             txtID_STAFF.Enabled = false;
             isAdd = false;
         }
         // save change
         private void btnSAVE_Click(object sender, EventArgs e)
         {
+            tblTaiKhoan account = new tblTaiKhoan();
+            account.ChucVu = "Member";
             tblNhanVien staff = new tblNhanVien();
-            staff.MaNhanVien = txtID_STAFF.Text;
+            account.MaNguoiDung = staff.MaNhanVien = txtID_STAFF.Text;
             staff.TenNhanVien = txtNAME_STAFF.Text;
             staff.ViTri = cbbPOSITION.SelectedItem.ToString();
             staff.NgaySinh = Convert.ToDateTime(dpDAY.Value.ToShortDateString());
@@ -207,11 +194,12 @@ namespace SaleManagement.VIEW
             staff.SoDienThoai = txtPHONE.Text;
             staff.DiaChi = txtADDRESS.Text;
             staff.Luong = Convert.ToDouble(txtSALARY.Text);
+            account.MatKhau = staff.MatKhau = txtPASSWORD.Text;
             if(string.IsNullOrEmpty(staff.MaNhanVien) || string.IsNullOrEmpty(staff.TenNhanVien) || string.IsNullOrEmpty(staff.SoDienThoai) || 
                 string.IsNullOrEmpty(staff.DiaChi) || string.IsNullOrEmpty(staff.Luong.ToString()))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                disable(true);
+                Disable(true);
             }
             else
             {
@@ -220,21 +208,23 @@ namespace SaleManagement.VIEW
                     try
                     {
                         BLL_STAFF.Instance.FuncAddNewStaff(staff); // add new staff
+                        BLL_ACCOUNT.Instance.FuncAddAccount(account); // add new account for staff
                         MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        disable(false);
+                        Disable(false);
                         ShowStaff();
                     }
                     catch (Exception)
                     {
                         MessageBox.Show("Mã số nhân viên bị trùng. Vui lòng nhập mã khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        disable(true);
+                        Disable(true);
                     }
                 }
                 else
                 {
                     BLL_STAFF.Instance.FuncEditStaff(staff); // edit staff
+                    BLL_ACCOUNT.Instance.FuncEditPassword(account); // edit password
                     MessageBox.Show("Sửa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    disable(false);
+                    Disable(false);
                     ShowStaff();
                 }
                 
@@ -259,18 +249,12 @@ namespace SaleManagement.VIEW
         // search staff
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            if (rbID_STAFF.Checked == true)
-            {
-                BLL_STAFF.Instance.FuncSearchID(dgvLIST_STAFF, txtSEARCH.Text.Trim()); // search id 
-            }
-            else
-            {
-                BLL_STAFF.Instance.FuncSearchName(dgvLIST_STAFF, txtSEARCH.Text.Trim()); // search name
-            }
+            BLL_STAFF.Instance.FuncSearchStaff(dgvLIST_STAFF, txtSEARCH.Text.Trim());
+            lbQuantity.Text = BLL_STAFF.Instance.getQuantityStaff(dgvLIST_STAFF).ToString();
         }
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
-            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
+            if (txtSEARCH.Text == "Nhập mã hoặc tên nhân viên")
             {
                 txtSEARCH.Text = "";
                 txtSEARCH.ForeColor = Color.Black;
@@ -280,29 +264,21 @@ namespace SaleManagement.VIEW
         {
             if (txtSEARCH.Text == "")
             {
-                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+                txtSEARCH.Text = "Nhập mã hoặc tên nhân viên";
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }
         // cancel
         private void btnCANCEL_Click(object sender, EventArgs e)
         {
-            disable(false);
+            Disable(false);
         }
         // back to FrmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            DialogResult d = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(d == DialogResult.Yes)
-            {
-                FrmManage_Data frm = new FrmManage_Data();
-                frm.Show();
-                this.Hide();
-            }
-            else
-            {
-                return;
-            }
+            FrmManage_Data frm = new FrmManage_Data(usernamelogin);
+            frm.Show();
+            this.Hide();
         }
         // KeyPress Event
         private void txtPHONE_KeyPress(object sender, KeyPressEventArgs e)

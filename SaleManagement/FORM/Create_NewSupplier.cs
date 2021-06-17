@@ -14,13 +14,12 @@ namespace SaleManagement.FORM
 {
     public partial class FrmCreate_NewSupplier : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         public delegate void myDEL(string VALUE, string TEXT);
         public myDEL d { get; set; }
         public FrmCreate_NewSupplier()
         {
             InitializeComponent();
-            txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.GetNewIdSupplier();
+            txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.getNewIdSupplier();
         }
 
         private void btnSAVE_Click(object sender, EventArgs e)

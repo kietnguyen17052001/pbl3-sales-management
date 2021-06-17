@@ -31,7 +31,7 @@ namespace SaleManagement.VIEW
         {
             this.txtSEARCH = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgvLISTITEMS = new System.Windows.Forms.DataGridView();
+            this.dgvLISTPRODUCT = new System.Windows.Forms.DataGridView();
             this.cbbTYPE_OF_PRODUCT = new System.Windows.Forms.ComboBox();
             this.txtQUANTITY = new System.Windows.Forms.TextBox();
             this.txtNAME_PRODUCT = new System.Windows.Forms.TextBox();
@@ -48,10 +48,6 @@ namespace SaleManagement.VIEW
             this.gbMota = new System.Windows.Forms.GroupBox();
             this.txtDESCRIBE = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.rbNAME_ITEM = new System.Windows.Forms.RadioButton();
-            this.rbID_ITEM = new System.Windows.Forms.RadioButton();
-            this.cbbTYPE_OF__PRODUCT_DETAIL = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnADDPIC = new System.Windows.Forms.Button();
             this.pbIMAGE = new System.Windows.Forms.PictureBox();
@@ -64,12 +60,13 @@ namespace SaleManagement.VIEW
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnCANCEL = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
-            this.btnSHOW = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnADDSUPPLIER = new System.Windows.Forms.Button();
             this.cbbPRODUCERs = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLISTITEMS)).BeginInit();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lbQuantity = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLISTPRODUCT)).BeginInit();
             this.gbMota.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIMAGE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -77,13 +74,13 @@ namespace SaleManagement.VIEW
             // 
             // txtSEARCH
             // 
-            this.txtSEARCH.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSEARCH.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(908, 620);
+            this.txtSEARCH.Location = new System.Drawing.Point(402, 68);
             this.txtSEARCH.Name = "txtSEARCH";
-            this.txtSEARCH.Size = new System.Drawing.Size(274, 29);
+            this.txtSEARCH.Size = new System.Drawing.Size(360, 27);
             this.txtSEARCH.TabIndex = 67;
-            this.txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+            this.txtSEARCH.Text = "Nhập mã hoặc tên hàng hóa, loại hàng hóa";
             this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
             this.txtSEARCH.Enter += new System.EventHandler(this.txtSEARCH_Enter);
             this.txtSEARCH.Leave += new System.EventHandler(this.txtSEARCH_Leave);
@@ -100,23 +97,23 @@ namespace SaleManagement.VIEW
             this.label2.Text = "DANH SÁCH HÀNG HÓA";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // dgvLISTITEMS
+            // dgvLISTPRODUCT
             // 
-            this.dgvLISTITEMS.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLISTITEMS.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvLISTITEMS.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvLISTITEMS.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvLISTITEMS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLISTITEMS.Location = new System.Drawing.Point(402, 108);
-            this.dgvLISTITEMS.Name = "dgvLISTITEMS";
-            this.dgvLISTITEMS.RowHeadersVisible = false;
-            this.dgvLISTITEMS.RowHeadersWidth = 62;
-            this.dgvLISTITEMS.RowTemplate.Height = 28;
-            this.dgvLISTITEMS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLISTITEMS.Size = new System.Drawing.Size(836, 492);
-            this.dgvLISTITEMS.TabIndex = 61;
-            this.dgvLISTITEMS.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLISTITEMS_CellClick);
-            this.dgvLISTITEMS.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLISTITEMS_CellFormatting);
+            this.dgvLISTPRODUCT.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLISTPRODUCT.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvLISTPRODUCT.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvLISTPRODUCT.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvLISTPRODUCT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLISTPRODUCT.Location = new System.Drawing.Point(402, 108);
+            this.dgvLISTPRODUCT.Name = "dgvLISTPRODUCT";
+            this.dgvLISTPRODUCT.RowHeadersVisible = false;
+            this.dgvLISTPRODUCT.RowHeadersWidth = 62;
+            this.dgvLISTPRODUCT.RowTemplate.Height = 28;
+            this.dgvLISTPRODUCT.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLISTPRODUCT.Size = new System.Drawing.Size(836, 518);
+            this.dgvLISTPRODUCT.TabIndex = 61;
+            this.dgvLISTPRODUCT.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLISTITEMS_CellClick);
+            this.dgvLISTPRODUCT.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLISTITEMS_CellFormatting);
             // 
             // cbbTYPE_OF_PRODUCT
             // 
@@ -289,50 +286,6 @@ namespace SaleManagement.VIEW
             this.label9.TabIndex = 100;
             this.label9.Text = "Giá mua";
             // 
-            // rbNAME_ITEM
-            // 
-            this.rbNAME_ITEM.AutoSize = true;
-            this.rbNAME_ITEM.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNAME_ITEM.Location = new System.Drawing.Point(804, 624);
-            this.rbNAME_ITEM.Name = "rbNAME_ITEM";
-            this.rbNAME_ITEM.Size = new System.Drawing.Size(102, 26);
-            this.rbNAME_ITEM.TabIndex = 115;
-            this.rbNAME_ITEM.TabStop = true;
-            this.rbNAME_ITEM.Text = "Tên HH";
-            this.rbNAME_ITEM.UseVisualStyleBackColor = true;
-            // 
-            // rbID_ITEM
-            // 
-            this.rbID_ITEM.AutoSize = true;
-            this.rbID_ITEM.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbID_ITEM.Location = new System.Drawing.Point(705, 624);
-            this.rbID_ITEM.Name = "rbID_ITEM";
-            this.rbID_ITEM.Size = new System.Drawing.Size(95, 26);
-            this.rbID_ITEM.TabIndex = 114;
-            this.rbID_ITEM.TabStop = true;
-            this.rbID_ITEM.Text = "Mã HH";
-            this.rbID_ITEM.UseVisualStyleBackColor = true;
-            // 
-            // cbbTYPE_OF__PRODUCT_DETAIL
-            // 
-            this.cbbTYPE_OF__PRODUCT_DETAIL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbTYPE_OF__PRODUCT_DETAIL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbTYPE_OF__PRODUCT_DETAIL.FormattingEnabled = true;
-            this.cbbTYPE_OF__PRODUCT_DETAIL.Location = new System.Drawing.Point(477, 61);
-            this.cbbTYPE_OF__PRODUCT_DETAIL.Name = "cbbTYPE_OF__PRODUCT_DETAIL";
-            this.cbbTYPE_OF__PRODUCT_DETAIL.Size = new System.Drawing.Size(214, 29);
-            this.cbbTYPE_OF__PRODUCT_DETAIL.TabIndex = 117;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(398, 64);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 22);
-            this.label8.TabIndex = 116;
-            this.label8.Text = "Loại HH";
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -401,7 +354,7 @@ namespace SaleManagement.VIEW
             this.btnEXCEL.ForeColor = System.Drawing.Color.White;
             this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
             this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEXCEL.Location = new System.Drawing.Point(822, 51);
+            this.btnEXCEL.Location = new System.Drawing.Point(820, 56);
             this.btnEXCEL.Name = "btnEXCEL";
             this.btnEXCEL.Size = new System.Drawing.Size(154, 46);
             this.btnEXCEL.TabIndex = 121;
@@ -436,7 +389,7 @@ namespace SaleManagement.VIEW
             this.btnADD.ForeColor = System.Drawing.Color.White;
             this.btnADD.Image = global::SaleManagement.Properties.Resources.plus_5_24;
             this.btnADD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnADD.Location = new System.Drawing.Point(5, 574);
+            this.btnADD.Location = new System.Drawing.Point(6, 574);
             this.btnADD.Name = "btnADD";
             this.btnADD.Size = new System.Drawing.Size(122, 52);
             this.btnADD.TabIndex = 83;
@@ -455,7 +408,7 @@ namespace SaleManagement.VIEW
             this.btnEDIT.ForeColor = System.Drawing.Color.White;
             this.btnEDIT.Image = global::SaleManagement.Properties.Resources.edit_3_24;
             this.btnEDIT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEDIT.Location = new System.Drawing.Point(133, 574);
+            this.btnEDIT.Location = new System.Drawing.Point(134, 574);
             this.btnEDIT.Name = "btnEDIT";
             this.btnEDIT.Size = new System.Drawing.Size(121, 52);
             this.btnEDIT.TabIndex = 84;
@@ -474,9 +427,9 @@ namespace SaleManagement.VIEW
             this.btnBACK.ForeColor = System.Drawing.Color.White;
             this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
             this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBACK.Location = new System.Drawing.Point(260, 630);
+            this.btnBACK.Location = new System.Drawing.Point(12, 12);
             this.btnBACK.Name = "btnBACK";
-            this.btnBACK.Size = new System.Drawing.Size(133, 49);
+            this.btnBACK.Size = new System.Drawing.Size(139, 49);
             this.btnBACK.TabIndex = 88;
             this.btnBACK.Text = "Quay lại";
             this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -512,9 +465,9 @@ namespace SaleManagement.VIEW
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCANCEL.Location = new System.Drawing.Point(133, 630);
+            this.btnCANCEL.Location = new System.Drawing.Point(260, 631);
             this.btnCANCEL.Name = "btnCANCEL";
-            this.btnCANCEL.Size = new System.Drawing.Size(121, 49);
+            this.btnCANCEL.Size = new System.Drawing.Size(133, 49);
             this.btnCANCEL.TabIndex = 87;
             this.btnCANCEL.Text = "Hủy bỏ";
             this.btnCANCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -531,33 +484,14 @@ namespace SaleManagement.VIEW
             this.btnDELETE.ForeColor = System.Drawing.Color.White;
             this.btnDELETE.Image = global::SaleManagement.Properties.Resources.delete_property_24;
             this.btnDELETE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDELETE.Location = new System.Drawing.Point(5, 630);
+            this.btnDELETE.Location = new System.Drawing.Point(6, 630);
             this.btnDELETE.Name = "btnDELETE";
-            this.btnDELETE.Size = new System.Drawing.Size(122, 49);
+            this.btnDELETE.Size = new System.Drawing.Size(248, 49);
             this.btnDELETE.TabIndex = 85;
-            this.btnDELETE.Text = "Xóa";
+            this.btnDELETE.Text = "Xóa hàng hóa";
             this.btnDELETE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);
-            // 
-            // btnSHOW
-            // 
-            this.btnSHOW.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSHOW.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSHOW.FlatAppearance.BorderSize = 0;
-            this.btnSHOW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSHOW.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSHOW.ForeColor = System.Drawing.Color.White;
-            this.btnSHOW.Image = global::SaleManagement.Properties.Resources.activity_feed_24;
-            this.btnSHOW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSHOW.Location = new System.Drawing.Point(697, 51);
-            this.btnSHOW.Name = "btnSHOW";
-            this.btnSHOW.Size = new System.Drawing.Size(119, 46);
-            this.btnSHOW.TabIndex = 63;
-            this.btnSHOW.Text = "Liệt kê";
-            this.btnSHOW.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSHOW.UseVisualStyleBackColor = false;
-            this.btnSHOW.Click += new System.EventHandler(this.btnSHOW_Click);
             // 
             // pictureBox1
             // 
@@ -565,7 +499,7 @@ namespace SaleManagement.VIEW
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
             this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(1191, 606);
+            this.pictureBox1.Location = new System.Drawing.Point(768, 56);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
             this.pictureBox1.Size = new System.Drawing.Size(47, 47);
@@ -607,12 +541,36 @@ namespace SaleManagement.VIEW
             this.label5.TabIndex = 138;
             this.label5.Text = "Nhà SX";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label8.Location = new System.Drawing.Point(418, 644);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(186, 22);
+            this.label8.TabIndex = 141;
+            this.label8.Text = "Số lượng hàng hóa:";
+            // 
+            // lbQuantity
+            // 
+            this.lbQuantity.AutoSize = true;
+            this.lbQuantity.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQuantity.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbQuantity.Location = new System.Drawing.Point(610, 644);
+            this.lbQuantity.Name = "lbQuantity";
+            this.lbQuantity.Size = new System.Drawing.Size(0, 22);
+            this.lbQuantity.TabIndex = 142;
+            // 
             // FrmManage_Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1247, 691);
+            this.ControlBox = false;
+            this.Controls.Add(this.lbQuantity);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnADDSUPPLIER);
             this.Controls.Add(this.cbbPRODUCERs);
             this.Controls.Add(this.label5);
@@ -623,10 +581,6 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.btnHOME);
             this.Controls.Add(this.btnEXCEL);
             this.Controls.Add(this.btnADDTYPE);
-            this.Controls.Add(this.cbbTYPE_OF__PRODUCT_DETAIL);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.rbNAME_ITEM);
-            this.Controls.Add(this.rbID_ITEM);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtSALE);
@@ -649,13 +603,12 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.btnDELETE);
             this.Controls.Add(this.txtSEARCH);
-            this.Controls.Add(this.btnSHOW);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dgvLISTITEMS);
+            this.Controls.Add(this.dgvLISTPRODUCT);
             this.Name = "FrmManage_Items";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manage_Items";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLISTITEMS)).EndInit();
+            this.Text = "Hàng hóa";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLISTPRODUCT)).EndInit();
             this.gbMota.ResumeLayout(false);
             this.gbMota.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIMAGE)).EndInit();
@@ -674,9 +627,8 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnCANCEL;
         private System.Windows.Forms.Button btnDELETE;
         private System.Windows.Forms.TextBox txtSEARCH;
-        private System.Windows.Forms.Button btnSHOW;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgvLISTITEMS;
+        private System.Windows.Forms.DataGridView dgvLISTPRODUCT;
         private System.Windows.Forms.ComboBox cbbTYPE_OF_PRODUCT;
         private System.Windows.Forms.TextBox txtQUANTITY;
         private System.Windows.Forms.TextBox txtNAME_PRODUCT;
@@ -693,10 +645,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.GroupBox gbMota;
         private System.Windows.Forms.TextBox txtDESCRIBE;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RadioButton rbNAME_ITEM;
-        private System.Windows.Forms.RadioButton rbID_ITEM;
-        private System.Windows.Forms.ComboBox cbbTYPE_OF__PRODUCT_DETAIL;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnADDTYPE;
         private System.Windows.Forms.Button btnEXCEL;
         private System.Windows.Forms.Button btnHOME;
@@ -707,5 +655,7 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnADDSUPPLIER;
         private System.Windows.Forms.ComboBox cbbPRODUCERs;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbQuantity;
     }
 }

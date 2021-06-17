@@ -11,7 +11,7 @@ namespace SaleManagement.BLL
 {
     class BLL_IMPORTPRODUCT
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_IMPORTPRODUCT _instance;
         public static BLL_IMPORTPRODUCT instance
         {
@@ -81,7 +81,7 @@ namespace SaleManagement.BLL
             }
         }
         // Update product quantity
-        public void FuncUpdateProductQty(DataTable dataTable, String idProduct, int newQuantity)
+        public void FuncUpdateProductQty(DataTable dataTable, string idProduct, int newQuantity)
         {
             foreach(DataRow dataRow in dataTable.Rows)
             {
@@ -93,7 +93,7 @@ namespace SaleManagement.BLL
             }
         }
         // Delete product from DGV invoice
-        public void FuncDeleteProduct(List<String> listIDProduct, DataTable dataTable)
+        public void FuncDeleteProduct(List<string> listIDProduct, DataTable dataTable)
         {
             try
             {
@@ -126,7 +126,7 @@ namespace SaleManagement.BLL
             }
         }
         // Select product
-        public void SelectProduct(DataTable dataTable, String idProduct, int quantity)
+        public void SelectProduct(DataTable dataTable, string idProduct, int quantity)
         {
             var product = DB.tblHangHoas.Find(idProduct);
             dataTable.Rows.Add(
@@ -163,16 +163,6 @@ namespace SaleManagement.BLL
                 }
             }
             return idInvoice;
-        }
-        // Set combobox staff
-        public List<CBBItem> getCbbStaff()
-        {
-            List<CBBItem> listCbbStaff = new List<CBBItem>();
-            foreach(tblNhanVien staff in DB.tblNhanViens)
-            {
-                listCbbStaff.Add(new CBBItem { VALUE = staff.MaNhanVien, TEXT = staff.TenNhanVien});
-            }
-            return listCbbStaff;
         }
         // Get total money for invoice
         public double getTotalMoney(DataTable dataTable)

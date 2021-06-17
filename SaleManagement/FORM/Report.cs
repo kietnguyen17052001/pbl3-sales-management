@@ -14,20 +14,18 @@ namespace SaleManagement.FORM
 {
     public partial class FrmReport : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        public FrmReport()
+        private string usernamelogin;
+        public FrmReport(string _usernamelogin)
         {
             InitializeComponent();
-            var getDayMin = DB.tblHoaDonBanHangs.Min(p => p.NgayBan);
-            if (getDayMin == null)
-            {
-                dpFROM.Value = DateTime.Now;
-            }
-            else
-            {
-                dpFROM.Value = getDayMin.Value;
-            }
-            ShowList();
+            usernamelogin = _usernamelogin;
+            dpFROM.Value = BLL_LISTSALEINVOICE.Instance.getDate();
+            ShowData();
+            FormatColumnHeader();
+        }
+        // Format column header
+        public void FormatColumnHeader()
+        {
             // Set style for ColumnHeader
             dgvREVENUE.EnableHeadersVisualStyles = false;
             dgvREVENUE.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
@@ -45,30 +43,20 @@ namespace SaleManagement.FORM
             dgvREVENUE.Columns[7].HeaderText = "Tổng tiền(VNĐ)";
         }
         // show tblChiTiethoaDonBanHang theo time
-        public void ShowList()
+        public void ShowData()
         {
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value).Select(p => new { 
-                p.MaHangHoa,
-                p.tblHangHoa.TenHangHoa,
-                p.tblHoaDonBanHang.NgayBan,
-                p.tblHoaDonBanHang.tblKhachHang.TenKhachHang,
-                p.SoLuong,
-                p.DonGia,
-                p.GiamGia,
-                p.TongTien
-            });
-            dgvREVENUE.DataSource = list.ToList();
-            GetInformation();
+            BLL_REPORT.Instance.LoadDataReport(dgvREVENUE, dpFROM.Value, dpTO.Value);
+            getInformation();
         }
-        public void GetInformation()
+        public void getInformation()
         {
             DateTime dateMin = dpFROM.Value;
             DateTime dateMax = dpTO.Value;
-            lbSALES.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetRevenue(dateMin, dateMax));
-            lbPROFIT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetProfit(dateMin, dateMax));
-            lbDISCOUNT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetDiscount(dateMin, dateMax));
-            lbPRODUCT_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetQuantity(dateMin, dateMax));
-            lbINVOICE_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.GetInvoice(dateMin, dateMax));
+            lbSALES.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getRevenue(dateMin, dateMax));
+            lbPROFIT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getProfit(dateMin, dateMax));
+            lbDISCOUNT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getDiscount(dateMin, dateMax));
+            lbPRODUCT_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getQuantity(dateMin, dateMax));
+            lbINVOICE_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getInvoice(dateMin, dateMax));
         }
         // set backColor for dgv
         private void dgvREVENUE_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -76,15 +64,10 @@ namespace SaleManagement.FORM
             dgvREVENUE.DefaultCellStyle.BackColor = Color.OldLace;
             dgvREVENUE.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
         }
-        // load lại danh sách theo thời gian
-        private void btnLOAD_Click(object sender, EventArgs e)
-        {
-            ShowList();
-        }
         // back to FrmQLBanHang
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmSale_Management frm = new FrmSale_Management();
+            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
             frm.Show();
             this.Close();
         }
@@ -117,6 +100,11 @@ namespace SaleManagement.FORM
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             }
             app.Quit();
+        }
+        // Load form when valuechange in datetimepickers
+        private void dpTO_ValueChanged(object sender, EventArgs e)
+        {
+            ShowData();
         }
     }
 }

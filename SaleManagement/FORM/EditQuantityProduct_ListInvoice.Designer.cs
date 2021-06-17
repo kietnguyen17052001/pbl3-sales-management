@@ -1,7 +1,7 @@
 ﻿
 namespace SaleManagement.FORM
 {
-    partial class FrmEdit_Quantity_ListInvoice
+    partial class FrmEditQuantityProduct_ListInvoice
     {
         /// <summary>
         /// Required designer variable.
@@ -51,6 +51,7 @@ namespace SaleManagement.FORM
             this.txtNEW_QUANTITY.Name = "txtNEW_QUANTITY";
             this.txtNEW_QUANTITY.Size = new System.Drawing.Size(203, 32);
             this.txtNEW_QUANTITY.TabIndex = 91;
+            this.txtNEW_QUANTITY.TextChanged += new System.EventHandler(this.txtNEW_QUANTITY_TextChanged);
             this.txtNEW_QUANTITY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNEW_QUANTITY_KeyPress);
             // 
             // label1
@@ -143,9 +144,9 @@ namespace SaleManagement.FORM
             this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(69, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 24);
+            this.label3.Size = new System.Drawing.Size(129, 24);
             this.label3.TabIndex = 97;
-            this.label3.Text = "Số lượng đã mua";
+            this.label3.Text = "Số lượng cũ";
             // 
             // lbSTATUS
             // 
@@ -178,11 +179,12 @@ namespace SaleManagement.FORM
             this.lbQUANTITY.Size = new System.Drawing.Size(0, 24);
             this.lbQUANTITY.TabIndex = 145;
             // 
-            // FrmEdit_Quantity_ListInvoice
+            // FrmEditQuantityProduct_ListInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 340);
+            this.ControlBox = false;
             this.Controls.Add(this.lbQUANTITY);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbSTATUS);
@@ -194,9 +196,9 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.txtNEW_QUANTITY);
             this.Controls.Add(this.label1);
-            this.Name = "FrmEdit_Quantity_ListInvoice";
+            this.Name = "FrmEditQuantityProduct_ListInvoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Edit_Quantity";
+            this.Text = "Sửa số lượng hàng hóa";
             this.ResumeLayout(false);
             this.PerformLayout();
 

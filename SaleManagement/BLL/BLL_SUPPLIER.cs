@@ -25,6 +25,16 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_SUPPLIER() { }
+        // get combobox supplier
+        public List<CBBItem> ListSupplier()
+        {
+            List<CBBItem> ListCbb = new List<CBBItem>();
+            foreach(tblNhaCungCap supplier in DB.tblNhaCungCaps)
+            {
+                ListCbb.Add(new CBBItem { VALUE = supplier.MaNhaCungCap, TEXT = supplier.TenNhaCungCap });
+            }
+            return ListCbb;
+        }
         // load data form database
         public void ShowData(DataGridView dgv)
         {
@@ -96,7 +106,13 @@ namespace SaleManagement.BLL
                 dgv.DataSource = getSupplier.ToList();
             }
         }
-        public string GetNewIdSupplier()
+        // get quantity supplier
+        public int getQuantitySupplier(DataGridView dgv)
+        {
+            return dgv.Rows.Count;
+        }
+        // get new id supplier
+        public string getNewIdSupplier()
         {
             string idSupplier;
             List<tblNhaCungCap> list = DB.tblNhaCungCaps.ToList();

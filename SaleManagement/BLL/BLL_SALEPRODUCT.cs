@@ -11,7 +11,7 @@ namespace SaleManagement.BLL
 {
     class BLL_SALEPRODUCT
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
         private static BLL_SALEPRODUCT _Instance;
         public static BLL_SALEPRODUCT Instance
         {
@@ -26,7 +26,7 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_SALEPRODUCT() { }
-        public tblChiTietHoaDonBanHang GetInvoice_Detail(DataRow data, string idInvoice)
+        public tblChiTietHoaDonBanHang getDetailInvoice(DataRow data, string idInvoice)
         {
             return new tblChiTietHoaDonBanHang
             {
@@ -38,34 +38,22 @@ namespace SaleManagement.BLL
                 TongTien = Convert.ToDouble(data["ThanhTien(VNĐ)"].ToString())
             };
         }
-        // Thiết lập danh sách nhân viên thu ngân vào trong CBB_STAFF
-        public List<CBBItem> GetCbb_Staff()
+        // Load data for DGVProduct
+        public void LoadDataProduct(DataGridView dgv)
         {
-            List<CBBItem> list = new List<CBBItem>();
-            foreach(tblNhanVien staff in DB.tblNhanViens.ToList())
-            {
-                if(staff.ViTri == "Thu ngân")
-                {
-                    list.Add(new CBBItem { VALUE = staff.MaNhanVien, TEXT = staff.TenNhanVien });
-                }
-            }
-            return list;
-        }
-        // Danh sách khách hàng
-        public List<CBBItem> GetCbb_Customer()
-        {
-            List<CBBItem> list = new List<CBBItem>();
-            foreach (tblKhachHang customer in DB.tblKhachHangs.ToList())
-            {
-                list.Add(new CBBItem { VALUE = customer.MaKhachHang, TEXT = customer.TenKhachHang });
-            }
-            return list;
+            var product = DB.tblHangHoas.Select(p => new {
+                p.MaHangHoa,
+                p.TenHangHoa,
+                p.SoLuong,
+                p.GiaBan
+            });
+            dgv.DataSource = product.ToList();
         }
         // Tạo tbl Hóa đơn
-        public DataTable GetTbl_Order()
+        public DataTable TableInvoice()
         {
-            DataTable data = new DataTable();
-            data.Columns.AddRange(new DataColumn[]
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.AddRange(new DataColumn[]
             {
                 new DataColumn("MaHangHoa", typeof(string)),
                 new DataColumn("TenHangHoa",typeof(string)),
@@ -74,24 +62,24 @@ namespace SaleManagement.BLL
                 new DataColumn("KhuyenMai(%)",typeof(double)),
                 new DataColumn("ThanhTien(VNĐ)",typeof(string))
             });
-            return data;
+            return dataTable;
         }
          // Thêm hàng hóa vào hóa đơn
-        public void AddItem(DataTable data, params object[] obj)
+        public void FuncAddProduct(DataTable data, params object[] obj)
         {
-            int amount;
+            int quantity;
             double salePrice;
             bool isHas = true; // kiểm tra hàng hóa đã có trong hóa đơn hay chưa. Nếu có rồi thì update số lượng, nếu chưa thì add new
             foreach (DataRow i in data.Rows)
             {
                 salePrice = Convert.ToDouble(i["ThanhTien(VNĐ)"].ToString());
-                amount = Convert.ToInt32(i["SoLuong"].ToString());
+                quantity = Convert.ToInt32(i["SoLuong"].ToString());
                 if (i["MaHangHoa"].ToString() == obj[0].ToString())
                 {
                     isHas = false; // hàng hóa đã có
-                    amount += Convert.ToInt32(obj[2].ToString());
+                    quantity += Convert.ToInt32(obj[2].ToString());
                     salePrice += Convert.ToDouble(obj[5].ToString()); 
-                    i["SoLuong"] = amount.ToString(); // thay đổi số lượng khi thêm hàng vào
+                    i["SoLuong"] = quantity.ToString(); // thay đổi số lượng khi thêm hàng vào
                     i["ThanhTien(VNĐ)"] = String.Format("{0:n0}", salePrice); // chuyển định dạng số tiền, vd: 2000 -> 2.000
                 }
             }
@@ -101,106 +89,93 @@ namespace SaleManagement.BLL
             }
         }
         // Xóa hàng hóa khỏi hóa đơn
-        public void DelItem(List<string> list, DataTable data)
+        public void FuncDeleteProduct(List<string> listIdProduct, DataTable dataTable)
         {
             try
             {
-                foreach (string i in list)
+                foreach (string idProduct in listIdProduct)
                 {
-                    foreach (DataRow j in data.Rows)
+                    foreach (DataRow dataRow in dataTable.Rows)
                     {
-                        if (j["MaHangHoa"].ToString() == i)
+                        if (dataRow["MaHangHoa"].ToString() == idProduct)
                         {
-                            data.Rows.Remove(j);
+                            dataTable.Rows.Remove(dataRow);
                         }
                     }
-                    data.AcceptChanges();
+                    dataTable.AcceptChanges();
                 }
             }
-            catch (Exception)
+            catch (Exception){}
+        }
+        // search product
+        public void FuncSearchProduct(DataGridView dgv, string information)
+        {
+            if (information == "Nhập tên hoặc mã hàng hóa" || string.IsNullOrEmpty(information))
             {
-
+                LoadDataProduct(dgv);
+            }
+            else
+            {
+                var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)).Select(p => new
+                {
+                    p.MaHangHoa,
+                    p.TenHangHoa,
+                    p.SoLuong,
+                    p.GiaBan
+                });
+                dgv.DataSource = product.ToList();
+            }
+        }
+        // payment for invoice
+        public void FuncPayment(tblHoaDonBanHang newInvoice, DataTable dataTable)
+        {
+            DB.tblHoaDonBanHangs.Add(newInvoice);
+            DB.SaveChanges();// thêm đơn hàng vào DB
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                DB.tblChiTietHoaDonBanHangs.Add(getDetailInvoice(dataRow, newInvoice.MaHoaDonBan));
+                DB.SaveChanges();// thêm hóa đơn bán hàng chi tiết
+                var product = DB.tblHangHoas.Find(dataRow["MaHangHoa"].ToString());
+                product.SoLuong -= Convert.ToInt32(dataRow["SoLuong"].ToString());
+                DB.SaveChanges();// thay đổi số lượng hàng hóa sau khi thanh toán
             }
         }
         // Tổng số tiền của hóa đơn
-        public double GetTotal_Money(DataTable data)
+        public double getTotalMoney(DataTable dataTable)
         {
             double totalMoney = 0;
-            foreach(DataRow dataRow in data.Rows)
+            foreach(DataRow dataRow in dataTable.Rows)
             {
                 totalMoney += Convert.ToDouble(dataRow["ThanhTien(VNĐ)"].ToString());
             }
             return totalMoney;
         }
         // Tổng thanh toán của hóa đơn
-        public double getPrice_Invoice(DataTable data, double discount)
+        public double getIntoMoney(DataTable dataTable, double discount)
         {
             if (discount == 0)
             {
-                return GetTotal_Money(data);
+                return getTotalMoney(dataTable);
             }
             else
             {
-                return GetTotal_Money(data) - discount;
+                return getTotalMoney(dataTable) - discount;
             }
         }
         // Tổng số lượng của tất cả hàng hóa
-        public int getAll_ProQty(DataTable data)
+        public int getTotalQuantityProduct(DataTable dataTable)
         {
-            int allProQty = 0;
-            foreach (DataRow dataRow in data.Rows)
+            int quantity = 0;
+            foreach (DataRow dataRow in dataTable.Rows)
             {
-                allProQty += Convert.ToInt32(dataRow["SoLuong"].ToString());
+                quantity += Convert.ToInt32(dataRow["SoLuong"].ToString());
             }
-            return allProQty;
+            return quantity;
         }
         // Số lượng hàng hóa (nếu cùng tên thì tính là 1)
-        public int getAll_Product(DataTable DATA)
+        public int getTotalProduct(DataTable dataTable)
         {
-            int count = 0;
-            foreach (DataRow data in DATA.Rows)
-            {
-                count++;
-            }
-            return count;
-        }
-        // search name product
-        public void FuncSearchName(DataGridView dgv, string name)
-        {
-            var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(name)).Select(p => new
-            {
-                p.MaHangHoa,
-                p.TenHangHoa,
-                p.SoLuong,
-                p.GiaBan
-            });
-            dgv.DataSource = product.ToList();
-        }
-        // search id product
-        public void FuncSearchId(DataGridView dgv, string id)
-        {
-            var product = DB.tblHangHoas.Where(p => p.MaHangHoa.Contains(id)).Select(p => new
-            {
-                p.MaHangHoa,
-                p.TenHangHoa,
-                p.SoLuong,
-                p.GiaBan
-            });
-            dgv.DataSource = product.ToList();
-        }
-        // payment for invoice
-        public void FuncPayment(tblHoaDonBanHang newInvoice, DataTable data)
-        {
-            DB.tblHoaDonBanHangs.Add(newInvoice);
-            DB.SaveChanges();// thêm đơn hàng vào DB
-            foreach (DataRow dataRow in data.Rows)
-            {
-                DB.tblChiTietHoaDonBanHangs.Add(GetInvoice_Detail(dataRow, newInvoice.MaHoaDonBan));
-                DB.SaveChanges();// thêm hóa đơn bán hàng chi tiết
-                var product = DB.tblHangHoas.Find(dataRow["MaHangHoa"].ToString());
-                product.SoLuong -= Convert.ToInt32(dataRow["SoLuong"].ToString());
-                DB.SaveChanges();// thay đổi số lượng hàng hóa sau khi thanh toán
-            }
+            return dataTable.Rows.Count;
         }
         // Trả về mã hóa đơn mới
         public string getNewIdInvoice()

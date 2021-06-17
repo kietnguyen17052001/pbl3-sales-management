@@ -30,8 +30,6 @@ namespace SaleManagement.FORM
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.rbNAME_CUSTOMER = new System.Windows.Forms.RadioButton();
-            this.rbID_CUSTOMER = new System.Windows.Forms.RadioButton();
             this.txtSEARCH = new System.Windows.Forms.TextBox();
             this.dgvLISTCUSTOMER = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,7 +45,6 @@ namespace SaleManagement.FORM
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSELECT = new System.Windows.Forms.Button();
-            this.btnLOAD = new System.Windows.Forms.Button();
             this.btnADD = new System.Windows.Forms.Button();
             this.btnSAVE = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -62,46 +59,22 @@ namespace SaleManagement.FORM
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(777, 52);
+            this.label2.Location = new System.Drawing.Point(777, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(293, 26);
             this.label2.TabIndex = 152;
             this.label2.Text = "DANH SÁCH KHÁCH HÀNG";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // rbNAME_CUSTOMER
-            // 
-            this.rbNAME_CUSTOMER.AutoSize = true;
-            this.rbNAME_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNAME_CUSTOMER.Location = new System.Drawing.Point(613, 546);
-            this.rbNAME_CUSTOMER.Name = "rbNAME_CUSTOMER";
-            this.rbNAME_CUSTOMER.Size = new System.Drawing.Size(101, 26);
-            this.rbNAME_CUSTOMER.TabIndex = 148;
-            this.rbNAME_CUSTOMER.TabStop = true;
-            this.rbNAME_CUSTOMER.Text = "Tên KH";
-            this.rbNAME_CUSTOMER.UseVisualStyleBackColor = true;
-            // 
-            // rbID_CUSTOMER
-            // 
-            this.rbID_CUSTOMER.AutoSize = true;
-            this.rbID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbID_CUSTOMER.Location = new System.Drawing.Point(499, 546);
-            this.rbID_CUSTOMER.Name = "rbID_CUSTOMER";
-            this.rbID_CUSTOMER.Size = new System.Drawing.Size(94, 26);
-            this.rbID_CUSTOMER.TabIndex = 147;
-            this.rbID_CUSTOMER.TabStop = true;
-            this.rbID_CUSTOMER.Text = "Mã KH";
-            this.rbID_CUSTOMER.UseVisualStyleBackColor = true;
-            // 
             // txtSEARCH
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSEARCH.ForeColor = System.Drawing.Color.Silver;
-            this.txtSEARCH.Location = new System.Drawing.Point(717, 545);
+            this.txtSEARCH.Location = new System.Drawing.Point(335, 56);
             this.txtSEARCH.Name = "txtSEARCH";
-            this.txtSEARCH.Size = new System.Drawing.Size(290, 29);
+            this.txtSEARCH.Size = new System.Drawing.Size(316, 29);
             this.txtSEARCH.TabIndex = 146;
-            this.txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+            this.txtSEARCH.Text = "Nhập mã hoặc tên khách hàng";
             this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
             this.txtSEARCH.Enter += new System.EventHandler(this.txtSEARCH_Enter);
             this.txtSEARCH.Leave += new System.EventHandler(this.txtSEARCH_Leave);
@@ -113,13 +86,13 @@ namespace SaleManagement.FORM
             this.dgvLISTCUSTOMER.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvLISTCUSTOMER.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvLISTCUSTOMER.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLISTCUSTOMER.Location = new System.Drawing.Point(334, 92);
+            this.dgvLISTCUSTOMER.Location = new System.Drawing.Point(334, 99);
             this.dgvLISTCUSTOMER.Name = "dgvLISTCUSTOMER";
             this.dgvLISTCUSTOMER.RowHeadersVisible = false;
             this.dgvLISTCUSTOMER.RowHeadersWidth = 62;
             this.dgvLISTCUSTOMER.RowTemplate.Height = 28;
             this.dgvLISTCUSTOMER.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLISTCUSTOMER.Size = new System.Drawing.Size(726, 425);
+            this.dgvLISTCUSTOMER.Size = new System.Drawing.Size(726, 473);
             this.dgvLISTCUSTOMER.TabIndex = 144;
             this.dgvLISTCUSTOMER.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLISTCUSTOMER_CellClick);
             this.dgvLISTCUSTOMER.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLISTCUSTOMER_CellFormatting);
@@ -130,7 +103,7 @@ namespace SaleManagement.FORM
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(467, 25);
+            this.label1.Location = new System.Drawing.Point(470, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 31);
             this.label1.TabIndex = 143;
@@ -142,7 +115,7 @@ namespace SaleManagement.FORM
             this.gbGENDER.Controls.Add(this.rbFEMALE);
             this.gbGENDER.Controls.Add(this.rbMALE);
             this.gbGENDER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbGENDER.Location = new System.Drawing.Point(20, 304);
+            this.gbGENDER.Location = new System.Drawing.Point(20, 311);
             this.gbGENDER.Name = "gbGENDER";
             this.gbGENDER.Size = new System.Drawing.Size(295, 114);
             this.gbGENDER.TabIndex = 142;
@@ -175,7 +148,7 @@ namespace SaleManagement.FORM
             // 
             this.txtADDRESS.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtADDRESS.ForeColor = System.Drawing.Color.Black;
-            this.txtADDRESS.Location = new System.Drawing.Point(124, 254);
+            this.txtADDRESS.Location = new System.Drawing.Point(124, 261);
             this.txtADDRESS.Name = "txtADDRESS";
             this.txtADDRESS.Size = new System.Drawing.Size(191, 29);
             this.txtADDRESS.TabIndex = 141;
@@ -184,7 +157,7 @@ namespace SaleManagement.FORM
             // 
             this.txtPHONE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPHONE.ForeColor = System.Drawing.Color.Black;
-            this.txtPHONE.Location = new System.Drawing.Point(124, 203);
+            this.txtPHONE.Location = new System.Drawing.Point(124, 210);
             this.txtPHONE.Name = "txtPHONE";
             this.txtPHONE.Size = new System.Drawing.Size(191, 29);
             this.txtPHONE.TabIndex = 140;
@@ -193,7 +166,7 @@ namespace SaleManagement.FORM
             // 
             this.txtNAME_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_CUSTOMER.ForeColor = System.Drawing.Color.Black;
-            this.txtNAME_CUSTOMER.Location = new System.Drawing.Point(124, 148);
+            this.txtNAME_CUSTOMER.Location = new System.Drawing.Point(124, 155);
             this.txtNAME_CUSTOMER.Name = "txtNAME_CUSTOMER";
             this.txtNAME_CUSTOMER.Size = new System.Drawing.Size(191, 29);
             this.txtNAME_CUSTOMER.TabIndex = 139;
@@ -201,7 +174,7 @@ namespace SaleManagement.FORM
             // txtID_CUSTOMER
             // 
             this.txtID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID_CUSTOMER.Location = new System.Drawing.Point(124, 92);
+            this.txtID_CUSTOMER.Location = new System.Drawing.Point(124, 99);
             this.txtID_CUSTOMER.Name = "txtID_CUSTOMER";
             this.txtID_CUSTOMER.Size = new System.Drawing.Size(191, 29);
             this.txtID_CUSTOMER.TabIndex = 138;
@@ -210,7 +183,7 @@ namespace SaleManagement.FORM
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(16, 255);
+            this.label4.Location = new System.Drawing.Point(16, 262);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 22);
             this.label4.TabIndex = 137;
@@ -220,7 +193,7 @@ namespace SaleManagement.FORM
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 204);
+            this.label3.Location = new System.Drawing.Point(16, 211);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 22);
             this.label3.TabIndex = 136;
@@ -230,7 +203,7 @@ namespace SaleManagement.FORM
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(16, 149);
+            this.label6.Location = new System.Drawing.Point(16, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 22);
             this.label6.TabIndex = 135;
@@ -240,7 +213,7 @@ namespace SaleManagement.FORM
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(16, 93);
+            this.label7.Location = new System.Drawing.Point(16, 100);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 22);
             this.label7.TabIndex = 134;
@@ -256,7 +229,7 @@ namespace SaleManagement.FORM
             this.btnSELECT.ForeColor = System.Drawing.Color.White;
             this.btnSELECT.Image = global::SaleManagement.Properties.Resources.checked_user_24;
             this.btnSELECT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSELECT.Location = new System.Drawing.Point(38, 504);
+            this.btnSELECT.Location = new System.Drawing.Point(38, 511);
             this.btnSELECT.Name = "btnSELECT";
             this.btnSELECT.Size = new System.Drawing.Size(248, 61);
             this.btnSELECT.TabIndex = 153;
@@ -264,23 +237,6 @@ namespace SaleManagement.FORM
             this.btnSELECT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSELECT.UseVisualStyleBackColor = false;
             this.btnSELECT.Click += new System.EventHandler(this.btnSELECT_Click);
-            // 
-            // btnLOAD
-            // 
-            this.btnLOAD.BackColor = System.Drawing.SystemColors.Control;
-            this.btnLOAD.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnLOAD.FlatAppearance.BorderSize = 0;
-            this.btnLOAD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLOAD.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLOAD.ForeColor = System.Drawing.Color.White;
-            this.btnLOAD.Image = global::SaleManagement.Properties.Resources.sinchronize_32__1_;
-            this.btnLOAD.Location = new System.Drawing.Point(632, 7);
-            this.btnLOAD.Name = "btnLOAD";
-            this.btnLOAD.Size = new System.Drawing.Size(84, 71);
-            this.btnLOAD.TabIndex = 151;
-            this.btnLOAD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLOAD.UseVisualStyleBackColor = false;
-            this.btnLOAD.Click += new System.EventHandler(this.btnLOAD_Click);
             // 
             // btnADD
             // 
@@ -292,7 +248,7 @@ namespace SaleManagement.FORM
             this.btnADD.ForeColor = System.Drawing.Color.White;
             this.btnADD.Image = global::SaleManagement.Properties.Resources.add_user_24;
             this.btnADD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnADD.Location = new System.Drawing.Point(37, 437);
+            this.btnADD.Location = new System.Drawing.Point(37, 444);
             this.btnADD.Name = "btnADD";
             this.btnADD.Size = new System.Drawing.Size(122, 61);
             this.btnADD.TabIndex = 149;
@@ -311,7 +267,7 @@ namespace SaleManagement.FORM
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
             this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSAVE.Location = new System.Drawing.Point(165, 437);
+            this.btnSAVE.Location = new System.Drawing.Point(165, 444);
             this.btnSAVE.Name = "btnSAVE";
             this.btnSAVE.Size = new System.Drawing.Size(121, 61);
             this.btnSAVE.TabIndex = 150;
@@ -326,7 +282,7 @@ namespace SaleManagement.FORM
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
             this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(1013, 537);
+            this.pictureBox1.Location = new System.Drawing.Point(657, 45);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
             this.pictureBox1.Size = new System.Drawing.Size(47, 47);
@@ -341,11 +297,8 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSELECT);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnLOAD);
             this.Controls.Add(this.btnADD);
             this.Controls.Add(this.btnSAVE);
-            this.Controls.Add(this.rbNAME_CUSTOMER);
-            this.Controls.Add(this.rbID_CUSTOMER);
             this.Controls.Add(this.txtSEARCH);
             this.Controls.Add(this.dgvLISTCUSTOMER);
             this.Controls.Add(this.label1);
@@ -374,11 +327,8 @@ namespace SaleManagement.FORM
 
         private System.Windows.Forms.Button btnSELECT;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnLOAD;
         private System.Windows.Forms.Button btnADD;
         private System.Windows.Forms.Button btnSAVE;
-        private System.Windows.Forms.RadioButton rbNAME_CUSTOMER;
-        private System.Windows.Forms.RadioButton rbID_CUSTOMER;
         private System.Windows.Forms.TextBox txtSEARCH;
         private System.Windows.Forms.DataGridView dgvLISTCUSTOMER;
         private System.Windows.Forms.Label label1;

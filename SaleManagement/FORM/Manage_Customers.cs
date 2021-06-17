@@ -14,14 +14,19 @@ namespace SaleManagement.VIEW
 {
     public partial class FrmManage_Customers : Form
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        bool isAdd; // true: add new customer, false: edit customer
-        public FrmManage_Customers()
+        private bool isAdd; // true: add new customer, false: edit customer
+        private string usernamelogin;
+        public FrmManage_Customers(string _usernamelogin)
         {
             InitializeComponent();
-            disable(false);
+            usernamelogin = _usernamelogin;
+            Disable(false);
             ShowCustomer();
-            rbID_CUSTOMER.Checked = true;
+            FormatColumnHeader();
+        }
+        // Format column header
+        public void FormatColumnHeader()
+        {
             // Set style for ColumnHeader
             dgvLISTCUSTOMER.EnableHeadersVisualStyles = false;
             dgvLISTCUSTOMER.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
@@ -36,7 +41,7 @@ namespace SaleManagement.VIEW
             dgvLISTCUSTOMER.Columns[4].HeaderText = "Địa chỉ";
         }
         // Disable button, textbox
-        void disable(bool E)
+        void Disable(bool E)
         {
             txtNAME_CUSTOMER.Enabled = E;
             txtID_CUSTOMER.Enabled = E;
@@ -53,18 +58,12 @@ namespace SaleManagement.VIEW
         // func show customers
         public void ShowCustomer()
         {
-            var listCustomer = DB.tblKhachHangs.Select(p => new {
-                p.MaKhachHang,
-                p.TenKhachHang,
-                p.GioiTinh,
-                p.SoDienThoai,
-                p.DiaChi
-            });
-            dgvLISTCUSTOMER.DataSource = listCustomer.ToList(); 
+            BLL_CUSTOMER.Instance.LoadData(dgvLISTCUSTOMER);
             txtID_CUSTOMER.Clear();
             txtNAME_CUSTOMER.Clear();
             txtPHONE.Clear();
             txtADDRESS.Clear();
+            lbQuantity.Text = BLL_CUSTOMER.Instance.getQuantityCustomer(dgvLISTCUSTOMER).ToString();
         }
         // Set backColor for row in dgvListCustomer
         private void dgvLISTCUSTOMER_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -90,7 +89,7 @@ namespace SaleManagement.VIEW
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmSale_Management frm = new FrmSale_Management();
+            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
             frm.Show();
             this.Close();
         }
@@ -132,9 +131,9 @@ namespace SaleManagement.VIEW
         // Button Add customer
         private void btnADD_Click(object sender, EventArgs e)
         {
-            disable(true);
+            Disable(true);
             isAdd = true; // thêm
-            txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.GetNewIdCustomer().ToString(); // gọi hàm tự điền mã số khách hàng từ BLL_CUSTOMER
+            txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNewIdCustomer().ToString(); // gọi hàm tự điền mã số khách hàng từ BLL_CUSTOMER
             txtNAME_CUSTOMER.Clear();
             txtPHONE.Clear();
             rbMALE.Checked = true;
@@ -143,7 +142,7 @@ namespace SaleManagement.VIEW
         // Button Edit customer
         private void btnEDIT_Click(object sender, EventArgs e)
         {
-            disable(true);
+            Disable(true);
             txtID_CUSTOMER.Enabled = false;
             isAdd = false; // sửa
         }
@@ -167,7 +166,7 @@ namespace SaleManagement.VIEW
                 string.IsNullOrEmpty(customer.DiaChi))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                disable(true);
+                Disable(true);
             }
             else
             {
@@ -177,13 +176,13 @@ namespace SaleManagement.VIEW
                     {
                         BLL_CUSTOMER.Instance.FuncAddNewCustomer(customer); // add new customer 
                         MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        disable(false);
+                        Disable(false);
                         ShowCustomer();
                     }
                     catch (Exception)
                     {
                         MessageBox.Show("Mã số khách hàng bị trùng. Vui lòng nhập mã khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        disable(true);
+                        Disable(true);
                     }
                 }
                 else
@@ -191,7 +190,7 @@ namespace SaleManagement.VIEW
                     BLL_CUSTOMER.Instance.FuncEditCustomer(customer); // edit customer
                     MessageBox.Show("Sửa khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ShowCustomer();
-                    disable(false);
+                    Disable(false);
                 }
             }
         }
@@ -214,39 +213,25 @@ namespace SaleManagement.VIEW
         // Cancel
         private void btnCANCEL_Click(object sender, EventArgs e)
         {
-            disable(false);
+            Disable(false);
         }
         // Back to frmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn quay lại?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                FrmManage_Data frm = new FrmManage_Data();
-                frm.Show();
-                this.Close();
-            }
-            else
-            {
-                return;
-            }
+            FrmManage_Data frm = new FrmManage_Data(usernamelogin);
+            frm.Show();
+            this.Close();
         }
         // search customer
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            if (rbID_CUSTOMER.Checked == true) // Tìm kiếm theo mã số
-            {
-                BLL_CUSTOMER.Instance.FuncSearchID(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
-            }
-            else // Tìm kiếm theo tên
-            {
-                BLL_CUSTOMER.Instance.FuncSearchName(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
-            }
+            BLL_CUSTOMER.Instance.FuncSearchCustomer(dgvLISTCUSTOMER, txtSEARCH.Text.Trim());
+            lbQuantity.Text = BLL_CUSTOMER.Instance.getQuantityCustomer(dgvLISTCUSTOMER).ToString();
         }
         // input information
         private void txtSEARCH_Enter(object sender, EventArgs e)
         {
-            if (txtSEARCH.Text == "Nhập thông tin cần tìm kiếm")
+            if (txtSEARCH.Text == "Nhập mã hoặc tên khách hàng")
             {
                 txtSEARCH.Text = "";
                 txtSEARCH.ForeColor = Color.Black;
@@ -257,7 +242,7 @@ namespace SaleManagement.VIEW
         {
             if (txtSEARCH.Text == "")
             {
-                txtSEARCH.Text = "Nhập thông tin cần tìm kiếm";
+                txtSEARCH.Text = "Nhập mã hoặc tên khách hàng";
                 txtSEARCH.ForeColor = Color.Silver;
             }
         }

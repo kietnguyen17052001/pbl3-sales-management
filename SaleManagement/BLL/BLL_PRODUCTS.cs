@@ -1,6 +1,8 @@
 ﻿using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,25 +10,25 @@ using System.Windows.Forms;
 
 namespace SaleManagement.BLL
 {
-    class BLL_ITEMS
+    class BLL_PRODUCTS
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        private static BLL_ITEMS _Instance;
-        public static BLL_ITEMS Instance
+        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private static BLL_PRODUCTS _Instance;
+        public static BLL_PRODUCTS Instance
         {
             get
             {
                 if (_Instance == null)
                 {
-                    _Instance = new BLL_ITEMS();
+                    _Instance = new BLL_PRODUCTS();
                 }
                 return _Instance;
             }
             private set { }
         }
-        private BLL_ITEMS(){}
+        private BLL_PRODUCTS(){}
         // Lấy danh sách loại hàng hóa đổ vào CBB
-        public List<CBBItem> GetCBBTypeProduct()
+        public List<CBBItem> getCBBTypeProduct()
         {
             List<CBBItem> list = new List<CBBItem>();
             foreach(tblLoaiHangHoa typeProduct in DB.tblLoaiHangHoas)
@@ -35,25 +37,38 @@ namespace SaleManagement.BLL
             }
             return list;
         }
-        // Lấy danh sách nhà cung cấp đổ vào CBB
-        public List<CBBItem> GetCBBSupplier()
+        // load data product
+        public void LoadDataProduct(DataGridView dgv)
         {
-            List<CBBItem> list = new List<CBBItem>();
-            foreach (tblNhaCungCap supplier in DB.tblNhaCungCaps)
+            var product = DB.tblHangHoas.Select(p => new
             {
-                list.Add(new CBBItem { VALUE = supplier.MaNhaCungCap, TEXT = supplier.TenNhaCungCap });
-            }
-            return list;
+                p.MaHangHoa,
+                p.TenHangHoa,
+                p.SoLuong,
+                p.tblLoaiHangHoa.TenLoaiHangHoa,
+                p.tblNhaSanXuat.TenNhaSanXuat,
+                p.GiaNhap,
+                p.GiaBan,
+                p.MoTa
+            });
+            dgv.DataSource = product.ToList();
         }
-        // Lấy danh sách nhà sản xuất đổ vào CBB
-        public List<CBBItem> GetCBBProducer()
+        public Image ByteArrayToImage(byte[] byArrayIn)
         {
-            List<CBBItem> list = new List<CBBItem>();
-            foreach (tblNhaSanXuat producer in DB.tblNhaSanXuats)
+            using (MemoryStream ms = new MemoryStream(byArrayIn))
             {
-                list.Add(new CBBItem { VALUE = producer.MaNhaSanXuat, TEXT = producer.TenNhaSanXuat });
+                Image returnImage = Image.FromStream(ms);
+                return returnImage;
             }
-            return list;
+        }
+        public Image image(string idProduct)
+        {
+            var imageProduct = DB.tblHangHoas.Find(idProduct);
+            return ByteArrayToImage(imageProduct.HinhAnh.ToArray());
+        }
+        // add pic
+        public void FuncAddPicProduct()
+        {
         }
         // add new product
         public void FuncAddNewProduct(tblHangHoa product)
@@ -71,6 +86,7 @@ namespace SaleManagement.BLL
             getProduct.GiaNhap = product.GiaNhap;
             getProduct.MaLoaiHangHoa = product.MaLoaiHangHoa;
             getProduct.MaNhaSanXuat = product.MaNhaSanXuat;
+            getProduct.MoTa = product.MoTa;
             //getProduct.HinhAnh = product.HinhAnh;
             DB.SaveChanges();
         }
@@ -89,38 +105,32 @@ namespace SaleManagement.BLL
                 DB.SaveChanges();
             }
         }
-        // search name
-        public void FuncSearchName(DataGridView dgv, string name)
+        // search product
+        public void FuncSearchProduct(DataGridView dgv, string information)
         {
-            var getProduct = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(name)).Select(p => new
+            if (information == "Nhập mã hoặc tên hàng hóa, loại hàng hóa" || String.IsNullOrEmpty(information))
             {
-                p.MaHangHoa,
-                p.TenHangHoa,
-                p.SoLuong,
-                p.tblLoaiHangHoa.TenLoaiHangHoa,
-                p.tblNhaSanXuat.TenNhaSanXuat,
-                p.GiaNhap,
-                p.GiaBan,
-            });
-            dgv.DataSource = getProduct.ToList();
-        }
-        // search id
-        public void FuncSearchId(DataGridView dgv, string id)
-        {
-            var getProduct = DB.tblHangHoas.Where(p => p.MaHangHoa.Contains(id)).Select(p => new
+                LoadDataProduct(dgv);
+            }
+            else
             {
-                p.MaHangHoa,
-                p.TenHangHoa,
-                p.SoLuong,
-                p.tblLoaiHangHoa.TenLoaiHangHoa,
-                p.tblNhaSanXuat.TenNhaSanXuat,
-                p.GiaNhap,
-                p.GiaBan,
-            });
-            dgv.DataSource = getProduct.ToList();
+                var getProduct = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
+                || p.tblLoaiHangHoa.TenLoaiHangHoa.Contains(information)).Select(p => new
+                {
+                    p.MaHangHoa,
+                    p.TenHangHoa,
+                    p.SoLuong,
+                    p.tblLoaiHangHoa.TenLoaiHangHoa,
+                    p.tblNhaSanXuat.TenNhaSanXuat,
+                    p.GiaNhap,
+                    p.GiaBan,
+                    p.MoTa
+                });
+                dgv.DataSource = getProduct.ToList();
+            }
         }
         // Trả về mã hàng hóa mới khi thực hiện chức năng thêm 
-        public string GetNewIdProduct(string idTypeProduct)
+        public string getNewIdProduct(string idTypeProduct)
         {
             string idProduct = "";
             int last; // số cuối trong mã
@@ -157,8 +167,19 @@ namespace SaleManagement.BLL
             }
             return idProduct;
         }
+        // get quantity product in database
+        public int getQuantityProduct(DataGridView dgv)
+        {
+            return dgv.Rows.Count;
+        }
+        // get quantity product by idProduct
+        public int getQuantityProductByIdProduct(string idProduct)
+        {
+            var value = DB.tblHangHoas.Find(idProduct);
+            return value.SoLuong;
+        }
         //Trả về loại hàng hóa, nhà cung cấp, nhà sản xuất từ dgvITEMS
-        public string GetText(string name, List<CBBItem> list)
+        public string getText(string name, List<CBBItem> list)
         {
             string typeOfProduct = "";
             foreach (CBBItem product in list)

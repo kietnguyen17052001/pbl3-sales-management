@@ -59,17 +59,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BLL_ACCOUNT.cs" />
     <Compile Include="BLL\BLL_CHANGEPASSWORD.cs" />
+    <Compile Include="BLL\BLL_LISTIMPORTINVOICE.cs" />
     <Compile Include="BLL\BLL_SALEPRODUCT.cs" />
     <Compile Include="BLL\BLL_CUSTOMER.cs" />
     <Compile Include="BLL\BLL_IMPORTPRODUCT.cs" />
-    <Compile Include="BLL\BLL_ITEMS.cs" />
-    <Compile Include="BLL\BLL_LISTINVOICE.cs" />
+    <Compile Include="BLL\BLL_PRODUCTS.cs" />
+    <Compile Include="BLL\BLL_LISTSALEINVOICE.cs" />
     <Compile Include="BLL\BLL_PRODUCER.cs" />
     <Compile Include="BLL\BLL_REPORT.cs" />
     <Compile Include="BLL\BLL_STAFF.cs" />
+    <Compile Include="BLL\BLL_STATISTIC.cs" />
     <Compile Include="BLL\BLL_SUPPLIER.cs" />
-    <Compile Include="BLL\BLL_TYPEOFITEM.cs" />
+    <Compile Include="BLL\BLL_TYPEOFPRODUCT.cs" />
     <Compile Include="CBBItem.cs" />
     <Compile Include="Entity\SALEMANAGEMENT.Context.cs">
       <AutoGen>True</AutoGen>
@@ -164,6 +167,12 @@
     <Compile Include="FORM\Create_NewTypeItem.Designer.cs">
       <DependentUpon>Create_NewTypeItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM\List_ImportInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\List_ImportInvoice.Designer.cs">
+      <DependentUpon>List_ImportInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\Select_Customer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,17 +191,17 @@
     <Compile Include="FORM\Discount_Percent.Designer.cs">
       <DependentUpon>Discount_Percent.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\EditQty_CreateInvoice.cs">
+    <Compile Include="FORM\EditQuantity_InvoiceSaleProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\EditQty_CreateInvoice.Designer.cs">
-      <DependentUpon>EditQty_CreateInvoice.cs</DependentUpon>
+    <Compile Include="FORM\EditQuantity_InvoiceSaleProduct.Designer.cs">
+      <DependentUpon>EditQuantity_InvoiceSaleProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Edit_Quantity.cs">
+    <Compile Include="FORM\EditQuantityProduct_ListInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\Edit_Quantity.Designer.cs">
-      <DependentUpon>Edit_Quantity.cs</DependentUpon>
+    <Compile Include="FORM\EditQuantityProduct_ListInvoice.Designer.cs">
+      <DependentUpon>EditQuantityProduct_ListInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Introduce.cs">
       <SubType>Form</SubType>
@@ -224,17 +233,17 @@
     <Compile Include="FORM\Manage_Data.Designer.cs">
       <DependentUpon>Manage_Data.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Manage_Items.cs">
+    <Compile Include="FORM\Manage_Product.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\Manage_Items.Designer.cs">
-      <DependentUpon>Manage_Items.cs</DependentUpon>
+    <Compile Include="FORM\Manage_Product.Designer.cs">
+      <DependentUpon>Manage_Product.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Manage_List_Invoice.cs">
+    <Compile Include="FORM\List_SaleInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\Manage_List_Invoice.Designer.cs">
-      <DependentUpon>Manage_List_Invoice.cs</DependentUpon>
+    <Compile Include="FORM\List_SaleInvoice.Designer.cs">
+      <DependentUpon>List_SaleInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Manage_Staffs.cs">
       <SubType>Form</SubType>
@@ -266,11 +275,11 @@
     <Compile Include="FORM\Revenue_Statistic.Designer.cs">
       <DependentUpon>Revenue_Statistic.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Sale_Management.cs">
+    <Compile Include="FORM\Admin_Role.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\Sale_Management.Designer.cs">
-      <DependentUpon>Sale_Management.cs</DependentUpon>
+    <Compile Include="FORM\Admin_Role.Designer.cs">
+      <DependentUpon>Admin_Role.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Select_Supplier.cs">
       <SubType>Form</SubType>
@@ -278,11 +287,11 @@
     <Compile Include="FORM\Select_Supplier.Designer.cs">
       <DependentUpon>Select_Supplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Staff.cs">
+    <Compile Include="FORM\Member_Role.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\Staff.Designer.cs">
-      <DependentUpon>Staff.cs</DependentUpon>
+    <Compile Include="FORM\Member_Role.Designer.cs">
+      <DependentUpon>Member_Role.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Statistic.cs">
       <SubType>Form</SubType>
@@ -321,6 +330,9 @@
     <EmbeddedResource Include="FORM\Create_NewTypeItem.resx">
       <DependentUpon>Create_NewTypeItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORM\List_ImportInvoice.resx">
+      <DependentUpon>List_ImportInvoice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORM\Select_Customer.resx">
       <DependentUpon>Select_Customer.cs</DependentUpon>
     </EmbeddedResource>
@@ -330,11 +342,11 @@
     <EmbeddedResource Include="FORM\Discount_Percent.resx">
       <DependentUpon>Discount_Percent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\EditQty_CreateInvoice.resx">
-      <DependentUpon>EditQty_CreateInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\EditQuantity_InvoiceSaleProduct.resx">
+      <DependentUpon>EditQuantity_InvoiceSaleProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\Edit_Quantity.resx">
-      <DependentUpon>Edit_Quantity.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\EditQuantityProduct_ListInvoice.resx">
+      <DependentUpon>EditQuantityProduct_ListInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Introduce.resx">
       <DependentUpon>Introduce.cs</DependentUpon>
@@ -345,8 +357,8 @@
     <EmbeddedResource Include="FORM\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\Manage_List_Invoice.resx">
-      <DependentUpon>Manage_List_Invoice.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\List_SaleInvoice.resx">
+      <DependentUpon>List_SaleInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Manage_TypeOfProduct.resx">
       <DependentUpon>Manage_TypeOfProduct.cs</DependentUpon>
@@ -360,8 +372,8 @@
     <EmbeddedResource Include="FORM\Select_Supplier.resx">
       <DependentUpon>Select_Supplier.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\Staff.resx">
-      <DependentUpon>Staff.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\Member_Role.resx">
+      <DependentUpon>Member_Role.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Statistic.resx">
       <DependentUpon>Statistic.cs</DependentUpon>
@@ -383,8 +395,8 @@
     <EmbeddedResource Include="FORM\Manage_Data.resx">
       <DependentUpon>Manage_Data.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\Manage_Items.resx">
-      <DependentUpon>Manage_Items.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\Manage_Product.resx">
+      <DependentUpon>Manage_Product.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Manage_Staffs.resx">
       <DependentUpon>Manage_Staffs.cs</DependentUpon>
@@ -392,8 +404,8 @@
     <EmbeddedResource Include="FORM\Manage_Suppliers.resx">
       <DependentUpon>Manage_Suppliers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\Sale_Management.resx">
-      <DependentUpon>Sale_Management.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\Admin_Role.resx">
+      <DependentUpon>Admin_Role.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Entity\SALEMANAGEMENT.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

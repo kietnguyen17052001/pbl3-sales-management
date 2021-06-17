@@ -136,6 +136,7 @@ namespace SaleManagement.FORM
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 440);
+            this.ControlBox = false;
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.btnSAVE);
@@ -145,7 +146,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label5);
             this.Name = "FrmCreate_NewTypeItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create_NewTypeItem";
+            this.Text = "Thêm loại hàng hóa";
             this.ResumeLayout(false);
             this.PerformLayout();
 

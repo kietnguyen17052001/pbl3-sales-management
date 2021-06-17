@@ -250,7 +250,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.btnCANCEL);
             this.Name = "FrmAdd_NewProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Thêm hàng hóa";
+            this.Text = "Thêm hàng hóa vào hóa đơn";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
