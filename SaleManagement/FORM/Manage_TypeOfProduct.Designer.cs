@@ -73,7 +73,7 @@ namespace SaleManagement.FORM
             this.btnHOME.ForeColor = System.Drawing.Color.White;
             this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
             this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHOME.Location = new System.Drawing.Point(1029, 9);
+            this.btnHOME.Location = new System.Drawing.Point(6, 5);
             this.btnHOME.Name = "btnHOME";
             this.btnHOME.Size = new System.Drawing.Size(197, 65);
             this.btnHOME.TabIndex = 146;
@@ -150,9 +150,9 @@ namespace SaleManagement.FORM
             this.btnBACK.ForeColor = System.Drawing.Color.White;
             this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
             this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBACK.Location = new System.Drawing.Point(13, 13);
+            this.btnBACK.Location = new System.Drawing.Point(1072, 5);
             this.btnBACK.Name = "btnBACK";
-            this.btnBACK.Size = new System.Drawing.Size(144, 59);
+            this.btnBACK.Size = new System.Drawing.Size(154, 65);
             this.btnBACK.TabIndex = 142;
             this.btnBACK.Text = "Quay lại";
             this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

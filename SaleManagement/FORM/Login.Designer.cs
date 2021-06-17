@@ -37,8 +37,7 @@ namespace SaleManagement.FORM
             this.txtPASSWORD = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.btnSTAFF = new System.Windows.Forms.Button();
-            this.btnADMIN = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.lbINFO = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -146,43 +145,22 @@ namespace SaleManagement.FORM
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
             // 
-            // btnSTAFF
+            // btnLogin
             // 
-            this.btnSTAFF.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnSTAFF.FlatAppearance.BorderSize = 0;
-            this.btnSTAFF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSTAFF.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSTAFF.ForeColor = System.Drawing.Color.White;
-            this.btnSTAFF.Image = global::SaleManagement.Properties.Resources.shopping_basket_24;
-            this.btnSTAFF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSTAFF.Location = new System.Drawing.Point(403, 500);
-            this.btnSTAFF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSTAFF.Name = "btnSTAFF";
-            this.btnSTAFF.Size = new System.Drawing.Size(182, 70);
-            this.btnSTAFF.TabIndex = 11;
-            this.btnSTAFF.Text = "Bán hàng";
-            this.btnSTAFF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSTAFF.UseVisualStyleBackColor = false;
-            this.btnSTAFF.Click += new System.EventHandler(this.btnSTAFF_Click);
-            // 
-            // btnADMIN
-            // 
-            this.btnADMIN.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnADMIN.FlatAppearance.BorderSize = 0;
-            this.btnADMIN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADMIN.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnADMIN.ForeColor = System.Drawing.Color.White;
-            this.btnADMIN.Image = global::SaleManagement.Properties.Resources.statistics_24;
-            this.btnADMIN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnADMIN.Location = new System.Drawing.Point(216, 500);
-            this.btnADMIN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnADMIN.Name = "btnADMIN";
-            this.btnADMIN.Size = new System.Drawing.Size(181, 70);
-            this.btnADMIN.TabIndex = 10;
-            this.btnADMIN.Text = "Quản lý";
-            this.btnADMIN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnADMIN.UseVisualStyleBackColor = false;
-            this.btnADMIN.Click += new System.EventHandler(this.btnADMIN_Click);
+            this.btnLogin.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogin.Location = new System.Drawing.Point(298, 491);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(198, 56);
+            this.btnLogin.TabIndex = 10;
+            this.btnLogin.Text = "Đăng nhập";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lbINFO
             // 
@@ -204,8 +182,7 @@ namespace SaleManagement.FORM
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(794, 675);
             this.Controls.Add(this.lbINFO);
-            this.Controls.Add(this.btnSTAFF);
-            this.Controls.Add(this.btnADMIN);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPASSWORD);
@@ -217,7 +194,7 @@ namespace SaleManagement.FORM
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "Đăng nhập";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -237,8 +214,7 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.TextBox txtPASSWORD;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Button btnSTAFF;
-        private System.Windows.Forms.Button btnADMIN;
+        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lbINFO;
     }
 }
