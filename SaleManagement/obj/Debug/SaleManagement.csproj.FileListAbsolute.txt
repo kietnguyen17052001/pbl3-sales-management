@@ -1,4 +1,3 @@
-=======
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\bin\Debug\SaleManagement.exe.config
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\bin\Debug\SaleManagement.exe
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\bin\Debug\SaleManagement.pdb
@@ -9,6 +8,7 @@ D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\bin\Debug\EntityFramewo
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.csprojAssemblyReference.cache
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.csproj.ResolveComReference.cache
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmAdd_NewProduct.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmChange_Password.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewProducer.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewSupplier.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewTypeItem.resources
@@ -16,7 +16,7 @@ D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagemen
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmDiscount_Money.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmDiscount_Percent.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQty_CreateInvoice.resources
-D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEdit_Quantity.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEdit_Quantity_ListInvoice.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmIntroduce.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmLogin.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmManage_List_Invoice.resources
@@ -39,7 +39,6 @@ D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagemen
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.csproj.CopyComplete
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.exe
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.pdb
-D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmChange_Password.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\bin\Debug\SaleManagement.exe.config
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\bin\Debug\SaleManagement.exe
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\bin\Debug\SaleManagement.pdb
@@ -78,6 +77,10 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Customer.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewProduct.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Supplier.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewProduct.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Customer.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmInvoice_ImportProduct.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Supplier.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmInvoice_SaleProduct.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_ImportInvoice.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_SaleInvoice.resources
@@ -85,3 +88,10 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantityProduct_ListInvoice.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmMain_Member.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FrmMain_Admin.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_ImportInvoice.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantity_InvoiceSaleProduct.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantityProduct_ListInvoice.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_SaleInvoice.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmMain_Member.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmInvoice_SaleProduct.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FrmMain_Admin.resources

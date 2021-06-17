@@ -80,19 +80,43 @@ namespace SaleManagement.FORM
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void txtReWriteNewPassword_TextChanged(object sender, EventArgs e)
         {
-            if(txtNewPassword.Text != txtReWriteNewPassword.Text)
+            if (txtReWriteNewPassword.Text != txtNewPassword.Text)
             {
                 lbWarning.ForeColor = Color.IndianRed;
                 lbWarning.Text = "Mật khẩu nhập lại không khớp!";
             }
             else
             {
+                lbWarning.Text = "";
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if(txtOldPassword.Text == "Nhập mật khẩu cũ")
+            {
+                MessageBox.Show("Vui lòng nhập mật khẩu cũ!");
+            }
+            else if(txtNewPassword.Text == "Nhập mật khẩu mới")
+            {
+                MessageBox.Show("Vui lòng nhập mật khẩu mới!");
+            }
+            else if (txtReWriteNewPassword.Text == "Nhập lại mật khẩu mới")
+            {
+                MessageBox.Show("Vui lòng nhập lại mật khẩu mới!");
+            }
+            else if (txtReWriteNewPassword.Text != txtNewPassword.Text)
+            {
+                MessageBox.Show("Mật khẩu nhập lại không khớp!");
+            }
+            else
+            {
                 bool flag = BLL_CHANGEPASSWORD.Instance.ChangePassword(usernameLogin, 
                                                                            txtOldPassword.Text, 
                                                                            txtNewPassword.Text);
-                if(flag)
+                if (flag)
                 {
                     this.Close();
                 }

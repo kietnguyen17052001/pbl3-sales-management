@@ -706,7 +706,7 @@ namespace SaleManagement.VIEW
             this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHome.Location = new System.Drawing.Point(2, 1);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(197, 65);
+            this.btnHome.Size = new System.Drawing.Size(197, 60);
             this.btnHome.TabIndex = 87;
             this.btnHome.Text = "Trang chủ";
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -832,7 +832,7 @@ namespace SaleManagement.VIEW
             this.btnBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBack.Location = new System.Drawing.Point(1081, 1);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(163, 65);
+            this.btnBack.Size = new System.Drawing.Size(163, 60);
             this.btnBack.TabIndex = 122;
             this.btnBack.Text = "Quay lại";
             this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

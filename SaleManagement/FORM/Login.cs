@@ -62,8 +62,6 @@ namespace SaleManagement.FORM
                         lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
                         txtPASSWORD.Clear();
                     }
-                    lbINFO.ForeColor = Color.IndianRed;
-                    lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
                 }
             }
         }
