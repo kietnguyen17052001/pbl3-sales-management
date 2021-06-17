@@ -79,13 +79,11 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Customer.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewProduct.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Supplier.resources
-<<<<<<< HEAD
 >>>>>>> f4b044a7423e4760bf66cb586e4a26708db5525d
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewProduct.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Customer.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmInvoice_ImportProduct.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Supplier.resources
-=======
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmInvoice_SaleProduct.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_ImportInvoice.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_SaleInvoice.resources
@@ -94,3 +92,10 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmMain_Member.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FrmMain_Admin.resources
 >>>>>>> 795067ba8acda540f708f304e54a63890968a871
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_ImportInvoice.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantity_InvoiceSaleProduct.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantityProduct_ListInvoice.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_SaleInvoice.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmMain_Member.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmInvoice_SaleProduct.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FrmMain_Admin.resources

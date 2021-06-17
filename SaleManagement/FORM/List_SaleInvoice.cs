@@ -105,16 +105,8 @@ namespace SaleManagement.FORM
         // set data for combobox
         public void setCombobox()
         {
-<<<<<<< HEAD:SaleManagement/FORM/Manage_List_Invoice.cs
-            cbbSTAFF_DETAIL.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả"});
-            cbbSTAFF_DETAIL.Items.AddRange(BLL_SALEPRODUCT.Instance.GetCbb_Staff().ToArray());
-            cbbSTAFF.Items.AddRange(BLL_SALEPRODUCT.Instance.GetCbb_Staff().ToArray());
-            cbbCUSTOMER.Items.AddRange(BLL_SALEPRODUCT.Instance.GetCbb_Customer().ToArray());
-            cbbSTAFF_DETAIL.SelectedIndex = 0;
-=======
             cbbSTAFF.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
             cbbCUSTOMER.Items.AddRange(BLL_CUSTOMER.Instance.getCbbCustomer().ToArray());
->>>>>>> 795067ba8acda540f708f304e54a63890968a871:SaleManagement/FORM/List_SaleInvoice.cs
         }
         // Liệt kê hóa đơn theo cbbStaff_Detail
         public void LoadDataDGVs()
