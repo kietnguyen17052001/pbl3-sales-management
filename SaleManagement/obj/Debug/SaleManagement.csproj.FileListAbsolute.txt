@@ -41,7 +41,6 @@ D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagemen
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.pdb
 <<<<<<< HEAD
 =======
-D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmChange_Password.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\bin\Debug\SaleManagement.exe.config
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\bin\Debug\SaleManagement.exe
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\bin\Debug\SaleManagement.pdb
@@ -87,3 +86,7 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewProduct.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Supplier.resources
 >>>>>>> f4b044a7423e4760bf66cb586e4a26708db5525d
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmCreate_NewProduct.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Customer.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmInvoice_ImportProduct.resources
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmSelect_Supplier.resources

@@ -94,9 +94,9 @@ namespace SaleManagement.FORM
         public void setCombobox()
         {
             cbbSTAFF_DETAIL.Items.Add(new CBBItem { VALUE = "0", TEXT = "Tất cả"});
-            cbbSTAFF_DETAIL.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Staff().ToArray());
-            cbbSTAFF.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Staff().ToArray());
-            cbbCUSTOMER.Items.AddRange(BLL_CREATEINVOICE.Instance.GetCbb_Customer().ToArray());
+            cbbSTAFF_DETAIL.Items.AddRange(BLL_SALEPRODUCT.Instance.GetCbb_Staff().ToArray());
+            cbbSTAFF.Items.AddRange(BLL_SALEPRODUCT.Instance.GetCbb_Staff().ToArray());
+            cbbCUSTOMER.Items.AddRange(BLL_SALEPRODUCT.Instance.GetCbb_Customer().ToArray());
             cbbSTAFF_DETAIL.SelectedIndex = 0;
         }
         // Liệt kê hóa đơn theo cbbStaff_Detail

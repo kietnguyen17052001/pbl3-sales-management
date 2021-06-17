@@ -100,7 +100,7 @@ namespace SaleManagement.BLL
         public string GetStaff(string nameStaff)
         {
             string staff = "";
-            foreach(CBBItem cbbitem in BLL_CREATEINVOICE.Instance.GetCbb_Staff())
+            foreach(CBBItem cbbitem in BLL_SALEPRODUCT.Instance.GetCbb_Staff())
             {
                 if(cbbitem.TEXT == nameStaff)
                 {
@@ -113,7 +113,7 @@ namespace SaleManagement.BLL
         public string GetCustomer(string nameCustomer)
         {
             string customer = "";
-            foreach (CBBItem cbbitem in BLL_CREATEINVOICE.Instance.GetCbb_Customer())
+            foreach (CBBItem cbbitem in BLL_SALEPRODUCT.Instance.GetCbb_Customer())
             {
                 if (cbbitem.TEXT == nameCustomer)
                 {
