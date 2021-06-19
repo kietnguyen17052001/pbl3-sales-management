@@ -107,7 +107,7 @@ namespace SaleManagement.FORM
             this.btnHOME.ForeColor = System.Drawing.Color.White;
             this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
             this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHOME.Location = new System.Drawing.Point(1004, 2);
+            this.btnHOME.Location = new System.Drawing.Point(24, 2);
             this.btnHOME.Name = "btnHOME";
             this.btnHOME.Size = new System.Drawing.Size(197, 66);
             this.btnHOME.TabIndex = 127;

@@ -19,12 +19,10 @@ namespace SaleManagement.FORM
         {
             InitializeComponent();
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
-        {
-            SALEMANAGEMENT_DB db = new SALEMANAGEMENT_DB();
-            var user = db.tblTaiKhoans.Find(txtUSER.Text);
-            if (string.IsNullOrEmpty(txtUSER.Text) || user == null)
+        {   
+            tblTaiKhoan user = BLL_ACCOUNT.Instance.getUser(txtUSER.Text);
+            if(string.IsNullOrEmpty(txtUSER.Text) || user == null)
             {
                 lbINFO.ForeColor = Color.IndianRed;
                 lbINFO.Text = "Tên tài khoản không hợp lệ";
@@ -45,6 +43,7 @@ namespace SaleManagement.FORM
                     {
                         lbINFO.ForeColor = Color.IndianRed;
                         lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+                        txtPASSWORD.Clear();
                     }
                 }
                 else if (user.ChucVu == "Member")
@@ -63,38 +62,9 @@ namespace SaleManagement.FORM
                         lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
                         txtPASSWORD.Clear();
                     }
-                    lbINFO.ForeColor = Color.IndianRed;
-                    lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
                 }
             }
         }
-        private void btnSTAFF_Click(object sender, EventArgs e)
-        {
-            tblTaiKhoan staff = BLL_ACCOUNT.Instance.getUser(txtUSER.Text);
-            if (staff.MatKhau == txtPASSWORD.Text)
-            {
-                if (staff.ChucVu == "Member")
-                {
-                    lbINFO.ForeColor = Color.SteelBlue;
-                    lbINFO.Text = "Đăng nhập thành công";
-                    FrmMain_Member frm = new FrmMain_Member(txtUSER.Text);
-                    frm.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    lbINFO.ForeColor = Color.IndianRed;
-                    lbINFO.Text = "Không được quyền đăng nhập chức năng này";
-                }
-            }
-            else
-            {
-                lbINFO.ForeColor = Color.IndianRed;
-                lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
-                txtPASSWORD.Clear();
-            }
-        }
-
         private void txtUSER_Enter(object sender, EventArgs e)
         {
             if (txtUSER.Text == "Nhập tài khoản")
