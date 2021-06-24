@@ -21,8 +21,7 @@ namespace SaleManagement.FORM
         {
             InitializeComponent();
             usernamelogin = _usernamelogin;
-            Disable(false);
-            ShowData();
+            ShowDataTypeOfProduct();
             FormatColumnHeader();
         }
         public void FormatColumnHeader()
@@ -37,6 +36,11 @@ namespace SaleManagement.FORM
             dgvLISTTYPE.Columns[0].HeaderText = "Mã loại h.hóa";
             dgvLISTTYPE.Columns[1].HeaderText = "Tên loại h.hóa";
         }
+        public void ClearCode()
+        {
+            txtID_TYPEPRODUCT.Clear();
+            txtNAME_TYPEPRODUCT.Clear();
+        }
         public void Disable(bool E)
         {
             txtID_TYPEPRODUCT.Enabled = E;
@@ -46,8 +50,10 @@ namespace SaleManagement.FORM
             btnADD.Enabled = btnEDIT.Enabled = btnDELETE.Enabled = !E;
         }
         // func show type of product
-        public void ShowData()
+        public void ShowDataTypeOfProduct()
         {
+            Disable(false);
+            ClearCode();
             BLL_TYPEOFPRODUCT.Instance.LoadDataTypeOfProduct(dgvLISTTYPE);
         }
         // click
@@ -72,7 +78,7 @@ namespace SaleManagement.FORM
         // Button show list type of product
         private void btnSHOW_Click(object sender, EventArgs e)
         {
-            ShowData();
+            ShowDataTypeOfProduct();
         }
         // export file excel
         private void btnEXCEL_Click(object sender, EventArgs e)
@@ -108,16 +114,22 @@ namespace SaleManagement.FORM
         private void btnADD_Click(object sender, EventArgs e)
         {
             isAdd = true;
-            txtID_TYPEPRODUCT.Clear();
-            txtNAME_TYPEPRODUCT.Clear();
             Disable(true);
+            ClearCode();
         }
         // edit type 
         private void btnEDIT_Click(object sender, EventArgs e)
         {
-            Disable(true);
-            txtID_TYPEPRODUCT.Enabled = false;
-            isAdd = false;
+            if (String.IsNullOrEmpty(txtID_TYPEPRODUCT.Text))
+            {
+                MessageBox.Show("Vui lòng chọn loại hàng hóa muốn sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                Disable(true);
+                txtID_TYPEPRODUCT.Enabled = false;
+                isAdd = false;
+            }
         }
         // save 
         private void btnSAVE_Click(object sender, EventArgs e)
@@ -138,8 +150,7 @@ namespace SaleManagement.FORM
                     {
                         BLL_TYPEOFPRODUCT.Instance.FuncAddNewProduct(typeOfProduct);
                         MessageBox.Show("Thêm loại hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Disable(false);
-                        ShowData();
+                        ShowDataTypeOfProduct();
                     }
                     catch (Exception)
                     {
@@ -150,24 +161,31 @@ namespace SaleManagement.FORM
                 {
                     BLL_TYPEOFPRODUCT.Instance.FuncAddNewProduct(typeOfProduct);
                     MessageBox.Show("Sửa loại hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Disable(false);
-                    ShowData();
+                    ShowDataTypeOfProduct();
                 }
             }
         }
         // delete type of product
         private void btnDELETE_Click(object sender, EventArgs e)
         {
-            List<string> listIdType = new List<string>();
-            DataGridViewSelectedRowCollection data = dgvLISTTYPE.SelectedRows;
-            foreach(DataGridViewRow dgvRow in data)
+            if (String.IsNullOrEmpty(txtID_TYPEPRODUCT.Text))
             {
-                listIdType.Add(dgvRow.Cells["MaLoaiHangHoa"].Value.ToString());
+                MessageBox.Show("Vui lòng chọn loại hàng hóa muốn xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            DialogResult result = MessageBox.Show("Bạn chắc chắn xóa loại hàng hóa này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            else
             {
-                BLL_TYPEOFPRODUCT.Instance.FuncDeleteTypeProduct(listIdType);
+                List<string> listIdType = new List<string>();
+                DataGridViewSelectedRowCollection data = dgvLISTTYPE.SelectedRows;
+                foreach (DataGridViewRow dgvRow in data)
+                {
+                    listIdType.Add(dgvRow.Cells["MaLoaiHangHoa"].Value.ToString());
+                }
+                DialogResult result = MessageBox.Show("Bạn chắc chắn xóa loại hàng hóa này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    BLL_TYPEOFPRODUCT.Instance.FuncDeleteTypeProduct(listIdType);
+                    ShowDataTypeOfProduct();
+                }
             }
         }
         // cancel func add or edit
@@ -180,7 +198,7 @@ namespace SaleManagement.FORM
         {
             FrmManage_Data frm = new FrmManage_Data(usernamelogin);
             frm.Show();
-            this.Hide();
+            this.Close();
         }
         // search type of product
         private void txtSEARCH_Enter(object sender, EventArgs e)

@@ -115,6 +115,7 @@ namespace SaleManagement.FORM
             // 
             // txtSALE
             // 
+            this.txtSALE.BackColor = System.Drawing.SystemColors.Info;
             this.txtSALE.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSALE.ForeColor = System.Drawing.Color.Black;
             this.txtSALE.Location = new System.Drawing.Point(219, 311);
@@ -135,6 +136,7 @@ namespace SaleManagement.FORM
             // 
             // txtBUY
             // 
+            this.txtBUY.BackColor = System.Drawing.SystemColors.Info;
             this.txtBUY.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBUY.ForeColor = System.Drawing.Color.Black;
             this.txtBUY.Location = new System.Drawing.Point(219, 272);
@@ -208,7 +210,9 @@ namespace SaleManagement.FORM
             // 
             // txtID_PRODUCT
             // 
+            this.txtID_PRODUCT.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtID_PRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_PRODUCT.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_PRODUCT.Location = new System.Drawing.Point(219, 73);
             this.txtID_PRODUCT.Name = "txtID_PRODUCT";
             this.txtID_PRODUCT.Size = new System.Drawing.Size(210, 27);
@@ -300,11 +304,11 @@ namespace SaleManagement.FORM
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(196, 9);
+            this.label1.Location = new System.Drawing.Point(200, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 31);
+            this.label1.Size = new System.Drawing.Size(181, 27);
             this.label1.TabIndex = 162;
             this.label1.Text = "Thêm hàng hóa";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;

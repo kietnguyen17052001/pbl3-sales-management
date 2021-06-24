@@ -20,8 +20,7 @@ namespace SaleManagement.VIEW
         {
             InitializeComponent();
             usernamelogin = _usernamelogin;
-            Disable(false);
-            ShowCustomer();
+            ShowDataCustomer();
             FormatColumnHeader();
         }
         // Format column header
@@ -41,7 +40,7 @@ namespace SaleManagement.VIEW
             dgvLISTCUSTOMER.Columns[4].HeaderText = "Địa chỉ";
         }
         // Disable button, textbox
-        void Disable(bool E)
+        public void Disable(bool E)
         {
             txtNAME_CUSTOMER.Enabled = E;
             txtID_CUSTOMER.Enabled = E;
@@ -55,14 +54,19 @@ namespace SaleManagement.VIEW
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
         }
-        // func show customers
-        public void ShowCustomer()
+        public void ClearCode()
         {
-            BLL_CUSTOMER.Instance.LoadData(dgvLISTCUSTOMER);
             txtID_CUSTOMER.Clear();
             txtNAME_CUSTOMER.Clear();
             txtPHONE.Clear();
             txtADDRESS.Clear();
+        }
+        // func show customers
+        public void ShowDataCustomer()
+        {
+            Disable(false);
+            ClearCode();
+            BLL_CUSTOMER.Instance.LoadData(dgvLISTCUSTOMER);
             lbQuantity.Text = BLL_CUSTOMER.Instance.getQuantityCustomer(dgvLISTCUSTOMER).ToString();
         }
         // Set backColor for row in dgvListCustomer
@@ -96,7 +100,7 @@ namespace SaleManagement.VIEW
         // Button show customes
         private void btnSHOW_Click(object sender, EventArgs e)
         {
-            ShowCustomer();
+            ShowDataCustomer();
         }
         // Export file Excel
         private void btnEXCEL_Click(object sender, EventArgs e)
@@ -132,19 +136,23 @@ namespace SaleManagement.VIEW
         private void btnADD_Click(object sender, EventArgs e)
         {
             Disable(true);
+            ClearCode();
             isAdd = true; // thêm
             txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNewIdCustomer().ToString(); // gọi hàm tự điền mã số khách hàng từ BLL_CUSTOMER
-            txtNAME_CUSTOMER.Clear();
-            txtPHONE.Clear();
-            rbMALE.Checked = true;
-            txtADDRESS.Clear();
         }
         // Button Edit customer
         private void btnEDIT_Click(object sender, EventArgs e)
         {
-            Disable(true);
-            txtID_CUSTOMER.Enabled = false;
-            isAdd = false; // sửa
+            if (String.IsNullOrEmpty(txtID_CUSTOMER.Text))
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng cần sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                Disable(true);
+                txtID_CUSTOMER.Enabled = false;
+                isAdd = false; // sửa
+            }
         }
         // Button Save changes
         private void btnSAVE_Click(object sender, EventArgs e)
@@ -176,8 +184,7 @@ namespace SaleManagement.VIEW
                     {
                         BLL_CUSTOMER.Instance.FuncAddNewCustomer(customer); // add new customer 
                         MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Disable(false);
-                        ShowCustomer();
+                        ShowDataCustomer();
                     }
                     catch (Exception)
                     {
@@ -189,25 +196,31 @@ namespace SaleManagement.VIEW
                 {
                     BLL_CUSTOMER.Instance.FuncEditCustomer(customer); // edit customer
                     MessageBox.Show("Sửa khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ShowCustomer();
-                    Disable(false);
+                    ShowDataCustomer();
                 }
             }
         }
         // Delete customer
         private void btnDELETE_Click(object sender, EventArgs e)
         {
-            List<string> listIdCustomer = new List<string>();
-            DataGridViewSelectedRowCollection data = dgvLISTCUSTOMER.SelectedRows;
-            foreach (DataGridViewRow dataGvr in data)
+            if (String.IsNullOrEmpty(txtID_CUSTOMER.Text))
             {
-                listIdCustomer.Add(dataGvr.Cells["MaKhachHang"].Value.ToString());
+                MessageBox.Show("Vui lòng chọn khách hàng cần xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            DialogResult question = MessageBox.Show("Bạn chắc chắn muốn xóa khách hàng này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (question == DialogResult.Yes)
+            else
             {
-                BLL_CUSTOMER.Instance.FuncDeleteCustomer(listIdCustomer); // delete customer
-                ShowCustomer();
+                List<string> listIdCustomer = new List<string>();
+                DataGridViewSelectedRowCollection data = dgvLISTCUSTOMER.SelectedRows;
+                foreach (DataGridViewRow dataGvr in data)
+                {
+                    listIdCustomer.Add(dataGvr.Cells["MaKhachHang"].Value.ToString());
+                }
+                DialogResult question = MessageBox.Show("Bạn chắc chắn muốn xóa khách hàng này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (question == DialogResult.Yes)
+                {
+                    BLL_CUSTOMER.Instance.FuncDeleteCustomer(listIdCustomer); // delete customer
+                    ShowDataCustomer();
+                }
             }
         }
         // Cancel

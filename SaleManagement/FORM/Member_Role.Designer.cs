@@ -87,11 +87,11 @@ namespace SaleManagement.FORM
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(248, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(771, 38);
+            this.label1.Size = new System.Drawing.Size(801, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "PHẦN MỀM QUẢN LÝ BÁN HÀNG ĐIỆN GIA DỤNG";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -120,7 +120,7 @@ namespace SaleManagement.FORM
             this.btnImportProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             this.btnImportProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnImportProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImportProduct.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImportProduct.ForeColor = System.Drawing.Color.Black;
             this.btnImportProduct.Image = global::SaleManagement.Properties.Resources.App_edit_icon;
             this.btnImportProduct.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -142,7 +142,7 @@ namespace SaleManagement.FORM
             this.btnSaleProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             this.btnSaleProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnSaleProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaleProduct.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaleProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaleProduct.ForeColor = System.Drawing.Color.Black;
             this.btnSaleProduct.Image = global::SaleManagement.Properties.Resources.App_edit_icon;
             this.btnSaleProduct.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -164,11 +164,11 @@ namespace SaleManagement.FORM
             this.btnLogOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             this.btnLogOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogOut.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogOut.ForeColor = System.Drawing.Color.Black;
             this.btnLogOut.Image = global::SaleManagement.Properties.Resources.Windows_Turn_Off_icon;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLogOut.Location = new System.Drawing.Point(492, 379);
+            this.btnLogOut.Location = new System.Drawing.Point(492, 399);
             this.btnLogOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(189, 185);
@@ -187,7 +187,7 @@ namespace SaleManagement.FORM
             this.btnIntroduce.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             this.btnIntroduce.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnIntroduce.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIntroduce.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIntroduce.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIntroduce.ForeColor = System.Drawing.Color.Black;
             this.btnIntroduce.Image = global::SaleManagement.Properties.Resources.Adobe_Help_Center_icon;
             this.btnIntroduce.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -210,11 +210,11 @@ namespace SaleManagement.FORM
             this.btnList_ImportInvoice.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             this.btnList_ImportInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnList_ImportInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnList_ImportInvoice.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnList_ImportInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnList_ImportInvoice.ForeColor = System.Drawing.Color.Black;
             this.btnList_ImportInvoice.Image = global::SaleManagement.Properties.Resources.list_icon;
             this.btnList_ImportInvoice.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnList_ImportInvoice.Location = new System.Drawing.Point(255, 380);
+            this.btnList_ImportInvoice.Location = new System.Drawing.Point(255, 400);
             this.btnList_ImportInvoice.Name = "btnList_ImportInvoice";
             this.btnList_ImportInvoice.Size = new System.Drawing.Size(208, 184);
             this.btnList_ImportInvoice.TabIndex = 129;
@@ -232,11 +232,11 @@ namespace SaleManagement.FORM
             this.btnList_SaleInvoice.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             this.btnList_SaleInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnList_SaleInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnList_SaleInvoice.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnList_SaleInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnList_SaleInvoice.ForeColor = System.Drawing.Color.Black;
             this.btnList_SaleInvoice.Image = global::SaleManagement.Properties.Resources.list_icon;
             this.btnList_SaleInvoice.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnList_SaleInvoice.Location = new System.Drawing.Point(12, 378);
+            this.btnList_SaleInvoice.Location = new System.Drawing.Point(12, 398);
             this.btnList_SaleInvoice.Name = "btnList_SaleInvoice";
             this.btnList_SaleInvoice.Size = new System.Drawing.Size(208, 184);
             this.btnList_SaleInvoice.TabIndex = 128;

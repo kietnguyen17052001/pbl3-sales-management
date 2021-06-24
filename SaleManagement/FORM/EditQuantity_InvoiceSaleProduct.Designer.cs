@@ -67,9 +67,9 @@ namespace SaleManagement.FORM
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCANCEL.Location = new System.Drawing.Point(260, 118);
+            this.btnCANCEL.Location = new System.Drawing.Point(251, 116);
             this.btnCANCEL.Name = "btnCANCEL";
-            this.btnCANCEL.Size = new System.Drawing.Size(121, 46);
+            this.btnCANCEL.Size = new System.Drawing.Size(121, 48);
             this.btnCANCEL.TabIndex = 91;
             this.btnCANCEL.Text = "Hủy bỏ";
             this.btnCANCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -88,6 +88,7 @@ namespace SaleManagement.FORM
             // 
             // txtNEWQTY
             // 
+            this.txtNEWQTY.BackColor = System.Drawing.SystemColors.Window;
             this.txtNEWQTY.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNEWQTY.Location = new System.Drawing.Point(266, 29);
             this.txtNEWQTY.Name = "txtNEWQTY";
@@ -100,7 +101,7 @@ namespace SaleManagement.FORM
             this.lbQTY.AutoSize = true;
             this.lbQTY.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbQTY.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lbQTY.Location = new System.Drawing.Point(170, 61);
+            this.lbQTY.Location = new System.Drawing.Point(156, 61);
             this.lbQTY.Name = "lbQTY";
             this.lbQTY.Size = new System.Drawing.Size(0, 24);
             this.lbQTY.TabIndex = 94;

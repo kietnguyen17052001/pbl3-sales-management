@@ -45,8 +45,8 @@ namespace SaleManagement.BLL
                 new DataColumn("MaHangHoa",typeof(string)),
                 new DataColumn("TenHangHoa",typeof(string)),
                 new DataColumn("SoLuong",typeof(int)),
-                new DataColumn("GiaNhap",typeof(double)),
-                new DataColumn("TongTien",typeof(double))
+                new DataColumn("GiaNhap",typeof(string)),
+                new DataColumn("TongTien",typeof(string))
             });
             return dataTable;
         }
@@ -88,7 +88,7 @@ namespace SaleManagement.BLL
                 if(dataRow["MaHangHoa"].ToString() == idProduct)
                 {
                     dataRow["SoLuong"] = newQuantity;
-                    dataRow["TongTien"] = newQuantity * Convert.ToDouble(dataRow["GiaNhap"]);
+                    dataRow["TongTien"] = String.Format("{0:n0}", newQuantity * Convert.ToDouble(dataRow["GiaNhap"]));
                 }
             }
         }
@@ -126,16 +126,29 @@ namespace SaleManagement.BLL
             }
         }
         // Select product
-        public void SelectProduct(DataTable dataTable, string idProduct, int quantity)
+        public void SelectProduct(DataTable dataTable, string idProduct, int quantityOfSelectProduct)
         {
+            bool isHas = false;
             var product = DB.tblHangHoas.Find(idProduct);
-            dataTable.Rows.Add(
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                if(dataRow["MaHangHoa"].ToString() == idProduct)
+                {
+                    isHas = true;
+                    dataRow["SoLuong"] = (Convert.ToDouble(dataRow["SoLuong"].ToString()) + quantityOfSelectProduct).ToString();
+                    dataRow["TongTien"] = String.Format("{0:n0}",Convert.ToDouble(dataRow["TongTien"].ToString()) + (product.GiaNhap * quantityOfSelectProduct));
+                }
+            }
+            if(isHas == false)
+            {
+                dataTable.Rows.Add(
                 idProduct,
                 product.TenHangHoa,
-                quantity,
-                product.GiaNhap,
-                quantity*product.GiaNhap
-            );   
+                quantityOfSelectProduct,
+                String.Format("{0:n0}", product.GiaNhap),
+                String.Format("{0:n0}", quantityOfSelectProduct * product.GiaNhap)
+                );
+            }
         }
         // Get new id invoice
         public string getNewIdInvoice()

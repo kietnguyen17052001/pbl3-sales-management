@@ -20,9 +20,8 @@ namespace SaleManagement.VIEW
         {
             InitializeComponent();
             usernamelogin = _usernamelogin;
-            ShowData();
+            ShowDataSupplier();
             FormatColumnHeader();
-            Disable(false);
         }
         public void FormatColumnHeader()
         {
@@ -42,10 +41,22 @@ namespace SaleManagement.VIEW
             dgvSUPPLIER.Columns[6].HeaderText = "Mã số thuế";
         }
         // func show data 
-        public void ShowData()
+        public void ShowDataSupplier()
         {
+            Disable(false);
+            ClearCode();
             BLL_SUPPLIER.Instance.ShowData(dgvSUPPLIER);
             lbQuantity.Text = BLL_SUPPLIER.Instance.getQuantitySupplier(dgvSUPPLIER).ToString();
+        }
+        public void ClearCode()
+        {
+            txtNAME_SUPPLIER.Clear();
+            txtPHONE.Clear();
+            txtEMAIL.Clear();
+            txtFAX.Clear();
+            txtADDRESS.Clear();
+            txtID_TAX.Clear();
+            txtID_SUPPLIER.Clear();
         }
         // disable
         public void Disable(bool E)
@@ -145,19 +156,20 @@ namespace SaleManagement.VIEW
             Disable(true);
             isAdd = true;
             txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.getNewIdSupplier();
-            txtNAME_SUPPLIER.Clear();
-            txtPHONE.Clear();
-            txtEMAIL.Clear();
-            txtFAX.Clear();
-            txtADDRESS.Clear();
-            txtID_TAX.Clear();
         }
         // edit supplier
         private void btnEDIT_Click(object sender, EventArgs e)
         {
-            Disable(true);
-            txtID_SUPPLIER.Enabled = false;
-            isAdd = false;
+            if (String.IsNullOrEmpty(txtID_SUPPLIER.Text))
+            {
+                MessageBox.Show("Vui lòng chọn nhà cung cấp muốn sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                Disable(true);
+                txtID_SUPPLIER.Enabled = false;
+                isAdd = false;
+            }
         }
         // save change
         private void btnSAVE_Click(object sender, EventArgs e)
@@ -184,8 +196,7 @@ namespace SaleManagement.VIEW
                     {
                         BLL_SUPPLIER.Instance.FuncAddNewSupplier(supplier); // add new supplier
                         MessageBox.Show("Thêm nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Disable(false);
-                        ShowData();
+                        ShowDataSupplier();
                     }
                     catch (Exception)
                     {
@@ -197,25 +208,31 @@ namespace SaleManagement.VIEW
                 {
                     BLL_SUPPLIER.Instance.FuncEditSupplier(supplier); // edit staff
                     MessageBox.Show("Sửa nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Disable(false);
-                    ShowData();
+                    ShowDataSupplier();
                 }
             }
         }
         // delete supplier
         private void btnDELETE_Click(object sender, EventArgs e)
         {
-            List<string> listID = new List<String>();
-            DataGridViewSelectedRowCollection data = dgvSUPPLIER.SelectedRows;
-            foreach(DataGridViewRow dgvRow in data)
+            if (String.IsNullOrEmpty(txtID_SUPPLIER.Text))
             {
-                listID.Add(dgvRow.Cells["MaNhaCungCap"].Value.ToString());
+                MessageBox.Show("Vui lòng chọn nhà cung cấp muốn sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa nhà cung cấp này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            else
             {
-                BLL_SUPPLIER.Instance.FuncDeleteSupplier(listID);
-                ShowData();
+                List<string> listID = new List<String>();
+                DataGridViewSelectedRowCollection data = dgvSUPPLIER.SelectedRows;
+                foreach (DataGridViewRow dgvRow in data)
+                {
+                    listID.Add(dgvRow.Cells["MaNhaCungCap"].Value.ToString());
+                }
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa nhà cung cấp này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    BLL_SUPPLIER.Instance.FuncDeleteSupplier(listID);
+                    ShowDataSupplier();
+                }
             }
         }
         // cancel
@@ -228,7 +245,7 @@ namespace SaleManagement.VIEW
         {
             FrmManage_Data frm = new FrmManage_Data(usernamelogin);
             frm.Show();
-            this.Hide();
+            this.Close();
         }
         // KeyPress Event
         private void txtFAX_KeyPress(object sender, KeyPressEventArgs e)

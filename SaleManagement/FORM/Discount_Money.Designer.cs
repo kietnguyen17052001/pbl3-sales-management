@@ -41,7 +41,7 @@ namespace SaleManagement.FORM
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(387, 51);
+            this.label2.Location = new System.Drawing.Point(378, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 24);
             this.label2.TabIndex = 87;
@@ -52,13 +52,14 @@ namespace SaleManagement.FORM
             this.txtDISCOUNT.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDISCOUNT.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDISCOUNT.ForeColor = System.Drawing.Color.Silver;
-            this.txtDISCOUNT.Location = new System.Drawing.Point(172, 49);
+            this.txtDISCOUNT.Location = new System.Drawing.Point(169, 48);
             this.txtDISCOUNT.Name = "txtDISCOUNT";
             this.txtDISCOUNT.Size = new System.Drawing.Size(203, 32);
             this.txtDISCOUNT.TabIndex = 86;
             this.txtDISCOUNT.Text = "Nhập số tiền";
             this.txtDISCOUNT.TextChanged += new System.EventHandler(this.txtDISCOUNT_TextChanged);
             this.txtDISCOUNT.Enter += new System.EventHandler(this.txtDISCOUNT_Enter);
+            this.txtDISCOUNT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDISCOUNT_KeyPress);
             this.txtDISCOUNT.Leave += new System.EventHandler(this.txtDISCOUNT_Leave);
             // 
             // label1
@@ -66,7 +67,7 @@ namespace SaleManagement.FORM
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(104, 51);
+            this.label1.Location = new System.Drawing.Point(101, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 24);
             this.label1.TabIndex = 85;
@@ -103,7 +104,7 @@ namespace SaleManagement.FORM
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCANCEL.Location = new System.Drawing.Point(279, 119);
+            this.btnCANCEL.Location = new System.Drawing.Point(271, 119);
             this.btnCANCEL.Name = "btnCANCEL";
             this.btnCANCEL.Size = new System.Drawing.Size(121, 48);
             this.btnCANCEL.TabIndex = 89;

@@ -15,14 +15,13 @@ namespace SaleManagement.FORM
 {
     public partial class FrmStatistic : Form
     {
-        private Random rand = new Random();
         private DateTime dateMin = BLL_LISTSALEINVOICE.Instance.getDate();
         private string usernamelogin;
         public FrmStatistic(string _usernamelogin)
         {
             InitializeComponent();
             usernamelogin = _usernamelogin;
-            SetCBB();
+            setCombobox();
             if (dateMin == null)
             {
                 dpFROM.Value = DateTime.Now;
@@ -33,10 +32,10 @@ namespace SaleManagement.FORM
             }
             fillChart();
         }
-        public void SetCBB()
+        public void setCombobox()
         {
             cbbTYPEOFPRODUCT.Items.Add(new CBBItem { VALUE = "0", TEXT = "None" });
-            cbbTYPEOFPRODUCT.Items.AddRange(BLL_PRODUCTS.Instance.getCBBTypeProduct().ToArray());
+            cbbTYPEOFPRODUCT.Items.AddRange(BLL_PRODUCT.Instance.getCBBTypeProduct().ToArray());
             cbbTYPEOFPRODUCT.SelectedIndex = 0;
         }
         public void fillChart()
@@ -53,18 +52,13 @@ namespace SaleManagement.FORM
             chartPRODUCT_QTY.Series.Add("Số sản phẩm");
             chartSCALE.Series.Add("Tỉ lệ %");
             chartSCALE.Series["Tỉ lệ %"].ChartType = SeriesChartType.Pie;
-            chartSCALE.Series["Tỉ lệ %"].LabelBackColor = Color.Black;
-            chartSCALE.Series["Tỉ lệ %"].LabelForeColor = Color.White;
-            chartMONEY.Series["Số tiền"].LabelBackColor = Color.Black;
-            chartMONEY.Series["Số tiền"].LabelForeColor = Color.White;
-            chartPRODUCT_QTY.Series["Số sản phẩm"].LabelBackColor = Color.Black;
-            chartPRODUCT_QTY.Series["Số sản phẩm"].LabelForeColor = Color.White;
+            chartSCALE.Series["Tỉ lệ %"].LabelForeColor = chartMONEY.Series["Số tiền"].LabelForeColor = chartPRODUCT_QTY.Series["Số sản phẩm"].LabelForeColor = Color.IndianRed;
+            chartSCALE.Series["Tỉ lệ %"].Font = chartMONEY.Series["Số tiền"].Font = chartPRODUCT_QTY.Series["Số sản phẩm"].Font = new Font("Tahoma", 8, FontStyle.Bold);
+            chartMONEY.Series["Số tiền"].LabelBackColor = chartPRODUCT_QTY.Series["Số sản phẩm"].LabelBackColor = Color.White;
             chartSCALE.Series["Tỉ lệ %"].IsValueShownAsLabel = true;
-            Color randomColor = new Color();
             foreach (tblLoaiHangHoa typeOfProduct in BLL_STATISTIC.instance.getListTypeOfProduct())
             {
                 quantitySale = 0; 
-                randomColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
                 quantity = 0;
                 money = 0;
                 foreach (tblHangHoa product in BLL_STATISTIC.instance.getListProduct())
@@ -76,10 +70,7 @@ namespace SaleManagement.FORM
                 }
                 // Biểu đồ số sản phẩm
                 chartPRODUCT_QTY.Series["Số sản phẩm"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, quantity);
-                chartPRODUCT_QTY.Series["Số sản phẩm"].Points[count].Color = randomColor;
                 chartPRODUCT_QTY.Series["Số sản phẩm"].Points[count].Label = quantity.ToString();
-                //var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dpFROM.Value && p.tblHoaDonBanHang.NgayBan <= dpTO.Value);
-                
                 foreach (tblChiTietHoaDonBanHang invoiceDetail in BLL_STATISTIC.instance.getListInvoiceDetail(dpFROM.Value, dpTO.Value))
                 {
                     if(invoiceDetail.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
@@ -92,7 +83,6 @@ namespace SaleManagement.FORM
                 chartSCALE.Series["Tỉ lệ %"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, Math.Round((quantitySale / BLL_STATISTIC.instance.getTotalQuantityProduct(dpFROM.Value, dpTO.Value)) * 100, 2));
                 // Biểu đồ tiền bán được
                 chartMONEY.Series["Số tiền"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, money);
-                chartMONEY.Series["Số tiền"].Points[count].Color = randomColor;
                 chartMONEY.Series["Số tiền"].Points[count].Label = money.ToString();
                 count++;
             }

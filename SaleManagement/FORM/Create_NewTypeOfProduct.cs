@@ -24,14 +24,14 @@ namespace SaleManagement.FORM
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             tblLoaiHangHoa typeOfProduct = new tblLoaiHangHoa();
-            if(string.IsNullOrEmpty(txtID_TYPEOFITEM.Text) || string.IsNullOrEmpty(txtNAME_TYPEOFITEM.Text))
+            if(string.IsNullOrEmpty(txtIdTypeOfProduct.Text) || string.IsNullOrEmpty(txtNameTypeOfProduct.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                typeOfProduct.MaLoaiHangHoa = txtID_TYPEOFITEM.Text;
-                typeOfProduct.TenLoaiHangHoa = txtNAME_TYPEOFITEM.Text;
+                typeOfProduct.MaLoaiHangHoa = txtIdTypeOfProduct.Text;
+                typeOfProduct.TenLoaiHangHoa = txtNameTypeOfProduct.Text;
                 try
                 {
                     BLL_TYPEOFPRODUCT.Instance.FuncAddNewProduct(typeOfProduct);

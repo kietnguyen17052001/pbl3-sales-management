@@ -20,9 +20,8 @@ namespace SaleManagement.VIEW
         {
             InitializeComponent();
             usernamelogin = _usernamelogin;
-            setCombobox();    
-            Disable(false);
-            ShowStaff();
+            setCombobox();
+            ShowDataStaff();
             FormatColumnsHeader();
         }
         // Format columns hearder
@@ -63,6 +62,15 @@ namespace SaleManagement.VIEW
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
         }
+        public void ClearCode()
+        {
+            txtNAME_STAFF.Clear();
+            txtPHONE.Clear();
+            rbMALE.Checked = true;
+            txtADDRESS.Clear();
+            txtSALARY.Clear();
+            cbbPOSITION.SelectedIndex = 0;
+        }
         public void setCombobox()
         {
             cbbPOSITION_DETAIL.Items.Add("Tất cả");
@@ -72,18 +80,13 @@ namespace SaleManagement.VIEW
             cbbPOSITION_DETAIL.SelectedIndex = cbbPOSITION.SelectedIndex = 0;
         }
         // show data staff
-        public void ShowStaff()
+        public void ShowDataStaff()
         {
+            Disable(false);
+            ClearCode();
             int index = cbbPOSITION_DETAIL.SelectedIndex;
             string position = cbbPOSITION_DETAIL.SelectedItem.ToString();
             BLL_STAFF.Instance.LoadDataStaff(dgvLIST_STAFF, index, position);
-            txtID_STAFF.Clear();
-            txtNAME_STAFF.Clear();
-            txtPHONE.Clear();
-            txtADDRESS.Clear();
-            txtSALARY.Clear();
-            txtPASSWORD.Clear();
-            cbbPOSITION.SelectedIndex = 0;
             lbQuantity.Text = BLL_STAFF.Instance.getQuantityStaff(dgvLIST_STAFF).ToString();
         }
         // dgv
@@ -122,7 +125,7 @@ namespace SaleManagement.VIEW
         // show staff
         private void btnSHOW_Click(object sender, EventArgs e)
         {
-            ShowStaff();
+            ShowDataStaff();
         }
         // export file Excel
         private void btnEXCEL_Click(object sender, EventArgs e)
@@ -158,20 +161,23 @@ namespace SaleManagement.VIEW
         private void btnADD_Click(object sender, EventArgs e)
         {
             Disable(true);
+            ClearCode();
             isAdd = true;
             txtID_STAFF.Text = BLL_STAFF.Instance.getNewIdStaff().ToString();
-            txtNAME_STAFF.Clear();
-            txtPHONE.Clear();
-            rbMALE.Checked = true;
-            txtADDRESS.Clear();
-            txtSALARY.Clear();
         }
         // edit staff
         private void btnEDIT_Click(object sender, EventArgs e)
         {
-            Disable(true);
-            txtID_STAFF.Enabled = false;
-            isAdd = false;
+            if (String.IsNullOrEmpty(txtID_STAFF.Text))
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên muốn sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                Disable(true);
+                txtID_STAFF.Enabled = false;
+                isAdd = false;
+            }
         }
         // save change
         private void btnSAVE_Click(object sender, EventArgs e)
@@ -211,7 +217,7 @@ namespace SaleManagement.VIEW
                         BLL_ACCOUNT.Instance.FuncAddAccount(account); // add new account for staff
                         MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Disable(false);
-                        ShowStaff();
+                        ShowDataStaff();
                     }
                     catch (Exception)
                     {
@@ -224,8 +230,7 @@ namespace SaleManagement.VIEW
                     BLL_STAFF.Instance.FuncEditStaff(staff); // edit staff
                     BLL_ACCOUNT.Instance.FuncEditPassword(account); // edit password
                     MessageBox.Show("Sửa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Disable(false);
-                    ShowStaff();
+                    ShowDataStaff();
                 }
                 
             } 
@@ -233,17 +238,24 @@ namespace SaleManagement.VIEW
         // delete staff
         private void btnDELETE_Click(object sender, EventArgs e)
         {
-            List<string> listIdStaff = new List<string>();
-            DataGridViewSelectedRowCollection data = dgvLIST_STAFF.SelectedRows;
-            foreach(DataGridViewRow dataGvr in data)
+            if (String.IsNullOrEmpty(txtID_STAFF.Text))
             {
-                listIdStaff.Add(dataGvr.Cells["MaNhanVien"].Value.ToString());
+                MessageBox.Show("Vui lòng chọn nhân viên muốn xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            DialogResult question = MessageBox.Show("Bạn chắc chắn muốn xóa nhân viên này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (question == DialogResult.Yes)
+            else
             {
-                BLL_STAFF.Instance.FuncDeleteStaff(listIdStaff); // delete staff
-                ShowStaff();
+                List<string> listIdStaff = new List<string>();
+                DataGridViewSelectedRowCollection data = dgvLIST_STAFF.SelectedRows;
+                foreach (DataGridViewRow dataGvr in data)
+                {
+                    listIdStaff.Add(dataGvr.Cells["MaNhanVien"].Value.ToString());
+                }
+                DialogResult question = MessageBox.Show("Bạn chắc chắn muốn xóa nhân viên này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (question == DialogResult.Yes)
+                {
+                    BLL_STAFF.Instance.FuncDeleteStaff(listIdStaff); // delete staff
+                    ShowDataStaff();
+                }
             }
         }
         // search staff
