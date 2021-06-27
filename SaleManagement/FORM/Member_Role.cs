@@ -39,6 +39,7 @@ namespace SaleManagement.FORM
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             FrmLogin frm = new FrmLogin();
+            frm.Show();
             this.Close();
         }
 

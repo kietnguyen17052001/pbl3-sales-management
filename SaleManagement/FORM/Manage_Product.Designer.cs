@@ -140,6 +140,7 @@ namespace SaleManagement.VIEW
             // 
             // txtNAME_PRODUCT
             // 
+            this.txtNAME_PRODUCT.BackColor = System.Drawing.SystemColors.Info;
             this.txtNAME_PRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_PRODUCT.ForeColor = System.Drawing.Color.Black;
             this.txtNAME_PRODUCT.Location = new System.Drawing.Point(133, 155);
@@ -152,7 +153,7 @@ namespace SaleManagement.VIEW
             // txtID_PRODUCT
             // 
             this.txtID_PRODUCT.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtID_PRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_PRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_PRODUCT.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_PRODUCT.Location = new System.Drawing.Point(133, 75);
             this.txtID_PRODUCT.Name = "txtID_PRODUCT";
@@ -221,6 +222,7 @@ namespace SaleManagement.VIEW
             // 
             // txtSALE
             // 
+            this.txtSALE.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.txtSALE.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSALE.ForeColor = System.Drawing.Color.Black;
             this.txtSALE.Location = new System.Drawing.Point(133, 316);
@@ -244,6 +246,7 @@ namespace SaleManagement.VIEW
             // 
             // txtBUY
             // 
+            this.txtBUY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.txtBUY.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBUY.ForeColor = System.Drawing.Color.Black;
             this.txtBUY.Location = new System.Drawing.Point(133, 277);

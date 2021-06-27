@@ -39,6 +39,7 @@ namespace SaleManagement.FORM
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lbINFO = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -93,7 +94,7 @@ namespace SaleManagement.FORM
             // txtUSER
             // 
             this.txtUSER.BackColor = System.Drawing.Color.White;
-            this.txtUSER.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUSER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUSER.ForeColor = System.Drawing.Color.Silver;
             this.txtUSER.Location = new System.Drawing.Point(333, 254);
             this.txtUSER.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -108,7 +109,7 @@ namespace SaleManagement.FORM
             // txtPASSWORD
             // 
             this.txtPASSWORD.BackColor = System.Drawing.Color.White;
-            this.txtPASSWORD.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPASSWORD.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPASSWORD.ForeColor = System.Drawing.Color.Silver;
             this.txtPASSWORD.Location = new System.Drawing.Point(333, 362);
             this.txtPASSWORD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -153,7 +154,7 @@ namespace SaleManagement.FORM
             this.btnLogin.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogin.Location = new System.Drawing.Point(283, 498);
+            this.btnLogin.Location = new System.Drawing.Point(169, 497);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(224, 63);
@@ -174,6 +175,23 @@ namespace SaleManagement.FORM
             this.lbINFO.TabIndex = 12;
             this.lbINFO.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.IndianRed;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(403, 497);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(224, 63);
+            this.btnExit.TabIndex = 13;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -181,6 +199,8 @@ namespace SaleManagement.FORM
             this.BackgroundImage = global::SaleManagement.Properties.Resources.backgroundLogin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(794, 675);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lbINFO);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.pictureBox4);
@@ -216,5 +236,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lbINFO;
+        private System.Windows.Forms.Button btnExit;
     }
 }

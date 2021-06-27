@@ -102,6 +102,7 @@ namespace SaleManagement.VIEW
             // 
             // txtNAME_SUPPLIER
             // 
+            this.txtNAME_SUPPLIER.BackColor = System.Drawing.SystemColors.Info;
             this.txtNAME_SUPPLIER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_SUPPLIER.ForeColor = System.Drawing.Color.Black;
             this.txtNAME_SUPPLIER.Location = new System.Drawing.Point(147, 195);
@@ -112,7 +113,7 @@ namespace SaleManagement.VIEW
             // txtID_SUPPLIER
             // 
             this.txtID_SUPPLIER.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtID_SUPPLIER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_SUPPLIER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_SUPPLIER.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_SUPPLIER.Location = new System.Drawing.Point(147, 157);
             this.txtID_SUPPLIER.Name = "txtID_SUPPLIER";

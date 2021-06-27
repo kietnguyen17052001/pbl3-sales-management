@@ -29,6 +29,7 @@ namespace SaleManagement.FORM
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChange_Password));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtOldPassword = new System.Windows.Forms.TextBox();
@@ -39,8 +40,14 @@ namespace SaleManagement.FORM
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lbWarning = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -68,7 +75,7 @@ namespace SaleManagement.FORM
             // 
             this.txtOldPassword.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOldPassword.ForeColor = System.Drawing.Color.Silver;
-            this.txtOldPassword.Location = new System.Drawing.Point(205, 224);
+            this.txtOldPassword.Location = new System.Drawing.Point(218, 224);
             this.txtOldPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtOldPassword.Multiline = true;
             this.txtOldPassword.Name = "txtOldPassword";
@@ -82,7 +89,7 @@ namespace SaleManagement.FORM
             // 
             this.txtNewPassword.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNewPassword.ForeColor = System.Drawing.Color.Silver;
-            this.txtNewPassword.Location = new System.Drawing.Point(205, 300);
+            this.txtNewPassword.Location = new System.Drawing.Point(218, 300);
             this.txtNewPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNewPassword.Multiline = true;
             this.txtNewPassword.Name = "txtNewPassword";
@@ -96,7 +103,7 @@ namespace SaleManagement.FORM
             // 
             this.txtReWriteNewPassword.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReWriteNewPassword.ForeColor = System.Drawing.Color.Silver;
-            this.txtReWriteNewPassword.Location = new System.Drawing.Point(205, 375);
+            this.txtReWriteNewPassword.Location = new System.Drawing.Point(218, 375);
             this.txtReWriteNewPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtReWriteNewPassword.Multiline = true;
             this.txtReWriteNewPassword.Name = "txtReWriteNewPassword";
@@ -180,6 +187,36 @@ namespace SaleManagement.FORM
             this.lbWarning.TabIndex = 9;
             this.lbWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.White;
+            this.pictureBox3.Image = global::SaleManagement.Properties.Resources.keyOldPass;
+            this.pictureBox3.Location = new System.Drawing.Point(130, 224);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(68, 45);
+            this.pictureBox3.TabIndex = 10;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.White;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(130, 300);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(68, 45);
+            this.pictureBox4.TabIndex = 11;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(130, 375);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(68, 45);
+            this.pictureBox5.TabIndex = 12;
+            this.pictureBox5.TabStop = false;
+            // 
             // FrmChange_Password
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -187,6 +224,9 @@ namespace SaleManagement.FORM
             this.BackgroundImage = global::SaleManagement.Properties.Resources.backgroundLogin;
             this.ClientSize = new System.Drawing.Size(766, 690);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.lbWarning);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -203,6 +243,9 @@ namespace SaleManagement.FORM
             this.Text = "Thay đổi mật khẩu";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,5 +263,8 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lbWarning;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

@@ -396,7 +396,7 @@ namespace SaleManagement.FORM
             // 
             this.txtIdInvoice.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtIdInvoice.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtIdInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdInvoice.ForeColor = System.Drawing.Color.IndianRed;
             this.txtIdInvoice.Location = new System.Drawing.Point(123, 33);
             this.txtIdInvoice.Name = "txtIdInvoice";

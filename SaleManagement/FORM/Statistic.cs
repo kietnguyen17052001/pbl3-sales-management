@@ -15,20 +15,20 @@ namespace SaleManagement.FORM
 {
     public partial class FrmStatistic : Form
     {
-        private DateTime dateMin = BLL_LISTSALEINVOICE.Instance.getDate();
+        private DateTime dateStart = BLL_LISTSALEINVOICE.Instance.getDate();
         private string usernamelogin;
         public FrmStatistic(string _usernamelogin)
         {
             InitializeComponent();
             usernamelogin = _usernamelogin;
             setCombobox();
-            if (dateMin == null)
+            if (dateStart == null)
             {
                 dpFROM.Value = DateTime.Now;
             }
             else
             {
-                dpFROM.Value = dateMin;
+                dpFROM.Value = dateStart;
             }
             fillChart();
         }
@@ -41,9 +41,9 @@ namespace SaleManagement.FORM
         public void fillChart()
         {
             lbTIME.Text = "Từ ngày " + dpFROM.Value.ToShortDateString() + " đến ngày " + dpTO.Value.ToShortDateString();
-            int quantity; // số lượng hiện tại của loại hàng hóa
-            double money; // số tiền bán được của loại hàng hóa
-            double quantitySale; // số lượng bán được của loại hàng hóa
+            int quantityTypeOfProduct; // số lượng hiện tại của loại hàng hóa
+            double sellMoneyTypeOfProduct; // số tiền bán được của loại hàng hóa
+            double sellQuantityTypeOfProduct; // số lượng bán được của loại hàng hóa
             int count = 0; //
             chartMONEY.Series.Clear();
             chartPRODUCT_QTY.Series.Clear();
@@ -54,36 +54,21 @@ namespace SaleManagement.FORM
             chartSCALE.Series["Tỉ lệ %"].ChartType = SeriesChartType.Pie;
             chartSCALE.Series["Tỉ lệ %"].LabelForeColor = chartMONEY.Series["Số tiền"].LabelForeColor = chartPRODUCT_QTY.Series["Số sản phẩm"].LabelForeColor = Color.IndianRed;
             chartSCALE.Series["Tỉ lệ %"].Font = chartMONEY.Series["Số tiền"].Font = chartPRODUCT_QTY.Series["Số sản phẩm"].Font = new Font("Tahoma", 8, FontStyle.Bold);
-            chartMONEY.Series["Số tiền"].LabelBackColor = chartPRODUCT_QTY.Series["Số sản phẩm"].LabelBackColor = Color.White;
+            chartMONEY.Series["Số tiền"].LabelBackColor = chartPRODUCT_QTY.Series["Số sản phẩm"].LabelBackColor = chartSCALE.Series["Tỉ lệ %"].LabelBackColor = Color.White;
             chartSCALE.Series["Tỉ lệ %"].IsValueShownAsLabel = true;
             foreach (tblLoaiHangHoa typeOfProduct in BLL_STATISTIC.instance.getListTypeOfProduct())
             {
-                quantitySale = 0; 
-                quantity = 0;
-                money = 0;
-                foreach (tblHangHoa product in BLL_STATISTIC.instance.getListProduct())
-                {
-                    if (product.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
-                    {
-                        quantity += product.SoLuong;
-                    }
-                }
+                quantityTypeOfProduct = BLL_STATISTIC.instance.getQuantityOfEachTypeOfProduct(typeOfProduct);
+                sellQuantityTypeOfProduct = BLL_STATISTIC.instance.getSellQuantityOfEachTypeOfProduct(typeOfProduct, dpFROM.Value, dpTO.Value);
+                sellMoneyTypeOfProduct = BLL_STATISTIC.instance.getSellMoneyOfEachTypeOfProduct(typeOfProduct, dpFROM.Value, dpTO.Value);
                 // Biểu đồ số sản phẩm
-                chartPRODUCT_QTY.Series["Số sản phẩm"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, quantity);
-                chartPRODUCT_QTY.Series["Số sản phẩm"].Points[count].Label = quantity.ToString();
-                foreach (tblChiTietHoaDonBanHang invoiceDetail in BLL_STATISTIC.instance.getListInvoiceDetail(dpFROM.Value, dpTO.Value))
-                {
-                    if(invoiceDetail.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
-                    {
-                        money += (double)invoiceDetail.TongTien;
-                        quantitySale += (int)invoiceDetail.SoLuong;
-                    }
-                }
+                chartPRODUCT_QTY.Series["Số sản phẩm"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, quantityTypeOfProduct);
+                chartPRODUCT_QTY.Series["Số sản phẩm"].Points[count].Label = quantityTypeOfProduct.ToString();
                 // Biểu đồ so sánh
-                chartSCALE.Series["Tỉ lệ %"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, Math.Round((quantitySale / BLL_STATISTIC.instance.getTotalQuantityProduct(dpFROM.Value, dpTO.Value)) * 100, 2));
+                chartSCALE.Series["Tỉ lệ %"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, Math.Round((sellQuantityTypeOfProduct / BLL_STATISTIC.instance.getTotalQuantityProduct(dpFROM.Value, dpTO.Value)) * 100, 2));
                 // Biểu đồ tiền bán được
-                chartMONEY.Series["Số tiền"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, money);
-                chartMONEY.Series["Số tiền"].Points[count].Label = money.ToString();
+                chartMONEY.Series["Số tiền"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, sellMoneyTypeOfProduct);
+                chartMONEY.Series["Số tiền"].Points[count].Label = sellMoneyTypeOfProduct.ToString();
                 count++;
             }
         }

@@ -81,6 +81,7 @@ namespace SaleManagement.FORM
             // txtNameTypeOfProduct
             // 
             this.txtNameTypeOfProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtNameTypeOfProduct.BackColor = System.Drawing.SystemColors.Info;
             this.txtNameTypeOfProduct.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameTypeOfProduct.ForeColor = System.Drawing.Color.Black;
             this.txtNameTypeOfProduct.Location = new System.Drawing.Point(199, 174);
@@ -92,7 +93,7 @@ namespace SaleManagement.FORM
             // 
             this.txtIdTypeOfProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtIdTypeOfProduct.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtIdTypeOfProduct.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdTypeOfProduct.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdTypeOfProduct.ForeColor = System.Drawing.Color.IndianRed;
             this.txtIdTypeOfProduct.Location = new System.Drawing.Point(199, 113);
             this.txtIdTypeOfProduct.Name = "txtIdTypeOfProduct";

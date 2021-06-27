@@ -154,6 +154,7 @@ namespace SaleManagement.VIEW
         private void btnADD_Click(object sender, EventArgs e)
         {
             Disable(true);
+            ClearCode();
             isAdd = true;
             txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.getNewIdSupplier();
         }

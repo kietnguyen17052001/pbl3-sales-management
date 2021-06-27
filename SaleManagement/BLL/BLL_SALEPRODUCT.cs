@@ -64,8 +64,20 @@ namespace SaleManagement.BLL
             });
             return dataTable;
         }
-         // Thêm hàng hóa vào hóa đơn
-        public void FuncAddProduct(DataTable data, string idProduct, int quantityOfSelectProduct, double discount)
+        // Kiểm tra xem số lượng thêm vào có phù hợp với số lượng trong kho hay không
+        public bool isValidQuantityProduct(DataRow dataRow, tblHangHoa product, int quantityAdd)
+        {
+            if((Convert.ToInt32(dataRow["SoLuong"].ToString()) + quantityAdd) > product.SoLuong)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        // Thêm hàng hóa vào hóa đơn
+        public void FuncAddProduct(DataTable data, string idProduct, int quantityAdd, double discount)
         {
             bool isHas = false; // kiểm tra hàng hóa đã có trong hóa đơn hay chưa. Nếu có rồi thì update số lượng, nếu chưa thì add new
             var product = DB.tblHangHoas.Find(idProduct);
@@ -74,8 +86,11 @@ namespace SaleManagement.BLL
                 if (dataRow["MaHangHoa"].ToString() == product.MaHangHoa)
                 {
                     isHas = true; // hàng hóa đã có
-                    dataRow["SoLuong"] = (Convert.ToInt32(dataRow["SoLuong"].ToString()) + quantityOfSelectProduct).ToString(); // thay đổi số lượng khi thêm hàng vào
-                    dataRow["ThanhTien(VNĐ)"] = String.Format("{0:n0}", Convert.ToDouble(dataRow["ThanhTien(VNĐ)"].ToString()) + (product.GiaBan * quantityOfSelectProduct - (product.GiaBan * quantityOfSelectProduct * discount) / 100)); // chuyển định dạng số tiền, vd: 2000 -> 2.000
+                    if (isValidQuantityProduct(dataRow, product, quantityAdd))
+                    {
+                        dataRow["SoLuong"] = (Convert.ToInt32(dataRow["SoLuong"].ToString()) + quantityAdd).ToString(); // thay đổi số lượng khi thêm hàng vào
+                        dataRow["ThanhTien(VNĐ)"] = String.Format("{0:n0}", Convert.ToDouble(dataRow["ThanhTien(VNĐ)"].ToString()) + (product.GiaBan * quantityAdd - (product.GiaBan * quantityAdd * discount) / 100)); // chuyển định dạng số tiền, vd: 2000 -> 2.000
+                    }     
                 }
             }
             if (isHas == false) // hàng hóa chưa có
@@ -83,10 +98,10 @@ namespace SaleManagement.BLL
                 data.Rows.Add(
                     idProduct,
                     product.TenHangHoa,
-                    quantityOfSelectProduct,
+                    quantityAdd,
                     String.Format("{0:n0}",product.GiaBan), 
                     discount, 
-                    String.Format("{0:n0}", Convert.ToDouble(product.GiaBan * quantityOfSelectProduct - (product.GiaBan * quantityOfSelectProduct * discount) / 100)));
+                    String.Format("{0:n0}", Convert.ToDouble(product.GiaBan * quantityAdd - (product.GiaBan * quantityAdd * discount) / 100)));
             }
         }
         // Xóa hàng hóa khỏi hóa đơn

@@ -88,12 +88,14 @@ namespace SaleManagement.FORM
             // 
             // txtNEWQTY
             // 
-            this.txtNEWQTY.BackColor = System.Drawing.SystemColors.Window;
-            this.txtNEWQTY.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNEWQTY.BackColor = System.Drawing.SystemColors.Info;
+            this.txtNEWQTY.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNEWQTY.Location = new System.Drawing.Point(266, 29);
             this.txtNEWQTY.Name = "txtNEWQTY";
             this.txtNEWQTY.Size = new System.Drawing.Size(151, 27);
             this.txtNEWQTY.TabIndex = 93;
+            this.txtNEWQTY.Text = "1";
+            this.txtNEWQTY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNEWQTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNEWQTY_KeyPress);
             // 
             // lbQTY

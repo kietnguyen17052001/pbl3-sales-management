@@ -125,6 +125,7 @@ namespace SaleManagement.FORM
             // 
             // txtPRICE
             // 
+            this.txtPRICE.BackColor = System.Drawing.SystemColors.Info;
             this.txtPRICE.Enabled = false;
             this.txtPRICE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPRICE.ForeColor = System.Drawing.Color.Black;
@@ -137,7 +138,8 @@ namespace SaleManagement.FORM
             // 
             this.txtID_INVOICE.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtID_INVOICE.Enabled = false;
-            this.txtID_INVOICE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_INVOICE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_INVOICE.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_INVOICE.Location = new System.Drawing.Point(124, 107);
             this.txtID_INVOICE.Name = "txtID_INVOICE";
             this.txtID_INVOICE.Size = new System.Drawing.Size(247, 29);
@@ -186,6 +188,7 @@ namespace SaleManagement.FORM
             // 
             // txtDISCOUNT
             // 
+            this.txtDISCOUNT.BackColor = System.Drawing.SystemColors.Info;
             this.txtDISCOUNT.Enabled = false;
             this.txtDISCOUNT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDISCOUNT.ForeColor = System.Drawing.Color.Black;

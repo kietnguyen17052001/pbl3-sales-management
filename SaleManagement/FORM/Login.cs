@@ -20,22 +20,32 @@ namespace SaleManagement.FORM
             InitializeComponent();
         }
         private void btnLogin_Click(object sender, EventArgs e)
-        {   
-            tblTaiKhoan user = BLL_ACCOUNT.Instance.getUser(txtUSER.Text);
-            if(string.IsNullOrEmpty(txtUSER.Text) || user == null)
+        { 
+            if(txtUSER.Text == "Nhập tài khoản" && txtPASSWORD.Text != "Nhập mật khẩu")
             {
                 lbINFO.ForeColor = Color.IndianRed;
-                lbINFO.Text = "Tên tài khoản không hợp lệ";
+                lbINFO.Text = "Vui lòng nhập tài khoản";
+            }
+            else if(txtUSER.Text != "Nhập tài khoản" && txtPASSWORD.Text == "Nhập mật khẩu")
+            {
+                lbINFO.ForeColor = Color.IndianRed;
+                lbINFO.Text = "Vui lòng nhập mật khẩu";
+            }
+            else if (txtUSER.Text == "Nhập tài khoản" && txtPASSWORD.Text == "Nhập mật khẩu")
+            {
+                lbINFO.ForeColor = Color.IndianRed;
+                lbINFO.Text = "Vui lòng nhập tài khoản và mật khẩu";
             }
             else
             {
+                tblTaiKhoan user = BLL_ACCOUNT.Instance.getUser(txtUSER.Text.Trim());
                 if (user.ChucVu == "Admin")
                 {
-                    if (user.MatKhau == txtPASSWORD.Text)
+                    if (user.MatKhau == txtPASSWORD.Text.Trim())
                     {
                         lbINFO.ForeColor = Color.SteelBlue;
                         lbINFO.Text = "Đăng nhập thành công";
-                        FrmMain_Admin frm = new FrmMain_Admin(txtUSER.Text);
+                        FrmMain_Admin frm = new FrmMain_Admin(txtUSER.Text.Trim());
                         frm.Show();
                         this.Hide();
                     }
@@ -48,11 +58,11 @@ namespace SaleManagement.FORM
                 }
                 else if (user.ChucVu == "Member")
                 {
-                    if (user.MatKhau == txtPASSWORD.Text)
+                    if (user.MatKhau == txtPASSWORD.Text.Trim())
                     {
                         lbINFO.ForeColor = Color.SteelBlue;
                         lbINFO.Text = "Đăng nhập thành công";
-                        FrmMain_Member frm = new FrmMain_Member(txtUSER.Text);
+                        FrmMain_Member frm = new FrmMain_Member(txtUSER.Text.Trim());
                         frm.Show();
                         this.Hide();
                     }
@@ -101,6 +111,11 @@ namespace SaleManagement.FORM
                 txtPASSWORD.Text = "Nhập mật khẩu";
                 txtPASSWORD.ForeColor = Color.Silver;
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

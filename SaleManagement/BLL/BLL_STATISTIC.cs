@@ -49,11 +49,6 @@ namespace SaleManagement.BLL
         {
             return DB.tblLoaiHangHoas;
         }
-        // get list product
-        public IQueryable<tblHangHoa> getListProduct()
-        {
-            return DB.tblHangHoas;
-        }
         // get list invoice by year 
         public IQueryable<tblHoaDonBanHang> getListInvoiceByYear(int year)
         {
@@ -64,6 +59,97 @@ namespace SaleManagement.BLL
         {
             return DB.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year
             && p.NgayBan.Value.Month == month);
+        }
+        // get revenue in year
+        public double getRevenueYear(int year, int month)
+        {
+            double revenue = 0;
+            foreach (tblHoaDonBanHang invoice in getListInvoiceByYear(year))
+            {
+                if (invoice.NgayBan.Value.Month == month)
+                {
+                    revenue += (double)invoice.SoTien;
+                }
+            }
+            return revenue;
+        }
+        // get revenue in month
+        public double getRevenueMonth(int year, int month, int day)
+        {
+            double revenue = 0;
+            foreach (tblHoaDonBanHang invoice in BLL_STATISTIC.instance.getListInvoiceByMonthInYear(year, month))
+            {
+                if (invoice.NgayBan.Value.Day == day)
+                {
+                    revenue += (double)invoice.SoTien;
+                }
+            }
+            return revenue;
+        }
+        // get quantity of each type of product
+        public int getQuantityOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct)
+        {
+            int quantity = 0;
+            foreach (tblHangHoa product in DB.tblHangHoas)
+            {
+                if (product.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
+                {
+                    quantity += product.SoLuong;
+                }
+            }
+            return quantity;
+        }
+        // get sale quantity of each type of product
+        public int getSellQuantityOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct, DateTime dateStart, DateTime dateEnd)
+        {
+            int selleQuantity = 0;   
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
+            {
+                if (invoiceDetail.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
+                {
+                    selleQuantity += (int)invoiceDetail.SoLuong;
+                }
+            }
+            return selleQuantity;
+        }
+        // get sale money of each type of product
+        public double getSellMoneyOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct, DateTime dateStart, DateTime dateEnd)
+        {
+            double sellMoney = 0;
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
+            {
+                if (invoiceDetail.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
+                {
+                    sellMoney += (double)invoiceDetail.TongTien;
+                }
+            }
+            return sellMoney;
+        }
+        // get sell quantity of each product
+        public int getSellQuantityOfEachProduct(tblHangHoa product, DateTime dateStart, DateTime dateEnd)
+        {
+            int sellQuantity = 0;
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
+            {
+                if (invoiceDetail.MaHangHoa == product.MaHangHoa)
+                {
+                    sellQuantity += (int)invoiceDetail.SoLuong;
+                }
+            }
+            return sellQuantity;
+        }
+        // get sell money of each product
+        public double getSellMoneyOfEachProduct(tblHangHoa product, DateTime dateStart, DateTime dateEnd)
+        {
+            double sellMoney = 0;
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
+            {
+                if (invoiceDetail.MaHangHoa == product.MaHangHoa)
+                {
+                    sellMoney += (double)invoiceDetail.TongTien;
+                }
+            }
+            return sellMoney;
         }
     }
 }

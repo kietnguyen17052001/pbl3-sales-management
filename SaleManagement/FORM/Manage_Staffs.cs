@@ -69,6 +69,7 @@ namespace SaleManagement.VIEW
             rbMALE.Checked = true;
             txtADDRESS.Clear();
             txtSALARY.Clear();
+            txtPASSWORD.Clear();
             cbbPOSITION.SelectedIndex = 0;
         }
         public void setCombobox()
@@ -118,7 +119,7 @@ namespace SaleManagement.VIEW
         // back to FrmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin();
+            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
             frm.Show();
             this.Close();
         }
@@ -216,7 +217,6 @@ namespace SaleManagement.VIEW
                         BLL_STAFF.Instance.FuncAddNewStaff(staff); // add new staff
                         BLL_ACCOUNT.Instance.FuncAddAccount(account); // add new account for staff
                         MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Disable(false);
                         ShowDataStaff();
                     }
                     catch (Exception)
@@ -228,7 +228,7 @@ namespace SaleManagement.VIEW
                 else
                 {
                     BLL_STAFF.Instance.FuncEditStaff(staff); // edit staff
-                    BLL_ACCOUNT.Instance.FuncEditPassword(account); // edit password
+                    BLL_ACCOUNT.Instance.ChangePasswordStaff(account); // edit password
                     MessageBox.Show("Sửa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ShowDataStaff();
                 }

@@ -151,7 +151,7 @@ namespace SaleManagement.VIEW
             // txtID_STAFF
             // 
             this.txtID_STAFF.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtID_STAFF.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_STAFF.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_STAFF.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_STAFF.Location = new System.Drawing.Point(133, 97);
             this.txtID_STAFF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -355,6 +355,7 @@ namespace SaleManagement.VIEW
             // 
             // txtNAME_STAFF
             // 
+            this.txtNAME_STAFF.BackColor = System.Drawing.SystemColors.Info;
             this.txtNAME_STAFF.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_STAFF.ForeColor = System.Drawing.Color.Black;
             this.txtNAME_STAFF.Location = new System.Drawing.Point(133, 134);
@@ -375,6 +376,7 @@ namespace SaleManagement.VIEW
             // 
             // cbbPOSITION
             // 
+            this.cbbPOSITION.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbPOSITION.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbPOSITION.FormattingEnabled = true;
             this.cbbPOSITION.Location = new System.Drawing.Point(133, 172);
@@ -506,6 +508,7 @@ namespace SaleManagement.VIEW
             // 
             // txtPASSWORD
             // 
+            this.txtPASSWORD.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.txtPASSWORD.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPASSWORD.Location = new System.Drawing.Point(133, 371);
             this.txtPASSWORD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

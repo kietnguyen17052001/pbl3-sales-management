@@ -42,7 +42,7 @@ namespace SaleManagement.FORM
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(384, 68);
+            this.label2.Location = new System.Drawing.Point(382, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 24);
             this.label2.TabIndex = 35;
@@ -51,11 +51,12 @@ namespace SaleManagement.FORM
             // txtDISCOUNT
             // 
             this.txtDISCOUNT.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtDISCOUNT.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDISCOUNT.BackColor = System.Drawing.SystemColors.Info;
+            this.txtDISCOUNT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDISCOUNT.ForeColor = System.Drawing.Color.Silver;
-            this.txtDISCOUNT.Location = new System.Drawing.Point(168, 64);
+            this.txtDISCOUNT.Location = new System.Drawing.Point(168, 66);
             this.txtDISCOUNT.Name = "txtDISCOUNT";
-            this.txtDISCOUNT.Size = new System.Drawing.Size(203, 32);
+            this.txtDISCOUNT.Size = new System.Drawing.Size(203, 29);
             this.txtDISCOUNT.TabIndex = 34;
             this.txtDISCOUNT.Text = "Nhập %";
             this.txtDISCOUNT.TextChanged += new System.EventHandler(this.txtDISCOUNT_TextChanged);
@@ -144,7 +145,7 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label1);
             this.Name = "FrmDiscount_Percent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Giảm %";
+            this.Text = "Giảm % tiền cho hóa đơn";
             this.ResumeLayout(false);
             this.PerformLayout();
 

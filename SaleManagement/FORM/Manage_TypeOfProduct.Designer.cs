@@ -218,6 +218,7 @@ namespace SaleManagement.FORM
             // 
             // txtNAME_TYPEPRODUCT
             // 
+            this.txtNAME_TYPEPRODUCT.BackColor = System.Drawing.SystemColors.Info;
             this.txtNAME_TYPEPRODUCT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_TYPEPRODUCT.ForeColor = System.Drawing.Color.Black;
             this.txtNAME_TYPEPRODUCT.Location = new System.Drawing.Point(150, 193);
@@ -228,7 +229,7 @@ namespace SaleManagement.FORM
             // txtID_TYPEPRODUCT
             // 
             this.txtID_TYPEPRODUCT.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtID_TYPEPRODUCT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_TYPEPRODUCT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_TYPEPRODUCT.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_TYPEPRODUCT.Location = new System.Drawing.Point(150, 126);
             this.txtID_TYPEPRODUCT.Name = "txtID_TYPEPRODUCT";

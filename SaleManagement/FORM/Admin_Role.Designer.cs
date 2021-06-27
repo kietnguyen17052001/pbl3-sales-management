@@ -32,9 +32,10 @@ namespace SaleManagement
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain_Admin));
             this.panelSALE_MANAGEMENT = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbINFO = new System.Windows.Forms.Label();
+            this.lbDate = new System.Windows.Forms.Label();
+            this.lbWelcome = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnIntroduce = new System.Windows.Forms.Button();
@@ -42,11 +43,10 @@ namespace SaleManagement
             this.btnStatistic = new System.Windows.Forms.Button();
             this.btnChange_Password = new System.Windows.Forms.Button();
             this.btnManageData = new System.Windows.Forms.Button();
-            this.lbDate = new System.Windows.Forms.Label();
-            this.lbWelcome = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelSALE_MANAGEMENT.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSALE_MANAGEMENT
@@ -74,18 +74,6 @@ namespace SaleManagement
             this.label2.TabIndex = 2;
             this.label2.Text = "N3K";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::SaleManagement.Properties.Resources.cart_60_32;
-            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(25, 12);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(82, 70);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -108,6 +96,26 @@ namespace SaleManagement
             this.lbINFO.Name = "lbINFO";
             this.lbINFO.Size = new System.Drawing.Size(0, 28);
             this.lbINFO.TabIndex = 18;
+            // 
+            // lbDate
+            // 
+            this.lbDate.AutoSize = true;
+            this.lbDate.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDate.Location = new System.Drawing.Point(265, 115);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Size = new System.Drawing.Size(91, 19);
+            this.lbDate.TabIndex = 20;
+            this.lbDate.Text = "Thời gian:";
+            // 
+            // lbWelcome
+            // 
+            this.lbWelcome.AutoSize = true;
+            this.lbWelcome.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWelcome.Location = new System.Drawing.Point(43, 115);
+            this.lbWelcome.Name = "lbWelcome";
+            this.lbWelcome.Size = new System.Drawing.Size(84, 19);
+            this.lbWelcome.TabIndex = 21;
+            this.lbWelcome.Text = "Xin chào:";
             // 
             // btnLogOut
             // 
@@ -262,25 +270,17 @@ namespace SaleManagement
             this.btnManageData.UseVisualStyleBackColor = false;
             this.btnManageData.Click += new System.EventHandler(this.btnManage_Data_Click);
             // 
-            // lbDate
+            // pictureBox2
             // 
-            this.lbDate.AutoSize = true;
-            this.lbDate.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(265, 115);
-            this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(91, 19);
-            this.lbDate.TabIndex = 20;
-            this.lbDate.Text = "Thời gian:";
-            // 
-            // lbWelcome
-            // 
-            this.lbWelcome.AutoSize = true;
-            this.lbWelcome.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbWelcome.Location = new System.Drawing.Point(43, 115);
-            this.lbWelcome.Name = "lbWelcome";
-            this.lbWelcome.Size = new System.Drawing.Size(84, 19);
-            this.lbWelcome.TabIndex = 21;
-            this.lbWelcome.Text = "Xin chào:";
+            this.pictureBox2.Image = global::SaleManagement.Properties.Resources.cart_60_32;
+            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(25, 12);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(82, 70);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // FrmMain_Admin
             // 
@@ -288,6 +288,7 @@ namespace SaleManagement
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
+            this.ControlBox = false;
             this.Controls.Add(this.lbWelcome);
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.btnLogOut);
@@ -305,8 +306,8 @@ namespace SaleManagement
             this.Text = "Phần mềm quản lý bán hàng - Admin";
             this.panelSALE_MANAGEMENT.ResumeLayout(false);
             this.panelSALE_MANAGEMENT.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

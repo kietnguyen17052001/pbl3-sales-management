@@ -35,11 +35,25 @@ namespace SaleManagement.BLL
             DB.tblTaiKhoans.Add(account);
             DB.SaveChanges();
         }
-        public void FuncEditPassword(tblTaiKhoan account)
+        public void ChangePasswordStaff(tblTaiKhoan _account)
         {
-            var getAccount = DB.tblTaiKhoans.Find(account.MaNguoiDung);
-            getAccount.MatKhau = account.MatKhau;
+            var account = DB.tblTaiKhoans.Find(_account.MaNguoiDung);
+            account.MatKhau = _account.MatKhau;
             DB.SaveChanges();
+        }
+        public bool ChangePasswordAdmin(string userNameLogin, string oldPass, string newPass)
+        {
+            var account = DB.tblTaiKhoans.Find(userNameLogin);
+            if (account.MatKhau != oldPass)
+            {
+                return false;
+            }
+            else
+            {
+                account.MatKhau = newPass;
+                DB.SaveChanges();
+                return true;
+            }
         }
     }
 }

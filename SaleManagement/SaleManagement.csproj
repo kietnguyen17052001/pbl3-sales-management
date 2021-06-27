@@ -60,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\BLL_ACCOUNT.cs" />
-    <Compile Include="BLL\BLL_CHANGEPASSWORD.cs" />
     <Compile Include="BLL\BLL_LISTIMPORTINVOICE.cs" />
     <Compile Include="BLL\BLL_SALEPRODUCT.cs" />
     <Compile Include="BLL\BLL_CUSTOMER.cs" />
@@ -519,6 +518,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="IMG\changePass.png" />
+    <None Include="IMG\keyOldPass.png" />
     <None Include="IMG\check.png" />
     <None Include="IMG\right.png" />
     <None Include="Card\kiet.png" />
