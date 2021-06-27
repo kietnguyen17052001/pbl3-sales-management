@@ -127,7 +127,7 @@ namespace SaleManagement.FORM
             dgvInfoProduct.DefaultCellStyle.BackColor = Color.Azure;
             dgvInfoProduct.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
         }
-        public void NewProduct(string nameProduct)
+        public void newProduct(string nameProduct)
         {
             BLL_IMPORTPRODUCT.instance.FuncSearchProduct(nameProduct, dgvInfoProduct);
         }
@@ -135,7 +135,7 @@ namespace SaleManagement.FORM
         private void btnAddNewProduct_Click(object sender, EventArgs e)
         {
             FrmCreate_NewProduct frm = new FrmCreate_NewProduct();
-            frm.d += new FrmCreate_NewProduct.myDel(NewProduct);
+            frm.d += new FrmCreate_NewProduct.myDel(newProduct);
             frm.Show();
         }
         // Select product
@@ -162,7 +162,7 @@ namespace SaleManagement.FORM
         // button Update quantity
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            BLL_IMPORTPRODUCT.instance.FuncUpdateProductQty(dataTable, idProduct, Convert.ToInt32(txtUpdateQuantity.Text));
+            BLL_IMPORTPRODUCT.instance.FuncUpdateProductQty(dataTable, dgvInvoice.SelectedRows[0].Cells["MaHangHoa"].Value.ToString(), Convert.ToInt32(txtUpdateQuantity.Text));
             LoadDGVs();
             setValue(true, 0);
         }
@@ -214,34 +214,47 @@ namespace SaleManagement.FORM
         // button Payment invoice
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            tblHoaDonNhapHang newInvoice = new tblHoaDonNhapHang();
+            string message = "Thông tin lỗi:\n"; 
             if (string.IsNullOrEmpty(txtIdInvoice.Text) || string.IsNullOrEmpty(txtSupplier.Text)
                 || dataTable.Rows.Count == 0)
             {
-                MessageBox.Show("Vui lòng kiểm tra lại thông tin hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (string.IsNullOrEmpty(txtIdInvoice.Text))
+                {
+                    message += "+ Mã hóa đơn trống\n";
+                }
+                if (string.IsNullOrEmpty(txtSupplier.Text))
+                {
+                    message += "+ Nhà cung cấp trống\n";
+                }
+                if (dataTable.Rows.Count == 0)
+                {
+                    message += "+ Hóa đơn trống sản phẩm\n";
+                }
+                MessageBox.Show(message, "Lỗi tạo đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+                tblHoaDonNhapHang newInvoice = new tblHoaDonNhapHang();
                 newInvoice.MaHoaDonNhap = txtIdInvoice.Text;
                 newInvoice.MaNhanVien = ((CBBItem)cbbStaff.SelectedItem).VALUE;
                 newInvoice.NgayNhap = dpDayCreate.Value;
                 newInvoice.MaNhaCungCap = idSupplier;
-                newInvoice.SoTien = intoMoney;
-                newInvoice.GiamGia = totalMoney - intoMoney;
-                try
-                {
-                    DialogResult dialogResult = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
+                newInvoice.SoTien = Math.Round(intoMoney);
+                newInvoice.GiamGia = Math.Round((totalMoney - intoMoney));
+                DialogResult dialogResult = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                { 
+                    try
                     {
-                        MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         BLL_IMPORTPRODUCT.instance.FuncPaymentInvoice(newInvoice, dataTable); // payment invoice
+                        MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadDGVs();
                         LoadForm();
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Mã hóa đơn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Mã hóa đơn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -252,11 +265,11 @@ namespace SaleManagement.FORM
             e.Graphics.DrawString("54 NGUYỄN LƯƠNG BẰNG", new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(280, 100));
             e.Graphics.DrawString("0911.888.999", new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(350, 120));
             e.Graphics.DrawString("HÓA ĐƠN THANH TOÁN", new Font("Tahoma", 19, FontStyle.Bold), Brushes.Black, new Point(270, 180));
-            e.Graphics.DrawString("Nhân viên: " + cbbStaff.SelectedItem.ToString(), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(270, 220));
-            e.Graphics.DrawString("Nhà cung cấp: " + txtSupplier.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(270, 250));
-            e.Graphics.DrawString("Số hóa đơn: " + txtIdInvoice.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(200, 300));
+            e.Graphics.DrawString("Nhân viên: " + cbbStaff.SelectedItem.ToString(), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(260, 220));
+            e.Graphics.DrawString("Nhà cung cấp: " + txtSupplier.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(260, 250));
+            e.Graphics.DrawString("Số hóa đơn: " + txtIdInvoice.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(190, 300));
             e.Graphics.DrawString("Ngày: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(450, 300));
-            e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, 350));
+            e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, 350));
             e.Graphics.DrawString("Tên sản phẩm", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(10, 400));
             e.Graphics.DrawString("SL", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(360, 400));
             e.Graphics.DrawString("Giá nhập", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(440, 400));
@@ -277,16 +290,16 @@ namespace SaleManagement.FORM
                 e.Graphics.DrawString(dr["GiaNhap"].ToString(), new Font("Tahoma", 14, FontStyle.Regular), Brushes.Black, new Point(450, distance));
                 e.Graphics.DrawString(dr["TongTien"].ToString(), new Font("Tahoma", 14, FontStyle.Regular), Brushes.Black, new Point(590, distance));
             }
-            e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50));
+            e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50));
             e.Graphics.DrawString("Tổng tiền ", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50 * 2));
             e.Graphics.DrawString(txtTotalMoney.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50 * 2));
             e.Graphics.DrawString("Giảm giá ", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50 * 3));
             e.Graphics.DrawString(String.Format("{0:n0}", totalMoney - intoMoney), new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50 * 3));
             e.Graphics.DrawString("Tổng thanh toán ", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50 * 4));
             e.Graphics.DrawString(txtIntoMoney.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50 * 4));
-            e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50 * 5));
+            e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50 * 5));
             e.Graphics.DrawString("*** LƯU Ý: " + txtNote.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(50, distance + 50 * 6));
-            e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50 * 7));
+            e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50 * 7));
             e.Graphics.DrawString("Cảm ơn và hẹn gặp lại!", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(250, distance + 50 * 8));
         }
         // print invoice

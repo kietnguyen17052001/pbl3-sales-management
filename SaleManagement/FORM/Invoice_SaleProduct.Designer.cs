@@ -35,7 +35,7 @@ namespace SaleManagement.VIEW
             this.txtProduct = new System.Windows.Forms.TextBox();
             this.btnSelectProduct = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtDiscountPercent = new System.Windows.Forms.TextBox();
+            this.txtProductDiscount = new System.Windows.Forms.TextBox();
             this.dgvInfoProduct = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.txtQuantityOfSelect = new System.Windows.Forms.TextBox();
@@ -95,11 +95,12 @@ namespace SaleManagement.VIEW
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.txtProduct);
             this.groupBox1.Controls.Add(this.btnSelectProduct);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.txtDiscountPercent);
+            this.groupBox1.Controls.Add(this.txtProductDiscount);
             this.groupBox1.Controls.Add(this.dgvInfoProduct);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtQuantityOfSelect);
@@ -141,7 +142,7 @@ namespace SaleManagement.VIEW
             // 
             // btnSelectProduct
             // 
-            this.btnSelectProduct.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSelectProduct.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnSelectProduct.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSelectProduct.FlatAppearance.BorderSize = 0;
             this.btnSelectProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
@@ -167,17 +168,19 @@ namespace SaleManagement.VIEW
             this.label13.TabIndex = 63;
             this.label13.Text = "%";
             // 
-            // txtDiscountPercent
+            // txtProductDiscount
             // 
-            this.txtDiscountPercent.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtDiscountPercent.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiscountPercent.Location = new System.Drawing.Point(484, 219);
-            this.txtDiscountPercent.Name = "txtDiscountPercent";
-            this.txtDiscountPercent.Size = new System.Drawing.Size(44, 27);
-            this.txtDiscountPercent.TabIndex = 26;
-            this.txtDiscountPercent.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDiscountPercent.TextChanged += new System.EventHandler(this.txtDISCOUNT_ITEM_TextChanged);
-            this.txtDiscountPercent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPRODUCT_DISCOUNT_KeyPress);
+            this.txtProductDiscount.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtProductDiscount.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtProductDiscount.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductDiscount.Location = new System.Drawing.Point(484, 219);
+            this.txtProductDiscount.Name = "txtProductDiscount";
+            this.txtProductDiscount.Size = new System.Drawing.Size(44, 27);
+            this.txtProductDiscount.TabIndex = 26;
+            this.txtProductDiscount.Text = "0";
+            this.txtProductDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtProductDiscount.TextChanged += new System.EventHandler(this.txtDISCOUNT_ITEM_TextChanged);
+            this.txtProductDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPRODUCT_DISCOUNT_KeyPress);
             // 
             // dgvInfoProduct
             // 
@@ -214,13 +217,14 @@ namespace SaleManagement.VIEW
             // txtQuantityOfSelect
             // 
             this.txtQuantityOfSelect.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtQuantityOfSelect.BackColor = System.Drawing.Color.AliceBlue;
             this.txtQuantityOfSelect.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantityOfSelect.Location = new System.Drawing.Point(484, 158);
             this.txtQuantityOfSelect.Name = "txtQuantityOfSelect";
             this.txtQuantityOfSelect.Size = new System.Drawing.Size(44, 27);
             this.txtQuantityOfSelect.TabIndex = 24;
             this.txtQuantityOfSelect.Text = "1";
-            this.txtQuantityOfSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQuantityOfSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuantityOfSelect.TextChanged += new System.EventHandler(this.txtAMOUNT_ITEM_TextChanged);
             this.txtQuantityOfSelect.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPRODUCT_DISCOUNT_KeyPress);
             // 
@@ -240,6 +244,7 @@ namespace SaleManagement.VIEW
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.dpDate);
             this.groupBox2.Controls.Add(this.txtCustomer);
@@ -288,6 +293,7 @@ namespace SaleManagement.VIEW
             // txtCustomer
             // 
             this.txtCustomer.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtCustomer.BackColor = System.Drawing.SystemColors.Info;
             this.txtCustomer.Enabled = false;
             this.txtCustomer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomer.Location = new System.Drawing.Point(421, 75);
@@ -324,11 +330,11 @@ namespace SaleManagement.VIEW
             this.btnDeleteProduct.ForeColor = System.Drawing.Color.White;
             this.btnDeleteProduct.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnDeleteProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteProduct.Location = new System.Drawing.Point(560, 422);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(545, 422);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(102, 48);
+            this.btnDeleteProduct.Size = new System.Drawing.Size(126, 48);
             this.btnDeleteProduct.TabIndex = 64;
-            this.btnDeleteProduct.Text = "Xóa";
+            this.btnDeleteProduct.Text = "Xóa HH";
             this.btnDeleteProduct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDeleteProduct.UseVisualStyleBackColor = false;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
@@ -345,11 +351,11 @@ namespace SaleManagement.VIEW
             this.btnEditQuantity.ForeColor = System.Drawing.Color.White;
             this.btnEditQuantity.Image = global::SaleManagement.Properties.Resources.edit_3_24;
             this.btnEditQuantity.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditQuantity.Location = new System.Drawing.Point(443, 422);
+            this.btnEditQuantity.Location = new System.Drawing.Point(406, 422);
             this.btnEditQuantity.Name = "btnEditQuantity";
-            this.btnEditQuantity.Size = new System.Drawing.Size(111, 48);
+            this.btnEditQuantity.Size = new System.Drawing.Size(133, 48);
             this.btnEditQuantity.TabIndex = 63;
-            this.btnEditQuantity.Text = "Sửa";
+            this.btnEditQuantity.Text = "Sửa SL";
             this.btnEditQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditQuantity.UseVisualStyleBackColor = false;
             this.btnEditQuantity.Click += new System.EventHandler(this.btnEditQuantity_Click);
@@ -357,13 +363,15 @@ namespace SaleManagement.VIEW
             // txtTotalQuantity
             // 
             this.txtTotalQuantity.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtTotalQuantity.BackColor = System.Drawing.SystemColors.Info;
             this.txtTotalQuantity.Enabled = false;
             this.txtTotalQuantity.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalQuantity.Location = new System.Drawing.Point(311, 439);
             this.txtTotalQuantity.Name = "txtTotalQuantity";
             this.txtTotalQuantity.Size = new System.Drawing.Size(45, 28);
             this.txtTotalQuantity.TabIndex = 41;
-            this.txtTotalQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalQuantity.Text = "0";
+            this.txtTotalQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
@@ -379,13 +387,15 @@ namespace SaleManagement.VIEW
             // txtTotalProduct
             // 
             this.txtTotalProduct.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtTotalProduct.BackColor = System.Drawing.SystemColors.Info;
             this.txtTotalProduct.Enabled = false;
             this.txtTotalProduct.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalProduct.Location = new System.Drawing.Point(143, 439);
             this.txtTotalProduct.Name = "txtTotalProduct";
             this.txtTotalProduct.Size = new System.Drawing.Size(49, 28);
             this.txtTotalProduct.TabIndex = 39;
-            this.txtTotalProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalProduct.Text = "0";
+            this.txtTotalProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
@@ -433,7 +443,9 @@ namespace SaleManagement.VIEW
             // txtIdInvoice
             // 
             this.txtIdInvoice.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtIdInvoice.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtIdInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdInvoice.ForeColor = System.Drawing.Color.IndianRed;
             this.txtIdInvoice.Location = new System.Drawing.Point(124, 35);
             this.txtIdInvoice.Name = "txtIdInvoice";
             this.txtIdInvoice.Size = new System.Drawing.Size(171, 29);
@@ -497,6 +509,7 @@ namespace SaleManagement.VIEW
             // txtDiscount
             // 
             this.txtDiscount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtDiscount.BackColor = System.Drawing.Color.AliceBlue;
             this.txtDiscount.Enabled = false;
             this.txtDiscount.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiscount.ForeColor = System.Drawing.Color.SteelBlue;
@@ -520,6 +533,7 @@ namespace SaleManagement.VIEW
             // txtTotalMoney
             // 
             this.txtTotalMoney.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtTotalMoney.BackColor = System.Drawing.Color.AliceBlue;
             this.txtTotalMoney.Enabled = false;
             this.txtTotalMoney.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalMoney.ForeColor = System.Drawing.Color.SteelBlue;
@@ -554,14 +568,15 @@ namespace SaleManagement.VIEW
             // txtPriceInvoice
             // 
             this.txtPriceInvoice.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtPriceInvoice.BackColor = System.Drawing.SystemColors.Info;
             this.txtPriceInvoice.Enabled = false;
             this.txtPriceInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriceInvoice.ForeColor = System.Drawing.Color.SteelBlue;
-            this.txtPriceInvoice.Location = new System.Drawing.Point(417, 597);
+            this.txtPriceInvoice.ForeColor = System.Drawing.Color.IndianRed;
+            this.txtPriceInvoice.Location = new System.Drawing.Point(418, 590);
+            this.txtPriceInvoice.Multiline = true;
             this.txtPriceInvoice.Name = "txtPriceInvoice";
-            this.txtPriceInvoice.Size = new System.Drawing.Size(125, 29);
+            this.txtPriceInvoice.Size = new System.Drawing.Size(125, 40);
             this.txtPriceInvoice.TabIndex = 72;
-            this.txtPriceInvoice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label17
             // 
@@ -599,6 +614,7 @@ namespace SaleManagement.VIEW
             // txtReturnMoney
             // 
             this.txtReturnMoney.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtReturnMoney.BackColor = System.Drawing.Color.AliceBlue;
             this.txtReturnMoney.Enabled = false;
             this.txtReturnMoney.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReturnMoney.ForeColor = System.Drawing.Color.SteelBlue;
@@ -622,6 +638,7 @@ namespace SaleManagement.VIEW
             // txtCustomerPay
             // 
             this.txtCustomerPay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtCustomerPay.BackColor = System.Drawing.Color.AliceBlue;
             this.txtCustomerPay.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerPay.ForeColor = System.Drawing.Color.SteelBlue;
             this.txtCustomerPay.Location = new System.Drawing.Point(739, 551);
@@ -648,6 +665,7 @@ namespace SaleManagement.VIEW
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.IndianRed;
             this.label22.Location = new System.Drawing.Point(954, 553);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(60, 22);
@@ -685,11 +703,11 @@ namespace SaleManagement.VIEW
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(518, 16);
+            this.label1.Location = new System.Drawing.Point(519, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 31);
+            this.label1.Size = new System.Drawing.Size(212, 27);
             this.label1.TabIndex = 121;
             this.label1.Text = "Hóa đơn bán hàng";
             // 
@@ -890,7 +908,7 @@ namespace SaleManagement.VIEW
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtDiscountPercent;
+        private System.Windows.Forms.TextBox txtProductDiscount;
         private System.Windows.Forms.DataGridView dgvInfoProduct;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtQuantityOfSelect;

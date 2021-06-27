@@ -150,7 +150,9 @@ namespace SaleManagement.VIEW
             // 
             // txtID_STAFF
             // 
+            this.txtID_STAFF.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtID_STAFF.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_STAFF.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_STAFF.Location = new System.Drawing.Point(133, 97);
             this.txtID_STAFF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtID_STAFF.Name = "txtID_STAFF";
@@ -161,13 +163,13 @@ namespace SaleManagement.VIEW
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(518, 12);
+            this.label1.Location = new System.Drawing.Point(474, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 31);
+            this.label1.Size = new System.Drawing.Size(317, 27);
             this.label1.TabIndex = 124;
-            this.label1.Text = "Quản lý nhân viên";
+            this.label1.Text = "Quản lý thông tin nhân viên";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnHOME

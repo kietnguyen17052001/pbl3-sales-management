@@ -29,17 +29,15 @@ namespace SaleManagement.BLL
         // get date in list invoice
         public DateTime getDate()
         {
-            DateTime date = new DateTime();
-            var dateMin = DB.tblHoaDonNhapHangs.Min(p => p.NgayNhap);
-            if (dateMin == null)
+            var getDate = DB.tblHoaDonNhapHangs.Min(p => p.NgayNhap);
+            if (getDate == null)
             {
-                date = DateTime.Now;
+                return DateTime.Now;
             }
             else
             {
-                date = dateMin.Value;
+                return (DateTime)getDate;
             }
-            return date;
         }
         // get text for combobox (staff, supplier)
         public string getTextForCbb(string information, List<CBBItem> listCbb)
@@ -112,58 +110,82 @@ namespace SaleManagement.BLL
             DB.SaveChanges();
         }
         // func delete invoie
-        public void FuncDeleteInvoice(List<string> listIdInvoice)
+        public void FuncDeleteInvoice(string idInvoice)
         {
-            foreach(string idInvoice in listIdInvoice)
+            var listInvoiceDetail = DB.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice).ToList();
+            foreach (tblChiTietHoaDonNhapHang detail in listInvoiceDetail)
             {
-                foreach(tblHoaDonNhapHang invoice in DB.tblHoaDonNhapHangs)
-                {
-                    if(invoice.MaHoaDonNhap == idInvoice)
-                    {
-                        DB.tblHoaDonNhapHangs.Remove(invoice);
-                        foreach(tblChiTietHoaDonNhapHang detail in DB.tblChiTietHoaDonNhapHangs)
-                        {
-                            if(detail.MaHoaDonNhap == idInvoice)
-                            {
-                                DB.tblChiTietHoaDonNhapHangs.Remove(detail);
-                                var product = DB.tblHangHoas.Find(detail.MaHangHoa);
-                                product.SoLuong -= (int)detail.SoLuong;
-                            }
-                        }
-                    }
-                }
-                DB.SaveChanges();
+                var product = DB.tblHangHoas.Find(detail.MaHangHoa);
+                product.SoLuong -= (int)detail.SoLuong;
+                DB.tblChiTietHoaDonNhapHangs.Remove(detail);
             }
+            DB.tblHoaDonNhapHangs.Remove(DB.tblHoaDonNhapHangs.Find(idInvoice));
+            DB.SaveChanges();
+        }
+        // Check quantity product InvoiceDetail in Invoice
+        public bool isValidDeleteInvoice(string idInvoice)
+        {
+            bool isValid = true;
+            var listInvoiceDetail = DB.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice);
+            foreach (tblChiTietHoaDonNhapHang invoiceDetail in listInvoiceDetail.ToList())
+            {
+                if(invoiceDetail.SoLuong > BLL_PRODUCT.Instance.getQuantityProductByIdProduct(invoiceDetail.MaHangHoa))
+                {
+                    isValid = false;
+                    break;
+                }
+            }
+            return isValid;
+        }
+        // Check quantity product for delete product in InvoiceDetail
+        public bool isValidDeleteProduct(string idInvoice, string idProduct)
+        {
+            bool isValid = true;
+            var invoiceDetail = DB.tblChiTietHoaDonNhapHangs.Find(idInvoice, idProduct);
+            var product = DB.tblHangHoas.Find(idProduct);
+            if(invoiceDetail.SoLuong > product.SoLuong)
+            {
+                isValid = false;
+            }
+            return isValid;
         }
         public void FuncDeleteProduct(List<string> listIdProduct, string idInvoice)
         {
             foreach(string idProduct in listIdProduct)
             {
-                foreach(tblChiTietHoaDonNhapHang detail in DB.tblChiTietHoaDonNhapHangs)
-                {
-                    if(detail.MaHoaDonNhap == idInvoice && detail.MaHangHoa == idProduct)
-                    {
-                        DB.tblChiTietHoaDonNhapHangs.Remove(detail);
-                        var product = DB.tblHangHoas.Find(idProduct);
-                        product.SoLuong -= (int)detail.SoLuong;
-                        var invoice = DB.tblHoaDonNhapHangs.Find(idInvoice);
-                        invoice.SoTien -= (double)detail.TongTien;
-                    }
-                }
+                tblChiTietHoaDonNhapHang invoiceDetail = DB.tblChiTietHoaDonNhapHangs.Where(p => p.MaHangHoa == idProduct
+                && p.MaHoaDonNhap == idInvoice).SingleOrDefault();
+                var product = DB.tblHangHoas.Find(idProduct);
+                product.SoLuong -= (int)invoiceDetail.SoLuong;
+                var invoice = DB.tblHoaDonNhapHangs.Find(idInvoice);
+                invoice.SoTien -= (double)invoiceDetail.TongTien;
+                DB.tblChiTietHoaDonNhapHangs.Remove(invoiceDetail);
                 DB.SaveChanges();
             }
         }
-        // change quantity product
-        public void ChangeQuantityProduct(string idInvoice, string idProduct, int newQuantity)
+        // add product
+        public void FuncAddProduct(tblChiTietHoaDonNhapHang invoiceDetail, int discount)
         {
-            var invoiceDetail = DB.tblChiTietHoaDonNhapHangs.Find(idInvoice, idProduct);
-            var product = DB.tblHangHoas.Find(idProduct);
-            product.SoLuong += (int)(newQuantity - invoiceDetail.SoLuong);
-            invoiceDetail.SoLuong = newQuantity;
-            invoiceDetail.TongTien = (int)(invoiceDetail.GiaNhap * invoiceDetail.SoLuong);
+            DB.tblChiTietHoaDonNhapHangs.Add(invoiceDetail);
+            var product = DB.tblHangHoas.Find(invoiceDetail.MaHangHoa);
+            product.SoLuong += (int)invoiceDetail.SoLuong;
+            var invoice = DB.tblHoaDonNhapHangs.Find(invoiceDetail.MaHoaDonNhap);
+            invoice.GiamGia = discount * (invoice.SoTien + invoiceDetail.TongTien) / 100;
+            invoice.SoTien = (invoice.SoTien + invoiceDetail.TongTien) - (discount * (invoice.SoTien + invoiceDetail.TongTien)/100);
             DB.SaveChanges();
-            var invoiceImport = DB.tblHoaDonNhapHangs.Find(idInvoice);
-            invoiceImport.SoTien = getPriceInvoice(idInvoice) - invoiceImport.GiamGia;
+        }
+        // change quantity product
+        public void ChangeQuantityProduct(string idInvoice, string idProduct, int oldQuantity, int newQuantity)
+        {
+            var product = DB.tblHangHoas.Find(idProduct);
+            product.SoLuong = product.SoLuong + newQuantity - oldQuantity;
+            //DB.SaveChanges();
+            var invoiceDetail = DB.tblChiTietHoaDonNhapHangs.Find(idInvoice, idProduct);
+            invoiceDetail.SoLuong = newQuantity;
+            invoiceDetail.TongTien = (double)(invoiceDetail.GiaNhap * newQuantity);
+            DB.SaveChanges();
+            var importInvoice = DB.tblHoaDonNhapHangs.Find(idInvoice);
+            importInvoice.SoTien = getPriceInvoice(idInvoice) - importInvoice.GiamGia;
             DB.SaveChanges();
         }
         // get price invoice;

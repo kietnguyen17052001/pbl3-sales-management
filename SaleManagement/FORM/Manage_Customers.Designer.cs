@@ -29,17 +29,6 @@ namespace SaleManagement.VIEW
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbGENDER = new System.Windows.Forms.GroupBox();
-            this.rbFEMALE = new System.Windows.Forms.RadioButton();
-            this.rbMALE = new System.Windows.Forms.RadioButton();
-            this.txtADDRESS = new System.Windows.Forms.TextBox();
-            this.txtPHONE = new System.Windows.Forms.TextBox();
-            this.txtNAME_CUSTOMER = new System.Windows.Forms.TextBox();
-            this.txtID_CUSTOMER = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtSEARCH = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvLISTCUSTOMER = new System.Windows.Forms.DataGridView();
@@ -55,120 +44,21 @@ namespace SaleManagement.VIEW
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbQuantity = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.gbGENDER.SuspendLayout();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtID_CUSTOMER = new System.Windows.Forms.TextBox();
+            this.txtNAME_CUSTOMER = new System.Windows.Forms.TextBox();
+            this.txtPHONE = new System.Windows.Forms.TextBox();
+            this.txtADDRESS = new System.Windows.Forms.TextBox();
+            this.rbMALE = new System.Windows.Forms.RadioButton();
+            this.rbFEMALE = new System.Windows.Forms.RadioButton();
+            this.gbGENDER = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTCUSTOMER)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.gbGENDER.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // gbGENDER
-            // 
-            this.gbGENDER.Controls.Add(this.rbFEMALE);
-            this.gbGENDER.Controls.Add(this.rbMALE);
-            this.gbGENDER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbGENDER.Location = new System.Drawing.Point(29, 339);
-            this.gbGENDER.Name = "gbGENDER";
-            this.gbGENDER.Size = new System.Drawing.Size(325, 114);
-            this.gbGENDER.TabIndex = 80;
-            this.gbGENDER.TabStop = false;
-            this.gbGENDER.Text = "Giới tính";
-            // 
-            // rbFEMALE
-            // 
-            this.rbFEMALE.AutoSize = true;
-            this.rbFEMALE.Location = new System.Drawing.Point(65, 65);
-            this.rbFEMALE.Name = "rbFEMALE";
-            this.rbFEMALE.Size = new System.Drawing.Size(62, 26);
-            this.rbFEMALE.TabIndex = 1;
-            this.rbFEMALE.TabStop = true;
-            this.rbFEMALE.Text = "Nữ";
-            this.rbFEMALE.UseVisualStyleBackColor = true;
-            // 
-            // rbMALE
-            // 
-            this.rbMALE.AutoSize = true;
-            this.rbMALE.Location = new System.Drawing.Point(65, 25);
-            this.rbMALE.Name = "rbMALE";
-            this.rbMALE.Size = new System.Drawing.Size(77, 26);
-            this.rbMALE.TabIndex = 0;
-            this.rbMALE.TabStop = true;
-            this.rbMALE.Text = "Nam";
-            this.rbMALE.UseVisualStyleBackColor = true;
-            // 
-            // txtADDRESS
-            // 
-            this.txtADDRESS.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtADDRESS.ForeColor = System.Drawing.Color.Black;
-            this.txtADDRESS.Location = new System.Drawing.Point(133, 288);
-            this.txtADDRESS.Name = "txtADDRESS";
-            this.txtADDRESS.Size = new System.Drawing.Size(237, 29);
-            this.txtADDRESS.TabIndex = 76;
-            // 
-            // txtPHONE
-            // 
-            this.txtPHONE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPHONE.ForeColor = System.Drawing.Color.Black;
-            this.txtPHONE.Location = new System.Drawing.Point(133, 237);
-            this.txtPHONE.Name = "txtPHONE";
-            this.txtPHONE.Size = new System.Drawing.Size(237, 29);
-            this.txtPHONE.TabIndex = 75;
-            this.txtPHONE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPHONE_KeyPress);
-            // 
-            // txtNAME_CUSTOMER
-            // 
-            this.txtNAME_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNAME_CUSTOMER.ForeColor = System.Drawing.Color.Black;
-            this.txtNAME_CUSTOMER.Location = new System.Drawing.Point(133, 182);
-            this.txtNAME_CUSTOMER.Name = "txtNAME_CUSTOMER";
-            this.txtNAME_CUSTOMER.Size = new System.Drawing.Size(237, 29);
-            this.txtNAME_CUSTOMER.TabIndex = 74;
-            // 
-            // txtID_CUSTOMER
-            // 
-            this.txtID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID_CUSTOMER.Location = new System.Drawing.Point(133, 126);
-            this.txtID_CUSTOMER.Name = "txtID_CUSTOMER";
-            this.txtID_CUSTOMER.Size = new System.Drawing.Size(237, 29);
-            this.txtID_CUSTOMER.TabIndex = 73;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(25, 290);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 22);
-            this.label4.TabIndex = 71;
-            this.label4.Text = "Địa chỉ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(25, 239);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 22);
-            this.label3.TabIndex = 70;
-            this.label3.Text = "Số ĐT";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(25, 184);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 22);
-            this.label6.TabIndex = 69;
-            this.label6.Text = "Tên KH";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(25, 128);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 22);
-            this.label7.TabIndex = 68;
-            this.label7.Text = "Mã KH";
             // 
             // txtSEARCH
             // 
@@ -371,13 +261,13 @@ namespace SaleManagement.VIEW
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(516, 12);
+            this.label1.Location = new System.Drawing.Point(441, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(253, 31);
+            this.label1.Size = new System.Drawing.Size(336, 27);
             this.label1.TabIndex = 122;
-            this.label1.Text = "Quản lý khách hàng";
+            this.label1.Text = "Quản lý thông tin khách hàng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox1
@@ -414,6 +304,118 @@ namespace SaleManagement.VIEW
             this.label8.TabIndex = 143;
             this.label8.Text = "Số lượng khách hàng:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(25, 128);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 22);
+            this.label7.TabIndex = 68;
+            this.label7.Text = "Mã KH";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(25, 184);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 22);
+            this.label6.TabIndex = 69;
+            this.label6.Text = "Tên KH";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(25, 239);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 22);
+            this.label3.TabIndex = 70;
+            this.label3.Text = "Số ĐT";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(25, 290);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 22);
+            this.label4.TabIndex = 71;
+            this.label4.Text = "Địa chỉ";
+            // 
+            // txtID_CUSTOMER
+            // 
+            this.txtID_CUSTOMER.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_CUSTOMER.ForeColor = System.Drawing.Color.IndianRed;
+            this.txtID_CUSTOMER.Location = new System.Drawing.Point(133, 126);
+            this.txtID_CUSTOMER.Name = "txtID_CUSTOMER";
+            this.txtID_CUSTOMER.Size = new System.Drawing.Size(237, 29);
+            this.txtID_CUSTOMER.TabIndex = 73;
+            // 
+            // txtNAME_CUSTOMER
+            // 
+            this.txtNAME_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNAME_CUSTOMER.ForeColor = System.Drawing.Color.Black;
+            this.txtNAME_CUSTOMER.Location = new System.Drawing.Point(133, 182);
+            this.txtNAME_CUSTOMER.Name = "txtNAME_CUSTOMER";
+            this.txtNAME_CUSTOMER.Size = new System.Drawing.Size(237, 29);
+            this.txtNAME_CUSTOMER.TabIndex = 74;
+            // 
+            // txtPHONE
+            // 
+            this.txtPHONE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPHONE.ForeColor = System.Drawing.Color.Black;
+            this.txtPHONE.Location = new System.Drawing.Point(133, 237);
+            this.txtPHONE.Name = "txtPHONE";
+            this.txtPHONE.Size = new System.Drawing.Size(237, 29);
+            this.txtPHONE.TabIndex = 75;
+            this.txtPHONE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPHONE_KeyPress);
+            // 
+            // txtADDRESS
+            // 
+            this.txtADDRESS.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtADDRESS.ForeColor = System.Drawing.Color.Black;
+            this.txtADDRESS.Location = new System.Drawing.Point(133, 288);
+            this.txtADDRESS.Name = "txtADDRESS";
+            this.txtADDRESS.Size = new System.Drawing.Size(237, 29);
+            this.txtADDRESS.TabIndex = 76;
+            // 
+            // rbMALE
+            // 
+            this.rbMALE.AutoSize = true;
+            this.rbMALE.Location = new System.Drawing.Point(65, 25);
+            this.rbMALE.Name = "rbMALE";
+            this.rbMALE.Size = new System.Drawing.Size(77, 26);
+            this.rbMALE.TabIndex = 0;
+            this.rbMALE.TabStop = true;
+            this.rbMALE.Text = "Nam";
+            this.rbMALE.UseVisualStyleBackColor = true;
+            // 
+            // rbFEMALE
+            // 
+            this.rbFEMALE.AutoSize = true;
+            this.rbFEMALE.Location = new System.Drawing.Point(65, 65);
+            this.rbFEMALE.Name = "rbFEMALE";
+            this.rbFEMALE.Size = new System.Drawing.Size(62, 26);
+            this.rbFEMALE.TabIndex = 1;
+            this.rbFEMALE.TabStop = true;
+            this.rbFEMALE.Text = "Nữ";
+            this.rbFEMALE.UseVisualStyleBackColor = true;
+            // 
+            // gbGENDER
+            // 
+            this.gbGENDER.Controls.Add(this.rbFEMALE);
+            this.gbGENDER.Controls.Add(this.rbMALE);
+            this.gbGENDER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbGENDER.Location = new System.Drawing.Point(29, 339);
+            this.gbGENDER.Name = "gbGENDER";
+            this.gbGENDER.Size = new System.Drawing.Size(325, 114);
+            this.gbGENDER.TabIndex = 80;
+            this.gbGENDER.TabStop = false;
+            this.gbGENDER.Text = "Giới tính";
+            // 
             // FrmManage_Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -447,10 +449,10 @@ namespace SaleManagement.VIEW
             this.Name = "FrmManage_Customers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Khách hàng";
-            this.gbGENDER.ResumeLayout(false);
-            this.gbGENDER.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLISTCUSTOMER)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.gbGENDER.ResumeLayout(false);
+            this.gbGENDER.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,17 +466,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Button btnSAVE;
         private System.Windows.Forms.Button btnCANCEL;
         private System.Windows.Forms.Button btnDELETE;
-        private System.Windows.Forms.GroupBox gbGENDER;
-        private System.Windows.Forms.RadioButton rbFEMALE;
-        private System.Windows.Forms.RadioButton rbMALE;
-        private System.Windows.Forms.TextBox txtADDRESS;
-        private System.Windows.Forms.TextBox txtPHONE;
-        private System.Windows.Forms.TextBox txtNAME_CUSTOMER;
-        private System.Windows.Forms.TextBox txtID_CUSTOMER;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSEARCH;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvLISTCUSTOMER;
@@ -484,5 +475,16 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbQuantity;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtID_CUSTOMER;
+        private System.Windows.Forms.TextBox txtNAME_CUSTOMER;
+        private System.Windows.Forms.TextBox txtPHONE;
+        private System.Windows.Forms.TextBox txtADDRESS;
+        private System.Windows.Forms.RadioButton rbMALE;
+        private System.Windows.Forms.RadioButton rbFEMALE;
+        private System.Windows.Forms.GroupBox gbGENDER;
     }
 }

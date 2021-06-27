@@ -98,22 +98,14 @@ namespace SaleManagement.BLL
         {
             foreach (string idInvoice in listIdInvoice)
             {
-                foreach (tblHoaDonBanHang invoice in DB.tblHoaDonBanHangs) // xóa đơn hàng có mã đơn = i
+                var listDetailInvoice = DB.tblChiTietHoaDonBanHangs.Where(p => p.MaHoaDonBan == idInvoice).ToList();
+                foreach (tblChiTietHoaDonBanHang invoiceDetail in listDetailInvoice) // xóa chi tiết đơn hàng có mã đơn = i
                 {
-                    if (invoice.MaHoaDonBan == idInvoice)
-                    {
-                        DB.tblHoaDonBanHangs.Remove(invoice);
-                        foreach (tblChiTietHoaDonBanHang invoiceDetail in DB.tblChiTietHoaDonBanHangs) // xóa chi tiết đơn hàng có mã đơn = i
-                        {
-                            if (invoiceDetail.MaHoaDonBan == idInvoice)
-                            {
-                                DB.tblChiTietHoaDonBanHangs.Remove(invoiceDetail);
-                                var product = DB.tblHangHoas.Find(invoiceDetail.MaHangHoa);
-                                product.SoLuong += (int)invoiceDetail.SoLuong;
-                            }
-                        }
-                    }
+                    var product = DB.tblHangHoas.Find(invoiceDetail.MaHangHoa);
+                    product.SoLuong += (int)invoiceDetail.SoLuong;
+                    DB.tblChiTietHoaDonBanHangs.Remove(invoiceDetail);
                 }
+                DB.tblHoaDonBanHangs.Remove(DB.tblHoaDonBanHangs.Find(idInvoice));
                 DB.SaveChanges();
             }
         }
@@ -122,19 +114,24 @@ namespace SaleManagement.BLL
         {
             foreach (string idProduct in listIdProduct)
             {
-                foreach (tblChiTietHoaDonBanHang invoiceDetail in DB.tblChiTietHoaDonBanHangs)
-                {
-                    if (invoiceDetail.MaHoaDonBan == idInvoice && invoiceDetail.MaHangHoa == idProduct)
-                    {
-                        DB.tblChiTietHoaDonBanHangs.Remove(invoiceDetail);
-                        var product = DB.tblHangHoas.Find(idProduct);
-                        product.SoLuong += (int)invoiceDetail.SoLuong;
-                        var invoice = DB.tblHoaDonBanHangs.Find(idInvoice);
-                        invoice.SoTien -= (double)invoiceDetail.TongTien;
-                    }
-                }
+                tblChiTietHoaDonBanHang invoiceDetail = DB.tblChiTietHoaDonBanHangs.Find(idInvoice, idProduct);
+                var product = DB.tblHangHoas.Find(idProduct);
+                product.SoLuong += (int)invoiceDetail.SoLuong;
+                var invoice = DB.tblHoaDonBanHangs.Find(idInvoice);
+                invoice.SoTien -= (double)invoiceDetail.TongTien;
+                DB.tblChiTietHoaDonBanHangs.Remove(invoiceDetail);
                 DB.SaveChanges();
             }
+        }
+        // add product for invoice
+        public void FuncAddProduct(tblChiTietHoaDonBanHang invoiceDetail)
+        {
+            DB.tblChiTietHoaDonBanHangs.Add(invoiceDetail);
+            var product = DB.tblHangHoas.Find(invoiceDetail.MaHangHoa); // change quantity product after add
+            product.SoLuong -= (int)invoiceDetail.SoLuong;
+            var invoice = DB.tblHoaDonBanHangs.Find(invoiceDetail.MaHoaDonBan);
+            invoice.SoTien += invoiceDetail.TongTien;
+            DB.SaveChanges();
         }
         // get text for combobox (staff, customer)
         public string getTextForCbb(string information, List<CBBItem> listCbb)
@@ -151,16 +148,17 @@ namespace SaleManagement.BLL
             return text;
         }
         // set new quantity for product 
-        public void ChangeQuantityProduct(int quantityProduct, int newQuantity, string idInvoice, string idProduct)
+        public void ChangeQuantityProduct(string idInvoice, string idProduct, int oldQuantity, int newQuantity)
         {
-            var getInvoiceDetail = DB.tblChiTietHoaDonBanHangs.Find(idInvoice, idProduct);
-            getInvoiceDetail.SoLuong = newQuantity;
-            getInvoiceDetail.TongTien = getInvoiceDetail.DonGia * newQuantity - getInvoiceDetail.DonGia * newQuantity * getInvoiceDetail.GiamGia / 100; // thay đổi số tiền của chi tiết hóa đơn sau khi thay đổi số lượng mới
             var product = DB.tblHangHoas.Find(idProduct);
-            product.SoLuong += (quantityProduct - newQuantity);
+            product.SoLuong += oldQuantity - newQuantity;
+            //DB.SaveChanges();
+            var invoiceDetail = DB.tblChiTietHoaDonBanHangs.Find(idInvoice, idProduct);
+            invoiceDetail.SoLuong = newQuantity;
+            invoiceDetail.TongTien = invoiceDetail.DonGia * newQuantity - invoiceDetail.DonGia * newQuantity * invoiceDetail.GiamGia / 100; // thay đổi số tiền của chi tiết hóa đơn sau khi thay đổi số lượng mới
             DB.SaveChanges();
-            var getInvoice = DB.tblHoaDonBanHangs.Find(idInvoice);
-            getInvoice.SoTien = getPriceInvoice(idInvoice) - getInvoice.GiamGia;
+            var saleInvoice = DB.tblHoaDonBanHangs.Find(idInvoice);
+            saleInvoice.SoTien = getPriceInvoice(idInvoice) - saleInvoice.GiamGia;
             DB.SaveChanges();
         }
         public double getPriceInvoice(string idInvoice)

@@ -40,25 +40,15 @@ namespace SaleManagement.FORM
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnEDIT = new System.Windows.Forms.Button();
-            this.btnBACK = new System.Windows.Forms.Button();
-            this.btnSAVE = new System.Windows.Forms.Button();
-            this.btnDELETE = new System.Windows.Forms.Button();
             this.txtDISCOUNT = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvLIST_INVOICE = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSEARCH = new System.Windows.Forms.TextBox();
-            this.btnHOME = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dpTO = new System.Windows.Forms.DateTimePicker();
             this.dpFROM = new System.Windows.Forms.DateTimePicker();
-            this.btnEXCEL = new System.Windows.Forms.Button();
             this.dgvINFO_INVOICE = new System.Windows.Forms.DataGridView();
-            this.btnADD_PRODUCT = new System.Windows.Forms.Button();
-            this.btnEDIT_QUANTITY = new System.Windows.Forms.Button();
-            this.btnDELETE_PRODUCT = new System.Windows.Forms.Button();
             this.lbIdInvoice = new System.Windows.Forms.Label();
             this.lbInvoiceDetail = new System.Windows.Forms.Label();
             this.lbTotalMoney = new System.Windows.Forms.Label();
@@ -66,20 +56,30 @@ namespace SaleManagement.FORM
             this.lbQuantity = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.btnEditQuantityProduct = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnEditInvoice = new System.Windows.Forms.Button();
+            this.btnFrmData = new System.Windows.Forms.Button();
+            this.btnSaveChange = new System.Windows.Forms.Button();
+            this.btnDeleteInvoice = new System.Windows.Forms.Button();
+            this.btnDeleteProduct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_INVOICE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvINFO_INVOICE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(417, 9);
+            this.label1.Location = new System.Drawing.Point(444, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(379, 31);
+            this.label1.Size = new System.Drawing.Size(343, 27);
             this.label1.TabIndex = 136;
             this.label1.Text = "Danh sách hóa đơn nhập hàng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -135,6 +135,7 @@ namespace SaleManagement.FORM
             // 
             // txtID_INVOICE
             // 
+            this.txtID_INVOICE.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtID_INVOICE.Enabled = false;
             this.txtID_INVOICE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_INVOICE.Location = new System.Drawing.Point(124, 107);
@@ -183,82 +184,6 @@ namespace SaleManagement.FORM
             this.label7.TabIndex = 137;
             this.label7.Text = "Mã Đơn";
             // 
-            // btnEDIT
-            // 
-            this.btnEDIT.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnEDIT.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnEDIT.FlatAppearance.BorderSize = 0;
-            this.btnEDIT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEDIT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEDIT.ForeColor = System.Drawing.Color.White;
-            this.btnEDIT.Image = global::SaleManagement.Properties.Resources.edit_3_24;
-            this.btnEDIT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEDIT.Location = new System.Drawing.Point(33, 375);
-            this.btnEDIT.Name = "btnEDIT";
-            this.btnEDIT.Size = new System.Drawing.Size(131, 61);
-            this.btnEDIT.TabIndex = 149;
-            this.btnEDIT.Text = "Sửa đơn";
-            this.btnEDIT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEDIT.UseVisualStyleBackColor = false;
-            this.btnEDIT.Click += new System.EventHandler(this.btnEDIT_Click);
-            // 
-            // btnBACK
-            // 
-            this.btnBACK.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnBACK.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnBACK.FlatAppearance.BorderSize = 0;
-            this.btnBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBACK.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBACK.ForeColor = System.Drawing.Color.White;
-            this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
-            this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBACK.Location = new System.Drawing.Point(1084, 4);
-            this.btnBACK.Name = "btnBACK";
-            this.btnBACK.Size = new System.Drawing.Size(160, 65);
-            this.btnBACK.TabIndex = 152;
-            this.btnBACK.Text = "Quay lại";
-            this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBACK.UseVisualStyleBackColor = false;
-            this.btnBACK.Click += new System.EventHandler(this.btnBACK_Click);
-            // 
-            // btnSAVE
-            // 
-            this.btnSAVE.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSAVE.FlatAppearance.BorderSize = 0;
-            this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSAVE.ForeColor = System.Drawing.Color.White;
-            this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
-            this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSAVE.Location = new System.Drawing.Point(172, 375);
-            this.btnSAVE.Name = "btnSAVE";
-            this.btnSAVE.Size = new System.Drawing.Size(132, 61);
-            this.btnSAVE.TabIndex = 151;
-            this.btnSAVE.Text = "Lưu";
-            this.btnSAVE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSAVE.UseVisualStyleBackColor = false;
-            this.btnSAVE.Click += new System.EventHandler(this.btnSAVE_Click);
-            // 
-            // btnDELETE
-            // 
-            this.btnDELETE.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDELETE.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnDELETE.FlatAppearance.BorderSize = 0;
-            this.btnDELETE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDELETE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDELETE.ForeColor = System.Drawing.Color.White;
-            this.btnDELETE.Image = global::SaleManagement.Properties.Resources.delete_property_24;
-            this.btnDELETE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDELETE.Location = new System.Drawing.Point(33, 445);
-            this.btnDELETE.Name = "btnDELETE";
-            this.btnDELETE.Size = new System.Drawing.Size(271, 59);
-            this.btnDELETE.TabIndex = 150;
-            this.btnDELETE.Text = "Xóa đơn nhập hàng";
-            this.btnDELETE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDELETE.UseVisualStyleBackColor = false;
-            this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);
-            // 
             // txtDISCOUNT
             // 
             this.txtDISCOUNT.Enabled = false;
@@ -299,19 +224,6 @@ namespace SaleManagement.FORM
             this.dgvLIST_INVOICE.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLIST_INVOICE_CellClick);
             this.dgvLIST_INVOICE.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLIST_INVOICE_CellFormatting);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
-            this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(765, 54);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
-            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
-            this.pictureBox1.TabIndex = 157;
-            this.pictureBox1.TabStop = false;
-            // 
             // txtSEARCH
             // 
             this.txtSEARCH.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -324,26 +236,6 @@ namespace SaleManagement.FORM
             this.txtSEARCH.TextChanged += new System.EventHandler(this.txtSEARCH_TextChanged);
             this.txtSEARCH.Enter += new System.EventHandler(this.txtSEARCH_Enter);
             this.txtSEARCH.Leave += new System.EventHandler(this.txtSEARCH_Leave);
-            // 
-            // btnHOME
-            // 
-            this.btnHOME.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnHOME.FlatAppearance.BorderSize = 0;
-            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHOME.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHOME.ForeColor = System.Drawing.Color.White;
-            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
-            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHOME.Location = new System.Drawing.Point(5, 4);
-            this.btnHOME.Name = "btnHOME";
-            this.btnHOME.Size = new System.Drawing.Size(197, 65);
-            this.btnHOME.TabIndex = 158;
-            this.btnHOME.Text = "Trang chủ";
-            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHOME.UseVisualStyleBackColor = false;
-            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
             // 
             // label10
             // 
@@ -385,26 +277,6 @@ namespace SaleManagement.FORM
             this.dpFROM.TabIndex = 159;
             this.dpFROM.ValueChanged += new System.EventHandler(this.dpTO_ValueChanged);
             // 
-            // btnEXCEL
-            // 
-            this.btnEXCEL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEXCEL.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnEXCEL.FlatAppearance.BorderSize = 0;
-            this.btnEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEXCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEXCEL.ForeColor = System.Drawing.Color.White;
-            this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
-            this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEXCEL.Location = new System.Drawing.Point(818, 53);
-            this.btnEXCEL.Name = "btnEXCEL";
-            this.btnEXCEL.Size = new System.Drawing.Size(152, 48);
-            this.btnEXCEL.TabIndex = 163;
-            this.btnEXCEL.Text = "Xuất Excel";
-            this.btnEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEXCEL.UseVisualStyleBackColor = false;
-            this.btnEXCEL.Click += new System.EventHandler(this.btnEXCEL_Click);
-            // 
             // dgvINFO_INVOICE
             // 
             this.dgvINFO_INVOICE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -423,66 +295,6 @@ namespace SaleManagement.FORM
             this.dgvINFO_INVOICE.Size = new System.Drawing.Size(859, 184);
             this.dgvINFO_INVOICE.TabIndex = 164;
             this.dgvINFO_INVOICE.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvINFO_INVOICE_CellFormatting);
-            // 
-            // btnADD_PRODUCT
-            // 
-            this.btnADD_PRODUCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnADD_PRODUCT.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnADD_PRODUCT.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnADD_PRODUCT.FlatAppearance.BorderSize = 0;
-            this.btnADD_PRODUCT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADD_PRODUCT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnADD_PRODUCT.ForeColor = System.Drawing.Color.White;
-            this.btnADD_PRODUCT.Image = global::SaleManagement.Properties.Resources.product_24;
-            this.btnADD_PRODUCT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnADD_PRODUCT.Location = new System.Drawing.Point(834, 635);
-            this.btnADD_PRODUCT.Name = "btnADD_PRODUCT";
-            this.btnADD_PRODUCT.Size = new System.Drawing.Size(140, 48);
-            this.btnADD_PRODUCT.TabIndex = 168;
-            this.btnADD_PRODUCT.Text = "Thêm HH";
-            this.btnADD_PRODUCT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnADD_PRODUCT.UseVisualStyleBackColor = false;
-            this.btnADD_PRODUCT.Click += new System.EventHandler(this.btnADD_PRODUCT_Click);
-            // 
-            // btnEDIT_QUANTITY
-            // 
-            this.btnEDIT_QUANTITY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEDIT_QUANTITY.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnEDIT_QUANTITY.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnEDIT_QUANTITY.FlatAppearance.BorderSize = 0;
-            this.btnEDIT_QUANTITY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEDIT_QUANTITY.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEDIT_QUANTITY.ForeColor = System.Drawing.Color.White;
-            this.btnEDIT_QUANTITY.Image = global::SaleManagement.Properties.Resources.edit_3_24;
-            this.btnEDIT_QUANTITY.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEDIT_QUANTITY.Location = new System.Drawing.Point(980, 634);
-            this.btnEDIT_QUANTITY.Name = "btnEDIT_QUANTITY";
-            this.btnEDIT_QUANTITY.Size = new System.Drawing.Size(129, 48);
-            this.btnEDIT_QUANTITY.TabIndex = 167;
-            this.btnEDIT_QUANTITY.Text = "Sửa SL";
-            this.btnEDIT_QUANTITY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEDIT_QUANTITY.UseVisualStyleBackColor = false;
-            this.btnEDIT_QUANTITY.Click += new System.EventHandler(this.btnEDIT_QUANTITY_Click);
-            // 
-            // btnDELETE_PRODUCT
-            // 
-            this.btnDELETE_PRODUCT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDELETE_PRODUCT.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDELETE_PRODUCT.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnDELETE_PRODUCT.FlatAppearance.BorderSize = 0;
-            this.btnDELETE_PRODUCT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDELETE_PRODUCT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDELETE_PRODUCT.ForeColor = System.Drawing.Color.White;
-            this.btnDELETE_PRODUCT.Image = global::SaleManagement.Properties.Resources.delete_2_24;
-            this.btnDELETE_PRODUCT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDELETE_PRODUCT.Location = new System.Drawing.Point(1115, 635);
-            this.btnDELETE_PRODUCT.Name = "btnDELETE_PRODUCT";
-            this.btnDELETE_PRODUCT.Size = new System.Drawing.Size(120, 46);
-            this.btnDELETE_PRODUCT.TabIndex = 166;
-            this.btnDELETE_PRODUCT.Text = "Xóa HH";
-            this.btnDELETE_PRODUCT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDELETE_PRODUCT.UseVisualStyleBackColor = false;
-            this.btnDELETE_PRODUCT.Click += new System.EventHandler(this.btnDELETE_PRODUCT_Click);
             // 
             // lbIdInvoice
             // 
@@ -559,6 +371,195 @@ namespace SaleManagement.FORM
             this.label5.TabIndex = 175;
             this.label5.Text = "-";
             // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddProduct.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnAddProduct.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddProduct.FlatAppearance.BorderSize = 0;
+            this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.ForeColor = System.Drawing.Color.White;
+            this.btnAddProduct.Image = global::SaleManagement.Properties.Resources.product_24;
+            this.btnAddProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddProduct.Location = new System.Drawing.Point(816, 635);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(140, 48);
+            this.btnAddProduct.TabIndex = 168;
+            this.btnAddProduct.Text = "Thêm HH";
+            this.btnAddProduct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // btnEditQuantityProduct
+            // 
+            this.btnEditQuantityProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditQuantityProduct.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnEditQuantityProduct.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEditQuantityProduct.FlatAppearance.BorderSize = 0;
+            this.btnEditQuantityProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditQuantityProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditQuantityProduct.ForeColor = System.Drawing.Color.White;
+            this.btnEditQuantityProduct.Image = global::SaleManagement.Properties.Resources.edit_3_24;
+            this.btnEditQuantityProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditQuantityProduct.Location = new System.Drawing.Point(962, 635);
+            this.btnEditQuantityProduct.Name = "btnEditQuantityProduct";
+            this.btnEditQuantityProduct.Size = new System.Drawing.Size(129, 48);
+            this.btnEditQuantityProduct.TabIndex = 167;
+            this.btnEditQuantityProduct.Text = "Sửa SL";
+            this.btnEditQuantityProduct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditQuantityProduct.UseVisualStyleBackColor = false;
+            this.btnEditQuantityProduct.Click += new System.EventHandler(this.btnEditQuantityProduct_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnExport.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.Color.White;
+            this.btnExport.Image = global::SaleManagement.Properties.Resources.excel_3_24;
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(818, 53);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(152, 48);
+            this.btnExport.TabIndex = 163;
+            this.btnExport.Text = "Xuất Excel";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnHome
+            // 
+            this.btnHome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHome.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnHome.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.Image = global::SaleManagement.Properties.Resources.house_48;
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(5, 4);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(197, 65);
+            this.btnHome.TabIndex = 158;
+            this.btnHome.Text = "Trang chủ";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::SaleManagement.Properties.Resources.search_12_24;
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(765, 54);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
+            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
+            this.pictureBox1.TabIndex = 157;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnEditInvoice
+            // 
+            this.btnEditInvoice.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnEditInvoice.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEditInvoice.FlatAppearance.BorderSize = 0;
+            this.btnEditInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditInvoice.ForeColor = System.Drawing.Color.White;
+            this.btnEditInvoice.Image = global::SaleManagement.Properties.Resources.edit_3_24;
+            this.btnEditInvoice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditInvoice.Location = new System.Drawing.Point(33, 375);
+            this.btnEditInvoice.Name = "btnEditInvoice";
+            this.btnEditInvoice.Size = new System.Drawing.Size(131, 61);
+            this.btnEditInvoice.TabIndex = 149;
+            this.btnEditInvoice.Text = "Sửa đơn";
+            this.btnEditInvoice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditInvoice.UseVisualStyleBackColor = false;
+            this.btnEditInvoice.Click += new System.EventHandler(this.btnEditInvoice_Click);
+            // 
+            // btnFrmData
+            // 
+            this.btnFrmData.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnFrmData.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnFrmData.FlatAppearance.BorderSize = 0;
+            this.btnFrmData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFrmData.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFrmData.ForeColor = System.Drawing.Color.White;
+            this.btnFrmData.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
+            this.btnFrmData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFrmData.Location = new System.Drawing.Point(1084, 4);
+            this.btnFrmData.Name = "btnFrmData";
+            this.btnFrmData.Size = new System.Drawing.Size(160, 65);
+            this.btnFrmData.TabIndex = 152;
+            this.btnFrmData.Text = "Quay lại";
+            this.btnFrmData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFrmData.UseVisualStyleBackColor = false;
+            this.btnFrmData.Click += new System.EventHandler(this.btnFrmData_Click);
+            // 
+            // btnSaveChange
+            // 
+            this.btnSaveChange.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSaveChange.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSaveChange.FlatAppearance.BorderSize = 0;
+            this.btnSaveChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveChange.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveChange.ForeColor = System.Drawing.Color.White;
+            this.btnSaveChange.Image = global::SaleManagement.Properties.Resources.save_as_24;
+            this.btnSaveChange.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveChange.Location = new System.Drawing.Point(172, 375);
+            this.btnSaveChange.Name = "btnSaveChange";
+            this.btnSaveChange.Size = new System.Drawing.Size(132, 61);
+            this.btnSaveChange.TabIndex = 151;
+            this.btnSaveChange.Text = "Lưu";
+            this.btnSaveChange.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSaveChange.UseVisualStyleBackColor = false;
+            this.btnSaveChange.Click += new System.EventHandler(this.btnSaveChange_Click);
+            // 
+            // btnDeleteInvoice
+            // 
+            this.btnDeleteInvoice.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteInvoice.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnDeleteInvoice.FlatAppearance.BorderSize = 0;
+            this.btnDeleteInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteInvoice.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteInvoice.Image = global::SaleManagement.Properties.Resources.delete_property_24;
+            this.btnDeleteInvoice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteInvoice.Location = new System.Drawing.Point(33, 445);
+            this.btnDeleteInvoice.Name = "btnDeleteInvoice";
+            this.btnDeleteInvoice.Size = new System.Drawing.Size(271, 59);
+            this.btnDeleteInvoice.TabIndex = 150;
+            this.btnDeleteInvoice.Text = "Xóa đơn nhập hàng";
+            this.btnDeleteInvoice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteInvoice.UseVisualStyleBackColor = false;
+            this.btnDeleteInvoice.Click += new System.EventHandler(this.btnDeleteInvoice_Click);
+            // 
+            // btnDeleteProduct
+            // 
+            this.btnDeleteProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteProduct.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteProduct.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnDeleteProduct.FlatAppearance.BorderSize = 0;
+            this.btnDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteProduct.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteProduct.Image = global::SaleManagement.Properties.Resources.delete_2_24;
+            this.btnDeleteProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteProduct.Location = new System.Drawing.Point(1098, 635);
+            this.btnDeleteProduct.Name = "btnDeleteProduct";
+            this.btnDeleteProduct.Size = new System.Drawing.Size(137, 46);
+            this.btnDeleteProduct.TabIndex = 166;
+            this.btnDeleteProduct.Text = "Xóa HH";
+            this.btnDeleteProduct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteProduct.UseVisualStyleBackColor = false;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
+            // 
             // FrmList_ImportInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -572,25 +573,25 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lbIdInvoice);
             this.Controls.Add(this.lbInvoiceDetail);
-            this.Controls.Add(this.btnADD_PRODUCT);
-            this.Controls.Add(this.btnEDIT_QUANTITY);
-            this.Controls.Add(this.btnDELETE_PRODUCT);
+            this.Controls.Add(this.btnAddProduct);
+            this.Controls.Add(this.btnEditQuantityProduct);
+            this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.dgvINFO_INVOICE);
-            this.Controls.Add(this.btnEXCEL);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dpTO);
             this.Controls.Add(this.dpFROM);
-            this.Controls.Add(this.btnHOME);
+            this.Controls.Add(this.btnHome);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtSEARCH);
             this.Controls.Add(this.dgvLIST_INVOICE);
             this.Controls.Add(this.txtDISCOUNT);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.btnEDIT);
-            this.Controls.Add(this.btnBACK);
-            this.Controls.Add(this.btnSAVE);
-            this.Controls.Add(this.btnDELETE);
+            this.Controls.Add(this.btnEditInvoice);
+            this.Controls.Add(this.btnFrmData);
+            this.Controls.Add(this.btnSaveChange);
+            this.Controls.Add(this.btnDeleteInvoice);
             this.Controls.Add(this.cbbSTAFF);
             this.Controls.Add(this.cbbSUPPLIER);
             this.Controls.Add(this.dpDAY);
@@ -606,8 +607,8 @@ namespace SaleManagement.FORM
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh sách hóa đơn nhập hàng";
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_INVOICE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvINFO_INVOICE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -626,25 +627,24 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnEDIT;
-        private System.Windows.Forms.Button btnBACK;
-        private System.Windows.Forms.Button btnSAVE;
-        private System.Windows.Forms.Button btnDELETE;
+        private System.Windows.Forms.Button btnEditInvoice;
+        private System.Windows.Forms.Button btnFrmData;
+        private System.Windows.Forms.Button btnSaveChange;
+        private System.Windows.Forms.Button btnDeleteInvoice;
         private System.Windows.Forms.TextBox txtDISCOUNT;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView dgvLIST_INVOICE;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtSEARCH;
-        private System.Windows.Forms.Button btnHOME;
+        private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dpTO;
         private System.Windows.Forms.DateTimePicker dpFROM;
-        private System.Windows.Forms.Button btnEXCEL;
+        private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.DataGridView dgvINFO_INVOICE;
-        private System.Windows.Forms.Button btnADD_PRODUCT;
-        private System.Windows.Forms.Button btnEDIT_QUANTITY;
-        private System.Windows.Forms.Button btnDELETE_PRODUCT;
+        private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.Button btnEditQuantityProduct;
         private System.Windows.Forms.Label lbIdInvoice;
         private System.Windows.Forms.Label lbInvoiceDetail;
         private System.Windows.Forms.Label lbTotalMoney;
@@ -652,5 +652,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Label lbQuantity;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnDeleteProduct;
     }
 }

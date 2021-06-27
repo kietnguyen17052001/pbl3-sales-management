@@ -31,8 +31,8 @@ namespace SaleManagement.FORM
         {
             this.btnCANCEL = new System.Windows.Forms.Button();
             this.btnSAVE = new System.Windows.Forms.Button();
-            this.txtNAME_TYPEOFITEM = new System.Windows.Forms.TextBox();
-            this.txtID_TYPEOFITEM = new System.Windows.Forms.TextBox();
+            this.txtNameTypeOfProduct = new System.Windows.Forms.TextBox();
+            this.txtIdTypeOfProduct = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,9 +49,9 @@ namespace SaleManagement.FORM
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCANCEL.Location = new System.Drawing.Point(279, 256);
+            this.btnCANCEL.Location = new System.Drawing.Point(273, 257);
             this.btnCANCEL.Name = "btnCANCEL";
-            this.btnCANCEL.Size = new System.Drawing.Size(121, 56);
+            this.btnCANCEL.Size = new System.Drawing.Size(121, 55);
             this.btnCANCEL.TabIndex = 95;
             this.btnCANCEL.Text = "Hủy bỏ";
             this.btnCANCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -69,7 +69,7 @@ namespace SaleManagement.FORM
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
             this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSAVE.Location = new System.Drawing.Point(141, 257);
+            this.btnSAVE.Location = new System.Drawing.Point(144, 257);
             this.btnSAVE.Name = "btnSAVE";
             this.btnSAVE.Size = new System.Drawing.Size(121, 55);
             this.btnSAVE.TabIndex = 94;
@@ -78,25 +78,26 @@ namespace SaleManagement.FORM
             this.btnSAVE.UseVisualStyleBackColor = false;
             this.btnSAVE.Click += new System.EventHandler(this.btnSAVE_Click);
             // 
-            // txtNAME_TYPEOFITEM
+            // txtNameTypeOfProduct
             // 
-            this.txtNAME_TYPEOFITEM.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtNAME_TYPEOFITEM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNAME_TYPEOFITEM.ForeColor = System.Drawing.Color.Black;
-            this.txtNAME_TYPEOFITEM.Location = new System.Drawing.Point(199, 174);
-            this.txtNAME_TYPEOFITEM.Name = "txtNAME_TYPEOFITEM";
-            this.txtNAME_TYPEOFITEM.Size = new System.Drawing.Size(253, 28);
-            this.txtNAME_TYPEOFITEM.TabIndex = 91;
+            this.txtNameTypeOfProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtNameTypeOfProduct.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameTypeOfProduct.ForeColor = System.Drawing.Color.Black;
+            this.txtNameTypeOfProduct.Location = new System.Drawing.Point(199, 174);
+            this.txtNameTypeOfProduct.Name = "txtNameTypeOfProduct";
+            this.txtNameTypeOfProduct.Size = new System.Drawing.Size(253, 28);
+            this.txtNameTypeOfProduct.TabIndex = 91;
             // 
-            // txtID_TYPEOFITEM
+            // txtIdTypeOfProduct
             // 
-            this.txtID_TYPEOFITEM.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtID_TYPEOFITEM.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID_TYPEOFITEM.ForeColor = System.Drawing.Color.Black;
-            this.txtID_TYPEOFITEM.Location = new System.Drawing.Point(199, 113);
-            this.txtID_TYPEOFITEM.Name = "txtID_TYPEOFITEM";
-            this.txtID_TYPEOFITEM.Size = new System.Drawing.Size(253, 28);
-            this.txtID_TYPEOFITEM.TabIndex = 90;
+            this.txtIdTypeOfProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtIdTypeOfProduct.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtIdTypeOfProduct.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdTypeOfProduct.ForeColor = System.Drawing.Color.IndianRed;
+            this.txtIdTypeOfProduct.Location = new System.Drawing.Point(199, 113);
+            this.txtIdTypeOfProduct.Name = "txtIdTypeOfProduct";
+            this.txtIdTypeOfProduct.Size = new System.Drawing.Size(253, 28);
+            this.txtIdTypeOfProduct.TabIndex = 90;
             // 
             // label2
             // 
@@ -123,11 +124,11 @@ namespace SaleManagement.FORM
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(147, 32);
+            this.label6.Location = new System.Drawing.Point(148, 32);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(253, 31);
+            this.label6.Size = new System.Drawing.Size(228, 27);
             this.label6.TabIndex = 121;
             this.label6.Text = "Thêm loại hàng hóa";
             // 
@@ -140,8 +141,8 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCANCEL);
             this.Controls.Add(this.btnSAVE);
-            this.Controls.Add(this.txtNAME_TYPEOFITEM);
-            this.Controls.Add(this.txtID_TYPEOFITEM);
+            this.Controls.Add(this.txtNameTypeOfProduct);
+            this.Controls.Add(this.txtIdTypeOfProduct);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Name = "FrmCreate_NewTypeItem";
@@ -156,8 +157,8 @@ namespace SaleManagement.FORM
 
         private System.Windows.Forms.Button btnCANCEL;
         private System.Windows.Forms.Button btnSAVE;
-        private System.Windows.Forms.TextBox txtNAME_TYPEOFITEM;
-        private System.Windows.Forms.TextBox txtID_TYPEOFITEM;
+        private System.Windows.Forms.TextBox txtNameTypeOfProduct;
+        private System.Windows.Forms.TextBox txtIdTypeOfProduct;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

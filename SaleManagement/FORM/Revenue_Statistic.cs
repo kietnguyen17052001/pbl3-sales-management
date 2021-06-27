@@ -30,7 +30,7 @@ namespace SaleManagement.FORM
             chartSTATISTIC.Series.Clear();
             chartSTATISTIC.Series.Add("Doanh thu");
             chartSTATISTIC.Series["Doanh thu"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chartSTATISTIC.Series["Doanh thu"].Color = Color.OrangeRed;
+            chartSTATISTIC.Series["Doanh thu"].Color = Color.Red;
             double revenue;
             for(int i = 1; i <= 12; i++)
             {
@@ -42,7 +42,7 @@ namespace SaleManagement.FORM
                         revenue += (double)invoice.SoTien;
                     }
                 }
-                chartSTATISTIC.Series["Doanh thu"].Points.AddXY(i, revenue);
+                chartSTATISTIC.Series["Doanh thu"].Points.AddXY("Th" + i, revenue);
             } 
         }
         public void fillChartMonth()
@@ -52,7 +52,7 @@ namespace SaleManagement.FORM
             chartSTATISTIC.Series.Clear();
             chartSTATISTIC.Series.Add("Doanh thu");
             chartSTATISTIC.Series["Doanh thu"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chartSTATISTIC.Series["Doanh thu"].Color = Color.OrangeRed;
+            chartSTATISTIC.Series["Doanh thu"].Color = Color.Red;
             double revenue;
             for (int i = 1; i <= 31; i++)
             {
@@ -64,7 +64,7 @@ namespace SaleManagement.FORM
                         revenue += (double)invoice.SoTien;
                     }
                 }
-                chartSTATISTIC.Series["Doanh thu"].Points.AddXY(i, revenue);
+                chartSTATISTIC.Series["Doanh thu"].Points.AddXY("Ng" + i, revenue);
             }
         }
 

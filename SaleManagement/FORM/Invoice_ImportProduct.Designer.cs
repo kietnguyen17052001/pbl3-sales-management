@@ -84,11 +84,11 @@ namespace SaleManagement.FORM
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(486, 9);
+            this.label1.Location = new System.Drawing.Point(509, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 31);
+            this.label1.Size = new System.Drawing.Size(226, 27);
             this.label1.TabIndex = 123;
             this.label1.Text = "Hóa đơn nhập hàng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -97,6 +97,7 @@ namespace SaleManagement.FORM
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox1.Controls.Add(this.btnAddNewProduct);
             this.groupBox1.Controls.Add(this.txtProduct);
             this.groupBox1.Controls.Add(this.label6);
@@ -114,7 +115,7 @@ namespace SaleManagement.FORM
             // 
             // btnAddNewProduct
             // 
-            this.btnAddNewProduct.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAddNewProduct.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnAddNewProduct.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAddNewProduct.FlatAppearance.BorderSize = 0;
             this.btnAddNewProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
@@ -132,6 +133,7 @@ namespace SaleManagement.FORM
             // txtProduct
             // 
             this.txtProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtProduct.BackColor = System.Drawing.SystemColors.Window;
             this.txtProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProduct.ForeColor = System.Drawing.Color.Silver;
             this.txtProduct.Location = new System.Drawing.Point(138, 55);
@@ -156,7 +158,7 @@ namespace SaleManagement.FORM
             // 
             // btnSelect
             // 
-            this.btnSelect.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSelect.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnSelect.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSelect.FlatAppearance.BorderSize = 0;
             this.btnSelect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
@@ -195,6 +197,7 @@ namespace SaleManagement.FORM
             // txtQuantity
             // 
             this.txtQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtQuantity.BackColor = System.Drawing.Color.AliceBlue;
             this.txtQuantity.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantity.Location = new System.Drawing.Point(440, 210);
             this.txtQuantity.Name = "txtQuantity";
@@ -221,6 +224,7 @@ namespace SaleManagement.FORM
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox2.Controls.Add(this.btnDelete);
             this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.txtUpdateQuantity);
@@ -255,18 +259,18 @@ namespace SaleManagement.FORM
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(612, 430);
+            this.btnDelete.Location = new System.Drawing.Point(590, 430);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(102, 46);
+            this.btnDelete.Size = new System.Drawing.Size(124, 46);
             this.btnDelete.TabIndex = 127;
-            this.btnDelete.Text = "Xóa";
+            this.btnDelete.Text = "Xóa HH";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor = System.Drawing.SystemColors.Control;
+            this.btnUpdate.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
@@ -274,7 +278,7 @@ namespace SaleManagement.FORM
             this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
             this.btnUpdate.Image = global::SaleManagement.Properties.Resources.check;
-            this.btnUpdate.Location = new System.Drawing.Point(297, 429);
+            this.btnUpdate.Location = new System.Drawing.Point(341, 429);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(44, 48);
             this.btnUpdate.TabIndex = 126;
@@ -284,8 +288,9 @@ namespace SaleManagement.FORM
             // txtUpdateQuantity
             // 
             this.txtUpdateQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtUpdateQuantity.BackColor = System.Drawing.SystemColors.Info;
             this.txtUpdateQuantity.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUpdateQuantity.Location = new System.Drawing.Point(107, 438);
+            this.txtUpdateQuantity.Location = new System.Drawing.Point(151, 438);
             this.txtUpdateQuantity.Name = "txtUpdateQuantity";
             this.txtUpdateQuantity.Size = new System.Drawing.Size(184, 29);
             this.txtUpdateQuantity.TabIndex = 125;
@@ -301,9 +306,9 @@ namespace SaleManagement.FORM
             this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(10, 441);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 22);
+            this.label7.Size = new System.Drawing.Size(127, 22);
             this.label7.TabIndex = 124;
-            this.label7.Text = "Số lượng";
+            this.label7.Text = "Sửa số lượng";
             // 
             // label4
             // 
@@ -329,6 +334,7 @@ namespace SaleManagement.FORM
             // txtSupplier
             // 
             this.txtSupplier.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtSupplier.BackColor = System.Drawing.SystemColors.Info;
             this.txtSupplier.Enabled = false;
             this.txtSupplier.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplier.Location = new System.Drawing.Point(405, 75);
@@ -377,6 +383,7 @@ namespace SaleManagement.FORM
             // cbbStaff
             // 
             this.cbbStaff.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbbStaff.BackColor = System.Drawing.SystemColors.Window;
             this.cbbStaff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbStaff.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbStaff.FormattingEnabled = true;
@@ -388,7 +395,9 @@ namespace SaleManagement.FORM
             // txtIdInvoice
             // 
             this.txtIdInvoice.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtIdInvoice.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtIdInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdInvoice.ForeColor = System.Drawing.Color.IndianRed;
             this.txtIdInvoice.Location = new System.Drawing.Point(123, 33);
             this.txtIdInvoice.Name = "txtIdInvoice";
             this.txtIdInvoice.Size = new System.Drawing.Size(171, 29);
@@ -449,6 +458,7 @@ namespace SaleManagement.FORM
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.groupBox3.Controls.Add(this.btnPrint);
             this.groupBox3.Controls.Add(this.btnPayment);
             this.groupBox3.Controls.Add(this.txtNote);
@@ -530,6 +540,7 @@ namespace SaleManagement.FORM
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.IndianRed;
             this.label15.Location = new System.Drawing.Point(8, 82);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 22);
@@ -550,12 +561,14 @@ namespace SaleManagement.FORM
             // txtIntoMoney
             // 
             this.txtIntoMoney.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtIntoMoney.BackColor = System.Drawing.SystemColors.Info;
             this.txtIntoMoney.Enabled = false;
             this.txtIntoMoney.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIntoMoney.ForeColor = System.Drawing.Color.SteelBlue;
-            this.txtIntoMoney.Location = new System.Drawing.Point(781, 26);
+            this.txtIntoMoney.ForeColor = System.Drawing.Color.IndianRed;
+            this.txtIntoMoney.Location = new System.Drawing.Point(778, 25);
+            this.txtIntoMoney.Multiline = true;
             this.txtIntoMoney.Name = "txtIntoMoney";
-            this.txtIntoMoney.Size = new System.Drawing.Size(160, 29);
+            this.txtIntoMoney.Size = new System.Drawing.Size(160, 30);
             this.txtIntoMoney.TabIndex = 76;
             this.txtIntoMoney.Text = "0";
             this.txtIntoMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -574,6 +587,7 @@ namespace SaleManagement.FORM
             // txtPercent
             // 
             this.txtPercent.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtPercent.BackColor = System.Drawing.Color.AliceBlue;
             this.txtPercent.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPercent.ForeColor = System.Drawing.Color.SteelBlue;
             this.txtPercent.Location = new System.Drawing.Point(433, 26);
@@ -599,6 +613,7 @@ namespace SaleManagement.FORM
             // txtMoney
             // 
             this.txtMoney.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtMoney.BackColor = System.Drawing.Color.AliceBlue;
             this.txtMoney.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMoney.ForeColor = System.Drawing.Color.SteelBlue;
             this.txtMoney.Location = new System.Drawing.Point(484, 26);
@@ -635,6 +650,7 @@ namespace SaleManagement.FORM
             // txtTotalMoney
             // 
             this.txtTotalMoney.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtTotalMoney.BackColor = System.Drawing.Color.AliceBlue;
             this.txtTotalMoney.Enabled = false;
             this.txtTotalMoney.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalMoney.ForeColor = System.Drawing.Color.SteelBlue;
@@ -693,6 +709,7 @@ namespace SaleManagement.FORM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1247, 691);
             this.ControlBox = false;
             this.Controls.Add(this.btnBACK);

@@ -60,5 +60,13 @@ namespace SaleManagement.FORM
                 txtDISCOUNT.Text = total_money.ToString();
             }
         }
+        // keypress event
+        private void txtDISCOUNT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

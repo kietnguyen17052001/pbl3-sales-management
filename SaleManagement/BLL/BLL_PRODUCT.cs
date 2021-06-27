@@ -10,23 +10,23 @@ using System.Windows.Forms;
 
 namespace SaleManagement.BLL
 {
-    class BLL_PRODUCTS
+    class BLL_PRODUCT
     {
         private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
-        private static BLL_PRODUCTS _Instance;
-        public static BLL_PRODUCTS Instance
+        private static BLL_PRODUCT _Instance;
+        public static BLL_PRODUCT Instance
         {
             get
             {
                 if (_Instance == null)
                 {
-                    _Instance = new BLL_PRODUCTS();
+                    _Instance = new BLL_PRODUCT();
                 }
                 return _Instance;
             }
             private set { }
         }
-        private BLL_PRODUCTS(){}
+        private BLL_PRODUCT(){}
         // Lấy danh sách loại hàng hóa đổ vào CBB
         public List<CBBItem> getCBBTypeProduct()
         {
@@ -53,6 +53,32 @@ namespace SaleManagement.BLL
             });
             dgv.DataSource = product.ToList();
         }
+        // load data product in form AddProduct_Invoice
+        public void LoadDataProductInFrmAddProduct(DataGridView dgv, bool isListSale)
+        {
+            if (isListSale) // for FrmListSaleProduct
+            {
+                var product = DB.tblHangHoas.Select(p => new
+                {
+                    p.MaHangHoa,
+                    p.TenHangHoa,
+                    p.SoLuong,
+                    p.GiaBan
+                });
+                dgv.DataSource = product.ToList();
+            }
+            else // for FrmListImportProduct
+            {
+                var product = DB.tblHangHoas.Select(p => new
+                {
+                    p.MaHangHoa,
+                    p.TenHangHoa,
+                    p.SoLuong,
+                    p.GiaNhap
+                });
+                dgv.DataSource = product.ToList();
+            }
+        }
         public Image ByteArrayToImage(byte[] byArrayIn)
         {
             using (MemoryStream ms = new MemoryStream(byArrayIn))
@@ -66,10 +92,6 @@ namespace SaleManagement.BLL
             var imageProduct = DB.tblHangHoas.Find(idProduct);
             return ByteArrayToImage(imageProduct.HinhAnh.ToArray());
         }
-        // add pic
-        public void FuncAddPicProduct()
-        {
-        }
         // add new product
         public void FuncAddNewProduct(tblHangHoa product)
         {
@@ -77,27 +99,27 @@ namespace SaleManagement.BLL
             DB.SaveChanges();
         }
         // edit product
-        public void FuncEditProduct(tblHangHoa product)
+        public void FuncEditProduct(tblHangHoa _product)
         {
-            var getProduct = DB.tblHangHoas.Find(product.MaHangHoa);
-            getProduct.TenHangHoa = product.TenHangHoa;
-            getProduct.SoLuong = product.SoLuong;
-            getProduct.GiaBan = product.GiaBan;
-            getProduct.GiaNhap = product.GiaNhap;
-            getProduct.MaLoaiHangHoa = product.MaLoaiHangHoa;
-            getProduct.MaNhaSanXuat = product.MaNhaSanXuat;
-            getProduct.MoTa = product.MoTa;
+            var product = DB.tblHangHoas.Find(_product.MaHangHoa);
+            product.TenHangHoa = _product.TenHangHoa;
+            product.SoLuong = _product.SoLuong;
+            product.GiaBan = _product.GiaBan;
+            product.GiaNhap = _product.GiaNhap;
+            product.MaLoaiHangHoa = _product.MaLoaiHangHoa;
+            product.MaNhaSanXuat = _product.MaNhaSanXuat;
+            product.MoTa = _product.MoTa;
             //getProduct.HinhAnh = product.HinhAnh;
             DB.SaveChanges();
         }
         // delete product
         public void FuncDeleteProduct(List<string> listIdProduct)
         {
-            foreach (string i in listIdProduct)
+            foreach (string idProduct in listIdProduct)
             {
                 foreach (tblHangHoa product in DB.tblHangHoas)
                 {
-                    if (product.MaHangHoa == i)
+                    if (product.MaHangHoa == idProduct)
                     {
                         DB.tblHangHoas.Remove(product);
                     }
@@ -114,7 +136,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                var getProduct = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
+                var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
                 || p.tblLoaiHangHoa.TenLoaiHangHoa.Contains(information)).Select(p => new
                 {
                     p.MaHangHoa,
@@ -126,7 +148,42 @@ namespace SaleManagement.BLL
                     p.GiaBan,
                     p.MoTa
                 });
-                dgv.DataSource = getProduct.ToList();
+                dgv.DataSource = product.ToList();
+            }
+        }
+        // search product in form AddProduct
+        public void FuncSearchProductInFrmAddProduct(DataGridView dgv, string information, bool isListSale)
+        {
+            if (information == "Nhập mã hoặc tên hàng hóa, loại hàng hóa" || String.IsNullOrEmpty(information))
+            {
+                LoadDataProductInFrmAddProduct(dgv, isListSale);
+            }
+            else
+            {
+                if (isListSale)
+                {
+                    var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
+                    || p.tblLoaiHangHoa.TenLoaiHangHoa.Contains(information)).Select(p => new
+                    {
+                        p.MaHangHoa,
+                        p.TenHangHoa,
+                        p.SoLuong,
+                        p.GiaBan,
+                    });
+                    dgv.DataSource = product.ToList();
+                }
+                else
+                {
+                    var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
+                    || p.tblLoaiHangHoa.TenLoaiHangHoa.Contains(information)).Select(p => new
+                    {
+                        p.MaHangHoa,
+                        p.TenHangHoa,
+                        p.SoLuong,
+                        p.GiaNhap,
+                    });
+                    dgv.DataSource = product.ToList();
+                }
             }
         }
         // Trả về mã hàng hóa mới khi thực hiện chức năng thêm 
@@ -134,24 +191,24 @@ namespace SaleManagement.BLL
         {
             string idProduct = "";
             int last; // số cuối trong mã
-            List<string> listSaveId = new List<string>();
-            foreach (tblHangHoa HANGHOA in DB.tblHangHoas)
+            List<string> listIdProduct = new List<string>();
+            foreach (tblHangHoa product in DB.tblHangHoas)
             {
-                if (HANGHOA.MaLoaiHangHoa == idTypeProduct)
+                if (product.MaLoaiHangHoa == idTypeProduct)
                 {
-                    listSaveId.Add(HANGHOA.MaHangHoa);
+                    listIdProduct.Add(product.MaHangHoa);
                 }
             }
             
             int index = idTypeProduct.IndexOf("0"); // xác định vị trí của số 0 trong mã loại hàng hóa
             idTypeProduct = idTypeProduct.Remove(index, 2); // xác từ số 0 2 kí tự : BG0X --> BG
-            if (listSaveId.Count == 0)
+            if (listIdProduct.Count == 0)
             {
                 idProduct = idTypeProduct + "0001";
             }
             else
             {
-                last = Convert.ToInt32(listSaveId[listSaveId.Count - 1].Replace(idTypeProduct,""));
+                last = Convert.ToInt32(listIdProduct[listIdProduct.Count - 1].Replace(idTypeProduct,""));
                 if (last + 1 < 10)
                 {
                     idProduct = idTypeProduct + "000" + (last + 1);
@@ -172,11 +229,10 @@ namespace SaleManagement.BLL
         {
             return dgv.Rows.Count;
         }
-        // get quantity product by idProduct
         public int getQuantityProductByIdProduct(string idProduct)
         {
-            var value = DB.tblHangHoas.Find(idProduct);
-            return value.SoLuong;
+            var product = DB.tblHangHoas.Find(idProduct);
+            return product.SoLuong;
         }
         //Trả về loại hàng hóa, nhà cung cấp, nhà sản xuất từ dgvITEMS
         public string getText(string name, List<CBBItem> list)

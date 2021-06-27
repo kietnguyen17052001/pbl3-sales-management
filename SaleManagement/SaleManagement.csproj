@@ -65,7 +65,7 @@
     <Compile Include="BLL\BLL_SALEPRODUCT.cs" />
     <Compile Include="BLL\BLL_CUSTOMER.cs" />
     <Compile Include="BLL\BLL_IMPORTPRODUCT.cs" />
-    <Compile Include="BLL\BLL_PRODUCTS.cs" />
+    <Compile Include="BLL\BLL_PRODUCT.cs" />
     <Compile Include="BLL\BLL_LISTSALEINVOICE.cs" />
     <Compile Include="BLL\BLL_PRODUCER.cs" />
     <Compile Include="BLL\BLL_REPORT.cs" />
@@ -125,11 +125,11 @@
     <Compile Include="Entity\tblTaiKhoan.cs">
       <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
     </Compile>
-    <Compile Include="FORM\AddProduct_Invoice.cs">
+    <Compile Include="FORM\Add_NewProduct.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FORM\AddProduct_Invoice.Designer.cs">
-      <DependentUpon>AddProduct_Invoice.cs</DependentUpon>
+      <DependentUpon>Add_NewProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Change_Password.cs">
       <SubType>Form</SubType>
@@ -161,11 +161,11 @@
     <Compile Include="FORM\Create_NewSupplier.Designer.cs">
       <DependentUpon>Create_NewSupplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Create_NewTypeItem.cs">
+    <Compile Include="FORM\Create_NewTypeOfProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\Create_NewTypeItem.Designer.cs">
-      <DependentUpon>Create_NewTypeItem.cs</DependentUpon>
+    <Compile Include="FORM\Create_NewTypeOfProduct.Designer.cs">
+      <DependentUpon>Create_NewTypeOfProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\List_ImportInvoice.cs">
       <SubType>Form</SubType>
@@ -313,7 +313,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FORM\AddProduct_Invoice.resx">
-      <DependentUpon>AddProduct_Invoice.cs</DependentUpon>
+      <DependentUpon>Add_NewProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Change_Password.resx">
       <DependentUpon>Change_Password.cs</DependentUpon>
@@ -327,8 +327,8 @@
     <EmbeddedResource Include="FORM\Create_NewSupplier.resx">
       <DependentUpon>Create_NewSupplier.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\Create_NewTypeItem.resx">
-      <DependentUpon>Create_NewTypeItem.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\Create_NewTypeOfProduct.resx">
+      <DependentUpon>Create_NewTypeOfProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\List_ImportInvoice.resx">
       <DependentUpon>List_ImportInvoice.cs</DependentUpon>

@@ -14,50 +14,43 @@ namespace SaleManagement.FORM
 {
     public partial class FrmEditQuantityProduct_ListInvoice : Form
     {
-        public delegate void myDEL(int quantity);
-        public myDEL d { get; set; }
-        private string idProduct;
+        private string idInvoice, idProduct;
         private int newQuantity;
         private bool isListSale;
-        public FrmEditQuantityProduct_ListInvoice(string _idProduct, string nameProduct, int quantity, bool _isListSale)
+        public delegate void myDel(string _idInvoice);
+        public myDel d { get; set; }
+        public FrmEditQuantityProduct_ListInvoice(string _idInvoice, string _idProduct, string nameProduct, int oldQuantity, bool _isListSale)
         {
             InitializeComponent();
             isListSale = _isListSale;
-            txtPRODUCT.Text = nameProduct;
-            txtQUANTITY.Text = quantity.ToString();
+            idInvoice = _idInvoice;
+            txtNameProduct.Text = nameProduct;
+            txtOldQuantity.Text = oldQuantity.ToString();
             idProduct = _idProduct;
-            lbQUANTITY.Text = BLL_PRODUCTS.Instance.getQuantityProductByIdProduct(idProduct).ToString();
-            txtPRODUCT.Enabled = false;
-            txtQUANTITY.Enabled = false;
-            txtNEW_QUANTITY.Text = "1";
+            txtQuantity.Text = BLL_PRODUCT.Instance.getQuantityProductByIdProduct(idProduct).ToString();
+            txtNewQuantity.Text = "1";
         }
-
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNEW_QUANTITY.Text))
+            newQuantity = Convert.ToInt32(txtNewQuantity.Text);
+            if (isListSale)
             {
-                MessageBox.Show("Vui lòng nhập số lượng mới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                newQuantity= Convert.ToInt32(txtNEW_QUANTITY.Text);
-                if(isListSale == true)
+                if (newQuantity > BLL_PRODUCT.Instance.getQuantityProductByIdProduct(idProduct) && newQuantity != Convert.ToInt32(txtOldQuantity.Text))
                 {
-                    if (newQuantity > BLL_PRODUCTS.Instance.getQuantityProductByIdProduct(idProduct))
-                    {
-                        lbSTATUS.Text = "KHÔNG ĐỦ SL";
-                    }
-                    else
-                    {
-                        d(newQuantity);
-                        this.Close();
-                    }
+                    lbSTATUS.Text = "Không đủ số lượng hàng hóa";
                 }
                 else
                 {
-                    d(newQuantity);
+                    BLL_LISTSALEINVOICE.Instance.ChangeQuantityProduct(idInvoice, idProduct, Convert.ToInt32(txtOldQuantity.Text), newQuantity);
+                    d(idInvoice);
                     this.Close();
                 }
+            }
+            else
+            {
+                BLL_LISTIMPORTINVOICE.Instance.ChangeQuantityProduct(idInvoice, idProduct, Convert.ToInt32(txtOldQuantity.Text), newQuantity);
+                d(idInvoice);
+                this.Close();
             }
         }
 
@@ -75,9 +68,9 @@ namespace SaleManagement.FORM
 
         private void txtNEW_QUANTITY_TextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtNEW_QUANTITY.Text))
+            if (String.IsNullOrEmpty(txtNewQuantity.Text))
             {
-                txtNEW_QUANTITY.Text = "1";
+                txtNewQuantity.Text = "1";
             }
         }
     }

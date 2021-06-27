@@ -48,14 +48,13 @@ namespace SaleManagement.VIEW
         }
         public void setCombobox()
         {
-            cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_PRODUCTS.Instance.getCBBTypeProduct().ToArray());
+            cbbTYPE_OF_PRODUCT.Items.AddRange(BLL_PRODUCT.Instance.getCBBTypeProduct().ToArray());
             cbbPRODUCERs.Items.AddRange(BLL_PRODUCER.Instance.getCbbProducer().ToArray());
         }
         void disable(bool E)
         {
             txtID_PRODUCT.Enabled = E;
             txtNAME_PRODUCT.Enabled = E;
-            txtQUANTITY.Enabled = E;
             txtBUY.Enabled = E;
             txtSALE.Enabled = E;
             txtDESCRIBE.Enabled = E;
@@ -71,14 +70,14 @@ namespace SaleManagement.VIEW
         }
         public void ShowProduct()
         {
-            BLL_PRODUCTS.Instance.LoadDataProduct(dgvLISTPRODUCT);
+            BLL_PRODUCT.Instance.LoadDataProduct(dgvLISTPRODUCT);
             txtID_PRODUCT.Clear();
             txtNAME_PRODUCT.Clear();
             txtBUY.Clear();
             txtSALE.Clear();
             txtQUANTITY.Clear();
             txtDESCRIBE.Clear();
-            lbQuantity.Text = BLL_PRODUCTS.Instance.getQuantityProduct(dgvLISTPRODUCT).ToString();
+            lbQuantity.Text = BLL_PRODUCT.Instance.getQuantityProduct(dgvLISTPRODUCT).ToString();
             pbIMAGE.Image = null;
         }
         public void addTypeOfProduct(string id, string name)
@@ -113,11 +112,11 @@ namespace SaleManagement.VIEW
             txtDESCRIBE.Text = dgvLISTPRODUCT.SelectedRows[0].Cells["MoTa"].Value.ToString();
             string typeProduct = dgvLISTPRODUCT.SelectedRows[0].Cells["TenLoaiHangHoa"].Value.ToString();
             string producer = dgvLISTPRODUCT.SelectedRows[0].Cells["TenNhaSanXuat"].Value.ToString();
-            cbbTYPE_OF_PRODUCT.Text = BLL_PRODUCTS.Instance.getText(typeProduct, BLL_PRODUCTS.Instance.getCBBTypeProduct());
-            cbbPRODUCERs.Text = BLL_PRODUCTS.Instance.getText(producer, BLL_PRODUCER.Instance.getCbbProducer());
+            cbbTYPE_OF_PRODUCT.Text = BLL_PRODUCT.Instance.getText(typeProduct, BLL_PRODUCT.Instance.getCBBTypeProduct());
+            cbbPRODUCERs.Text = BLL_PRODUCT.Instance.getText(producer, BLL_PRODUCER.Instance.getCbbProducer());
             txtBUY.Text = String.Format("{0:n0}", dgvLISTPRODUCT.SelectedRows[0].Cells["GiaNhap"].Value);
             txtSALE.Text = String.Format("{0:n0}", dgvLISTPRODUCT.SelectedRows[0].Cells["GiaBan"].Value);
-            pbIMAGE.Image = BLL_PRODUCTS.Instance.image(idProduct);
+            pbIMAGE.Image = BLL_PRODUCT.Instance.image(idProduct);
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
@@ -164,7 +163,7 @@ namespace SaleManagement.VIEW
             isAdd = true;
             disable(true);
             cbbPRODUCERs.SelectedIndex = cbbPRODUCERs.SelectedIndex = cbbTYPE_OF_PRODUCT.SelectedIndex = 0;
-            txtID_PRODUCT.Text = BLL_PRODUCTS.Instance.getNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
+            txtID_PRODUCT.Text = BLL_PRODUCT.Instance.getNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
             txtNAME_PRODUCT.Clear();
             txtQUANTITY.Text = "0";
             txtQUANTITY.Enabled = false;
@@ -242,7 +241,7 @@ namespace SaleManagement.VIEW
                     try
                     {
                         product.HinhAnh = images;
-                        BLL_PRODUCTS.Instance.FuncAddNewProduct(product); // add new product
+                        BLL_PRODUCT.Instance.FuncAddNewProduct(product); // add new product
                         MessageBox.Show("Thêm hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         disable(false);
                         ShowProduct();
@@ -255,7 +254,7 @@ namespace SaleManagement.VIEW
                 }
                 else
                 {
-                    BLL_PRODUCTS.Instance.FuncEditProduct(product); // edit product
+                    BLL_PRODUCT.Instance.FuncEditProduct(product); // edit product
                     MessageBox.Show("Sửa hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     disable(false);
                     ShowProduct();
@@ -274,7 +273,7 @@ namespace SaleManagement.VIEW
             DialogResult question = MessageBox.Show("Bạn chắc chắn xóa hàng hóa này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (question == DialogResult.Yes)
             {
-                BLL_PRODUCTS.Instance.FuncDeleteProduct(listIdProduct); // delete product 
+                BLL_PRODUCT.Instance.FuncDeleteProduct(listIdProduct); // delete product 
                 ShowProduct(); // load form sau khi delete
             }
         }
@@ -310,15 +309,15 @@ namespace SaleManagement.VIEW
 
         private void txtSEARCH_TextChanged(object sender, EventArgs e)
         {
-            BLL_PRODUCTS.Instance.FuncSearchProduct(dgvLISTPRODUCT, txtSEARCH.Text.Trim());
-            lbQuantity.Text = BLL_PRODUCTS.Instance.getQuantityProduct(dgvLISTPRODUCT).ToString();
+            BLL_PRODUCT.Instance.FuncSearchProduct(dgvLISTPRODUCT, txtSEARCH.Text.Trim());
+            lbQuantity.Text = BLL_PRODUCT.Instance.getQuantityProduct(dgvLISTPRODUCT).ToString();
         }
         // change idProduct
         private void cbbTYPE_OF_ITEMS_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(btnADD.Enabled == false)
             {
-                txtID_PRODUCT.Text = BLL_PRODUCTS.Instance.getNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
+                txtID_PRODUCT.Text = BLL_PRODUCT.Instance.getNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
             }
         }
 

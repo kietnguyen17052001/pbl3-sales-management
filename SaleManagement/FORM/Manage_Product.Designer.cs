@@ -61,7 +61,7 @@ namespace SaleManagement.VIEW
             this.btnCANCEL = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnADDSUPPLIER = new System.Windows.Forms.Button();
+            this.btnADDPRODUCER = new System.Windows.Forms.Button();
             this.cbbPRODUCERs = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -128,6 +128,7 @@ namespace SaleManagement.VIEW
             // 
             // txtQUANTITY
             // 
+            this.txtQUANTITY.Enabled = false;
             this.txtQUANTITY.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQUANTITY.ForeColor = System.Drawing.Color.Black;
             this.txtQUANTITY.Location = new System.Drawing.Point(133, 236);
@@ -150,7 +151,9 @@ namespace SaleManagement.VIEW
             // 
             // txtID_PRODUCT
             // 
+            this.txtID_PRODUCT.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtID_PRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_PRODUCT.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_PRODUCT.Location = new System.Drawing.Point(133, 75);
             this.txtID_PRODUCT.Name = "txtID_PRODUCT";
             this.txtID_PRODUCT.Size = new System.Drawing.Size(210, 27);
@@ -290,13 +293,13 @@ namespace SaleManagement.VIEW
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(531, 9);
+            this.label1.Location = new System.Drawing.Point(472, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 31);
+            this.label1.Size = new System.Drawing.Size(311, 27);
             this.label1.TabIndex = 123;
-            this.label1.Text = "Quản lý hàng hóa";
+            this.label1.Text = "Quản lý thông tin hàng hóa";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnADDPIC
@@ -506,20 +509,21 @@ namespace SaleManagement.VIEW
             this.pictureBox1.TabIndex = 137;
             this.pictureBox1.TabStop = false;
             // 
-            // btnADDSUPPLIER
+            // btnADDPRODUCER
             // 
-            this.btnADDSUPPLIER.BackColor = System.Drawing.SystemColors.Control;
-            this.btnADDSUPPLIER.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnADDSUPPLIER.FlatAppearance.BorderSize = 0;
-            this.btnADDSUPPLIER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADDSUPPLIER.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnADDSUPPLIER.ForeColor = System.Drawing.Color.White;
-            this.btnADDSUPPLIER.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
-            this.btnADDSUPPLIER.Location = new System.Drawing.Point(349, 188);
-            this.btnADDSUPPLIER.Name = "btnADDSUPPLIER";
-            this.btnADDSUPPLIER.Size = new System.Drawing.Size(44, 44);
-            this.btnADDSUPPLIER.TabIndex = 140;
-            this.btnADDSUPPLIER.UseVisualStyleBackColor = false;
+            this.btnADDPRODUCER.BackColor = System.Drawing.SystemColors.Control;
+            this.btnADDPRODUCER.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnADDPRODUCER.FlatAppearance.BorderSize = 0;
+            this.btnADDPRODUCER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnADDPRODUCER.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnADDPRODUCER.ForeColor = System.Drawing.Color.White;
+            this.btnADDPRODUCER.Image = global::SaleManagement.Properties.Resources.plus_5_24__1_;
+            this.btnADDPRODUCER.Location = new System.Drawing.Point(349, 188);
+            this.btnADDPRODUCER.Name = "btnADDPRODUCER";
+            this.btnADDPRODUCER.Size = new System.Drawing.Size(44, 44);
+            this.btnADDPRODUCER.TabIndex = 140;
+            this.btnADDPRODUCER.UseVisualStyleBackColor = false;
+            this.btnADDPRODUCER.Click += new System.EventHandler(this.btnADDPRODUCER_Click);
             // 
             // cbbPRODUCERs
             // 
@@ -571,7 +575,7 @@ namespace SaleManagement.VIEW
             this.ControlBox = false;
             this.Controls.Add(this.lbQuantity);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.btnADDSUPPLIER);
+            this.Controls.Add(this.btnADDPRODUCER);
             this.Controls.Add(this.cbbPRODUCERs);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox1);
@@ -652,7 +656,7 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnADDPIC;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnADDSUPPLIER;
+        private System.Windows.Forms.Button btnADDPRODUCER;
         private System.Windows.Forms.ComboBox cbbPRODUCERs;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;

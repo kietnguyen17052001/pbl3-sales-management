@@ -63,7 +63,9 @@ namespace SaleManagement.FORM
             // txtID_PRODUCER
             // 
             this.txtID_PRODUCER.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtID_PRODUCER.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtID_PRODUCER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_PRODUCER.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_PRODUCER.Location = new System.Drawing.Point(179, 118);
             this.txtID_PRODUCER.Name = "txtID_PRODUCER";
             this.txtID_PRODUCER.Size = new System.Drawing.Size(253, 29);
@@ -145,11 +147,11 @@ namespace SaleManagement.FORM
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(151, 31);
+            this.label6.Location = new System.Drawing.Point(156, 31);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(247, 31);
+            this.label6.Size = new System.Drawing.Size(219, 27);
             this.label6.TabIndex = 121;
             this.label6.Text = "Thêm nhà sản xuất";
             // 

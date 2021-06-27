@@ -51,11 +51,11 @@ namespace SaleManagement.FORM
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(481, 9);
+            this.label6.Location = new System.Drawing.Point(496, 9);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(252, 31);
+            this.label6.Size = new System.Drawing.Size(225, 27);
             this.label6.TabIndex = 122;
             this.label6.Text = "Thống kê sản phẩm";
             // 
@@ -79,17 +79,17 @@ namespace SaleManagement.FORM
             this.charMONEY.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.charMONEY.Legends.Add(legend1);
-            this.charMONEY.Location = new System.Drawing.Point(6, 135);
+            this.charMONEY.Location = new System.Drawing.Point(4, 135);
             this.charMONEY.Name = "charMONEY";
             this.charMONEY.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series1.ChartArea = "ChartArea1";
-            series1.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.LabelBackColor = System.Drawing.Color.Black;
-            series1.LabelForeColor = System.Drawing.Color.White;
+            series1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.LabelBackColor = System.Drawing.Color.White;
+            series1.LabelForeColor = System.Drawing.Color.IndianRed;
             series1.Legend = "Legend1";
             series1.Name = "Số tiền bán được";
             this.charMONEY.Series.Add(series1);
-            this.charMONEY.Size = new System.Drawing.Size(611, 368);
+            this.charMONEY.Size = new System.Drawing.Size(594, 368);
             this.charMONEY.TabIndex = 125;
             this.charMONEY.Text = "chart1";
             // 
@@ -100,17 +100,17 @@ namespace SaleManagement.FORM
             this.chartPRODUCT_QTY.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartPRODUCT_QTY.Legends.Add(legend2);
-            this.chartPRODUCT_QTY.Location = new System.Drawing.Point(626, 135);
+            this.chartPRODUCT_QTY.Location = new System.Drawing.Point(616, 135);
             this.chartPRODUCT_QTY.Name = "chartPRODUCT_QTY";
             this.chartPRODUCT_QTY.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series2.ChartArea = "ChartArea1";
-            series2.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series2.LabelBackColor = System.Drawing.Color.Black;
-            series2.LabelForeColor = System.Drawing.Color.White;
+            series2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.LabelBackColor = System.Drawing.Color.White;
+            series2.LabelForeColor = System.Drawing.Color.IndianRed;
             series2.Legend = "Legend1";
             series2.Name = "Số sản phẩm bán được";
             this.chartPRODUCT_QTY.Series.Add(series2);
-            this.chartPRODUCT_QTY.Size = new System.Drawing.Size(619, 368);
+            this.chartPRODUCT_QTY.Size = new System.Drawing.Size(627, 368);
             this.chartPRODUCT_QTY.TabIndex = 126;
             this.chartPRODUCT_QTY.Text = "chart1";
             // 

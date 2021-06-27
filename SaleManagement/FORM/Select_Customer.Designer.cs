@@ -101,11 +101,11 @@ namespace SaleManagement.FORM
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
             this.label1.Location = new System.Drawing.Point(470, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 31);
+            this.label1.Size = new System.Drawing.Size(141, 27);
             this.label1.TabIndex = 143;
             this.label1.Text = "Khách hàng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -173,7 +173,9 @@ namespace SaleManagement.FORM
             // 
             // txtID_CUSTOMER
             // 
+            this.txtID_CUSTOMER.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_CUSTOMER.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_CUSTOMER.Location = new System.Drawing.Point(124, 99);
             this.txtID_CUSTOMER.Name = "txtID_CUSTOMER";
             this.txtID_CUSTOMER.Size = new System.Drawing.Size(191, 29);
