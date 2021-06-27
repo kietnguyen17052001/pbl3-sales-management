@@ -21,7 +21,7 @@ namespace SaleManagement.FORM
             InitializeComponent();
         }
 
-        private void btnHOME_Click(object sender, EventArgs e)
+        private void btnBACK_Click(object sender, EventArgs e)
         {
             if (isAdmin)
             {

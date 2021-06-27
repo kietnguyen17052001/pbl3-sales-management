@@ -171,13 +171,13 @@ namespace SaleManagement.VIEW
             idProduct = dgvInfoProduct.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
             qtyOfSelectProduct = Convert.ToInt32(txtQuantityOfSelect.Text); // Số lượng hàng hóa từ txtQuantityOfSelect
             productDiscount = Convert.ToInt32(txtProductDiscount.Text);
-            if (qtyOfSelectProduct > Convert.ToInt32(dgvInfoProduct.SelectedRows[0].Cells["SoLuong"].Value.ToString())) // Kiểm tra số lượng
+            if (BLL_SALEPRODUCT.Instance.isValidQuantityProduct(dataTable, idProduct, qtyOfSelectProduct)) // Kiểm tra số lượng
             {
-                MessageBox.Show("Không đủ số lượng hàng hóa để thêm vào đơn", "Lỗi thêm hàng hóa vào đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                BLL_SALEPRODUCT.Instance.FuncAddProduct(dataTable, idProduct, qtyOfSelectProduct, productDiscount);
             }
             else
             {
-                BLL_SALEPRODUCT.Instance.FuncAddProduct(dataTable, idProduct, qtyOfSelectProduct, productDiscount);
+                MessageBox.Show("Không đủ số lượng hàng hóa để thêm vào đơn", "Lỗi thêm hàng hóa vào đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             // Thông tin hóa đơn sau khi thêm hàng hóa
             setDataForToolBox();

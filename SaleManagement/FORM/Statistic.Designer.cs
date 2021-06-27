@@ -29,15 +29,15 @@ namespace SaleManagement.FORM
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label6 = new System.Windows.Forms.Label();
             this.chartPRODUCT_QTY = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartMONEY = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -55,7 +55,7 @@ namespace SaleManagement.FORM
             this.btnINFO = new System.Windows.Forms.Button();
             this.lbTIME = new System.Windows.Forms.Label();
             this.btnSTATISTIC = new System.Windows.Forms.Button();
-            this.btnHOME = new System.Windows.Forms.Button();
+            this.btnBACK = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartPRODUCT_QTY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMONEY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSCALE)).BeginInit();
@@ -67,7 +67,7 @@ namespace SaleManagement.FORM
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(404, 8);
+            this.label6.Location = new System.Drawing.Point(580, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 27);
             this.label6.TabIndex = 121;
@@ -76,20 +76,20 @@ namespace SaleManagement.FORM
             // chartPRODUCT_QTY
             // 
             this.chartPRODUCT_QTY.BackColor = System.Drawing.SystemColors.Control;
-            chartArea4.Name = "ChartArea1";
-            this.chartPRODUCT_QTY.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartPRODUCT_QTY.Legends.Add(legend4);
+            chartArea7.Name = "ChartArea1";
+            this.chartPRODUCT_QTY.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.chartPRODUCT_QTY.Legends.Add(legend7);
             this.chartPRODUCT_QTY.Location = new System.Drawing.Point(12, 133);
             this.chartPRODUCT_QTY.Name = "chartPRODUCT_QTY";
             this.chartPRODUCT_QTY.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series4.ChartArea = "ChartArea1";
-            series4.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series4.LabelBackColor = System.Drawing.Color.Black;
-            series4.LabelForeColor = System.Drawing.Color.White;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartPRODUCT_QTY.Series.Add(series4);
+            series7.ChartArea = "ChartArea1";
+            series7.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series7.LabelBackColor = System.Drawing.Color.Black;
+            series7.LabelForeColor = System.Drawing.Color.White;
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.chartPRODUCT_QTY.Series.Add(series7);
             this.chartPRODUCT_QTY.Size = new System.Drawing.Size(604, 289);
             this.chartPRODUCT_QTY.TabIndex = 124;
             this.chartPRODUCT_QTY.Text = "chart1";
@@ -97,19 +97,19 @@ namespace SaleManagement.FORM
             // chartMONEY
             // 
             this.chartMONEY.BackColor = System.Drawing.SystemColors.Control;
-            chartArea5.Name = "ChartArea1";
-            this.chartMONEY.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartMONEY.Legends.Add(legend5);
+            chartArea8.Name = "ChartArea1";
+            this.chartMONEY.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chartMONEY.Legends.Add(legend8);
             this.chartMONEY.Location = new System.Drawing.Point(622, 133);
             this.chartMONEY.Name = "chartMONEY";
-            series5.ChartArea = "ChartArea1";
-            series5.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series5.LabelBackColor = System.Drawing.Color.Black;
-            series5.LabelForeColor = System.Drawing.Color.White;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chartMONEY.Series.Add(series5);
+            series8.ChartArea = "ChartArea1";
+            series8.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series8.LabelBackColor = System.Drawing.Color.Black;
+            series8.LabelForeColor = System.Drawing.Color.White;
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chartMONEY.Series.Add(series8);
             this.chartMONEY.Size = new System.Drawing.Size(612, 289);
             this.chartMONEY.TabIndex = 125;
             this.chartMONEY.Text = "chart2";
@@ -150,23 +150,23 @@ namespace SaleManagement.FORM
             // chartSCALE
             // 
             this.chartSCALE.BackColor = System.Drawing.SystemColors.Control;
-            chartArea6.Name = "ChartArea1";
-            this.chartSCALE.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartSCALE.Legends.Add(legend6);
+            chartArea9.Name = "ChartArea1";
+            this.chartSCALE.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chartSCALE.Legends.Add(legend9);
             this.chartSCALE.Location = new System.Drawing.Point(486, 437);
             this.chartSCALE.Name = "chartSCALE";
             this.chartSCALE.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series6.BackImageTransparentColor = System.Drawing.Color.White;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series6.Color = System.Drawing.Color.White;
-            series6.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series6.LabelBackColor = System.Drawing.Color.Black;
-            series6.LabelForeColor = System.Drawing.Color.White;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chartSCALE.Series.Add(series6);
+            series9.BackImageTransparentColor = System.Drawing.Color.White;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series9.Color = System.Drawing.Color.White;
+            series9.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series9.LabelBackColor = System.Drawing.Color.Black;
+            series9.LabelForeColor = System.Drawing.Color.White;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            this.chartSCALE.Series.Add(series9);
             this.chartSCALE.Size = new System.Drawing.Size(587, 242);
             this.chartSCALE.TabIndex = 132;
             this.chartSCALE.Text = "chart1";
@@ -176,7 +176,7 @@ namespace SaleManagement.FORM
             this.cbbTYPEOFPRODUCT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbTYPEOFPRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbTYPEOFPRODUCT.FormattingEnabled = true;
-            this.cbbTYPEOFPRODUCT.Location = new System.Drawing.Point(702, 55);
+            this.cbbTYPEOFPRODUCT.Location = new System.Drawing.Point(558, 63);
             this.cbbTYPEOFPRODUCT.Name = "cbbTYPEOFPRODUCT";
             this.cbbTYPEOFPRODUCT.Size = new System.Drawing.Size(282, 27);
             this.cbbTYPEOFPRODUCT.TabIndex = 138;
@@ -259,7 +259,7 @@ namespace SaleManagement.FORM
             this.btnINFO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnINFO.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnINFO.ForeColor = System.Drawing.Color.White;
-            this.btnINFO.Location = new System.Drawing.Point(990, 43);
+            this.btnINFO.Location = new System.Drawing.Point(846, 51);
             this.btnINFO.Name = "btnINFO";
             this.btnINFO.Size = new System.Drawing.Size(244, 48);
             this.btnINFO.TabIndex = 140;
@@ -285,7 +285,7 @@ namespace SaleManagement.FORM
             this.btnSTATISTIC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSTATISTIC.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSTATISTIC.ForeColor = System.Drawing.Color.White;
-            this.btnSTATISTIC.Location = new System.Drawing.Point(347, 46);
+            this.btnSTATISTIC.Location = new System.Drawing.Point(51, 51);
             this.btnSTATISTIC.Name = "btnSTATISTIC";
             this.btnSTATISTIC.Size = new System.Drawing.Size(244, 48);
             this.btnSTATISTIC.TabIndex = 142;
@@ -293,24 +293,24 @@ namespace SaleManagement.FORM
             this.btnSTATISTIC.UseVisualStyleBackColor = false;
             this.btnSTATISTIC.Click += new System.EventHandler(this.btnSTATISTIC_Click);
             // 
-            // btnHOME
+            // btnBACK
             // 
-            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnHOME.FlatAppearance.BorderSize = 0;
-            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHOME.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHOME.ForeColor = System.Drawing.Color.White;
-            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
-            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHOME.Location = new System.Drawing.Point(12, 8);
-            this.btnHOME.Name = "btnHOME";
-            this.btnHOME.Size = new System.Drawing.Size(185, 64);
-            this.btnHOME.TabIndex = 130;
-            this.btnHOME.Text = "Trang chủ";
-            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHOME.UseVisualStyleBackColor = false;
-            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
+            this.btnBACK.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnBACK.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnBACK.FlatAppearance.BorderSize = 0;
+            this.btnBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBACK.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBACK.ForeColor = System.Drawing.Color.White;
+            this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
+            this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBACK.Location = new System.Drawing.Point(1094, 3);
+            this.btnBACK.Name = "btnBACK";
+            this.btnBACK.Size = new System.Drawing.Size(140, 47);
+            this.btnBACK.TabIndex = 143;
+            this.btnBACK.Text = "Quay lại";
+            this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBACK.UseVisualStyleBackColor = false;
+            this.btnBACK.Click += new System.EventHandler(this.btnBACK_Click);
             // 
             // FrmStatistic
             // 
@@ -318,6 +318,7 @@ namespace SaleManagement.FORM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 691);
             this.ControlBox = false;
+            this.Controls.Add(this.btnBACK);
             this.Controls.Add(this.btnSTATISTIC);
             this.Controls.Add(this.lbTIME);
             this.Controls.Add(this.btnINFO);
@@ -325,7 +326,6 @@ namespace SaleManagement.FORM
             this.Controls.Add(this.cbbTYPEOFPRODUCT);
             this.Controls.Add(this.chartSCALE);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnHOME);
             this.Controls.Add(this.chartMONEY);
             this.Controls.Add(this.chartPRODUCT_QTY);
             this.Controls.Add(this.label2);
@@ -349,7 +349,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPRODUCT_QTY;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartMONEY;
-        private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -364,5 +363,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Button btnINFO;
         private System.Windows.Forms.Label lbTIME;
         private System.Windows.Forms.Button btnSTATISTIC;
+        private System.Windows.Forms.Button btnBACK;
     }
 }

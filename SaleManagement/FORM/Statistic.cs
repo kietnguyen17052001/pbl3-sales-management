@@ -88,16 +88,19 @@ namespace SaleManagement.FORM
             frm.Show();
             this.Close();
         }
-        private void btnHOME_Click(object sender, EventArgs e)
+        private void btnBACK_Click(object sender, EventArgs e)
         {
             FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
             frm.Show();
             this.Close();
         }
+
         private void btnLOAD_Click(object sender, EventArgs e)
         {
             lbTIME.Text = ""; 
             fillChart();
         }
+
+        
     }
 }

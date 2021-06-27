@@ -65,37 +65,68 @@ namespace SaleManagement.BLL
             return dataTable;
         }
         // Kiểm tra xem số lượng thêm vào có phù hợp với số lượng trong kho hay không
-        public bool isValidQuantityProduct(DataRow dataRow, tblHangHoa product, int quantityAdd)
+        public bool isValidQuantityProduct(DataTable dataTable, string idProduct, int quantityAdd)
         {
-            if((Convert.ToInt32(dataRow["SoLuong"].ToString()) + quantityAdd) > product.SoLuong)
+            bool isValid = true;
+            var product = DB.tblHangHoas.Find(idProduct);
+            if (isHasProductInInvoice(dataTable, idProduct)) // Đã có hàng hóa trong đơn
             {
-                return false;
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    if (dataRow["MaHangHoa"].ToString() == idProduct)
+                    {
+                        if ((Convert.ToInt32(dataRow["SoLuong"].ToString()) + quantityAdd) > product.SoLuong)
+                        {
+                            isValid = false;
+                            break;
+                        }
+                    }
+                }
             }
-            else
+            else // Chưa có hàng hóa trong đơn
             {
-                return true;
+                if (quantityAdd > product.SoLuong)
+                {
+                    isValid = false;
+                }
+                else
+                {
+                    isValid = true;
+                }
             }
+            return isValid;
+        }
+        // Kiểm tra xem hàng hóa thêm đã có trong hóa đơn hay chưa
+        public bool isHasProductInInvoice(DataTable dataTable, string idProduct)
+        {
+            bool isHasProduct = false;
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                if(dataRow["MaHangHoa"].ToString() == idProduct)
+                {
+                    isHasProduct = true;
+                }
+            }
+            return isHasProduct;
         }
         // Thêm hàng hóa vào hóa đơn
-        public void FuncAddProduct(DataTable data, string idProduct, int quantityAdd, double discount)
+        public void FuncAddProduct(DataTable dataTable, string idProduct, int quantityAdd, double discount)
         {
             bool isHas = false; // kiểm tra hàng hóa đã có trong hóa đơn hay chưa. Nếu có rồi thì update số lượng, nếu chưa thì add new
             var product = DB.tblHangHoas.Find(idProduct);
-            foreach (DataRow dataRow in data.Rows)
+            foreach (DataRow dataRow in dataTable.Rows)
             {
                 if (dataRow["MaHangHoa"].ToString() == product.MaHangHoa)
                 {
                     isHas = true; // hàng hóa đã có
-                    if (isValidQuantityProduct(dataRow, product, quantityAdd))
-                    {
-                        dataRow["SoLuong"] = (Convert.ToInt32(dataRow["SoLuong"].ToString()) + quantityAdd).ToString(); // thay đổi số lượng khi thêm hàng vào
-                        dataRow["ThanhTien(VNĐ)"] = String.Format("{0:n0}", Convert.ToDouble(dataRow["ThanhTien(VNĐ)"].ToString()) + (product.GiaBan * quantityAdd - (product.GiaBan * quantityAdd * discount) / 100)); // chuyển định dạng số tiền, vd: 2000 -> 2.000
-                    }     
+                    dataRow["SoLuong"] = (Convert.ToInt32(dataRow["SoLuong"].ToString()) + quantityAdd).ToString(); // thay đổi số lượng khi thêm hàng vào
+                    dataRow["ThanhTien(VNĐ)"] = String.Format("{0:n0}", Convert.ToDouble(dataRow["ThanhTien(VNĐ)"].ToString()) 
+                        + (product.GiaBan * quantityAdd - (product.GiaBan * quantityAdd * discount) / 100)); // chuyển định dạng số tiền, vd: 2000 -> 2.000   
                 }
             }
             if (isHas == false) // hàng hóa chưa có
             {
-                data.Rows.Add(
+                dataTable.Rows.Add(
                     idProduct,
                     product.TenHangHoa,
                     quantityAdd,

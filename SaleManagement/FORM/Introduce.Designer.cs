@@ -34,7 +34,7 @@ namespace SaleManagement.FORM
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnHOME = new System.Windows.Forms.Button();
+            this.btnBACK = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -96,25 +96,24 @@ namespace SaleManagement.FORM
             this.pictureBox1.TabIndex = 123;
             this.pictureBox1.TabStop = false;
             // 
-            // btnHOME
+            // btnBACK
             // 
-            this.btnHOME.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnHOME.FlatAppearance.BorderSize = 0;
-            this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHOME.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHOME.ForeColor = System.Drawing.Color.White;
-            this.btnHOME.Image = global::SaleManagement.Properties.Resources.house_48;
-            this.btnHOME.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHOME.Location = new System.Drawing.Point(24, 2);
-            this.btnHOME.Name = "btnHOME";
-            this.btnHOME.Size = new System.Drawing.Size(197, 66);
-            this.btnHOME.TabIndex = 127;
-            this.btnHOME.Text = "Trang chủ";
-            this.btnHOME.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHOME.UseVisualStyleBackColor = false;
-            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
+            this.btnBACK.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnBACK.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnBACK.FlatAppearance.BorderSize = 0;
+            this.btnBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBACK.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBACK.ForeColor = System.Drawing.Color.White;
+            this.btnBACK.Image = global::SaleManagement.Properties.Resources.arrow_121_24;
+            this.btnBACK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBACK.Location = new System.Drawing.Point(1061, 3);
+            this.btnBACK.Name = "btnBACK";
+            this.btnBACK.Size = new System.Drawing.Size(140, 47);
+            this.btnBACK.TabIndex = 130;
+            this.btnBACK.Text = "Quay lại";
+            this.btnBACK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBACK.UseVisualStyleBackColor = false;
+            this.btnBACK.Click += new System.EventHandler(this.btnBACK_Click);
             // 
             // FrmIntroduce
             // 
@@ -122,7 +121,7 @@ namespace SaleManagement.FORM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 691);
             this.ControlBox = false;
-            this.Controls.Add(this.btnHOME);
+            this.Controls.Add(this.btnBACK);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -147,6 +146,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Button btnHOME;
+        private System.Windows.Forms.Button btnBACK;
     }
 }
