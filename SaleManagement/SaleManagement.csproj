@@ -73,56 +73,56 @@
     <Compile Include="BLL\BLL_SUPPLIER.cs" />
     <Compile Include="BLL\BLL_TYPEOFPRODUCT.cs" />
     <Compile Include="CBBItem.cs" />
-    <Compile Include="Entity\SALEMANAGEMENT.Context.cs">
+    <Compile Include="Entity\SaleManagement.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SALEMANAGEMENT.Context.tt</DependentUpon>
+      <DependentUpon>SaleManagement.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\SALEMANAGEMENT.cs">
+    <Compile Include="Entity\SaleManagement.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\SALEMANAGEMENT.Designer.cs">
+    <Compile Include="Entity\SaleManagement.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SALEMANAGEMENT.edmx</DependentUpon>
+      <DependentUpon>SaleManagement.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entity\sysdiagram.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblChiTietHoaDonBanHang.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblChiTietHoaDonNhapHang.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblHangHoa.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblHoaDonBanHang.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblHoaDonNhapHang.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblKhachHang.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblLoaiHangHoa.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblNhaCungCap.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblNhanVien.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblNhaSanXuat.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTaiKhoan.cs">
-      <DependentUpon>SALEMANAGEMENT.tt</DependentUpon>
+      <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="FORM\Add_NewProduct.cs">
       <SubType>Form</SubType>
@@ -190,11 +190,11 @@
     <Compile Include="FORM\Discount_Percent.Designer.cs">
       <DependentUpon>Discount_Percent.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\EditQuantity_InvoiceSaleProduct.cs">
+    <Compile Include="FORM\EditQuantityProduct_InvoiceSaleProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\EditQuantity_InvoiceSaleProduct.Designer.cs">
-      <DependentUpon>EditQuantity_InvoiceSaleProduct.cs</DependentUpon>
+    <Compile Include="FORM\EditQuantityProduct_InvoiceSaleProduct.Designer.cs">
+      <DependentUpon>EditQuantityProduct_InvoiceSaleProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\EditQuantityProduct_ListInvoice.cs">
       <SubType>Form</SubType>
@@ -341,8 +341,8 @@
     <EmbeddedResource Include="FORM\Discount_Percent.resx">
       <DependentUpon>Discount_Percent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\EditQuantity_InvoiceSaleProduct.resx">
-      <DependentUpon>EditQuantity_InvoiceSaleProduct.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\EditQuantityProduct_InvoiceSaleProduct.resx">
+      <DependentUpon>EditQuantityProduct_InvoiceSaleProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\EditQuantityProduct_ListInvoice.resx">
       <DependentUpon>EditQuantityProduct_ListInvoice.cs</DependentUpon>
@@ -406,12 +406,12 @@
     <EmbeddedResource Include="FORM\Admin_Role.resx">
       <DependentUpon>Admin_Role.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Entity\SALEMANAGEMENT.edmx">
+    <EntityDeploy Include="Entity\SaleManagement.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SALEMANAGEMENT.Designer.cs</LastGenOutput>
+      <LastGenOutput>SaleManagement.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Entity\SALEMANAGEMENT.edmx.diagram">
-      <DependentUpon>SALEMANAGEMENT.edmx</DependentUpon>
+    <None Include="Entity\SaleManagement.edmx.diagram">
+      <DependentUpon>SaleManagement.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -526,16 +526,6 @@
     <None Include="Card\nhat.png" />
     <None Include="Card\nga.png" />
     <None Include="Card\nam.png" />
-    <Content Include="Entity\SALEMANAGEMENT.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SALEMANAGEMENT.edmx</DependentUpon>
-      <LastGenOutput>SALEMANAGEMENT.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entity\SALEMANAGEMENT.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SALEMANAGEMENT.edmx</DependentUpon>
-      <LastGenOutput>SALEMANAGEMENT.cs</LastGenOutput>
-    </Content>
     <None Include="IMG\checked-user-24.png" />
     <None Include="IMG\user-5-24.png" />
     <None Include="IMG\sinchronize-32 %281%29.png" />
@@ -552,6 +542,18 @@
     <None Include="IMG\key-4-32.png" />
     <None Include="IMG\contacts-32.png" />
     <None Include="IMG\backgroundLogin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entity\SaleManagement.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SaleManagement.edmx</DependentUpon>
+      <LastGenOutput>SaleManagement.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\SaleManagement.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SaleManagement.edmx</DependentUpon>
+      <LastGenOutput>SaleManagement.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

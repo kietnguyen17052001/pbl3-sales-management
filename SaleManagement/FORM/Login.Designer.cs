@@ -150,6 +150,8 @@ namespace SaleManagement.FORM
             // 
             this.btnLogin.BackColor = System.Drawing.Color.SteelBlue;
             this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
@@ -167,11 +169,11 @@ namespace SaleManagement.FORM
             // 
             this.lbINFO.AutoSize = true;
             this.lbINFO.BackColor = System.Drawing.Color.White;
-            this.lbINFO.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbINFO.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lbINFO.Location = new System.Drawing.Point(220, 452);
+            this.lbINFO.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbINFO.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbINFO.Location = new System.Drawing.Point(239, 452);
             this.lbINFO.Name = "lbINFO";
-            this.lbINFO.Size = new System.Drawing.Size(0, 28);
+            this.lbINFO.Size = new System.Drawing.Size(0, 22);
             this.lbINFO.TabIndex = 12;
             this.lbINFO.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -179,6 +181,8 @@ namespace SaleManagement.FORM
             // 
             this.btnExit.BackColor = System.Drawing.Color.IndianRed;
             this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
@@ -194,6 +198,7 @@ namespace SaleManagement.FORM
             // 
             // FrmLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SaleManagement.Properties.Resources.backgroundLogin;

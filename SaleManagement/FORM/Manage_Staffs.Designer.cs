@@ -45,7 +45,6 @@ namespace SaleManagement.VIEW
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnCANCEL = new System.Windows.Forms.Button();
             this.btnDELETE = new System.Windows.Forms.Button();
-            this.btnSHOW = new System.Windows.Forms.Button();
             this.txtNAME_STAFF = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbbPOSITION = new System.Windows.Forms.ComboBox();
@@ -135,8 +134,9 @@ namespace SaleManagement.VIEW
             this.cbbPOSITION_DETAIL.Location = new System.Drawing.Point(453, 92);
             this.cbbPOSITION_DETAIL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbPOSITION_DETAIL.Name = "cbbPOSITION_DETAIL";
-            this.cbbPOSITION_DETAIL.Size = new System.Drawing.Size(181, 30);
+            this.cbbPOSITION_DETAIL.Size = new System.Drawing.Size(211, 30);
             this.cbbPOSITION_DETAIL.TabIndex = 36;
+            this.cbbPOSITION_DETAIL.SelectedIndexChanged += new System.EventHandler(this.cbbPOSITION_DETAIL_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -177,6 +177,8 @@ namespace SaleManagement.VIEW
             this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
             this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHOME.FlatAppearance.BorderSize = 0;
+            this.btnHOME.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnHOME.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHOME.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHOME.ForeColor = System.Drawing.Color.White;
@@ -198,12 +200,14 @@ namespace SaleManagement.VIEW
             this.btnEXCEL.BackColor = System.Drawing.Color.SeaGreen;
             this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEXCEL.FlatAppearance.BorderSize = 0;
+            this.btnEXCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnEXCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEXCEL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEXCEL.ForeColor = System.Drawing.Color.White;
             this.btnEXCEL.Image = global::SaleManagement.Properties.Resources.excel_3_24;
             this.btnEXCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEXCEL.Location = new System.Drawing.Point(765, 80);
+            this.btnEXCEL.Location = new System.Drawing.Point(670, 80);
             this.btnEXCEL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEXCEL.Name = "btnEXCEL";
             this.btnEXCEL.Size = new System.Drawing.Size(154, 48);
@@ -218,6 +222,8 @@ namespace SaleManagement.VIEW
             this.btnADD.BackColor = System.Drawing.Color.SteelBlue;
             this.btnADD.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnADD.FlatAppearance.BorderSize = 0;
+            this.btnADD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnADD.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnADD.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADD.ForeColor = System.Drawing.Color.White;
@@ -238,6 +244,8 @@ namespace SaleManagement.VIEW
             this.btnEDIT.BackColor = System.Drawing.Color.SteelBlue;
             this.btnEDIT.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEDIT.FlatAppearance.BorderSize = 0;
+            this.btnEDIT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnEDIT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnEDIT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEDIT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEDIT.ForeColor = System.Drawing.Color.White;
@@ -258,6 +266,8 @@ namespace SaleManagement.VIEW
             this.btnBACK.BackColor = System.Drawing.Color.SteelBlue;
             this.btnBACK.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnBACK.FlatAppearance.BorderSize = 0;
+            this.btnBACK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnBACK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBACK.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBACK.ForeColor = System.Drawing.Color.White;
@@ -278,6 +288,8 @@ namespace SaleManagement.VIEW
             this.btnSAVE.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSAVE.FlatAppearance.BorderSize = 0;
+            this.btnSAVE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSAVE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
@@ -298,6 +310,8 @@ namespace SaleManagement.VIEW
             this.btnCANCEL.BackColor = System.Drawing.Color.IndianRed;
             this.btnCANCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCANCEL.FlatAppearance.BorderSize = 0;
+            this.btnCANCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnCANCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCANCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
@@ -318,6 +332,8 @@ namespace SaleManagement.VIEW
             this.btnDELETE.BackColor = System.Drawing.Color.IndianRed;
             this.btnDELETE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDELETE.FlatAppearance.BorderSize = 0;
+            this.btnDELETE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnDELETE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnDELETE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDELETE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDELETE.ForeColor = System.Drawing.Color.White;
@@ -332,26 +348,6 @@ namespace SaleManagement.VIEW
             this.btnDELETE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);
-            // 
-            // btnSHOW
-            // 
-            this.btnSHOW.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSHOW.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSHOW.FlatAppearance.BorderSize = 0;
-            this.btnSHOW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSHOW.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSHOW.ForeColor = System.Drawing.Color.White;
-            this.btnSHOW.Image = global::SaleManagement.Properties.Resources.activity_feed_24;
-            this.btnSHOW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSHOW.Location = new System.Drawing.Point(640, 80);
-            this.btnSHOW.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSHOW.Name = "btnSHOW";
-            this.btnSHOW.Size = new System.Drawing.Size(119, 49);
-            this.btnSHOW.TabIndex = 34;
-            this.btnSHOW.Text = "Liệt kê";
-            this.btnSHOW.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSHOW.UseVisualStyleBackColor = false;
-            this.btnSHOW.Click += new System.EventHandler(this.btnSHOW_Click);
             // 
             // txtNAME_STAFF
             // 
@@ -486,6 +482,9 @@ namespace SaleManagement.VIEW
             this.txtSALARY.Name = "txtSALARY";
             this.txtSALARY.Size = new System.Drawing.Size(244, 27);
             this.txtSALARY.TabIndex = 150;
+            this.txtSALARY.Text = "0";
+            this.txtSALARY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSALARY.TextChanged += new System.EventHandler(this.txtSALARY_TextChanged);
             // 
             // label5
             // 
@@ -599,7 +598,6 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.txtSEARCH);
             this.Controls.Add(this.cbbPOSITION_DETAIL);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.btnSHOW);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvLIST_STAFF);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -618,7 +616,6 @@ namespace SaleManagement.VIEW
         #endregion
         private System.Windows.Forms.DataGridView dgvLIST_STAFF;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnSHOW;
         private System.Windows.Forms.TextBox txtSEARCH;
         private System.Windows.Forms.Button btnADD;
         private System.Windows.Forms.Button btnEDIT;

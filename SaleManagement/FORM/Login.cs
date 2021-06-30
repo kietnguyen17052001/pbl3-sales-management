@@ -20,39 +20,26 @@ namespace SaleManagement.FORM
             InitializeComponent();
         }
         private void btnLogin_Click(object sender, EventArgs e)
-        { 
-            if(txtUSER.Text == "Nhập tài khoản" && txtPASSWORD.Text != "Nhập mật khẩu")
+        {
+            tblTaiKhoan user = BLL_ACCOUNT.Instance.getUser(txtUSER.Text.Trim());
+            if (user == null)
             {
-                lbINFO.ForeColor = Color.IndianRed;
-                lbINFO.Text = "Vui lòng nhập tài khoản";
-            }
-            else if(txtUSER.Text != "Nhập tài khoản" && txtPASSWORD.Text == "Nhập mật khẩu")
-            {
-                lbINFO.ForeColor = Color.IndianRed;
-                lbINFO.Text = "Vui lòng nhập mật khẩu";
-            }
-            else if (txtUSER.Text == "Nhập tài khoản" && txtPASSWORD.Text == "Nhập mật khẩu")
-            {
-                lbINFO.ForeColor = Color.IndianRed;
-                lbINFO.Text = "Vui lòng nhập tài khoản và mật khẩu";
+                lbINFO.Text = "Kiểm tra lại tài khoản và mật khẩu";
+                txtPASSWORD.Clear();
             }
             else
             {
-                tblTaiKhoan user = BLL_ACCOUNT.Instance.getUser(txtUSER.Text.Trim());
                 if (user.ChucVu == "Admin")
                 {
                     if (user.MatKhau == txtPASSWORD.Text.Trim())
                     {
-                        lbINFO.ForeColor = Color.SteelBlue;
-                        lbINFO.Text = "Đăng nhập thành công";
-                        FrmMain_Admin frm = new FrmMain_Admin(txtUSER.Text.Trim());
-                        frm.Show();
+                        FrmMain_Admin frmMainAdmin = new FrmMain_Admin(txtUSER.Text.Trim());
+                        frmMainAdmin.Show();
                         this.Hide();
                     }
                     else
                     {
-                        lbINFO.ForeColor = Color.IndianRed;
-                        lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+                        lbINFO.Text = "Kiểm tra lại tài khoản và mật khẩu";
                         txtPASSWORD.Clear();
                     }
                 }
@@ -60,16 +47,13 @@ namespace SaleManagement.FORM
                 {
                     if (user.MatKhau == txtPASSWORD.Text.Trim())
                     {
-                        lbINFO.ForeColor = Color.SteelBlue;
-                        lbINFO.Text = "Đăng nhập thành công";
-                        FrmMain_Member frm = new FrmMain_Member(txtUSER.Text.Trim());
-                        frm.Show();
+                        FrmMain_Member frmMainMember = new FrmMain_Member(txtUSER.Text.Trim());
+                        frmMainMember.Show();
                         this.Hide();
                     }
                     else
                     {
-                        lbINFO.ForeColor = Color.IndianRed;
-                        lbINFO.Text = "Sai mật khẩu. Đăng nhập thất bại";
+                        lbINFO.Text = "Kiểm tra lại tài khoản và mật khẩu";
                         txtPASSWORD.Clear();
                     }
                 }
@@ -98,7 +82,7 @@ namespace SaleManagement.FORM
             if (txtPASSWORD.Text == "Nhập mật khẩu")
             {
                 txtPASSWORD.Text = "";
-                txtPASSWORD.PasswordChar = '*';
+                txtPASSWORD.PasswordChar = '•';
                 txtPASSWORD.ForeColor = Color.Black;
             }
         }
@@ -107,8 +91,8 @@ namespace SaleManagement.FORM
         {
             if (txtPASSWORD.Text == "")
             {
-                txtPASSWORD.PasswordChar = '\0';
                 txtPASSWORD.Text = "Nhập mật khẩu";
+                txtPASSWORD.PasswordChar = '\0';
                 txtPASSWORD.ForeColor = Color.Silver;
             }
         }

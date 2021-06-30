@@ -227,6 +227,8 @@ namespace SaleManagement.FORM
             this.btnSELECT.BackColor = System.Drawing.Color.Tomato;
             this.btnSELECT.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSELECT.FlatAppearance.BorderSize = 0;
+            this.btnSELECT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Tomato;
+            this.btnSELECT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSELECT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSELECT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSELECT.ForeColor = System.Drawing.Color.White;
@@ -246,6 +248,8 @@ namespace SaleManagement.FORM
             this.btnADD.BackColor = System.Drawing.Color.SteelBlue;
             this.btnADD.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnADD.FlatAppearance.BorderSize = 0;
+            this.btnADD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnADD.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnADD.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADD.ForeColor = System.Drawing.Color.White;
@@ -265,6 +269,8 @@ namespace SaleManagement.FORM
             this.btnSAVE.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSAVE.FlatAppearance.BorderSize = 0;
+            this.btnSAVE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSAVE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;

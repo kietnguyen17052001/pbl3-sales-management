@@ -11,7 +11,7 @@ namespace SaleManagement.BLL
 {
     class BLL_SALEPRODUCT
     {
-        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_SALEPRODUCT _Instance;
         public static BLL_SALEPRODUCT Instance
         {
@@ -41,7 +41,7 @@ namespace SaleManagement.BLL
         // Load data for DGVProduct
         public void LoadDataProduct(DataGridView dgv)
         {
-            var product = DB.tblHangHoas.Select(p => new {
+            var product = db.tblHangHoas.Select(p => new {
                 p.MaHangHoa,
                 p.TenHangHoa,
                 p.SoLuong,
@@ -68,7 +68,7 @@ namespace SaleManagement.BLL
         public bool isValidQuantityProduct(DataTable dataTable, string idProduct, int quantityAdd)
         {
             bool isValid = true;
-            var product = DB.tblHangHoas.Find(idProduct);
+            var product = db.tblHangHoas.Find(idProduct);
             if (isHasProductInInvoice(dataTable, idProduct)) // Đã có hàng hóa trong đơn
             {
                 foreach (DataRow dataRow in dataTable.Rows)
@@ -113,7 +113,7 @@ namespace SaleManagement.BLL
         public void FuncAddProduct(DataTable dataTable, string idProduct, int quantityAdd, double discount)
         {
             bool isHas = false; // kiểm tra hàng hóa đã có trong hóa đơn hay chưa. Nếu có rồi thì update số lượng, nếu chưa thì add new
-            var product = DB.tblHangHoas.Find(idProduct);
+            var product = db.tblHangHoas.Find(idProduct);
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 if (dataRow["MaHangHoa"].ToString() == product.MaHangHoa)
@@ -163,7 +163,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)).Select(p => new
+                var product = db.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)).Select(p => new
                 {
                     p.MaHangHoa,
                     p.TenHangHoa,
@@ -176,15 +176,15 @@ namespace SaleManagement.BLL
         // payment for invoice
         public void FuncPayment(tblHoaDonBanHang newInvoice, DataTable dataTable)
         {
-            DB.tblHoaDonBanHangs.Add(newInvoice);
-            DB.SaveChanges();// thêm đơn hàng vào DB
+            db.tblHoaDonBanHangs.Add(newInvoice);
+            db.SaveChanges();// thêm đơn hàng vào db
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                DB.tblChiTietHoaDonBanHangs.Add(getDetailInvoice(dataRow, newInvoice.MaHoaDonBan));
-                DB.SaveChanges();// thêm hóa đơn bán hàng chi tiết
-                var product = DB.tblHangHoas.Find(dataRow["MaHangHoa"].ToString());
+                db.tblChiTietHoaDonBanHangs.Add(getDetailInvoice(dataRow, newInvoice.MaHoaDonBan));
+                db.SaveChanges();// thêm hóa đơn bán hàng chi tiết
+                var product = db.tblHangHoas.Find(dataRow["MaHangHoa"].ToString());
                 product.SoLuong -= Convert.ToInt32(dataRow["SoLuong"].ToString());
-                DB.SaveChanges();// thay đổi số lượng hàng hóa sau khi thanh toán
+                db.SaveChanges();// thay đổi số lượng hàng hóa sau khi thanh toán
             }
         }
         // Tổng số tiền của hóa đơn
@@ -228,7 +228,7 @@ namespace SaleManagement.BLL
         public string getNewIdInvoice()
         {
             string idInvoice = "";
-            List<tblHoaDonBanHang> list = DB.tblHoaDonBanHangs.ToList();
+            List<tblHoaDonBanHang> list = db.tblHoaDonBanHangs.ToList();
             if (list.Count == 0)
             {
                 idInvoice = "HDB0001";
@@ -246,7 +246,7 @@ namespace SaleManagement.BLL
                 }
                 else if (lastId + 1 < 1000)
                 {
-                    idInvoice = "HDB0"+ (lastId + 1).ToString(); 
+                    idInvoice = "HDB0" + (lastId + 1).ToString(); 
                 }
             }
             return idInvoice;

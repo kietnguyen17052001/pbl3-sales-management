@@ -32,20 +32,20 @@ namespace SaleManagement.FORM
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain_Member));
             this.panelSALE_MANAGEMENT = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbWelcome = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
-            this.btnList_ImportInvoice = new System.Windows.Forms.Button();
-            this.btnList_SaleInvoice = new System.Windows.Forms.Button();
-            this.btnIntroduce = new System.Windows.Forms.Button();
+            this.btnListImportInvoice = new System.Windows.Forms.Button();
+            this.btnListSaleInvoice = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnImportProduct = new System.Windows.Forms.Button();
             this.btnSaleProduct = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnChangePassword = new System.Windows.Forms.Button();
             this.panelSALE_MANAGEMENT.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSALE_MANAGEMENT
@@ -71,6 +71,17 @@ namespace SaleManagement.FORM
             this.label2.Size = new System.Drawing.Size(76, 36);
             this.label2.TabIndex = 2;
             this.label2.Text = "N3K";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::SaleManagement.Properties.Resources.cart_60_32;
+            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(25, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(82, 70);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
@@ -105,72 +116,49 @@ namespace SaleManagement.FORM
             this.lbDate.TabIndex = 130;
             this.lbDate.Text = "Thời gian:";
             // 
-            // btnList_ImportInvoice
+            // btnListImportInvoice
             // 
-            this.btnList_ImportInvoice.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnList_ImportInvoice.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnList_ImportInvoice.FlatAppearance.BorderSize = 0;
-            this.btnList_ImportInvoice.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnList_ImportInvoice.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.btnList_ImportInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnList_ImportInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnList_ImportInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnList_ImportInvoice.ForeColor = System.Drawing.Color.Black;
-            this.btnList_ImportInvoice.Image = global::SaleManagement.Properties.Resources.list_icon;
-            this.btnList_ImportInvoice.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnList_ImportInvoice.Location = new System.Drawing.Point(255, 400);
-            this.btnList_ImportInvoice.Name = "btnList_ImportInvoice";
-            this.btnList_ImportInvoice.Size = new System.Drawing.Size(208, 184);
-            this.btnList_ImportInvoice.TabIndex = 129;
-            this.btnList_ImportInvoice.Text = "DS đơn nhập hàng";
-            this.btnList_ImportInvoice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnList_ImportInvoice.UseVisualStyleBackColor = false;
-            this.btnList_ImportInvoice.Click += new System.EventHandler(this.btnList_ImportInvoice_Click);
+            this.btnListImportInvoice.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnListImportInvoice.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnListImportInvoice.FlatAppearance.BorderSize = 0;
+            this.btnListImportInvoice.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnListImportInvoice.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnListImportInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnListImportInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListImportInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListImportInvoice.ForeColor = System.Drawing.Color.Black;
+            this.btnListImportInvoice.Image = global::SaleManagement.Properties.Resources.list_icon;
+            this.btnListImportInvoice.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnListImportInvoice.Location = new System.Drawing.Point(255, 400);
+            this.btnListImportInvoice.Name = "btnListImportInvoice";
+            this.btnListImportInvoice.Size = new System.Drawing.Size(208, 184);
+            this.btnListImportInvoice.TabIndex = 129;
+            this.btnListImportInvoice.Text = "DS đơn nhập hàng";
+            this.btnListImportInvoice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnListImportInvoice.UseVisualStyleBackColor = false;
+            this.btnListImportInvoice.Click += new System.EventHandler(this.btnListImportInvoice_Click);
             // 
-            // btnList_SaleInvoice
+            // btnListSaleInvoice
             // 
-            this.btnList_SaleInvoice.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnList_SaleInvoice.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnList_SaleInvoice.FlatAppearance.BorderSize = 0;
-            this.btnList_SaleInvoice.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnList_SaleInvoice.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.btnList_SaleInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnList_SaleInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnList_SaleInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnList_SaleInvoice.ForeColor = System.Drawing.Color.Black;
-            this.btnList_SaleInvoice.Image = global::SaleManagement.Properties.Resources.list_icon;
-            this.btnList_SaleInvoice.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnList_SaleInvoice.Location = new System.Drawing.Point(12, 398);
-            this.btnList_SaleInvoice.Name = "btnList_SaleInvoice";
-            this.btnList_SaleInvoice.Size = new System.Drawing.Size(208, 184);
-            this.btnList_SaleInvoice.TabIndex = 128;
-            this.btnList_SaleInvoice.Text = "DS đơn bán hàng";
-            this.btnList_SaleInvoice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnList_SaleInvoice.UseVisualStyleBackColor = false;
-            this.btnList_SaleInvoice.Click += new System.EventHandler(this.btnList_SaleInvoice_Click);
-            // 
-            // btnIntroduce
-            // 
-            this.btnIntroduce.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnIntroduce.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnIntroduce.FlatAppearance.BorderSize = 0;
-            this.btnIntroduce.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnIntroduce.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.btnIntroduce.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnIntroduce.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIntroduce.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIntroduce.ForeColor = System.Drawing.Color.Black;
-            this.btnIntroduce.Image = global::SaleManagement.Properties.Resources.Adobe_Help_Center_icon;
-            this.btnIntroduce.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnIntroduce.Location = new System.Drawing.Point(492, 157);
-            this.btnIntroduce.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnIntroduce.Name = "btnIntroduce";
-            this.btnIntroduce.Size = new System.Drawing.Size(189, 185);
-            this.btnIntroduce.TabIndex = 127;
-            this.btnIntroduce.Text = "Giới thiệu";
-            this.btnIntroduce.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnIntroduce.UseVisualStyleBackColor = false;
-            this.btnIntroduce.Click += new System.EventHandler(this.btnIntroduce_Click);
+            this.btnListSaleInvoice.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnListSaleInvoice.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnListSaleInvoice.FlatAppearance.BorderSize = 0;
+            this.btnListSaleInvoice.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnListSaleInvoice.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnListSaleInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnListSaleInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListSaleInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListSaleInvoice.ForeColor = System.Drawing.Color.Black;
+            this.btnListSaleInvoice.Image = global::SaleManagement.Properties.Resources.list_icon;
+            this.btnListSaleInvoice.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnListSaleInvoice.Location = new System.Drawing.Point(12, 398);
+            this.btnListSaleInvoice.Name = "btnListSaleInvoice";
+            this.btnListSaleInvoice.Size = new System.Drawing.Size(208, 184);
+            this.btnListSaleInvoice.TabIndex = 128;
+            this.btnListSaleInvoice.Text = "DS đơn bán hàng";
+            this.btnListSaleInvoice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnListSaleInvoice.UseVisualStyleBackColor = false;
+            this.btnListSaleInvoice.Click += new System.EventHandler(this.btnListSaleInvoice_Click);
             // 
             // btnLogOut
             // 
@@ -246,24 +234,36 @@ namespace SaleManagement.FORM
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImage = global::SaleManagement.Properties.Resources.homeapp;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(687, 99);
+            this.pictureBox1.Location = new System.Drawing.Point(747, 99);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(547, 594);
+            this.pictureBox1.Size = new System.Drawing.Size(487, 594);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
+            // btnChangePassword
             // 
-            this.pictureBox2.Image = global::SaleManagement.Properties.Resources.cart_60_32;
-            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(25, 13);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(82, 70);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.btnChangePassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnChangePassword.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnChangePassword.FlatAppearance.BorderSize = 0;
+            this.btnChangePassword.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnChangePassword.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnChangePassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangePassword.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePassword.ForeColor = System.Drawing.Color.Black;
+            this.btnChangePassword.Image = global::SaleManagement.Properties.Resources.pass;
+            this.btnChangePassword.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnChangePassword.Location = new System.Drawing.Point(492, 158);
+            this.btnChangePassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Size = new System.Drawing.Size(189, 184);
+            this.btnChangePassword.TabIndex = 132;
+            this.btnChangePassword.Text = "Đổi Mật Khẩu";
+            this.btnChangePassword.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnChangePassword.UseVisualStyleBackColor = false;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // FrmMain_Member
             // 
@@ -272,11 +272,11 @@ namespace SaleManagement.FORM
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 691);
             this.ControlBox = false;
+            this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.lbWelcome);
             this.Controls.Add(this.lbDate);
-            this.Controls.Add(this.btnList_ImportInvoice);
-            this.Controls.Add(this.btnList_SaleInvoice);
-            this.Controls.Add(this.btnIntroduce);
+            this.Controls.Add(this.btnListImportInvoice);
+            this.Controls.Add(this.btnListSaleInvoice);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnImportProduct);
             this.Controls.Add(this.btnSaleProduct);
@@ -287,8 +287,8 @@ namespace SaleManagement.FORM
             this.Text = "Phần mềm quản lý bán hàng - Member";
             this.panelSALE_MANAGEMENT.ResumeLayout(false);
             this.panelSALE_MANAGEMENT.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,10 +304,10 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Button btnImportProduct;
         private System.Windows.Forms.Button btnSaleProduct;
         private System.Windows.Forms.Button btnLogOut;
-        private System.Windows.Forms.Button btnIntroduce;
-        private System.Windows.Forms.Button btnList_ImportInvoice;
-        private System.Windows.Forms.Button btnList_SaleInvoice;
+        private System.Windows.Forms.Button btnListImportInvoice;
+        private System.Windows.Forms.Button btnListSaleInvoice;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.Label lbDate;
+        private System.Windows.Forms.Button btnChangePassword;
     }
 }

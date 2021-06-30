@@ -247,6 +247,8 @@ namespace SaleManagement.VIEW
             // btnADD
             // 
             this.btnADD.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnADD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnADD.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnADD.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADD.ForeColor = System.Drawing.Color.White;
@@ -264,6 +266,8 @@ namespace SaleManagement.VIEW
             // btnEDIT
             // 
             this.btnEDIT.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnEDIT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnEDIT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnEDIT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEDIT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEDIT.ForeColor = System.Drawing.Color.White;
@@ -281,6 +285,8 @@ namespace SaleManagement.VIEW
             // btnBACK
             // 
             this.btnBACK.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnBACK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnBACK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBACK.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBACK.ForeColor = System.Drawing.Color.White;
@@ -298,6 +304,8 @@ namespace SaleManagement.VIEW
             // btnSAVE
             // 
             this.btnSAVE.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSAVE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSAVE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
@@ -315,6 +323,8 @@ namespace SaleManagement.VIEW
             // btnCANCEL
             // 
             this.btnCANCEL.BackColor = System.Drawing.Color.IndianRed;
+            this.btnCANCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnCANCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCANCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
@@ -332,6 +342,8 @@ namespace SaleManagement.VIEW
             // btnDELETE
             // 
             this.btnDELETE.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDELETE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnDELETE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnDELETE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDELETE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDELETE.ForeColor = System.Drawing.Color.White;
@@ -377,6 +389,8 @@ namespace SaleManagement.VIEW
             this.btnHOME.BackColor = System.Drawing.Color.SteelBlue;
             this.btnHOME.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHOME.FlatAppearance.BorderSize = 0;
+            this.btnHOME.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnHOME.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnHOME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHOME.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHOME.ForeColor = System.Drawing.Color.White;
@@ -397,6 +411,8 @@ namespace SaleManagement.VIEW
             this.btnEXCEL.BackColor = System.Drawing.Color.SeaGreen;
             this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEXCEL.FlatAppearance.BorderSize = 0;
+            this.btnEXCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnEXCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEXCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEXCEL.ForeColor = System.Drawing.Color.White;

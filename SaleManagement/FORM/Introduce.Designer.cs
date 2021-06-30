@@ -101,6 +101,8 @@ namespace SaleManagement.FORM
             this.btnBACK.BackColor = System.Drawing.Color.SteelBlue;
             this.btnBACK.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnBACK.FlatAppearance.BorderSize = 0;
+            this.btnBACK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnBACK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBACK.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBACK.ForeColor = System.Drawing.Color.White;

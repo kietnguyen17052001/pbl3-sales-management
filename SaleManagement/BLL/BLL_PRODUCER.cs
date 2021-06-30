@@ -9,7 +9,7 @@ namespace SaleManagement.BLL
 {
     class BLL_PRODUCER
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_PRODUCER _Instance;
         public static BLL_PRODUCER Instance
         {
@@ -27,7 +27,7 @@ namespace SaleManagement.BLL
         public List<CBBItem> getCbbProducer()
         {
             List<CBBItem> listProducer = new List<CBBItem>();
-            foreach(tblNhaSanXuat producer in DB.tblNhaSanXuats)
+            foreach(tblNhaSanXuat producer in db.tblNhaSanXuats)
             {
                 listProducer.Add(new CBBItem { VALUE = producer.MaNhaSanXuat, TEXT = producer.TenNhaSanXuat });
             }
@@ -35,14 +35,14 @@ namespace SaleManagement.BLL
         }
         public void FuncAddProducer(tblNhaSanXuat producer)
         {
-            DB.tblNhaSanXuats.Add(producer);
-            DB.SaveChanges();
+            db.tblNhaSanXuats.Add(producer);
+            db.SaveChanges();
         }
         public string getNewIDProducer()
         {
             string idProducer;
             int lastId;
-            List<tblNhaSanXuat> listIdProducer = DB.tblNhaSanXuats.ToList();
+            List<tblNhaSanXuat> listIdProducer = db.tblNhaSanXuats.ToList();
             if(listIdProducer == null)
             {
                 idProducer = "NSX001";

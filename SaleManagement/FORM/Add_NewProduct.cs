@@ -15,8 +15,8 @@ namespace SaleManagement.FORM
     public partial class FrmAdd_NewProduct : Form
     {
         private string idInvoice, idProduct;
-        private int productQty, discount;
-        private double pricePro;
+        private int quantityProduct, discount;
+        private double productPrice;
         private bool isListSale;
         public delegate void myDel(string _idInvoice);
         public myDel d { get; set; }
@@ -33,7 +33,7 @@ namespace SaleManagement.FORM
             {
                 btnAddNewProduct.Enabled = true;  
             }
-            ShowProduct();
+            LoadProduct();
             FormatColumnHeader();
         }
         public void FormatColumnHeader()
@@ -55,7 +55,7 @@ namespace SaleManagement.FORM
                 dgvProduct.Columns[3].HeaderText = "Giá nhập";
             }
         }
-        public void ShowProduct()
+        public void LoadProduct()
         {
             BLL_PRODUCT.Instance.LoadDataProductInFrmAddProduct(dgvProduct, isListSale);
         }
@@ -75,12 +75,12 @@ namespace SaleManagement.FORM
         private void btnAddProductForInvoice_Click(object sender, EventArgs e)
         {
             idProduct = dgvProduct.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
-            productQty = Convert.ToInt32(txtQuantity.Text);
-            pricePro = Convert.ToDouble(dgvProduct.SelectedRows[0].Cells[3].Value.ToString());
-            discount = Convert.ToInt32(txtDiscount.Text);
+            quantityProduct = Convert.ToInt32(txtQuantity.Text.Trim());
+            productPrice = Convert.ToDouble(dgvProduct.SelectedRows[0].Cells[3].Value.ToString());
+            discount = Convert.ToInt32(txtDiscount.Text.Trim());
             if (isListSale)
             {
-                if (productQty > Convert.ToInt32(dgvProduct.SelectedRows[0].Cells["SoLuong"].Value.ToString()))
+                if (quantityProduct > Convert.ToInt32(dgvProduct.SelectedRows[0].Cells["SoLuong"].Value.ToString()))
                 {
                     lbSTATUS.Text = "KHÔNG ĐỦ SL";
                 }
@@ -90,15 +90,15 @@ namespace SaleManagement.FORM
                     tblChiTietHoaDonBanHang invoiceDetail = new tblChiTietHoaDonBanHang();
                     invoiceDetail.MaHoaDonBan = idInvoice;
                     invoiceDetail.MaHangHoa = idProduct;
-                    invoiceDetail.SoLuong = productQty;
-                    invoiceDetail.DonGia = pricePro;
+                    invoiceDetail.SoLuong = quantityProduct;
+                    invoiceDetail.DonGia = productPrice;
                     invoiceDetail.GiamGia = discount;
-                    invoiceDetail.TongTien = pricePro * productQty - pricePro * productQty * discount / 100;
+                    invoiceDetail.TongTien = productPrice * quantityProduct - productPrice * quantityProduct * discount / 100;
                     BLL_LISTSALEINVOICE.Instance.FuncAddProduct(invoiceDetail);
                     DialogResult answer = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (answer == DialogResult.Yes)
                     {
-                        ShowProduct();
+                        LoadProduct();
                     }
                     else
                     {
@@ -112,14 +112,14 @@ namespace SaleManagement.FORM
                 tblChiTietHoaDonNhapHang invoicedetail = new tblChiTietHoaDonNhapHang();
                 invoicedetail.MaHoaDonNhap = idInvoice;
                 invoicedetail.MaHangHoa = idProduct;
-                invoicedetail.SoLuong = productQty;
-                invoicedetail.GiaNhap = pricePro;
-                invoicedetail.TongTien = pricePro * productQty;
+                invoicedetail.SoLuong = quantityProduct;
+                invoicedetail.GiaNhap = productPrice;
+                invoicedetail.TongTien = productPrice * quantityProduct;
                 BLL_LISTIMPORTINVOICE.Instance.FuncAddProduct(invoicedetail, discount);
                 DialogResult answer = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (answer == DialogResult.Yes)
                 {
-                    ShowProduct();
+                    LoadProduct();
                 }
                 else
                 {

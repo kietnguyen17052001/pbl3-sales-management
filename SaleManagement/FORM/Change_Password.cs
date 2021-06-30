@@ -25,7 +25,7 @@ namespace SaleManagement.FORM
             if (txtOldPassword.Text == "Nhập mật khẩu cũ")
             {
                 txtOldPassword.Text = "";
-                txtOldPassword.PasswordChar = '*';
+                txtOldPassword.PasswordChar = '•';
                 txtOldPassword.ForeColor = Color.Black;
             }
         }
@@ -45,7 +45,7 @@ namespace SaleManagement.FORM
             if (txtNewPassword.Text == "Nhập mật khẩu mới")
             {
                 txtNewPassword.Text = "";
-                txtNewPassword.PasswordChar = '*';
+                txtNewPassword.PasswordChar = '•';
                 txtNewPassword.ForeColor = Color.Black;
             }
         }
@@ -65,7 +65,7 @@ namespace SaleManagement.FORM
             if (txtReWriteNewPassword.Text == "Nhập lại mật khẩu mới")
             {
                 txtReWriteNewPassword.Text = "";
-                txtReWriteNewPassword.PasswordChar = '*';
+                txtReWriteNewPassword.PasswordChar = '•';
                 txtReWriteNewPassword.ForeColor = Color.Black;
             }
         }
@@ -113,7 +113,7 @@ namespace SaleManagement.FORM
             }
             else
             {
-                bool flag = BLL_ACCOUNT.Instance.ChangePasswordAdmin(usernameLogin, txtOldPassword.Text.Trim(), txtNewPassword.Text.Trim());
+                bool flag = BLL_ACCOUNT.Instance.ChangePasswordUser(usernameLogin, txtOldPassword.Text.Trim(), txtNewPassword.Text.Trim());
                 if (flag)
                 {
                     MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -20,7 +20,7 @@ namespace SaleManagement.FORM
         public FrmSelect_Customer()
         {
             InitializeComponent();
-            ShowData();
+            LoadData();
             rbMALE.Checked = true;
             FormatColumnHeaders();
         }
@@ -47,7 +47,7 @@ namespace SaleManagement.FORM
             btnSAVE.Enabled = E;
         }
         // Hiển thị thông tin các khách hàng
-        public void ShowData()
+        public void LoadData()
         {
             Disable(false);
             BLL_CUSTOMER.Instance.LoadData(dgvLISTCUSTOMER);
@@ -61,7 +61,7 @@ namespace SaleManagement.FORM
         // load lại dgv
         private void btnLOAD_Click(object sender, EventArgs e)
         {
-            ShowData();
+            LoadData();
         }
         // Thêm khách hàng mới
         private void btnADD_Click(object sender, EventArgs e)
@@ -75,23 +75,33 @@ namespace SaleManagement.FORM
         // Lưu khách hàng vừa thêm 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            tblKhachHang newCustomer = new tblKhachHang();
-            newCustomer.MaKhachHang = txtID_CUSTOMER.Text;
-            newCustomer.TenKhachHang = txtNAME_CUSTOMER.Text;
-            newCustomer.DiaChi = txtADDRESS.Text;
-            newCustomer.SoDienThoai = txtPHONE.Text;
-            newCustomer.GioiTinh = rbMALE.Checked;
-            if (string.IsNullOrEmpty(newCustomer.MaKhachHang) || string.IsNullOrEmpty(newCustomer.TenKhachHang) || string.IsNullOrEmpty(newCustomer.DiaChi)
-                || string.IsNullOrEmpty(newCustomer.SoDienThoai))
+            tblKhachHang customer = new tblKhachHang();
+            customer.MaKhachHang = txtID_CUSTOMER.Text.Trim();
+            customer.TenKhachHang = txtNAME_CUSTOMER.Text.Trim();
+            customer.DiaChi = txtADDRESS.Text.Trim();
+            customer.SoDienThoai = txtPHONE.Text.Trim();
+            customer.GioiTinh = rbMALE.Checked;
+            if (String.IsNullOrEmpty(customer.MaKhachHang) && !String.IsNullOrEmpty(customer.TenKhachHang))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
+            }
+            else if (!String.IsNullOrEmpty(customer.MaKhachHang) && String.IsNullOrEmpty(customer.TenKhachHang))
+            {
+                MessageBox.Show("Tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
+            }
+            else if (String.IsNullOrEmpty(customer.MaKhachHang) && String.IsNullOrEmpty(customer.TenKhachHang))
+            {
+                MessageBox.Show("Mã và tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
             }
             else
             {
                 try
                 {
-                    BLL_CUSTOMER.Instance.FuncAddNewCustomer(newCustomer);
-                    ShowData();
+                    BLL_CUSTOMER.Instance.FuncAddNewCustomer(customer);
+                    LoadData();
                 }
                 catch (Exception)
                 {

@@ -10,7 +10,7 @@ namespace SaleManagement.BLL
 {
     class BLL_TYPEOFPRODUCT
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_TYPEOFPRODUCT _Instance;
         public static BLL_TYPEOFPRODUCT Instance
         {
@@ -28,7 +28,7 @@ namespace SaleManagement.BLL
         // load data type of product
         public void LoadDataTypeOfProduct(DataGridView dgv)
         {
-            var getType = DB.tblLoaiHangHoas.Select(p => new
+            var getType = db.tblLoaiHangHoas.Select(p => new
             {
                 p.MaLoaiHangHoa,
                 p.TenLoaiHangHoa
@@ -38,15 +38,15 @@ namespace SaleManagement.BLL
         // add new type of product
         public void FuncAddNewProduct(tblLoaiHangHoa typeOfProduct)
         {
-            DB.tblLoaiHangHoas.Add(typeOfProduct);
-            DB.SaveChanges();
+            db.tblLoaiHangHoas.Add(typeOfProduct);
+            db.SaveChanges();
         }
         // edit type of product
-        public void FuncEditProduct(tblLoaiHangHoa typeOfProduct)
+        public void FuncEditProduct(tblLoaiHangHoa _typeOfProduct)
         {
-            var getType = DB.tblLoaiHangHoas.Find(typeOfProduct.MaLoaiHangHoa);
-            getType.TenLoaiHangHoa = typeOfProduct.TenLoaiHangHoa;
-            DB.SaveChanges();
+            var typeOfProduct = db.tblLoaiHangHoas.Find(_typeOfProduct.MaLoaiHangHoa);
+            typeOfProduct.TenLoaiHangHoa = _typeOfProduct.TenLoaiHangHoa;
+            db.SaveChanges();
         }
         // search id
         public void FuncSearchTypeProduct(DataGridView dgv, string information)
@@ -57,28 +57,24 @@ namespace SaleManagement.BLL
             }
             else
             {
-                var getType = DB.tblLoaiHangHoas.Where(p => p.MaLoaiHangHoa.Contains(information)
+                var typeOfProduct = db.tblLoaiHangHoas.Where(p => p.MaLoaiHangHoa.Contains(information)
             || p.TenLoaiHangHoa.Contains(information)).Select(p => new
             {
                 p.MaLoaiHangHoa,
                 p.TenLoaiHangHoa
             });
-                dgv.DataSource = getType.ToList();
+                dgv.DataSource = typeOfProduct.ToList();
             }
         }
         // delete type of product
         public void FuncDeleteTypeProduct(List<string> listId)
         {
-            foreach(string i in listId)
+            var typeOfProduct = new tblLoaiHangHoa();
+            foreach(string idProduct in listId)
             {
-                foreach(tblLoaiHangHoa typeOfProduct in DB.tblLoaiHangHoas)
-                {
-                    if(typeOfProduct.MaLoaiHangHoa == i)
-                    {
-                        DB.tblLoaiHangHoas.Remove(typeOfProduct);
-                    }
-                }
-                DB.SaveChanges();
+                typeOfProduct = db.tblLoaiHangHoas.Find(idProduct);
+                db.tblLoaiHangHoas.Remove(typeOfProduct);
+                db.SaveChanges();
             }
         }
     }

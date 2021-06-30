@@ -9,7 +9,7 @@ namespace SaleManagement.BLL
 {
     class BLL_STATISTIC
     {
-        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_STATISTIC _instance;
         public static BLL_STATISTIC instance
         {
@@ -37,27 +37,27 @@ namespace SaleManagement.BLL
         // get list invoice_detail
         public IQueryable<tblChiTietHoaDonBanHang> getListInvoiceDetail(DateTime dateFrom, DateTime dateTo)
         {
-            return DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateFrom && p.tblHoaDonBanHang.NgayBan <= dateTo);
+            return db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateFrom && p.tblHoaDonBanHang.NgayBan <= dateTo);
         }
         // get list product
         public IQueryable<tblHangHoa> getListProductByIdTypeOfProduct(string idTypeOfProduct)
         {
-            return DB.tblHangHoas.Where(p => p.MaLoaiHangHoa == idTypeOfProduct);
+            return db.tblHangHoas.Where(p => p.MaLoaiHangHoa == idTypeOfProduct);
         }
         // get list typeofproduct
         public IQueryable<tblLoaiHangHoa> getListTypeOfProduct()
         {
-            return DB.tblLoaiHangHoas;
+            return db.tblLoaiHangHoas;
         }
         // get list invoice by year 
         public IQueryable<tblHoaDonBanHang> getListInvoiceByYear(int year)
         {
-            return DB.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year);
+            return db.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year);
         }
         // get list invoice by month in year
         public IQueryable<tblHoaDonBanHang> getListInvoiceByMonthInYear(int year, int month)
         {
-            return DB.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year
+            return db.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year
             && p.NgayBan.Value.Month == month);
         }
         // get revenue in year
@@ -90,11 +90,11 @@ namespace SaleManagement.BLL
         public int getQuantityOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct)
         {
             int quantity = 0;
-            foreach (tblHangHoa product in DB.tblHangHoas)
+            foreach (tblHangHoa product in db.tblHangHoas)
             {
                 if (product.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
                 {
-                    quantity += product.SoLuong;
+                    quantity += (int)product.SoLuong;
                 }
             }
             return quantity;

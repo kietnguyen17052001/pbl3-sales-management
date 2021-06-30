@@ -55,8 +55,8 @@ namespace SaleManagement.FORM
 
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmStatistic frm = new FrmStatistic(usernamelogin);
-            frm.Show();
+            FrmStatistic frmStatistic = new FrmStatistic(usernamelogin);
+            frmStatistic.Show();
             this.Close();
         }
 

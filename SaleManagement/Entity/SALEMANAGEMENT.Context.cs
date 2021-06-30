@@ -13,10 +13,10 @@ namespace SaleManagement.Entity
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SALEMANAGEMENT_DB : DbContext
+    public partial class N3KTeamEntities : DbContext
     {
-        public SALEMANAGEMENT_DB()
-            : base("name=SALEMANAGEMENT_DB")
+        public N3KTeamEntities()
+            : base("name=N3KTeamEntities")
         {
         }
     

@@ -11,7 +11,7 @@ namespace SaleManagement.BLL
 {
     class BLL_LISTIMPORTINVOICE
     {
-        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_LISTIMPORTINVOICE _Instance;
         public static BLL_LISTIMPORTINVOICE Instance
         {
@@ -29,7 +29,7 @@ namespace SaleManagement.BLL
         // get date in list invoice
         public DateTime getDate()
         {
-            var getDate = DB.tblHoaDonNhapHangs.Min(p => p.NgayNhap);
+            var getDate = db.tblHoaDonNhapHangs.Min(p => p.NgayNhap);
             if (getDate == null)
             {
                 return DateTime.Now;
@@ -56,7 +56,7 @@ namespace SaleManagement.BLL
         // load data for DGVs
         public void LoadDataFrmInvoice(DataGridView dgv, DateTime dateFrom, DateTime dateTo)
         {
-            var invoice = DB.tblHoaDonNhapHangs.Where(p => p.NgayNhap >= dateFrom && p.NgayNhap <= dateTo).Select(p => new
+            var invoice = db.tblHoaDonNhapHangs.Where(p => p.NgayNhap >= dateFrom && p.NgayNhap <= dateTo).Select(p => new
             {
                 p.MaHoaDonNhap,
                 p.NgayNhap,
@@ -69,7 +69,7 @@ namespace SaleManagement.BLL
         }
         public void LoadDataFrmDetail(DataGridView dgv, string idInvoice)
         {
-            var detail = DB.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice).Select(p => new { 
+            var detail = db.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice).Select(p => new { 
                 p.MaHangHoa,
                 p.tblHangHoa.TenHangHoa,
                 p.SoLuong,
@@ -87,7 +87,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                var invoice = DB.tblHoaDonNhapHangs.Where(p => p.MaHoaDonNhap.Contains(information)
+                var invoice = db.tblHoaDonNhapHangs.Where(p => p.MaHoaDonNhap.Contains(information)
                 || p.MaNhaCungCap.Contains(information) || p.tblNhaCungCap.TenNhaCungCap.Contains(information)
                 && p.NgayNhap >= dateFrom && p.NgayNhap <= dateTo).Select(p => new {
                     p.MaHoaDonNhap,
@@ -103,30 +103,30 @@ namespace SaleManagement.BLL
         // func edit invoice
         public void FuncEditInvoice(string idInvoice, DateTime dateChange, string idSupplier, string idStaff)
         {
-            var invoice = DB.tblHoaDonNhapHangs.Find(idInvoice);
+            var invoice = db.tblHoaDonNhapHangs.Find(idInvoice);
             invoice.NgayNhap = dateChange;
             invoice.MaNhanVien = idStaff;
             invoice.MaNhaCungCap = idSupplier;
-            DB.SaveChanges();
+            db.SaveChanges();
         }
         // func delete invoie
         public void FuncDeleteInvoice(string idInvoice)
         {
-            var listInvoiceDetail = DB.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice).ToList();
+            var listInvoiceDetail = db.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice).ToList();
             foreach (tblChiTietHoaDonNhapHang detail in listInvoiceDetail)
             {
-                var product = DB.tblHangHoas.Find(detail.MaHangHoa);
+                var product = db.tblHangHoas.Find(detail.MaHangHoa);
                 product.SoLuong -= (int)detail.SoLuong;
-                DB.tblChiTietHoaDonNhapHangs.Remove(detail);
+                db.tblChiTietHoaDonNhapHangs.Remove(detail);
             }
-            DB.tblHoaDonNhapHangs.Remove(DB.tblHoaDonNhapHangs.Find(idInvoice));
-            DB.SaveChanges();
+            db.tblHoaDonNhapHangs.Remove(db.tblHoaDonNhapHangs.Find(idInvoice));
+            db.SaveChanges();
         }
         // Check quantity product InvoiceDetail in Invoice
         public bool isValidDeleteInvoice(string idInvoice)
         {
             bool isValid = true;
-            var listInvoiceDetail = DB.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice);
+            var listInvoiceDetail = db.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice);
             foreach (tblChiTietHoaDonNhapHang invoiceDetail in listInvoiceDetail.ToList())
             {
                 if(invoiceDetail.SoLuong > BLL_PRODUCT.Instance.getQuantityProductByIdProduct(invoiceDetail.MaHangHoa))
@@ -141,8 +141,8 @@ namespace SaleManagement.BLL
         public bool isValidDeleteProduct(string idInvoice, string idProduct)
         {
             bool isValid = true;
-            var invoiceDetail = DB.tblChiTietHoaDonNhapHangs.Find(idInvoice, idProduct);
-            var product = DB.tblHangHoas.Find(idProduct);
+            var invoiceDetail = db.tblChiTietHoaDonNhapHangs.Find(idInvoice, idProduct);
+            var product = db.tblHangHoas.Find(idProduct);
             if(invoiceDetail.SoLuong > product.SoLuong)
             {
                 isValid = false;
@@ -153,46 +153,45 @@ namespace SaleManagement.BLL
         {
             foreach(string idProduct in listIdProduct)
             {
-                tblChiTietHoaDonNhapHang invoiceDetail = DB.tblChiTietHoaDonNhapHangs.Where(p => p.MaHangHoa == idProduct
+                tblChiTietHoaDonNhapHang invoiceDetail = db.tblChiTietHoaDonNhapHangs.Where(p => p.MaHangHoa == idProduct
                 && p.MaHoaDonNhap == idInvoice).SingleOrDefault();
-                var product = DB.tblHangHoas.Find(idProduct);
+                var product = db.tblHangHoas.Find(idProduct);
                 product.SoLuong -= (int)invoiceDetail.SoLuong;
-                var invoice = DB.tblHoaDonNhapHangs.Find(idInvoice);
+                var invoice = db.tblHoaDonNhapHangs.Find(idInvoice);
                 invoice.SoTien -= (double)invoiceDetail.TongTien;
-                DB.tblChiTietHoaDonNhapHangs.Remove(invoiceDetail);
-                DB.SaveChanges();
+                db.tblChiTietHoaDonNhapHangs.Remove(invoiceDetail);
+                db.SaveChanges();
             }
         }
         // add product
         public void FuncAddProduct(tblChiTietHoaDonNhapHang invoiceDetail, int discount)
         {
-            DB.tblChiTietHoaDonNhapHangs.Add(invoiceDetail);
-            var product = DB.tblHangHoas.Find(invoiceDetail.MaHangHoa);
+            db.tblChiTietHoaDonNhapHangs.Add(invoiceDetail);
+            var product = db.tblHangHoas.Find(invoiceDetail.MaHangHoa);
             product.SoLuong += (int)invoiceDetail.SoLuong;
-            var invoice = DB.tblHoaDonNhapHangs.Find(invoiceDetail.MaHoaDonNhap);
+            var invoice = db.tblHoaDonNhapHangs.Find(invoiceDetail.MaHoaDonNhap);
             invoice.GiamGia = discount * (invoice.SoTien + invoiceDetail.TongTien) / 100;
             invoice.SoTien = (invoice.SoTien + invoiceDetail.TongTien) - (discount * (invoice.SoTien + invoiceDetail.TongTien)/100);
-            DB.SaveChanges();
+            db.SaveChanges();
         }
         // change quantity product
         public void ChangeQuantityProduct(string idInvoice, string idProduct, int oldQuantity, int newQuantity)
         {
-            var product = DB.tblHangHoas.Find(idProduct);
+            var product = db.tblHangHoas.Find(idProduct);
             product.SoLuong = product.SoLuong + newQuantity - oldQuantity;
-            //DB.SaveChanges();
-            var invoiceDetail = DB.tblChiTietHoaDonNhapHangs.Find(idInvoice, idProduct);
+            var invoiceDetail = db.tblChiTietHoaDonNhapHangs.Find(idInvoice, idProduct);
             invoiceDetail.SoLuong = newQuantity;
             invoiceDetail.TongTien = (double)(invoiceDetail.GiaNhap * newQuantity);
-            DB.SaveChanges();
-            var importInvoice = DB.tblHoaDonNhapHangs.Find(idInvoice);
+            db.SaveChanges();
+            var importInvoice = db.tblHoaDonNhapHangs.Find(idInvoice);
             importInvoice.SoTien = getPriceInvoice(idInvoice) - importInvoice.GiamGia;
-            DB.SaveChanges();
+            db.SaveChanges();
         }
         // get price invoice;
         public double getPriceInvoice(string idInvoice)
         {
             double priceInvoice = 0;
-            foreach(tblChiTietHoaDonNhapHang invoiceImport in DB.tblChiTietHoaDonNhapHangs)
+            foreach(tblChiTietHoaDonNhapHang invoiceImport in db.tblChiTietHoaDonNhapHangs)
             {
                 if(invoiceImport.MaHoaDonNhap == idInvoice)
                 {

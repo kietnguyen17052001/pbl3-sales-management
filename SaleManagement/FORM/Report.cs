@@ -20,7 +20,7 @@ namespace SaleManagement.FORM
             InitializeComponent();
             usernamelogin = _usernamelogin;
             dpFROM.Value = BLL_LISTSALEINVOICE.Instance.getDate();
-            ShowData();
+            LoadData();
             FormatColumnHeader();
         }
         // Format column header
@@ -43,20 +43,20 @@ namespace SaleManagement.FORM
             dgvREVENUE.Columns[7].HeaderText = "Tổng tiền(VNĐ)";
         }
         // show tblChiTiethoaDonBanHang theo time
-        public void ShowData()
+        public void LoadData()
         {
             BLL_REPORT.Instance.LoadDataReport(dgvREVENUE, dpFROM.Value, dpTO.Value);
             getInformation();
         }
         public void getInformation()
         {
-            DateTime dateMin = dpFROM.Value;
-            DateTime dateMax = dpTO.Value;
-            lbSALES.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getRevenue(dateMin, dateMax));
-            lbPROFIT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getProfit(dateMin, dateMax));
-            lbDISCOUNT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getDiscount(dateMin, dateMax));
-            lbPRODUCT_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getQuantity(dateMin, dateMax));
-            lbINVOICE_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getInvoice(dateMin, dateMax));
+            DateTime dateStart = dpFROM.Value;
+            DateTime dateEnd = dpTO.Value;
+            lbSALES.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getRevenue(dateStart, dateEnd));
+            lbPROFIT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getProfit(dateStart, dateEnd));
+            lbDISCOUNT.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getDiscount(dateStart, dateEnd));
+            lbPRODUCT_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getQuantity(dateStart, dateEnd));
+            lbINVOICE_QTY.Text = string.Format("{0:n0}", BLL_REPORT.Instance.getInvoice(dateStart, dateEnd));
         }
         // set backColor for dgv
         private void dgvREVENUE_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -67,8 +67,8 @@ namespace SaleManagement.FORM
         // back to FrmQLBanHang
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
-            frm.Show();
+            FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernamelogin);
+            frmMainAdmin.Show();
             this.Close();
         }
         // export file Excel
@@ -104,7 +104,7 @@ namespace SaleManagement.FORM
         // Load form when valuechange in datetimepickers
         private void dpTO_ValueChanged(object sender, EventArgs e)
         {
-            ShowData();
+            LoadData();
         }
     }
 }

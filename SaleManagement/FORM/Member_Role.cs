@@ -24,44 +24,43 @@ namespace SaleManagement.FORM
 
         private void btnSaleProduct_Click(object sender, EventArgs e)
         {
-            FrmInvoice_SaleProduct frm = new FrmInvoice_SaleProduct(false, usernameLogin);
-            frm.Show();
+            FrmInvoice_SaleProduct frmInvoiceSaleProduct = new FrmInvoice_SaleProduct(false, usernameLogin);
+            frmInvoiceSaleProduct.Show();
             this.Close();
         }
 
         private void btnImportProduct_Click(object sender, EventArgs e)
         {
-            FrmInvoice_ImportProduct frm = new FrmInvoice_ImportProduct(false, usernameLogin);
-            frm.Show();
+            FrmInvoice_ImportProduct frmInvoiceImportProduct = new FrmInvoice_ImportProduct(false, usernameLogin);
+            frmInvoiceImportProduct.Show();
             this.Close();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            FrmLogin frm = new FrmLogin();
-            frm.Show();
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.Show();
             this.Close();
         }
 
-        private void btnIntroduce_Click(object sender, EventArgs e)
+        private void btnListSaleInvoice_Click(object sender, EventArgs e)
         {
-            FrmIntroduce frm = new FrmIntroduce(false, usernameLogin);
-            frm.Show();
+            FrmList_SaleInvoice frmListSaleInvoice = new FrmList_SaleInvoice(false, usernameLogin);
+            frmListSaleInvoice.Show();
             this.Close();
         }
 
-        private void btnList_SaleInvoice_Click(object sender, EventArgs e)
+        private void btnListImportInvoice_Click(object sender, EventArgs e)
         {
-            FrmList_SaleInvoice frm = new FrmList_SaleInvoice(false, usernameLogin);
-            frm.Show();
+            FrmList_ImportInvoice frmListImportInvoice = new FrmList_ImportInvoice(false, usernameLogin);
+            frmListImportInvoice.Show();
             this.Close();
         }
 
-        private void btnList_ImportInvoice_Click(object sender, EventArgs e)
+        private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            FrmList_ImportInvoice frm = new FrmList_ImportInvoice(false, usernameLogin);
-            frm.Show();
-            this.Close();
+            FrmChange_Password frmChangePassword = new FrmChange_Password(usernameLogin);
+            frmChangePassword.Show();
         }
     }
 }

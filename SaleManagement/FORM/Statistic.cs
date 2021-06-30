@@ -77,21 +77,21 @@ namespace SaleManagement.FORM
         {
             string value = ((CBBItem)cbbTYPEOFPRODUCT.SelectedItem).VALUE;
             string text = ((CBBItem)cbbTYPEOFPRODUCT.SelectedItem).TEXT;
-            FrmStatistic_Product frm = new FrmStatistic_Product(dpFROM.Value, dpTO.Value, value, text, usernamelogin);
-            frm.Show();
+            FrmStatistic_Product frmStatisticProduct = new FrmStatistic_Product(dpFROM.Value, dpTO.Value, value, text, usernamelogin);
+            frmStatisticProduct.Show();
             this.Close();
         }
         // Thống kê doanh thu
         private void btnSTATISTIC_Click(object sender, EventArgs e)
         {
-            FrmRevenue_Statistic frm = new FrmRevenue_Statistic(usernamelogin);
-            frm.Show();
+            FrmRevenue_Statistic frmRevenueStatistic = new FrmRevenue_Statistic(usernamelogin);
+            frmRevenueStatistic.Show();
             this.Close();
         }
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
-            frm.Show();
+            FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernamelogin);
+            frmMainAdmin.Show();
             this.Close();
         }
 

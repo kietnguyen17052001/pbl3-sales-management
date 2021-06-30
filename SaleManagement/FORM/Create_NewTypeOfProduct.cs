@@ -24,25 +24,33 @@ namespace SaleManagement.FORM
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             tblLoaiHangHoa typeOfProduct = new tblLoaiHangHoa();
-            if(string.IsNullOrEmpty(txtIdTypeOfProduct.Text) || string.IsNullOrEmpty(txtNameTypeOfProduct.Text))
+            typeOfProduct.MaLoaiHangHoa = txtIdTypeOfProduct.Text.Trim();
+            typeOfProduct.TenLoaiHangHoa = txtNameTypeOfProduct.Text.Trim();
+            if (String.IsNullOrEmpty(typeOfProduct.MaLoaiHangHoa) || !String.IsNullOrEmpty(typeOfProduct.TenLoaiHangHoa))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã loại hàng hóa trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (!String.IsNullOrEmpty(typeOfProduct.MaLoaiHangHoa) || String.IsNullOrEmpty(typeOfProduct.TenLoaiHangHoa))
+            {
+                MessageBox.Show("Tên loại hàng hóa trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (String.IsNullOrEmpty(typeOfProduct.MaLoaiHangHoa) || String.IsNullOrEmpty(typeOfProduct.TenLoaiHangHoa))
+            {
+                MessageBox.Show("Mã và tên loại hàng hóa trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                typeOfProduct.MaLoaiHangHoa = txtIdTypeOfProduct.Text;
-                typeOfProduct.TenLoaiHangHoa = txtNameTypeOfProduct.Text;
                 try
                 {
                     BLL_TYPEOFPRODUCT.Instance.FuncAddNewProduct(typeOfProduct);
-                    d(typeOfProduct.MaLoaiHangHoa, typeOfProduct.TenLoaiHangHoa);
+                    MessageBox.Show("Thêm loại hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Mã số bị trùng. Vui lòng nhập mã khác", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mã số loại hàng hóa đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }     
+            }
         }
 
         private void btnCANCEL_Click(object sender, EventArgs e)

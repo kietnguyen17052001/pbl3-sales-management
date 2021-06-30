@@ -10,7 +10,7 @@ namespace SaleManagement.BLL
 {
     class BLL_REPORT
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_REPORT _Instance;
         public static BLL_REPORT Instance
         {
@@ -28,7 +28,7 @@ namespace SaleManagement.BLL
         // load data report
         public void LoadDataReport(DataGridView dgv, DateTime dateFrom, DateTime dateTo)
         {
-            var listReport = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateFrom && p.tblHoaDonBanHang.NgayBan <= dateTo).Select(p => new {
+            var invoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateFrom && p.tblHoaDonBanHang.NgayBan <= dateTo).Select(p => new {
                 p.MaHangHoa,
                 p.tblHangHoa.TenHangHoa,
                 p.tblHoaDonBanHang.NgayBan,
@@ -38,62 +38,57 @@ namespace SaleManagement.BLL
                 p.GiamGia,
                 p.TongTien
             });
-            dgv.DataSource = listReport.ToList();
+            dgv.DataSource = invoiceDetail.ToList();
         }
         // doanh số
-        public double getRevenue(DateTime dateMin, DateTime dateMax)
+        public double getRevenue(DateTime dateStart, DateTime dateEnd)
         {
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
+            var listInvoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
             double revenue = 0;
-            foreach (tblChiTietHoaDonBanHang invoice_detail in list)
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in listInvoiceDetail)
             {
-                revenue += (double)invoice_detail.TongTien;
+                revenue += (double)invoiceDetail.TongTien;
             }
             return revenue;
         }
         // lợi nhuận
-        public double getProfit(DateTime dateMin, DateTime dateMax)
+        public double getProfit(DateTime dateStart, DateTime dateEnd)
         {
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
+            var listInvoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
             double profit = 0;
-            foreach (tblChiTietHoaDonBanHang invoice_detail in list)
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in listInvoiceDetail)
             {
-                profit += (double)(invoice_detail.TongTien - invoice_detail.SoLuong * invoice_detail.tblHangHoa.GiaNhap);
+                profit += (double)(invoiceDetail.TongTien - invoiceDetail.SoLuong * invoiceDetail.tblHangHoa.GiaNhap);
             }
             return profit;
         }
         // giảm giá
-        public double getDiscount(DateTime dateMin, DateTime dateMax)
+        public double getDiscount(DateTime dateStart, DateTime dateEnd)
         {
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
+            var listInvoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
             double discount = 0;
-            foreach (tblChiTietHoaDonBanHang invoice_detail in list)
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in listInvoiceDetail)
             {
-                discount += (double)((invoice_detail.GiamGia / 100) * (invoice_detail.DonGia * invoice_detail.SoLuong));
+                discount += (double)((invoiceDetail.GiamGia / 100) * (invoiceDetail.DonGia * invoiceDetail.SoLuong));
             }
             return discount;
         }
         // sản phẩm
-        public int getQuantity(DateTime dateMin, DateTime dateMax)
+        public int getQuantity(DateTime dateStart, DateTime dateEnd)
         {
-            var list = DB.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateMin && p.tblHoaDonBanHang.NgayBan <= dateMax);
+            var listInvoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
             int quantity = 0;
-            foreach (tblChiTietHoaDonBanHang invoice_detail in list)
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in listInvoiceDetail)
             {
-                quantity += (int)invoice_detail.SoLuong;
+                quantity += (int)invoiceDetail.SoLuong;
             }
             return quantity;
         }
         // hóa đơn
-        public int getInvoice(DateTime dateMin, DateTime dateMax)
+        public int getInvoice(DateTime dateStart, DateTime dateEnd)
         {
-            var list = DB.tblHoaDonBanHangs.Where(p => p.NgayBan >= dateMin && p.NgayBan <= dateMax);
-            int count = 0;
-            foreach (tblHoaDonBanHang invoice in list)
-            {
-                count++;
-            }
-            return count;
+            var listInvoice = db.tblHoaDonBanHangs.Where(p => p.NgayBan >= dateStart && p.NgayBan <= dateEnd);
+            return listInvoice.Count();
         }
     }
 }

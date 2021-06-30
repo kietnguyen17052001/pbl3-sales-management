@@ -10,7 +10,7 @@ namespace SaleManagement.BLL
 {
     class BLL_CUSTOMER
     {
-        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_CUSTOMER _Instance;
         public static BLL_CUSTOMER Instance
         {
@@ -28,7 +28,7 @@ namespace SaleManagement.BLL
         public List<CBBItem> getCbbCustomer()
         {
             List<CBBItem> cbbCustomer = new List<CBBItem>();
-            foreach(tblKhachHang customer in DB.tblKhachHangs)
+            foreach(tblKhachHang customer in db.tblKhachHangs)
             {
                 cbbCustomer.Add(new CBBItem { VALUE = customer.MaKhachHang, TEXT = customer.TenKhachHang });
             }
@@ -36,20 +36,12 @@ namespace SaleManagement.BLL
         }
         public tblKhachHang getCustomer_ById(string idCustomer)
         {
-            tblKhachHang getCustomer = new tblKhachHang();
-            foreach (tblKhachHang customer in DB.tblKhachHangs)
-            {
-                if (customer.MaKhachHang == idCustomer)
-                {
-                    getCustomer = customer;
-                }
-            }
-            return getCustomer;
+            return db.tblKhachHangs.Find(idCustomer);
         }
         // load data customer 
         public void LoadData(DataGridView dgv)
         {
-            var listCustomer = DB.tblKhachHangs.Select(p => new
+            var customer = db.tblKhachHangs.Select(p => new
             {
                 p.MaKhachHang,
                 p.TenKhachHang,
@@ -57,38 +49,33 @@ namespace SaleManagement.BLL
                 p.SoDienThoai,
                 p.DiaChi
             });
-            dgv.DataSource = listCustomer.ToList();
+            dgv.DataSource = customer.ToList();
         }
         // add new customer
         public void FuncAddNewCustomer(tblKhachHang customer)
         {
-            DB.tblKhachHangs.Add(customer);
-            DB.SaveChanges();
+            db.tblKhachHangs.Add(customer);
+            db.SaveChanges();
         }
         // edit customer
-        public void FuncEditCustomer(tblKhachHang customer)
+        public void FuncEditCustomer(tblKhachHang _customer)
         {
-            var query = DB.tblKhachHangs.Find(customer.MaKhachHang);
-            query.TenKhachHang = customer.TenKhachHang;
-            query.GioiTinh = customer.GioiTinh;
-            query.SoDienThoai = customer.SoDienThoai;
-            query.DiaChi = customer.DiaChi;
-            DB.SaveChanges();
+            var customer = db.tblKhachHangs.Find(_customer.MaKhachHang);
+            customer.TenKhachHang = _customer.TenKhachHang;
+            customer.GioiTinh = _customer.GioiTinh;
+            customer.SoDienThoai = _customer.SoDienThoai;
+            customer.DiaChi = _customer.DiaChi;
+            db.SaveChanges();
         }
         // remove customer
         public void FuncDeleteCustomer(List<string> listIdCustomer)
         {
-            foreach (string i in listIdCustomer)
+            var customer = new tblKhachHang();
+            foreach (string idCustomer in listIdCustomer)
             {
-                foreach (tblKhachHang customer in DB.tblKhachHangs)
-                {
-                    if (customer.MaKhachHang == i)
-                    {
-                        DB.tblKhachHangs.Remove(customer);
-                        break;
-                    }
-                }
-                DB.SaveChanges();
+                customer = db.tblKhachHangs.Find(idCustomer);
+                db.tblKhachHangs.Remove(customer);
+                db.SaveChanges();
             }
         }
         // search customer
@@ -100,7 +87,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                var getCustomer = DB.tblKhachHangs.Where(p => p.TenKhachHang.Contains(information) || p.MaKhachHang.Contains(information)).Select(p => new
+                var getCustomer = db.tblKhachHangs.Where(p => p.TenKhachHang.Contains(information) || p.MaKhachHang.Contains(information)).Select(p => new
                 {
                     p.MaKhachHang,
                     p.TenKhachHang,
@@ -121,7 +108,7 @@ namespace SaleManagement.BLL
         {
             string idCustomer = "";
             int lastId;
-            List<tblKhachHang> list = DB.tblKhachHangs.ToList();
+            List<tblKhachHang> list = db.tblKhachHangs.ToList();
             if(list.Count == 0)
             {
                 idCustomer = "KH0001";

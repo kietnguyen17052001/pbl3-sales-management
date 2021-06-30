@@ -142,6 +142,8 @@ namespace SaleManagement.FORM
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSave.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
@@ -160,6 +162,8 @@ namespace SaleManagement.FORM
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.IndianRed;
+            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
@@ -179,11 +183,11 @@ namespace SaleManagement.FORM
             // 
             this.lbWarning.AutoSize = true;
             this.lbWarning.BackColor = System.Drawing.Color.White;
-            this.lbWarning.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWarning.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbWarning.ForeColor = System.Drawing.Color.IndianRed;
             this.lbWarning.Location = new System.Drawing.Point(248, 438);
             this.lbWarning.Name = "lbWarning";
-            this.lbWarning.Size = new System.Drawing.Size(0, 26);
+            this.lbWarning.Size = new System.Drawing.Size(0, 22);
             this.lbWarning.TabIndex = 9;
             this.lbWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -219,6 +223,7 @@ namespace SaleManagement.FORM
             // 
             // FrmChange_Password
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SaleManagement.Properties.Resources.backgroundLogin;
