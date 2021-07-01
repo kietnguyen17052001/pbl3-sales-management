@@ -41,7 +41,7 @@ namespace SaleManagement.BLL
             account.MatKhau = _account.MatKhau;
             db.SaveChanges();
         }
-        public bool ChangePasswordUser(string userNameLogin, string oldPass, string newPass)
+        public bool ChangePasswordUser(bool isAdmin, string userNameLogin, string oldPass, string newPass)
         {
             var account = db.tblTaiKhoans.Find(userNameLogin);
             if (account.MatKhau != oldPass)
@@ -50,6 +50,11 @@ namespace SaleManagement.BLL
             }
             else
             {
+                if (!isAdmin)
+                {
+                    var staff = db.tblNhanViens.Find(userNameLogin);
+                    staff.MatKhau = newPass;
+                }
                 account.MatKhau = newPass;
                 db.SaveChanges();
                 return true;

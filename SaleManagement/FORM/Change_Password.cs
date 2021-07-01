@@ -14,10 +14,12 @@ namespace SaleManagement.FORM
     public partial class FrmChange_Password : Form
     {
         private string usernameLogin;
-        public FrmChange_Password(string name = null)
+        private bool isAdmin;
+        public FrmChange_Password(bool _isAdmin, string name = null)
         {
             InitializeComponent();
             usernameLogin = name;
+            isAdmin = _isAdmin;
         }
 
         private void txtOldPassword_Enter(object sender, EventArgs e)
@@ -113,7 +115,7 @@ namespace SaleManagement.FORM
             }
             else
             {
-                bool flag = BLL_ACCOUNT.Instance.ChangePasswordUser(usernameLogin, txtOldPassword.Text.Trim(), txtNewPassword.Text.Trim());
+                bool flag = BLL_ACCOUNT.Instance.ChangePasswordUser(isAdmin, usernameLogin, txtOldPassword.Text.Trim(), txtNewPassword.Text.Trim());
                 if (flag)
                 {
                     MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
