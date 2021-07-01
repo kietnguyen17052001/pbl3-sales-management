@@ -82,7 +82,6 @@ C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmMain_Member.resources
 C:\Users\PC\source\repos\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FrmMain_Admin.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_ImportInvoice.resources
-D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantity_InvoiceSaleProduct.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantityProduct_ListInvoice.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmList_SaleInvoice.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmMain_Member.resources
@@ -133,3 +132,4 @@ D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleMa
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.pdb
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantityProduct_InvoiceSaleProduct.resources
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.csproj.AssemblyReference.cache
+D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantityProduct_InvoiceSaleProduct.resources
