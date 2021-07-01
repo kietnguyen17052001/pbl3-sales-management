@@ -150,7 +150,7 @@ namespace SaleManagement.VIEW
             this.btnSelectProduct.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectProduct.ForeColor = System.Drawing.Color.White;
             this.btnSelectProduct.Image = global::SaleManagement.Properties.Resources.right;
-            this.btnSelectProduct.Location = new System.Drawing.Point(485, 262);
+            this.btnSelectProduct.Location = new System.Drawing.Point(484, 262);
             this.btnSelectProduct.Name = "btnSelectProduct";
             this.btnSelectProduct.Size = new System.Drawing.Size(49, 50);
             this.btnSelectProduct.TabIndex = 55;
@@ -307,6 +307,8 @@ namespace SaleManagement.VIEW
             this.btnSelectCustomer.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSelectCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSelectCustomer.FlatAppearance.BorderSize = 0;
+            this.btnSelectCustomer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSelectCustomer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSelectCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelectCustomer.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectCustomer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -325,6 +327,8 @@ namespace SaleManagement.VIEW
             this.btnDeleteProduct.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDeleteProduct.FlatAppearance.BorderSize = 0;
             this.btnDeleteProduct.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnDeleteProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteProduct.ForeColor = System.Drawing.Color.White;
@@ -346,6 +350,8 @@ namespace SaleManagement.VIEW
             this.btnEditQuantity.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEditQuantity.FlatAppearance.BorderSize = 0;
             this.btnEditQuantity.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
+            this.btnEditQuantity.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnEditQuantity.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnEditQuantity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditQuantity.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditQuantity.ForeColor = System.Drawing.Color.White;
@@ -444,7 +450,7 @@ namespace SaleManagement.VIEW
             // 
             this.txtIdInvoice.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtIdInvoice.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtIdInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdInvoice.ForeColor = System.Drawing.Color.IndianRed;
             this.txtIdInvoice.Location = new System.Drawing.Point(124, 35);
             this.txtIdInvoice.Name = "txtIdInvoice";
@@ -717,6 +723,8 @@ namespace SaleManagement.VIEW
             this.btnHome.BackColor = System.Drawing.Color.SteelBlue;
             this.btnHome.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnHome.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.ForeColor = System.Drawing.Color.White;
@@ -738,6 +746,8 @@ namespace SaleManagement.VIEW
             this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
+            this.btnPrint.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.Color.White;
@@ -759,6 +769,8 @@ namespace SaleManagement.VIEW
             this.btnPayment.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnPayment.FlatAppearance.BorderSize = 0;
             this.btnPayment.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
+            this.btnPayment.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnPayment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayment.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPayment.ForeColor = System.Drawing.Color.White;
@@ -780,6 +792,7 @@ namespace SaleManagement.VIEW
             this.btnLoadInvoice.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnLoadInvoice.FlatAppearance.BorderSize = 0;
             this.btnLoadInvoice.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
+            this.btnLoadInvoice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnLoadInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoadInvoice.ForeColor = System.Drawing.Color.White;
@@ -801,6 +814,8 @@ namespace SaleManagement.VIEW
             this.btnDiscountMoney.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDiscountMoney.FlatAppearance.BorderSize = 0;
             this.btnDiscountMoney.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
+            this.btnDiscountMoney.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnDiscountMoney.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnDiscountMoney.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiscountMoney.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiscountMoney.ForeColor = System.Drawing.Color.White;
@@ -822,6 +837,8 @@ namespace SaleManagement.VIEW
             this.btnDiscountPercent.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDiscountPercent.FlatAppearance.BorderSize = 0;
             this.btnDiscountPercent.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
+            this.btnDiscountPercent.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnDiscountPercent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnDiscountPercent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiscountPercent.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiscountPercent.ForeColor = System.Drawing.Color.White;
@@ -843,6 +860,8 @@ namespace SaleManagement.VIEW
             this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
+            this.btnBack.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.White;
@@ -859,6 +878,7 @@ namespace SaleManagement.VIEW
             // 
             // FrmInvoice_SaleProduct
             // 
+            this.AcceptButton = this.btnSelectProduct;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 691);

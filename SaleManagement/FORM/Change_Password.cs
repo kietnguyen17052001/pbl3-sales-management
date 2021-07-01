@@ -25,7 +25,7 @@ namespace SaleManagement.FORM
             if (txtOldPassword.Text == "Nhập mật khẩu cũ")
             {
                 txtOldPassword.Text = "";
-                txtOldPassword.PasswordChar = '*';
+                txtOldPassword.PasswordChar = '•';
                 txtOldPassword.ForeColor = Color.Black;
             }
         }
@@ -45,7 +45,7 @@ namespace SaleManagement.FORM
             if (txtNewPassword.Text == "Nhập mật khẩu mới")
             {
                 txtNewPassword.Text = "";
-                txtNewPassword.PasswordChar = '*';
+                txtNewPassword.PasswordChar = '•';
                 txtNewPassword.ForeColor = Color.Black;
             }
         }
@@ -65,7 +65,7 @@ namespace SaleManagement.FORM
             if (txtReWriteNewPassword.Text == "Nhập lại mật khẩu mới")
             {
                 txtReWriteNewPassword.Text = "";
-                txtReWriteNewPassword.PasswordChar = '*';
+                txtReWriteNewPassword.PasswordChar = '•';
                 txtReWriteNewPassword.ForeColor = Color.Black;
             }
         }
@@ -82,14 +82,13 @@ namespace SaleManagement.FORM
 
         private void txtReWriteNewPassword_TextChanged(object sender, EventArgs e)
         {
-            if (txtReWriteNewPassword.Text != txtNewPassword.Text)
+            if(txtReWriteNewPassword.Text != txtNewPassword.Text)
             {
-                lbWarning.ForeColor = Color.IndianRed;
-                lbWarning.Text = "Mật khẩu nhập lại không khớp!";
+                txtReWriteNewPassword.ForeColor = Color.IndianRed;
             }
             else
             {
-                lbWarning.Text = "";
+                txtReWriteNewPassword.ForeColor = Color.Black;
             }
         }
 
@@ -97,28 +96,32 @@ namespace SaleManagement.FORM
         {
             if(txtOldPassword.Text == "Nhập mật khẩu cũ")
             {
-                MessageBox.Show("Vui lòng nhập mật khẩu cũ!");
+                MessageBox.Show("Vui lòng nhập mật khẩu cũ!","Lỗi nhập mật khẩu",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             else if(txtNewPassword.Text == "Nhập mật khẩu mới")
             {
-                MessageBox.Show("Vui lòng nhập mật khẩu mới!");
+                MessageBox.Show("Vui lòng nhập mật khẩu mới!", "Lỗi nhập mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (txtReWriteNewPassword.Text == "Nhập lại mật khẩu mới")
             {
-                MessageBox.Show("Vui lòng nhập lại mật khẩu mới!");
+                MessageBox.Show("Vui lòng nhập lại mật khẩu mới!", "Lỗi nhập mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (txtReWriteNewPassword.Text != txtNewPassword.Text)
             {
-                MessageBox.Show("Mật khẩu nhập lại không khớp!");
+                MessageBox.Show("Mật khẩu nhập lại không khớp!", "Lỗi nhập mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtReWriteNewPassword.Clear();
             }
             else
             {
-                bool flag = BLL_CHANGEPASSWORD.Instance.ChangePassword(usernameLogin, 
-                                                                           txtOldPassword.Text, 
-                                                                           txtNewPassword.Text);
+                bool flag = BLL_ACCOUNT.Instance.ChangePasswordUser(usernameLogin, txtOldPassword.Text.Trim(), txtNewPassword.Text.Trim());
                 if (flag)
                 {
+                    MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Mật khẩu cũ không đúng!", "Lỗi nhập mật khẩu cũ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -127,5 +130,6 @@ namespace SaleManagement.FORM
         {
             this.Close();
         }
+
     }
 }

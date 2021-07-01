@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PBL3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="N3KTeamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -40,10 +40,10 @@
     <Property Name="MaHangHoa" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="MaLoaiHangHoa" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="TenHangHoa" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="SoLuong" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" />
     <Property Name="MaNhaSanXuat" Type="nvarchar" MaxLength="20" />
-    <Property Name="GiaNhap" Type="float" Nullable="false" />
-    <Property Name="GiaBan" Type="float" Nullable="false" />
+    <Property Name="GiaNhap" Type="float" />
+    <Property Name="GiaBan" Type="float" />
     <Property Name="MoTa" Type="ntext" />
     <Property Name="HinhAnh" Type="image" />
   </EntityType>
@@ -75,9 +75,9 @@
     </Key>
     <Property Name="MaKhachHang" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="TenKhachHang" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="SoDienThoai" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="SoDienThoai" Type="char" MaxLength="10" />
     <Property Name="GioiTinh" Type="bit" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tblLoaiHangHoa">
     <Key>
@@ -92,10 +92,10 @@
     </Key>
     <Property Name="MaNhaCungCap" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="TenNhaCungCap" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="Fax" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="SoDienThoai" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoDienThoai" Type="char" MaxLength="10" />
     <Property Name="MaSoThue" Type="int" />
   </EntityType>
   <EntityType Name="tblNhanVien">
@@ -103,7 +103,7 @@
       <PropertyRef Name="MaNhanVien" />
     </Key>
     <Property Name="MaNhanVien" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="TenNhanVien" Type="nvarchar" MaxLength="100" />
+    <Property Name="TenNhanVien" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="ViTri" Type="nvarchar" MaxLength="100" />
     <Property Name="NgaySinh" Type="date" />
     <Property Name="GioiTinh" Type="bit" />
@@ -118,7 +118,7 @@
     </Key>
     <Property Name="MaNhaSanXuat" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="TenNhaSanXuat" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tblTaiKhoan">
     <Key>
@@ -248,7 +248,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="PBL3ModelStoreContainer">
+  <EntityContainer Name="N3KTeamModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblChiTietHoaDonBanHang" EntityType="Self.tblChiTietHoaDonBanHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblChiTietHoaDonNhapHang" EntityType="Self.tblChiTietHoaDonNhapHang" Schema="dbo" store:Type="Tables" />

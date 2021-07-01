@@ -20,7 +20,7 @@ namespace SaleManagement.VIEW
         {
             InitializeComponent();
             usernamelogin = _usernamelogin;
-            ShowDataCustomer();
+            LoadData();
             FormatColumnHeader();
         }
         // Format column header
@@ -62,7 +62,7 @@ namespace SaleManagement.VIEW
             txtADDRESS.Clear();
         }
         // func show customers
-        public void ShowDataCustomer()
+        public void LoadData()
         {
             Disable(false);
             ClearCode();
@@ -93,14 +93,14 @@ namespace SaleManagement.VIEW
         }
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
-            frm.Show();
+            FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernamelogin);
+            frmMainAdmin.Show();
             this.Close();
         }
         // Button show customes
         private void btnSHOW_Click(object sender, EventArgs e)
         {
-            ShowDataCustomer();
+            LoadData();
         }
         // Export file Excel
         private void btnEXCEL_Click(object sender, EventArgs e)
@@ -158,22 +158,24 @@ namespace SaleManagement.VIEW
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             tblKhachHang customer = new tblKhachHang();
-            customer.MaKhachHang = txtID_CUSTOMER.Text;
-            customer.TenKhachHang = txtNAME_CUSTOMER.Text;
-            if (rbMALE.Checked == true)
+            customer.MaKhachHang = txtID_CUSTOMER.Text.Trim();
+            customer.TenKhachHang = txtNAME_CUSTOMER.Text.Trim();
+            customer.SoDienThoai = txtPHONE.Text.Trim();
+            customer.DiaChi = txtADDRESS.Text.Trim();
+            customer.GioiTinh = rbMALE.Checked;
+            if (String.IsNullOrEmpty(customer.MaKhachHang) && !String.IsNullOrEmpty(customer.TenKhachHang))
             {
-                customer.GioiTinh = true;
+                MessageBox.Show("Mã khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
             }
-            else
+            else if (!String.IsNullOrEmpty(customer.MaKhachHang) && String.IsNullOrEmpty(customer.TenKhachHang))
             {
-                customer.GioiTinh = false;
+                MessageBox.Show("Tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
             }
-            customer.SoDienThoai = txtPHONE.Text;
-            customer.DiaChi = txtADDRESS.Text;
-            if (string.IsNullOrEmpty(customer.MaKhachHang) || string.IsNullOrEmpty(customer.TenKhachHang) || string.IsNullOrEmpty(customer.SoDienThoai) ||
-                string.IsNullOrEmpty(customer.DiaChi))
+            else if (String.IsNullOrEmpty(customer.MaKhachHang) && String.IsNullOrEmpty(customer.TenKhachHang))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã và tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Disable(true);
             }
             else
@@ -184,11 +186,11 @@ namespace SaleManagement.VIEW
                     {
                         BLL_CUSTOMER.Instance.FuncAddNewCustomer(customer); // add new customer 
                         MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ShowDataCustomer();
+                        LoadData();
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Mã số khách hàng bị trùng. Vui lòng nhập mã khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Mã số khách hàng đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Disable(true);
                     }
                 }
@@ -196,7 +198,7 @@ namespace SaleManagement.VIEW
                 {
                     BLL_CUSTOMER.Instance.FuncEditCustomer(customer); // edit customer
                     MessageBox.Show("Sửa khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ShowDataCustomer();
+                    LoadData();
                 }
             }
         }
@@ -219,7 +221,7 @@ namespace SaleManagement.VIEW
                 if (question == DialogResult.Yes)
                 {
                     BLL_CUSTOMER.Instance.FuncDeleteCustomer(listIdCustomer); // delete customer
-                    ShowDataCustomer();
+                    LoadData();
                 }
             }
         }
@@ -227,12 +229,13 @@ namespace SaleManagement.VIEW
         private void btnCANCEL_Click(object sender, EventArgs e)
         {
             Disable(false);
+            ClearCode();
         }
         // Back to frmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data(usernamelogin);
-            frm.Show();
+            FrmManage_Data frmManageData = new FrmManage_Data(usernamelogin);
+            frmManageData.Show();
             this.Close();
         }
         // search customer

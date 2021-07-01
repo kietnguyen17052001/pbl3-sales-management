@@ -12,7 +12,7 @@ namespace SaleManagement.BLL
 {
     class BLL_PRODUCT
     {
-        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_PRODUCT _Instance;
         public static BLL_PRODUCT Instance
         {
@@ -31,7 +31,7 @@ namespace SaleManagement.BLL
         public List<CBBItem> getCBBTypeProduct()
         {
             List<CBBItem> list = new List<CBBItem>();
-            foreach(tblLoaiHangHoa typeProduct in DB.tblLoaiHangHoas)
+            foreach(tblLoaiHangHoa typeProduct in db.tblLoaiHangHoas)
             {
                 list.Add(new CBBItem { VALUE = typeProduct.MaLoaiHangHoa, TEXT = typeProduct.TenLoaiHangHoa });
             }
@@ -40,7 +40,7 @@ namespace SaleManagement.BLL
         // load data product
         public void LoadDataProduct(DataGridView dgv)
         {
-            var product = DB.tblHangHoas.Select(p => new
+            var product = db.tblHangHoas.Select(p => new
             {
                 p.MaHangHoa,
                 p.TenHangHoa,
@@ -58,7 +58,7 @@ namespace SaleManagement.BLL
         {
             if (isListSale) // for FrmListSaleProduct
             {
-                var product = DB.tblHangHoas.Select(p => new
+                var product = db.tblHangHoas.Select(p => new
                 {
                     p.MaHangHoa,
                     p.TenHangHoa,
@@ -69,7 +69,7 @@ namespace SaleManagement.BLL
             }
             else // for FrmListImportProduct
             {
-                var product = DB.tblHangHoas.Select(p => new
+                var product = db.tblHangHoas.Select(p => new
                 {
                     p.MaHangHoa,
                     p.TenHangHoa,
@@ -89,19 +89,19 @@ namespace SaleManagement.BLL
         }
         public Image image(string idProduct)
         {
-            var imageProduct = DB.tblHangHoas.Find(idProduct);
+            var imageProduct = db.tblHangHoas.Find(idProduct);
             return ByteArrayToImage(imageProduct.HinhAnh.ToArray());
         }
         // add new product
         public void FuncAddNewProduct(tblHangHoa product)
         {
-            DB.tblHangHoas.Add(product);
-            DB.SaveChanges();
+            db.tblHangHoas.Add(product);
+            db.SaveChanges();
         }
         // edit product
         public void FuncEditProduct(tblHangHoa _product)
         {
-            var product = DB.tblHangHoas.Find(_product.MaHangHoa);
+            var product = db.tblHangHoas.Find(_product.MaHangHoa);
             product.TenHangHoa = _product.TenHangHoa;
             product.SoLuong = _product.SoLuong;
             product.GiaBan = _product.GiaBan;
@@ -109,22 +109,17 @@ namespace SaleManagement.BLL
             product.MaLoaiHangHoa = _product.MaLoaiHangHoa;
             product.MaNhaSanXuat = _product.MaNhaSanXuat;
             product.MoTa = _product.MoTa;
-            //getProduct.HinhAnh = product.HinhAnh;
-            DB.SaveChanges();
+            db.SaveChanges();
         }
         // delete product
         public void FuncDeleteProduct(List<string> listIdProduct)
         {
+            var product = new tblHangHoa();
             foreach (string idProduct in listIdProduct)
             {
-                foreach (tblHangHoa product in DB.tblHangHoas)
-                {
-                    if (product.MaHangHoa == idProduct)
-                    {
-                        DB.tblHangHoas.Remove(product);
-                    }
-                }
-                DB.SaveChanges();
+                product = db.tblHangHoas.Find(idProduct);
+                db.tblHangHoas.Remove(product);
+                db.SaveChanges();
             }
         }
         // search product
@@ -136,7 +131,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
+                var product = db.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
                 || p.tblLoaiHangHoa.TenLoaiHangHoa.Contains(information)).Select(p => new
                 {
                     p.MaHangHoa,
@@ -162,7 +157,7 @@ namespace SaleManagement.BLL
             {
                 if (isListSale)
                 {
-                    var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
+                    var product = db.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
                     || p.tblLoaiHangHoa.TenLoaiHangHoa.Contains(information)).Select(p => new
                     {
                         p.MaHangHoa,
@@ -174,7 +169,7 @@ namespace SaleManagement.BLL
                 }
                 else
                 {
-                    var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
+                    var product = db.tblHangHoas.Where(p => p.TenHangHoa.Contains(information) || p.MaHangHoa.Contains(information)
                     || p.tblLoaiHangHoa.TenLoaiHangHoa.Contains(information)).Select(p => new
                     {
                         p.MaHangHoa,
@@ -192,7 +187,7 @@ namespace SaleManagement.BLL
             string idProduct = "";
             int last; // số cuối trong mã
             List<string> listIdProduct = new List<string>();
-            foreach (tblHangHoa product in DB.tblHangHoas)
+            foreach (tblHangHoa product in db.tblHangHoas)
             {
                 if (product.MaLoaiHangHoa == idTypeProduct)
                 {
@@ -231,8 +226,8 @@ namespace SaleManagement.BLL
         }
         public int getQuantityProductByIdProduct(string idProduct)
         {
-            var product = DB.tblHangHoas.Find(idProduct);
-            return product.SoLuong;
+            var product = db.tblHangHoas.Find(idProduct);
+            return (int)product.SoLuong;
         }
         //Trả về loại hàng hóa, nhà cung cấp, nhà sản xuất từ dgvITEMS
         public string getText(string name, List<CBBItem> list)

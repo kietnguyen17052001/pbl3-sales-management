@@ -54,12 +54,14 @@ namespace SaleManagement.FORM
             this.btnCANCEL.BackColor = System.Drawing.Color.IndianRed;
             this.btnCANCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCANCEL.FlatAppearance.BorderSize = 0;
+            this.btnCANCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnCANCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCANCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCANCEL.Location = new System.Drawing.Point(277, 388);
+            this.btnCANCEL.Location = new System.Drawing.Point(272, 388);
             this.btnCANCEL.Name = "btnCANCEL";
             this.btnCANCEL.Size = new System.Drawing.Size(121, 56);
             this.btnCANCEL.TabIndex = 95;
@@ -74,12 +76,14 @@ namespace SaleManagement.FORM
             this.btnSAVE.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSAVE.FlatAppearance.BorderSize = 0;
+            this.btnSAVE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSAVE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
             this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSAVE.Location = new System.Drawing.Point(138, 388);
+            this.btnSAVE.Location = new System.Drawing.Point(142, 388);
             this.btnSAVE.Name = "btnSAVE";
             this.btnSAVE.Size = new System.Drawing.Size(124, 55);
             this.btnSAVE.TabIndex = 94;
@@ -111,6 +115,7 @@ namespace SaleManagement.FORM
             // txtNAME_SUPPLIER
             // 
             this.txtNAME_SUPPLIER.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtNAME_SUPPLIER.BackColor = System.Drawing.SystemColors.Info;
             this.txtNAME_SUPPLIER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_SUPPLIER.ForeColor = System.Drawing.Color.Black;
             this.txtNAME_SUPPLIER.Location = new System.Drawing.Point(163, 127);
@@ -122,7 +127,7 @@ namespace SaleManagement.FORM
             // 
             this.txtID_SUPPLIER.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtID_SUPPLIER.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtID_SUPPLIER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_SUPPLIER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_SUPPLIER.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_SUPPLIER.Location = new System.Drawing.Point(163, 81);
             this.txtID_SUPPLIER.Name = "txtID_SUPPLIER";
@@ -246,6 +251,7 @@ namespace SaleManagement.FORM
             // 
             // FrmCreate_NewSupplier
             // 
+            this.AcceptButton = this.btnSAVE;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 456);

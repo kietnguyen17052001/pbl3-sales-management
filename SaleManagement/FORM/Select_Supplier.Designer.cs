@@ -122,6 +122,7 @@ namespace SaleManagement.FORM
             // 
             // txtNAME_SUPPLIER
             // 
+            this.txtNAME_SUPPLIER.BackColor = System.Drawing.SystemColors.Info;
             this.txtNAME_SUPPLIER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_SUPPLIER.ForeColor = System.Drawing.Color.Black;
             this.txtNAME_SUPPLIER.Location = new System.Drawing.Point(134, 128);
@@ -132,7 +133,7 @@ namespace SaleManagement.FORM
             // txtID_SUPPLIER
             // 
             this.txtID_SUPPLIER.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtID_SUPPLIER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_SUPPLIER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_SUPPLIER.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_SUPPLIER.Location = new System.Drawing.Point(134, 90);
             this.txtID_SUPPLIER.Name = "txtID_SUPPLIER";
@@ -195,7 +196,7 @@ namespace SaleManagement.FORM
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(74, 9);
+            this.label1.Location = new System.Drawing.Point(84, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(161, 27);
             this.label1.TabIndex = 141;
@@ -249,6 +250,8 @@ namespace SaleManagement.FORM
             // btnADD
             // 
             this.btnADD.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnADD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnADD.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnADD.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADD.ForeColor = System.Drawing.Color.White;
@@ -268,6 +271,8 @@ namespace SaleManagement.FORM
             this.btnSELECT.BackColor = System.Drawing.Color.Tomato;
             this.btnSELECT.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSELECT.FlatAppearance.BorderSize = 0;
+            this.btnSELECT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Tomato;
+            this.btnSELECT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSELECT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSELECT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSELECT.ForeColor = System.Drawing.Color.White;
@@ -300,6 +305,8 @@ namespace SaleManagement.FORM
             this.btnSAVE.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSAVE.FlatAppearance.BorderSize = 0;
+            this.btnSAVE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSAVE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;

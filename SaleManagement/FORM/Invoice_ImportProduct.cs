@@ -28,7 +28,7 @@ namespace SaleManagement.FORM
             {
                 btnBACK.Enabled = false;
             }
-            LoadDGVs();
+            LoadData();
             FormatHeaderCell();
             setCbbStaff();
             txtIdInvoice.Text = BLL_IMPORTPRODUCT.instance.getNewIdInvoice();
@@ -46,12 +46,12 @@ namespace SaleManagement.FORM
             }
         }
         // Load data for DGVs
-        public void LoadDGVs()
+        public void LoadData()
         {
             BLL_IMPORTPRODUCT.instance.LoadDataProduct(dgvInfoProduct);
             dgvInvoice.DataSource = dataTable;
         }
-        public void LoadForm()
+        public void ResetInvoice()
         {
             txtIdInvoice.Text = BLL_IMPORTPRODUCT.instance.getNewIdInvoice();
             txtIntoMoney.Text = txtTotalMoney.Text = txtPercent.Text = txtMoney.Text = "0";
@@ -87,13 +87,13 @@ namespace SaleManagement.FORM
         {
             if (isAdmin)
             {
-                FrmMain_Admin frm = new FrmMain_Admin(usernameLogin);
-                frm.Show();
+                FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernameLogin);
+                frmMainAdmin.Show();
             }
             else
             {
-                FrmMain_Member frm = new FrmMain_Member(usernameLogin);
-                frm.Show();
+                FrmMain_Member frmMainMember = new FrmMain_Member(usernameLogin);
+                frmMainMember.Show();
             }
             this.Close();
         }
@@ -127,23 +127,23 @@ namespace SaleManagement.FORM
             dgvInfoProduct.DefaultCellStyle.BackColor = Color.Azure;
             dgvInfoProduct.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
         }
-        public void newProduct(string nameProduct)
+        public void NewProduct(string nameProduct)
         {
             BLL_IMPORTPRODUCT.instance.FuncSearchProduct(nameProduct, dgvInfoProduct);
         }
         // button Addnew product
         private void btnAddNewProduct_Click(object sender, EventArgs e)
         {
-            FrmCreate_NewProduct frm = new FrmCreate_NewProduct();
-            frm.d += new FrmCreate_NewProduct.myDel(newProduct);
-            frm.Show();
+            FrmCreate_NewProduct frmCreateNewProduct = new FrmCreate_NewProduct();
+            frmCreateNewProduct.d += new FrmCreate_NewProduct.myDel(NewProduct);
+            frmCreateNewProduct.Show();
         }
         // Select product
         private void btnSelect_Click(object sender, EventArgs e)
         {
             idProduct = dgvInfoProduct.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
             BLL_IMPORTPRODUCT.instance.SelectProduct(dataTable, idProduct, Convert.ToInt32(txtQuantity.Text));
-            LoadDGVs();
+            LoadData();
             setValue(true, 0);
         }
         // ---------- Hóa đơn nhập hàng ----------
@@ -163,7 +163,7 @@ namespace SaleManagement.FORM
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             BLL_IMPORTPRODUCT.instance.FuncUpdateProductQty(dataTable, dgvInvoice.SelectedRows[0].Cells["MaHangHoa"].Value.ToString(), Convert.ToInt32(txtUpdateQuantity.Text));
-            LoadDGVs();
+            LoadData();
             setValue(true, 0);
         }
         private void txtUpdateQuantity_TextChanged(object sender, EventArgs e)
@@ -176,7 +176,7 @@ namespace SaleManagement.FORM
         // button Delete product
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            List<String> listIdProduct = new List<String>();
+            List<string> listIdProduct = new List<string>();
             DataGridViewSelectedRowCollection data = dgvInvoice.SelectedRows;
             foreach(DataGridViewRow dgvRow in data)
             {
@@ -214,15 +214,22 @@ namespace SaleManagement.FORM
         // button Payment invoice
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            string message = "Thông tin lỗi:\n"; 
-            if (string.IsNullOrEmpty(txtIdInvoice.Text) || string.IsNullOrEmpty(txtSupplier.Text)
+            string message = "Thông tin lỗi:\n";
+            tblHoaDonNhapHang invoice = new tblHoaDonNhapHang();
+            invoice.MaHoaDonNhap = txtIdInvoice.Text;
+            invoice.MaNhanVien = ((CBBItem)cbbStaff.SelectedItem).VALUE;
+            invoice.NgayNhap = dpDayCreate.Value;
+            invoice.MaNhaCungCap = idSupplier;
+            invoice.SoTien = Math.Round(intoMoney);
+            invoice.GiamGia = Math.Round((totalMoney - intoMoney));
+            if (String.IsNullOrEmpty(invoice.MaHoaDonNhap) || String.IsNullOrEmpty(invoice.MaNhaCungCap)
                 || dataTable.Rows.Count == 0)
             {
-                if (string.IsNullOrEmpty(txtIdInvoice.Text))
+                if (String.IsNullOrEmpty(invoice.MaHoaDonNhap))
                 {
                     message += "+ Mã hóa đơn trống\n";
                 }
-                if (string.IsNullOrEmpty(txtSupplier.Text))
+                if (String.IsNullOrEmpty(invoice.MaNhaCungCap))
                 {
                     message += "+ Nhà cung cấp trống\n";
                 }
@@ -234,22 +241,15 @@ namespace SaleManagement.FORM
             }
             else
             {
-                tblHoaDonNhapHang newInvoice = new tblHoaDonNhapHang();
-                newInvoice.MaHoaDonNhap = txtIdInvoice.Text;
-                newInvoice.MaNhanVien = ((CBBItem)cbbStaff.SelectedItem).VALUE;
-                newInvoice.NgayNhap = dpDayCreate.Value;
-                newInvoice.MaNhaCungCap = idSupplier;
-                newInvoice.SoTien = Math.Round(intoMoney);
-                newInvoice.GiamGia = Math.Round((totalMoney - intoMoney));
-                DialogResult dialogResult = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
-                { 
+                DialogResult answer = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (answer == DialogResult.Yes)
+                {
                     try
                     {
-                        BLL_IMPORTPRODUCT.instance.FuncPaymentInvoice(newInvoice, dataTable); // payment invoice
+                        BLL_IMPORTPRODUCT.instance.FuncPaymentInvoice(invoice, dataTable); // payment invoice
                         MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadDGVs();
-                        LoadForm();
+                        LoadData();
+                        ResetInvoice();
                     }
                     catch (Exception)
                     {
@@ -264,7 +264,7 @@ namespace SaleManagement.FORM
             e.Graphics.DrawString("N3K STORE", new Font("Tahoma", 20, FontStyle.Bold), Brushes.Black, new Point(340, 50));
             e.Graphics.DrawString("54 NGUYỄN LƯƠNG BẰNG", new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(280, 100));
             e.Graphics.DrawString("0911.888.999", new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(350, 120));
-            e.Graphics.DrawString("HÓA ĐƠN THANH TOÁN", new Font("Tahoma", 19, FontStyle.Bold), Brushes.Black, new Point(270, 180));
+            e.Graphics.DrawString("HÓA ĐƠN NHẬP HÀNG", new Font("Tahoma", 19, FontStyle.Bold), Brushes.Black, new Point(270, 180));
             e.Graphics.DrawString("Nhân viên: " + cbbStaff.SelectedItem.ToString(), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(260, 220));
             e.Graphics.DrawString("Nhà cung cấp: " + txtSupplier.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(260, 250));
             e.Graphics.DrawString("Số hóa đơn: " + txtIdInvoice.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(190, 300));
@@ -305,7 +305,7 @@ namespace SaleManagement.FORM
         // print invoice
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (dataTable.Rows.Count == 0 || string.IsNullOrEmpty(txtSupplier.Text))
+            if (dataTable.Rows.Count == 0 || String.IsNullOrEmpty(txtSupplier.Text.Trim()))
             {
                 MessageBox.Show("Vui lòng kiểm tra lại thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -318,8 +318,8 @@ namespace SaleManagement.FORM
         // back to frmManage_Data
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data(usernameLogin);
-            frm.Show();
+            FrmManage_Data frmManageData = new FrmManage_Data(usernameLogin);
+            frmManageData.Show();
             this.Close();
         }
         // Note information

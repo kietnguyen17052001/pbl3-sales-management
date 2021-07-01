@@ -10,7 +10,7 @@ namespace SaleManagement.BLL
 {
     class BLL_SUPPLIER
     {
-        SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_SUPPLIER _Instance;
         public static BLL_SUPPLIER Instance
         {
@@ -29,7 +29,7 @@ namespace SaleManagement.BLL
         public List<CBBItem> ListSupplier()
         {
             List<CBBItem> ListCbb = new List<CBBItem>();
-            foreach(tblNhaCungCap supplier in DB.tblNhaCungCaps)
+            foreach(tblNhaCungCap supplier in db.tblNhaCungCaps)
             {
                 ListCbb.Add(new CBBItem { VALUE = supplier.MaNhaCungCap, TEXT = supplier.TenNhaCungCap });
             }
@@ -38,7 +38,7 @@ namespace SaleManagement.BLL
         // load data form database
         public void ShowData(DataGridView dgv)
         {
-            var getListSupplier = DB.tblNhaCungCaps.Select(p => new
+            var getListSupplier = db.tblNhaCungCaps.Select(p => new
             {
                 p.MaNhaCungCap,
                 p.TenNhaCungCap,
@@ -53,35 +53,30 @@ namespace SaleManagement.BLL
         // add new supplier
         public void FuncAddNewSupplier(tblNhaCungCap supplier)
         {
-            DB.tblNhaCungCaps.Add(supplier);
-            DB.SaveChanges();
+            db.tblNhaCungCaps.Add(supplier);
+            db.SaveChanges();
         }
         // edit supplier
         public void FuncEditSupplier(tblNhaCungCap supplier)
         {
-            var getSupplier = DB.tblNhaCungCaps.Find(supplier.MaNhaCungCap);
+            var getSupplier = db.tblNhaCungCaps.Find(supplier.MaNhaCungCap);
             getSupplier.TenNhaCungCap = supplier.TenNhaCungCap;
             getSupplier.DiaChi = supplier.DiaChi;
             getSupplier.Email = supplier.Email;
             getSupplier.Fax = supplier.Fax;
             getSupplier.SoDienThoai = supplier.SoDienThoai;
             getSupplier.MaSoThue = supplier.MaSoThue;
-            DB.SaveChanges();
+            db.SaveChanges();
         }
         // delete supplier
         public void FuncDeleteSupplier(List<string> listID)
         {
+            var supplier = new tblNhaCungCap();
             foreach(string idSupplier in listID)
             {
-                foreach(tblNhaCungCap supplier in DB.tblNhaCungCaps)
-                {
-                    if(supplier.MaNhaCungCap == idSupplier)
-                    {
-                        DB.tblNhaCungCaps.Remove(supplier);
-                        break;
-                    }
-                }
-                DB.SaveChanges();
+                supplier = db.tblNhaCungCaps.Find(idSupplier);
+                db.tblNhaCungCaps.Remove(supplier);
+                db.SaveChanges();
             }
         }
         // search supplier
@@ -93,7 +88,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                var getSupplier = DB.tblNhaCungCaps.Where(p => p.MaNhaCungCap.Contains(information) || p.TenNhaCungCap.Contains(information)).Select(p => new
+                var getSupplier = db.tblNhaCungCaps.Where(p => p.MaNhaCungCap.Contains(information) || p.TenNhaCungCap.Contains(information)).Select(p => new
                 {
                     p.MaNhaCungCap,
                     p.TenNhaCungCap,
@@ -115,7 +110,7 @@ namespace SaleManagement.BLL
         public string getNewIdSupplier()
         {
             string idSupplier;
-            List<tblNhaCungCap> list = DB.tblNhaCungCaps.ToList();
+            List<tblNhaCungCap> list = db.tblNhaCungCaps.ToList();
             if (list.Count == 0)
             {
                 idSupplier = "NCC001";

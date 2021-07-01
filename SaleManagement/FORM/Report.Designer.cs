@@ -29,7 +29,7 @@ namespace SaleManagement.FORM
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -212,14 +212,14 @@ namespace SaleManagement.FORM
             this.dgvREVENUE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvREVENUE.Location = new System.Drawing.Point(29, 281);
             this.dgvREVENUE.Name = "dgvREVENUE";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvREVENUE.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvREVENUE.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvREVENUE.RowHeadersVisible = false;
             this.dgvREVENUE.RowHeadersWidth = 62;
             this.dgvREVENUE.RowTemplate.Height = 28;
@@ -285,6 +285,8 @@ namespace SaleManagement.FORM
             this.btnBACK.BackColor = System.Drawing.Color.SteelBlue;
             this.btnBACK.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnBACK.FlatAppearance.BorderSize = 0;
+            this.btnBACK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnBACK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnBACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBACK.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBACK.ForeColor = System.Drawing.Color.White;
@@ -325,6 +327,8 @@ namespace SaleManagement.FORM
             this.btnEXCEL.BackColor = System.Drawing.Color.SeaGreen;
             this.btnEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEXCEL.FlatAppearance.BorderSize = 0;
+            this.btnEXCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnEXCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEXCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEXCEL.ForeColor = System.Drawing.Color.White;

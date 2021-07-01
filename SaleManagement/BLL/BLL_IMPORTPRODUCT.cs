@@ -11,7 +11,7 @@ namespace SaleManagement.BLL
 {
     class BLL_IMPORTPRODUCT
     {
-        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_IMPORTPRODUCT _instance;
         public static BLL_IMPORTPRODUCT instance
         {
@@ -29,13 +29,13 @@ namespace SaleManagement.BLL
         // Load data product from Database
         public void LoadDataProduct(DataGridView dgv)
         {
-            var data = DB.tblHangHoas.Select(p => new
+            var product = db.tblHangHoas.Select(p => new
             {
                 p.MaHangHoa,
                 p.TenHangHoa,
                 p.SoLuong
             });
-            dgv.DataSource = data.ToList();
+            dgv.DataSource = product.ToList();
         }
         // set Columns for table invoice
         public DataTable TableInvoice()
@@ -71,7 +71,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                var product = DB.tblHangHoas.Where(p => p.TenHangHoa.Contains(information.Trim())).Select(p => new
+                var product = db.tblHangHoas.Where(p => p.TenHangHoa.Contains(information.Trim())).Select(p => new
                 {
                     p.MaHangHoa,
                     p.TenHangHoa,
@@ -114,22 +114,22 @@ namespace SaleManagement.BLL
         // Payment invoice
         public void FuncPaymentInvoice(tblHoaDonNhapHang invoice, DataTable dataTable)
         {
-            DB.tblHoaDonNhapHangs.Add(invoice);
-            DB.SaveChanges();// thêm đơn hàng vào DB
+            db.tblHoaDonNhapHangs.Add(invoice);
+            db.SaveChanges();// thêm đơn hàng vào db
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                DB.tblChiTietHoaDonNhapHangs.Add(getDetailInvoice(dataRow, invoice.MaHoaDonNhap));
-                DB.SaveChanges();// thêm hóa đơn bán hàng chi tiết
-                var product = DB.tblHangHoas.Find(dataRow["MaHangHoa"].ToString());
+                db.tblChiTietHoaDonNhapHangs.Add(getDetailInvoice(dataRow, invoice.MaHoaDonNhap));
+                db.SaveChanges();// thêm hóa đơn bán hàng chi tiết
+                var product = db.tblHangHoas.Find(dataRow["MaHangHoa"].ToString());
                 product.SoLuong += Convert.ToInt32(dataRow["SoLuong"].ToString());
-                DB.SaveChanges();// thay đổi số lượng hàng hóa sau khi thanh toán
+                db.SaveChanges();// thay đổi số lượng hàng hóa sau khi thanh toán
             }
         }
         // Select product
         public void SelectProduct(DataTable dataTable, string idProduct, int quantityOfSelectProduct)
         {
             bool isHas = false;
-            var product = DB.tblHangHoas.Find(idProduct);
+            var product = db.tblHangHoas.Find(idProduct);
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 if(dataRow["MaHangHoa"].ToString() == idProduct)
@@ -154,7 +154,7 @@ namespace SaleManagement.BLL
         public string getNewIdInvoice()
         {
             string idInvoice = "";
-            List<tblHoaDonNhapHang> list = DB.tblHoaDonNhapHangs.ToList();
+            List<tblHoaDonNhapHang> list = db.tblHoaDonNhapHangs.ToList();
             if (list.Count == 0)
             {
                 idInvoice = "HDN0001";
@@ -190,16 +190,14 @@ namespace SaleManagement.BLL
         // Get into money for invoice
         public double getIntoMoney(DataTable dataTable, bool isPercent, double discount)
         {
-            double value = 0;
             if (isPercent)
             {
-                value = getTotalMoney(dataTable) - getTotalMoney(dataTable) * discount / 100;
+                return getTotalMoney(dataTable) - getTotalMoney(dataTable) * discount / 100;
             }
             else
             {
-                value = getTotalMoney(dataTable) - discount;
+                return getTotalMoney(dataTable) - discount;
             }
-            return value;
         }
     }
 }

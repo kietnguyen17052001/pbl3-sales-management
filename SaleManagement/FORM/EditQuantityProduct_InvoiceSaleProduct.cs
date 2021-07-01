@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace SaleManagement.FORM
 {
-    public partial class FrmEditQuantity_InvoiceSaleProduct : Form
+    public partial class FrmEditQuantityProduct_InvoiceSaleProduct : Form
     {
         public delegate void myDel(int quantity);
         public myDel d { get; set; }
         private string idProduct { get; set; }
-        public FrmEditQuantity_InvoiceSaleProduct(string _idProduct)
+        public FrmEditQuantityProduct_InvoiceSaleProduct(string _idProduct)
         {
             InitializeComponent();
             idProduct = _idProduct;
@@ -26,7 +26,7 @@ namespace SaleManagement.FORM
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNEWQTY.Text))
+            if (String.IsNullOrEmpty(txtNEWQTY.Text))
             {
                 lbQTY.Text = "Bạn chưa nhập số lượng mới!"; 
             }

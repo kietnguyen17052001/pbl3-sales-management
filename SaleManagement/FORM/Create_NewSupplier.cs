@@ -25,33 +25,38 @@ namespace SaleManagement.FORM
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             tblNhaCungCap supplier = new tblNhaCungCap();
-            if(string.IsNullOrEmpty(txtID_SUPPLIER.Text) || string.IsNullOrEmpty(txtNAME_SUPPLIER.Text) || string.IsNullOrEmpty(txtADDRESS.Text) ||
-                string.IsNullOrEmpty(txtPHONE.Text) || string.IsNullOrEmpty(txtEMAIL.Text) || string.IsNullOrEmpty(txtFAX.Text) ||
-                string.IsNullOrEmpty(txtCODE.Text))
+            supplier.MaNhaCungCap = txtID_SUPPLIER.Text.Trim();
+            supplier.TenNhaCungCap = txtNAME_SUPPLIER.Text.Trim();
+            supplier.DiaChi = txtADDRESS.Text.Trim();
+            supplier.SoDienThoai = txtPHONE.Text.Trim();
+            supplier.Email = txtEMAIL.Text.Trim();
+            supplier.Fax = txtFAX.Text.Trim();
+            supplier.MaSoThue = Convert.ToInt32(txtCODE.Text);
+            if (String.IsNullOrEmpty(supplier.MaNhaCungCap) || !String.IsNullOrEmpty(supplier.TenNhaCungCap))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (!String.IsNullOrEmpty(supplier.MaNhaCungCap) || String.IsNullOrEmpty(supplier.TenNhaCungCap))
+            {
+                MessageBox.Show("Tên nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (String.IsNullOrEmpty(supplier.MaNhaCungCap) || String.IsNullOrEmpty(supplier.TenNhaCungCap))
+            {
+                MessageBox.Show("Mã và tên nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                supplier.MaNhaCungCap = txtID_SUPPLIER.Text;
-                supplier.TenNhaCungCap = txtNAME_SUPPLIER.Text;
-                supplier.DiaChi = txtADDRESS.Text;
-                supplier.Email = txtEMAIL.Text;
-                supplier.Fax = txtFAX.Text;
-                supplier.SoDienThoai = txtPHONE.Text;
-                supplier.MaSoThue = Convert.ToInt32(txtCODE.Text);
                 try
                 {
-                    BLL_SUPPLIER.Instance.FuncAddNewSupplier(supplier);
-                    d(supplier.MaNhaCungCap, supplier.TenNhaCungCap);
+                    BLL_SUPPLIER.Instance.FuncAddNewSupplier(supplier); // add new supplier
+                    MessageBox.Show("Thêm nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Mã số bị trùng. Vui lòng nhập mã khác", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mã số nhà cung cấp đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            this.Close();
         }
 
         private void btnCANCEL_Click(object sender, EventArgs e)

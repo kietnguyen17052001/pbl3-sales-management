@@ -273,6 +273,16 @@ namespace SaleManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap changePass {
+            get {
+                object obj = ResourceManager.GetObject("changePass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap check {
             get {
                 object obj = ResourceManager.GetObject("check", resourceCulture);
@@ -516,6 +526,16 @@ namespace SaleManagement.Properties {
         internal static System.Drawing.Bitmap key_4_32 {
             get {
                 object obj = ResourceManager.GetObject("key-4-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap keyOldPass {
+            get {
+                object obj = ResourceManager.GetObject("keyOldPass", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

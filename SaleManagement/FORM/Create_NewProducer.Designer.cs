@@ -53,6 +53,7 @@ namespace SaleManagement.FORM
             // txtNAME_PRODUCER
             // 
             this.txtNAME_PRODUCER.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtNAME_PRODUCER.BackColor = System.Drawing.SystemColors.Info;
             this.txtNAME_PRODUCER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_PRODUCER.ForeColor = System.Drawing.Color.Black;
             this.txtNAME_PRODUCER.Location = new System.Drawing.Point(179, 164);
@@ -64,7 +65,7 @@ namespace SaleManagement.FORM
             // 
             this.txtID_PRODUCER.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtID_PRODUCER.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtID_PRODUCER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_PRODUCER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_PRODUCER.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_PRODUCER.Location = new System.Drawing.Point(179, 118);
             this.txtID_PRODUCER.Name = "txtID_PRODUCER";
@@ -110,6 +111,8 @@ namespace SaleManagement.FORM
             this.btnCANCEL.BackColor = System.Drawing.Color.IndianRed;
             this.btnCANCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCANCEL.FlatAppearance.BorderSize = 0;
+            this.btnCANCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnCANCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCANCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
@@ -130,6 +133,8 @@ namespace SaleManagement.FORM
             this.btnSAVE.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSAVE.FlatAppearance.BorderSize = 0;
+            this.btnSAVE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSAVE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
@@ -157,6 +162,7 @@ namespace SaleManagement.FORM
             // 
             // FrmCreate_NewProducer
             // 
+            this.AcceptButton = this.btnSAVE;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 440);

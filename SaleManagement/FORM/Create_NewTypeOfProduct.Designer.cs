@@ -44,12 +44,14 @@ namespace SaleManagement.FORM
             this.btnCANCEL.BackColor = System.Drawing.Color.IndianRed;
             this.btnCANCEL.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCANCEL.FlatAppearance.BorderSize = 0;
+            this.btnCANCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnCANCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCANCEL.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCANCEL.ForeColor = System.Drawing.Color.White;
             this.btnCANCEL.Image = global::SaleManagement.Properties.Resources.delete_2_24;
             this.btnCANCEL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCANCEL.Location = new System.Drawing.Point(273, 257);
+            this.btnCANCEL.Location = new System.Drawing.Point(275, 257);
             this.btnCANCEL.Name = "btnCANCEL";
             this.btnCANCEL.Size = new System.Drawing.Size(121, 55);
             this.btnCANCEL.TabIndex = 95;
@@ -64,14 +66,16 @@ namespace SaleManagement.FORM
             this.btnSAVE.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSAVE.FlatAppearance.BorderSize = 0;
+            this.btnSAVE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSAVE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;
             this.btnSAVE.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSAVE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSAVE.Location = new System.Drawing.Point(144, 257);
+            this.btnSAVE.Location = new System.Drawing.Point(143, 257);
             this.btnSAVE.Name = "btnSAVE";
-            this.btnSAVE.Size = new System.Drawing.Size(121, 55);
+            this.btnSAVE.Size = new System.Drawing.Size(124, 55);
             this.btnSAVE.TabIndex = 94;
             this.btnSAVE.Text = "Lưu";
             this.btnSAVE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -81,6 +85,7 @@ namespace SaleManagement.FORM
             // txtNameTypeOfProduct
             // 
             this.txtNameTypeOfProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtNameTypeOfProduct.BackColor = System.Drawing.SystemColors.Info;
             this.txtNameTypeOfProduct.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameTypeOfProduct.ForeColor = System.Drawing.Color.Black;
             this.txtNameTypeOfProduct.Location = new System.Drawing.Point(199, 174);
@@ -92,7 +97,7 @@ namespace SaleManagement.FORM
             // 
             this.txtIdTypeOfProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtIdTypeOfProduct.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtIdTypeOfProduct.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdTypeOfProduct.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdTypeOfProduct.ForeColor = System.Drawing.Color.IndianRed;
             this.txtIdTypeOfProduct.Location = new System.Drawing.Point(199, 113);
             this.txtIdTypeOfProduct.Name = "txtIdTypeOfProduct";
@@ -126,7 +131,7 @@ namespace SaleManagement.FORM
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(148, 32);
+            this.label6.Location = new System.Drawing.Point(152, 32);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(228, 27);
             this.label6.TabIndex = 121;
@@ -134,6 +139,7 @@ namespace SaleManagement.FORM
             // 
             // FrmCreate_NewTypeItem
             // 
+            this.AcceptButton = this.btnSAVE;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 440);

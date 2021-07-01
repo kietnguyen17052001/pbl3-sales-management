@@ -25,24 +25,30 @@ namespace SaleManagement.FORM
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             tblNhaSanXuat producer = new tblNhaSanXuat();
-            if(string.IsNullOrEmpty(txtID_PRODUCER.Text) || string.IsNullOrEmpty(txtNAME_PRODUCER.Text) || string.IsNullOrEmpty(txtADDRESS.Text))
+            producer.MaNhaSanXuat = txtID_PRODUCER.Text.Trim();
+            producer.TenNhaSanXuat = txtNAME_PRODUCER.Text.Trim();
+            producer.DiaChi = txtADDRESS.Text.Trim();
+            if (String.IsNullOrEmpty(producer.MaNhaSanXuat) || !String.IsNullOrEmpty(producer.TenNhaSanXuat))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã nhà sản xuất trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
+            else if (!String.IsNullOrEmpty(producer.MaNhaSanXuat) || String.IsNullOrEmpty(producer.TenNhaSanXuat))
             {
-                producer.MaNhaSanXuat = txtID_PRODUCER.Text;
-                producer.TenNhaSanXuat = txtNAME_PRODUCER.Text;
-                producer.DiaChi = txtADDRESS.Text;
-                try {
-                    BLL_PRODUCER.Instance.FuncAddProducer(producer);
-                    d(producer.MaNhaSanXuat, producer.TenNhaSanXuat);
-                    this.Close();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Mã số bị trùng. Vui lòng nhập mã khác", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Tên nhà sản xuất trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (String.IsNullOrEmpty(producer.MaNhaSanXuat) || String.IsNullOrEmpty(producer.TenNhaSanXuat))
+            {
+                MessageBox.Show("Mã và tên nhà sản xuất trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            try
+            {
+                BLL_PRODUCER.Instance.FuncAddProducer(producer);
+                d(producer.MaNhaSanXuat, producer.TenNhaSanXuat);
+                this.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Mã số nhà cung cấp đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

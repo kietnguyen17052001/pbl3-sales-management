@@ -17,7 +17,7 @@ namespace SaleManagement.VIEW
     {
         private bool isAdmin;
         private string usernameLogin;
-        private int qtyOfSelectProduct, allProduct, productQty;
+        private int qtyOfSelectProduct, allProduct, quantityProduct;
         private string idProduct, idCustomer; //idCustomer cho chức năng Payment
         private double 
             productDiscount, 
@@ -38,7 +38,7 @@ namespace SaleManagement.VIEW
             }
             setComboboxStaff();
             setDataForToolBox();
-            LoadDGVs();
+            LoadData();
             FormatHeader();
         }
         public void FormatHeader()
@@ -67,12 +67,12 @@ namespace SaleManagement.VIEW
         {
             sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount); // tổng thanh toán đơn hàng
             totalMoney = BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable); // tổng tiền đơn hàng
-            productQty = BLL_SALEPRODUCT.Instance.getTotalQuantityProduct(dataTable); // Tổng số lượng hàng 
+            quantityProduct = BLL_SALEPRODUCT.Instance.getTotalQuantityProduct(dataTable); // Tổng số lượng hàng 
             allProduct = BLL_SALEPRODUCT.Instance.getTotalProduct(dataTable); // Tổng loại hàng
             txtIdInvoice.Text = BLL_SALEPRODUCT.Instance.getNewIdInvoice(); // khởi tạo mã hóa đơn mới
             txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
             txtProductDiscount.Text = "0";
-            txtTotalQuantity.Text = productQty.ToString();
+            txtTotalQuantity.Text = quantityProduct.ToString();
             txtTotalProduct.Text = allProduct.ToString();
             txtQuantityOfSelect.Text = "1";
             txtPriceInvoice.Text = String.Format("{0:n0}", invoicePrice);
@@ -94,11 +94,12 @@ namespace SaleManagement.VIEW
         public void ResetInvoice()
         {
             dataTable.Clear();
-            totalMoney = invoicePrice = sendByCustomer = sendByStaff = allProduct = productQty = 0;
+            totalMoney = invoicePrice = sendByCustomer = sendByStaff = allProduct = quantityProduct = 0;
             invoiceDiscount = 0;
             qtyOfSelectProduct = 1;
             productDiscount = 0;
             txtCustomer.Clear();
+            idCustomer = null;
             cbbStaff.SelectedIndex = 0;
             btnDeleteProduct.Enabled = true;
             btnSelectProduct.Enabled = true;
@@ -123,13 +124,8 @@ namespace SaleManagement.VIEW
             txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
             txtCustomerPay.Text = String.Format("{0:n0}", sendByCustomer);
         }
-        // Lựa chọn khách hàng
-        public void setCustomer(string _idCustomer, string nameCustomer)
-        {
-            idCustomer = _idCustomer;
-            txtCustomer.Text = nameCustomer;
-        }
-        public void LoadDGVs()
+        
+        public void LoadData()
         {
             BLL_SALEPRODUCT.Instance.LoadDataProduct(dgvInfoProduct);
             dgvInvoice.DataSource = dataTable;
@@ -150,13 +146,13 @@ namespace SaleManagement.VIEW
         {
             if (isAdmin)
             {
-                FrmMain_Admin frm = new FrmMain_Admin(usernameLogin);
-                frm.Show();
+                FrmMain_Admin frmMainAmin = new FrmMain_Admin(usernameLogin);
+                frmMainAmin.Show();
             }
             else
             {
-                FrmMain_Member frm = new FrmMain_Member(usernameLogin);
-                frm.Show();
+                FrmMain_Member frmMainMember = new FrmMain_Member(usernameLogin);
+                frmMainMember.Show();
             }
             this.Close();
         }
@@ -171,13 +167,13 @@ namespace SaleManagement.VIEW
             idProduct = dgvInfoProduct.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
             qtyOfSelectProduct = Convert.ToInt32(txtQuantityOfSelect.Text); // Số lượng hàng hóa từ txtQuantityOfSelect
             productDiscount = Convert.ToInt32(txtProductDiscount.Text);
-            if (qtyOfSelectProduct > Convert.ToInt32(dgvInfoProduct.SelectedRows[0].Cells["SoLuong"].Value.ToString())) // Kiểm tra số lượng
+            if (BLL_SALEPRODUCT.Instance.isValidQuantityProduct(dataTable, idProduct, qtyOfSelectProduct)) // Kiểm tra số lượng
             {
-                MessageBox.Show("Không đủ số lượng hàng hóa để thêm vào đơn", "Lỗi thêm hàng hóa vào đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                BLL_SALEPRODUCT.Instance.FuncAddProduct(dataTable, idProduct, qtyOfSelectProduct, productDiscount);
             }
             else
             {
-                BLL_SALEPRODUCT.Instance.FuncAddProduct(dataTable, idProduct, qtyOfSelectProduct, productDiscount);
+                MessageBox.Show("Không đủ số lượng hàng hóa để thêm vào đơn", "Lỗi thêm hàng hóa vào đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             // Thông tin hóa đơn sau khi thêm hàng hóa
             setDataForToolBox();
@@ -195,26 +191,41 @@ namespace SaleManagement.VIEW
             // Dữ liệu hóa đơn sau khi xóa hàng hóa
             setDataForToolBox();
         }
+
+        // Lựa chọn khách hàng
+        public void setCustomer(string _idCustomer, string nameCustomer)
+        {
+            idCustomer = _idCustomer;
+            txtCustomer.Text = nameCustomer;
+        }
+
         //add customer -> load form CREATE_NEWCUSTOMER -> choose or add new customer
         private void btnSelectCustomer_Click(object sender, EventArgs e)
         {
-            FrmSelect_Customer frm = new FrmSelect_Customer(); // gọi form khách hàng để lựa chọn khách hàng cũ hoặc thêm khách mới
-            frm.d += new FrmSelect_Customer.myDEL(setCustomer);
-            frm.Show();
+            FrmSelect_Customer frmSelectCustomer = new FrmSelect_Customer(); // gọi form khách hàng để lựa chọn khách hàng cũ hoặc thêm khách mới
+            frmSelectCustomer.d += new FrmSelect_Customer.myDEL(setCustomer);
+            frmSelectCustomer.Show();
         }
+
         //Btn thanh toán
         private void btnPayment_Click(object sender, EventArgs e)
         {
             string message = "Thông tin lỗi:\n";
-            if (string.IsNullOrEmpty(txtIdInvoice.Text) 
-                || string.IsNullOrEmpty(txtCustomer.Text)
+            tblHoaDonBanHang invoice = new tblHoaDonBanHang();
+            invoice.MaHoaDonBan = txtIdInvoice.Text.Trim();
+            invoice.MaNhanVien = ((CBBItem)cbbStaff.SelectedItem).VALUE;
+            invoice.NgayBan = dpDate.Value;
+            invoice.MaKhachHang = idCustomer;
+            invoice.SoTien = Math.Round(invoicePrice);
+            invoice.GiamGia = Math.Round(invoiceDiscount);
+            if (String.IsNullOrEmpty(invoice.MaHoaDonBan) || String.IsNullOrEmpty(invoice.MaKhachHang)
                 || (dataTable.Rows.Count == 0) || (sendByCustomer < invoicePrice))
             {
-                if (string.IsNullOrEmpty(txtIdInvoice.Text))
+                if (String.IsNullOrEmpty(invoice.MaHoaDonBan))
                 {
                     message += "+ Mã hóa đơn trống\n";
                 }
-                if (string.IsNullOrEmpty(txtCustomer.Text))
+                if (String.IsNullOrEmpty(invoice.MaKhachHang))
                 {
                     message += "+ Khách hàng trống\n";
                 }
@@ -222,30 +233,23 @@ namespace SaleManagement.VIEW
                 {
                     message += "+ Hóa đơn trống sản phẩm\n";
                 }
-                if(sendByCustomer < invoicePrice)
+                if (sendByCustomer < invoicePrice)
                 {
                     message += "+ Số tiền của khách hàng trả không hợp lệ\n";
                 }
                 MessageBox.Show(message, "Lỗi tạo đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
             else
             {
-                tblHoaDonBanHang newInvoice = new tblHoaDonBanHang();
-                newInvoice.MaHoaDonBan = txtIdInvoice.Text;
-                newInvoice.MaNhanVien = ((CBBItem)cbbStaff.SelectedItem).VALUE;
-                newInvoice.NgayBan = dpDate.Value;
-                newInvoice.MaKhachHang = idCustomer;
-                newInvoice.SoTien = Math.Round(invoicePrice);
-                newInvoice.GiamGia = Math.Round(invoiceDiscount);
-                DialogResult dialogResult = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
-                {     
+                DialogResult answer = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (answer == DialogResult.Yes)
+                {
                     try
                     {
-                        BLL_SALEPRODUCT.Instance.FuncPayment(newInvoice, dataTable); // Payment invoice
+                        BLL_SALEPRODUCT.Instance.FuncPayment(invoice, dataTable); // Payment invoice
                         MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadDGVs();
+                        LoadData();
                         ResetInvoice();
                     }
                     catch (Exception)
@@ -263,16 +267,16 @@ namespace SaleManagement.VIEW
         // Btn giảm theo phần trăm, gọi form Discount_Percent
         private void btnDiscountPercent_Click(object sender, EventArgs e)
         {
-            FrmDiscount_Percent frm = new FrmDiscount_Percent();
-            frm.d += new FrmDiscount_Percent.myDEL(setDiscountPercent);
-            frm.Show();
+            FrmDiscount_Percent frmDiscountPercent = new FrmDiscount_Percent();
+            frmDiscountPercent.d += new FrmDiscount_Percent.myDEL(setDiscountPercent);
+            frmDiscountPercent.Show();
         }
         // Btn giảm theo số tiền, gọi form Discount_Money
         private void btnDiscountMoney_Click(object sender, EventArgs e)
         {
-            FrmDiscount_Money frm = new FrmDiscount_Money(totalMoney);
-            frm.d += new FrmDiscount_Money.myDEL(setDiscountMoney);
-            frm.Show();
+            FrmDiscount_Money frmDiscountMoney = new FrmDiscount_Money(totalMoney);
+            frmDiscountMoney.d += new FrmDiscount_Money.myDEL(setDiscountMoney);
+            frmDiscountMoney.Show();
         }
         private void txtDISCOUNT_ITEM_TextChanged(object sender, EventArgs e)
         {
@@ -303,7 +307,7 @@ namespace SaleManagement.VIEW
         // Btn in giao diện cho hóa đơn
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (dataTable.Rows.Count == 0 || string.IsNullOrEmpty(txtCustomer.Text))
+            if (dataTable.Rows.Count == 0 || String.IsNullOrEmpty(txtCustomer.Text))
             {
                 MessageBox.Show("Vui lòng kiểm tra lại thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -354,32 +358,36 @@ namespace SaleManagement.VIEW
             e.Graphics.DrawString(txtDiscount.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*3));
             e.Graphics.DrawString("Tổng thanh toán ", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50*4));
             e.Graphics.DrawString(txtPriceInvoice.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*4));
-            e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50*5));
-            e.Graphics.DrawString("*** LƯU Ý: " + txtNote.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(50, distance + 50*6));
+            e.Graphics.DrawString("Tiền khách trả", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50*5));
+            e.Graphics.DrawString(txtCustomerPay.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50 * 5));
+            e.Graphics.DrawString("Tiền trả khách", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50*6));
+            e.Graphics.DrawString(txtReturnMoney.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50*6));
             e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50*7));
-            e.Graphics.DrawString("Cảm ơn và hẹn gặp lại quý khách!", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(250, distance + 50 * 8));
+            e.Graphics.DrawString("*** LƯU Ý: " + txtNote.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(50, distance + 50*8));
+            e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50*9));
+            e.Graphics.DrawString("Cảm ơn và hẹn gặp lại quý khách!", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(250, distance + 50*10));
         }
         // set new quantity for product
-        public void setNewQtyForProduct(int newQty)
+        public void setNewQtyForProduct(int newQuantity)
         {
-            dgvInvoice.SelectedRows[0].Cells["SoLuong"].Value = newQty;
-            double newPrice = Convert.ToDouble(dgvInvoice.SelectedRows[0].Cells["DonGia(VNĐ)"].Value.ToString()) * newQty - 
-                (Convert.ToDouble(dgvInvoice.SelectedRows[0].Cells["DonGia(VNĐ)"].Value.ToString()) * newQty * productDiscount) / 100;
+            dgvInvoice.SelectedRows[0].Cells["SoLuong"].Value = newQuantity;
+            double newPrice = Convert.ToDouble(dgvInvoice.SelectedRows[0].Cells["DonGia(VNĐ)"].Value.ToString()) * newQuantity - 
+                (Convert.ToDouble(dgvInvoice.SelectedRows[0].Cells["DonGia(VNĐ)"].Value.ToString()) * newQuantity * productDiscount) / 100;
             dgvInvoice.SelectedRows[0].Cells["ThanhTien(VNĐ)"].Value = String.Format("{0:n0}",newPrice);
             setDataForToolBox();
         }
         // edit quantity product
         private void btnEditQuantity_Click(object sender, EventArgs e)
         {
-            FrmEditQuantity_InvoiceSaleProduct frm = new FrmEditQuantity_InvoiceSaleProduct(idProduct);
-            frm.d += new FrmEditQuantity_InvoiceSaleProduct.myDel(setNewQtyForProduct);
-            frm.Show();
+            FrmEditQuantityProduct_InvoiceSaleProduct frmEditQuantityProduct = new FrmEditQuantityProduct_InvoiceSaleProduct(idProduct);
+            frmEditQuantityProduct.d += new FrmEditQuantityProduct_InvoiceSaleProduct.myDel(setNewQtyForProduct);
+            frmEditQuantityProduct.Show();
         }
         // back to frmQuanLyDuLieu
         private void btnBack_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data(usernameLogin);
-            frm.Show();
+            FrmManage_Data frmManageData = new FrmManage_Data(usernameLogin);
+            frmManageData.Show();
             this.Close();
         }
         private void txtNOTE_Leave(object sender, EventArgs e)

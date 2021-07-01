@@ -1,5 +1,4 @@
 ﻿using SaleManagement.BLL;
-using SaleManagement.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,14 +33,7 @@ namespace SaleManagement.FORM
             double revenue;
             for(int i = 1; i <= 12; i++)
             {
-                revenue = 0.0;
-                foreach(tblHoaDonBanHang invoice in BLL_STATISTIC.instance.getListInvoiceByYear(year))
-                {
-                    if(invoice.NgayBan.Value.Month == i)
-                    {
-                        revenue += (double)invoice.SoTien;
-                    }
-                }
+                revenue = BLL_STATISTIC.instance.getRevenueYear(year, i);
                 chartSTATISTIC.Series["Doanh thu"].Points.AddXY("Th" + i, revenue);
             } 
         }
@@ -56,22 +48,15 @@ namespace SaleManagement.FORM
             double revenue;
             for (int i = 1; i <= 31; i++)
             {
-                revenue = 0.0;
-                foreach (tblHoaDonBanHang invoice in BLL_STATISTIC.instance.getListInvoiceByMonthInYear(year, month))
-                {
-                    if (invoice.NgayBan.Value.Day == i)
-                    {
-                        revenue += (double)invoice.SoTien;
-                    }
-                }
+                revenue = BLL_STATISTIC.instance.getRevenueMonth(year, month, i);
                 chartSTATISTIC.Series["Doanh thu"].Points.AddXY("Ng" + i, revenue);
             }
         }
 
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmStatistic frm = new FrmStatistic(usernamelogin);
-            frm.Show();
+            FrmStatistic frmStatistic = new FrmStatistic(usernamelogin);
+            frmStatistic.Show();
             this.Close();
         }
 

@@ -76,13 +76,13 @@ namespace SaleManagement.FORM
         {
             if (isAdmin)
             {
-                FrmMain_Admin frm = new FrmMain_Admin(usernameLogin);
-                frm.Show();
+                FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernameLogin);
+                frmMainAdmin.Show();
             }
             else
             {
-                FrmMain_Member frm = new FrmMain_Member(usernameLogin);
-                frm.Show();
+                FrmMain_Member frmMainMember = new FrmMain_Member(usernameLogin);
+                frmMainMember.Show();
             }
             this.Close();
         }
@@ -232,8 +232,8 @@ namespace SaleManagement.FORM
         // back to frmQuanLyDuLieu
         private void btnData_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data(usernameLogin);
-            frm.Show();
+            FrmManage_Data frmMangageData = new FrmManage_Data(usernameLogin);
+            frmMangageData.Show();
             this.Close();
         }
         // Add product for invoice
@@ -245,9 +245,9 @@ namespace SaleManagement.FORM
             }
             else
             {
-                FrmAdd_NewProduct frm = new FrmAdd_NewProduct(idInvoice, true);
-                frm.d += new FrmAdd_NewProduct.myDel(LoadDGVs);
-                frm.Show();
+                FrmAdd_NewProduct frmAddNewProduct = new FrmAdd_NewProduct(idInvoice, true);
+                frmAddNewProduct.d += new FrmAdd_NewProduct.myDel(LoadDGVs);
+                frmAddNewProduct.Show();
                 LoadDGVs(txtSEARCH.Text.Trim());
             }
         }
@@ -295,9 +295,9 @@ namespace SaleManagement.FORM
                 nameProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["TenHangHoa"].Value.ToString();
                 quantityProduct = Convert.ToInt32(dgvINFO_INVOICE.SelectedRows[0].Cells["SoLuong"].Value.ToString());
                 idProduct = dgvINFO_INVOICE.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
-                FrmEditQuantityProduct_ListInvoice frm = new FrmEditQuantityProduct_ListInvoice(idInvoice, idProduct, nameProduct, quantityProduct, true);
-                frm.d += new FrmEditQuantityProduct_ListInvoice.myDel(LoadDGVs);
-                frm.Show();
+                FrmEditQuantityProduct_ListInvoice frmEditQuantityProduct = new FrmEditQuantityProduct_ListInvoice(idInvoice, idProduct, nameProduct, quantityProduct, true);
+                frmEditQuantityProduct.d += new FrmEditQuantityProduct_ListInvoice.myDel(LoadDGVs);
+                frmEditQuantityProduct.Show();
             }
         }
         // Load dgv when valuechange datetimepickers

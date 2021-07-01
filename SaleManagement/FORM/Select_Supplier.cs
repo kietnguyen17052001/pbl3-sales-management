@@ -95,21 +95,30 @@ namespace SaleManagement.FORM
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             tblNhaCungCap supplier = new tblNhaCungCap();
-            if (string.IsNullOrEmpty(txtNAME_SUPPLIER.Text) || string.IsNullOrEmpty(txtADDRESS.Text) || string.IsNullOrEmpty(txtPHONE.Text) ||
-                string.IsNullOrEmpty(txtEMAIL.Text) || string.IsNullOrEmpty(txtFAX.Text) || string.IsNullOrEmpty(txtID_TAX.Text))
+            supplier.MaNhaCungCap = txtID_SUPPLIER.Text.Trim();
+            supplier.TenNhaCungCap = txtNAME_SUPPLIER.Text.Trim();
+            supplier.DiaChi = txtADDRESS.Text.Trim();
+            supplier.SoDienThoai = txtPHONE.Text.Trim();
+            supplier.Email = txtEMAIL.Text.Trim();
+            supplier.Fax = txtFAX.Text.Trim();
+            supplier.MaSoThue = Convert.ToInt32(txtID_TAX.Text.Trim());
+            if (String.IsNullOrEmpty(supplier.MaNhaCungCap) || !String.IsNullOrEmpty(supplier.TenNhaCungCap))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin nhà cung cấp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
+            }
+            else if (!String.IsNullOrEmpty(supplier.MaNhaCungCap) || String.IsNullOrEmpty(supplier.TenNhaCungCap))
+            {
+                MessageBox.Show("Tên nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
+            }
+            else if (String.IsNullOrEmpty(supplier.MaNhaCungCap) || String.IsNullOrEmpty(supplier.TenNhaCungCap))
+            {
+                MessageBox.Show("Mã và tên nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Disable(true);
             }
             else
             {
-                supplier.MaNhaCungCap = txtID_SUPPLIER.Text;
-                supplier.TenNhaCungCap = txtNAME_SUPPLIER.Text;
-                supplier.DiaChi = txtADDRESS.Text;
-                supplier.SoDienThoai = txtPHONE.Text;
-                supplier.Email = txtEMAIL.Text;
-                supplier.Fax = txtFAX.Text;
-                supplier.MaSoThue = Convert.ToInt32(txtID_TAX.Text);
                 try
                 {
                     BLL_SUPPLIER.Instance.FuncAddNewSupplier(supplier); // add new supplier
@@ -126,7 +135,7 @@ namespace SaleManagement.FORM
         // Select supplier
         private void btnSELECT_Click(object sender, EventArgs e)
         {
-            d(txtID_SUPPLIER.Text, txtNAME_SUPPLIER.Text);
+            d(txtID_SUPPLIER.Text.Trim(), txtNAME_SUPPLIER.Text.Trim());
             this.Close();
         }      
     }

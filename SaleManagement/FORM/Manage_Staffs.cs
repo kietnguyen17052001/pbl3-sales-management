@@ -15,13 +15,13 @@ namespace SaleManagement.VIEW
     public partial class FrmManage_Staffs : Form
     {
         private bool isAdd; // Kiểm tra xem thực hiện chức năng ADD hay EDIT
-        private string usernamelogin;
-        public FrmManage_Staffs(string _usernamelogin)
+        private string usernameLogin;
+        public FrmManage_Staffs(string _usernameLogin)
         {
             InitializeComponent();
-            usernamelogin = _usernamelogin;
+            usernameLogin = _usernameLogin;
             setCombobox();
-            ShowDataStaff();
+            LoadData();
             FormatColumnsHeader();
         }
         // Format columns hearder
@@ -64,11 +64,13 @@ namespace SaleManagement.VIEW
         }
         public void ClearCode()
         {
+            txtID_STAFF.Clear();
             txtNAME_STAFF.Clear();
             txtPHONE.Clear();
             rbMALE.Checked = true;
             txtADDRESS.Clear();
             txtSALARY.Clear();
+            txtPASSWORD.Clear();
             cbbPOSITION.SelectedIndex = 0;
         }
         public void setCombobox()
@@ -80,7 +82,7 @@ namespace SaleManagement.VIEW
             cbbPOSITION_DETAIL.SelectedIndex = cbbPOSITION.SelectedIndex = 0;
         }
         // show data staff
-        public void ShowDataStaff()
+        public void LoadData()
         {
             Disable(false);
             ClearCode();
@@ -118,14 +120,19 @@ namespace SaleManagement.VIEW
         // back to FrmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin();
-            frm.Show();
+            FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernameLogin);
+            frmMainAdmin.Show();
             this.Close();
         }
         // show staff
-        private void btnSHOW_Click(object sender, EventArgs e)
+        private void cbbPOSITION_DETAIL_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ShowDataStaff();
+            Disable(false);
+            ClearCode();
+            int index = cbbPOSITION_DETAIL.SelectedIndex;
+            string position = cbbPOSITION_DETAIL.SelectedItem.ToString();
+            BLL_STAFF.Instance.LoadDataStaff(dgvLIST_STAFF, index, position);
+            lbQuantity.Text = BLL_STAFF.Instance.getQuantityStaff(dgvLIST_STAFF).ToString();
         }
         // export file Excel
         private void btnEXCEL_Click(object sender, EventArgs e)
@@ -164,6 +171,7 @@ namespace SaleManagement.VIEW
             ClearCode();
             isAdd = true;
             txtID_STAFF.Text = BLL_STAFF.Instance.getNewIdStaff().ToString();
+            txtSALARY.Text = "0"; 
         }
         // edit staff
         private void btnEDIT_Click(object sender, EventArgs e)
@@ -182,29 +190,31 @@ namespace SaleManagement.VIEW
         // save change
         private void btnSAVE_Click(object sender, EventArgs e)
         {
+            tblNhanVien staff = new tblNhanVien();
             tblTaiKhoan account = new tblTaiKhoan();
             account.ChucVu = "Member";
-            tblNhanVien staff = new tblNhanVien();
-            account.MaNguoiDung = staff.MaNhanVien = txtID_STAFF.Text;
-            staff.TenNhanVien = txtNAME_STAFF.Text;
+            account.MaNguoiDung = staff.MaNhanVien = txtID_STAFF.Text.Trim();
+            staff.TenNhanVien = txtNAME_STAFF.Text.Trim();
             staff.ViTri = cbbPOSITION.SelectedItem.ToString();
             staff.NgaySinh = Convert.ToDateTime(dpDAY.Value.ToShortDateString());
-            if(rbMALE.Checked == true)
-            {
-                staff.GioiTinh = true;
-            }
-            else
-            {
-                staff.GioiTinh = false;
-            }
-            staff.SoDienThoai = txtPHONE.Text;
-            staff.DiaChi = txtADDRESS.Text;
+            staff.SoDienThoai = txtPHONE.Text.Trim();
+            staff.DiaChi = txtADDRESS.Text.Trim();
             staff.Luong = Convert.ToDouble(txtSALARY.Text);
-            account.MatKhau = staff.MatKhau = txtPASSWORD.Text;
-            if(string.IsNullOrEmpty(staff.MaNhanVien) || string.IsNullOrEmpty(staff.TenNhanVien) || string.IsNullOrEmpty(staff.SoDienThoai) || 
-                string.IsNullOrEmpty(staff.DiaChi) || string.IsNullOrEmpty(staff.Luong.ToString()))
+            account.MatKhau = staff.MatKhau = txtPASSWORD.Text.Trim();
+            staff.GioiTinh = rbMALE.Checked;
+            if (String.IsNullOrEmpty(staff.MaNhanVien) && !String.IsNullOrEmpty(staff.TenNhanVien))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã nhân viên trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
+            }
+            else if (!String.IsNullOrEmpty(staff.MaNhanVien) && String.IsNullOrEmpty(staff.TenNhanVien))
+            {
+                MessageBox.Show("Tên nhân viên trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
+            }
+            else if (String.IsNullOrEmpty(staff.MaNhanVien) && String.IsNullOrEmpty(staff.TenNhanVien))
+            {
+                MessageBox.Show("Mã và tên nhân viên trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Disable(true);
             }
             else
@@ -216,24 +226,22 @@ namespace SaleManagement.VIEW
                         BLL_STAFF.Instance.FuncAddNewStaff(staff); // add new staff
                         BLL_ACCOUNT.Instance.FuncAddAccount(account); // add new account for staff
                         MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Disable(false);
-                        ShowDataStaff();
+                        LoadData();
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Mã số nhân viên bị trùng. Vui lòng nhập mã khác", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Mã số nhân viên đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Disable(true);
                     }
                 }
                 else
                 {
                     BLL_STAFF.Instance.FuncEditStaff(staff); // edit staff
-                    BLL_ACCOUNT.Instance.FuncEditPassword(account); // edit password
+                    BLL_ACCOUNT.Instance.ChangePasswordStaff(account); // edit password
                     MessageBox.Show("Sửa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ShowDataStaff();
+                    LoadData();
                 }
-                
-            } 
+            }
         }
         // delete staff
         private void btnDELETE_Click(object sender, EventArgs e)
@@ -254,7 +262,7 @@ namespace SaleManagement.VIEW
                 if (question == DialogResult.Yes)
                 {
                     BLL_STAFF.Instance.FuncDeleteStaff(listIdStaff); // delete staff
-                    ShowDataStaff();
+                    LoadData();
                 }
             }
         }
@@ -284,13 +292,14 @@ namespace SaleManagement.VIEW
         private void btnCANCEL_Click(object sender, EventArgs e)
         {
             Disable(false);
+            ClearCode();
         }
         // back to FrmQuanLyDuLieu
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data(usernamelogin);
-            frm.Show();
-            this.Hide();
+            FrmManage_Data frmManageData = new FrmManage_Data(usernameLogin);
+            frmManageData.Show();
+            this.Close();
         }
         // KeyPress Event
         private void txtPHONE_KeyPress(object sender, KeyPressEventArgs e)
@@ -300,5 +309,14 @@ namespace SaleManagement.VIEW
                 e.Handled = true;
             }
         }
+
+        private void txtSALARY_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtSALARY.Text))
+            {
+                txtSALARY.Text = "0";
+            }
+        }
+
     }
 }

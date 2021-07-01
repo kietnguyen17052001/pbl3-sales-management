@@ -10,7 +10,7 @@ namespace SaleManagement.BLL
 {
     class BLL_ACCOUNT
     {
-        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_ACCOUNT _Instance;
         public static BLL_ACCOUNT Instance
         {
@@ -28,18 +28,32 @@ namespace SaleManagement.BLL
         // get user
         public tblTaiKhoan getUser(string username)
         {
-            return DB.tblTaiKhoans.Find(username);
+            return db.tblTaiKhoans.Find(username);
         }
         public void FuncAddAccount(tblTaiKhoan account)
         {
-            DB.tblTaiKhoans.Add(account);
-            DB.SaveChanges();
+            db.tblTaiKhoans.Add(account);
+            db.SaveChanges();
         }
-        public void FuncEditPassword(tblTaiKhoan account)
+        public void ChangePasswordStaff(tblTaiKhoan _account)
         {
-            var getAccount = DB.tblTaiKhoans.Find(account.MaNguoiDung);
-            getAccount.MatKhau = account.MatKhau;
-            DB.SaveChanges();
+            var account = db.tblTaiKhoans.Find(_account.MaNguoiDung);
+            account.MatKhau = _account.MatKhau;
+            db.SaveChanges();
+        }
+        public bool ChangePasswordUser(string userNameLogin, string oldPass, string newPass)
+        {
+            var account = db.tblTaiKhoans.Find(userNameLogin);
+            if (account.MatKhau != oldPass)
+            {
+                return false;
+            }
+            else
+            {
+                account.MatKhau = newPass;
+                db.SaveChanges();
+                return true;
+            }
         }
     }
 }

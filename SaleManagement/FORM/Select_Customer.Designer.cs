@@ -164,6 +164,7 @@ namespace SaleManagement.FORM
             // 
             // txtNAME_CUSTOMER
             // 
+            this.txtNAME_CUSTOMER.BackColor = System.Drawing.SystemColors.Info;
             this.txtNAME_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNAME_CUSTOMER.ForeColor = System.Drawing.Color.Black;
             this.txtNAME_CUSTOMER.Location = new System.Drawing.Point(124, 155);
@@ -174,7 +175,7 @@ namespace SaleManagement.FORM
             // txtID_CUSTOMER
             // 
             this.txtID_CUSTOMER.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_CUSTOMER.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_CUSTOMER.Location = new System.Drawing.Point(124, 99);
             this.txtID_CUSTOMER.Name = "txtID_CUSTOMER";
@@ -226,6 +227,8 @@ namespace SaleManagement.FORM
             this.btnSELECT.BackColor = System.Drawing.Color.Tomato;
             this.btnSELECT.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSELECT.FlatAppearance.BorderSize = 0;
+            this.btnSELECT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Tomato;
+            this.btnSELECT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSELECT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSELECT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSELECT.ForeColor = System.Drawing.Color.White;
@@ -245,6 +248,8 @@ namespace SaleManagement.FORM
             this.btnADD.BackColor = System.Drawing.Color.SteelBlue;
             this.btnADD.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnADD.FlatAppearance.BorderSize = 0;
+            this.btnADD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnADD.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnADD.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADD.ForeColor = System.Drawing.Color.White;
@@ -264,6 +269,8 @@ namespace SaleManagement.FORM
             this.btnSAVE.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSAVE.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSAVE.FlatAppearance.BorderSize = 0;
+            this.btnSAVE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSAVE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSAVE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSAVE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.White;

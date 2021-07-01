@@ -24,10 +24,10 @@ namespace SaleManagement.Entity
         public string MaHangHoa { get; set; }
         public string MaLoaiHangHoa { get; set; }
         public string TenHangHoa { get; set; }
-        public int SoLuong { get; set; }
+        public Nullable<int> SoLuong { get; set; }
         public string MaNhaSanXuat { get; set; }
-        public double GiaNhap { get; set; }
-        public double GiaBan { get; set; }
+        public Nullable<double> GiaNhap { get; set; }
+        public Nullable<double> GiaBan { get; set; }
         public string MoTa { get; set; }
         public byte[] HinhAnh { get; set; }
     

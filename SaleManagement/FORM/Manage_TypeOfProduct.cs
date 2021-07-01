@@ -71,8 +71,8 @@ namespace SaleManagement.FORM
         // Button home -> back to frmQuanLyBanHang
         private void btnHOME_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frm = new FrmMain_Admin(usernamelogin);
-            frm.Show();
+            FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernamelogin);
+            frmMainAdmin.Show();
             this.Close();
         }
         // Button show list type of product
@@ -135,11 +135,21 @@ namespace SaleManagement.FORM
         private void btnSAVE_Click(object sender, EventArgs e)
         {
             tblLoaiHangHoa typeOfProduct = new tblLoaiHangHoa();
-            typeOfProduct.MaLoaiHangHoa = txtID_TYPEPRODUCT.Text;
-            typeOfProduct.TenLoaiHangHoa = txtNAME_TYPEPRODUCT.Text;
-            if (string.IsNullOrEmpty(typeOfProduct.MaLoaiHangHoa) || string.IsNullOrEmpty(typeOfProduct.TenLoaiHangHoa))
+            typeOfProduct.MaLoaiHangHoa = txtID_TYPEPRODUCT.Text.Trim();
+            typeOfProduct.TenLoaiHangHoa = txtNAME_TYPEPRODUCT.Text.Trim();
+            if (String.IsNullOrEmpty(typeOfProduct.MaLoaiHangHoa) && !String.IsNullOrEmpty(typeOfProduct.TenLoaiHangHoa))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin loại hàng hóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã loại hàng hóa trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
+            }
+            else if (!String.IsNullOrEmpty(typeOfProduct.MaLoaiHangHoa) && String.IsNullOrEmpty(typeOfProduct.TenLoaiHangHoa))
+            {
+                MessageBox.Show("Tên loại hàng hóa trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Disable(true);
+            }
+            else if (String.IsNullOrEmpty(typeOfProduct.MaLoaiHangHoa) && String.IsNullOrEmpty(typeOfProduct.TenLoaiHangHoa))
+            {
+                MessageBox.Show("Mã và tên loại hàng hóa trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Disable(true);
             }
             else
@@ -154,7 +164,7 @@ namespace SaleManagement.FORM
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Mã số loại hàng hóa bị trùng. Vui lòng nhập mã khác", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Mã số loại hàng hóa đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -196,8 +206,8 @@ namespace SaleManagement.FORM
         // back FrmManage_data
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data(usernamelogin);
-            frm.Show();
+            FrmManage_Data frmManageData = new FrmManage_Data(usernamelogin);
+            frmManageData.Show();
             this.Close();
         }
         // search type of product

@@ -25,40 +25,42 @@ namespace SaleManagement
 
         private void btnManage_Data_Click(object sender, EventArgs e)
         {
-            FrmManage_Data frm = new FrmManage_Data(usernameLogin);
-            frm.Show();
+            FrmManage_Data frmManageData = new FrmManage_Data(usernameLogin);
+            frmManageData.Show();
             this.Close();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.Show();
             this.Close();
         }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            FrmReport frm = new FrmReport(usernameLogin);
-            frm.Show();
+            FrmReport frmReport = new FrmReport(usernameLogin);
+            frmReport.Show();
             this.Close();
         }
 
         private void btnStatistic_Click(object sender, EventArgs e)
         {
-            FrmStatistic frm = new FrmStatistic(usernameLogin);
-            frm.Show();
+            FrmStatistic frmStatistic = new FrmStatistic(usernameLogin);
+            frmStatistic.Show();
             this.Close();
         }
 
         private void btnIntroduce_Click(object sender, EventArgs e)
         {
-            FrmIntroduce frm = new FrmIntroduce(true, usernameLogin);
-            frm.Show();
+            FrmIntroduce frmIntroduce = new FrmIntroduce(usernameLogin);
+            frmIntroduce.Show();
             this.Close();
         }
         private void btnChange_Password_Click(object sender, EventArgs e)
         {
-            FrmChange_Password frm = new FrmChange_Password(usernameLogin);
-            frm.Show();
+            FrmChange_Password frmChangePassword = new FrmChange_Password(usernameLogin);
+            frmChangePassword.Show();
         }
     }
 }

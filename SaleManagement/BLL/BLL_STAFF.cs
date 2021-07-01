@@ -10,7 +10,7 @@ namespace SaleManagement.BLL
 {
     class BLL_STAFF
     {
-        private SALEMANAGEMENT_DB DB = new SALEMANAGEMENT_DB();
+        private N3KTeamEntities db = new N3KTeamEntities();
         private static BLL_STAFF _Instance;
         public static BLL_STAFF Instance
         {
@@ -28,7 +28,7 @@ namespace SaleManagement.BLL
         public List<CBBItem> getCbbStaff()
         {
             List<CBBItem> listCbbStaff = new List<CBBItem>();
-            foreach (tblNhanVien staff in DB.tblNhanViens)
+            foreach (tblNhanVien staff in db.tblNhanViens)
             {
                 listCbbStaff.Add(new CBBItem { VALUE = staff.MaNhanVien, TEXT = staff.TenNhanVien });
             }
@@ -48,7 +48,7 @@ namespace SaleManagement.BLL
             }
             return staff;
         }
-        // Lấy danh sách các vị trí nhân viên từ DB
+        // Lấy danh sách các vị trí nhân viên từ db
         public List<string> getListPosition()
         {
             string[] arrayPosition = {"Thu ngân", "Bán hàng", "Kho"};
@@ -59,12 +59,25 @@ namespace SaleManagement.BLL
             }
             return listPosition;
         }
+        // Kiểm tra mã nhân viên đã tồn tại hay chưa
+        public bool isIdStaffExist(string idStaff)
+        {
+            var staff = db.tblNhanViens.Find(idStaff);
+            if(staff == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         // load data staff
         public void LoadDataStaff(DataGridView dgv, int index, string position)
         {
             if (index == 0)
             {
-                var getStaff = DB.tblNhanViens.Select(p => new {
+                var getStaff = db.tblNhanViens.Select(p => new {
                     p.MaNhanVien,
                     p.TenNhanVien,
                     p.ViTri,
@@ -79,7 +92,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                var getStaff = DB.tblNhanViens.Where(p => p.ViTri == position).Select(p => new {
+                var getStaff = db.tblNhanViens.Where(p => p.ViTri == position).Select(p => new {
                     p.MaNhanVien,
                     p.TenNhanVien,
                     p.ViTri,
@@ -96,13 +109,13 @@ namespace SaleManagement.BLL
         // add new staff
         public void FuncAddNewStaff(tblNhanVien staff)
         {
-            DB.tblNhanViens.Add(staff);
-            DB.SaveChanges();
+            db.tblNhanViens.Add(staff);
+            db.SaveChanges();
         }
         // edit staff
         public void FuncEditStaff(tblNhanVien staff)
         {
-            var getStaff = DB.tblNhanViens.Find(staff.MaNhanVien);
+            var getStaff = db.tblNhanViens.Find(staff.MaNhanVien);
             getStaff.TenNhanVien = staff.TenNhanVien;
             getStaff.ViTri = staff.ViTri;
             getStaff.NgaySinh = staff.NgaySinh;
@@ -111,22 +124,20 @@ namespace SaleManagement.BLL
             getStaff.DiaChi = staff.DiaChi;
             getStaff.Luong = staff.Luong;
             getStaff.MatKhau = staff.MatKhau;
-            DB.SaveChanges();
+            db.SaveChanges();
         }
         // remove staff
         public void FuncDeleteStaff(List<string> listIdStaff)
         {
+            var staff = new tblNhanVien();
+            var account = new tblTaiKhoan();
             foreach (string idStaff in listIdStaff)
             {
-                foreach (tblNhanVien staff in DB.tblNhanViens)
-                {
-                    if (staff.MaNhanVien == idStaff)
-                    {
-                        DB.tblNhanViens.Remove(staff);
-                        break;
-                    }
-                }
-                DB.SaveChanges();
+                account = db.tblTaiKhoans.Find(idStaff);
+                staff = db.tblNhanViens.Find(idStaff);
+                db.tblTaiKhoans.Remove(account);
+                db.tblNhanViens.Remove(staff);
+                db.SaveChanges();
             }
         }
         // search staff
@@ -138,7 +149,7 @@ namespace SaleManagement.BLL
             }
             else
             {
-                var getStaff = DB.tblNhanViens.Where(p => p.TenNhanVien.Contains(information) || p.MaNhanVien.Contains(information)).Select(p => new
+                var getStaff = db.tblNhanViens.Where(p => p.TenNhanVien.Contains(information) || p.MaNhanVien.Contains(information)).Select(p => new
                 {
                     p.MaNhanVien,
                     p.TenNhanVien,
@@ -162,7 +173,7 @@ namespace SaleManagement.BLL
         public string getNewIdStaff()
         {
             string idStaff = "";
-            List<tblNhanVien> list = DB.tblNhanViens.ToList();
+            List<tblNhanVien> list = db.tblNhanViens.ToList();
             if (list.Count == 0)
             {
                 idStaff = "NV0001";
