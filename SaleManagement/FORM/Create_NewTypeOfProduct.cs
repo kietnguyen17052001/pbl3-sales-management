@@ -48,7 +48,7 @@ namespace SaleManagement.FORM
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Mã số loại hàng hóa đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mã loại hàng hóa đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
