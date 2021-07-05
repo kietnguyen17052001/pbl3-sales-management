@@ -59,7 +59,7 @@ namespace SaleManagement.FORM
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            FrmChange_Password frmChangePassword = new FrmChange_Password(usernameLogin);
+            FrmChange_Password frmChangePassword = new FrmChange_Password(false, usernameLogin);
             frmChangePassword.Show();
         }
     }

@@ -185,8 +185,8 @@ namespace SaleManagement.VIEW
             frmCreateNewProducer.d += new FrmCreate_NewProducer.myDEL(addProducer);
             frmCreateNewProducer.Show();
         }
-        string imageLocation = "";
-        byte[] images = null;
+        private string imageLocation = "";
+        private byte[] images = null;
         // add pic for product
         private void btnADDPIC_Click(object sender, EventArgs e)
         {  
@@ -227,6 +227,7 @@ namespace SaleManagement.VIEW
             product.MoTa = txtDESCRIBE.Text;
             product.MaLoaiHangHoa = ((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE;
             product.MaNhaSanXuat = ((CBBItem)cbbPRODUCERs.SelectedItem).VALUE;
+            product.HinhAnh = images;
             if (product.MaHangHoa == null && product.TenHangHoa != null)
             {
                 MessageBox.Show("Mã khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -248,7 +249,6 @@ namespace SaleManagement.VIEW
                 {
                     try
                     {
-                        product.HinhAnh = images;
                         BLL_PRODUCT.Instance.FuncAddNewProduct(product); // add new product
                         MessageBox.Show("Thêm hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Disable(false);

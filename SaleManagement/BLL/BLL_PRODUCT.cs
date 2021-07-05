@@ -79,18 +79,26 @@ namespace SaleManagement.BLL
                 dgv.DataSource = product.ToList();
             }
         }
-        public Image ByteArrayToImage(byte[] byArrayIn)
+        // Convert byte[] to image
+        public Image ByteArrayToImage(byte[] byteArray)
         {
-            using (MemoryStream ms = new MemoryStream(byArrayIn))
+            using (MemoryStream memoryStream = new MemoryStream(byteArray))
             {
-                Image returnImage = Image.FromStream(ms);
+                Image returnImage = Image.FromStream(memoryStream);
                 return returnImage;
             }
         }
         public Image image(string idProduct)
         {
             var imageProduct = db.tblHangHoas.Find(idProduct);
-            return ByteArrayToImage(imageProduct.HinhAnh.ToArray());
+            if (imageProduct.HinhAnh == null)
+            {
+                return null;
+            }
+            else
+            {
+                return ByteArrayToImage(imageProduct.HinhAnh.ToArray());
+            }
         }
         // add new product
         public void FuncAddNewProduct(tblHangHoa product)
@@ -109,6 +117,7 @@ namespace SaleManagement.BLL
             product.MaLoaiHangHoa = _product.MaLoaiHangHoa;
             product.MaNhaSanXuat = _product.MaNhaSanXuat;
             product.MoTa = _product.MoTa;
+            product.HinhAnh = _product.HinhAnh;
             db.SaveChanges();
         }
         // delete product
