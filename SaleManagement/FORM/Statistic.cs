@@ -65,7 +65,7 @@ namespace SaleManagement.FORM
                 chartPRODUCT_QTY.Series["Số sản phẩm"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, quantityTypeOfProduct);
                 chartPRODUCT_QTY.Series["Số sản phẩm"].Points[count].Label = quantityTypeOfProduct.ToString();
                 // Biểu đồ so sánh
-                chartSCALE.Series["Tỉ lệ %"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, Math.Round((sellQuantityTypeOfProduct / BLL_STATISTIC.instance.getTotalQuantityProduct(dpFROM.Value, dpTO.Value)) * 100, 2));
+                chartSCALE.Series["Tỉ lệ %"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, Math.Round((sellQuantityTypeOfProduct / BLL_STATISTIC.instance.getTotalQuantityProductSold(dpFROM.Value, dpTO.Value)) * 100, 2));
                 // Biểu đồ tiền bán được
                 chartMONEY.Series["Số tiền"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, sellMoneyTypeOfProduct);
                 chartMONEY.Series["Số tiền"].Points[count].Label = sellMoneyTypeOfProduct.ToString();

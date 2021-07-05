@@ -25,7 +25,7 @@ namespace SaleManagement.BLL
         }
         private BLL_STATISTIC(){}
         // get quantity product in database dFrom->dTo
-        public int getTotalQuantityProduct(DateTime dateFrom, DateTime dateTo)
+        public int getTotalQuantityProductSold(DateTime dateFrom, DateTime dateTo)
         {
             int quantity = 0;
             foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateFrom, dateTo))
@@ -77,7 +77,7 @@ namespace SaleManagement.BLL
         public double getRevenueMonth(int year, int month, int day)
         {
             double revenue = 0;
-            foreach (tblHoaDonBanHang invoice in BLL_STATISTIC.instance.getListInvoiceByMonthInYear(year, month))
+            foreach (tblHoaDonBanHang invoice in getListInvoiceByMonthInYear(year, month))
             {
                 if (invoice.NgayBan.Value.Day == day)
                 {
@@ -102,15 +102,15 @@ namespace SaleManagement.BLL
         // get sale quantity of each type of product
         public int getSellQuantityOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct, DateTime dateStart, DateTime dateEnd)
         {
-            int selleQuantity = 0;   
+            int sellQuantity = 0;   
             foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
             {
                 if (invoiceDetail.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
                 {
-                    selleQuantity += (int)invoiceDetail.SoLuong;
+                    sellQuantity += (int)invoiceDetail.SoLuong;
                 }
             }
-            return selleQuantity;
+            return sellQuantity;
         }
         // get sale money of each type of product
         public double getSellMoneyOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct, DateTime dateStart, DateTime dateEnd)

@@ -98,14 +98,6 @@ namespace SaleManagement.VIEW
             dgvLISTPRODUCT.DefaultCellStyle.BackColor = Color.OldLace;
             dgvLISTPRODUCT.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
         }
-        public Image ByteArrayToImage(byte[] byArrayIn)
-        {
-            using (MemoryStream ms = new MemoryStream(byArrayIn))
-            {
-                Image returnImage = Image.FromStream(ms);
-                return returnImage;
-            }
-        }
         // click event
         private void dgvLISTITEMS_CellClick(object sender, DataGridViewCellEventArgs e)
         {

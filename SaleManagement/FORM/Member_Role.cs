@@ -17,7 +17,7 @@ namespace SaleManagement.FORM
         public FrmMain_Member(string _usernameLogin)
         {
             InitializeComponent();
-            usernameLogin = _usernameLogin;
+            usernameLogin = _usernameLogin.ToUpper();
             lbWelcome.Text += " " + usernameLogin;
             lbDate.Text += " " + DateTime.Now.ToString("dddd, dd/MM/yyyy");
         }
