@@ -28,27 +28,31 @@ namespace SaleManagement.FORM
             producer.MaNhaSanXuat = txtID_PRODUCER.Text.Trim();
             producer.TenNhaSanXuat = txtNAME_PRODUCER.Text.Trim();
             producer.DiaChi = txtADDRESS.Text.Trim();
-            if (String.IsNullOrEmpty(producer.MaNhaSanXuat) || !String.IsNullOrEmpty(producer.TenNhaSanXuat))
+            if (String.IsNullOrEmpty(producer.MaNhaSanXuat) && !String.IsNullOrEmpty(producer.TenNhaSanXuat))
             {
                 MessageBox.Show("Mã nhà sản xuất trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (!String.IsNullOrEmpty(producer.MaNhaSanXuat) || String.IsNullOrEmpty(producer.TenNhaSanXuat))
+            else if (!String.IsNullOrEmpty(producer.MaNhaSanXuat) && String.IsNullOrEmpty(producer.TenNhaSanXuat))
             {
                 MessageBox.Show("Tên nhà sản xuất trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (String.IsNullOrEmpty(producer.MaNhaSanXuat) || String.IsNullOrEmpty(producer.TenNhaSanXuat))
+            else if (String.IsNullOrEmpty(producer.MaNhaSanXuat) && String.IsNullOrEmpty(producer.TenNhaSanXuat))
             {
                 MessageBox.Show("Mã và tên nhà sản xuất trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            try
+            else
             {
-                BLL_PRODUCER.Instance.FuncAddProducer(producer);
-                d(producer.MaNhaSanXuat, producer.TenNhaSanXuat);
-                this.Close();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Mã số nhà cung cấp đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    BLL_PRODUCER.Instance.FuncAddProducer(producer);
+                    d(producer.MaNhaSanXuat, producer.TenNhaSanXuat);
+                    MessageBox.Show("Thêm nhà sản xuất thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Mã nhà sản xuất đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
