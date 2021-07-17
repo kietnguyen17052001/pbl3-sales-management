@@ -116,6 +116,7 @@ namespace SaleManagement.FORM
             isAdd = true;
             Disable(true);
             ClearCode();
+            dgvLISTTYPE.Enabled = false;
         }
         // edit type 
         private void btnEDIT_Click(object sender, EventArgs e)
