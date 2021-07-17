@@ -138,10 +138,7 @@ namespace SaleManagement.VIEW
             ClearCode();
             isAdd = true; // thêm
             txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNewIdCustomer().ToString(); // gọi hàm tự điền mã số khách hàng từ BLL_CUSTOMER
-            if (dgvLISTCUSTOMER.CanSelect)
-            {
-                dgvLISTCUSTOMER.Enabled = false;
-            }
+            dgvLISTCUSTOMER.Enabled = false;
         }
         // Button Edit customer
         private void btnEDIT_Click(object sender, EventArgs e)

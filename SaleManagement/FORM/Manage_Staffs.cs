@@ -170,7 +170,8 @@ namespace SaleManagement.VIEW
             ClearCode();
             isAdd = true;
             txtID_STAFF.Text = BLL_STAFF.Instance.getNewIdStaff().ToString();
-            txtSALARY.Text = "0"; 
+            txtSALARY.Text = "0";
+            dgvLIST_STAFF.Enabled = false;
         }
         // edit staff
         private void btnEDIT_Click(object sender, EventArgs e)

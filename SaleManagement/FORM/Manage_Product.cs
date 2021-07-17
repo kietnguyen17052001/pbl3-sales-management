@@ -161,10 +161,7 @@ namespace SaleManagement.VIEW
             txtQUANTITY.Enabled = false;
             txtDESCRIBE.Clear();
             pbIMAGE.Image = null;
-            if (dgvLISTPRODUCT.CanSelect)
-            {
-                dgvLISTPRODUCT.Enabled = false;
-            }
+            dgvLISTPRODUCT.Enabled = false;
         }
         // show frmCreate_NewTypeProduct
         private void btnADDTYPE_Click(object sender, EventArgs e)
