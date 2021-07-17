@@ -222,6 +222,7 @@ namespace SaleManagement.FORM
             // txtID_PRODUCT
             // 
             this.txtID_PRODUCT.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtID_PRODUCT.Enabled = false;
             this.txtID_PRODUCT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_PRODUCT.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_PRODUCT.Location = new System.Drawing.Point(219, 73);

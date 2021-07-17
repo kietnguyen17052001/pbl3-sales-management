@@ -96,7 +96,7 @@
     <Property Name="Email" Type="nvarchar" MaxLength="100" />
     <Property Name="Fax" Type="nvarchar" MaxLength="100" />
     <Property Name="SoDienThoai" Type="char" MaxLength="10" />
-    <Property Name="MaSoThue" Type="int" />
+    <Property Name="MaSoThue" Type="char" MaxLength="10" />
   </EntityType>
   <EntityType Name="tblNhanVien">
     <Key>

@@ -112,7 +112,7 @@
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Fax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="MaSoThue" Type="Int32" />
+    <Property Name="MaSoThue" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
     <NavigationProperty Name="tblHoaDonNhapHangs" Relationship="Self.FK__tblHoaDon__MaNha__75035A77" FromRole="tblNhaCungCap" ToRole="tblHoaDonNhapHang" />
   </EntityType>
   <EntityType Name="tblNhanVien">

@@ -195,6 +195,10 @@ namespace SaleManagement.BLL
                 {
                     idStaff = "NV0" + (lastId + 1).ToString();
                 }
+                else
+                {
+                    idStaff = "NV" + (lastId + 1).ToString();
+                }
             }
             return idStaff;
         }

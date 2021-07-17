@@ -225,6 +225,10 @@ namespace SaleManagement.BLL
                 {
                     idProduct = idTypeProduct + "0" + (last + 1);
                 }
+                else
+                {
+                    idProduct = idTypeProduct + (last + 1);
+                }
             }
             return idProduct;
         }

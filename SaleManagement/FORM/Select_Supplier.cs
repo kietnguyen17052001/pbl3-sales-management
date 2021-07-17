@@ -19,8 +19,7 @@ namespace SaleManagement.FORM
         public FrmSelect_Supplier()
         {
             InitializeComponent();
-            BLL_SUPPLIER.Instance.ShowData(dgvSUPPLIER);
-            Disable(false);
+            LoadData();
             // Set style
             dgvSUPPLIER.EnableHeadersVisualStyles = false;
             dgvSUPPLIER.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
@@ -36,9 +35,15 @@ namespace SaleManagement.FORM
             dgvSUPPLIER.Columns[5].HeaderText = "SĐT";
             dgvSUPPLIER.Columns[6].HeaderText = "Mã số thuế";
         }
+        // Hiển thị danh sách nhà cung cấp
+        public void LoadData()
+        {
+            Disable(false);
+            BLL_SUPPLIER.Instance.ShowData(dgvSUPPLIER);
+        }
         public void Disable(bool E)
         {
-            txtID_SUPPLIER.Enabled = txtNAME_SUPPLIER.Enabled = txtPHONE.Enabled = txtADDRESS.Enabled = txtID_TAX.Enabled = txtFAX.Enabled = txtEMAIL.Enabled = E;
+            txtNAME_SUPPLIER.Enabled = txtPHONE.Enabled = txtADDRESS.Enabled = txtID_TAX.Enabled = txtFAX.Enabled = txtEMAIL.Enabled = E;
             btnADD.Enabled = !E;
             btnSAVE.Enabled = E;
         }
@@ -101,35 +106,17 @@ namespace SaleManagement.FORM
             supplier.SoDienThoai = txtPHONE.Text.Trim();
             supplier.Email = txtEMAIL.Text.Trim();
             supplier.Fax = txtFAX.Text.Trim();
-            supplier.MaSoThue = Convert.ToInt32(txtID_TAX.Text.Trim());
-            if (String.IsNullOrEmpty(supplier.MaNhaCungCap) || !String.IsNullOrEmpty(supplier.TenNhaCungCap))
-            {
-                MessageBox.Show("Mã nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (!String.IsNullOrEmpty(supplier.MaNhaCungCap) || String.IsNullOrEmpty(supplier.TenNhaCungCap))
+            supplier.MaSoThue = txtID_TAX.Text.Trim();
+            if (String.IsNullOrEmpty(supplier.TenNhaCungCap))
             {
                 MessageBox.Show("Tên nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Disable(true);
             }
-            else if (String.IsNullOrEmpty(supplier.MaNhaCungCap) || String.IsNullOrEmpty(supplier.TenNhaCungCap))
-            {
-                MessageBox.Show("Mã và tên nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
             else
             {
-                try
-                {
-                    BLL_SUPPLIER.Instance.FuncAddNewSupplier(supplier); // add new supplier
-                    MessageBox.Show("Thêm nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Disable(false);
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Mã số nhà cung cấp đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Disable(true);
-                }
+                BLL_SUPPLIER.Instance.FuncAddNewSupplier(supplier); // add new supplier
+                MessageBox.Show("Thêm nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
             }
         }
         // Select supplier

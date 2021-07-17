@@ -175,6 +175,7 @@ namespace SaleManagement.FORM
             // txtID_CUSTOMER
             // 
             this.txtID_CUSTOMER.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtID_CUSTOMER.Enabled = false;
             this.txtID_CUSTOMER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_CUSTOMER.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_CUSTOMER.Location = new System.Drawing.Point(124, 99);

@@ -62,31 +62,16 @@ namespace SaleManagement.FORM
             product.MoTa = txtDESCRIBE.Text;
             product.MaLoaiHangHoa = ((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE;
             product.MaNhaSanXuat = ((CBBItem)cbbPRODUCERs.SelectedItem).VALUE;
-            if (String.IsNullOrEmpty(product.MaHangHoa) || !String.IsNullOrEmpty(product.TenHangHoa))
+            if (String.IsNullOrEmpty(product.TenHangHoa))
             {
-                MessageBox.Show("Mã khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (!String.IsNullOrEmpty(product.MaHangHoa) || String.IsNullOrEmpty(product.TenHangHoa))
-            {
-                MessageBox.Show("Tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (String.IsNullOrEmpty(product.MaHangHoa) || String.IsNullOrEmpty(product.TenHangHoa))
-            {
-                MessageBox.Show("Mã và tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tên hàng hóa trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                try
-                {
-                    product.HinhAnh = images;
-                    BLL_PRODUCT.Instance.FuncAddNewProduct(product); // add new product
-                    MessageBox.Show("Thêm hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Mã hàng hóa đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                product.HinhAnh = images;
+                BLL_PRODUCT.Instance.FuncAddNewProduct(product); // add new product
+                MessageBox.Show("Thêm hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
         }
         private void btnCANCEL_Click(object sender, EventArgs e)

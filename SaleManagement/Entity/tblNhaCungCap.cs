@@ -26,7 +26,7 @@ namespace SaleManagement.Entity
         public string Email { get; set; }
         public string Fax { get; set; }
         public string SoDienThoai { get; set; }
-        public Nullable<int> MaSoThue { get; set; }
+        public string MaSoThue { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblHoaDonNhapHang> tblHoaDonNhapHangs { get; set; }

@@ -218,13 +218,9 @@ namespace SaleManagement.VIEW
             invoice.MaKhachHang = idCustomer;
             invoice.SoTien = Math.Round(invoicePrice);
             invoice.GiamGia = Math.Round(invoiceDiscount);
-            if (String.IsNullOrEmpty(invoice.MaHoaDonBan) || String.IsNullOrEmpty(invoice.MaKhachHang)
+            if (String.IsNullOrEmpty(invoice.MaKhachHang)
                 || (dataTable.Rows.Count == 0) || (sendByCustomer < invoicePrice))
             {
-                if (String.IsNullOrEmpty(invoice.MaHoaDonBan))
-                {
-                    message += "+ Mã hóa đơn trống\n";
-                }
                 if (String.IsNullOrEmpty(invoice.MaKhachHang))
                 {
                     message += "+ Khách hàng trống\n";
@@ -245,17 +241,10 @@ namespace SaleManagement.VIEW
                 DialogResult answer = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (answer == DialogResult.Yes)
                 {
-                    try
-                    {
-                        BLL_SALEPRODUCT.Instance.FuncPayment(invoice, dataTable); // Payment invoice
-                        MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadData();
-                        ResetInvoice();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Mã hóa đơn đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    BLL_SALEPRODUCT.Instance.FuncPayment(invoice, dataTable); // Payment invoice
+                    MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
+                    ResetInvoice();
                 }
             }
         }

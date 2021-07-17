@@ -133,6 +133,7 @@ namespace SaleManagement.FORM
             // txtID_SUPPLIER
             // 
             this.txtID_SUPPLIER.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtID_SUPPLIER.Enabled = false;
             this.txtID_SUPPLIER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_SUPPLIER.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_SUPPLIER.Location = new System.Drawing.Point(134, 90);

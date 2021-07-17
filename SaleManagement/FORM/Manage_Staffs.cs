@@ -47,7 +47,6 @@ namespace SaleManagement.VIEW
         void Disable(bool E)
         {
             txtNAME_STAFF.Enabled = E;
-            txtID_STAFF.Enabled = E;
             cbbPOSITION.Enabled = E;
             dpDAY.Enabled = E;
             txtPHONE.Enabled = E;
@@ -202,37 +201,19 @@ namespace SaleManagement.VIEW
             staff.Luong = Convert.ToDouble(txtSALARY.Text);
             account.MatKhau = staff.MatKhau = txtPASSWORD.Text.Trim();
             staff.GioiTinh = rbMALE.Checked;
-            if (String.IsNullOrEmpty(staff.MaNhanVien) && !String.IsNullOrEmpty(staff.TenNhanVien))
-            {
-                MessageBox.Show("Mã nhân viên trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (!String.IsNullOrEmpty(staff.MaNhanVien) && String.IsNullOrEmpty(staff.TenNhanVien))
+            if (String.IsNullOrEmpty(staff.TenNhanVien))
             {
                 MessageBox.Show("Tên nhân viên trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (String.IsNullOrEmpty(staff.MaNhanVien) && String.IsNullOrEmpty(staff.TenNhanVien))
-            {
-                MessageBox.Show("Mã và tên nhân viên trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Disable(true);
             }
             else
             {
                 if (isAdd)
                 {
-                    try
-                    {
-                        BLL_STAFF.Instance.FuncAddNewStaff(staff); // add new staff
-                        BLL_ACCOUNT.Instance.FuncAddAccount(account); // add new account for staff
-                        MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadData();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Mã số nhân viên đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Disable(true);
-                    }
+                    BLL_STAFF.Instance.FuncAddNewStaff(staff); // add new staff
+                    BLL_ACCOUNT.Instance.FuncAddAccount(account); // add new account for staff
+                    MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
                 }
                 else
                 {

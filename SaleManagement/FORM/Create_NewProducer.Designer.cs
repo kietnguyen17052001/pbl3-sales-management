@@ -65,6 +65,7 @@ namespace SaleManagement.FORM
             // 
             this.txtID_PRODUCER.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtID_PRODUCER.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtID_PRODUCER.Enabled = false;
             this.txtID_PRODUCER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_PRODUCER.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_PRODUCER.Location = new System.Drawing.Point(179, 118);

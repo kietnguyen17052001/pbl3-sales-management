@@ -151,6 +151,7 @@ namespace SaleManagement.VIEW
             // txtID_STAFF
             // 
             this.txtID_STAFF.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtID_STAFF.Enabled = false;
             this.txtID_STAFF.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID_STAFF.ForeColor = System.Drawing.Color.IndianRed;
             this.txtID_STAFF.Location = new System.Drawing.Point(133, 97);

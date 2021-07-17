@@ -61,7 +61,6 @@ namespace SaleManagement.VIEW
         // disable
         public void Disable(bool E)
         {
-            txtID_SUPPLIER.Enabled = E;
             txtNAME_SUPPLIER.Enabled = E;
             txtPHONE.Enabled = E;
             txtADDRESS.Enabled = E;
@@ -182,37 +181,19 @@ namespace SaleManagement.VIEW
             supplier.SoDienThoai = txtPHONE.Text.Trim();
             supplier.Email = txtEMAIL.Text.Trim();
             supplier.Fax = txtFAX.Text.Trim();
-            supplier.MaSoThue = Convert.ToInt32(txtID_TAX.Text);
-            if (String.IsNullOrEmpty(supplier.MaNhaCungCap) || !String.IsNullOrEmpty(supplier.TenNhaCungCap))
-            {
-                MessageBox.Show("Mã nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (!String.IsNullOrEmpty(supplier.MaNhaCungCap) || String.IsNullOrEmpty(supplier.TenNhaCungCap))
+            supplier.MaSoThue = txtID_TAX.Text;
+            if (String.IsNullOrEmpty(supplier.TenNhaCungCap))
             {
                 MessageBox.Show("Tên nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (String.IsNullOrEmpty(supplier.MaNhaCungCap) || String.IsNullOrEmpty(supplier.TenNhaCungCap))
-            {
-                MessageBox.Show("Mã và tên nhà cung cấp trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Disable(true);
             }
             else
             {
                 if (isAdd)
                 {
-                    try
-                    {
-                        BLL_SUPPLIER.Instance.FuncAddNewSupplier(supplier); // add new supplier
-                        MessageBox.Show("Thêm nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadData();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Mã số nhà cung cấp đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Disable(true);
-                    }
+                    BLL_SUPPLIER.Instance.FuncAddNewSupplier(supplier); // add new supplier
+                    MessageBox.Show("Thêm nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
                 }
                 else
                 {

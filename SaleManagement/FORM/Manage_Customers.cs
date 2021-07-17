@@ -43,7 +43,6 @@ namespace SaleManagement.VIEW
         public void Disable(bool E)
         {
             txtNAME_CUSTOMER.Enabled = E;
-            txtID_CUSTOMER.Enabled = E;
             txtPHONE.Enabled = E;
             txtADDRESS.Enabled = E;
             gbGENDER.Enabled = E;
@@ -163,36 +162,18 @@ namespace SaleManagement.VIEW
             customer.SoDienThoai = txtPHONE.Text.Trim();
             customer.DiaChi = txtADDRESS.Text.Trim();
             customer.GioiTinh = rbMALE.Checked;
-            if (String.IsNullOrEmpty(customer.MaKhachHang) && !String.IsNullOrEmpty(customer.TenKhachHang))
-            {
-                MessageBox.Show("Mã khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (!String.IsNullOrEmpty(customer.MaKhachHang) && String.IsNullOrEmpty(customer.TenKhachHang))
+            if (String.IsNullOrEmpty(customer.TenKhachHang))
             {
                 MessageBox.Show("Tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (String.IsNullOrEmpty(customer.MaKhachHang) && String.IsNullOrEmpty(customer.TenKhachHang))
-            {
-                MessageBox.Show("Mã và tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Disable(true);
             }
             else
             {
                 if (isAdd)
                 {
-                    try
-                    {
-                        BLL_CUSTOMER.Instance.FuncAddNewCustomer(customer); // add new customer 
-                        MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadData();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Mã số khách hàng đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Disable(true);
-                    }
+                    BLL_CUSTOMER.Instance.FuncAddNewCustomer(customer); // add new customer 
+                    MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
                 }
                 else
                 {

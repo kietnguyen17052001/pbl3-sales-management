@@ -42,7 +42,7 @@ namespace SaleManagement.FORM
         }
         public void Disable(bool E)
         {
-            txtID_CUSTOMER.Enabled = txtNAME_CUSTOMER.Enabled = txtPHONE.Enabled = txtADDRESS.Enabled = E;
+            txtNAME_CUSTOMER.Enabled = txtPHONE.Enabled = txtADDRESS.Enabled = E;
             btnADD.Enabled = !E;
             btnSAVE.Enabled = E;
         }
@@ -71,6 +71,10 @@ namespace SaleManagement.FORM
             txtPHONE.Clear();
             txtADDRESS.Clear();
             txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNewIdCustomer();
+            if (dgvLISTCUSTOMER.CanSelect)
+            {
+                dgvLISTCUSTOMER.Enabled = false;
+            }
         }
         // Lưu khách hàng vừa thêm 
         private void btnSAVE_Click(object sender, EventArgs e)
@@ -81,32 +85,15 @@ namespace SaleManagement.FORM
             customer.DiaChi = txtADDRESS.Text.Trim();
             customer.SoDienThoai = txtPHONE.Text.Trim();
             customer.GioiTinh = rbMALE.Checked;
-            if (String.IsNullOrEmpty(customer.MaKhachHang) && !String.IsNullOrEmpty(customer.TenKhachHang))
-            {
-                MessageBox.Show("Mã khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (!String.IsNullOrEmpty(customer.MaKhachHang) && String.IsNullOrEmpty(customer.TenKhachHang))
+            if (String.IsNullOrEmpty(customer.TenKhachHang))
             {
                 MessageBox.Show("Tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Disable(true);
             }
-            else if (String.IsNullOrEmpty(customer.MaKhachHang) && String.IsNullOrEmpty(customer.TenKhachHang))
-            {
-                MessageBox.Show("Mã và tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
             else
             {
-                try
-                {
-                    BLL_CUSTOMER.Instance.FuncAddNewCustomer(customer);
-                    LoadData();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Mã khách hàng đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                BLL_CUSTOMER.Instance.FuncAddNewCustomer(customer);
+                LoadData();
             }
         }
         // Chọn khách hàng cần thêm vào hóa đơn

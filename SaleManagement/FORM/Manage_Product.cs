@@ -53,7 +53,6 @@ namespace SaleManagement.VIEW
         }
         void Disable(bool E)
         {
-            txtID_PRODUCT.Enabled = E;
             txtNAME_PRODUCT.Enabled = E;
             txtBUY.Enabled = E;
             txtSALE.Enabled = E;
@@ -220,37 +219,19 @@ namespace SaleManagement.VIEW
             product.MaLoaiHangHoa = ((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE;
             product.MaNhaSanXuat = ((CBBItem)cbbPRODUCERs.SelectedItem).VALUE;
             product.HinhAnh = images;
-            if (product.MaHangHoa == null && product.TenHangHoa != null)
+            if (String.IsNullOrEmpty(product.TenHangHoa))
             {
-                MessageBox.Show("Mã khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (product.MaHangHoa != null && product.TenHangHoa == null)
-            {
-                MessageBox.Show("Tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (product.MaHangHoa == null && product.TenHangHoa == null)
-            {
-                MessageBox.Show("Mã và tên khách hàng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tên hàng hóa trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Disable(true);
             }
             else
             {
                 if (isAdd)
                 {
-                    try
-                    {
-                        BLL_PRODUCT.Instance.FuncAddNewProduct(product); // add new product
-                        MessageBox.Show("Thêm hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Disable(false);
-                        LoadData();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Mã hàng hóa đã tồn tại", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Disable(true);
-                    }
+                    BLL_PRODUCT.Instance.FuncAddNewProduct(product); // add new product
+                    MessageBox.Show("Thêm hàng hóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Disable(false);
+                    LoadData();
                 }
                 else
                 {
