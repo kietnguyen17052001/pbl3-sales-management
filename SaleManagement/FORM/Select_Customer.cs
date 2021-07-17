@@ -71,10 +71,7 @@ namespace SaleManagement.FORM
             txtPHONE.Clear();
             txtADDRESS.Clear();
             txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNewIdCustomer();
-            if (dgvLISTCUSTOMER.CanSelect)
-            {
-                dgvLISTCUSTOMER.Enabled = false;
-            }
+            dgvLISTCUSTOMER.Enabled = false;
         }
         // Lưu khách hàng vừa thêm 
         private void btnSAVE_Click(object sender, EventArgs e)
