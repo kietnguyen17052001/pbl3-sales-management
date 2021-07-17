@@ -86,12 +86,14 @@ namespace SaleManagement.BLL
             }
         }
         // edit invoice
-        public void FuncEditInvoice(string idInvoice, DateTime dateChange, string idStaff, string idCustomer)
+        public void FuncEditInvoice(string idInvoice, DateTime dateChange, string idStaff, string idCustomer, double discount)
         {
             var invoice = db.tblHoaDonBanHangs.Find(idInvoice);
             invoice.NgayBan = dateChange;
             invoice.MaNhanVien = idStaff;
             invoice.MaKhachHang = idCustomer;
+            invoice.SoTien += invoice.GiamGia - discount;
+            invoice.GiamGia = discount;
             db.SaveChanges();
         }
         public void FuncDeleteInvoice(List<string> listIdInvoice)

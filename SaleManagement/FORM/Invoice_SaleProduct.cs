@@ -323,7 +323,7 @@ namespace SaleManagement.VIEW
             e.Graphics.DrawString("N3K STORE", new Font("Tahoma", 20, FontStyle.Bold), Brushes.Black, new Point(340,50));
             e.Graphics.DrawString("54 NGUYỄN LƯƠNG BẰNG", new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(280, 100));
             e.Graphics.DrawString("0911.888.999", new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(350, 120));
-            e.Graphics.DrawString("HÓA ĐƠN TÍNH TIỀN", new Font("Tahoma", 19, FontStyle.Bold), Brushes.Black, new Point(270, 180));
+            e.Graphics.DrawString("HÓA ĐƠN BÁN HÀNG", new Font("Tahoma", 19, FontStyle.Bold), Brushes.Black, new Point(270, 180));
             e.Graphics.DrawString("NVTN: "+ cbbStaff.SelectedItem.ToString(), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(270, 220));
             e.Graphics.DrawString("Khách hàng: "+ txtCustomer.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(270, 250));
             e.Graphics.DrawString("Số hóa đơn: "+ txtIdInvoice.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(200, 300));
@@ -340,7 +340,7 @@ namespace SaleManagement.VIEW
             {
                 distance += 50;
                 str = "";
-                if(dr["TenhangHoa"].ToString().Length > 30)
+                if(dr["TenHangHoa"].ToString().Length > 30)
                 {
                     str += dr["TenHangHoa"].ToString().Substring(31);
                     dr["TenHangHoa"] = dr["TenHangHoa"].ToString().Replace(str, "");

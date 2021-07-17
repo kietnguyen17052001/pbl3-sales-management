@@ -31,7 +31,8 @@ namespace SaleManagement.FORM
             }
             else
             {
-                btnAddNewProduct.Enabled = true;  
+                btnAddNewProduct.Enabled = true;
+                txtDiscount.Enabled = false;
             }
             LoadProduct();
             FormatColumnHeader();
@@ -115,7 +116,7 @@ namespace SaleManagement.FORM
                 invoicedetail.SoLuong = quantityProduct;
                 invoicedetail.GiaNhap = productPrice;
                 invoicedetail.TongTien = productPrice * quantityProduct;
-                BLL_LISTIMPORTINVOICE.Instance.FuncAddProduct(invoicedetail, discount);
+                BLL_LISTIMPORTINVOICE.Instance.FuncAddProduct(invoicedetail);
                 DialogResult answer = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (answer == DialogResult.Yes)
                 {

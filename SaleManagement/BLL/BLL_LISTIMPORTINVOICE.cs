@@ -101,12 +101,14 @@ namespace SaleManagement.BLL
             }
         }
         // func edit invoice
-        public void FuncEditInvoice(string idInvoice, DateTime dateChange, string idSupplier, string idStaff)
+        public void FuncEditInvoice(string idInvoice, DateTime dateChange, string idSupplier, string idStaff, double discount)
         {
             var invoice = db.tblHoaDonNhapHangs.Find(idInvoice);
             invoice.NgayNhap = dateChange;
             invoice.MaNhanVien = idStaff;
             invoice.MaNhaCungCap = idSupplier;
+            invoice.SoTien += invoice.GiamGia - discount;
+            invoice.GiamGia = discount;
             db.SaveChanges();
         }
         // func delete invoie
@@ -164,14 +166,13 @@ namespace SaleManagement.BLL
             }
         }
         // add product
-        public void FuncAddProduct(tblChiTietHoaDonNhapHang invoiceDetail, int discount)
+        public void FuncAddProduct(tblChiTietHoaDonNhapHang invoiceDetail)
         {
             db.tblChiTietHoaDonNhapHangs.Add(invoiceDetail);
             var product = db.tblHangHoas.Find(invoiceDetail.MaHangHoa);
             product.SoLuong += (int)invoiceDetail.SoLuong;
             var invoice = db.tblHoaDonNhapHangs.Find(invoiceDetail.MaHoaDonNhap);
-            invoice.GiamGia = discount * (invoice.SoTien + invoiceDetail.TongTien) / 100;
-            invoice.SoTien = (invoice.SoTien + invoiceDetail.TongTien) - (discount * (invoice.SoTien + invoiceDetail.TongTien)/100);
+            invoice.SoTien += + invoiceDetail.TongTien;
             db.SaveChanges();
         }
         // change quantity product

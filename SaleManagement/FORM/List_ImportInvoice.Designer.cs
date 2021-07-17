@@ -29,6 +29,7 @@ namespace SaleManagement.FORM
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmList_ImportInvoice));
             this.label1 = new System.Windows.Forms.Label();
             this.cbbSTAFF = new System.Windows.Forms.ComboBox();
             this.cbbSUPPLIER = new System.Windows.Forms.ComboBox();
@@ -66,6 +67,9 @@ namespace SaleManagement.FORM
             this.btnSaveChange = new System.Windows.Forms.Button();
             this.btnDeleteInvoice = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_INVOICE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvINFO_INVOICE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -189,7 +193,6 @@ namespace SaleManagement.FORM
             // txtDISCOUNT
             // 
             this.txtDISCOUNT.BackColor = System.Drawing.SystemColors.Info;
-            this.txtDISCOUNT.Enabled = false;
             this.txtDISCOUNT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDISCOUNT.ForeColor = System.Drawing.Color.Black;
             this.txtDISCOUNT.Location = new System.Drawing.Point(124, 266);
@@ -581,12 +584,50 @@ namespace SaleManagement.FORM
             this.btnDeleteProduct.UseVisualStyleBackColor = false;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnPrint.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatAppearance.CheckedBackColor = System.Drawing.Color.SteelBlue;
+            this.btnPrint.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.Image = global::SaleManagement.Properties.Resources.printer_3_24;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(608, 635);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(202, 48);
+            this.btnPrint.TabIndex = 176;
+            this.btnPrint.Text = "In hóa đơn";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // FrmList_ImportInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 691);
             this.ControlBox = false;
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbTotalMoney);
             this.Controls.Add(this.label11);
@@ -674,5 +715,8 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnDeleteProduct;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

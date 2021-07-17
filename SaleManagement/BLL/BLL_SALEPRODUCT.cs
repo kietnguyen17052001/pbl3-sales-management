@@ -248,6 +248,10 @@ namespace SaleManagement.BLL
                 {
                     idInvoice = "HDB0" + (lastId + 1).ToString(); 
                 }
+                else
+                {
+                    idInvoice = "HDB" + (lastId + 1).ToString();
+                }
             }
             return idInvoice;
         }

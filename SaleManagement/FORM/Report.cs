@@ -101,7 +101,7 @@ namespace SaleManagement.FORM
             }
             app.Quit();
         }
-        // Load form when valuechange in datetimepickers
+        // Load form when value change in datetimepickers
         private void dpTO_ValueChanged(object sender, EventArgs e)
         {
             LoadData();

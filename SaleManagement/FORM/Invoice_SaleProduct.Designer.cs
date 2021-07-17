@@ -452,9 +452,9 @@ namespace SaleManagement.VIEW
             this.txtIdInvoice.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtIdInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdInvoice.ForeColor = System.Drawing.Color.IndianRed;
-            this.txtIdInvoice.Location = new System.Drawing.Point(124, 35);
+            this.txtIdInvoice.Location = new System.Drawing.Point(124, 28);
             this.txtIdInvoice.Name = "txtIdInvoice";
-            this.txtIdInvoice.Size = new System.Drawing.Size(171, 29);
+            this.txtIdInvoice.Size = new System.Drawing.Size(172, 29);
             this.txtIdInvoice.TabIndex = 27;
             // 
             // label3
@@ -484,7 +484,7 @@ namespace SaleManagement.VIEW
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 36);
+            this.label5.Location = new System.Drawing.Point(3, 31);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(115, 22);
             this.label5.TabIndex = 23;

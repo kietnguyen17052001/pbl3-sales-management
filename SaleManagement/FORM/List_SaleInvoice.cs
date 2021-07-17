@@ -69,6 +69,7 @@ namespace SaleManagement.FORM
             dpDAY.Enabled = E;
             cbbCUSTOMER.Enabled = E;
             cbbSTAFF.Enabled = E;
+            txtDISCOUNT.Enabled = E;
             btnSaveChange.Enabled = E;
             btnEditInvoice.Enabled = btnDeleteInvoice.Enabled = !E;
         }
@@ -197,7 +198,7 @@ namespace SaleManagement.FORM
         {
             try
             {
-                BLL_LISTSALEINVOICE.Instance.FuncEditInvoice(idInvoice, dpDAY.Value, ((CBBItem)cbbSTAFF.SelectedItem).VALUE, ((CBBItem)cbbCUSTOMER.SelectedItem).VALUE);
+                BLL_LISTSALEINVOICE.Instance.FuncEditInvoice(idInvoice, dpDAY.Value, ((CBBItem)cbbSTAFF.SelectedItem).VALUE, ((CBBItem)cbbCUSTOMER.SelectedItem).VALUE, Convert.ToDouble(txtDISCOUNT.Text));
                 MessageBox.Show("Sửa thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadDGVs(txtSEARCH.Text.Trim());
             }
@@ -300,6 +301,66 @@ namespace SaleManagement.FORM
                 frmEditQuantityProduct.Show();
             }
         }
+        // Print invoice
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtID_INVOICE.Text))
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn cần in", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                printPreviewDialog1.Document = printDocument1;
+                printPreviewDialog1.ShowDialog();
+            }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("N3K STORE", new Font("Tahoma", 20, FontStyle.Bold), Brushes.Black, new Point(340, 50));
+            e.Graphics.DrawString("54 NGUYỄN LƯƠNG BẰNG", new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(280, 100));
+            e.Graphics.DrawString("0911.888.999", new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(350, 120));
+            e.Graphics.DrawString("HÓA ĐƠN BÁN HÀNG", new Font("Tahoma", 19, FontStyle.Bold), Brushes.Black, new Point(270, 180));
+            e.Graphics.DrawString("NVTN: " + cbbSTAFF.SelectedItem.ToString(), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(270, 220));
+            e.Graphics.DrawString("Khách hàng: " + cbbCUSTOMER.SelectedItem.ToString(), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(270, 250));
+            e.Graphics.DrawString("Số hóa đơn: " + txtID_INVOICE.Text, new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(200, 300));
+            e.Graphics.DrawString("Ngày: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"), new Font("Tahoma", 17, FontStyle.Regular), Brushes.Black, new Point(450, 300));
+            e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, 350));
+            e.Graphics.DrawString("Tên sản phẩm", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(10, 400));
+            e.Graphics.DrawString("SL", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(360, 400));
+            e.Graphics.DrawString("Đơn giá", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(440, 400));
+            e.Graphics.DrawString("K/Mãi", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(580, 400));
+            e.Graphics.DrawString("Thành tiền", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(700, 400));
+            int distance = 400;
+            string str;
+            double totalMoney = 0; // Tổng tiền đơn hàng
+            foreach (DataGridViewRow dgvRow in dgvINFO_INVOICE.Rows)
+            {
+                totalMoney += Convert.ToDouble(dgvRow.Cells["TongTien"].Value.ToString());
+                distance += 50;
+                str = "";
+                if (dgvRow.Cells["TenHangHoa"].Value.ToString().Length > 30)
+                {
+                    str += dgvRow.Cells["TenHangHoa"].Value.ToString().Substring(31);
+                    dgvRow.Cells["TenHangHoa"].Value = dgvRow.Cells["TenHangHoa"].Value.ToString().Replace(str, "");
+                }
+                e.Graphics.DrawString(dgvRow.Cells["TenHangHoa"].Value.ToString() + "\n" + str, new Font("Tahoma", 14, FontStyle.Regular), Brushes.Black, new Point(10, distance));
+                e.Graphics.DrawString(dgvRow.Cells["SoLuong"].Value.ToString(), new Font("Tahoma", 14, FontStyle.Regular), Brushes.Black, new Point(370, distance));
+                e.Graphics.DrawString(dgvRow.Cells["DonGia"].Value.ToString(), new Font("Tahoma", 14, FontStyle.Regular), Brushes.Black, new Point(450, distance));
+                e.Graphics.DrawString(dgvRow.Cells["GiamGia"].Value.ToString(), new Font("Tahoma", 14, FontStyle.Regular), Brushes.Black, new Point(590, distance));
+                e.Graphics.DrawString(dgvRow.Cells["TongTien"].Value.ToString(), new Font("Tahoma", 14, FontStyle.Regular), Brushes.Black, new Point(710, distance));
+            }
+            e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50));
+            e.Graphics.DrawString("Tổng tiền ", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50 * 2));
+            e.Graphics.DrawString(String.Format("{0:n0}",totalMoney), new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50 * 2));
+            e.Graphics.DrawString("Giảm giá ", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50 * 3));
+            e.Graphics.DrawString(txtDISCOUNT.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50 * 3));
+            e.Graphics.DrawString("Tổng thanh toán ", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(400, distance + 50 * 4));
+            e.Graphics.DrawString(txtPRICE_.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50 * 4));
+            e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50 * 5));
+            e.Graphics.DrawString("Cảm ơn và hẹn gặp lại quý khách!", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(250, distance + 50 * 6));
+        }
+
         // Load dgv when valuechange datetimepickers
         private void dpTO_ValueChanged(object sender, EventArgs e)
         {
