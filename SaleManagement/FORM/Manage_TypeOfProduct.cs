@@ -114,9 +114,9 @@ namespace SaleManagement.FORM
         private void btnADD_Click(object sender, EventArgs e)
         {
             isAdd = true;
+            dgvLISTTYPE.Enabled = false;
             Disable(true);
             ClearCode();
-            dgvLISTTYPE.Enabled = false;
         }
         // edit type 
         private void btnEDIT_Click(object sender, EventArgs e)
