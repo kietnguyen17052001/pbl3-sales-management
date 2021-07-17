@@ -73,6 +73,7 @@ namespace SaleManagement.VIEW
             btnDELETE.Enabled = !E;
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
+            dgvSUPPLIER.Enabled = !E;
         }
         private void dgvSUPPLIER_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -156,7 +157,6 @@ namespace SaleManagement.VIEW
             ClearCode();
             isAdd = true;
             txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.getNewIdSupplier();
-            dgvSUPPLIER.Enabled = false;
         }
         // edit supplier
         private void btnEDIT_Click(object sender, EventArgs e)

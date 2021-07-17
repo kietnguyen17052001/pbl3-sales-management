@@ -52,6 +52,7 @@ namespace SaleManagement.VIEW
             btnDELETE.Enabled = !E;
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
+            dgvLISTCUSTOMER.Enabled = !E;
         }
         public void ClearCode()
         {
@@ -138,7 +139,6 @@ namespace SaleManagement.VIEW
             ClearCode();
             isAdd = true; // thêm
             txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNewIdCustomer().ToString(); // gọi hàm tự điền mã số khách hàng từ BLL_CUSTOMER
-            dgvLISTCUSTOMER.Enabled = false;
         }
         // Button Edit customer
         private void btnEDIT_Click(object sender, EventArgs e)

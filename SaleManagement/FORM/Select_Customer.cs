@@ -45,6 +45,7 @@ namespace SaleManagement.FORM
             txtNAME_CUSTOMER.Enabled = txtPHONE.Enabled = txtADDRESS.Enabled = E;
             btnADD.Enabled = !E;
             btnSAVE.Enabled = E;
+            dgvLISTCUSTOMER.Enabled = !E;
         }
         // Hiển thị thông tin các khách hàng
         public void LoadData()
@@ -71,7 +72,6 @@ namespace SaleManagement.FORM
             txtPHONE.Clear();
             txtADDRESS.Clear();
             txtID_CUSTOMER.Text = BLL_CUSTOMER.Instance.getNewIdCustomer();
-            dgvLISTCUSTOMER.Enabled = false;
         }
         // Lưu khách hàng vừa thêm 
         private void btnSAVE_Click(object sender, EventArgs e)
@@ -90,6 +90,7 @@ namespace SaleManagement.FORM
             else
             {
                 BLL_CUSTOMER.Instance.FuncAddNewCustomer(customer);
+                MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
             }
         }

@@ -60,6 +60,7 @@ namespace SaleManagement.VIEW
             btnDELETE.Enabled = !E;
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
+            dgvLIST_STAFF.Enabled = !E;
         }
         public void ClearCode()
         {
@@ -171,7 +172,6 @@ namespace SaleManagement.VIEW
             isAdd = true;
             txtID_STAFF.Text = BLL_STAFF.Instance.getNewIdStaff().ToString();
             txtSALARY.Text = "0";
-            dgvLIST_STAFF.Enabled = false;
         }
         // edit staff
         private void btnEDIT_Click(object sender, EventArgs e)

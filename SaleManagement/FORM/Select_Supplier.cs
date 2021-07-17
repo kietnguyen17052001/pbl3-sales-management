@@ -46,6 +46,7 @@ namespace SaleManagement.FORM
             txtNAME_SUPPLIER.Enabled = txtPHONE.Enabled = txtADDRESS.Enabled = txtID_TAX.Enabled = txtFAX.Enabled = txtEMAIL.Enabled = E;
             btnADD.Enabled = !E;
             btnSAVE.Enabled = E;
+            dgvSUPPLIER.Enabled = !E;
         }
         // DGV
         private void dgvSUPPLIER_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -95,7 +96,6 @@ namespace SaleManagement.FORM
             txtFAX.Clear();
             txtADDRESS.Clear();
             txtID_TAX.Clear();
-            dgvSUPPLIER.Enabled = false;
         }
         // Save change
         private void btnSAVE_Click(object sender, EventArgs e)

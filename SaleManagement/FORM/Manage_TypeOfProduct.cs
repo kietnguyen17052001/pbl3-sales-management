@@ -48,6 +48,7 @@ namespace SaleManagement.FORM
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
             btnADD.Enabled = btnEDIT.Enabled = btnDELETE.Enabled = !E;
+            dgvLISTTYPE.Enabled = !E;
         }
         // func show type of product
         public void ShowDataTypeOfProduct()
@@ -114,7 +115,6 @@ namespace SaleManagement.FORM
         private void btnADD_Click(object sender, EventArgs e)
         {
             isAdd = true;
-            dgvLISTTYPE.Enabled = false;
             Disable(true);
             ClearCode();
         }

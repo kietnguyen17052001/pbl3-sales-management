@@ -66,6 +66,7 @@ namespace SaleManagement.VIEW
             btnDELETE.Enabled = !E;
             btnSAVE.Enabled = E;
             btnCANCEL.Enabled = E;
+            dgvLISTPRODUCT.Enabled = !E;
         }
         public void ClearCode()
         {
@@ -161,7 +162,6 @@ namespace SaleManagement.VIEW
             txtQUANTITY.Enabled = false;
             txtDESCRIBE.Clear();
             pbIMAGE.Image = null;
-            dgvLISTPRODUCT.Enabled = false;
         }
         // show frmCreate_NewTypeProduct
         private void btnADDTYPE_Click(object sender, EventArgs e)
