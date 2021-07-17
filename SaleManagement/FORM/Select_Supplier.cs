@@ -95,6 +95,10 @@ namespace SaleManagement.FORM
             txtFAX.Clear();
             txtADDRESS.Clear();
             txtID_TAX.Clear();
+            if (dgvSUPPLIER.CanSelect)
+            {
+                dgvSUPPLIER.Enabled = false;
+            }
         }
         // Save change
         private void btnSAVE_Click(object sender, EventArgs e)
