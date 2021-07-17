@@ -156,6 +156,7 @@ namespace SaleManagement.VIEW
             ClearCode();
             isAdd = true;
             txtID_SUPPLIER.Text = BLL_SUPPLIER.Instance.getNewIdSupplier();
+            dgvSUPPLIER.Enabled = false;
         }
         // edit supplier
         private void btnEDIT_Click(object sender, EventArgs e)
