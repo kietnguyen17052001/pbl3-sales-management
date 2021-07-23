@@ -14,11 +14,11 @@ namespace SaleManagement.FORM
 {
     public partial class FrmReport : Form
     {
-        private string usernamelogin;
-        public FrmReport(string _usernamelogin)
+        private string usernameLogin;
+        public FrmReport(string _usernameLogin)
         {
             InitializeComponent();
-            usernamelogin = _usernamelogin;
+            usernameLogin = _usernameLogin;
             dpFROM.Value = BLL_LISTSALEINVOICE.Instance.getDate();
             LoadData();
             FormatColumnHeader();
@@ -67,7 +67,7 @@ namespace SaleManagement.FORM
         // back to FrmQLBanHang
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernamelogin);
+            FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernameLogin);
             frmMainAdmin.Show();
             this.Close();
         }

@@ -14,12 +14,12 @@ namespace SaleManagement.FORM
 {
     public partial class FrmStatistic_Product : Form
     {
-        private string idTypeOfProduct, usernamelogin;
+        private string idTypeOfProduct, usernameLogin;
         private DateTime dateStart, dateEnd;
-        public FrmStatistic_Product(DateTime _dateStart, DateTime _dateEnd, string _idTypeOfProduct, string nameTypeOfProduct, string _usernamelogin)
+        public FrmStatistic_Product(DateTime _dateStart, DateTime _dateEnd, string _idTypeOfProduct, string nameTypeOfProduct, string _usernameLogin)
         {
             InitializeComponent();
-            usernamelogin = _usernamelogin;
+            usernameLogin = _usernameLogin;
             lbINFO.Text = nameTypeOfProduct + " từ ngày " + _dateStart.ToString("dd/MM/yyyy") + " đến ngày " + _dateEnd.ToString("dd/MM/yyyy");
             dateStart = _dateStart;
             dateEnd = _dateEnd;
@@ -51,7 +51,7 @@ namespace SaleManagement.FORM
 
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmStatistic frmStatistic = new FrmStatistic(usernamelogin);
+            FrmStatistic frmStatistic = new FrmStatistic(usernameLogin);
             frmStatistic.Show();
             this.Close();
         }

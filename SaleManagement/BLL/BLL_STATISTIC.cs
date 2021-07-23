@@ -27,13 +27,8 @@ namespace SaleManagement.BLL
         // get quantity product in database dFrom->dTo
         public int getTotalQuantityProductSold(DateTime dateStart, DateTime dateEnd)
         {
-            int quantity = Convert.ToInt32(getListInvoiceDetail(dateStart, dateEnd).Sum(p => p.SoLuong));
+            int quantity = Convert.ToInt32(BLL_REPORT.Instance.getListInvoiceDetail(dateStart, dateEnd).Sum(p => p.SoLuong));
             return quantity;
-        }
-        // get list invoice_detail
-        public IQueryable<tblChiTietHoaDonBanHang> getListInvoiceDetail(DateTime dateStart, DateTime dateEnd)
-        {
-            return db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
         }
         // get list product
         public IQueryable<tblHangHoa> getListProductByIdTypeOfProduct(string idTypeOfProduct)
@@ -69,28 +64,28 @@ namespace SaleManagement.BLL
         // get sale quantity of each type of product
         public int getSellQuantityOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct, DateTime dateStart, DateTime dateEnd)
         {
-            int sellQuantity = Convert.ToInt32(getListInvoiceDetail(dateStart, dateEnd).Where(
+            int sellQuantity = Convert.ToInt32(BLL_REPORT.Instance.getListInvoiceDetail(dateStart, dateEnd).Where(
                 p => p.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa).Sum(p => p.SoLuong));
             return sellQuantity;
         }
         // get sale money of each type of product
         public double getSellMoneyOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct, DateTime dateStart, DateTime dateEnd)
         {
-            double sellMoney = Convert.ToDouble(getListInvoiceDetail(dateStart, dateEnd).Where(
+            double sellMoney = Convert.ToDouble(BLL_REPORT.Instance.getListInvoiceDetail(dateStart, dateEnd).Where(
                 p => p.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa).Sum(p => p.TongTien));
             return sellMoney;
         }
         // get sell quantity of each product
         public int getSellQuantityOfEachProduct(tblHangHoa product, DateTime dateStart, DateTime dateEnd)
         {
-            int sellQuantity = Convert.ToInt32(getListInvoiceDetail(dateStart, dateEnd).Where(
+            int sellQuantity = Convert.ToInt32(BLL_REPORT.Instance.getListInvoiceDetail(dateStart, dateEnd).Where(
                 p => p.MaHangHoa == product.MaHangHoa).Sum(p => p.SoLuong));
             return sellQuantity;
         }
         // get sell money of each product
         public double getSellMoneyOfEachProduct(tblHangHoa product, DateTime dateStart, DateTime dateEnd)
         {
-            double sellMoney = Convert.ToDouble(getListInvoiceDetail(dateStart, dateEnd).Where(
+            double sellMoney = Convert.ToDouble(BLL_REPORT.Instance.getListInvoiceDetail(dateStart, dateEnd).Where(
                 p => p.MaHangHoa == product.MaHangHoa).Sum(p => p.TongTien));
             return sellMoney;
         }
