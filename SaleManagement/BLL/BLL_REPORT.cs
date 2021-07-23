@@ -40,23 +40,21 @@ namespace SaleManagement.BLL
             });
             dgv.DataSource = invoiceDetail.ToList();
         }
+        public IQueryable<tblChiTietHoaDonBanHang> getListInvoiceDetail(DateTime dateStart, DateTime dateEnd)
+        {
+            return db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
+        }
         // doanh số
         public double getRevenue(DateTime dateStart, DateTime dateEnd)
         {
-            var listInvoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
-            double revenue = 0;
-            foreach (tblChiTietHoaDonBanHang invoiceDetail in listInvoiceDetail)
-            {
-                revenue += (double)invoiceDetail.TongTien;
-            }
+            double revenue = Convert.ToDouble(getListInvoiceDetail(dateStart, dateEnd).Sum(p => p.TongTien));
             return revenue;
         }
         // lợi nhuận
         public double getProfit(DateTime dateStart, DateTime dateEnd)
         {
-            var listInvoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
             double profit = 0;
-            foreach (tblChiTietHoaDonBanHang invoiceDetail in listInvoiceDetail)
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
             {
                 profit += (double)(invoiceDetail.TongTien - invoiceDetail.SoLuong * invoiceDetail.tblHangHoa.GiaNhap);
             }
@@ -76,19 +74,13 @@ namespace SaleManagement.BLL
         // sản phẩm
         public int getQuantity(DateTime dateStart, DateTime dateEnd)
         {
-            var listInvoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
-            int quantity = 0;
-            foreach (tblChiTietHoaDonBanHang invoiceDetail in listInvoiceDetail)
-            {
-                quantity += (int)invoiceDetail.SoLuong;
-            }
+            int quantity = Convert.ToInt32(getListInvoiceDetail(dateStart, dateEnd).Sum(p => p.SoLuong));
             return quantity;
         }
         // hóa đơn
         public int getInvoice(DateTime dateStart, DateTime dateEnd)
         {
-            var listInvoice = db.tblHoaDonBanHangs.Where(p => p.NgayBan >= dateStart && p.NgayBan <= dateEnd);
-            return listInvoice.Count();
+            return getListInvoiceDetail(dateStart, dateEnd).Count();
         }
     }
 }
