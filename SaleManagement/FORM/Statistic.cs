@@ -16,11 +16,11 @@ namespace SaleManagement.FORM
     public partial class FrmStatistic : Form
     {
         private DateTime dateStart = BLL_LISTSALEINVOICE.Instance.getDate();
-        private string usernamelogin;
-        public FrmStatistic(string _usernamelogin)
+        private string usernameLogin;
+        public FrmStatistic(string _usernameLogin)
         {
             InitializeComponent();
-            usernamelogin = _usernamelogin;
+            usernameLogin = _usernameLogin;
             setCombobox();
             if (dateStart == null)
             {
@@ -77,20 +77,20 @@ namespace SaleManagement.FORM
         {
             string value = ((CBBItem)cbbTYPEOFPRODUCT.SelectedItem).VALUE;
             string text = ((CBBItem)cbbTYPEOFPRODUCT.SelectedItem).TEXT;
-            FrmStatistic_Product frmStatisticProduct = new FrmStatistic_Product(dpFROM.Value, dpTO.Value, value, text, usernamelogin);
+            FrmStatistic_Product frmStatisticProduct = new FrmStatistic_Product(dpFROM.Value, dpTO.Value, value, text, usernameLogin);
             frmStatisticProduct.Show();
             this.Close();
         }
         // Thống kê doanh thu
         private void btnSTATISTIC_Click(object sender, EventArgs e)
         {
-            FrmRevenue_Statistic frmRevenueStatistic = new FrmRevenue_Statistic(usernamelogin);
+            FrmRevenue_Statistic frmRevenueStatistic = new FrmRevenue_Statistic(usernameLogin);
             frmRevenueStatistic.Show();
             this.Close();
         }
         private void btnBACK_Click(object sender, EventArgs e)
         {
-            FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernamelogin);
+            FrmMain_Admin frmMainAdmin = new FrmMain_Admin(usernameLogin);
             frmMainAdmin.Show();
             this.Close();
         }

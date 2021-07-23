@@ -25,19 +25,15 @@ namespace SaleManagement.BLL
         }
         private BLL_STATISTIC(){}
         // get quantity product in database dFrom->dTo
-        public int getTotalQuantityProductSold(DateTime dateFrom, DateTime dateTo)
+        public int getTotalQuantityProductSold(DateTime dateStart, DateTime dateEnd)
         {
-            int quantity = 0;
-            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateFrom, dateTo))
-            {
-                quantity += (int)invoiceDetail.SoLuong;
-            }
+            int quantity = Convert.ToInt32(getListInvoiceDetail(dateStart, dateEnd).Sum(p => p.SoLuong));
             return quantity;
         }
         // get list invoice_detail
-        public IQueryable<tblChiTietHoaDonBanHang> getListInvoiceDetail(DateTime dateFrom, DateTime dateTo)
+        public IQueryable<tblChiTietHoaDonBanHang> getListInvoiceDetail(DateTime dateStart, DateTime dateEnd)
         {
-            return db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateFrom && p.tblHoaDonBanHang.NgayBan <= dateTo);
+            return db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
         }
         // get list product
         public IQueryable<tblHangHoa> getListProductByIdTypeOfProduct(string idTypeOfProduct)
@@ -49,106 +45,53 @@ namespace SaleManagement.BLL
         {
             return db.tblLoaiHangHoas;
         }
-        // get list invoice by year 
-        public IQueryable<tblHoaDonBanHang> getListInvoiceByYear(int year)
-        {
-            return db.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year);
-        }
-        // get list invoice by month in year
-        public IQueryable<tblHoaDonBanHang> getListInvoiceByMonthInYear(int year, int month)
-        {
-            return db.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year
-            && p.NgayBan.Value.Month == month);
-        }
         // get revenue in year
         public double getRevenueYear(int year, int month)
         {
-            double revenue = 0;
-            foreach (tblHoaDonBanHang invoice in getListInvoiceByYear(year))
-            {
-                if (invoice.NgayBan.Value.Month == month)
-                {
-                    revenue += (double)invoice.SoTien;
-                }
-            }
+            double revenue = Convert.ToDouble(db.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year
+            && p.NgayBan.Value.Month == month).Sum(p => p.SoTien));
             return revenue;
         }
         // get revenue in month
         public double getRevenueMonth(int year, int month, int day)
         {
-            double revenue = 0;
-            foreach (tblHoaDonBanHang invoice in getListInvoiceByMonthInYear(year, month))
-            {
-                if (invoice.NgayBan.Value.Day == day)
-                {
-                    revenue += (double)invoice.SoTien;
-                }
-            }
+            double revenue = Convert.ToDouble(db.tblHoaDonBanHangs.Where(p => p.NgayBan.Value.Year == year
+            && p.NgayBan.Value.Month == month && p.NgayBan.Value.Day == day).Sum(p => p.SoTien));
             return revenue;
         }
         // get quantity of each type of product
         public int getQuantityOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct)
         {
-            int quantity = 0;
-            foreach (tblHangHoa product in db.tblHangHoas)
-            {
-                if (product.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
-                {
-                    quantity += (int)product.SoLuong;
-                }
-            }
+            int quantity = Convert.ToInt32(db.tblHangHoas.Where(
+                p => p.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa).Sum(p => p.SoLuong));
             return quantity;
         }
         // get sale quantity of each type of product
         public int getSellQuantityOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct, DateTime dateStart, DateTime dateEnd)
         {
-            int sellQuantity = 0;   
-            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
-            {
-                if (invoiceDetail.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
-                {
-                    sellQuantity += (int)invoiceDetail.SoLuong;
-                }
-            }
+            int sellQuantity = Convert.ToInt32(getListInvoiceDetail(dateStart, dateEnd).Where(
+                p => p.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa).Sum(p => p.SoLuong));
             return sellQuantity;
         }
         // get sale money of each type of product
         public double getSellMoneyOfEachTypeOfProduct(tblLoaiHangHoa typeOfProduct, DateTime dateStart, DateTime dateEnd)
         {
-            double sellMoney = 0;
-            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
-            {
-                if (invoiceDetail.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa)
-                {
-                    sellMoney += (double)invoiceDetail.TongTien;
-                }
-            }
+            double sellMoney = Convert.ToDouble(getListInvoiceDetail(dateStart, dateEnd).Where(
+                p => p.tblHangHoa.MaLoaiHangHoa == typeOfProduct.MaLoaiHangHoa).Sum(p => p.TongTien));
             return sellMoney;
         }
         // get sell quantity of each product
         public int getSellQuantityOfEachProduct(tblHangHoa product, DateTime dateStart, DateTime dateEnd)
         {
-            int sellQuantity = 0;
-            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
-            {
-                if (invoiceDetail.MaHangHoa == product.MaHangHoa)
-                {
-                    sellQuantity += (int)invoiceDetail.SoLuong;
-                }
-            }
+            int sellQuantity = Convert.ToInt32(getListInvoiceDetail(dateStart, dateEnd).Where(
+                p => p.MaHangHoa == product.MaHangHoa).Sum(p => p.SoLuong));
             return sellQuantity;
         }
         // get sell money of each product
         public double getSellMoneyOfEachProduct(tblHangHoa product, DateTime dateStart, DateTime dateEnd)
         {
-            double sellMoney = 0;
-            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
-            {
-                if (invoiceDetail.MaHangHoa == product.MaHangHoa)
-                {
-                    sellMoney += (double)invoiceDetail.TongTien;
-                }
-            }
+            double sellMoney = Convert.ToDouble(getListInvoiceDetail(dateStart, dateEnd).Where(
+                p => p.MaHangHoa == product.MaHangHoa).Sum(p => p.TongTien));
             return sellMoney;
         }
     }

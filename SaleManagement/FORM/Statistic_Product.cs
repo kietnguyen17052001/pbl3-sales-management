@@ -14,16 +14,16 @@ namespace SaleManagement.FORM
 {
     public partial class FrmStatistic_Product : Form
     {
-        private String idTypeOfProduct, usernamelogin;
+        private string idTypeOfProduct, usernamelogin;
         private DateTime dateStart, dateEnd;
-        public FrmStatistic_Product(DateTime _dateStart, DateTime _dateEnd, string value, string text, string _usernamelogin)
+        public FrmStatistic_Product(DateTime _dateStart, DateTime _dateEnd, string _idTypeOfProduct, string nameTypeOfProduct, string _usernamelogin)
         {
             InitializeComponent();
             usernamelogin = _usernamelogin;
-            lbINFO.Text = text + " từ ngày " + _dateStart.ToShortDateString() + " đến ngày " + _dateEnd.ToShortDateString();
+            lbINFO.Text = nameTypeOfProduct + " từ ngày " + _dateStart.ToString("dd/MM/yyyy") + " đến ngày " + _dateEnd.ToString("dd/MM/yyyy");
             dateStart = _dateStart;
             dateEnd = _dateEnd;
-            idTypeOfProduct = value;
+            idTypeOfProduct = _idTypeOfProduct;
             fillChart();
         }
         public void fillChart()
@@ -46,7 +46,7 @@ namespace SaleManagement.FORM
                 count++;
             }
             lbQUANTITY.Text = totalSellQuantityProduct.ToString();
-            lbMONEY.Text = string.Format("{0:n0}", totalSellMoney);
+            lbMONEY.Text = String.Format("{0:n0}", totalSellMoney);
         }
 
         private void btnBACK_Click(object sender, EventArgs e)
