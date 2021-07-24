@@ -95,16 +95,23 @@ namespace SaleManagement.FORM
                     invoiceDetail.DonGia = productPrice;
                     invoiceDetail.GiamGia = discount;
                     invoiceDetail.TongTien = productPrice * quantityProduct - productPrice * quantityProduct * discount / 100;
-                    BLL_LISTSALEINVOICE.Instance.FuncAddProduct(invoiceDetail);
-                    DialogResult answer = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (answer == DialogResult.Yes)
+                    try
                     {
-                        LoadProduct();
+                        BLL_LISTSALEINVOICE.Instance.FuncAddProduct(invoiceDetail);
+                        DialogResult answer = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (answer == DialogResult.Yes)
+                        {
+                            LoadProduct();
+                        }
+                        else
+                        {
+                            d(idInvoice);
+                            this.Close();
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        d(idInvoice);
-                        this.Close();
+                        MessageBox.Show("Hàng hóa này đã có trong hóa đơn", "Lỗi trùng hàng hóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -116,16 +123,23 @@ namespace SaleManagement.FORM
                 invoicedetail.SoLuong = quantityProduct;
                 invoicedetail.GiaNhap = productPrice;
                 invoicedetail.TongTien = productPrice * quantityProduct;
-                BLL_LISTIMPORTINVOICE.Instance.FuncAddProduct(invoicedetail);
-                DialogResult answer = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (answer == DialogResult.Yes)
+                try
                 {
-                    LoadProduct();
+                    BLL_LISTIMPORTINVOICE.Instance.FuncAddProduct(invoicedetail);
+                    DialogResult answer = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (answer == DialogResult.Yes)
+                    {
+                        LoadProduct();
+                    }
+                    else
+                    {
+                        d(idInvoice);
+                        this.Close();
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    d(idInvoice);
-                    this.Close();
+                    MessageBox.Show("Hàng hóa này đã có trong hóa đơn", "Lỗi trùng hàng hóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

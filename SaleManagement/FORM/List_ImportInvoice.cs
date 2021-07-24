@@ -255,7 +255,6 @@ namespace SaleManagement.FORM
                 FrmAdd_NewProduct frmAddNewProduct = new FrmAdd_NewProduct(idInvoice, false);
                 frmAddNewProduct.d += new FrmAdd_NewProduct.myDel(LoadDGVs);
                 frmAddNewProduct.Show();
-                LoadDGVs(txtSEARCH.Text.Trim());
             }
         }
         // button edit quantity
@@ -385,7 +384,7 @@ namespace SaleManagement.FORM
                     {
                         BLL_LISTIMPORTINVOICE.Instance.FuncDeleteProduct(listIdProduct, idInvoice);
                     }
-                    LoadDGVs(txtSEARCH.Text.Trim());
+                    LoadDGVs(txtID_INVOICE.Text.Trim());
                 } 
             }
         }

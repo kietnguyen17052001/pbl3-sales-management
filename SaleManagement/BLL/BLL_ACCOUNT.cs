@@ -35,6 +35,7 @@ namespace SaleManagement.BLL
             db.tblTaiKhoans.Add(account);
             db.SaveChanges();
         }
+        // Thay đổi password nhân viên trong frmNhanVien
         public void ChangePasswordStaff(tblTaiKhoan _account)
         {
             var account = db.tblTaiKhoans.Find(_account.MaNguoiDung);
@@ -50,12 +51,12 @@ namespace SaleManagement.BLL
             }
             else
             {
-                if (!isAdmin)
+                if (!isAdmin) // thay đổi password của nhân viên trong tblNhanVien
                 {
                     var staff = db.tblNhanViens.Find(userNameLogin);
                     staff.MatKhau = newPass;
                 }
-                account.MatKhau = newPass;
+                account.MatKhau = newPass; // thay đổi password của người dùng trong tblTaiKhoan
                 db.SaveChanges();
                 return true;
             }
