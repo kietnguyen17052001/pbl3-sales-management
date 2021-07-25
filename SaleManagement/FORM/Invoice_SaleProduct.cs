@@ -42,7 +42,6 @@ namespace SaleManagement.VIEW
             setComboboxStaff();
             LoadData();
             FormatHeader();
-            MessageBox.Show("Percent : " + discountPercent);
         }
         public void FormatHeader()
         {
@@ -76,7 +75,7 @@ namespace SaleManagement.VIEW
             txtTotalQuantity.Text = quantityProduct.ToString();
             txtTotalProduct.Text = allProduct.ToString(); 
             invoiceDiscount = totalMoney * discountPercent / 100 + discountMoney;
-            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount);
+            sendByCustomer = invoicePrice = Math.Round(BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount));
             txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
             txtPriceInvoice.Text = String.Format("{0:n0}", invoicePrice);
             txtTotalMoney.Text = String.Format("{0:n0}", totalMoney);
@@ -200,9 +199,8 @@ namespace SaleManagement.VIEW
         }
         public void InvoiceValueAfterDiscount()
         {
-            invoiceDiscount = BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable) * discountPercent / 100 + discountMoney;
-            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable,
-                invoiceDiscount);
+            invoiceDiscount = Math.Round(BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable) * discountPercent / 100 + discountMoney);
+            sendByCustomer = invoicePrice = Math.Round(BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount));
             txtPriceInvoice.Text = String.Format("{0:n0}", invoicePrice);
             txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
             txtCustomerPay.Text = String.Format("{0:n0}", sendByCustomer);
@@ -347,8 +345,8 @@ namespace SaleManagement.VIEW
             invoice.MaNhanVien = ((CBBItem)cbbStaff.SelectedItem).VALUE;
             invoice.NgayBan = dpDate.Value;
             invoice.MaKhachHang = idCustomer;
-            invoice.SoTien = Math.Round(invoicePrice);
-            invoice.GiamGia = Math.Round(invoiceDiscount);
+            invoice.SoTien = invoicePrice;
+            invoice.GiamGia = invoiceDiscount;
             if (String.IsNullOrEmpty(invoice.MaKhachHang)
                 || (dataTable.Rows.Count == 0) || (sendByCustomer < invoicePrice))
             {
