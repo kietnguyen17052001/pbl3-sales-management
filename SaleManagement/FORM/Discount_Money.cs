@@ -12,18 +12,18 @@ namespace SaleManagement.FORM
 {
     public partial class FrmDiscount_Money : Form
     {
-        public delegate void myDEL(string DISCOUNT);
+        public delegate void myDEL(double discount);
         public myDEL d { get; set; }
-        public double total_money { get; set; }
-        public FrmDiscount_Money(double total_money)
+        private double totalMoney;
+        public FrmDiscount_Money(double _totalMoney)
         {
             InitializeComponent();
-            this.total_money = total_money;
+            totalMoney = _totalMoney;
         }
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            d(txtDISCOUNT.Text);
+            d(Convert.ToDouble(txtDISCOUNT.Text));
             this.Close();
         }
         private void btnCANCEL_Click(object sender, EventArgs e)
@@ -55,9 +55,9 @@ namespace SaleManagement.FORM
             {
                 txtDISCOUNT.Text = "0";
             }
-            if (Convert.ToDouble(txtDISCOUNT.Text) > total_money)
+            if (Convert.ToDouble(txtDISCOUNT.Text) > totalMoney)
             {
-                txtDISCOUNT.Text = total_money.ToString();
+                txtDISCOUNT.Text = totalMoney.ToString();
             }
         }
         // keypress event

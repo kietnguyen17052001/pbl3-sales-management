@@ -67,11 +67,9 @@ namespace SaleManagement.FORM
             dgvInfoProduct.ColumnHeadersDefaultCellStyle.ForeColor = dgvInvoice.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvInfoProduct.ColumnHeadersDefaultCellStyle.Font = dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("tahoma", 7, FontStyle.Bold);
             dgvInfoProduct.ColumnHeadersDefaultCellStyle.Padding = dgvInvoice.ColumnHeadersDefaultCellStyle.Padding = new Padding(5);
-
             dgvInfoProduct.Columns["MaHangHoa"].HeaderText = dgvInvoice.Columns["MaHangHoa"].HeaderText = "Mã h.hóa";
             dgvInfoProduct.Columns["TenHangHoa"].HeaderText = dgvInvoice.Columns["TenHangHoa"].HeaderText = "Tên h.hóa";
             dgvInfoProduct.Columns["SoLuong"].HeaderText = dgvInvoice.Columns["SoLuong"].HeaderText = "Số lượng";
-
             dgvInvoice.Columns["GiaNhap"].HeaderText = "Giá nhập";
             dgvInvoice.Columns["TongTien"].HeaderText = "Tổng tiền";
         }
@@ -178,19 +176,12 @@ namespace SaleManagement.FORM
         {
             List<string> listIdProduct = new List<string>();
             DataGridViewSelectedRowCollection data = dgvInvoice.SelectedRows;
-            foreach(DataGridViewRow dgvRow in data)
+            foreach (DataGridViewRow dgvRow in data)
             {
                 listIdProduct.Add(dgvRow.Cells["MaHangHoa"].Value.ToString());
             }
             BLL_IMPORTPRODUCT.instance.FuncDeleteProduct(listIdProduct, dataTable);
-            if(dataTable.Rows.Count == 0)
-            {
-                ResetInvoice();
-            }
-            else
-            {
-                setValue(Convert.ToDouble(txtMoney.Text), Convert.ToDouble(txtPercent.Text));
-            }
+            setValue(Convert.ToDouble(txtMoney.Text), Convert.ToDouble(txtPercent.Text));
         }
         // ---------- Thanh toán ----------
         public void setValue(double discountMoney, double discountPercent)

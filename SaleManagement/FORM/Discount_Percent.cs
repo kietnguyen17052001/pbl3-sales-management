@@ -12,7 +12,7 @@ namespace SaleManagement.FORM
 {
     public partial class FrmDiscount_Percent : Form
     {
-        public delegate void myDEL(string DISCOUNT);
+        public delegate void myDEL(double discount);
         public myDEL d { get; set; }
         public FrmDiscount_Percent()
         {
@@ -21,7 +21,7 @@ namespace SaleManagement.FORM
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            d(txtDISCOUNT.Text);
+            d(Convert.ToDouble(txtDISCOUNT.Text));
             this.Close();
         }
 

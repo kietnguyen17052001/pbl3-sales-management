@@ -34,8 +34,8 @@ namespace SaleManagement.BLL
                 MaHangHoa = data["MaHangHoa"].ToString(),
                 SoLuong = Convert.ToInt32(data["SoLuong"].ToString()),
                 DonGia = Convert.ToDouble(data["DonGia(VNĐ)"].ToString()),
-                GiamGia = Convert.ToDouble(data["KhuyenMai(%)"].ToString()),
-                TongTien = Convert.ToDouble(data["ThanhTien(VNĐ)"].ToString())
+                GiamGia = Math.Round(Convert.ToDouble(data["KhuyenMai(%)"].ToString())),
+                TongTien = Math.Round(Convert.ToDouble(data["ThanhTien(VNĐ)"].ToString()))
             };
         }
         // Load data for DGVProduct
@@ -135,6 +135,21 @@ namespace SaleManagement.BLL
                     String.Format("{0:n0}", Convert.ToDouble(product.GiaBan * quantityAdd - (product.GiaBan * quantityAdd * discount) / 100)));
             }
         }
+        // Thay đổi số lượng hàng hóa
+        public void FuncUpdateProductQty(DataTable dataTable, string idProduct, int newQuantity)
+        {
+            double newPrice;
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                if (dataRow["MaHangHoa"].ToString() == idProduct)
+                {
+                    dataRow["SoLuong"] = newQuantity;
+                    newPrice = Convert.ToDouble(dataRow["DonGia(VNĐ)"]) * newQuantity -
+                        (Convert.ToDouble(dataRow["DonGia(VNĐ)"]) * newQuantity * Convert.ToDouble(dataRow["KhuyenMai(%)"])) / 100;
+                    dataRow["ThanhTien(VNĐ)"] = String.Format("{0:n0}", newPrice);
+                }
+            }
+        }
         // Xóa hàng hóa khỏi hóa đơn
         public void FuncDeleteProduct(List<string> listIdProduct, DataTable dataTable)
         {
@@ -200,14 +215,7 @@ namespace SaleManagement.BLL
         // Tổng thanh toán của hóa đơn
         public double getIntoMoney(DataTable dataTable, double discount)
         {
-            if (discount == 0)
-            {
-                return getTotalMoney(dataTable);
-            }
-            else
-            {
-                return getTotalMoney(dataTable) - discount;
-            }
+            return getTotalMoney(dataTable) - discount;
         }
         // Tổng số lượng của tất cả hàng hóa
         public int getTotalQuantityProduct(DataTable dataTable)

@@ -524,6 +524,7 @@ namespace SaleManagement.VIEW
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(139, 29);
             this.txtDiscount.TabIndex = 66;
+            this.txtDiscount.Text = "0";
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
@@ -548,6 +549,7 @@ namespace SaleManagement.VIEW
             this.txtTotalMoney.Name = "txtTotalMoney";
             this.txtTotalMoney.Size = new System.Drawing.Size(139, 29);
             this.txtTotalMoney.TabIndex = 64;
+            this.txtTotalMoney.Text = "0";
             this.txtTotalMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label7
@@ -566,7 +568,7 @@ namespace SaleManagement.VIEW
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(550, 601);
+            this.label16.Location = new System.Drawing.Point(550, 604);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 19);
             this.label16.TabIndex = 73;
@@ -579,18 +581,19 @@ namespace SaleManagement.VIEW
             this.txtPriceInvoice.Enabled = false;
             this.txtPriceInvoice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPriceInvoice.ForeColor = System.Drawing.Color.IndianRed;
-            this.txtPriceInvoice.Location = new System.Drawing.Point(418, 590);
-            this.txtPriceInvoice.Multiline = true;
+            this.txtPriceInvoice.Location = new System.Drawing.Point(419, 599);
             this.txtPriceInvoice.Name = "txtPriceInvoice";
-            this.txtPriceInvoice.Size = new System.Drawing.Size(125, 40);
+            this.txtPriceInvoice.Size = new System.Drawing.Size(125, 29);
             this.txtPriceInvoice.TabIndex = 72;
+            this.txtPriceInvoice.Text = "0";
+            this.txtPriceInvoice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label17
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(312, 600);
+            this.label17.Location = new System.Drawing.Point(312, 602);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(108, 22);
             this.label17.TabIndex = 71;
@@ -629,6 +632,7 @@ namespace SaleManagement.VIEW
             this.txtReturnMoney.Name = "txtReturnMoney";
             this.txtReturnMoney.Size = new System.Drawing.Size(139, 29);
             this.txtReturnMoney.TabIndex = 77;
+            this.txtReturnMoney.Text = "0";
             this.txtReturnMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label20
@@ -652,6 +656,7 @@ namespace SaleManagement.VIEW
             this.txtCustomerPay.Name = "txtCustomerPay";
             this.txtCustomerPay.Size = new System.Drawing.Size(139, 29);
             this.txtCustomerPay.TabIndex = 75;
+            this.txtCustomerPay.Text = "0";
             this.txtCustomerPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCustomerPay.TextChanged += new System.EventHandler(this.txtSEND_BY_CUSTOMER_TextChanged);
             this.txtCustomerPay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPRODUCT_DISCOUNT_KeyPress);

@@ -19,9 +19,11 @@ namespace SaleManagement.VIEW
         private string usernameLogin;
         private int qtyOfSelectProduct, allProduct, quantityProduct;
         private string idProduct, idCustomer; //idCustomer cho chức năng Payment
-        private double 
-            productDiscount, 
-            invoicePrice, 
+        private double
+            productDiscount,
+            invoicePrice,
+            discountPercent,
+            discountMoney,
             invoiceDiscount, 
             sendByCustomer, 
             sendByStaff, 
@@ -36,10 +38,11 @@ namespace SaleManagement.VIEW
             {
                 btnBack.Enabled = false;
             }
+            txtIdInvoice.Text = BLL_SALEPRODUCT.Instance.getNewIdInvoice(); // khởi tạo mã hóa đơn
             setComboboxStaff();
-            setDataForToolBox();
             LoadData();
             FormatHeader();
+            MessageBox.Show("Percent : " + discountPercent);
         }
         public void FormatHeader()
         {
@@ -65,16 +68,16 @@ namespace SaleManagement.VIEW
         // Thiết lập dữ liệu cho các textbox
         public void setDataForToolBox()
         {
-            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount); // tổng thanh toán đơn hàng
             totalMoney = BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable); // tổng tiền đơn hàng
             quantityProduct = BLL_SALEPRODUCT.Instance.getTotalQuantityProduct(dataTable); // Tổng số lượng hàng 
             allProduct = BLL_SALEPRODUCT.Instance.getTotalProduct(dataTable); // Tổng loại hàng
-            txtIdInvoice.Text = BLL_SALEPRODUCT.Instance.getNewIdInvoice(); // khởi tạo mã hóa đơn mới
-            txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
             txtProductDiscount.Text = "0";
-            txtTotalQuantity.Text = quantityProduct.ToString();
-            txtTotalProduct.Text = allProduct.ToString();
             txtQuantityOfSelect.Text = "1";
+            txtTotalQuantity.Text = quantityProduct.ToString();
+            txtTotalProduct.Text = allProduct.ToString(); 
+            invoiceDiscount = totalMoney * discountPercent / 100 + discountMoney;
+            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount);
+            txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
             txtPriceInvoice.Text = String.Format("{0:n0}", invoicePrice);
             txtTotalMoney.Text = String.Format("{0:n0}", totalMoney);
             txtCustomerPay.Text = String.Format("{0:n0}", sendByCustomer);
@@ -91,38 +94,21 @@ namespace SaleManagement.VIEW
             else { cbbStaff.SelectedIndex = 0; }
         }
         // load dataTable
-        public void ResetInvoice()
+        public void ResetInvoice(bool isNewInvoice)
         {
+            if (isNewInvoice)
+            {
+                txtIdInvoice.Text = BLL_SALEPRODUCT.Instance.getNewIdInvoice(); // khởi tạo mã hóa đơn
+            }
             dataTable.Clear();
             totalMoney = invoicePrice = sendByCustomer = sendByStaff = allProduct = quantityProduct = 0;
-            invoiceDiscount = 0;
+            invoiceDiscount = discountPercent = discountMoney = 0;
             qtyOfSelectProduct = 1;
             productDiscount = 0;
             txtCustomer.Clear();
             idCustomer = null;
             cbbStaff.SelectedIndex = 0;
-            btnDeleteProduct.Enabled = true;
-            btnSelectProduct.Enabled = true;
-            btnEditQuantity.Enabled = true;;
             setDataForToolBox();
-        }
-        // Thiết lập giá trị cho txt Giảm giá và Tổng thanh toán sau khi giảm theo % 
-        public void setDiscountPercent(string percent)
-        {
-            sendByCustomer = invoicePrice = Math.Round(BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, (BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable) * Convert.ToDouble(percent) / 100)));
-            invoiceDiscount = BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable) * Convert.ToDouble(percent) / 100;
-            txtPriceInvoice.Text = String.Format("{0:n0}", invoicePrice);
-            txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
-            txtCustomerPay.Text = String.Format("{0:n0}", sendByCustomer);
-        }
-        // Thiết lập giá trị cho txt Giảm giá và Tổng thanh toán sau khi giảm theo số tiền
-        public void setDiscountMoney(string money)
-        {
-            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, Convert.ToDouble(money));
-            invoiceDiscount = Convert.ToDouble(money);
-            txtPriceInvoice.Text = String.Format("{0:n0}", invoicePrice); // định dạng lại chuỗi, 2000 -> 2.000
-            txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
-            txtCustomerPay.Text = String.Format("{0:n0}", sendByCustomer);
         }
         
         public void LoadData()
@@ -181,13 +167,14 @@ namespace SaleManagement.VIEW
         // delete product
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
-            List<string> ListIdProduct = new List<string>();
+            List<string> listIdProduct = new List<string>();
             DataGridViewSelectedRowCollection data = dgvInvoice.SelectedRows;
             foreach (DataGridViewRow dgvRow in data)
             {
-                ListIdProduct.Add(dgvRow.Cells[0].Value.ToString());
+                listIdProduct.Add(dgvRow.Cells[0].Value.ToString());
             }
-            BLL_SALEPRODUCT.Instance.FuncDeleteProduct(ListIdProduct, dataTable);
+            BLL_SALEPRODUCT.Instance.FuncDeleteProduct(listIdProduct, dataTable);
+
             // Dữ liệu hóa đơn sau khi xóa hàng hóa
             setDataForToolBox();
         }
@@ -206,53 +193,33 @@ namespace SaleManagement.VIEW
             frmSelectCustomer.d += new FrmSelect_Customer.myDEL(setCustomer);
             frmSelectCustomer.Show();
         }
-
-        //Btn thanh toán
-        private void btnPayment_Click(object sender, EventArgs e)
-        {
-            string message = "Thông tin lỗi:\n";
-            tblHoaDonBanHang invoice = new tblHoaDonBanHang();
-            invoice.MaHoaDonBan = txtIdInvoice.Text.Trim();
-            invoice.MaNhanVien = ((CBBItem)cbbStaff.SelectedItem).VALUE;
-            invoice.NgayBan = dpDate.Value;
-            invoice.MaKhachHang = idCustomer;
-            invoice.SoTien = Math.Round(invoicePrice);
-            invoice.GiamGia = Math.Round(invoiceDiscount);
-            if (String.IsNullOrEmpty(invoice.MaKhachHang)
-                || (dataTable.Rows.Count == 0) || (sendByCustomer < invoicePrice))
-            {
-                if (String.IsNullOrEmpty(invoice.MaKhachHang))
-                {
-                    message += "+ Khách hàng trống\n";
-                }
-                if (dataTable.Rows.Count == 0)
-                {
-                    message += "+ Hóa đơn trống sản phẩm\n";
-                }
-                if (sendByCustomer < invoicePrice)
-                {
-                    message += "+ Số tiền của khách hàng trả không hợp lệ\n";
-                }
-                MessageBox.Show(message, "Lỗi tạo đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            else
-            {
-                DialogResult answer = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (answer == DialogResult.Yes)
-                {
-                    BLL_SALEPRODUCT.Instance.FuncPayment(invoice, dataTable); // Payment invoice
-                    MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
-                    ResetInvoice();
-                }
-            }
-        }
         // load invoice
         private void btnLoadInvoice_Click(object sender, EventArgs e)
         {
-            ResetInvoice();// reset Invoice
+            ResetInvoice(false);// reset Invoice
         }
+        public void InvoiceValueAfterDiscount()
+        {
+            invoiceDiscount = BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable) * discountPercent / 100 + discountMoney;
+            sendByCustomer = invoicePrice = BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable,
+                invoiceDiscount);
+            txtPriceInvoice.Text = String.Format("{0:n0}", invoicePrice);
+            txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
+            txtCustomerPay.Text = String.Format("{0:n0}", sendByCustomer);
+        }
+        // Thiết lập giá trị cho txt Giảm giá và Tổng thanh toán sau khi giảm theo % 
+        public void setDiscountPercent(double discount)
+        {
+            discountPercent = discount;
+            InvoiceValueAfterDiscount();
+        }
+        // Thiết lập giá trị cho txt Giảm giá và Tổng thanh toán sau khi giảm theo số tiền
+        public void setDiscountMoney(double discount)
+        {
+            discountMoney = discount;
+            InvoiceValueAfterDiscount();
+        }
+
         // Btn giảm theo phần trăm, gọi form Discount_Percent
         private void btnDiscountPercent_Click(object sender, EventArgs e)
         {
@@ -359,12 +326,10 @@ namespace SaleManagement.VIEW
         // set new quantity for product
         public void setNewQtyForProduct(int newQuantity)
         {
-            dgvInvoice.SelectedRows[0].Cells["SoLuong"].Value = newQuantity;
-            double newPrice = Convert.ToDouble(dgvInvoice.SelectedRows[0].Cells["DonGia(VNĐ)"].Value.ToString()) * newQuantity - 
-                (Convert.ToDouble(dgvInvoice.SelectedRows[0].Cells["DonGia(VNĐ)"].Value.ToString()) * newQuantity * productDiscount) / 100;
-            dgvInvoice.SelectedRows[0].Cells["ThanhTien(VNĐ)"].Value = String.Format("{0:n0}",newPrice);
+            BLL_SALEPRODUCT.Instance.FuncUpdateProductQty(dataTable, dgvInvoice.SelectedRows[0].Cells["MaHangHoa"].Value.ToString(), newQuantity);
             setDataForToolBox();
         }
+
         // edit quantity product
         private void btnEditQuantity_Click(object sender, EventArgs e)
         {
@@ -372,6 +337,49 @@ namespace SaleManagement.VIEW
             frmEditQuantityProduct.d += new FrmEditQuantityProduct_InvoiceSaleProduct.myDel(setNewQtyForProduct);
             frmEditQuantityProduct.Show();
         }
+
+        //Btn thanh toán
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            string message = "Thông tin lỗi:\n";
+            tblHoaDonBanHang invoice = new tblHoaDonBanHang();
+            invoice.MaHoaDonBan = txtIdInvoice.Text.Trim();
+            invoice.MaNhanVien = ((CBBItem)cbbStaff.SelectedItem).VALUE;
+            invoice.NgayBan = dpDate.Value;
+            invoice.MaKhachHang = idCustomer;
+            invoice.SoTien = Math.Round(invoicePrice);
+            invoice.GiamGia = Math.Round(invoiceDiscount);
+            if (String.IsNullOrEmpty(invoice.MaKhachHang)
+                || (dataTable.Rows.Count == 0) || (sendByCustomer < invoicePrice))
+            {
+                if (String.IsNullOrEmpty(invoice.MaKhachHang))
+                {
+                    message += "+ Khách hàng trống\n";
+                }
+                if (dataTable.Rows.Count == 0)
+                {
+                    message += "+ Hóa đơn trống sản phẩm\n";
+                }
+                if (sendByCustomer < invoicePrice)
+                {
+                    message += "+ Số tiền của khách hàng trả không hợp lệ\n";
+                }
+                MessageBox.Show(message, "Lỗi tạo đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else
+            {
+                DialogResult answer = MessageBox.Show("Bạn chắc nhắn muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (answer == DialogResult.Yes)
+                {
+                    BLL_SALEPRODUCT.Instance.FuncPayment(invoice, dataTable); // Payment invoice
+                    MessageBox.Show("Tạo thành công hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
+                    ResetInvoice(true);
+                }
+            }
+        }
+
         // back to frmQuanLyDuLieu
         private void btnBack_Click(object sender, EventArgs e)
         {
