@@ -107,7 +107,7 @@ namespace SaleManagement.FORM
             this.lbQTY.AutoSize = true;
             this.lbQTY.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbQTY.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lbQTY.Location = new System.Drawing.Point(156, 61);
+            this.lbQTY.Location = new System.Drawing.Point(102, 61);
             this.lbQTY.Name = "lbQTY";
             this.lbQTY.Size = new System.Drawing.Size(0, 24);
             this.lbQTY.TabIndex = 94;

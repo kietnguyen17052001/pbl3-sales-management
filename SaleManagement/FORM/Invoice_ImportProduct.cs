@@ -160,9 +160,16 @@ namespace SaleManagement.FORM
         // button Update quantity
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            BLL_IMPORTPRODUCT.instance.FuncUpdateProductQty(dataTable, dgvInvoice.SelectedRows[0].Cells["MaHangHoa"].Value.ToString(), Convert.ToInt32(txtUpdateQuantity.Text));
-            LoadData();
-            setValue(Convert.ToDouble(txtMoney.Text), Convert.ToDouble(txtPercent.Text));
+            if (Convert.ToInt32(txtUpdateQuantity.Text) == 0)
+            {
+                MessageBox.Show("Số lượng thay đổi phải lớn hơn 0!", "Lỗi nhập số lượng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                BLL_IMPORTPRODUCT.instance.FuncUpdateProductQty(dataTable, dgvInvoice.SelectedRows[0].Cells["MaHangHoa"].Value.ToString(), Convert.ToInt32(txtUpdateQuantity.Text));
+                LoadData();
+                setValue(Convert.ToDouble(txtMoney.Text), Convert.ToDouble(txtPercent.Text));
+            }
         }
         private void txtUpdateQuantity_TextChanged(object sender, EventArgs e)
         {

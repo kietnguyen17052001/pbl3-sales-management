@@ -40,11 +40,11 @@ namespace SaleManagement.FORM
                 {
                     if (newQuantity > BLL_PRODUCT.Instance.getQuantityProductByIdProduct(idProduct) && newQuantity != Convert.ToInt32(txtOldQuantity.Text))
                     {
-                        lbSTATUS.Text = "Không đủ hàng hóa trong kho";
+                        lbSTATUS.Text = "Không đủ hàng hóa trong kho!";
                     }
                     else
                     {
-                        lbSTATUS.Text = "Số lượng nhập phải lớn hơn 0";
+                        lbSTATUS.Text = "Số lượng thay đổi phải lớn hơn 0!";
                     }
                 }
                 else
