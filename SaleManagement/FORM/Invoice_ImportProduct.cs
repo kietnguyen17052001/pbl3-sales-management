@@ -144,7 +144,7 @@ namespace SaleManagement.FORM
             idProduct = dgvInfoProduct.SelectedRows[0].Cells["MaHangHoa"].Value.ToString();
             BLL_IMPORTPRODUCT.instance.SelectProduct(dataTable, idProduct, Convert.ToInt32(txtQuantity.Text));
             LoadData();
-            setValue(true, 0);
+            setValue(Convert.ToDouble(txtMoney.Text), Convert.ToDouble(txtPercent.Text));
         }
         // ---------- Hóa đơn nhập hàng ----------
         // button Supplier: select supplier
@@ -164,11 +164,11 @@ namespace SaleManagement.FORM
         {
             BLL_IMPORTPRODUCT.instance.FuncUpdateProductQty(dataTable, dgvInvoice.SelectedRows[0].Cells["MaHangHoa"].Value.ToString(), Convert.ToInt32(txtUpdateQuantity.Text));
             LoadData();
-            setValue(true, 0);
+            setValue(Convert.ToDouble(txtMoney.Text), Convert.ToDouble(txtPercent.Text));
         }
         private void txtUpdateQuantity_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUpdateQuantity.Text))
+            if (String.IsNullOrEmpty(txtUpdateQuantity.Text))
             {
                 txtUpdateQuantity.Text = "1";
             }
@@ -183,33 +183,44 @@ namespace SaleManagement.FORM
                 listIdProduct.Add(dgvRow.Cells["MaHangHoa"].Value.ToString());
             }
             BLL_IMPORTPRODUCT.instance.FuncDeleteProduct(listIdProduct, dataTable);
-            setValue(true, 0);
+            if(dataTable.Rows.Count == 0)
+            {
+                ResetInvoice();
+            }
+            else
+            {
+                setValue(Convert.ToDouble(txtMoney.Text), Convert.ToDouble(txtPercent.Text));
+            }
         }
         // ---------- Thanh toán ----------
-        public void setValue(bool isPercent, double value)
+        public void setValue(double discountMoney, double discountPercent)
         {
             totalMoney = BLL_IMPORTPRODUCT.instance.getTotalMoney(dataTable);
-            intoMoney = BLL_IMPORTPRODUCT.instance.getIntoMoney(dataTable, isPercent, value);
+            intoMoney = BLL_IMPORTPRODUCT.instance.getIntoMoney(dataTable, discountMoney, discountPercent);
             txtTotalMoney.Text = String.Format("{0:n0}", totalMoney);
             txtIntoMoney.Text = String.Format("{0:n0}", intoMoney);
         }
         // replace into money
         private void txtPercent_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtPercent.Text))
+            if (String.IsNullOrEmpty(txtPercent.Text))
             {
                 txtPercent.Text = "0";
             }
-            setValue(true, Convert.ToDouble(txtPercent.Text));
+            else if(Convert.ToInt32(txtPercent.Text) > 100)
+            {
+                txtPercent.Text = (Convert.ToInt32(txtPercent.Text) / 10).ToString();
+            }
+            setValue(Convert.ToDouble(txtMoney.Text), Convert.ToDouble(txtPercent.Text));
         }
 
         private void txtMoney_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtMoney.Text))
+            if (String.IsNullOrEmpty(txtMoney.Text))
             {
                 txtMoney.Text = "0";
             }
-            setValue(false, Convert.ToDouble(txtMoney.Text));
+            setValue(Convert.ToDouble(txtMoney.Text), Convert.ToDouble(txtPercent.Text));
         }
         // button Payment invoice
         private void btnPayment_Click(object sender, EventArgs e)
@@ -222,7 +233,8 @@ namespace SaleManagement.FORM
             invoice.MaNhaCungCap = idSupplier;
             invoice.SoTien = Math.Round(intoMoney);
             invoice.GiamGia = Math.Round((totalMoney - intoMoney));
-            if (String.IsNullOrEmpty(invoice.MaNhaCungCap) || dataTable.Rows.Count == 0)
+            if (String.IsNullOrEmpty(invoice.MaNhaCungCap) || dataTable.Rows.Count == 0 || 
+                invoice.SoTien < 0)
             {
                 if (String.IsNullOrEmpty(invoice.MaNhaCungCap))
                 {
@@ -231,6 +243,10 @@ namespace SaleManagement.FORM
                 if (dataTable.Rows.Count == 0)
                 {
                     message += "+ Hóa đơn trống sản phẩm\n";
+                }
+                if (invoice.SoTien < 0)
+                {
+                    message += "+ Số tiền thanh toán không phù hợp\n";
                 }
                 MessageBox.Show(message, "Lỗi tạo đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

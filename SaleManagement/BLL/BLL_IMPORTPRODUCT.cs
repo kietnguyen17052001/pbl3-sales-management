@@ -188,16 +188,9 @@ namespace SaleManagement.BLL
             return value;
         }
         // Get into money for invoice
-        public double getIntoMoney(DataTable dataTable, bool isPercent, double discount)
+        public double getIntoMoney(DataTable dataTable, double discountMoney, double discountPercent)
         {
-            if (isPercent)
-            {
-                return getTotalMoney(dataTable) - getTotalMoney(dataTable) * discount / 100;
-            }
-            else
-            {
-                return getTotalMoney(dataTable) - discount;
-            }
+            return getTotalMoney(dataTable) - (getTotalMoney(dataTable) * discountPercent / 100) - discountMoney;
         }
     }
 }
