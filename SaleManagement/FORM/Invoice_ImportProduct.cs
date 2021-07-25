@@ -28,10 +28,10 @@ namespace SaleManagement.FORM
             {
                 btnBACK.Enabled = false;
             }
+            txtIdInvoice.Text = BLL_IMPORTPRODUCT.instance.getNewIdInvoice();
             LoadData();
             FormatHeaderCell();
             setCbbStaff();
-            txtIdInvoice.Text = BLL_IMPORTPRODUCT.instance.getNewIdInvoice();
         }
         public void setCbbStaff()
         {
