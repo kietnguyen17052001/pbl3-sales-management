@@ -55,7 +55,7 @@ namespace SaleManagement.FORM
             }
             if(Convert.ToInt32(txtDISCOUNT.Text) > 100)
             {
-                txtDISCOUNT.Text = "100";
+                txtDISCOUNT.Text = (Convert.ToInt32(txtDISCOUNT.Text) / 10).ToString();
             }
         }
 

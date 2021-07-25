@@ -55,6 +55,7 @@ namespace SaleManagement.FORM
             this.txtDISCOUNT.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDISCOUNT.ForeColor = System.Drawing.Color.Silver;
             this.txtDISCOUNT.Location = new System.Drawing.Point(168, 66);
+            this.txtDISCOUNT.MaxLength = 100;
             this.txtDISCOUNT.Name = "txtDISCOUNT";
             this.txtDISCOUNT.Size = new System.Drawing.Size(203, 29);
             this.txtDISCOUNT.TabIndex = 34;
