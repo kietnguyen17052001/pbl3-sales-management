@@ -207,7 +207,7 @@ namespace SaleManagement.FORM
             {
                 txtPercent.Text = "0";
             }
-            else if(Convert.ToInt32(txtPercent.Text) > 100)
+            if (Convert.ToInt32(txtPercent.Text) > 100)
             {
                 txtPercent.Text = (Convert.ToInt32(txtPercent.Text) / 10).ToString();
             }
@@ -233,8 +233,8 @@ namespace SaleManagement.FORM
             invoice.MaNhaCungCap = idSupplier;
             invoice.SoTien = Math.Round(intoMoney);
             invoice.GiamGia = Math.Round((totalMoney - intoMoney));
-            if (String.IsNullOrEmpty(invoice.MaNhaCungCap) || dataTable.Rows.Count == 0 || 
-                invoice.SoTien < 0)
+            if (String.IsNullOrEmpty(invoice.MaNhaCungCap) || dataTable.Rows.Count == 0
+                || Convert.ToDouble(txtIntoMoney.Text) < 0)
             {
                 if (String.IsNullOrEmpty(invoice.MaNhaCungCap))
                 {
@@ -244,9 +244,9 @@ namespace SaleManagement.FORM
                 {
                     message += "+ Hóa đơn trống sản phẩm\n";
                 }
-                if (invoice.SoTien < 0)
+                if (Convert.ToDouble(txtIntoMoney.Text) < 0)
                 {
-                    message += "+ Số tiền thanh toán không phù hợp\n";
+                    message += "+ Tiền thanh toán âm\n";
                 }
                 MessageBox.Show(message, "Lỗi tạo đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

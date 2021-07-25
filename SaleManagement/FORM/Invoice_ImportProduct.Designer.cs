@@ -602,6 +602,7 @@ namespace SaleManagement.FORM
             this.txtPercent.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPercent.ForeColor = System.Drawing.Color.SteelBlue;
             this.txtPercent.Location = new System.Drawing.Point(433, 26);
+            this.txtPercent.MaxLength = 3;
             this.txtPercent.Name = "txtPercent";
             this.txtPercent.Size = new System.Drawing.Size(48, 29);
             this.txtPercent.TabIndex = 74;
