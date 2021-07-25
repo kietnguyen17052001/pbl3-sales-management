@@ -35,9 +35,17 @@ namespace SaleManagement.FORM
             newQuantity = Convert.ToInt32(txtNewQuantity.Text);
             if (isListSale)
             {
-                if (newQuantity > BLL_PRODUCT.Instance.getQuantityProductByIdProduct(idProduct) && newQuantity != Convert.ToInt32(txtOldQuantity.Text))
+                if ((newQuantity > BLL_PRODUCT.Instance.getQuantityProductByIdProduct(idProduct) && newQuantity != Convert.ToInt32(txtOldQuantity.Text)) ||
+                    newQuantity == 0)
                 {
-                    lbSTATUS.Text = "Không đủ số lượng hàng hóa";
+                    if (newQuantity > BLL_PRODUCT.Instance.getQuantityProductByIdProduct(idProduct) && newQuantity != Convert.ToInt32(txtOldQuantity.Text))
+                    {
+                        lbSTATUS.Text = "Không đủ hàng hóa trong kho";
+                    }
+                    else
+                    {
+                        lbSTATUS.Text = "Số lượng nhập phải lớn hơn 0";
+                    }
                 }
                 else
                 {
