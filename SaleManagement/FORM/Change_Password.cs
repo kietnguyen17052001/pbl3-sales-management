@@ -111,7 +111,9 @@ namespace SaleManagement.FORM
             else if (txtReWriteNewPassword.Text != txtNewPassword.Text)
             {
                 MessageBox.Show("Mật khẩu nhập lại không khớp!", "Lỗi nhập mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtReWriteNewPassword.Clear();
+                txtReWriteNewPassword.Text = "Nhập lại mật khẩu mới";
+                txtReWriteNewPassword.ForeColor = Color.Silver;
+                txtReWriteNewPassword.PasswordChar = '\0';
             }
             else
             {
@@ -121,8 +123,10 @@ namespace SaleManagement.FORM
                     if (txtNewPassword.Text == txtOldPassword.Text)
                     {
                         MessageBox.Show("Mật khẩu mới không được trùng với mật khẩu cũ!", "Lỗi nhập mật khẩu mới", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtNewPassword.Clear();
-                        txtReWriteNewPassword.Clear();
+                        txtNewPassword.Text = "Nhập mật khẩu mới";
+                        txtReWriteNewPassword.Text = "Nhập lại mật khẩu mới";
+                        txtNewPassword.ForeColor = txtReWriteNewPassword.ForeColor = Color.Silver;
+                        txtNewPassword.PasswordChar = txtReWriteNewPassword.PasswordChar = '\0';
                     }
                     else
                     {
@@ -133,7 +137,9 @@ namespace SaleManagement.FORM
                 else
                 {
                     MessageBox.Show("Mật khẩu cũ không đúng!", "Lỗi nhập mật khẩu cũ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtOldPassword.Clear();
+                    txtOldPassword.Text = "Nhập mật khẩu cũ";
+                    txtOldPassword.ForeColor = Color.Silver;
+                    txtOldPassword.PasswordChar = '\0';
                 }
             }
         }
