@@ -43,7 +43,7 @@
     </Key>
     <Property Name="MaHangHoa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="MaLoaiHangHoa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenHangHoa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenHangHoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SoLuong" Type="Int32" />
     <Property Name="MaNhaSanXuat" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="GiaNhap" Type="Double" />
@@ -88,10 +88,10 @@
       <PropertyRef Name="MaKhachHang" />
     </Key>
     <Property Name="MaKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenKhachHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenKhachHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="GioiTinh" Type="Boolean" />
-    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblHoaDonBanHangs" Relationship="Self.FK__tblHoaDon__MaKha__6D6238AF" FromRole="tblKhachHang" ToRole="tblHoaDonBanHang" />
   </EntityType>
   <EntityType Name="tblLoaiHangHoa">
@@ -99,7 +99,7 @@
       <PropertyRef Name="MaLoaiHangHoa" />
     </Key>
     <Property Name="MaLoaiHangHoa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenLoaiHangHoa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenLoaiHangHoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblHangHoas" Relationship="Self.FK__tblHangHo__MaLoa__65C116E7" FromRole="tblLoaiHangHoa" ToRole="tblHangHoa" />
   </EntityType>
   <EntityType Name="tblNhaCungCap">
@@ -107,8 +107,8 @@
       <PropertyRef Name="MaNhaCungCap" />
     </Key>
     <Property Name="MaNhaCungCap" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenNhaCungCap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenNhaCungCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Fax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
@@ -120,12 +120,12 @@
       <PropertyRef Name="MaNhanVien" />
     </Key>
     <Property Name="MaNhanVien" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenNhanVien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenNhanVien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ViTri" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="NgaySinh" Type="DateTime" Precision="0" />
     <Property Name="GioiTinh" Type="Boolean" />
     <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Luong" Type="Double" />
     <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblHoaDonBanHangs" Relationship="Self.FK__tblHoaDon__MaNha__6C6E1476" FromRole="tblNhanVien" ToRole="tblHoaDonBanHang" />
@@ -136,8 +136,8 @@
       <PropertyRef Name="MaNhaSanXuat" />
     </Key>
     <Property Name="MaNhaSanXuat" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenNhaSanXuat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenNhaSanXuat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblHangHoas" Relationship="Self.FK__tblHangHo__MaNha__67A95F59" FromRole="tblNhaSanXuat" ToRole="tblHangHoa" />
   </EntityType>
   <EntityType Name="tblTaiKhoan">

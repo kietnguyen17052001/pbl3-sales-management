@@ -21,13 +21,13 @@ namespace SaleManagement.VIEW
         private string idProduct, idCustomer; //idCustomer cho chức năng Payment
         private double
             productDiscount,
-            invoicePrice,
+            totalMoney,
+            intoMoney,
             discountPercent,
             discountMoney,
-            invoiceDiscount, 
-            sendByCustomer, 
-            sendByStaff, 
-            totalMoney;
+            invoiceDiscount,
+            sendByCustomer,
+            sendByStaff;
         private DataTable dataTable = BLL_SALEPRODUCT.Instance.TableInvoice();
         public FrmInvoice_SaleProduct(bool _isAdmin, string _usernameLogin)
         {  
@@ -75,9 +75,9 @@ namespace SaleManagement.VIEW
             txtTotalQuantity.Text = quantityProduct.ToString();
             txtTotalProduct.Text = allProduct.ToString(); 
             invoiceDiscount = totalMoney * discountPercent / 100 + discountMoney;
-            sendByCustomer = invoicePrice = Math.Round(BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount));
+            sendByCustomer = intoMoney = Math.Round(BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount));
             txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
-            txtPriceInvoice.Text = String.Format("{0:n0}", invoicePrice);
+            txtPriceInvoice.Text = String.Format("{0:n0}", intoMoney);
             txtTotalMoney.Text = String.Format("{0:n0}", totalMoney);
             txtCustomerPay.Text = String.Format("{0:n0}", sendByCustomer);
             txtReturnMoney.Text = String.Format("{0:n0}", sendByStaff);
@@ -100,7 +100,7 @@ namespace SaleManagement.VIEW
                 txtIdInvoice.Text = BLL_SALEPRODUCT.Instance.getNewIdInvoice(); // khởi tạo mã hóa đơn
             }
             dataTable.Clear();
-            totalMoney = invoicePrice = sendByCustomer = sendByStaff = allProduct = quantityProduct = 0;
+            totalMoney = intoMoney = sendByCustomer = sendByStaff = allProduct = quantityProduct = 0;
             invoiceDiscount = discountPercent = discountMoney = 0;
             qtyOfSelectProduct = 1;
             productDiscount = 0;
@@ -200,8 +200,8 @@ namespace SaleManagement.VIEW
         public void InvoiceValueAfterDiscount()
         {
             invoiceDiscount = Math.Round(BLL_SALEPRODUCT.Instance.getTotalMoney(dataTable) * discountPercent / 100 + discountMoney);
-            sendByCustomer = invoicePrice = Math.Round(BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount));
-            txtPriceInvoice.Text = String.Format("{0:n0}", invoicePrice);
+            sendByCustomer = intoMoney = Math.Round(BLL_SALEPRODUCT.Instance.getIntoMoney(dataTable, invoiceDiscount));
+            txtPriceInvoice.Text = String.Format("{0:n0}", intoMoney);
             txtDiscount.Text = String.Format("{0:n0}", invoiceDiscount);
             txtCustomerPay.Text = String.Format("{0:n0}", sendByCustomer);
         }
@@ -221,14 +221,14 @@ namespace SaleManagement.VIEW
         // Btn giảm theo phần trăm, gọi form Discount_Percent
         private void btnDiscountPercent_Click(object sender, EventArgs e)
         {
-            FrmDiscount_Percent frmDiscountPercent = new FrmDiscount_Percent();
+            FrmDiscount_Percent frmDiscountPercent = new FrmDiscount_Percent(discountPercent);
             frmDiscountPercent.d += new FrmDiscount_Percent.myDEL(setDiscountPercent);
             frmDiscountPercent.Show();
         }
         // Btn giảm theo số tiền, gọi form Discount_Money
         private void btnDiscountMoney_Click(object sender, EventArgs e)
         {
-            FrmDiscount_Money frmDiscountMoney = new FrmDiscount_Money(totalMoney);
+            FrmDiscount_Money frmDiscountMoney = new FrmDiscount_Money(discountMoney);
             frmDiscountMoney.d += new FrmDiscount_Money.myDEL(setDiscountMoney);
             frmDiscountMoney.Show();
         }
@@ -345,10 +345,10 @@ namespace SaleManagement.VIEW
             invoice.MaNhanVien = ((CBBItem)cbbStaff.SelectedItem).VALUE;
             invoice.NgayBan = dpDate.Value;
             invoice.MaKhachHang = idCustomer;
-            invoice.SoTien = invoicePrice;
+            invoice.SoTien = intoMoney;
             invoice.GiamGia = invoiceDiscount;
             if (String.IsNullOrEmpty(invoice.MaKhachHang)
-                || (dataTable.Rows.Count == 0) || (sendByCustomer < invoicePrice))
+                || (dataTable.Rows.Count == 0) || (sendByCustomer < intoMoney) || (intoMoney < 0))
             {
                 if (String.IsNullOrEmpty(invoice.MaKhachHang))
                 {
@@ -358,9 +358,13 @@ namespace SaleManagement.VIEW
                 {
                     message += "+ Hóa đơn trống sản phẩm\n";
                 }
-                if (sendByCustomer < invoicePrice)
+                if (sendByCustomer < intoMoney)
                 {
                     message += "+ Số tiền của khách hàng trả không hợp lệ\n";
+                }
+                if (intoMoney < 0)
+                {
+                    message += "+ Hóa đơn âm tiền\n";
                 }
                 MessageBox.Show(message, "Lỗi tạo đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -430,7 +434,7 @@ namespace SaleManagement.VIEW
                 {
                     sendByCustomer = Convert.ToDouble(txtCustomerPay.Text);
                 }
-                sendByStaff = sendByCustomer - invoicePrice;
+                sendByStaff = sendByCustomer - intoMoney;
                 txtReturnMoney.Text = String.Format("{0:n0}", sendByStaff);
             }
             catch(Exception)

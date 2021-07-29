@@ -67,7 +67,6 @@ namespace SaleManagement.VIEW
             txtID_STAFF.Clear();
             txtNAME_STAFF.Clear();
             txtPHONE.Clear();
-            rbMALE.Checked = true;
             txtADDRESS.Clear();
             txtSALARY.Clear();
             txtPASSWORD.Clear();
@@ -286,12 +285,11 @@ namespace SaleManagement.VIEW
         // KeyPress Event
         private void txtPHONE_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
             {
                 e.Handled = true;
             }
         }
-
         private void txtSALARY_TextChanged(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txtSALARY.Text))
@@ -299,6 +297,5 @@ namespace SaleManagement.VIEW
                 txtSALARY.Text = "0";
             }
         }
-
     }
 }

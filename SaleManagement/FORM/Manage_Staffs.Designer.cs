@@ -401,6 +401,7 @@ namespace SaleManagement.VIEW
             this.txtPHONE.Name = "txtPHONE";
             this.txtPHONE.Size = new System.Drawing.Size(244, 27);
             this.txtPHONE.TabIndex = 145;
+            this.txtPHONE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPHONE_KeyPress);
             // 
             // label3
             // 
@@ -486,6 +487,7 @@ namespace SaleManagement.VIEW
             this.txtSALARY.Text = "0";
             this.txtSALARY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSALARY.TextChanged += new System.EventHandler(this.txtSALARY_TextChanged);
+            this.txtSALARY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPHONE_KeyPress);
             // 
             // label5
             // 

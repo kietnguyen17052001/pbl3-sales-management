@@ -15,10 +15,10 @@ namespace SaleManagement.FORM
     {
         private string usernameLogin;
         private bool isAdmin;
-        public FrmChange_Password(bool _isAdmin, string name = null)
+        public FrmChange_Password(bool _isAdmin, string _usernameLogin = null)
         {
             InitializeComponent();
-            usernameLogin = name;
+            usernameLogin = _usernameLogin;
             isAdmin = _isAdmin;
         }
 
@@ -118,12 +118,22 @@ namespace SaleManagement.FORM
                 bool flag = BLL_ACCOUNT.Instance.ChangePasswordUser(isAdmin, usernameLogin, txtOldPassword.Text.Trim(), txtNewPassword.Text.Trim());
                 if (flag)
                 {
-                    MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    if (txtNewPassword.Text == txtOldPassword.Text)
+                    {
+                        MessageBox.Show("Mật khẩu mới không được trùng với mật khẩu cũ!", "Lỗi nhập mật khẩu mới", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtNewPassword.Clear();
+                        txtReWriteNewPassword.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Mật khẩu cũ không đúng!", "Lỗi nhập mật khẩu cũ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtOldPassword.Clear();
                 }
             }
         }

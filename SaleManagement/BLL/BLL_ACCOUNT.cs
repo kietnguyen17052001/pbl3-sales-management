@@ -25,10 +25,31 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_ACCOUNT() { }
-        // get user
-        public tblTaiKhoan getUser(string username)
+        // Check login
+        public bool isLoginSuccessful(string username, string password)
         {
-            return db.tblTaiKhoans.Find(username);
+            var user = db.tblTaiKhoans.Find(username);
+            if(user == null || user.MatKhau != password)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        // Check user
+        public bool isAdmin(string username)
+        {
+            var user = db.tblTaiKhoans.Find(username);
+            if(user.ChucVu == "Admin")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public void FuncAddAccount(tblTaiKhoan account)
         {

@@ -244,7 +244,7 @@ namespace SaleManagement.FORM
                 }
                 if (Convert.ToDouble(txtIntoMoney.Text) < 0)
                 {
-                    message += "+ Tiền thanh toán âm\n";
+                    message += "+ Hóa đơn âm tiền\n";
                 }
                 MessageBox.Show(message, "Lỗi tạo đơn", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

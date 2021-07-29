@@ -39,7 +39,7 @@
     </Key>
     <Property Name="MaHangHoa" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="MaLoaiHangHoa" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="TenHangHoa" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TenHangHoa" Type="nvarchar(max)" />
     <Property Name="SoLuong" Type="int" />
     <Property Name="MaNhaSanXuat" Type="nvarchar" MaxLength="20" />
     <Property Name="GiaNhap" Type="float" />
@@ -74,25 +74,25 @@
       <PropertyRef Name="MaKhachHang" />
     </Key>
     <Property Name="MaKhachHang" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="TenKhachHang" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TenKhachHang" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SoDienThoai" Type="char" MaxLength="10" />
     <Property Name="GioiTinh" Type="bit" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="tblLoaiHangHoa">
     <Key>
       <PropertyRef Name="MaLoaiHangHoa" />
     </Key>
     <Property Name="MaLoaiHangHoa" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="TenLoaiHangHoa" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TenLoaiHangHoa" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="tblNhaCungCap">
     <Key>
       <PropertyRef Name="MaNhaCungCap" />
     </Key>
     <Property Name="MaNhaCungCap" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="TenNhaCungCap" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="TenNhaCungCap" Type="nvarchar(max)" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
     <Property Name="Email" Type="nvarchar" MaxLength="100" />
     <Property Name="Fax" Type="nvarchar" MaxLength="100" />
     <Property Name="SoDienThoai" Type="char" MaxLength="10" />
@@ -103,12 +103,12 @@
       <PropertyRef Name="MaNhanVien" />
     </Key>
     <Property Name="MaNhanVien" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="TenNhanVien" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TenNhanVien" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ViTri" Type="nvarchar" MaxLength="100" />
     <Property Name="NgaySinh" Type="date" />
     <Property Name="GioiTinh" Type="bit" />
     <Property Name="SoDienThoai" Type="char" MaxLength="10" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
     <Property Name="Luong" Type="float" />
     <Property Name="MatKhau" Type="nvarchar" MaxLength="100" />
   </EntityType>
@@ -117,8 +117,8 @@
       <PropertyRef Name="MaNhaSanXuat" />
     </Key>
     <Property Name="MaNhaSanXuat" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="TenNhaSanXuat" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="TenNhaSanXuat" Type="nvarchar(max)" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="tblTaiKhoan">
     <Key>

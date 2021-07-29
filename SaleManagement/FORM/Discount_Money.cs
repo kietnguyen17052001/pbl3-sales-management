@@ -14,11 +14,11 @@ namespace SaleManagement.FORM
     {
         public delegate void myDEL(double discount);
         public myDEL d { get; set; }
-        private double totalMoney;
-        public FrmDiscount_Money(double _totalMoney)
+        public FrmDiscount_Money(double decreased)
         {
             InitializeComponent();
-            totalMoney = _totalMoney;
+            txtDISCOUNT.ForeColor = Color.Black;
+            txtDISCOUNT.Text = decreased.ToString();
         }
 
         private void btnSAVE_Click(object sender, EventArgs e)
@@ -54,10 +54,6 @@ namespace SaleManagement.FORM
             if (txtDISCOUNT.Text == "")
             {
                 txtDISCOUNT.Text = "0";
-            }
-            if (Convert.ToDouble(txtDISCOUNT.Text) > totalMoney)
-            {
-                txtDISCOUNT.Text = totalMoney.ToString();
             }
         }
         // keypress event

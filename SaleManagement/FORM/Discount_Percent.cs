@@ -14,9 +14,11 @@ namespace SaleManagement.FORM
     {
         public delegate void myDEL(double discount);
         public myDEL d { get; set; }
-        public FrmDiscount_Percent()
+        public FrmDiscount_Percent(double decreased)
         {
             InitializeComponent();
+            txtDISCOUNT.ForeColor = Color.Black;
+            txtDISCOUNT.Text = decreased.ToString();
         }
 
         private void btnSAVE_Click(object sender, EventArgs e)
