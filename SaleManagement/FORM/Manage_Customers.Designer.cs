@@ -386,6 +386,7 @@ namespace SaleManagement.VIEW
             this.txtPHONE.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPHONE.ForeColor = System.Drawing.Color.Black;
             this.txtPHONE.Location = new System.Drawing.Point(133, 237);
+            this.txtPHONE.MaxLength = 10;
             this.txtPHONE.Name = "txtPHONE";
             this.txtPHONE.Size = new System.Drawing.Size(237, 29);
             this.txtPHONE.TabIndex = 75;

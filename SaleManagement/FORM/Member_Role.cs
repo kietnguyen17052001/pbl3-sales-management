@@ -17,7 +17,7 @@ namespace SaleManagement.FORM
         public FrmMain_Member(string _usernameLogin)
         {
             InitializeComponent();
-            usernameLogin = _usernameLogin.ToUpper();
+            usernameLogin = _usernameLogin;
             lbWelcome.Text += " " + usernameLogin;
             lbDate.Text += " " + DateTime.Now.ToString("dddd, dd/MM/yyyy");
         }
@@ -59,7 +59,7 @@ namespace SaleManagement.FORM
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            FrmChange_Password frmChangePassword = new FrmChange_Password(false, usernameLogin);
+            FrmChange_Password frmChangePassword = new FrmChange_Password( usernameLogin);
             frmChangePassword.Show();
         }
     }

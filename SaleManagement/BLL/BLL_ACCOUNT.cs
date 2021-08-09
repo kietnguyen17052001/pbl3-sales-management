@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,24 +26,32 @@ namespace SaleManagement.BLL
             private set { }
         }
         private BLL_ACCOUNT() { }
+        // Encrypt password
+        public string encryptPassword(string password)
+        {
+            string encrypt = "";
+            // convert string to byte
+            byte[] myPassword = ASCIIEncoding.ASCII.GetBytes(password);
+            // encrypt
+            byte[] hashPass = new MD5CryptoServiceProvider().ComputeHash(myPassword);
+            foreach (byte _byte in hashPass)
+            {
+                encrypt += _byte.ToString();
+            }
+            return encrypt;
+        }
         // Check login
         public bool isLoginSuccessful(string username, string password)
         {
-            var user = db.tblTaiKhoans.Find(username);
-            if(user == null || user.MatKhau != password)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            var user = db.tblNguoiDungs.ToList().Where(p => encryptPassword(p.MaNguoiDung) == encryptPassword(username)
+            && p.MatKhau == encryptPassword(password)).SingleOrDefault();
+            return (user != null) ? true : false;
         }
         // Check user
         public bool isAdmin(string username)
         {
-            var user = db.tblTaiKhoans.Find(username);
-            if(user.ChucVu == "Admin")
+            var user = db.tblNguoiDungs.ToList().Where(p => encryptPassword(p.MaNguoiDung) == encryptPassword(username)).SingleOrDefault();
+            if (user.ChucVu == "Admin")
             {
                 return true;
             }
@@ -51,33 +60,36 @@ namespace SaleManagement.BLL
                 return false;
             }
         }
-        public void FuncAddAccount(tblTaiKhoan account)
+        // Check username
+        public bool checkUsername(string username)
         {
-            db.tblTaiKhoans.Add(account);
+            var user = db.tblNguoiDungs.ToList().Where(p => encryptPassword(p.MaNguoiDung) == encryptPassword(username)).SingleOrDefault();
+            return (user != null) ? true : false;
+        }
+        // Check email and phone
+        public bool checkEmailAndPhone(string username, string email, string phone)
+        {
+            var user = db.tblNguoiDungs.Where(p => p.MaNguoiDung == username
+            && p.Email == email && p.SoDienThoai == phone).SingleOrDefault();
+            return (user != null) ? true : false;
+        }
+        // new password
+        public void newPassword(string username, string newPassword)
+        {
+            var user = db.tblNguoiDungs.Find(username);
+            user.MatKhau = encryptPassword(newPassword);
             db.SaveChanges();
         }
-        // Thay đổi password nhân viên trong frmNhanVien
-        public void ChangePasswordStaff(tblTaiKhoan _account)
+        public bool ChangePasswordUser(string userNameLogin, string oldPass, string newPass)
         {
-            var account = db.tblTaiKhoans.Find(_account.MaNguoiDung);
-            account.MatKhau = _account.MatKhau;
-            db.SaveChanges();
-        }
-        public bool ChangePasswordUser(bool isAdmin, string userNameLogin, string oldPass, string newPass)
-        {
-            var account = db.tblTaiKhoans.Find(userNameLogin);
-            if (account.MatKhau != oldPass)
+            var user = db.tblNguoiDungs.Find(userNameLogin);
+            if (user.MatKhau != encryptPassword(oldPass))
             {
                 return false;
             }
             else
             {
-                if (!isAdmin) // thay đổi password của nhân viên trong tblNhanVien
-                {
-                    var staff = db.tblNhanViens.Find(userNameLogin);
-                    staff.MatKhau = newPass;
-                }
-                account.MatKhau = newPass; // thay đổi password của người dùng trong tblTaiKhoan
+                user.MatKhau = encryptPassword(newPass); // thay đổi password của người dùng trong tblTaiKhoan
                 db.SaveChanges();
                 return true;
             }

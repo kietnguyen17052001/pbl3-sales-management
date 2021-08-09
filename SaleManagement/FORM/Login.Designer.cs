@@ -40,6 +40,7 @@ namespace SaleManagement.FORM
             this.btnLogin = new System.Windows.Forms.Button();
             this.lbINFO = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.lbForgot = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -52,7 +53,7 @@ namespace SaleManagement.FORM
             this.pictureBox1.Location = new System.Drawing.Point(121, 105);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(549, 481);
+            this.pictureBox1.Size = new System.Drawing.Size(549, 515);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -196,6 +197,19 @@ namespace SaleManagement.FORM
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // lbForgot
+            // 
+            this.lbForgot.AutoSize = true;
+            this.lbForgot.BackColor = System.Drawing.Color.White;
+            this.lbForgot.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbForgot.ForeColor = System.Drawing.Color.Blue;
+            this.lbForgot.Location = new System.Drawing.Point(480, 581);
+            this.lbForgot.Name = "lbForgot";
+            this.lbForgot.Size = new System.Drawing.Size(147, 24);
+            this.lbForgot.TabIndex = 14;
+            this.lbForgot.Text = "Quên mật khẩu";
+            this.lbForgot.Click += new System.EventHandler(this.lbForgot_Click);
+            // 
             // FrmLogin
             // 
             this.AcceptButton = this.btnLogin;
@@ -205,6 +219,7 @@ namespace SaleManagement.FORM
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(794, 675);
             this.ControlBox = false;
+            this.Controls.Add(this.lbForgot);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lbINFO);
             this.Controls.Add(this.btnLogin);
@@ -242,5 +257,6 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lbINFO;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label lbForgot;
     }
 }

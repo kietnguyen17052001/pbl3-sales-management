@@ -68,7 +68,7 @@
     <Compile Include="BLL\BLL_LISTSALEINVOICE.cs" />
     <Compile Include="BLL\BLL_PRODUCER.cs" />
     <Compile Include="BLL\BLL_REPORT.cs" />
-    <Compile Include="BLL\BLL_STAFF.cs" />
+    <Compile Include="BLL\BLL_USER.cs" />
     <Compile Include="BLL\BLL_STATISTIC.cs" />
     <Compile Include="BLL\BLL_SUPPLIER.cs" />
     <Compile Include="BLL\BLL_TYPEOFPRODUCT.cs" />
@@ -88,7 +88,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleManagement.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entity\sysdiagram.cs">
+    <Compile Include="Entity\sysdiagram1.cs">
       <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblChiTietHoaDonBanHang.cs">
@@ -112,16 +112,13 @@
     <Compile Include="Entity\tblLoaiHangHoa.cs">
       <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\tblNguoiDung.cs">
+      <DependentUpon>SaleManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\tblNhaCungCap.cs">
       <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\tblNhanVien.cs">
-      <DependentUpon>SaleManagement.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entity\tblNhaSanXuat.cs">
-      <DependentUpon>SaleManagement.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\tblTaiKhoan.cs">
       <DependentUpon>SaleManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="FORM\Add_NewProduct.cs">
@@ -141,6 +138,12 @@
     </Compile>
     <Compile Include="FORM\Create_NewProduct.Designer.cs">
       <DependentUpon>Create_NewProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\FrmForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\FrmForgotPassword.Designer.cs">
+      <DependentUpon>FrmForgotPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Invoice_SaleProduct.cs">
       <SubType>Form</SubType>
@@ -244,11 +247,11 @@
     <Compile Include="FORM\List_SaleInvoice.Designer.cs">
       <DependentUpon>List_SaleInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\Manage_Staffs.cs">
+    <Compile Include="FORM\Manage_User.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\Manage_Staffs.Designer.cs">
-      <DependentUpon>Manage_Staffs.cs</DependentUpon>
+    <Compile Include="FORM\Manage_User.Designer.cs">
+      <DependentUpon>Manage_User.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\Manage_Suppliers.cs">
       <SubType>Form</SubType>
@@ -329,6 +332,9 @@
     <EmbeddedResource Include="FORM\Create_NewTypeOfProduct.resx">
       <DependentUpon>Create_NewTypeOfProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORM\FrmForgotPassword.resx">
+      <DependentUpon>FrmForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORM\List_ImportInvoice.resx">
       <DependentUpon>List_ImportInvoice.cs</DependentUpon>
     </EmbeddedResource>
@@ -397,8 +403,8 @@
     <EmbeddedResource Include="FORM\Manage_Product.resx">
       <DependentUpon>Manage_Product.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\Manage_Staffs.resx">
-      <DependentUpon>Manage_Staffs.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\Manage_User.resx">
+      <DependentUpon>Manage_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\Manage_Suppliers.resx">
       <DependentUpon>Manage_Suppliers.cs</DependentUpon>
@@ -554,6 +560,8 @@
       <DependentUpon>SaleManagement.edmx</DependentUpon>
       <LastGenOutput>SaleManagement.cs</LastGenOutput>
     </Content>
+    <None Include="IMG\email.png" />
+    <None Include="IMG\phone-call.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

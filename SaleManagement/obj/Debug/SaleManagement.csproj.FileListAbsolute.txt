@@ -133,3 +133,4 @@ D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleMa
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantityProduct_InvoiceSaleProduct.resources
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantityProduct_InvoiceSaleProduct.resources
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.csproj.AssemblyReference.cache
+D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmForgotPassword.resources

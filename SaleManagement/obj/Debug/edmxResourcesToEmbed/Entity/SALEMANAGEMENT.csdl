@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="N3KTeamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="tblChiTietHoaDonBanHang">
     <Key>
       <PropertyRef Name="MaHoaDonBan" />
@@ -67,7 +57,7 @@
     <Property Name="GiamGia" Type="Double" />
     <NavigationProperty Name="tblChiTietHoaDonBanHangs" Relationship="Self.FK__tblChiTie__MaHoa__6F4A8121" FromRole="tblHoaDonBanHang" ToRole="tblChiTietHoaDonBanHang" />
     <NavigationProperty Name="tblKhachHang" Relationship="Self.FK__tblHoaDon__MaKha__6D6238AF" FromRole="tblHoaDonBanHang" ToRole="tblKhachHang" />
-    <NavigationProperty Name="tblNhanVien" Relationship="Self.FK__tblHoaDon__MaNha__6C6E1476" FromRole="tblHoaDonBanHang" ToRole="tblNhanVien" />
+    <NavigationProperty Name="tblNguoiDung" Relationship="N3KTeamModel.FK__tblHoaDon__MaNha__6C6E14761" FromRole="tblHoaDonBanHang" ToRole="tblNguoiDung" />
   </EntityType>
   <EntityType Name="tblHoaDonNhapHang">
     <Key>
@@ -81,7 +71,7 @@
     <Property Name="GiamGia" Type="Double" />
     <NavigationProperty Name="tblChiTietHoaDonNhapHangs" Relationship="Self.FK__tblChiTie__MaHoa__77DFC722" FromRole="tblHoaDonNhapHang" ToRole="tblChiTietHoaDonNhapHang" />
     <NavigationProperty Name="tblNhaCungCap" Relationship="Self.FK__tblHoaDon__MaNha__75035A77" FromRole="tblHoaDonNhapHang" ToRole="tblNhaCungCap" />
-    <NavigationProperty Name="tblNhanVien" Relationship="Self.FK__tblHoaDon__MaNha__75F77EB0" FromRole="tblHoaDonNhapHang" ToRole="tblNhanVien" />
+    <NavigationProperty Name="tblNguoiDung" Relationship="N3KTeamModel.FK__tblHoaDon__MaNha__75F77EB01" FromRole="tblHoaDonNhapHang" ToRole="tblNguoiDung" />
   </EntityType>
   <EntityType Name="tblKhachHang">
     <Key>
@@ -99,7 +89,7 @@
       <PropertyRef Name="MaLoaiHangHoa" />
     </Key>
     <Property Name="MaLoaiHangHoa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenLoaiHangHoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TenLoaiHangHoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="tblHangHoas" Relationship="Self.FK__tblHangHo__MaLoa__65C116E7" FromRole="tblLoaiHangHoa" ToRole="tblHangHoa" />
   </EntityType>
   <EntityType Name="tblNhaCungCap">
@@ -107,46 +97,22 @@
       <PropertyRef Name="MaNhaCungCap" />
     </Key>
     <Property Name="MaNhaCungCap" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenNhaCungCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TenNhaCungCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Fax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="MaSoThue" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
     <NavigationProperty Name="tblHoaDonNhapHangs" Relationship="Self.FK__tblHoaDon__MaNha__75035A77" FromRole="tblNhaCungCap" ToRole="tblHoaDonNhapHang" />
-  </EntityType>
-  <EntityType Name="tblNhanVien">
-    <Key>
-      <PropertyRef Name="MaNhanVien" />
-    </Key>
-    <Property Name="MaNhanVien" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenNhanVien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ViTri" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
-    <Property Name="GioiTinh" Type="Boolean" />
-    <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Luong" Type="Double" />
-    <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tblHoaDonBanHangs" Relationship="Self.FK__tblHoaDon__MaNha__6C6E1476" FromRole="tblNhanVien" ToRole="tblHoaDonBanHang" />
-    <NavigationProperty Name="tblHoaDonNhapHangs" Relationship="Self.FK__tblHoaDon__MaNha__75F77EB0" FromRole="tblNhanVien" ToRole="tblHoaDonNhapHang" />
   </EntityType>
   <EntityType Name="tblNhaSanXuat">
     <Key>
       <PropertyRef Name="MaNhaSanXuat" />
     </Key>
     <Property Name="MaNhaSanXuat" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TenNhaSanXuat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TenNhaSanXuat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblHangHoas" Relationship="Self.FK__tblHangHo__MaNha__67A95F59" FromRole="tblNhaSanXuat" ToRole="tblHangHoa" />
-  </EntityType>
-  <EntityType Name="tblTaiKhoan">
-    <Key>
-      <PropertyRef Name="MaNguoiDung" />
-    </Key>
-    <Property Name="MaNguoiDung" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="ChucVu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK__tblChiTie__MaHan__703EA55A">
     <End Role="tblHangHoa" Type="Self.tblHangHoa" Multiplicity="1" />
@@ -232,18 +198,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblHoaDon__MaNha__6C6E1476">
-    <End Role="tblNhanVien" Type="Self.tblNhanVien" Multiplicity="0..1" />
-    <End Role="tblHoaDonBanHang" Type="Self.tblHoaDonBanHang" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblNhanVien">
-        <PropertyRef Name="MaNhanVien" />
-      </Principal>
-      <Dependent Role="tblHoaDonBanHang">
-        <PropertyRef Name="MaNhanVien" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__tblHoaDon__MaNha__75035A77">
     <End Role="tblNhaCungCap" Type="Self.tblNhaCungCap" Multiplicity="1" />
     <End Role="tblHoaDonNhapHang" Type="Self.tblHoaDonNhapHang" Multiplicity="*" />
@@ -256,20 +210,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblHoaDon__MaNha__75F77EB0">
-    <End Role="tblNhanVien" Type="Self.tblNhanVien" Multiplicity="1" />
-    <End Role="tblHoaDonNhapHang" Type="Self.tblHoaDonNhapHang" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblNhanVien">
-        <PropertyRef Name="MaNhanVien" />
-      </Principal>
-      <Dependent Role="tblHoaDonNhapHang">
-        <PropertyRef Name="MaNhanVien" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="N3KTeamEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="tblChiTietHoaDonBanHangs" EntityType="Self.tblChiTietHoaDonBanHang" />
     <EntitySet Name="tblChiTietHoaDonNhapHangs" EntityType="Self.tblChiTietHoaDonNhapHang" />
     <EntitySet Name="tblHangHoas" EntityType="Self.tblHangHoa" />
@@ -278,9 +219,7 @@
     <EntitySet Name="tblKhachHangs" EntityType="Self.tblKhachHang" />
     <EntitySet Name="tblLoaiHangHoas" EntityType="Self.tblLoaiHangHoa" />
     <EntitySet Name="tblNhaCungCaps" EntityType="Self.tblNhaCungCap" />
-    <EntitySet Name="tblNhanViens" EntityType="Self.tblNhanVien" />
     <EntitySet Name="tblNhaSanXuats" EntityType="Self.tblNhaSanXuat" />
-    <EntitySet Name="tblTaiKhoans" EntityType="Self.tblTaiKhoan" />
     <AssociationSet Name="FK__tblChiTie__MaHan__703EA55A" Association="Self.FK__tblChiTie__MaHan__703EA55A">
       <End Role="tblHangHoa" EntitySet="tblHangHoas" />
       <End Role="tblChiTietHoaDonBanHang" EntitySet="tblChiTietHoaDonBanHangs" />
@@ -309,17 +248,70 @@
       <End Role="tblKhachHang" EntitySet="tblKhachHangs" />
       <End Role="tblHoaDonBanHang" EntitySet="tblHoaDonBanHangs" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblHoaDon__MaNha__6C6E1476" Association="Self.FK__tblHoaDon__MaNha__6C6E1476">
-      <End Role="tblNhanVien" EntitySet="tblNhanViens" />
-      <End Role="tblHoaDonBanHang" EntitySet="tblHoaDonBanHangs" />
-    </AssociationSet>
     <AssociationSet Name="FK__tblHoaDon__MaNha__75035A77" Association="Self.FK__tblHoaDon__MaNha__75035A77">
       <End Role="tblNhaCungCap" EntitySet="tblNhaCungCaps" />
       <End Role="tblHoaDonNhapHang" EntitySet="tblHoaDonNhapHangs" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblHoaDon__MaNha__75F77EB0" Association="Self.FK__tblHoaDon__MaNha__75F77EB0">
-      <End Role="tblNhanVien" EntitySet="tblNhanViens" />
+    <EntitySet Name="sysdiagram1" EntityType="N3KTeamModel.sysdiagram1" />
+    <EntitySet Name="tblNguoiDungs" EntityType="N3KTeamModel.tblNguoiDung" />
+    <AssociationSet Name="FK__tblHoaDon__MaNha__6C6E14761" Association="N3KTeamModel.FK__tblHoaDon__MaNha__6C6E14761">
+      <End Role="tblNguoiDung" EntitySet="tblNguoiDungs" />
+      <End Role="tblHoaDonBanHang" EntitySet="tblHoaDonBanHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblHoaDon__MaNha__75F77EB01" Association="N3KTeamModel.FK__tblHoaDon__MaNha__75F77EB01">
+      <End Role="tblNguoiDung" EntitySet="tblNguoiDungs" />
       <End Role="tblHoaDonNhapHang" EntitySet="tblHoaDonNhapHangs" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="sysdiagram1">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblNguoiDung">
+    <Key>
+      <PropertyRef Name="MaNguoiDung" />
+    </Key>
+    <Property Name="MaNguoiDung" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TenNguoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="GioiTinh" Type="Boolean" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Luong" Type="Double" />
+    <Property Name="MatKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ChucVu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblHoaDonBanHangs" Relationship="N3KTeamModel.FK__tblHoaDon__MaNha__6C6E14761" FromRole="tblNguoiDung" ToRole="tblHoaDonBanHang" />
+    <NavigationProperty Name="tblHoaDonNhapHangs" Relationship="N3KTeamModel.FK__tblHoaDon__MaNha__75F77EB01" FromRole="tblNguoiDung" ToRole="tblHoaDonNhapHang" />
+  </EntityType>
+  <Association Name="FK__tblHoaDon__MaNha__6C6E14761">
+    <End Type="N3KTeamModel.tblNguoiDung" Role="tblNguoiDung" Multiplicity="0..1" />
+    <End Type="N3KTeamModel.tblHoaDonBanHang" Role="tblHoaDonBanHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNguoiDung">
+        <PropertyRef Name="MaNguoiDung" />
+      </Principal>
+      <Dependent Role="tblHoaDonBanHang">
+        <PropertyRef Name="MaNhanVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblHoaDon__MaNha__75F77EB01">
+    <End Type="N3KTeamModel.tblNguoiDung" Role="tblNguoiDung" Multiplicity="1" />
+    <End Type="N3KTeamModel.tblHoaDonNhapHang" Role="tblHoaDonNhapHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNguoiDung">
+        <PropertyRef Name="MaNguoiDung" />
+      </Principal>
+      <Dependent Role="tblHoaDonNhapHang">
+        <PropertyRef Name="MaNhanVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

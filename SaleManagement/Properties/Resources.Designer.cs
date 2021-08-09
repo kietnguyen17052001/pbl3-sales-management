@@ -413,6 +413,16 @@ namespace SaleManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap email {
+            get {
+                object obj = ResourceManager.GetObject("email", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap excel_3_24 {
             get {
                 object obj = ResourceManager.GetObject("excel-3-24", resourceCulture);
@@ -656,6 +666,16 @@ namespace SaleManagement.Properties {
         internal static System.Drawing.Bitmap percentage_3_24 {
             get {
                 object obj = ResourceManager.GetObject("percentage-3-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap phone_call {
+            get {
+                object obj = ResourceManager.GetObject("phone-call", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

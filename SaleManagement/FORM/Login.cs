@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace SaleManagement.FORM
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (BLL_ACCOUNT.Instance.isLoginSuccessful(txtUSER.Text.Trim(), txtPASSWORD.Text.Trim()))
-            {   
+            {
                 if (BLL_ACCOUNT.Instance.isAdmin(txtUSER.Text.Trim()))
                 {
                     FrmMain_Admin frmMainAdmin = new FrmMain_Admin(txtUSER.Text.Trim());
@@ -76,9 +77,21 @@ namespace SaleManagement.FORM
         {
             if (txtPASSWORD.Text == "")
             {
-                txtPASSWORD.Text = "Nhập mật khẩu";
                 txtPASSWORD.PasswordChar = '\0';
+                txtPASSWORD.Text = "Nhập mật khẩu";
                 txtPASSWORD.ForeColor = Color.Silver;
+            }
+        }
+        private void lbForgot_Click(object sender, EventArgs e)
+        {
+            if (BLL_ACCOUNT.Instance.checkUsername(txtUSER.Text.Trim()))
+            {
+                FrmForgotPassword frmForgotPassword = new FrmForgotPassword(txtUSER.Text.Trim());
+                frmForgotPassword.Show();
+            }
+            else
+            {
+                lbINFO.Text = "Tên đăng nhập không tồn tại!";
             }
         }
         // Exit application
@@ -86,5 +99,6 @@ namespace SaleManagement.FORM
         {
             Application.Exit();
         }
+
     }
 }

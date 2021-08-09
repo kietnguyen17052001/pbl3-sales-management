@@ -44,7 +44,7 @@ namespace SaleManagement.BLL
             var invoice = db.tblHoaDonBanHangs.Where(p => p.NgayBan >= dateFrom && p.NgayBan <= dateTo).Select(p => new {
                 p.MaHoaDonBan,
                 p.NgayBan,
-                p.tblNhanVien.TenNhanVien,
+                p.tblNguoiDung.TenNguoiDung,
                 p.tblKhachHang.TenKhachHang,
                 p.SoTien,
                 p.GiamGia
@@ -77,7 +77,7 @@ namespace SaleManagement.BLL
                 || p.tblKhachHang.TenKhachHang.Contains(information) && p.NgayBan >= dateFrom && p.NgayBan <= dateTo).Select(p => new {
                     p.MaHoaDonBan,
                     p.NgayBan,
-                    p.tblNhanVien.TenNhanVien,
+                    p.tblNguoiDung.TenNguoiDung,
                     p.tblKhachHang.TenKhachHang,
                     p.SoTien,
                     p.GiamGia
@@ -123,6 +123,19 @@ namespace SaleManagement.BLL
                 invoice.SoTien -= (double)invoiceDetail.TongTien;
                 db.tblChiTietHoaDonBanHangs.Remove(invoiceDetail);
                 db.SaveChanges();
+            }
+        }
+        // isHas product in invoice?
+        public bool isHasProductInInvoice(string idInvoice, string idProduct)
+        {
+            var product = db.tblChiTietHoaDonBanHangs.Find(idInvoice, idProduct);
+            if(product == null)
+            {
+                return false; // not have product
+            }
+            else
+            {
+                return true; // have product
             }
         }
         // add product for invoice

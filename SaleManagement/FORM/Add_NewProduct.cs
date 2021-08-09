@@ -79,25 +79,61 @@ namespace SaleManagement.FORM
             quantityProduct = Convert.ToInt32(txtQuantity.Text.Trim());
             productPrice = Convert.ToDouble(dgvProduct.SelectedRows[0].Cells[3].Value.ToString());
             discount = Convert.ToInt32(txtDiscount.Text.Trim());
-            if (isListSale)
+            switch (isListSale)
             {
-                if (quantityProduct > Convert.ToInt32(dgvProduct.SelectedRows[0].Cells["SoLuong"].Value.ToString()))
-                {
-                    lbSTATUS.Text = "KHÔNG ĐỦ SL";
-                }
-                else
-                {
-                    lbSTATUS.Text = "";
-                    tblChiTietHoaDonBanHang invoiceDetail = new tblChiTietHoaDonBanHang();
-                    invoiceDetail.MaHoaDonBan = idInvoice;
-                    invoiceDetail.MaHangHoa = idProduct;
-                    invoiceDetail.SoLuong = quantityProduct;
-                    invoiceDetail.DonGia = productPrice;
-                    invoiceDetail.GiamGia = discount;
-                    invoiceDetail.TongTien = productPrice * quantityProduct - productPrice * quantityProduct * discount / 100;
-                    try
+                case true:
+                    if (quantityProduct > Convert.ToInt32(dgvProduct.SelectedRows[0].Cells["SoLuong"].Value.ToString()))
                     {
-                        BLL_LISTSALEINVOICE.Instance.FuncAddProduct(invoiceDetail);
+                        lbSTATUS.Text = "KHÔNG ĐỦ SL";
+                    }
+                    else
+                    {
+                        lbSTATUS.Text = "";
+
+                        if (BLL_LISTSALEINVOICE.Instance.isHasProductInInvoice(idInvoice, idProduct))
+                        {
+                            MessageBox.Show("Hàng hóa đã tồn tại trong hóa đơn!", "Trùng hàng hóa",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            tblChiTietHoaDonBanHang invoiceDetail = new tblChiTietHoaDonBanHang();
+                            invoiceDetail.MaHoaDonBan = idInvoice;
+                            invoiceDetail.MaHangHoa = idProduct;
+                            invoiceDetail.SoLuong = quantityProduct;
+                            invoiceDetail.DonGia = productPrice;
+                            invoiceDetail.GiamGia = discount;
+                            invoiceDetail.TongTien = productPrice * quantityProduct - productPrice * quantityProduct 
+                                * discount / 100;
+                            BLL_LISTSALEINVOICE.Instance.FuncAddProduct(invoiceDetail);
+                            DialogResult answer = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (answer == DialogResult.Yes)
+                            {
+                                LoadProduct();
+                            }
+                            else
+                            {
+                                d(idInvoice);
+                                this.Close();
+                            }
+                        }
+                    }
+                    break;
+                case false:
+                    if (BLL_LISTIMPORTINVOICE.Instance.isHasProductInInvoice(idInvoice, idProduct))
+                    {
+                        MessageBox.Show("Hàng hóa đã tồn tại trong hóa đơn!", "Trùng hàng hóa",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        tblChiTietHoaDonNhapHang invoicedetail = new tblChiTietHoaDonNhapHang();
+                        invoicedetail.MaHoaDonNhap = idInvoice;
+                        invoicedetail.MaHangHoa = idProduct;
+                        invoicedetail.SoLuong = quantityProduct;
+                        invoicedetail.GiaNhap = productPrice;
+                        invoicedetail.TongTien = productPrice * quantityProduct;
+                        BLL_LISTIMPORTINVOICE.Instance.FuncAddProduct(invoicedetail);
                         DialogResult answer = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (answer == DialogResult.Yes)
                         {
@@ -109,38 +145,9 @@ namespace SaleManagement.FORM
                             this.Close();
                         }
                     }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Hàng hóa này đã có trong hóa đơn", "Lỗi trùng hàng hóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                tblChiTietHoaDonNhapHang invoicedetail = new tblChiTietHoaDonNhapHang();
-                invoicedetail.MaHoaDonNhap = idInvoice;
-                invoicedetail.MaHangHoa = idProduct;
-                invoicedetail.SoLuong = quantityProduct;
-                invoicedetail.GiaNhap = productPrice;
-                invoicedetail.TongTien = productPrice * quantityProduct;
-                try
-                {
-                    BLL_LISTIMPORTINVOICE.Instance.FuncAddProduct(invoicedetail);
-                    DialogResult answer = MessageBox.Show("Thêm thành công hàng hóa. Bạn có muốn tiếp tục thêm?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (answer == DialogResult.Yes)
-                    {
-                        LoadProduct();
-                    }
-                    else
-                    {
-                        d(idInvoice);
-                        this.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Hàng hóa này đã có trong hóa đơn", "Lỗi trùng hàng hóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    break;
+                default:
+                    break;
             }
         }
         private void btnCancel_Click(object sender, EventArgs e)

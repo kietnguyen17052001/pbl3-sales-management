@@ -35,10 +35,10 @@ namespace SaleManagement.FORM
         }
         public void setCbbStaff()
         {
-            cbbStaff.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
-            if(isAdmin == false)
+            cbbStaff.Items.AddRange(BLL_USER.Instance.listStaff().ToArray());
+            if (isAdmin == false)
             {
-                cbbStaff.Text = BLL_STAFF.Instance.getStaffById(usernameLogin);
+                cbbStaff.Text = BLL_USER.Instance.getStaffById(usernameLogin);
             }
             else
             {
@@ -327,7 +327,7 @@ namespace SaleManagement.FORM
         // Note information
         private void txtNote_Enter(object sender, EventArgs e)
         {
-            if(txtNote.Text == "Nhập thông tin ...")
+            if (txtNote.Text == "Nhập thông tin ...")
             {
                 txtNote.ForeColor = Color.Black;
                 txtNote.Text = "";

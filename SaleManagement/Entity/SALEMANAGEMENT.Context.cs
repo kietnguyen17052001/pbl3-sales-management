@@ -25,7 +25,6 @@ namespace SaleManagement.Entity
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tblChiTietHoaDonBanHang> tblChiTietHoaDonBanHangs { get; set; }
         public virtual DbSet<tblChiTietHoaDonNhapHang> tblChiTietHoaDonNhapHangs { get; set; }
         public virtual DbSet<tblHangHoa> tblHangHoas { get; set; }
@@ -34,8 +33,8 @@ namespace SaleManagement.Entity
         public virtual DbSet<tblKhachHang> tblKhachHangs { get; set; }
         public virtual DbSet<tblLoaiHangHoa> tblLoaiHangHoas { get; set; }
         public virtual DbSet<tblNhaCungCap> tblNhaCungCaps { get; set; }
-        public virtual DbSet<tblNhanVien> tblNhanViens { get; set; }
         public virtual DbSet<tblNhaSanXuat> tblNhaSanXuats { get; set; }
-        public virtual DbSet<tblTaiKhoan> tblTaiKhoans { get; set; }
+        public virtual DbSet<sysdiagram1> sysdiagram1 { get; set; }
+        public virtual DbSet<tblNguoiDung> tblNguoiDungs { get; set; }
     }
 }

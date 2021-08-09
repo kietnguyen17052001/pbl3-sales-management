@@ -30,6 +30,6 @@ namespace SaleManagement.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblChiTietHoaDonBanHang> tblChiTietHoaDonBanHangs { get; set; }
         public virtual tblKhachHang tblKhachHang { get; set; }
-        public virtual tblNhanVien tblNhanVien { get; set; }
+        public virtual tblNguoiDung tblNguoiDung { get; set; }
     }
 }

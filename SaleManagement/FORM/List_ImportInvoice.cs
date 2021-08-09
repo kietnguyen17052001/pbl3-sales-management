@@ -51,7 +51,7 @@ namespace SaleManagement.FORM
         public void setCombobox()
         {
             cbbSUPPLIER.Items.AddRange(BLL_SUPPLIER.Instance.ListSupplier().ToArray());
-            cbbSTAFF.Items.AddRange(BLL_STAFF.Instance.getCbbStaff().ToArray());
+            cbbSTAFF.Items.AddRange(BLL_USER.Instance.listStaff().ToArray());
         }
         public void FormatColumnHeader()
         {
@@ -93,7 +93,7 @@ namespace SaleManagement.FORM
                 idInvoice = dgvLIST_INVOICE.SelectedRows[0].Cells["MaHoaDonNhap"].Value.ToString();
                 BLL_LISTIMPORTINVOICE.Instance.LoadDataFrmDetail(dgvINFO_INVOICE, idInvoice);
                 txtID_INVOICE.Text = idInvoice;
-                cbbSTAFF.Text = BLL_LISTIMPORTINVOICE.Instance.getTextForCbb(dgvLIST_INVOICE.SelectedRows[0].Cells["TenNhanVien"].Value.ToString(), BLL_STAFF.Instance.getCbbStaff());
+                cbbSTAFF.Text = BLL_LISTIMPORTINVOICE.Instance.getTextForCbb(dgvLIST_INVOICE.SelectedRows[0].Cells["TenNguoiDung"].Value.ToString(), BLL_USER.Instance.listStaff());
                 cbbSUPPLIER.Text = BLL_LISTIMPORTINVOICE.Instance.getTextForCbb(dgvLIST_INVOICE.SelectedRows[0].Cells["TenNhaCungCap"].Value.ToString(), BLL_SUPPLIER.Instance.ListSupplier());
                 dpDAY.Value = Convert.ToDateTime(dgvLIST_INVOICE.SelectedRows[0].Cells["NgayNhap"].Value.ToString());
                 txtDISCOUNT.Text = String.Format("{0:n0}", Convert.ToDouble(dgvLIST_INVOICE.SelectedRows[0].Cells["GiamGia"].Value.ToString()));

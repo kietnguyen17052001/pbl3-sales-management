@@ -14,12 +14,10 @@ namespace SaleManagement.FORM
     public partial class FrmChange_Password : Form
     {
         private string usernameLogin;
-        private bool isAdmin;
-        public FrmChange_Password(bool _isAdmin, string _usernameLogin = null)
+        public FrmChange_Password(string _usernameLogin = null)
         {
             InitializeComponent();
             usernameLogin = _usernameLogin;
-            isAdmin = _isAdmin;
         }
 
         private void txtOldPassword_Enter(object sender, EventArgs e)
@@ -96,33 +94,26 @@ namespace SaleManagement.FORM
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(txtOldPassword.Text == "Nhập mật khẩu cũ")
+            if (txtOldPassword.Text == "Nhập mật khẩu cũ" || txtNewPassword.Text == "Nhập mật khẩu mới" 
+                || txtReWriteNewPassword.Text == "Nhập lại mật khẩu mới")
             {
-                MessageBox.Show("Vui lòng nhập mật khẩu cũ!","Lỗi nhập mật khẩu",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-            else if(txtNewPassword.Text == "Nhập mật khẩu mới")
-            {
-                MessageBox.Show("Vui lòng nhập mật khẩu mới!", "Lỗi nhập mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (txtReWriteNewPassword.Text == "Nhập lại mật khẩu mới")
-            {
-                MessageBox.Show("Vui lòng nhập lại mật khẩu mới!", "Lỗi nhập mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbWarning.Text = "Thông tin chưa đầy đủ!";
             }
             else if (txtReWriteNewPassword.Text != txtNewPassword.Text)
             {
-                MessageBox.Show("Mật khẩu nhập lại không khớp!", "Lỗi nhập mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbWarning.Text = "Mật khẩu nhập lại không khớp!";
                 txtReWriteNewPassword.Text = "Nhập lại mật khẩu mới";
                 txtReWriteNewPassword.ForeColor = Color.Silver;
                 txtReWriteNewPassword.PasswordChar = '\0';
             }
             else
             {
-                bool flag = BLL_ACCOUNT.Instance.ChangePasswordUser(isAdmin, usernameLogin, txtOldPassword.Text.Trim(), txtNewPassword.Text.Trim());
+                bool flag = BLL_ACCOUNT.Instance.ChangePasswordUser(usernameLogin, txtOldPassword.Text.Trim(), txtNewPassword.Text.Trim());
                 if (flag)
                 {
                     if (txtNewPassword.Text == txtOldPassword.Text)
                     {
-                        MessageBox.Show("Mật khẩu mới không được trùng với mật khẩu cũ!", "Lỗi nhập mật khẩu mới", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lbWarning.Text = "Mật khẩu mới không được trùng với mật khẩu cũ!";
                         txtNewPassword.Text = "Nhập mật khẩu mới";
                         txtReWriteNewPassword.Text = "Nhập lại mật khẩu mới";
                         txtNewPassword.ForeColor = txtReWriteNewPassword.ForeColor = Color.Silver;
@@ -136,7 +127,7 @@ namespace SaleManagement.FORM
                 }
                 else
                 {
-                    MessageBox.Show("Mật khẩu cũ không đúng!", "Lỗi nhập mật khẩu cũ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lbWarning.Text = "Mật khẩu cũ không đúng!";
                     txtOldPassword.Text = "Nhập mật khẩu cũ";
                     txtOldPassword.ForeColor = Color.Silver;
                     txtOldPassword.PasswordChar = '\0';

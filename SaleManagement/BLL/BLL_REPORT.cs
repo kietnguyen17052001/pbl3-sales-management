@@ -26,9 +26,9 @@ namespace SaleManagement.BLL
         }
         private BLL_REPORT() { }
         // load data report
-        public void LoadDataReport(DataGridView dgv, DateTime dateFrom, DateTime dateTo)
+        public void LoadDataReport(DataGridView dgv, DateTime dateStart, DateTime dateEnd)
         {
-            var invoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateFrom && p.tblHoaDonBanHang.NgayBan <= dateTo).Select(p => new {
+            var invoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd).Select(p => new {
                 p.MaHangHoa,
                 p.tblHangHoa.TenHangHoa,
                 p.tblHoaDonBanHang.NgayBan,

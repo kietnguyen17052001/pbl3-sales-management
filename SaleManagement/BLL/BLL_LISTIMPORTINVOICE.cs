@@ -43,9 +43,9 @@ namespace SaleManagement.BLL
         public string getTextForCbb(string information, List<CBBItem> listCbb)
         {
             string text = null;
-            foreach(CBBItem item in listCbb)
+            foreach (CBBItem item in listCbb)
             {
-                if(item.TEXT == information)
+                if (item.TEXT == information)
                 {
                     text = item.ToString();
                     break;
@@ -61,7 +61,7 @@ namespace SaleManagement.BLL
                 p.MaHoaDonNhap,
                 p.NgayNhap,
                 p.tblNhaCungCap.TenNhaCungCap,
-                p.tblNhanVien.TenNhanVien,
+                p.tblNguoiDung.TenNguoiDung,
                 p.GiamGia,
                 p.SoTien
             });
@@ -69,7 +69,8 @@ namespace SaleManagement.BLL
         }
         public void LoadDataFrmDetail(DataGridView dgv, string idInvoice)
         {
-            var detail = db.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice).Select(p => new { 
+            var detail = db.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice).Select(p => new
+            {
                 p.MaHangHoa,
                 p.tblHangHoa.TenHangHoa,
                 p.SoLuong,
@@ -81,7 +82,7 @@ namespace SaleManagement.BLL
         // func search invoice
         public void FuncSearchInvoice(DataGridView dgv, DateTime dateFrom, DateTime dateTo, string information)
         {
-            if(information == "Nhập mã hóa đơn hoặc mã/ tên nhà c.cấp" || String.IsNullOrEmpty(information))
+            if (information == "Nhập mã hóa đơn hoặc mã/ tên nhà c.cấp" || String.IsNullOrEmpty(information))
             {
                 LoadDataFrmInvoice(dgv, dateFrom, dateTo);
             }
@@ -89,11 +90,12 @@ namespace SaleManagement.BLL
             {
                 var invoice = db.tblHoaDonNhapHangs.Where(p => p.MaHoaDonNhap.Contains(information)
                 || p.MaNhaCungCap.Contains(information) || p.tblNhaCungCap.TenNhaCungCap.Contains(information)
-                && p.NgayNhap >= dateFrom && p.NgayNhap <= dateTo).Select(p => new {
+                && p.NgayNhap >= dateFrom && p.NgayNhap <= dateTo).Select(p => new
+                {
                     p.MaHoaDonNhap,
                     p.NgayNhap,
                     p.tblNhaCungCap.TenNhaCungCap,
-                    p.tblNhanVien.TenNhanVien,
+                    p.tblNguoiDung.TenNguoiDung,
                     p.GiamGia,
                     p.SoTien
                 });
@@ -131,7 +133,7 @@ namespace SaleManagement.BLL
             var listInvoiceDetail = db.tblChiTietHoaDonNhapHangs.Where(p => p.MaHoaDonNhap == idInvoice);
             foreach (tblChiTietHoaDonNhapHang invoiceDetail in listInvoiceDetail.ToList())
             {
-                if(invoiceDetail.SoLuong > BLL_PRODUCT.Instance.getQuantityProductByIdProduct(invoiceDetail.MaHangHoa))
+                if (invoiceDetail.SoLuong > BLL_PRODUCT.Instance.getQuantityProductByIdProduct(invoiceDetail.MaHangHoa))
                 {
                     isValid = false;
                     break;
@@ -145,7 +147,7 @@ namespace SaleManagement.BLL
             bool isValid = true;
             var invoiceDetail = db.tblChiTietHoaDonNhapHangs.Find(idInvoice, idProduct);
             var product = db.tblHangHoas.Find(idProduct);
-            if(invoiceDetail.SoLuong > product.SoLuong)
+            if (invoiceDetail.SoLuong > product.SoLuong)
             {
                 isValid = false;
             }
@@ -153,7 +155,7 @@ namespace SaleManagement.BLL
         }
         public void FuncDeleteProduct(List<string> listIdProduct, string idInvoice)
         {
-            foreach(string idProduct in listIdProduct)
+            foreach (string idProduct in listIdProduct)
             {
                 tblChiTietHoaDonNhapHang invoiceDetail = db.tblChiTietHoaDonNhapHangs.Where(p => p.MaHangHoa == idProduct
                 && p.MaHoaDonNhap == idInvoice).SingleOrDefault();
@@ -165,6 +167,19 @@ namespace SaleManagement.BLL
                 db.SaveChanges();
             }
         }
+        // isHas product in invoice?
+        public bool isHasProductInInvoice(string idInvoice, string idProduct)
+        {
+            var product = db.tblChiTietHoaDonNhapHangs.Find(idInvoice, idProduct);
+            if (product == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         // add product
         public void FuncAddProduct(tblChiTietHoaDonNhapHang invoiceDetail)
         {
@@ -172,7 +187,7 @@ namespace SaleManagement.BLL
             var product = db.tblHangHoas.Find(invoiceDetail.MaHangHoa);
             product.SoLuong += (int)invoiceDetail.SoLuong;
             var invoice = db.tblHoaDonNhapHangs.Find(invoiceDetail.MaHoaDonNhap);
-            invoice.SoTien += + invoiceDetail.TongTien;
+            invoice.SoTien += +invoiceDetail.TongTien;
             db.SaveChanges();
         }
         // change quantity product
@@ -192,9 +207,9 @@ namespace SaleManagement.BLL
         public double getPriceInvoice(string idInvoice)
         {
             double priceInvoice = 0;
-            foreach(tblChiTietHoaDonNhapHang invoiceImport in db.tblChiTietHoaDonNhapHangs)
+            foreach (tblChiTietHoaDonNhapHang invoiceImport in db.tblChiTietHoaDonNhapHangs)
             {
-                if(invoiceImport.MaHoaDonNhap == idInvoice)
+                if (invoiceImport.MaHoaDonNhap == idInvoice)
                 {
                     priceInvoice += (double)invoiceImport.TongTien;
                 }

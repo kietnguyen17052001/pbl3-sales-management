@@ -17,6 +17,8 @@ namespace SaleManagement.FORM
     {
         private DateTime dateStart = BLL_LISTSALEINVOICE.Instance.getDate();
         private string usernameLogin;
+        private int quantityTypeOfProduct, column; // số lượng hiện tại của loại hàng hóa và cột
+        double sellMoneyTypeOfProduct,sellQuantityTypeOfProduct; // số tiền và số lượng bán được của loại hàng hóa
         public FrmStatistic(string _usernameLogin)
         {
             InitializeComponent();
@@ -41,10 +43,7 @@ namespace SaleManagement.FORM
         public void fillChart()
         {
             lbTIME.Text = "Từ ngày " + dpFROM.Value.ToShortDateString() + " đến ngày " + dpTO.Value.ToShortDateString();
-            int quantityTypeOfProduct; // số lượng hiện tại của loại hàng hóa
-            double sellMoneyTypeOfProduct; // số tiền bán được của loại hàng hóa
-            double sellQuantityTypeOfProduct; // số lượng bán được của loại hàng hóa
-            int count = 0; //
+            column = 0;
             chartMONEY.Series.Clear();
             chartPRODUCT_QTY.Series.Clear();
             chartSCALE.Series.Clear();
@@ -63,13 +62,13 @@ namespace SaleManagement.FORM
                 sellMoneyTypeOfProduct = BLL_STATISTIC.instance.getSellMoneyOfEachTypeOfProduct(typeOfProduct, dpFROM.Value, dpTO.Value);
                 // Biểu đồ số sản phẩm
                 chartPRODUCT_QTY.Series["Số sản phẩm"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, quantityTypeOfProduct);
-                chartPRODUCT_QTY.Series["Số sản phẩm"].Points[count].Label = quantityTypeOfProduct.ToString();
+                chartPRODUCT_QTY.Series["Số sản phẩm"].Points[column].Label = quantityTypeOfProduct.ToString();
                 // Biểu đồ so sánh
                 chartSCALE.Series["Tỉ lệ %"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, Math.Round((sellQuantityTypeOfProduct / BLL_STATISTIC.instance.getTotalQuantityProductSold(dpFROM.Value, dpTO.Value)) * 100, 2));
                 // Biểu đồ tiền bán được
                 chartMONEY.Series["Số tiền"].Points.AddXY(typeOfProduct.TenLoaiHangHoa, sellMoneyTypeOfProduct);
-                chartMONEY.Series["Số tiền"].Points[count].Label = sellMoneyTypeOfProduct.ToString();
-                count++;
+                chartMONEY.Series["Số tiền"].Points[column].Label = sellMoneyTypeOfProduct.ToString();
+                column++;
             }
         }
         // Thống kê theo loại sản phẩm
