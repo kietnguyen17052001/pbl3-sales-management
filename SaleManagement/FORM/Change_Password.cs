@@ -82,7 +82,7 @@ namespace SaleManagement.FORM
 
         private void txtReWriteNewPassword_TextChanged(object sender, EventArgs e)
         {
-            if(txtReWriteNewPassword.Text != txtNewPassword.Text)
+            if (txtReWriteNewPassword.Text != txtNewPassword.Text)
             {
                 txtReWriteNewPassword.ForeColor = Color.IndianRed;
             }
@@ -94,24 +94,22 @@ namespace SaleManagement.FORM
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtOldPassword.Text == "Nhập mật khẩu cũ" || txtNewPassword.Text == "Nhập mật khẩu mới" 
+            if (txtOldPassword.Text == "Nhập mật khẩu cũ" || txtNewPassword.Text == "Nhập mật khẩu mới"
                 || txtReWriteNewPassword.Text == "Nhập lại mật khẩu mới")
             {
-                lbWarning.Text = "Thông tin chưa đầy đủ!";
+                lbWarning.Text = "Thông tin nhập chưa đầy đủ!";
             }
             else if (txtReWriteNewPassword.Text != txtNewPassword.Text)
             {
                 lbWarning.Text = "Mật khẩu nhập lại không khớp!";
-                txtReWriteNewPassword.Text = "Nhập lại mật khẩu mới";
-                txtReWriteNewPassword.ForeColor = Color.Silver;
-                txtReWriteNewPassword.PasswordChar = '\0';
+                txtReWriteNewPassword.Clear();
             }
             else
             {
                 bool flag = BLL_ACCOUNT.Instance.ChangePasswordUser(usernameLogin, txtOldPassword.Text.Trim(), txtNewPassword.Text.Trim());
                 if (flag)
                 {
-                    if (txtNewPassword.Text == txtOldPassword.Text)
+                    if (txtNewPassword.Text.Trim() == txtOldPassword.Text.Trim())
                     {
                         lbWarning.Text = "Mật khẩu mới không được trùng với mật khẩu cũ!";
                         txtNewPassword.Text = "Nhập mật khẩu mới";
@@ -128,9 +126,7 @@ namespace SaleManagement.FORM
                 else
                 {
                     lbWarning.Text = "Mật khẩu cũ không đúng!";
-                    txtOldPassword.Text = "Nhập mật khẩu cũ";
-                    txtOldPassword.ForeColor = Color.Silver;
-                    txtOldPassword.PasswordChar = '\0';
+                    txtOldPassword.Clear();
                 }
             }
         }

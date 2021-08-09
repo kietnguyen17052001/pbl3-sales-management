@@ -180,28 +180,17 @@ namespace SaleManagement.VIEW
             user.TenNguoiDung = txtNameUser.Text.Trim();
             user.ChucVu = cbbRole.SelectedItem.ToString();
             user.NgaySinh = Convert.ToDateTime(dpDAY.Value.ToShortDateString());
+            user.Email = txtEmail.Text.Trim();
             user.SoDienThoai = txtPHONE.Text.Trim();
             user.DiaChi = txtADDRESS.Text.Trim();
             user.Luong = Convert.ToDouble(txtSALARY.Text);
             user.MatKhau = BLL_ACCOUNT.Instance.encryptPassword(txtPASSWORD.Text.Trim());
             user.GioiTinh = rbMALE.Checked;
-            if (String.IsNullOrEmpty(user.MaNguoiDung) && !String.IsNullOrEmpty(user.TenNguoiDung))
+            if (String.IsNullOrEmpty(txtIdUser.Text.Trim()) || String.IsNullOrEmpty(txtNameUser.Text.Trim())
+                || String.IsNullOrEmpty(txtEmail.Text.Trim()) || String.IsNullOrEmpty(txtPHONE.Text.Trim())
+                || String.IsNullOrEmpty(txtPASSWORD.Text.Trim()))
             {
-                
-                MessageBox.Show("Mã người dùng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (!String.IsNullOrEmpty(user.MaNguoiDung) && String.IsNullOrEmpty(user.TenNguoiDung))
-            {
-
-                MessageBox.Show("Tên người dùng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
-            }
-            else if (String.IsNullOrEmpty(user.MaNguoiDung) && String.IsNullOrEmpty(user.TenNguoiDung))
-            {
-
-                MessageBox.Show("Mã và tên người dùng trống!", "Lỗi nhập thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Disable(true);
+                MessageBox.Show("Mã, tên, email, SĐT và mật khẩu người dùng phải được nhập!", "Lỗi thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

@@ -153,7 +153,7 @@ namespace SaleManagement.FORM
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(141, 61);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Lưu";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = false;
@@ -173,7 +173,7 @@ namespace SaleManagement.FORM
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(136, 61);
-            this.btnCancel.TabIndex = 8;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Hủy bỏ";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -185,7 +185,7 @@ namespace SaleManagement.FORM
             this.lbWarning.BackColor = System.Drawing.Color.White;
             this.lbWarning.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbWarning.ForeColor = System.Drawing.Color.IndianRed;
-            this.lbWarning.Location = new System.Drawing.Point(248, 438);
+            this.lbWarning.Location = new System.Drawing.Point(206, 461);
             this.lbWarning.Name = "lbWarning";
             this.lbWarning.Size = new System.Drawing.Size(0, 22);
             this.lbWarning.TabIndex = 9;

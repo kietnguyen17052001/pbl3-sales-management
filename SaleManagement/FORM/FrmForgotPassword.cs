@@ -25,7 +25,7 @@ namespace SaleManagement.FORM
             if (txtEmail.Text == "Nhập email" || txtPhone.Text == "Nhập số điện thoại"
                || txtNewPassword.Text == "Nhập mật khẩu mới" || txtReWriteNewPassword.Text == "Nhập lại mật khẩu mới")
             {
-                lbWarning.Text = "Thông tin chưa đầy đủ!";
+                lbWarning.Text = "Thông tin nhập chưa đầy đủ!";
             }
             else
             {
@@ -34,9 +34,7 @@ namespace SaleManagement.FORM
                     if (txtNewPassword.Text.Trim() != txtReWriteNewPassword.Text.Trim())
                     {
                         lbWarning.Text = "Mật khẩu nhập lại không khớp!";
-                        txtReWriteNewPassword.Text = "Nhập lại mật khẩu mới";
-                        txtReWriteNewPassword.ForeColor = Color.Silver;
-                        txtReWriteNewPassword.PasswordChar = '\0';
+                        txtReWriteNewPassword.Clear();
                     }
                     else
                     {
@@ -47,7 +45,7 @@ namespace SaleManagement.FORM
                 }
                 else
                 {
-                    lbWarning.Text = "Email hoặc SĐT không chính xác!";
+                    lbWarning.Text = "Kiểm tra lại email và số điện thoại!";
                 }
             }
         }

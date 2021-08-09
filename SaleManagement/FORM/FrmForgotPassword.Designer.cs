@@ -86,7 +86,7 @@ namespace SaleManagement.FORM
             this.txtReWriteNewPassword.Multiline = true;
             this.txtReWriteNewPassword.Name = "txtReWriteNewPassword";
             this.txtReWriteNewPassword.Size = new System.Drawing.Size(373, 45);
-            this.txtReWriteNewPassword.TabIndex = 17;
+            this.txtReWriteNewPassword.TabIndex = 18;
             this.txtReWriteNewPassword.Text = "Nhập lại mật khẩu mới";
             this.txtReWriteNewPassword.TextChanged += new System.EventHandler(this.txtReWriteNewPassword_TextChanged);
             this.txtReWriteNewPassword.Enter += new System.EventHandler(this.txtReWriteNewPassword_Enter);
@@ -101,7 +101,7 @@ namespace SaleManagement.FORM
             this.txtNewPassword.Multiline = true;
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.Size = new System.Drawing.Size(373, 45);
-            this.txtNewPassword.TabIndex = 16;
+            this.txtNewPassword.TabIndex = 17;
             this.txtNewPassword.Text = "Nhập mật khẩu mới";
             this.txtNewPassword.Enter += new System.EventHandler(this.txtNewPassword_Enter);
             this.txtNewPassword.Leave += new System.EventHandler(this.txtNewPassword_Leave);
@@ -116,7 +116,7 @@ namespace SaleManagement.FORM
             this.txtPhone.Multiline = true;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(373, 45);
-            this.txtPhone.TabIndex = 15;
+            this.txtPhone.TabIndex = 16;
             this.txtPhone.Text = "Nhập số điện thoại";
             this.txtPhone.Enter += new System.EventHandler(this.txtPhone_Enter);
             this.txtPhone.Leave += new System.EventHandler(this.txtPhone_Leave);
@@ -176,7 +176,7 @@ namespace SaleManagement.FORM
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(136, 61);
-            this.btnCancel.TabIndex = 21;
+            this.btnCancel.TabIndex = 20;
             this.btnCancel.Text = "Hủy bỏ";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -197,7 +197,7 @@ namespace SaleManagement.FORM
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(141, 61);
-            this.btnSave.TabIndex = 20;
+            this.btnSave.TabIndex = 19;
             this.btnSave.Text = "Lưu";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = false;
@@ -245,7 +245,7 @@ namespace SaleManagement.FORM
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(373, 45);
-            this.txtEmail.TabIndex = 26;
+            this.txtEmail.TabIndex = 15;
             this.txtEmail.Text = "Nhập email";
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
             this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
