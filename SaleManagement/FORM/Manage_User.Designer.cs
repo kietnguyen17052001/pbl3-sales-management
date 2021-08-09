@@ -129,6 +129,7 @@ namespace SaleManagement.VIEW
             // txtIdUser
             // 
             this.txtIdUser.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtIdUser.Enabled = false;
             this.txtIdUser.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdUser.ForeColor = System.Drawing.Color.IndianRed;
             this.txtIdUser.Location = new System.Drawing.Point(133, 97);
@@ -551,11 +552,13 @@ namespace SaleManagement.VIEW
             // 
             // cbbRole
             // 
+            this.cbbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbRole.FormattingEnabled = true;
             this.cbbRole.Location = new System.Drawing.Point(133, 172);
             this.cbbRole.Name = "cbbRole";
             this.cbbRole.Size = new System.Drawing.Size(244, 28);
             this.cbbRole.TabIndex = 160;
+            this.cbbRole.SelectedIndexChanged += new System.EventHandler(this.cbbRole_SelectedIndexChanged);
             // 
             // FrmManage_Staffs
             // 

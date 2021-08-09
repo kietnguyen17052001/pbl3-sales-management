@@ -20,6 +20,7 @@ namespace SaleManagement.VIEW
         {
             InitializeComponent();
             usernameLogin = _usernameLogin;
+            txtPASSWORD.PasswordChar = '•';
             LoadData();
             setCbbRole();
             FormatColumnsHeader();
@@ -46,7 +47,6 @@ namespace SaleManagement.VIEW
         }
         void Disable(bool E)
         {
-            txtIdUser.Enabled = E;
             txtNameUser.Enabled = E;
             cbbRole.Enabled = E;
             dpDAY.Enabled = E;
@@ -155,7 +155,9 @@ namespace SaleManagement.VIEW
             Disable(true);
             ClearCode();
             isAdd = true;
-            txtIdUser.Text = BLL_USER.Instance.getNewIdUser().ToString();
+            cbbRole.SelectedIndex = 0;
+            txtIdUser.Text = BLL_USER.Instance.getNewIdUser(cbbRole.SelectedItem.ToString());
+            rbMALE.Checked = true;
             txtSALARY.Text = "0";
         }
         // edit staff
@@ -168,7 +170,7 @@ namespace SaleManagement.VIEW
             else
             {
                 Disable(true);
-                txtIdUser.Enabled = false;
+                txtIdUser.Enabled = txtPASSWORD.Enabled = false;
                 isAdd = false;
             }
         }
@@ -184,34 +186,33 @@ namespace SaleManagement.VIEW
             user.SoDienThoai = txtPHONE.Text.Trim();
             user.DiaChi = txtADDRESS.Text.Trim();
             user.Luong = Convert.ToDouble(txtSALARY.Text);
-            user.MatKhau = BLL_ACCOUNT.Instance.encryptPassword(txtPASSWORD.Text.Trim());
             user.GioiTinh = rbMALE.Checked;
             if (String.IsNullOrEmpty(txtIdUser.Text.Trim()) || String.IsNullOrEmpty(txtNameUser.Text.Trim())
-                || String.IsNullOrEmpty(txtEmail.Text.Trim()) || String.IsNullOrEmpty(txtPHONE.Text.Trim())
-                || String.IsNullOrEmpty(txtPASSWORD.Text.Trim()))
+                || String.IsNullOrEmpty(txtEmail.Text.Trim()) || String.IsNullOrEmpty(txtPHONE.Text.Trim()))
             {
                 MessageBox.Show("Mã, tên, email, SĐT và mật khẩu người dùng phải được nhập!", "Lỗi thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                try
+                if (isAdd)
                 {
-                    if (isAdd)
+                    if (String.IsNullOrEmpty(txtPASSWORD.Text.Trim()))
                     {
+                        MessageBox.Show("Mã, tên, email, SĐT và mật khẩu người dùng phải được nhập!", "Lỗi thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        user.MatKhau = BLL_ACCOUNT.Instance.encryptPassword(txtPASSWORD.Text.Trim());
                         BLL_USER.Instance.FuncAddNewUser(user); // add new user
                         MessageBox.Show("Thêm người dùng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadData();
                     }
-                    else
-                    {
-                        BLL_USER.Instance.FuncEditUser(user); // edit user
-                        MessageBox.Show("Sửa người dùng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadData();
-                    }
                 }
-                catch(Exception)
+                else
                 {
-                    MessageBox.Show("Mã người dùng đã tồn tại!", "Lỗi trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    BLL_USER.Instance.FuncEditUser(user); // edit user
+                    MessageBox.Show("Sửa người dùng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
                 }
             }
         }
@@ -286,6 +287,14 @@ namespace SaleManagement.VIEW
             if (String.IsNullOrEmpty(txtSALARY.Text))
             {
                 txtSALARY.Text = "0";
+            }
+        }
+
+        private void cbbRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (btnADD.Enabled == false)
+            {
+                txtIdUser.Text = BLL_USER.Instance.getNewIdUser(cbbRole.SelectedItem.ToString());
             }
         }
     }

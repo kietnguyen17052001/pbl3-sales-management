@@ -54,19 +54,12 @@ namespace SaleManagement.BLL
             }
             return staff;
         }
-        // Kiểm tra mã nguời dùng đã tồn tại hay chưa
-        public bool isIdExist(string idUser)
-        {
-            var user = db.tblNguoiDungs.Find(idUser);
-            if (user == null)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+        // id user exist ?
+        //public bool isIdExist(string idUser)
+        //{
+        //    var user = db.tblNguoiDungs.ToList().Where(p => BLL_ACCOUNT.Instance.encryptPassword(p.MaNguoiDung) == BLL_ACCOUNT.Instance.encryptPassword(idUser));
+        //    return (user != null) ? true : false; 
+        //} 
         // load data User
         public void LoadDataUser(DataGridView dgv)
         {
@@ -144,35 +137,42 @@ namespace SaleManagement.BLL
         {
             return dgv.Rows.Count;
         }
-        // Trả về mã số khách hàng mới khi thực hiện chức năng thêm
-        public string getNewIdUser()
+        // get new id user
+        public string getNewIdUser(string role)
         {
+            List<tblNguoiDung> list = db.tblNguoiDungs.Where(p => p.ChucVu == role).ToList();
             string idUser = "";
-            List<tblNguoiDung> list = db.tblNguoiDungs.Where(p => p.ChucVu == "Member").ToList();
-            if (list.Count == 0)
+            string key = null;
+            if (role == "Admin")
             {
-                idUser = "NV0001";
+                key = "AD";
             }
             else
             {
-                // Nếu đã có khách hàng trong danh sách,
-                // LAST: Trả về số cuối của mã khách hàng, vd: KH1 -> 1
+                key = "NV";
+            }
+            if (list.Count == 0)
+            {
+                idUser = key + "0001";
+            }
+            else
+            {
                 int lastId = Convert.ToInt32(list[list.Count - 1].MaNguoiDung.Remove(0, 2));
                 if (lastId + 1 < 10)
                 {
-                    idUser = "NV000" + (lastId + 1).ToString();
+                    idUser = key + "000" + (lastId + 1).ToString();
                 }
                 else if (lastId + 1 < 100)
                 {
-                    idUser = "NV00" + (lastId + 1).ToString();
+                    idUser = key + "00" + (lastId + 1).ToString();
                 }
                 else if (lastId + 1 < 1000)
                 {
-                    idUser = "NV0" + (lastId + 1).ToString();
+                    idUser = key + "0" + (lastId + 1).ToString();
                 }
                 else
                 {
-                    idUser = "NV" + (lastId + 1).ToString();
+                    idUser = key + (lastId + 1).ToString();
                 }
             }
             return idUser;

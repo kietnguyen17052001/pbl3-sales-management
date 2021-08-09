@@ -155,7 +155,7 @@ namespace SaleManagement.VIEW
         {
             isAdd = true;
             Disable(true);
-            cbbPRODUCERs.SelectedIndex = cbbPRODUCERs.SelectedIndex = cbbTYPE_OF_PRODUCT.SelectedIndex = 0;
+            cbbPRODUCERs.SelectedIndex = cbbTYPE_OF_PRODUCT.SelectedIndex = 0;
             txtID_PRODUCT.Text = BLL_PRODUCT.Instance.getNewIdProduct(((CBBItem)cbbTYPE_OF_PRODUCT.SelectedItem).VALUE);
             txtNAME_PRODUCT.Clear();
             txtQUANTITY.Text = txtBUY.Text = txtSALE.Text = "0";
