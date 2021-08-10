@@ -25,7 +25,7 @@ namespace SaleManagement.FORM
         // Login application
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (BLL_ACCOUNT.Instance.isLoginSuccessful(txtUSER.Text.Trim(), txtPASSWORD.Text.Trim()))
+            if (BLL_ACCOUNT.Instance.checkAccount(txtUSER.Text.Trim(), txtPASSWORD.Text.Trim()))
             {
                 if (BLL_ACCOUNT.Instance.isAdmin(txtUSER.Text.Trim()))
                 {

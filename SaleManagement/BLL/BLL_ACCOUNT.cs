@@ -41,7 +41,7 @@ namespace SaleManagement.BLL
             return encrypt;
         }
         // Check login
-        public bool isLoginSuccessful(string username, string password)
+        public bool checkAccount(string username, string password)
         {
             var user = db.tblNguoiDungs.ToList().Where(p => encryptPassword(p.MaNguoiDung) == encryptPassword(username)
             && p.MatKhau == encryptPassword(password)).SingleOrDefault();
@@ -51,14 +51,7 @@ namespace SaleManagement.BLL
         public bool isAdmin(string username)
         {
             var user = db.tblNguoiDungs.ToList().Where(p => encryptPassword(p.MaNguoiDung) == encryptPassword(username)).SingleOrDefault();
-            if (user.ChucVu == "Admin")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (user.ChucVu == "Admin") ? true : false;
         }
         // Check username
         public bool checkUsername(string username)
@@ -80,19 +73,11 @@ namespace SaleManagement.BLL
             user.MatKhau = encryptPassword(newPassword);
             db.SaveChanges();
         }
-        public bool ChangePasswordUser(string userNameLogin, string oldPass, string newPass)
+        // is valid old password ?
+        public bool isValidOldPassword(string userName, string oldPassword)
         {
-            var user = db.tblNguoiDungs.Find(userNameLogin);
-            if (user.MatKhau != encryptPassword(oldPass))
-            {
-                return false;
-            }
-            else
-            {
-                user.MatKhau = encryptPassword(newPass); // thay đổi password của người dùng trong tblTaiKhoan
-                db.SaveChanges();
-                return true;
-            }
+            var user = db.tblNguoiDungs.Find(userName);
+            return (user.MatKhau == encryptPassword(oldPassword)) ? true : false;
         }
     }
 }

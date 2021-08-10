@@ -106,8 +106,8 @@ namespace SaleManagement.FORM
             }
             else
             {
-                bool flag = BLL_ACCOUNT.Instance.ChangePasswordUser(usernameLogin, txtOldPassword.Text.Trim(), txtNewPassword.Text.Trim());
-                if (flag)
+                // valid old password ?
+                if (BLL_ACCOUNT.Instance.isValidOldPassword(usernameLogin, txtOldPassword.Text.Trim()))
                 {
                     if (txtNewPassword.Text.Trim() == txtOldPassword.Text.Trim())
                     {
@@ -119,6 +119,7 @@ namespace SaleManagement.FORM
                     }
                     else
                     {
+                        BLL_ACCOUNT.Instance.newPassword(usernameLogin, txtNewPassword.Text.Trim());
                         MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
