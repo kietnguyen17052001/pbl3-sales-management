@@ -84,15 +84,8 @@ namespace SaleManagement.FORM
         }
         private void lbForgot_Click(object sender, EventArgs e)
         {
-            if (BLL_ACCOUNT.Instance.checkUsername(txtUSER.Text.Trim()))
-            {
-                FrmForgotPassword frmForgotPassword = new FrmForgotPassword(txtUSER.Text.Trim());
-                frmForgotPassword.Show();
-            }
-            else
-            {
-                lbINFO.Text = "Tên đăng nhập không tồn tại!";
-            }
+            FrmForgotPassword frmForgotPassword = new FrmForgotPassword();
+            frmForgotPassword.Show();
         }
         // Exit application
         private void btnExit_Click(object sender, EventArgs e)

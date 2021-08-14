@@ -33,7 +33,7 @@ namespace SaleManagement.VIEW
             this.btnSALE = new System.Windows.Forms.Button();
             this.btnSUPPLIERS = new System.Windows.Forms.Button();
             this.btnBACK = new System.Windows.Forms.Button();
-            this.btnSTAFFS = new System.Windows.Forms.Button();
+            this.btnUSER = new System.Windows.Forms.Button();
             this.btnCUSTOMERS = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnImportProduct = new System.Windows.Forms.Button();
@@ -130,27 +130,27 @@ namespace SaleManagement.VIEW
             this.btnBACK.UseVisualStyleBackColor = false;
             this.btnBACK.Click += new System.EventHandler(this.btnBACK_Click);
             // 
-            // btnSTAFFS
+            // btnUSER
             // 
-            this.btnSTAFFS.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSTAFFS.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSTAFFS.FlatAppearance.BorderSize = 0;
-            this.btnSTAFFS.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSTAFFS.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.btnSTAFFS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSTAFFS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSTAFFS.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSTAFFS.ForeColor = System.Drawing.Color.Black;
-            this.btnSTAFFS.Image = global::SaleManagement.Properties.Resources.Admin_icon;
-            this.btnSTAFFS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSTAFFS.Location = new System.Drawing.Point(268, 105);
-            this.btnSTAFFS.Name = "btnSTAFFS";
-            this.btnSTAFFS.Size = new System.Drawing.Size(189, 184);
-            this.btnSTAFFS.TabIndex = 20;
-            this.btnSTAFFS.Text = "Nhân viên";
-            this.btnSTAFFS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSTAFFS.UseVisualStyleBackColor = false;
-            this.btnSTAFFS.Click += new System.EventHandler(this.btnSTAFFS_Click);
+            this.btnUSER.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUSER.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUSER.FlatAppearance.BorderSize = 0;
+            this.btnUSER.FlatAppearance.CheckedBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUSER.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnUSER.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUSER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUSER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUSER.ForeColor = System.Drawing.Color.Black;
+            this.btnUSER.Image = global::SaleManagement.Properties.Resources.Admin_icon;
+            this.btnUSER.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUSER.Location = new System.Drawing.Point(268, 105);
+            this.btnUSER.Name = "btnUSER";
+            this.btnUSER.Size = new System.Drawing.Size(189, 184);
+            this.btnUSER.TabIndex = 20;
+            this.btnUSER.Text = "Người dùng";
+            this.btnUSER.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUSER.UseVisualStyleBackColor = false;
+            this.btnUSER.Click += new System.EventHandler(this.btnUSER_Click);
             // 
             // btnCUSTOMERS
             // 
@@ -290,7 +290,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.btnSALE);
             this.Controls.Add(this.btnSUPPLIERS);
             this.Controls.Add(this.btnBACK);
-            this.Controls.Add(this.btnSTAFFS);
+            this.Controls.Add(this.btnUSER);
             this.Controls.Add(this.btnCUSTOMERS);
             this.Name = "FrmManage_Data";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -302,7 +302,7 @@ namespace SaleManagement.VIEW
 
         #endregion
         private System.Windows.Forms.Button btnBACK;
-        private System.Windows.Forms.Button btnSTAFFS;
+        private System.Windows.Forms.Button btnUSER;
         private System.Windows.Forms.Button btnCUSTOMERS;
         private System.Windows.Forms.Button btnSUPPLIERS;
         private System.Windows.Forms.Button btnSALE;

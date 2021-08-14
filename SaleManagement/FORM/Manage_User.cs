@@ -12,15 +12,14 @@ using System.Windows.Forms;
 
 namespace SaleManagement.VIEW
 {
-    public partial class FrmManage_Staffs : Form
+    public partial class FrmManage_User : Form
     {
         private bool isAdd; // Kiểm tra xem thực hiện chức năng ADD hay EDIT
         private string usernameLogin;
-        public FrmManage_Staffs(string _usernameLogin)
+        public FrmManage_User(string _usernameLogin)
         {
             InitializeComponent();
             usernameLogin = _usernameLogin;
-            txtPASSWORD.PasswordChar = '•';
             LoadData();
             setCbbRole();
             FormatColumnsHeader();
@@ -55,7 +54,6 @@ namespace SaleManagement.VIEW
             txtADDRESS.Enabled = E;
             txtSALARY.Enabled = E;
             gbGENDER.Enabled = E;
-            txtPASSWORD.Enabled = E;
             btnADD.Enabled = !E;
             btnEDIT.Enabled = !E;
             btnBACK.Enabled = !E;
@@ -72,7 +70,6 @@ namespace SaleManagement.VIEW
             txtPHONE.Clear();
             txtADDRESS.Clear();
             txtSALARY.Clear();
-            txtPASSWORD.Clear();
         }
         public void setCbbRole()
         {
@@ -170,49 +167,63 @@ namespace SaleManagement.VIEW
             else
             {
                 Disable(true);
-                txtIdUser.Enabled = txtPASSWORD.Enabled = false;
+                txtIdUser.Enabled = false;
                 isAdd = false;
             }
         }
+        private string messageError = "";
         // save change
         private void btnSAVE_Click(object sender, EventArgs e)
         {
-            tblNguoiDung user = new tblNguoiDung();
-            user.MaNguoiDung = txtIdUser.Text.Trim();
-            user.TenNguoiDung = txtNameUser.Text.Trim();
-            user.ChucVu = cbbRole.SelectedItem.ToString();
-            user.NgaySinh = Convert.ToDateTime(dpDAY.Value.ToShortDateString());
-            user.Email = txtEmail.Text.Trim();
-            user.SoDienThoai = txtPHONE.Text.Trim();
-            user.DiaChi = txtADDRESS.Text.Trim();
-            user.Luong = Convert.ToDouble(txtSALARY.Text);
-            user.GioiTinh = rbMALE.Checked;
+
             if (String.IsNullOrEmpty(txtIdUser.Text.Trim()) || String.IsNullOrEmpty(txtNameUser.Text.Trim())
                 || String.IsNullOrEmpty(txtEmail.Text.Trim()) || String.IsNullOrEmpty(txtPHONE.Text.Trim()))
             {
-                MessageBox.Show("Mã, tên, email, SĐT và mật khẩu người dùng phải được nhập!", "Lỗi thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mã, tên, email, SĐT người dùng phải được nhập!", "Lỗi thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (isAdd)
+                if (BLL_USER.Instance.checkEmail(txtEmail.Text.Trim()) && BLL_USER.Instance.checkPhone(txtPHONE.Text.Trim()))
                 {
-                    if (String.IsNullOrEmpty(txtPASSWORD.Text.Trim()))
+                    tblNguoiDung user = new tblNguoiDung();
+                    user.MaNguoiDung = txtIdUser.Text.Trim();
+                    user.TenNguoiDung = txtNameUser.Text.Trim();
+                    user.MatKhau = BLL_ACCOUNT.Instance.encryptPassword(txtIdUser.Text.Trim());
+                    user.ChucVu = cbbRole.SelectedItem.ToString();
+                    user.NgaySinh = Convert.ToDateTime(dpDAY.Value.ToShortDateString());
+                    user.Email = txtEmail.Text.Trim();
+                    user.SoDienThoai = txtPHONE.Text.Trim();
+                    user.DiaChi = txtADDRESS.Text.Trim();
+                    user.Luong = Convert.ToDouble(txtSALARY.Text);
+                    user.GioiTinh = rbMALE.Checked;
+                    if (isAdd)
                     {
-                        MessageBox.Show("Mã, tên, email, SĐT và mật khẩu người dùng phải được nhập!", "Lỗi thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        BLL_USER.Instance.FuncAddNewUser(user); // add new user
+                        MessageBox.Show("Thêm người dùng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadData();
                     }
                     else
                     {
-                        user.MatKhau = BLL_ACCOUNT.Instance.encryptPassword(txtPASSWORD.Text.Trim());
-                        BLL_USER.Instance.FuncAddNewUser(user); // add new user
-                        MessageBox.Show("Thêm người dùng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        BLL_USER.Instance.FuncEditUser(user); // edit user
+                        MessageBox.Show("Sửa người dùng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadData();
                     }
                 }
                 else
                 {
-                    BLL_USER.Instance.FuncEditUser(user); // edit user
-                    MessageBox.Show("Sửa người dùng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
+                    if (!BLL_USER.Instance.checkPhone(txtPHONE.Text.Trim()) && !BLL_USER.Instance.checkEmail(txtEmail.Text.Trim()))
+                    {
+                        messageError += "Email và số điện thoại đã được đăng kí!";
+                    }
+                    else if (!BLL_USER.Instance.checkPhone(txtPHONE.Text.Trim()))
+                    {
+                        messageError = "Số điện thoại đã được đăng ký!";
+                    }
+                    else if (!BLL_USER.Instance.checkEmail(txtEmail.Text.Trim()))
+                    {
+                        messageError = "Email đã được đăng ký!";
+                    }
+                    MessageBox.Show(messageError, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

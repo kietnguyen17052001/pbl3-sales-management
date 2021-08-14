@@ -122,7 +122,6 @@ D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleMa
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmManage_Customers.resources
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmManage_Data.resources
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmManage_Items.resources
-D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmManage_Staffs.resources
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmManage_Suppliers.resources
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FrmMain_Admin.resources
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.csproj.GenerateResource.cache
@@ -134,3 +133,4 @@ D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleMa
 D:\ITDocuments\BKDocuments\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmEditQuantityProduct_InvoiceSaleProduct.resources
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.FORM.FrmForgotPassword.resources
 D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.csproj.AssemblyReference.cache
+D:\NguyenDangKiet-Job\PhanMem-QuanLyBanHangDienGiaDung\App\SaleManagement\SaleManagement\obj\Debug\SaleManagement.VIEW.FrmManage_User.resources

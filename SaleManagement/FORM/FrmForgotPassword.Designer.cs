@@ -39,12 +39,15 @@ namespace SaleManagement.FORM
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnCancelChange = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
+            this.btnCancelSearch = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.lbSearchResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -59,7 +62,7 @@ namespace SaleManagement.FORM
             this.lbWarning.BackColor = System.Drawing.Color.White;
             this.lbWarning.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbWarning.ForeColor = System.Drawing.Color.IndianRed;
-            this.lbWarning.Location = new System.Drawing.Point(233, 479);
+            this.lbWarning.Location = new System.Drawing.Point(233, 542);
             this.lbWarning.Name = "lbWarning";
             this.lbWarning.Size = new System.Drawing.Size(0, 22);
             this.lbWarning.TabIndex = 22;
@@ -79,9 +82,10 @@ namespace SaleManagement.FORM
             // 
             // txtReWriteNewPassword
             // 
+            this.txtReWriteNewPassword.Enabled = false;
             this.txtReWriteNewPassword.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReWriteNewPassword.ForeColor = System.Drawing.Color.Silver;
-            this.txtReWriteNewPassword.Location = new System.Drawing.Point(208, 409);
+            this.txtReWriteNewPassword.Location = new System.Drawing.Point(208, 487);
             this.txtReWriteNewPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtReWriteNewPassword.Multiline = true;
             this.txtReWriteNewPassword.Name = "txtReWriteNewPassword";
@@ -94,9 +98,10 @@ namespace SaleManagement.FORM
             // 
             // txtNewPassword
             // 
+            this.txtNewPassword.Enabled = false;
             this.txtNewPassword.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNewPassword.ForeColor = System.Drawing.Color.Silver;
-            this.txtNewPassword.Location = new System.Drawing.Point(208, 334);
+            this.txtNewPassword.Location = new System.Drawing.Point(208, 421);
             this.txtNewPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNewPassword.Multiline = true;
             this.txtNewPassword.Name = "txtNewPassword";
@@ -110,7 +115,7 @@ namespace SaleManagement.FORM
             // 
             this.txtPhone.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.ForeColor = System.Drawing.Color.Silver;
-            this.txtPhone.Location = new System.Drawing.Point(208, 263);
+            this.txtPhone.Location = new System.Drawing.Point(208, 256);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPhone.MaxLength = 10;
             this.txtPhone.Multiline = true;
@@ -136,7 +141,7 @@ namespace SaleManagement.FORM
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(120, 409);
+            this.pictureBox5.Location = new System.Drawing.Point(120, 487);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(68, 45);
             this.pictureBox5.TabIndex = 25;
@@ -146,7 +151,7 @@ namespace SaleManagement.FORM
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(120, 334);
+            this.pictureBox4.Location = new System.Drawing.Point(120, 421);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(68, 45);
             this.pictureBox4.TabIndex = 24;
@@ -156,36 +161,38 @@ namespace SaleManagement.FORM
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.White;
             this.pictureBox3.Image = global::SaleManagement.Properties.Resources.phone_call;
-            this.pictureBox3.Location = new System.Drawing.Point(120, 263);
+            this.pictureBox3.Location = new System.Drawing.Point(120, 256);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(68, 45);
             this.pictureBox3.TabIndex = 23;
             this.pictureBox3.TabStop = false;
             // 
-            // btnCancel
+            // btnCancelChange
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.IndianRed;
-            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
-            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Image = global::SaleManagement.Properties.Resources.delete_2_24;
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(384, 524);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(136, 61);
-            this.btnCancel.TabIndex = 20;
-            this.btnCancel.Text = "Hủy bỏ";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancelChange.BackColor = System.Drawing.Color.IndianRed;
+            this.btnCancelChange.Enabled = false;
+            this.btnCancelChange.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnCancelChange.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnCancelChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelChange.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelChange.ForeColor = System.Drawing.Color.White;
+            this.btnCancelChange.Image = global::SaleManagement.Properties.Resources.delete_2_24;
+            this.btnCancelChange.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelChange.Location = new System.Drawing.Point(384, 582);
+            this.btnCancelChange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancelChange.Name = "btnCancelChange";
+            this.btnCancelChange.Size = new System.Drawing.Size(136, 55);
+            this.btnCancelChange.TabIndex = 20;
+            this.btnCancelChange.Text = "Hủy bỏ";
+            this.btnCancelChange.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelChange.UseVisualStyleBackColor = false;
+            this.btnCancelChange.Click += new System.EventHandler(this.btnCancelSearch_Click);
             // 
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSave.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSave.Enabled = false;
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -193,10 +200,10 @@ namespace SaleManagement.FORM
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = global::SaleManagement.Properties.Resources.save_as_24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(238, 524);
+            this.btnSave.Location = new System.Drawing.Point(238, 582);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(141, 61);
+            this.btnSave.Size = new System.Drawing.Size(141, 55);
             this.btnSave.TabIndex = 19;
             this.btnSave.Text = "Lưu";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -221,7 +228,7 @@ namespace SaleManagement.FORM
             this.pictureBox1.Location = new System.Drawing.Point(97, 68);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(573, 555);
+            this.pictureBox1.Size = new System.Drawing.Size(573, 580);
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
@@ -250,6 +257,59 @@ namespace SaleManagement.FORM
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
             this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
+            // btnCancelSearch
+            // 
+            this.btnCancelSearch.BackColor = System.Drawing.Color.IndianRed;
+            this.btnCancelSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btnCancelSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnCancelSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelSearch.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelSearch.ForeColor = System.Drawing.Color.White;
+            this.btnCancelSearch.Image = global::SaleManagement.Properties.Resources.delete_2_24;
+            this.btnCancelSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelSearch.Location = new System.Drawing.Point(384, 355);
+            this.btnCancelSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancelSearch.Name = "btnCancelSearch";
+            this.btnCancelSearch.Size = new System.Drawing.Size(136, 55);
+            this.btnCancelSearch.TabIndex = 29;
+            this.btnCancelSearch.Text = "Hủy bỏ";
+            this.btnCancelSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelSearch.UseVisualStyleBackColor = false;
+            this.btnCancelSearch.Click += new System.EventHandler(this.btnCancelSearch_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSearch.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Image = global::SaleManagement.Properties.Resources.search_12_241;
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Location = new System.Drawing.Point(238, 355);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(141, 55);
+            this.btnSearch.TabIndex = 28;
+            this.btnSearch.Text = "Tìm kiếm";
+            this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // lbSearchResult
+            // 
+            this.lbSearchResult.AutoSize = true;
+            this.lbSearchResult.BackColor = System.Drawing.Color.White;
+            this.lbSearchResult.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSearchResult.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbSearchResult.Location = new System.Drawing.Point(234, 316);
+            this.lbSearchResult.Name = "lbSearchResult";
+            this.lbSearchResult.Size = new System.Drawing.Size(0, 22);
+            this.lbSearchResult.TabIndex = 30;
+            this.lbSearchResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FrmForgotPassword
             // 
             this.AcceptButton = this.btnSave;
@@ -258,13 +318,16 @@ namespace SaleManagement.FORM
             this.BackgroundImage = global::SaleManagement.Properties.Resources.backgroundLogin;
             this.ClientSize = new System.Drawing.Size(766, 690);
             this.ControlBox = false;
+            this.Controls.Add(this.lbSearchResult);
+            this.Controls.Add(this.btnCancelSearch);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.lbWarning);
-            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnCancelChange);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox2);
@@ -293,7 +356,7 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lbWarning;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnCancelChange;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -304,5 +367,8 @@ namespace SaleManagement.FORM
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Button btnCancelSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label lbSearchResult;
     }
 }

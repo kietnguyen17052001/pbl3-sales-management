@@ -53,18 +53,17 @@ namespace SaleManagement.BLL
             var user = db.tblNguoiDungs.ToList().Where(p => encryptPassword(p.MaNguoiDung) == encryptPassword(username)).SingleOrDefault();
             return (user.ChucVu == "Admin") ? true : false;
         }
-        // Check username
-        public bool checkUsername(string username)
+        // Check email and phone
+        public bool checkEmailAndPhone(string email, string phone)
         {
-            var user = db.tblNguoiDungs.ToList().Where(p => encryptPassword(p.MaNguoiDung) == encryptPassword(username)).SingleOrDefault();
+            var user = db.tblNguoiDungs.Where(p => p.Email == email && p.SoDienThoai == phone).SingleOrDefault();
             return (user != null) ? true : false;
         }
-        // Check email and phone
-        public bool checkEmailAndPhone(string username, string email, string phone)
+        // get username by email and phone
+        public string getUsername(string email, string phone)
         {
-            var user = db.tblNguoiDungs.Where(p => p.MaNguoiDung == username
-            && p.Email == email && p.SoDienThoai == phone).SingleOrDefault();
-            return (user != null) ? true : false;
+            var user = db.tblNguoiDungs.Where(p => p.Email == email && p.SoDienThoai == phone).SingleOrDefault();
+            return user.MaNguoiDung;
         }
         // new password
         public void newPassword(string username, string newPassword)

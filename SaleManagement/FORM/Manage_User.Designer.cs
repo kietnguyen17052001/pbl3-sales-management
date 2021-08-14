@@ -1,7 +1,7 @@
 ﻿
 namespace SaleManagement.VIEW
 {
-    partial class FrmManage_Staffs
+    partial class FrmManage_User
     {
         /// <summary>
         /// Required designer variable.
@@ -56,8 +56,6 @@ namespace SaleManagement.VIEW
             this.txtSALARY = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dpDAY = new System.Windows.Forms.DateTimePicker();
-            this.txtPASSWORD = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbQuantity = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -405,9 +403,9 @@ namespace SaleManagement.VIEW
             this.gbGENDER.Controls.Add(this.rbFEMALE);
             this.gbGENDER.Controls.Add(this.rbMALE);
             this.gbGENDER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbGENDER.Location = new System.Drawing.Point(34, 452);
+            this.gbGENDER.Location = new System.Drawing.Point(34, 430);
             this.gbGENDER.Name = "gbGENDER";
-            this.gbGENDER.Size = new System.Drawing.Size(234, 86);
+            this.gbGENDER.Size = new System.Drawing.Size(234, 108);
             this.gbGENDER.TabIndex = 148;
             this.gbGENDER.TabStop = false;
             this.gbGENDER.Text = "Giới tính";
@@ -443,7 +441,6 @@ namespace SaleManagement.VIEW
             this.txtSALARY.Size = new System.Drawing.Size(244, 27);
             this.txtSALARY.TabIndex = 150;
             this.txtSALARY.Text = "0";
-            this.txtSALARY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSALARY.TextChanged += new System.EventHandler(this.txtSALARY_TextChanged);
             this.txtSALARY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPHONE_KeyPress);
             // 
@@ -465,26 +462,6 @@ namespace SaleManagement.VIEW
             this.dpDAY.Name = "dpDAY";
             this.dpDAY.Size = new System.Drawing.Size(244, 27);
             this.dpDAY.TabIndex = 151;
-            // 
-            // txtPASSWORD
-            // 
-            this.txtPASSWORD.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.txtPASSWORD.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPASSWORD.Location = new System.Drawing.Point(133, 409);
-            this.txtPASSWORD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtPASSWORD.Name = "txtPASSWORD";
-            this.txtPASSWORD.Size = new System.Drawing.Size(244, 27);
-            this.txtPASSWORD.TabIndex = 153;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(30, 413);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 22);
-            this.label11.TabIndex = 152;
-            this.label11.Text = "Mật khẩu";
             // 
             // pictureBox1
             // 
@@ -560,7 +537,7 @@ namespace SaleManagement.VIEW
             this.cbbRole.TabIndex = 160;
             this.cbbRole.SelectedIndexChanged += new System.EventHandler(this.cbbRole_SelectedIndexChanged);
             // 
-            // FrmManage_Staffs
+            // FrmManage_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -574,8 +551,6 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.lbQuantity);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.txtPASSWORD);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.dpDAY);
             this.Controls.Add(this.txtSALARY);
             this.Controls.Add(this.label5);
@@ -602,7 +577,7 @@ namespace SaleManagement.VIEW
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvLIST_USER);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "FrmManage_Staffs";
+            this.Name = "FrmManage_User";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Người dùng";
             ((System.ComponentModel.ISupportInitialize)(this.dgvLIST_USER)).EndInit();
@@ -642,8 +617,6 @@ namespace SaleManagement.VIEW
         private System.Windows.Forms.DateTimePicker dpDAY;
         private System.Windows.Forms.RadioButton rbFEMALE;
         private System.Windows.Forms.RadioButton rbMALE;
-        private System.Windows.Forms.TextBox txtPASSWORD;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbQuantity;
         private System.Windows.Forms.Label label12;

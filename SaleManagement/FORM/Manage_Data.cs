@@ -20,10 +20,10 @@ namespace SaleManagement.VIEW
             usernamelogin = _usernamelogin;
         }
 
-        private void btnSTAFFS_Click(object sender, EventArgs e)
+        private void btnUSER_Click(object sender, EventArgs e)
         {
-            FrmManage_Staffs frmManageStaff = new FrmManage_Staffs(usernamelogin);
-            frmManageStaff.Show();
+            FrmManage_User frmUser = new FrmManage_User(usernamelogin);
+            frmUser.Show();
             this.Close();
         }
 

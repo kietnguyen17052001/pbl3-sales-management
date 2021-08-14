@@ -54,13 +54,18 @@ namespace SaleManagement.BLL
             }
             return staff;
         }
-        // id user exist ?
-        //public bool isIdExist(string idUser)
-        //{
-        //    var user = db.tblNguoiDungs.ToList().Where(p => BLL_ACCOUNT.Instance.encryptPassword(p.MaNguoiDung) == BLL_ACCOUNT.Instance.encryptPassword(idUser));
-        //    return (user != null) ? true : false; 
-        //} 
-        // load data User
+        // check email
+        public bool checkEmail(string email)
+        {
+            var checkMail = db.tblNguoiDungs.Where(p => p.Email == email).SingleOrDefault();
+            return (checkMail == null) ? true : false;
+        }
+        // check phone
+        public bool checkPhone(string phone)
+        {
+            var checkPhone = db.tblNguoiDungs.Where(p => p.SoDienThoai == phone).SingleOrDefault();
+            return (checkPhone == null) ? true : false;
+        }
         public void LoadDataUser(DataGridView dgv)
         {
             var getUser = db.tblNguoiDungs.Select(p => new

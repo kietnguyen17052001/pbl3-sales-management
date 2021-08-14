@@ -14,47 +14,66 @@ namespace SaleManagement.FORM
     public partial class FrmForgotPassword : Form
     {
         private string usernameLogin;
-        public FrmForgotPassword(string _usernameLogin)
+        public FrmForgotPassword()
         {
             InitializeComponent();
-            usernameLogin = _usernameLogin;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        // search user
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (txtEmail.Text == "Nhập email" || txtPhone.Text == "Nhập số điện thoại"
-               || txtNewPassword.Text == "Nhập mật khẩu mới" || txtReWriteNewPassword.Text == "Nhập lại mật khẩu mới")
+            if (txtEmail.Text == "Nhập email" || txtPhone.Text == "Nhập số điện thoại")
             {
-                lbWarning.Text = "Thông tin nhập chưa đầy đủ!";
+                lbSearchResult.Text = "Vui lòng điền thông tin";
             }
             else
             {
-                if (BLL_ACCOUNT.Instance.checkEmailAndPhone(usernameLogin, txtEmail.Text.Trim(), txtPhone.Text.Trim()))
+                if (BLL_ACCOUNT.Instance.checkEmailAndPhone(txtEmail.Text.Trim(), txtPhone.Text.Trim()))
                 {
-                    if (txtNewPassword.Text.Trim() != txtReWriteNewPassword.Text.Trim())
-                    {
-                        lbWarning.Text = "Mật khẩu nhập lại không khớp!";
-                        txtReWriteNewPassword.Clear();
-                    }
-                    else
-                    {
-                        BLL_ACCOUNT.Instance.newPassword(usernameLogin, txtNewPassword.Text.Trim());
-                        MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
-                    }
+                    usernameLogin = BLL_ACCOUNT.Instance.getUsername(txtEmail.Text.Trim(), txtPhone.Text.Trim());
+                    lbSearchResult.ForeColor = Color.SteelBlue;
+                    lbSearchResult.Text = "Tìm thấy người dùng : " + usernameLogin;
+                    txtNewPassword.Enabled = txtReWriteNewPassword.Enabled = btnSave.Enabled = btnCancelChange.Enabled = true;
                 }
                 else
                 {
-                    lbWarning.Text = "Kiểm tra lại email và số điện thoại!";
+                    lbSearchResult.ForeColor = Color.IndianRed;
+                    lbSearchResult.Text = "Không tìm thấy người dùng";
+                    txtEmail.Clear();
+                    txtPhone.Clear();
                 }
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        // save all
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (txtNewPassword.Text == "Nhập mật khẩu mới" || txtReWriteNewPassword.Text == "Nhập lại mật khẩu mới")
+            {
+                lbWarning.ForeColor = Color.IndianRed;
+                lbWarning.Text = "Chưa điền đủ thông tin!";
+            }
+            else
+            {
+                if (txtNewPassword.Text.Trim() != txtReWriteNewPassword.Text.Trim())
+                {
+                    lbWarning.Text = "Mật khẩu nhập lại không khớp!";
+                    txtReWriteNewPassword.Clear();
+                }
+                else
+                {
+                    BLL_ACCOUNT.Instance.newPassword(usernameLogin, txtNewPassword.Text.Trim());
+                    MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
+        }
+        // out
+        private void btnCancelSearch_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        // ...
         private void txtReWriteNewPassword_TextChanged(object sender, EventArgs e)
         {
             if (txtReWriteNewPassword.Text.Trim() != txtNewPassword.Text.Trim())
