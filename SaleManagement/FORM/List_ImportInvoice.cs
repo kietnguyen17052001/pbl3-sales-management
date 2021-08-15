@@ -28,6 +28,7 @@ namespace SaleManagement.FORM
                 btnFrmData.Enabled = btnEditInvoice.Enabled = btnDeleteInvoice.Enabled = btnSaveChange.Enabled = false;
             }
             setCombobox();
+            dpDAY.CustomFormat = dpFROM.CustomFormat = dpTO.CustomFormat = "dd/MM/yyyy";
             dpFROM.Value = BLL_LISTIMPORTINVOICE.Instance.getDate();
             LoadDGVs(txtSEARCH.Text.Trim());
             FormatColumnHeader();
@@ -91,13 +92,13 @@ namespace SaleManagement.FORM
             if(dgvLIST_INVOICE.Rows.Count > 0)
             {
                 idInvoice = dgvLIST_INVOICE.SelectedRows[0].Cells["MaHoaDonNhap"].Value.ToString();
-                BLL_LISTIMPORTINVOICE.Instance.LoadDataFrmDetail(dgvINFO_INVOICE, idInvoice);
                 txtID_INVOICE.Text = idInvoice;
                 cbbSTAFF.Text = BLL_LISTIMPORTINVOICE.Instance.getTextForCbb(dgvLIST_INVOICE.SelectedRows[0].Cells["TenNguoiDung"].Value.ToString(), BLL_USER.Instance.listStaff());
                 cbbSUPPLIER.Text = BLL_LISTIMPORTINVOICE.Instance.getTextForCbb(dgvLIST_INVOICE.SelectedRows[0].Cells["TenNhaCungCap"].Value.ToString(), BLL_SUPPLIER.Instance.ListSupplier());
                 dpDAY.Value = Convert.ToDateTime(dgvLIST_INVOICE.SelectedRows[0].Cells["NgayNhap"].Value.ToString());
-                txtDISCOUNT.Text = String.Format("{0:n0}", Convert.ToDouble(dgvLIST_INVOICE.SelectedRows[0].Cells["GiamGia"].Value.ToString()));
-                txtPRICE.Text = String.Format("{0:n0}", Convert.ToDouble(dgvLIST_INVOICE.SelectedRows[0].Cells["SoTien"].Value.ToString()));
+                txtPRICE.Text = String.Format("{0:n0}", dgvLIST_INVOICE.SelectedRows[0].Cells["SoTien"].Value);
+                txtDISCOUNT.Text = String.Format("{0:n0}", dgvLIST_INVOICE.SelectedRows[0].Cells["GiamGia"].Value);
+                BLL_LISTIMPORTINVOICE.Instance.LoadDataFrmDetail(dgvINFO_INVOICE, idInvoice);
             }
         }
         public void LoadDGVs(string invoiceInformation)
@@ -336,6 +337,26 @@ namespace SaleManagement.FORM
         private void dpTO_ValueChanged(object sender, EventArgs e)
         {
             LoadDGVs(txtSEARCH.Text.Trim());
+        }
+        // Check discount
+        private void txtDISCOUNT_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtDISCOUNT.Text))
+            {
+                txtDISCOUNT.Text = "0";
+            }
+            if (Convert.ToDouble(txtDISCOUNT.Text) > Convert.ToDouble(txtPRICE.Text))
+            {
+                txtDISCOUNT.Text = (Convert.ToDouble(txtDISCOUNT.Text) / 10).ToString();
+            }
+        }
+        // Check key press
+        private void txtDISCOUNT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
         }
 
         // delete product

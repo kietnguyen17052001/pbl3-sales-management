@@ -29,6 +29,7 @@ namespace SaleManagement.FORM
                 btnFrmData.Enabled = btnEditInvoice.Enabled = btnDeleteInvoice.Enabled = btnSaveChange.Enabled = false;
             }
             setCombobox();
+            dpDAY.CustomFormat = dpFROM.CustomFormat = dpTO.CustomFormat = "dd/MM/yyyy";
             dpFROM.Value = BLL_LISTSALEINVOICE.Instance.getDate();
             LoadDGVs(txtSEARCH.Text.Trim());
             FormatColumnHeader();
@@ -358,6 +359,26 @@ namespace SaleManagement.FORM
             e.Graphics.DrawString(txtPRICE_.Text, new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(630, distance + 50 * 4));
             e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", new Font("Arial", 17, FontStyle.Regular), Brushes.Black, new Point(10, distance + 50 * 5));
             e.Graphics.DrawString("Cảm ơn và hẹn gặp lại quý khách!", new Font("Tahoma", 17, FontStyle.Bold), Brushes.Black, new Point(250, distance + 50 * 6));
+        }
+        // Check discount
+        private void txtDISCOUNT_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtDISCOUNT.Text))
+            {
+                txtDISCOUNT.Text = "0";
+            }
+            if (Convert.ToDouble(txtDISCOUNT.Text) > Convert.ToDouble(txtPRICE_.Text))
+            {
+                txtDISCOUNT.Text = (Convert.ToDouble(txtDISCOUNT.Text) / 10).ToString();
+            }
+        }
+        // Check key keypress
+        private void txtDISCOUNT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
         }
 
         // Load dgv when valuechange datetimepickers

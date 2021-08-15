@@ -29,6 +29,7 @@ namespace SaleManagement.FORM
                 btnBACK.Enabled = false;
             }
             txtIdInvoice.Text = BLL_IMPORTPRODUCT.instance.getNewIdInvoice();
+            dpDayCreate.CustomFormat = "dd/MM/yyyy";
             LoadData();
             FormatHeaderCell();
             setCbbStaff();

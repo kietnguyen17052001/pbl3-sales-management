@@ -284,7 +284,7 @@ namespace SaleManagement.VIEW
             // 
             this.dpDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dpDate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dpDate.Location = new System.Drawing.Point(124, 75);
             this.dpDate.Name = "dpDate";
             this.dpDate.Size = new System.Drawing.Size(172, 29);

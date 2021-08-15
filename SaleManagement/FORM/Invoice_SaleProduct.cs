@@ -39,6 +39,7 @@ namespace SaleManagement.VIEW
                 btnBack.Enabled = false;
             }
             txtIdInvoice.Text = BLL_SALEPRODUCT.Instance.getNewIdInvoice(); // khởi tạo mã hóa đơn
+            dpDate.CustomFormat = "dd/MM/yyyy";
             setComboboxStaff();
             LoadData();
             FormatHeader();

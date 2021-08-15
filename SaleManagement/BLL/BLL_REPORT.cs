@@ -28,12 +28,14 @@ namespace SaleManagement.BLL
         // load data report
         public void LoadDataReport(DataGridView dgv, DateTime dateStart, DateTime dateEnd)
         {
-            var invoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd).Select(p => new {
+            var invoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd).Select(p => new
+            {
                 p.MaHangHoa,
                 p.tblHangHoa.TenHangHoa,
                 p.tblHoaDonBanHang.NgayBan,
                 p.tblHoaDonBanHang.tblKhachHang.TenKhachHang,
                 p.SoLuong,
+                p.tblHangHoa.GiaNhap,
                 p.DonGia,
                 p.GiamGia,
                 p.TongTien
@@ -44,28 +46,28 @@ namespace SaleManagement.BLL
         {
             return db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
         }
+
         // doanh số
         public double getRevenue(DateTime dateStart, DateTime dateEnd)
         {
             double revenue = Convert.ToDouble(getListInvoiceDetail(dateStart, dateEnd).Sum(p => p.TongTien));
             return revenue;
         }
-        // lợi nhuận
+        // lợi nhuận = tổng doanh thu bán - tổng tiền vốn của hàng hóa
         public double getProfit(DateTime dateStart, DateTime dateEnd)
         {
-            double profit = 0;
+            double fund = 0; // tiền vốn
             foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
             {
-                profit += (double)(invoiceDetail.TongTien - invoiceDetail.SoLuong * invoiceDetail.tblHangHoa.GiaNhap);
+                fund += (double)(invoiceDetail.SoLuong * invoiceDetail.tblHangHoa.GiaNhap);
             }
-            return profit;
+            return getRevenue(dateStart, dateEnd) - fund;
         }
-        // giảm giá
+        // giảm hóa hàng hóa
         public double getDiscount(DateTime dateStart, DateTime dateEnd)
         {
-            var listInvoiceDetail = db.tblChiTietHoaDonBanHangs.Where(p => p.tblHoaDonBanHang.NgayBan >= dateStart && p.tblHoaDonBanHang.NgayBan <= dateEnd);
             double discount = 0;
-            foreach (tblChiTietHoaDonBanHang invoiceDetail in listInvoiceDetail)
+            foreach (tblChiTietHoaDonBanHang invoiceDetail in getListInvoiceDetail(dateStart, dateEnd))
             {
                 discount += (double)((invoiceDetail.GiamGia / 100) * (invoiceDetail.DonGia * invoiceDetail.SoLuong));
             }

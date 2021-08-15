@@ -14,6 +14,7 @@ namespace SaleManagement.FORM
     public partial class FrmRevenue_Statistic : Form
     {
         private string usernamelogin;
+        private double revenue;
         public FrmRevenue_Statistic(string _usernamelogin)
         {
             InitializeComponent();
@@ -30,7 +31,6 @@ namespace SaleManagement.FORM
             chartSTATISTIC.Series.Add("Doanh thu");
             chartSTATISTIC.Series["Doanh thu"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chartSTATISTIC.Series["Doanh thu"].Color = Color.Red;
-            double revenue;
             for(int i = 1; i <= 12; i++)
             {
                 revenue = BLL_STATISTIC.instance.getRevenueYear(year, i);
@@ -45,7 +45,6 @@ namespace SaleManagement.FORM
             chartSTATISTIC.Series.Add("Doanh thu");
             chartSTATISTIC.Series["Doanh thu"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chartSTATISTIC.Series["Doanh thu"].Color = Color.Red;
-            double revenue;
             for (int i = 1; i <= 31; i++)
             {
                 revenue = BLL_STATISTIC.instance.getRevenueMonth(year, month, i);

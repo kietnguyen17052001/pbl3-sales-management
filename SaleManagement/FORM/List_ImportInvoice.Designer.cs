@@ -111,7 +111,7 @@ namespace SaleManagement.FORM
             // dpDAY
             // 
             this.dpDAY.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpDAY.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpDAY.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dpDAY.Location = new System.Drawing.Point(124, 145);
             this.dpDAY.Name = "dpDAY";
             this.dpDAY.Size = new System.Drawing.Size(246, 29);
@@ -199,6 +199,8 @@ namespace SaleManagement.FORM
             this.txtDISCOUNT.Name = "txtDISCOUNT";
             this.txtDISCOUNT.Size = new System.Drawing.Size(246, 29);
             this.txtDISCOUNT.TabIndex = 154;
+            this.txtDISCOUNT.TextChanged += new System.EventHandler(this.txtDISCOUNT_TextChanged);
+            this.txtDISCOUNT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDISCOUNT_KeyPress);
             // 
             // label12
             // 
@@ -266,7 +268,7 @@ namespace SaleManagement.FORM
             // dpTO
             // 
             this.dpTO.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpTO.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dpTO.Location = new System.Drawing.Point(556, 407);
             this.dpTO.Name = "dpTO";
             this.dpTO.Size = new System.Drawing.Size(156, 29);
@@ -276,7 +278,7 @@ namespace SaleManagement.FORM
             // dpFROM
             // 
             this.dpFROM.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpFROM.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpFROM.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dpFROM.Location = new System.Drawing.Point(376, 407);
             this.dpFROM.Name = "dpFROM";
             this.dpFROM.Size = new System.Drawing.Size(156, 29);

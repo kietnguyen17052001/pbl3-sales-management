@@ -24,6 +24,7 @@ namespace SaleManagement.FORM
             InitializeComponent();
             usernameLogin = _usernameLogin;
             setCombobox();
+            dpFROM.CustomFormat = dpTO.CustomFormat = "dd/MM/yyyy";
             if (dateStart == null)
             {
                 dpFROM.Value = DateTime.Now;
@@ -42,7 +43,7 @@ namespace SaleManagement.FORM
         }
         public void fillChart()
         {
-            lbTIME.Text = "Từ ngày " + dpFROM.Value.ToShortDateString() + " đến ngày " + dpTO.Value.ToShortDateString();
+            lbTIME.Text = "Từ ngày " + dpFROM.Value.ToString("dd/MM/yyyy") + " đến ngày " + dpTO.Value.ToString("dd/MM/yyyy");
             column = 0;
             chartMONEY.Series.Clear();
             chartPRODUCT_QTY.Series.Clear();

@@ -23,6 +23,7 @@ namespace SaleManagement.VIEW
             LoadData();
             setCbbRole();
             FormatColumnsHeader();
+            dpDAY.CustomFormat = "dd/MM/yyyy";
         }
         // Format columns hearder
         public void FormatColumnsHeader()

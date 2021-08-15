@@ -263,7 +263,7 @@ namespace SaleManagement.FORM
             // dpTO
             // 
             this.dpTO.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpTO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpTO.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dpTO.Location = new System.Drawing.Point(867, 181);
             this.dpTO.Name = "dpTO";
             this.dpTO.Size = new System.Drawing.Size(156, 29);
@@ -273,7 +273,7 @@ namespace SaleManagement.FORM
             // dpFROM
             // 
             this.dpFROM.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpFROM.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpFROM.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dpFROM.Location = new System.Drawing.Point(679, 181);
             this.dpFROM.Name = "dpFROM";
             this.dpFROM.Size = new System.Drawing.Size(156, 29);

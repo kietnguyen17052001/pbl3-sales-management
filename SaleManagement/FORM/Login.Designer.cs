@@ -94,6 +94,8 @@ namespace SaleManagement.FORM
             // 
             // txtUSER
             // 
+            this.txtUSER.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtUSER.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtUSER.BackColor = System.Drawing.Color.White;
             this.txtUSER.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUSER.ForeColor = System.Drawing.Color.Silver;
@@ -205,10 +207,12 @@ namespace SaleManagement.FORM
             this.lbForgot.ForeColor = System.Drawing.Color.Blue;
             this.lbForgot.Location = new System.Drawing.Point(480, 581);
             this.lbForgot.Name = "lbForgot";
-            this.lbForgot.Size = new System.Drawing.Size(147, 24);
+            this.lbForgot.Size = new System.Drawing.Size(156, 24);
             this.lbForgot.TabIndex = 14;
-            this.lbForgot.Text = "Quên mật khẩu";
+            this.lbForgot.Text = "Quên mật khẩu?";
             this.lbForgot.Click += new System.EventHandler(this.lbForgot_Click);
+            this.lbForgot.MouseLeave += new System.EventHandler(this.lbForgot_MouseLeave);
+            this.lbForgot.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbForgot_MouseMove);
             // 
             // FrmLogin
             // 

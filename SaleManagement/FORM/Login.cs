@@ -92,6 +92,15 @@ namespace SaleManagement.FORM
         {
             Application.Exit();
         }
+        private void lbForgot_MouseMove(object sender, MouseEventArgs e)
+        {
+            lbForgot.ForeColor = Color.DimGray;
+        }
+
+        private void lbForgot_MouseLeave(object sender, EventArgs e)
+        {
+            lbForgot.ForeColor = Color.Blue;
+        }
 
     }
 }

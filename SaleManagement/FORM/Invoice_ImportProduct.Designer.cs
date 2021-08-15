@@ -327,7 +327,7 @@ namespace SaleManagement.FORM
             // 
             this.dpDayCreate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dpDayCreate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpDayCreate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpDayCreate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dpDayCreate.Location = new System.Drawing.Point(123, 73);
             this.dpDayCreate.Name = "dpDayCreate";
             this.dpDayCreate.Size = new System.Drawing.Size(172, 29);

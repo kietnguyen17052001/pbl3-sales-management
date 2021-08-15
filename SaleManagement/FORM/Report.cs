@@ -19,6 +19,7 @@ namespace SaleManagement.FORM
         {
             InitializeComponent();
             usernameLogin = _usernameLogin;
+            dpFROM.CustomFormat = dpTO.CustomFormat = "dd/MM/yyyy";
             dpFROM.Value = BLL_LISTSALEINVOICE.Instance.getDate();
             LoadData();
             FormatColumnHeader();
@@ -38,9 +39,10 @@ namespace SaleManagement.FORM
             dgvREVENUE.Columns[2].HeaderText = "Ngày bán";
             dgvREVENUE.Columns[3].HeaderText = "Khách hàng";
             dgvREVENUE.Columns[4].HeaderText = "Số lượng";
-            dgvREVENUE.Columns[5].HeaderText = "Giá(VNĐ)";
-            dgvREVENUE.Columns[6].HeaderText = "Giảm giá(%)";
-            dgvREVENUE.Columns[7].HeaderText = "Tổng tiền(VNĐ)";
+            dgvREVENUE.Columns[5].HeaderText = "Giá nhập";
+            dgvREVENUE.Columns[6].HeaderText = "Giá bán";
+            dgvREVENUE.Columns[7].HeaderText = "Giảm giá(%)";
+            dgvREVENUE.Columns[8].HeaderText = "Tổng tiền";
         }
         // show tblChiTiethoaDonBanHang theo time
         public void LoadData()

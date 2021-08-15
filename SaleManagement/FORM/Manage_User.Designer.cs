@@ -457,7 +457,7 @@ namespace SaleManagement.VIEW
             // dpDAY
             // 
             this.dpDAY.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpDAY.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpDAY.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dpDAY.Location = new System.Drawing.Point(133, 211);
             this.dpDAY.Name = "dpDAY";
             this.dpDAY.Size = new System.Drawing.Size(244, 27);
