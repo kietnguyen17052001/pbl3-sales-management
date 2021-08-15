@@ -341,13 +341,16 @@ namespace SaleManagement.FORM
         // Check discount
         private void txtDISCOUNT_TextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtDISCOUNT.Text))
+            if (btnSaveChange.Enabled == true)
             {
-                txtDISCOUNT.Text = "0";
-            }
-            if (Convert.ToDouble(txtDISCOUNT.Text) > Convert.ToDouble(txtPRICE.Text))
-            {
-                txtDISCOUNT.Text = (Convert.ToDouble(txtDISCOUNT.Text) / 10).ToString();
+                if (String.IsNullOrEmpty(txtDISCOUNT.Text))
+                {
+                    txtDISCOUNT.Text = "0";
+                }
+                if (Convert.ToDouble(txtDISCOUNT.Text) > Convert.ToDouble(txtPRICE.Text))
+                {
+                    txtDISCOUNT.Text = (Convert.ToDouble(txtDISCOUNT.Text) / 10).ToString();
+                }
             }
         }
         // Check key press
